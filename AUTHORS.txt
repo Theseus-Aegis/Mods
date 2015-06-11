@@ -1,0 +1,14 @@
+# TAC MODS CONTRIBUTOR LIST
+# If you contributed, but are not listed here,
+# contact one of the Core Team members.
+#
+# Feel free to add yourself to this when creating a pull
+# request, preferably including an email address.
+
+# CORE TEAM
+DaC
+Jonpas <jonpas33@gmail.com>
+
+# CONTRIBUTORS
+Rory
+Takelmeifter

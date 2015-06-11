@@ -1,0 +1,3 @@
+build.py - GPLv2 License - Private Permission Granted by KoffeinFlummi from ACE3 Team
+make.py - MIT License
+setup.py - GPLv2 License - Private Permission Granted by KoffeinFlummi from ACE3 Team
