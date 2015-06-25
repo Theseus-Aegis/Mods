@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Air_Security">
+        <Key ID="STR_TAC_Air_Security_Secure">
+            <English>Secure Crew</English>
+        </Key>
+        <Key ID="STR_TAC_Air_Security_Unsecure">
+            <English>Unsecure Crew</English>
+        </Key>
+        <Key ID="STR_TAC_Air_Security_Security">
+            <English>Set Crew Security</English>
+        </Key>
+        <Key ID="STR_TAC_Air_Security_Secured">
+            <English>Crew Secured</English>
+        </Key>
+        <Key ID="STR_TAC_Air_Security_Unsecured">
+            <English>Crew Unsecured</English>
+        </Key>
+    </Package>
+</Project>
