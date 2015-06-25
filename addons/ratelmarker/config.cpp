@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_common", "ace_interact_menu"};
+        requiredAddons[] = {"tac_common", "ace_interaction"};
         author[]= {"DaC", "Jonpas"};
         authorUrl = "http://www.theseus-aegis.com/";
         VERSION_CONFIG;
@@ -14,4 +14,5 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
-#include "CfgSounds.hpp"
+
+#include <markerMenu.hpp>

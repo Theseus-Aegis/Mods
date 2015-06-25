@@ -64,5 +64,5 @@ if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
     [_firstCoordinate,_secondCoordinate] call FUNC(createMarker);
 
     // Create marker remotely on array of objects
-    ["TAC_markerCreated", _seeMarkerUnits, [_firstCoordinate,_secondCoordinate]] call ACE_FUNC(common,targetEvent);
+    ["TAC_ratelMarkerCreated", _seeMarkerUnits, [_firstCoordinate,_secondCoordinate]] call ACE_FUNC(common,targetEvent);
 };

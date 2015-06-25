@@ -23,9 +23,6 @@
     <Key ID="STR_TAC_HelicopterEvents_StopRadio">
       <English>Stop Radio</English>
     </Key>
-    <Key ID="STR_TAC_HelicopterEvents_RatelMarker">
-      <English>Open RATEL Marker</English>
-    </Key>
     <Key ID="STR_TAC_HelicopterEvents_Radio_track1">
       <English>Sympathy for the Devil</English>
     </Key>

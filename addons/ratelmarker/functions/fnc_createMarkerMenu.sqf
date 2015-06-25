@@ -11,4 +11,4 @@
 #include "script_component.hpp"
 
 // Need to use createDisplay to allow movement with GUI open
-(findDisplay 46) createDisplay "TAC_RatelMarker";
+(findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
