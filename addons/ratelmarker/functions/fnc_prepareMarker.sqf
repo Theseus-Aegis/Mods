@@ -15,7 +15,7 @@ disableSerialization;
 
 PARAMS_2(_firstCoordinateRaw,_secondCoordinateRaw);
 
-private ["_lenFirst", "_lenSecond", "_firstCoordinate", "_secondCoordinate", "_heli", "_player", "_turretPaths", "_turretUnits"];
+private ["_lenFirst", "_lenSecond", "_firstCoordinate", "_secondCoordinate", "_heli"];
 
 // Put numbers into array elements
 _lenFirst = count(toArray _firstCoordinateRaw);
@@ -45,7 +45,6 @@ if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
     hintSilent "Invalid coordinates!";
 } else {
     _heli = vehicle ACE_player;
-    _player = ACE_player;
 
     // Feed only occupied turrets
     _seeMarkerUnits = [];

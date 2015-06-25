@@ -5,7 +5,5 @@ if (isServer) then {
     ["TAC_hideRadio", {
         PARAMS_1(_radio);
         hideObjectGlobal _radio;
-    }] call ACE_FUNC(common,addEventHandler);
+    }] call ace_common_fnc_addEventHandler;
 };
-
-if (!hasInterface) exitWith {};

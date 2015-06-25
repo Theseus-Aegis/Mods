@@ -3,19 +3,19 @@
  * Adds radio tracks actions.
  *
  * Arguments:
- * 0: Helicopter <OBJECT>
+ * 0: Vehicle <OBJECT>
  *
  * Return Value:
  * Children Actions <ARRAY>
  *
  * Example:
- * [heli] call tac_helicopterevents_fnc_addRadioTrackActions;
+ * [vehicle] call tac_radios_fnc_addRadioTrackActions;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-PARAMS_1(_heli);
+PARAMS_1(_vehicle);
 
 private ["_actions", "_config"];
 
@@ -31,10 +31,10 @@ _actions = [];
             {(_this select 2) call FUNC(playRadio)},
             {true},
             {},
-            [_heli, _x]
-        ] call ACE_FUNC(interact_menu,createAction),
+            [_vehicle, _x]
+        ] call ace_interact_menu_fnc_createAction,
         [],
-        _heli
+        _vehicle
     ];
 } forEach (call FUNC(getRadioTracks));
 

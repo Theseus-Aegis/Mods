@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Radios">
+        <Key ID="STR_TAC_Radios_PlayRadio">
+            <English>Play Radio</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_StopRadio">
+            <English>Stop Radio</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track1">
+            <English>Sympathy for the Devil</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track2">
+            <English>To Glory</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track3">
+            <English>All Along the Watchtower</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track4">
+            <English>Ride of the Valkyries</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track5">
+            <English>Paint It Black</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track6">
+            <English>Shadow on the Sun</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track7">
+            <English>Fortunate Son</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track8">
+            <English>Danger Zone</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track9">
+            <English>Thunderstruck</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_track10">
+            <English>Barra Barra</English>
+        </Key>
+    </Package>
+</Project>
