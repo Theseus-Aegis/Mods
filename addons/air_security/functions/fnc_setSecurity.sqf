@@ -29,11 +29,11 @@ PARAMS_1(_vehicle);
 if (locked _vehicle < 2) then {
     _vehicle setVehicleLock "LOCKED";
     _newDoorStatus = 0;
-    [localize LSTRING(Secured), QUOTE(PATHTOF(UI\secure_ca.paa))] call ACE_FUNC(common,displayTextPicture);
+    [localize LSTRING(Secured), QUOTE(PATHTOF(UI\secure_ca.paa))] call ace_common_fnc_displayTextPicture;
 } else {
     _vehicle setVehicleLock "UNLOCKED";
     _newDoorStatus = 1;
-    [localize LSTRING(Unsecured), QUOTE(PATHTOF(UI\unsecure_ca.paa))] call ACE_FUNC(common,displayTextPicture);
+    [localize LSTRING(Unsecured), QUOTE(PATHTOF(UI\unsecure_ca.paa))] call ace_common_fnc_displayTextPicture;
 };
 
 // Animate doors
