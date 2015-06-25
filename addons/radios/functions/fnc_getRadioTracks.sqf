@@ -9,7 +9,7 @@
  * Radio Tracks <ARRAY>
  *
  * Example:
- * call tac_helicopterevents_fnc_getRadioTracks;
+ * call tac_radios_fnc_getRadioTracks;
  *
  * Public: No
  */
