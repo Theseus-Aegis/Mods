@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Edited with tabler - 2015-02-01 -->
+<Project name="TAC">
+    <Package name="RatelMarker">
+        <Key ID="STR_TAC_RatelMarker_DisplayName">
+            <English>RATEL Marker</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_Open">
+            <English>Open RATEL Marker</English>
+        </Key>
+    </Package>
+</Project>

@@ -2,14 +2,12 @@
 #define COORDINATE_Y 0.75
 #define COORDINATE_W 0.08
 
-#define TOOLTIP_BORDER_COLOR {0, 0, 0, 0.65}
-
 class RscBackground;
 class RscText;
 class RscEdit;
 class RscButton;
 
-class TAC_RatelMarker {
+class GVAR(RatelMarkerMenu) {
     idd = -1;
     movingEnable = 0;
     enableSimulation = 1; 
@@ -29,13 +27,13 @@ class TAC_RatelMarker {
             y = COORDINATE_Y;
         };
         class X_Input: RscEdit {
-            idc = 33004;
+            idc = GUI_ID_INPUT_X;
             x = COORDINATE_X + 0.03;
             y = COORDINATE_Y;
             w = COORDINATE_W;
-            colorBackground[] = {0, 0, 0, 0.6};
+            colorBackground[] = {0, 0, 0, 0.5};
             tooltip = "Enter X Coordinate";
-            tooltipColorBox[] = TOOLTIP_BORDER_COLOR;
+            tooltipColorBox[] = {0, 0, 0, 0.65};
         };
         class Y_Label: RscText {
             text = "Y:";
@@ -43,18 +41,18 @@ class TAC_RatelMarker {
             y = COORDINATE_Y;
         };
         class Y_Input: RscEdit {
-            idc = 33005;
+            idc = GUI_ID_INPUT_Y;
             x = COORDINATE_X + 0.14;
             y = COORDINATE_Y;
             w = COORDINATE_W;
-            colorBackground[] = {0, 0, 0, 0.6};
+            colorBackground[] = {0, 0, 0, 0.5};
             tooltip = "Enter Y Coordinate";
-            tooltipColorBox[] = TOOLTIP_BORDER_COLOR;
+            tooltipColorBox[] = {0, 0, 0, 0.65};
         };
         class CreateMarker: RscButton {
             idc = -1;
             text = "Create Marker";
-            onButtonClick = QUOTE((ctrlParent (_this select 0)) closeDisplay 0; [ARR_2(ctrlText((ctrlParent (_this select 0)) displayCtrl 33004), ctrlText((ctrlParent (_this select 0)) displayCtrl 33005))] call FUNC(prepareMarker));
+            onButtonClick = QUOTE((ctrlParent (_this select 0)) closeDisplay 0; [ARR_2(ctrlText((ctrlParent (_this select 0)) displayCtrl GUI_ID_INPUT_X), ctrlText((ctrlParent (_this select 0)) displayCtrl GUI_ID_INPUT_Y))] call FUNC(prepareMarker));
             x = COORDINATE_X + 0.03;
             y = COORDINATE_Y + 0.05;
             w = COORDINATE_W + 0.09;
