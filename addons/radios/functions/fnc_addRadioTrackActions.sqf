@@ -32,7 +32,7 @@ _actions = [];
             {true},
             {},
             [_vehicle, _x]
-        ] call ACE_FUNC(interact_menu,createAction),
+        ] call ace_interact_menu_fnc_createAction,
         [],
         _vehicle
     ];
