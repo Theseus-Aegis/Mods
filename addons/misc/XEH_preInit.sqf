@@ -2,8 +2,6 @@
 
 ADDON = false;
 
-PREP(chair);
-PREP(switchMove);
 PREP(toggleAlarm);
 PREP(whiteboardController);
 
