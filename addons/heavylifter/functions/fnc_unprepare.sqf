@@ -33,4 +33,4 @@ _vehicle enableSimulationGlobal true;
 _vehicle setVariable [QGVAR(prepared), nil, true];
 
 // Show ACE Hint
-[localize LSTRING(Detached), QUOTE(PATHTOF(UI\detach_ca.paa))] call ACE_FUNC(common,displayTextPicture);
+[localize LSTRING(Detached), QUOTE(PATHTOF(UI\detach_ca.paa))] call ace_common_fnc_displayTextPicture;

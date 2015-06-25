@@ -28,4 +28,4 @@ if (isNil {_heli getVariable QGVAR(prepared)}) then {
     GVAR(function) = FUNC(unprepare);
 };
 
-[GVAR(prepTime), [_heli], {(_this select 0) call GVAR(function)}, {}, _text] call ACE_FUNC(common,progressBar);
+[GVAR(prepTime), [_heli], {(_this select 0) call GVAR(function)}, {}, _text] call ace_common_fnc_progressBar;
