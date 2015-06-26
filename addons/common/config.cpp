@@ -11,3 +11,5 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+
+#include "CfgModuleCategories.hpp"

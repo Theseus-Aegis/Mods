@@ -2,6 +2,8 @@
 
 ADDON = false;
 
-PREP(whiteboardController);
+PREP(addSlideActions);
+PREP(makeList);
+PREP(setupWhiteboard);
 
 ADDON = true;

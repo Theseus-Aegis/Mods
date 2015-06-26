@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Whiteboards">
+        <Key ID="STR_TAC_Whiteboards_DisplayName">
+            <English>Whiteboards</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Description">
+            <English>This module allows you to set up slide-shows on whiteboards. One module per image list.</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Whiteboard_DisplayName">
+            <English>Whiteboard</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Whiteboard_Description">
+            <English>Whiteboard object name (can also sync whiteboards), separated by commas if multiple.</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Controller_DisplayName">
+            <English>Controller</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Controller_Description">
+            <English>Controller object name, separated by commas if multiple.</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Images_DisplayName">
+            <English>Images</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Images_Description">
+            <English>List of images that will be used for the slide-show, separated by commas, with full path correctly formatted (eg. images\image.paa).</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Names_DisplayName">
+            <English>Interaction Names</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Names_Description">
+            <English>List of names that will be used for interaction entries, separated by commas, in order of images.</English>
+        </Key>
+        <Key ID="STR_TAC_Whiteboards_Interaction">
+            <English>Slides</English>
+        </Key>
+    </Package>
+</Project>
