@@ -3,6 +3,5 @@
 ADDON = false;
 
 PREP(toggleAlarm);
-PREP(whiteboardController);
 
 ADDON = true;

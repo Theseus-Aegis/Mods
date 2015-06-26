@@ -13,6 +13,3 @@ Toggle Alarm:
 - Handles the Alarm switching
 - Allows one or more objects to play Alarm sound
 - Supports optional argument for Sound Type
-
-Whiteboard Controller:
-- Sets up whiteboard slide controls.

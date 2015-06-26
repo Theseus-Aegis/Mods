@@ -1,6 +1,6 @@
 # About
 
-Improves Whiteboards with ability to have slide-shows on them and control them with a controller (another object).
+Adds ability to have slide-shows on them and control them with a controller (another object).
 
 ### Authors
 
