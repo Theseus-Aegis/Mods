@@ -4,6 +4,6 @@ ADDON = false;
 
 PREP(addSlideActions);
 PREP(makeList);
-PREP(setupWhiteboard);
+PREP(setupSlideshow);
 
 ADDON = true;

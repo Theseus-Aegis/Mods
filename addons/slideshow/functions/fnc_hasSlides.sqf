@@ -1,12 +1,15 @@
 /*
  * Author: Jonpas
- * Checks if whiteboard has slides.
+ * Checks if object has slides.
  *
  * Arguments:
  * 0: Object <OBJECT>
  *
  * Return Value:
  * Has Slides <BOOL>
+ *
+ * Example:
+ * [object] call tac_slideshow_fnc_hasSlides;
  *
  * Public: No
  */

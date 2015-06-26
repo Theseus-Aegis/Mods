@@ -4,22 +4,22 @@ class CfgVehicles {
         author = ECSTRING(common,Author);
         category = "TAC";
         displayName = CSTRING(DisplayName);
-        function = QFUNC(setupWhiteboard);
+        function = QFUNC(setupSlideshow);
         scope = 2;
         isGlobal = 0; // Server only
         isTriggerActivated = 0;
         isDisposable = 0;
-        //icon = QUOTE(PATHTOF(UI\Icon_Module_Whiteboards_ca.paa));
+        //icon = QUOTE(PATHTOF(UI\Icon_Module_Slideshow_ca.paa));
         class Arguments {
-            class Whiteboard {
-                displayName = CSTRING(Whiteboard_DisplayName);
-                description = CSTRING(Whiteboard_Description);
+            class Objects {
+                displayName = CSTRING(Objects_DisplayName);
+                description = CSTRING(Objects_Description);
                 typeName = "STRING";
                 defaultValue = "";
             };
-            class Controller {
-                displayName = CSTRING(Controller_DisplayName);
-                description = CSTRING(Controller_Description);
+            class Controllers {
+                displayName = CSTRING(Controllers_DisplayName);
+                description = CSTRING(Controllers_Description);
                 typeName = "STRING";
                 defaultValue = "";
             };
@@ -43,16 +43,17 @@ class CfgVehicles {
                 optional = 1; \
                 duplicate = 1;
             #define CONTROLLER description = "Controller";
-            #define WHITEBOARD description = "Controller";
-            #define BOTH description = "Whiteboard AND Controller";
+            #define OBJECT description = "Object";
+            #define BOTH description = "Object AND Controller";
 
+            // Every object in this must be initialized with ACE_Settings and GVAR(Slides) Action applied, as well as 2 of above macros
             sync[] = {
-                "Land_MapBoard_F", // Whiteboards
+                "Land_MapBoard_F", // Objects
                 "Land_Laptop_unfolded_F", "Land_Laptop_device_F", "Land_PCSet_01_screen_F", // Both
                 "Land_HandyCam_F", "Land_MobilePhone_smart_F", "Land_Tablet_01_F", "Land_PCSet_01_keyboard_F", "Land_PCSet_01_mouse_F", "Land_GamingSet_01_controller_F" // Controllers
             };
 
-            class Land_MapBoard_F {MACRO_SYNC WHITEBOARD};
+            class Land_MapBoard_F {MACRO_SYNC OBJECT};
 
             class Land_Laptop_unfolded_F {MACRO_SYNC BOTH};
             class Land_Laptop_device_F {MACRO_SYNC BOTH};
