@@ -1,5 +1,5 @@
-#define distance 450
-#define volume db+34
+#define distance 250
+#define volume db+15
 
 class CfgSounds {
     sounds[] = {track1, track2, track3, track4, track5, track6, track7, track8, track9, track10};
