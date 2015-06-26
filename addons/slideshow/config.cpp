@@ -5,11 +5,12 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main"};
-        author[]= {"Jonpas"};
+        requiredAddons[] = {"tac_common"};
+        author[]= {"Jonpas", "DaC"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };
 
-#include "CfgModuleCategories.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
