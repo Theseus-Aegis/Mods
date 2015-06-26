@@ -10,6 +10,9 @@
  * Return Value:
  * Parsed List <ARRAY>
  *
+ * Example:
+ * ["text", true, false] call tac_slideshow_fnc_makeList;
+ *
  * Public: No
  */
 //#define DEBUG_MODE_FULL
