@@ -11,13 +11,13 @@
             <English>Objects</English>
         </Key>
         <Key ID="STR_TAC_Slideshow_Objects_Description">
-            <English>Object names (can also be synchronized objects) slide-show will be displayed on, separated by commas if multiple.</English>
+            <English>Object names (can also be synchronized objects) slide-show will be displayed on, separated by commas if multiple. Reference INFO for object support.</English>
         </Key>
         <Key ID="STR_TAC_Slideshow_Controllers_DisplayName">
             <English>Controllers</English>
         </Key>
         <Key ID="STR_TAC_Slideshow_Controllers_Description">
-            <English>Controller object names, separated by commas if multiple.</English>
+            <English>Controller object names (can also be synchronized objects), separated by commas if multiple. Reference INFO for object support.</English>
         </Key>
         <Key ID="STR_TAC_Slideshow_Images_DisplayName">
             <English>Images</English>
