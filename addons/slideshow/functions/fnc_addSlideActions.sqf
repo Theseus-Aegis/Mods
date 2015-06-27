@@ -37,7 +37,7 @@ _actions = [];
             },
             {true},
             {},
-            [_objects,_x]
+            [_objects, _x]
         ] call ace_interact_menu_fnc_createAction,
         [],
         _controller
