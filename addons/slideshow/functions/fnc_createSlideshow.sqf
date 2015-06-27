@@ -1,5 +1,5 @@
 /*
- * Author: Jonpas
+ * Author: Jonpas, DaC
  * Prepares necessary variables and default image.
  *
  * Arguments:
