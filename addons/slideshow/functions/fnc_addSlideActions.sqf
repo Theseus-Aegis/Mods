@@ -27,7 +27,7 @@ _actions = [];
     _actions pushBack
     [
         [
-            format ["Whiteboard_Image_%1", _forEachIndex],
+            format ["Slide_%1", _forEachIndex],
             _names select _forEachIndex,
             "",
             {

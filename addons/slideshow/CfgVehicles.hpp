@@ -39,7 +39,7 @@ class CfgVehicles {
         class ModuleDescription {
             description = CSTRING(Description);
 
-            // Every object in this must be initialized with ACE_Settings and GVAR(Slides) Action applied, as well as 2 of above macros
+            // Every object in this must be initialized with GVAR(Slides) Action applied, as well as 2 of below macros
             sync[] = {CLASSNAMES_OBJECTS, CLASSNAMES_BOTH, CLASSNAMES_CONTROLLERS};
 
             #define MACRO_SYNC \
