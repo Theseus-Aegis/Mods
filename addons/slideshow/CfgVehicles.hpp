@@ -100,7 +100,7 @@ class CfgVehicles {
         MACRO_ACE_INTERACT_INIT
     };
     class Land_FlatTV_01_F: Items_base_F {
-        MACRO_INTERACT_INIT
+        MACRO_ACE_INTERACT_INIT
     };
 
     class Land_HandyCam_F: Items_base_F {
