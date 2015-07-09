@@ -67,7 +67,4 @@
 
 
 // MACROS
-#define CHRONOSLOADED !isNil "ChronosLoaded" && {ChronosLoaded == "true"}
-#define FETCHARMORY usec_fnc_fetchArmory
-
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)

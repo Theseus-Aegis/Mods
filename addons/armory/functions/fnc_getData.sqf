@@ -25,11 +25,11 @@ _armoryData = [];
 //ChronosLoaded = "true";//debug Chronos
 
 // Get data from Chronos if available, otherwise set hard-coded data
-if (CHRONOSLOADED) then {
+if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
     hintSilent "Retrieving Armory, please stand by ...";
 
     // Call Chronos for Data
-    _armoryData = [player, _selectedCategory] call FETCHARMORY;
+    _armoryData = [player, _selectedCategory] call usec_fnc_fetchArmory;
 } else {
     // Rifles
     if (_selectedCategory == "rifle") then {
