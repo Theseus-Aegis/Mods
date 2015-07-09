@@ -57,7 +57,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "@ace"
+project = "@tac_mods"
 ACE_VERSION = "3.0.0"
 arma3tools_path = ""
 work_drive = ""
