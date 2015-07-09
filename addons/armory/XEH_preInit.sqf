@@ -3,6 +3,7 @@
 ADDON = false;
 
 PREP(dialogControl);
+PREP(dialogControl_amountSelection);
 PREP(dialogControl_back);
 PREP(dialogControl_list);
 PREP(dialogControl_main);

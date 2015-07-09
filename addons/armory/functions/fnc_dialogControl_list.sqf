@@ -13,7 +13,7 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 PARAMS_1(_selectedCategory);
@@ -41,16 +41,3 @@ lbClear DROPDOWN; // Clear Dropdown
 
 // Fill List
 [_armoryData] call FUNC(dialogControl_populateList);
-
-
-// Set up Dropdown Selection EH
-CTRL(DROPDOWN) ctrlAddEventHandler ["LBSelChanged", {
-    [[GVAR(selectedCategory)] call FUNC(getDataCallback)] call FUNC(dialogControl_populateList);
-    TRACE_1("Dropdown selection",GVAR(selectedCategory));
-}];
-
-// Set up List Selection EH
-CTRL(NLIST) ctrlAddEventHandler ["LBSelChanged", {
-    [GVAR(selectedCategory)] call FUNC(dialogControl_takestash);
-    TRACE_1("NList selection",GVAR(selectedCategory));
-}];

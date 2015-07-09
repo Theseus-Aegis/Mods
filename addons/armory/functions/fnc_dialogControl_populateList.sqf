@@ -46,8 +46,9 @@ _rowNum = 0; // Needed for proper row images
         _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
         lnbAddRow [NLIST, ["", _displayName, _quantity]]; // Add row with information
         
-        // Set hidden data with classname to displayName column
+        // Set hidden data with classname to displayName column and quantity to quantity column
         lnbSetData [NLIST, [_rowNum, 1], _className];
+        lnbSetData [NLIST, [_rowNum, 2], _quantity];
 
         // Set picture
         _picture = getText (configFile >> _configCfg >> _className >> "picture");

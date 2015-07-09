@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Sends data back to Apollo (Chronos).
+ * Prepares and sends data back to Apollo (Chronos).
  *
  * Arguments:
  * 0: Take/Stash <STRING>
@@ -17,6 +17,9 @@
 
 PARAMS_1(_type);
 
+GVAR(selectedItem) = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
+GVAR(selectedAmount) = lbText [DROPDOWNAMOUNT, (lbSelection CTRL(DROPDOWNAMOUNT)) select 0]; // Quantity
+
 // Change to ACE Events (in Apollo as well)
-armoryData = [_type, player, GVAR(box), GVAR(selectedItem)];
-publicVariableServer "armoryData";
+chronos_armoryData = [player, _type, GVAR(box), GVAR(selectedItem), GVAR(selectedAmount)];
+publicVariableServer "chronos_armoryData";

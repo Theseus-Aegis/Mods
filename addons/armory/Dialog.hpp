@@ -187,7 +187,7 @@ class GVAR(Display) {
         // Dropdown Menu
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
-            onLBSelChanged = "";
+            onLBSelChanged = QUOTE([[GVAR(selectedCategory)] call FUNC(getDataCallback)] call FUNC(dialogControl_populateList));
         };
 
         // Amount
@@ -202,7 +202,17 @@ class GVAR(Display) {
         // List
         class List: GVAR(RscListNBox) {
             idc = NLIST;
-            onLBSelChanged  = QUOTE([ARR_2('take','weapons')] call FUNC(showTakeStash));
+            onLBSelChanged  = QUOTE([GVAR(selectedCategory)] call FUNC(dialogControl_takestash); call FUNC(dialogControl_amountSelection));
+        };
+
+        // Dropdown Amount Selection
+        class DropdownAmount: GVAR(RscCombo) {
+            idc = DROPDOWNAMOUNT;
+            onLBSelChanged = QUOTE(call FUNC(setAmount));
+            x = PIC_X + 0.4;
+            y = PIC_Y + 0.675;
+            w = safezoneW * 0.05;
+            h = safezoneH * 0.03;
         };
         
         // Exit-Back

@@ -11,7 +11,7 @@
  * Example:
  * [box] call tac_armory_fnc_init
  *
- * Public: No
+ * Public: Yes
  */
 #include "script_component.hpp"
 
@@ -19,9 +19,7 @@ DEFAULT_PARAM(0,_object,this);
 
 // Change to ACE Interaction
 _object addAction ["<t color='#ff1111'>Open Armory</t>", {
-    PARAMS_2(_object,_player);
-
-    GVAR(box) = _object;
+    GVAR(box) = _this select 0;
 
     createDialog QGVAR(Display);
     ["main"] call FUNC(dialogControl);
