@@ -30,8 +30,8 @@ PARAMS_1(_show);
     MAINPIC7, MAINBTN7,
     MAINPIC8, MAINBTN8,
     //MAINPIC9, MAINBTN9,
-    MAINPIC10, MAINBTN10,
-    MAINPIC11, MAINBTN11,
+    //MAINPIC10, MAINBTN10,
+    //MAINPIC11, MAINBTN11,
     MAINPIC12, MAINBTN12
 ];
 
@@ -74,15 +74,15 @@ CTRL(MAINBTN8) ctrlSetTooltip "Access Apparel";
 
 /*ctrlSetText [MAINPIC9, QUOTE(PATHTOF(UI\btnCategory_.paa))];
 buttonSetAction [MAINBTN9, QUOTE([''] call FUNC(dialogControl))];
-CTRL(MAINBTN9) ctrlSetTooltip "Access";*/
+CTRL(MAINBTN9) ctrlSetTooltip "Access ";*/
 
-ctrlSetText [MAINPIC10, QUOTE(PATHTOF(UI\btnCategory_kits.paa))];
-buttonSetAction [MAINBTN10, QUOTE(['kits'] call FUNC(dialogControl))];
-CTRL(MAINBTN10) ctrlSetTooltip "Retrieve Kits";
+/*ctrlSetText [MAINPIC10, QUOTE(PATHTOF(UI\btnCategory_kits.paa))];
+buttonSetAction [MAINBTN10, QUOTE([''] call FUNC(dialogControl))];
+CTRL(MAINBTN10) ctrlSetTooltip "Access ";*/
 
-ctrlSetText [MAINPIC11, QUOTE(PATHTOF(UI\btnCategory_locker.paa))];
-buttonSetAction [MAINBTN11, QUOTE(['locker'] call FUNC(dialogControl))];
-CTRL(MAINBTN11) ctrlSetTooltip "Access Locker";
+/*ctrlSetText [MAINPIC11, QUOTE(PATHTOF(UI\btnCategory_locker.paa))];
+buttonSetAction [MAINBTN11, QUOTE([''] call FUNC(dialogControl))];
+CTRL(MAINBTN11) ctrlSetTooltip "Access ";*/
 
 ctrlSetText [MAINPIC12, QUOTE(PATHTOF(UI\btnStash.paa))];
 buttonSetAction [MAINBTN12, QUOTE(['stash'] call FUNC(dialogControl))];
