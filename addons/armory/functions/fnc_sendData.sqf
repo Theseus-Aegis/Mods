@@ -25,7 +25,7 @@ _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Qua
 TRACE_2("Send data",_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
-if (_selectedItem == "" || _selectedAmount == "") exitWith {};
+if (_selectedItem == "" || _selectedAmount == "") exitWith {ERORR("Send data called with empty variables")};
 
 // Change to ACE Events (in Apollo as well)
 chronos_armoryData = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
