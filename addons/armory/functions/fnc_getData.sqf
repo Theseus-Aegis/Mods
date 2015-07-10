@@ -37,18 +37,15 @@ if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
     if (_selectedCategory == "rifle") then {
         _armoryData = [
             // Classname, Subcategory, Description, Quantity
-            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Shotgun", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Shotgun", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Shotgun", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Shotgun", "Blabla, this item, blabla", "5"],
-            ["arifle_MX_F", "Shotgun", "Blabla, this item, blabla", "5"]
+            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "23"],
+            ["srifle_DMR_01_F", "Marksman Rifle", "Blabla, this item, blabla", "4"],
+            ["srifle_EBR_F", "Marksman Rifle", "Blabla, this item, blabla", "5"],
+            ["arifle_Katiba_GL_F", "Assault Rifle", "Blabla, this item, blabla", "45"],
+            ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "18"],
+            ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "20"],
+            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"]
         ];
     };
-
     if (_selectedCategory == "ammo") then {
         _armoryData = [
             // Classname, Subcategory, Description, Quantity

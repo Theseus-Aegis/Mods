@@ -23,7 +23,7 @@ TRACE_1("Amount of selected item",_quantity);
 
 lbClear DROPDOWNAMOUNT;
 
-for "_x" from 0 to (parseNumber _quantity) do {
+for "_x" from 1 to (parseNumber _quantity) do {
     lbAdd [DROPDOWNAMOUNT, str(_x)];
 };
 

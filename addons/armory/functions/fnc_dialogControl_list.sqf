@@ -29,7 +29,7 @@ ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
 
 
 // Get Data to fill
-_armoryData = [_selectedCategory] call FUNC(getDataCallback);
+_armoryData = call FUNC(getDataCallback);
 _subCategories = [_armoryData] call FUNC(extractSubCategories);
 
 

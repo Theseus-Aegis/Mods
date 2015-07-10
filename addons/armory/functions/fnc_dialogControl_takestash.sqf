@@ -3,22 +3,27 @@
  * Shows Take/Stash buttons.
  *
  * Arguments:
- * 0: Category <STRING>
+ * None
  *
  * Return Value:
  * None
  *
  * Example:
- * ["category"] call tac_armory_fnc_dialogControl_takestash
+ * call tac_armory_fnc_dialogControl_takestash
  *
  * Public: No
  */
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_1(_selectedCategory);
+// Hide take/stash if quantity of dropdown amount selection is not set
+if (lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] == "") exitWith {
+    {
+        ctrlShow [_x, false];
+    } forEach [TAKESTASHPIC, TAKESTASHBTN];
+};
 
-if (_selectedCategory == "stash") then {
+if (GVAR(selectedCategory) == "stash") then {
     // Stash
     ctrlSetText [TAKESTASHPIC, QUOTE(PATHTOF(UI\btnStash.paa))];
     buttonSetAction [TAKESTASHBTN, QUOTE(['stash'] call FUNC(sendData))];

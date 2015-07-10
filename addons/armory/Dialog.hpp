@@ -187,7 +187,7 @@ class GVAR(Display) {
         // Dropdown Menu
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
-            onLBSelChanged = QUOTE([[GVAR(selectedCategory)] call FUNC(getDataCallback)] call FUNC(dialogControl_populateList));
+            onLBSelChanged = QUOTE([call FUNC(getDataCallback)] call FUNC(dialogControl_populateList));
         };
 
         // Amount
@@ -202,13 +202,13 @@ class GVAR(Display) {
         // List
         class List: GVAR(RscListNBox) {
             idc = NLIST;
-            onLBSelChanged  = QUOTE([GVAR(selectedCategory)] call FUNC(dialogControl_takestash); call FUNC(dialogControl_amountSelection));
+            onLBSelChanged  = QUOTE(call FUNC(dialogControl_amountSelection); call FUNC(dialogControl_takestash));
         };
 
         // Dropdown Amount Selection
         class DropdownAmount: GVAR(RscCombo) {
             idc = DROPDOWNAMOUNT;
-            onLBSelChanged = QUOTE(call FUNC(setAmount));
+            onLBSelChanged = QUOTE(call FUNC(dialogControl_takestash));
             x = PIC_X + 0.4;
             y = PIC_Y + 0.675;
             w = safezoneW * 0.05;

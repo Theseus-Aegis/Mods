@@ -13,13 +13,17 @@
  *
  * Public: No
  */
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 PARAMS_1(_type);
 
-GVAR(selectedItem) = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
-GVAR(selectedAmount) = lbText [DROPDOWNAMOUNT, (lbSelection CTRL(DROPDOWNAMOUNT)) select 0]; // Quantity
+private ["_selectedItem", "_selectedAmount"];
+_selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
+_selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
+
+TRACE_2("Send data",_selectedItem,_selectedAmount);
 
 // Change to ACE Events (in Apollo as well)
-chronos_armoryData = [player, _type, GVAR(box), GVAR(selectedItem), GVAR(selectedAmount)];
+chronos_armoryData = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
 publicVariableServer "chronos_armoryData";
