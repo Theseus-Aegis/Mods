@@ -21,12 +21,12 @@ PARAMS_1(_selectedCategory);
 if (_selectedCategory == "stash") then {
     // Stash
     ctrlSetText [TAKESTASHPIC, QUOTE(PATHTOF(UI\btnStash.paa))];
-    buttonSetAction [TAKESTASHBTN, QUOTE([ARR_2('stash')] call FUNC(sendData))];
+    buttonSetAction [TAKESTASHBTN, QUOTE(['stash'] call FUNC(sendData))];
     CTRL(TAKESTASHBTN) ctrlSetTooltip "Stash selected item";
 } else {
     // Take
     ctrlSetText [TAKESTASHPIC, QUOTE(PATHTOF(UI\btnTake.paa))];
-    buttonSetAction [TAKESTASHBTN, QUOTE([ARR_2('take')] call FUNC(sendData))];
+    buttonSetAction [TAKESTASHBTN, QUOTE(['take'] call FUNC(sendData))];
     CTRL(TAKESTASHBTN) ctrlSetTooltip "Take selected item";
 };
 

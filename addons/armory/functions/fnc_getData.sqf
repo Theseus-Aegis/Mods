@@ -13,6 +13,7 @@
  *
  * Public: No
  */
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 PARAMS_1(_selectedCategory);
@@ -30,6 +31,7 @@ if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
 
     // Call Chronos for Data
     _armoryData = [player, _selectedCategory] call usec_fnc_fetchArmory;
+    TRACE_1("Armory data Apollo",_armoryData);
 } else {
     // Rifles
     if (_selectedCategory == "rifle") then {
