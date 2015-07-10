@@ -18,9 +18,11 @@
 
 PARAMS_1(_armoryData);
 
-private ["_selectedSubCategory", "_configCfg", "_displayName", "_picture"];
+private ["_selectedSubCategory", "_rowNum", "_configCfg", "_displayName", "_picture"];
 
 _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
+
+TRACE_2("Populating list",_armoryData,_selectedSubCategory);
 
 // Clear List
 lnbClear NLIST;
@@ -52,7 +54,9 @@ _rowNum = 0; // Needed for proper row images
 
         // Set picture
         _picture = getText (configFile >> _configCfg >> _className >> "picture");
-        lnbSetpicture [NLIST, [_rowNum, 0], _picture];
+        lnbSetPicture [NLIST, [_rowNum, 0], _picture];
         _rowNum = _rowNum + 1;
     };
 } forEach _armoryData;
+
+GVAR(armoryData) = _armoryData;

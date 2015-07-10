@@ -15,5 +15,6 @@ PREP(getData);
 PREP(getDataCallback);
 PREP(init);
 PREP(sendData);
+PREP(subtractData);
 
 ADDON = true;

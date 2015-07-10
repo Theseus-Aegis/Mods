@@ -24,6 +24,14 @@ _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Qua
 
 TRACE_2("Send data",_selectedItem,_selectedAmount);
 
+// Exit if any variable is not set
+if (_selectedItem == "" || _selectedAmount == "") exitWith {};
+
 // Change to ACE Events (in Apollo as well)
 chronos_armoryData = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
 publicVariableServer "chronos_armoryData";
+
+// Update list
+[[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);
+call FUNC(dialogControl_amountSelection);
+call FUNC(dialogControl_takestash)
