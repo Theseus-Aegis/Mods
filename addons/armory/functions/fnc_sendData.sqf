@@ -34,4 +34,4 @@ publicVariableServer "chronos_armoryData";
 // Update list
 [[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);
 call FUNC(dialogControl_amountSelection);
-call FUNC(dialogControl_takestash)
+call FUNC(dialogControl_takestash);
