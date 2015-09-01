@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Edited with tabler - 2015-02-01 -->
 <Project name="TAC">
     <Package name="RatelMarker">
@@ -7,6 +7,12 @@
         </Key>
         <Key ID="STR_TAC_RatelMarker_Open">
             <English>Open RATEL Marker</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_InvalidCoordinates">
+            <English>Invalid Corodinates!</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_MarkerCreated">
+            <English>RATEL Marker Created (Open Map to Focus)</English>
         </Key>
     </Package>
 </Project>
