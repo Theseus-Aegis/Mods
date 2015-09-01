@@ -15,4 +15,4 @@ Enables pilots to secure the passengers inside helicopters and planes.
 - Anyone can always Secure or Unsecure from outside
 - When Pilot and Copilot die, anyone can Unsecure
 - Mission makers can use the following to prevent players from unlocking a certain vehicle:
-    `this setVariable ["TAC_HelicopterEvents_preventUnlock",true,true];`
+    `this setVariable ["tac_air_security_preventUnlock",true,true];`
