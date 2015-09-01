@@ -4,7 +4,7 @@
 if (!hasInterface) exitWith {};
 
 // Add Keybinds
-["TAC Vehicles", QGVAR(OpenRatelMarker), localize LSTRING(Open), {
+["TAC", QGVAR(OpenRatelMarker), localize LSTRING(Open), {
     if ([vehicle ACE_player] call FUNC(canUseMarkerMenu)) then {
         call FUNC(createMarkerMenu);
     };
