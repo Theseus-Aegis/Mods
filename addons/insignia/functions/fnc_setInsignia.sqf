@@ -16,7 +16,7 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_1(_unit);
+params ["_unit"];
 
 if (local _unit && {_unit == player}) then {
     [_unit, QGVAR(logoStitch)] call BIS_fnc_setUnitInsignia;

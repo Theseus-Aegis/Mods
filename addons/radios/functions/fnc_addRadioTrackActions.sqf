@@ -15,9 +15,8 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_vehicle);
-
 private ["_actions", "_config"];
+params ["_vehicle"];
 
 _actions = [];
 {
@@ -32,7 +31,7 @@ _actions = [];
             {true},
             {},
             [_vehicle, _x]
-        ] call ace_interact_menu_fnc_createAction,
+        ] call ACE_Interact_Menu_fnc_createAction,
         [],
         _vehicle
     ];

@@ -4,7 +4,6 @@ ADDON = false;
 
 PREP(canAttach);
 PREP(canDetach);
-PREP(canUseHooks);
 PREP(prepare);
 PREP(progress);
 PREP(unprepare);

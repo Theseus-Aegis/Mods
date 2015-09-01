@@ -10,3 +10,6 @@
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
+
+
+#define HEAVYLIFTER_PREP_TIME 30
