@@ -3,7 +3,7 @@
 // Exit on Headless
 if (!hasInterface) exitWith {};
 
-// Add Keybinds
+// Add Keybind
 ["TAC", QGVAR(OpenRatelMarker), localize LSTRING(Open), {
     if ([vehicle ACE_player] call FUNC(canUseMarkerMenu)) then {
         call FUNC(createMarkerMenu);
