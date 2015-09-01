@@ -5,7 +5,6 @@ class CfgVehicles {
             class GVAR(RatelMarker) {
                 displayName = CSTRING(DisplayName);
                 condition = QUOTE(_this call FUNC(canUseMarkerMenu));
-                //statement = QUOTE([] spawn FUNC(createMarkerMenu)); // createDisplay requires spawn for not-yet-known reasons
                 // Wait a frame for interaction menu to disappear to allow new display creation
                 statement = QUOTE([ARR_2({call FUNC(createMarkerMenu)}, [])] call ACE_Common_fnc_execNextFrame);
                 showDisabled = 0;
