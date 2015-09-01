@@ -18,8 +18,8 @@
 
 PARAMS_2(_vehicle,_unit);
 
-// Exit if vehicle already Secured
-if (locked _vehicle > 1) exitWith {false};
+// Exit if vehicle already Secured or UAV
+if (locked _vehicle > 1 || {getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 1}) exitWith {false};
 
 // Outside (ACE_Actions)
 if (vehicle _unit == _unit) exitWith {true};
