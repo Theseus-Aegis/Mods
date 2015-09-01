@@ -15,13 +15,9 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_heli);
+params ["_vehicle"];
 
-if (isNil {_heli getVariable QGVAR(prepared)} &&
-    {!isEngineOn _heli} &&
-    {locked _heli < 2} &&
-    {count (getArray (configFile >> "CfgVehicles" >> typeOf _heli >> QGVAR(AttachPos))) == 3}
-) exitWith {true};
-
-// Default
-false
+(isNil {_vehicle getVariable QGVAR(prepared)}) &&
+{!isEngineOn _vehicle} &&
+{locked _vehicle < 2} &&
+{count (getArray (configFile >> "CfgVehicles" >> typeOf _vehicle >> QGVAR(AttachPos))) == 3}

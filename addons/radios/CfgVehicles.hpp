@@ -11,7 +11,7 @@ class CfgVehicles {
             class GVAR(RadioPlay) {
                 displayName = CSTRING(PlayRadio);
                 condition = QUOTE(_this call FUNC(canPlayRadio));
-                insertChildren = QUOTE(_this call DFUNC(addRadioTrackActions));
+                insertChildren = QUOTE(_this call FUNC(addRadioTrackActions));
                 icon = QUOTE(PATHTOF(UI\musicStart_ca.paa));
             };
         };

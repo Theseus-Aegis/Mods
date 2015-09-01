@@ -16,9 +16,8 @@
  */
 #include "script_component.hpp"
 
-PARAMS_2(_vehicle,_track);
-
 private ["_radio"];
+params ["_vehicle", "_track"];
 
 // Create and Attach the radio object to the helicopter
 _radio = "Sign_Sphere10cm_F" createVehicle position _vehicle; // Non-collidable
@@ -26,7 +25,7 @@ _radio attachTo [_vehicle, [0, 0, 0]];
 
 // Make the radio object invisible (MP and SP support)
 if (isMultiplayer) then {
-    ["TAC_hideRadio", [_radio]] call ace_common_fnc_serverEvent; // hideObjectGlobal must be executed on server
+    ["hideObjectGlobal", [_radio, true]] call ACE_Common_fnc_serverEvent; // hideObjectGlobal must be executed on server
 } else {
     hideObject _radio;
 };
@@ -35,4 +34,4 @@ if (isMultiplayer) then {
 _vehicle setVariable [QGVAR(playingRadio), _radio, true];
 
 // Star playing music on radio object
-[_radio,_track] call cba_fnc_globalSay3d;
+[_radio,_track] call CBA_fnc_globalSay3d;

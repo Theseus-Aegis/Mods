@@ -16,11 +16,12 @@
  */
 #include "script_component.hpp"
 
-PARAMS_2(_vehicle,_unit);
+params ["_vehicle", "_unit"];
 
-private ["_crewPresent", "_crewDead"];
-
-_crewPresent = if (driver _vehicle != _unit || {_vehicle turretUnit [0] != _unit}) then {true} else {false};
-_crewDead = if (!alive (driver _vehicle) && {!alive (_vehicle turretUnit [0])}) then {true} else {false};
-
-(!isNil {_vehicle getVariable QGVAR(playingRadio)} && {_crewPresent || _crewDead})
+(!isNil {_vehicle getVariable QGVAR(playingRadio)}) &&
+{driver _vehicle != _unit ||
+    {_vehicle turretUnit [0] != _unit} ||
+    {!alive (driver _vehicle) &&
+        {!alive (_vehicle turretUnit [0])}
+    }
+}

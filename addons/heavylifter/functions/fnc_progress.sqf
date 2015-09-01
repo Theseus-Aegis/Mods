@@ -15,17 +15,10 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_heli);
+params ["_vehicle"];
 
-private ["_time", "_text"];
-
-_text = "";
-if (isNil {_heli getVariable QGVAR(prepared)}) then {
-    _text = localize LSTRING(Attaching);
-    GVAR(function) = FUNC(prepare);
+if (isNil {_vehicle getVariable QGVAR(prepared)}) then {
+    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(prepare)}, {}, localize LSTRING(Attaching)] call ACE_Common_fnc_progressBar;
 } else {
-    _text = localize LSTRING(Detaching);
-    GVAR(function) = FUNC(unprepare);
+    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(unprepare)}, {}, localize LSTRING(Detaching)] call ACE_Common_fnc_progressBar;
 };
-
-[GVAR(prepTime), [_heli], {(_this select 0) call GVAR(function)}, {}, _text] call ace_common_fnc_progressBar;

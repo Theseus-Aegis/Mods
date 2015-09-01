@@ -15,9 +15,8 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_vehicle);
-
 private ["_radio"];
+params ["_vehicle"];
 
 // Get radio object (from Variable value)
 _radio = _vehicle getVariable QGVAR(playingRadio);

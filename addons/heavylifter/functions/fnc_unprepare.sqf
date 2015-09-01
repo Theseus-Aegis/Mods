@@ -10,13 +10,10 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_targetVehicle);
-
-private ["_vehicle", "_helper"];
+params ["_targetVehicle"];
 
 // Get vehicle and helper object objects
-_vehicle = _targetVehicle getVariable QGVAR(prepared) select 0;
-_helper = _targetVehicle getVariable QGVAR(prepared) select 1;
+(_targetVehicle getVariable QGVAR(prepared)) params ["_vehicle", "_helper"];
 
 // Prevent damage on vehicle
 _vehicle allowDamage false;
@@ -33,4 +30,4 @@ _vehicle enableSimulationGlobal true;
 _vehicle setVariable [QGVAR(prepared), nil, true];
 
 // Show ACE Hint
-[localize LSTRING(Detached), QUOTE(PATHTOF(UI\detach_ca.paa))] call ace_common_fnc_displayTextPicture;
+[localize LSTRING(Detached), QUOTE(PATHTOF(UI\detach_ca.paa))] call ACE_Common_fnc_displayTextPicture;

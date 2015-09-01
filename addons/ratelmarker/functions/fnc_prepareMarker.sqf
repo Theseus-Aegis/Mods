@@ -13,9 +13,8 @@
 
 disableSerialization;
 
-PARAMS_2(_firstCoordinateRaw,_secondCoordinateRaw);
-
 private ["_lenFirst", "_lenSecond", "_firstCoordinate", "_secondCoordinate", "_heli"];
+params ["_firstCoordinateRaw", "_secondCoordinateRaw"];
 
 // Put numbers into array elements
 _lenFirst = count(toArray _firstCoordinateRaw);
@@ -63,5 +62,5 @@ if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
     [_firstCoordinate,_secondCoordinate] call FUNC(createMarker);
 
     // Create marker remotely on array of objects
-    ["TAC_ratelMarkerCreated", _seeMarkerUnits, [_firstCoordinate,_secondCoordinate]] call ace_common_fnc_targetEvent;
+    ["TAC_ratelMarkerCreated", _seeMarkerUnits, [_firstCoordinate,_secondCoordinate]] call ACE_Common_fnc_targetEvent;
 };
