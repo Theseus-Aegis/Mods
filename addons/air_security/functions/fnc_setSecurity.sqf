@@ -17,14 +17,14 @@
 
 private ["_doors", "_newDoorStatus"];
 
-// Doors to be animated
+// Doors to be animated @todo change to dynamic
 _doors = [
     "door_L","door_R", // UH-80 Ghost Hawk
     "door_back_L","door_back_R", // CH-49 Mohawk
     "door_4_source","door_5_source","door_6_source" // Mi-290 Taru (Pods)
 ];
 
-PARAMS_1(_vehicle);
+params ["_vehicle"];
 
 if (locked _vehicle < 2) then {
     _vehicle setVehicleLock "LOCKED";

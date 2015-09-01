@@ -16,26 +16,19 @@
  */
 #include "script_component.hpp"
 
-PARAMS_2(_vehicle,_unit);
+params ["_vehicle", "_unit"];
 
-// Exit if vehicle already Unsecured or UAV
-if (locked _vehicle < 2 ||
-    {!isNil {_vehicle getVariable QGVAR(preventUnlock)}} ||
-    {getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 1}
-) exitWith {false};
-
-// Outside (ACE_Actions)
-if (vehicle _unit == _unit) exitWith {true};
-
-// Inside (ACE_SelfActions)
-if (vehicle _unit == _vehicle &&
-    {driver _vehicle == _unit ||
-        {_vehicle turretUnit[0] == _unit ||
-            {!alive (driver _vehicle) &&
-                {!alive (_vehicle turretUnit[0])}
+(locked _vehicle > 1) && // Vehicle locked
+{!(_vehicle getVariable [QGVAR(preventUnlock), false])} && // Special variable to prevent unlocking is not set
+{getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 0} && // Not UAV
+{vehicle _unit == _unit || // Outside (ACE_Actions) or Inside (ACE_SelfActions)
+    {vehicle _unit == _vehicle &&
+        {driver _vehicle == _unit ||
+            {_vehicle turretUnit[0] == _unit ||
+                {!alive (driver _vehicle) &&
+                    {!alive (_vehicle turretUnit[0])}
+                }
             }
         }
     }
-) exitWith {true};
-
-false
+}
