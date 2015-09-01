@@ -18,9 +18,10 @@
 
 PARAMS_2(_vehicle,_unit);
 
-// Exit if vehicle already Unsecured
+// Exit if vehicle already Unsecured or UAV
 if (locked _vehicle < 2 ||
-    {!isNil {_vehicle getVariable QGVAR(preventUnlock)}}
+    {!isNil {_vehicle getVariable QGVAR(preventUnlock)}} ||
+    {getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 1}
 ) exitWith {false};
 
 // Outside (ACE_Actions)
