@@ -41,7 +41,8 @@ _secondCoordinate = parseNumber _secondCoordinateRaw;
 
 // If any coordinate is 0 exit, otherwise place the marker
 if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
-    hintSilent "Invalid coordinates!";
+    // Show ACE Hint
+    [localize LSTRING(InvalidCoordinates), QUOTE(PATHTOF(UI\ratelMarker_ca.paa))] call ACE_Common_fnc_displayTextPicture;
 } else {
     _heli = vehicle ACE_player;
 
