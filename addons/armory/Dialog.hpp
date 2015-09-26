@@ -1,4 +1,4 @@
-// Size ddefinitions
+// Size definitions
 // Base
 #define TITLE_X safezoneX + 0.3925 * safezoneW
 #define TITLE_Y safezoneY + 0.233 * safezoneH
@@ -214,7 +214,7 @@ class GVAR(Display) {
             w = safezoneW * 0.05;
             h = safezoneH * 0.03;
         };
-        
+
         // Exit-Back
         class Main_Pic_C1_RE: GVAR(RscPicture) {
             idc = BACKPIC;

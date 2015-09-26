@@ -16,7 +16,7 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_1(_selectedCategory);
+params ["_selectedCategory"];
 
 private ["_subCategories", "_armoryData"];
 

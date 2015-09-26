@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_requestedMenu);
+params ["_requestedMenu"];
 
 // SPECIFIC
 if (_requestedMenu == "main") exitWith {

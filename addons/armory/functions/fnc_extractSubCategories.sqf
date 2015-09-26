@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_armoryData);
+params ["_armoryData"];
 
 private ["_subCategories", "_subCategory"];
 

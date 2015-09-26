@@ -16,12 +16,12 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_3(_armoryData,_selectedItem,_selectedAmount);
+params ["_armoryData," "_selectedItem", "_selectedAmount"];
 
 private ["_armoryDataSubtracted"];
 _armoryDataSubtracted = [];
 {
-    EXPLODE_4_PVT(_x,_className,_subCategory,_description,_quantity);
+    _x params ["_className", "_subCategory", "_description", "_quantity"];
 
     if (_selectedItem == _className) then {
         _quantity = (parseNumber _quantity) - (parseNumber _selectedAmount);

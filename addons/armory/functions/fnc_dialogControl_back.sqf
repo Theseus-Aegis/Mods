@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_type);
+params ["_type"];
 
 // Set Back
 if (_type == "back") then {

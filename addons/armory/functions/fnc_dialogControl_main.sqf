@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_show);
+params ["_show"];
 
 // Show/Hide Main
 {
@@ -41,7 +41,7 @@ if (!_show) exitWith {};
 
 // Set up Main
 ctrlSetText [MAINPIC1, QUOTE(PATHTOF(UI\btnCategory_rifle.paa))];
-buttonSetAction [MAINBTN1, QUOTE(['rifle'] call FUNC(dialogControl))]; 
+buttonSetAction [MAINBTN1, QUOTE(['rifle'] call FUNC(dialogControl))];
 CTRL(MAINBTN1) ctrlSetTooltip "Access Rifles";
 
 ctrlSetText [MAINPIC2, QUOTE(PATHTOF(UI\btnCategory_pistol.paa))];

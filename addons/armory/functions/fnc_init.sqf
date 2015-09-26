@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-DEFAULT_PARAM(0,_object,this);
+params [["_object", this]];
 
 // Change to ACE Interaction
 _object addAction ["<t color='#ff1111'>Open Armory</t>", {
