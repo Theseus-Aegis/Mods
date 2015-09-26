@@ -25,11 +25,11 @@ _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Qua
 TRACE_2("Send data",_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
-if (_selectedItem == "" || _selectedAmount == "") exitWith {ERORR("Send data called with empty variables")};
+if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};
 
 // @todo - change to ACE Events (in Apollo as well)
-chronos_armoryData = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
-publicVariableServer "chronos_armoryData";
+lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
+publicVariableServer "lockerAction";
 
 // Update list
 [[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);

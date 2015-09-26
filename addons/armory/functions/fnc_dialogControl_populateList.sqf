@@ -30,7 +30,7 @@ _rowNum = 0; // Needed for proper row images
 
 // Fill List
 {
-    EXPLODE_4_PVT(_x,_className,_subCategory,_description,_quantity);
+    _x params ["_className", "_subCategory", "_description", "_quantity"];
 
     _configCfg = "";
     if (isText (configFile >> "CfgWeapons" >> _className >> "displayName")) then {

@@ -16,7 +16,7 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_armoryData," "_selectedItem", "_selectedAmount"];
+params ["_armoryData", "_selectedItem", "_selectedAmount"];
 
 private ["_armoryDataSubtracted"];
 _armoryDataSubtracted = [];

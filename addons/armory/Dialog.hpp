@@ -187,7 +187,7 @@ class GVAR(Display) {
         // Dropdown Menu
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
-            onLBSelChanged = QUOTE([call FUNC(getDataCallback)] call FUNC(dialogControl_populateList));
+            onLBSelChanged = QUOTE([GVAR(armoryData)] call FUNC(dialogControl_populateList));
         };
 
         // Amount
