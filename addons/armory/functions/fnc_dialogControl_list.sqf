@@ -33,7 +33,7 @@ if (_selectedCategory == "stash") exitWith {
     [_armoryData] call FUNC(dialogControl_list2);
 };
 
-ChronosLoaded = "true";//debug Chronos
+//ChronosLoaded = "true";//debug Chronos
 // Get Data to fill from Chronos if available
 if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) exitWith {
     // Request data from Chronos
