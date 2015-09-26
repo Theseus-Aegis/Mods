@@ -7,6 +7,6 @@ logo = "logo_tac_ca.paa";
 logoOver = "logo_tac_ca.paa";
 tooltip = "TAC Mods";
 tooltipOwned = "Theseus Inc. Owned";
-overview = "Theseus Inc. Mods, also known as TAC Mods, are a joint effort by the members of Theseus Inc. to bend the features and game-play of Arma 3 to the community's needs.";
+overview = "Theseus Inc. Mods, also known as TAC Mods, is a joint effort by the members of Theseus Inc. to bend the features and game-play of Arma 3 to the community's needs.";
 author = "TAC Mod Team";
 overviewPicture = "logo_tac_ca.paa";
