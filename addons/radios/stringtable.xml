@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Radios">
         <Key ID="STR_TAC_Radios_PlayRadio">
@@ -8,34 +8,34 @@
             <English>Stop Radio</English>
         </Key>
         <Key ID="STR_TAC_Radios_track1">
-            <English>Sympathy for the Devil</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track2">
-            <English>To Glory</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track3">
-            <English>All Along the Watchtower</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track4">
-            <English>Ride of the Valkyries</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track5">
-            <English>Paint It Black</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track6">
-            <English>Shadow on the Sun</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track7">
-            <English>Fortunate Son</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track8">
-            <English>Danger Zone</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track9">
-            <English>Thunderstruck</English>
+            <English>TO ADD</English>
         </Key>
         <Key ID="STR_TAC_Radios_track10">
-            <English>Barra Barra</English>
+            <English>TO ADD</English>
         </Key>
     </Package>
 </Project>

@@ -16,19 +16,14 @@
  */
 #include "script_component.hpp"
 
-PARAMS_2(_vehicle,_unit);
+params ["_vehicle", "_unit"];
 
-// Exit if vehicle already Secured
-if (locked _vehicle > 1) exitWith {false};
-
-// Outside (ACE_Actions)
-if (vehicle _unit == _unit) exitWith {true};
-
-// Inside (ACE_SelfActions)
-if (vehicle _unit == _vehicle &&
-    {driver _vehicle == _unit ||
-        {_vehicle turretUnit[0] == _unit}
+(locked _vehicle < 2) && // Vehicle unlocked
+{getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 0} && // Not UAV
+{vehicle _unit == _unit || // Outside (ACE_Actions) or Inside (ACE_SelfActions)
+    {vehicle _unit == _vehicle &&
+        {driver _vehicle == _unit ||
+            {_vehicle turretUnit[0] == _unit}
+        }
     }
-) exitWith {true};
-
-false
+}

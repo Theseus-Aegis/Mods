@@ -16,6 +16,9 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_vehicle);
+params ["_vehicle"];
 
-(_vehicle isKindOf 'Air' && {driver _vehicle == ACE_player || {((assignedVehicleRole ACE_player) select 1) in (allTurrets _vehicle)}})
+(_vehicle isKindOf "Air") &&
+{driver _vehicle == ACE_player ||
+    {((assignedVehicleRole ACE_player) select 1) in (allTurrets _vehicle)}
+}

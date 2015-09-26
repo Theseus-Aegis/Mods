@@ -15,13 +15,9 @@
  */
 #include "script_component.hpp"
 
-PARAMS_1(_heli);
+params ["_vehicle"];
 
-if (!isNil {_heli getVariable QGVAR(prepared)} &&
-    {!isEngineOn _heli} &&
-    {count (crew _heli) == 0} &&
-    {locked _heli < 2}
-) exitWith {true};
-
-// Default
-false
+(!isNil {_vehicle getVariable QGVAR(prepared)}) &&
+{!isEngineOn _vehicle} &&
+{locked _vehicle < 2} &&
+{count (crew _vehicle) == 0}

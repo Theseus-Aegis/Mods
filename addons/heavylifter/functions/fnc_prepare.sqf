@@ -7,14 +7,16 @@
  *
  * Return Value:
  * None
+ *
+ * Example:
+ * [heli] call tac_heavylifter_fnc_prepare;
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
-#define HELPER "TAC_HeavyLifter_Helper"
-
-PARAMS_1(_vehicle);
-
 private ["_attachPos", "_vehiclePosOffsetWorld", "_vehiclePosOffset", "_vehicleVectorDirAndUp", "_helper"];
+params ["_vehicle"];
 
 // Get vehicle's attachTo position
 _attachPos = getArray (configFile >> "CfgVehicles" >> typeOf _vehicle >> QGVAR(AttachPos));
@@ -30,7 +32,7 @@ _vehicle enableSimulationGlobal false;
 _vehicle setPos [0, 0, 0];
 
 // Create helper object on original vehicle location, prevent damage and set orientation
-_helper = createVehicle [HELPER, _vehiclePosOffset, [], 0, "CAN_COLLIDE"];
+_helper = createVehicle [QGVAR(Helper), _vehiclePosOffset, [], 0, "CAN_COLLIDE"];
 _helper allowDamage false;
 _helper enableSimulationGlobal false;
 _helper setVectorDirAndUp _vehicleVectorDirAndUp;
@@ -48,4 +50,4 @@ _helper enableSimulationGlobal true;
 _vehicle setVariable [QGVAR(prepared), [_vehicle, _helper], true];
 
 // Show ACE Hint
-[localize LSTRING(Attached), QUOTE(PATHTOF(UI\attach_ca.paa))] call ace_common_fnc_displayTextPicture;
+[localize LSTRING(Attached), QUOTE(PATHTOF(UI\attach_ca.paa))] call ACE_Common_fnc_displayTextPicture;
