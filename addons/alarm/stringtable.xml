@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Alarm">
+        <Key ID="STR_TAC_Alarm_Module_DisplayName">
+            <English>Alarm</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Module_Description">
+            <English>This module allows you to setup alarms and buttons to toggle them.</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Alarms_DisplayName">
+            <English>Alarms</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Alarms_Description">
+            <English>Alarms object list (can also be synchronized objects) alarm will be played from, separated by commas if multiple-</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Buttons_DisplayName">
+            <English>Buttons</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Buttons_Description">
+            <English>Buttons object list where alarm can be toggled, separated by commas if multiple.</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Sounds_DisplayName">
+            <English>Sound</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Sounds_Description">
+            <English>Sound of the alarm.</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_SoundNames_DisplayName">
+            <English>Sound Name</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_SoundNames_Description">
+            <English>Sound name displayed in the interaction menu.</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Duration_DisplayName">
+            <English>Duration</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Duration_Description">
+            <English>Duration of the alarm, 0 for manual stop only.</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Interaction">
+            <English>Alarms</English>
+        </Key>
+        <Key ID="STR_TAC_Alarm_Interaction_Stop">
+            <English>Stop</English>
+        </Key>
+    </Package>
+</Project>
