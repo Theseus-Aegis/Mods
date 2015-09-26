@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/Theseus-Aegis/tac-a3-mods/tree/master/extras/assets/logo/TAC-Logo.jpg">
+    <img src="https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/extras/assets/logo/TAC-Logo.jpg">
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases">
