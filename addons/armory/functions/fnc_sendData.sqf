@@ -18,11 +18,14 @@
 
 params ["_type"];
 
+// Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
+_type = if (_type == "stash") then {"put"} else {"remove"};
+
 private ["_selectedItem", "_selectedAmount"];
 _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
 
-TRACE_2("Send data",_selectedItem,_selectedAmount);
+TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
 if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};

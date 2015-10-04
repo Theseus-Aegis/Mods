@@ -1,12 +1,12 @@
 /*
- * Author: Jonpas
- * Gets data from Apollo (Chronos).
+ * Author: DaC, Jonpas
+ * Gets data from ApolloClient/Athena (Chronos).
  *
  * Arguments:
  * 0: Category <STRING>
  *
  * Return Value:
- * None
+ * Armory Data <ARRAY>
  *
  * Example:
  * ["category"] call tac_armory_fnc_getDataChronos
@@ -18,11 +18,39 @@
 
 params ["_selectedCategory"];
 
-hintSilent "Retrieving data, please stand by!\n(Timeout in 15 seconds in case of connection failure)";
+private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
 
-// Call Chronos for Data @todo - change to ACE Events (in Apollo as well)
-getArmoryData = [player, _selectedCategory];
-publicVariableServer "getArmoryData";
+hintSilent "Retrieving data, please stand by!";
 
-// Local Debug
-//[player, _selectedCategory] call usec_fnc_fetchArmory;
+// Call Chronos for Data - no further HTTP calls are needed after this one
+_loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
+
+if (_loadData == "loaded") then {
+    _armoryData = [];
+    _updateInfo = true;
+    _entry = [];
+
+    while {_updateInfo} do {
+        // Retrieve the data which is stored in the client's heap
+        _serverReply = "ApolloClient" callExtension "get";
+        TRACE_1("Get Chronos Data",_serverReply);
+
+        if (_serverReply == "done") then {
+            _updateInfo = false;
+            hintSilent "";
+        } else {
+            _entry pushBack _serverReply;
+
+            // Reset
+            if (_serverReply == "next") then {
+                _armoryData pushBack _entry;
+                _entry = [];
+            };
+        };
+    };
+    TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
+    _armoryData
+} else {
+    hintSilent "Athena server is down!\(Contact server administrator)";
+    false
+};

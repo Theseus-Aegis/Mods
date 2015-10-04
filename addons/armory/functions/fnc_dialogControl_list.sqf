@@ -19,7 +19,7 @@
 params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 
-private ["_armoryData", "_openTime"];
+private ["_armoryData"];
 
 // Show Dropdown, Amount and List
 ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
@@ -33,38 +33,14 @@ if (_selectedCategory == "stash") exitWith {
     [_armoryData] call FUNC(dialogControl_list2);
 };
 
-//ChronosLoaded = "true";//debug Chronos
+ChronosLoaded = "true";//debug Chronos
 // Get Data to fill from Chronos if available
-if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) exitWith {
-    // Request data from Chronos
-    [_selectedCategory] call FUNC(getDataChronos);
-
-    // Add Chronos Public EH
-    "armoryData" addPublicVariableEventHandler {
-        (_this select 1) params ["", "_armoryData"];
-        [_armoryData] call FUNC(dialogControl_list2);
-        GVAR(chronosReplied) = true;
-    };
-
-    // Start PFH wait until Chronos replies (for user-friendlines)
-    _openTime = time;
-    [{
-        params ["_args", "_pfhID"];
-        _args params ["_openTime"];
-
-        // Wait for Chronos reply or 15 seconds timeout
-        if (!GVAR(chronosReplied) && {time > _openTime + 15}) exitWith {}; //@todo - add cancel button and make it all fancy
-
-        hintSilent "";
-        GVAR(chronosReplied) = false;
-        [_pfhID] call CBA_fnc_removePerFrameHandler;
-    }, 0, [_openTime]] call CBA_fnc_addPerFrameHandler;
-};
-
-// Get preset data
-if (_selectedCategory == "stash") then {
-    _armoryData = call FUNC(getBoxContents);
+if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
+    _armoryData = [_selectedCategory] call FUNC(getDataChronos);
+    if (_armoryData isEqualTo false) exitWith {diag_log "[ERROR] Armory: Athena server is down"};
+    [_armoryData] call FUNC(dialogControl_list2);
 } else {
+    // Get preset data
     _armoryData = [_selectedCategory] call FUNC(getData);
+    [_armoryData] call FUNC(dialogControl_list2);
 };
-[_armoryData] call FUNC(dialogControl_list2);
