@@ -31,8 +31,10 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};
 
 // @todo - change to ACE Events (in Apollo as well)
-lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
-publicVariableServer "lockerAction";
+if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
+    lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
+    publicVariableServer "lockerAction";
+};
 
 // Update list
 [[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);

@@ -11,8 +11,10 @@
 
 #include "\z\ace\addons\main\script_macros.hpp"
 
+// debug
+ChronosLoaded = "true";
 
-/* 
+/*
  * JNS Tag 3-ID = 333
  * Project 2-ID = 00
  * Control 2-ID = XY

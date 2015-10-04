@@ -32,6 +32,9 @@ _rowNum = 0; // Needed for proper row images
 {
     _x params ["_className", "_subCategory", "_description", "_quantity"];
 
+    // Skip listing this item if there are none of them
+    if (parseNumber _quantity == 0) exitWith {};
+
     _configCfg = "";
     if (isText (configFile >> "CfgWeapons" >> _className >> "displayName")) then {
         _configCfg = "CfgWeapons";
