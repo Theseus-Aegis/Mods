@@ -12,7 +12,7 @@
 #include "\z\ace\addons\main\script_macros.hpp"
 
 // Chronos Debug
-#define CHRONOS_DEBUG true
+#define CHRONOS_DEBUG false
 
 /*
  * JNS Tag 3-ID = 333
