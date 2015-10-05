@@ -11,8 +11,8 @@
 
 #include "\z\ace\addons\main\script_macros.hpp"
 
-// debug
-ChronosLoaded = "true";
+// Chronos Debug
+#define CHRONOS_DEBUG true
 
 /*
  * JNS Tag 3-ID = 333

@@ -19,27 +19,39 @@
 params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 
-private ["_armoryData"];
-
 // Show Dropdown, Amount and List
 ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
 {
     ctrlShow [_x, true];
 } forEach [DROPDOWN, AMOUNT, NLIST];
 
-// Get box contents if selected category is stash
-if (_selectedCategory == "stash") exitWith {
+// Get box contents if selected category is stash, get data from Chronos if enabled or use preset data
+local _armoryData = [];
+local _chronosError = false;
+if (_selectedCategory == "stash") then {
     _armoryData = call FUNC(getBoxContents);
-    [_armoryData] call FUNC(dialogControl_list2);
+} else {
+    if ((!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) || {CHRONOS_DEBUG}) then {
+        _armoryData = [_selectedCategory] call FUNC(getDataChronos);
+        if (_armoryData isEqualTo false) exitWith {_chronosError = true};
+    } else {
+        _armoryData = [_selectedCategory] call FUNC(getData);
+    };
 };
 
-// Get Data to fill from Chronos if available
-if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
-    _armoryData = [_selectedCategory] call FUNC(getDataChronos);
-    if (_armoryData isEqualTo false) exitWith {diag_log "[ERROR] Armory: Athena server is down"};
-    [_armoryData] call FUNC(dialogControl_list2);
-} else {
-    // Get preset data
-    _armoryData = [_selectedCategory] call FUNC(getData);
-    [_armoryData] call FUNC(dialogControl_list2);
-};
+if (_chronosError) exitWith {diag_log "[ERROR] Armory: Athena server is down"};
+
+// Extract sub-categories
+local _subCategories = [_armoryData] call FUNC(extractSubCategories);
+
+// Fill Dropdown
+lbClear DROPDOWN; // Clear Dropdown
+{
+    lbAdd [DROPDOWN, _x];
+} forEach _subCategories;
+
+// Make global for sub-category selection (Dialog.hpp)
+GVAR(armoryData) = _armoryData;
+
+// Fill List
+[_armoryData] call FUNC(dialogControl_populateList);
