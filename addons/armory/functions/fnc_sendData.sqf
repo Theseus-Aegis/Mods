@@ -13,7 +13,7 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_type"];
@@ -30,7 +30,7 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};
 
 // @todo - change to ACE Events (in Apollo as well)
-if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"} || {CHRONOS_DEBUG}) then {
+if ((!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) || {CHRONOS_DEBUG}) then {
     lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
     publicVariableServer "lockerAction";
 };
