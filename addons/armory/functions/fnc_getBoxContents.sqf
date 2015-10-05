@@ -15,15 +15,17 @@
  */
 #include "script_component.hpp"
 
-local _box = GVAR(box);
+private ["_box", "_contents", "_itemCargo", "_weaponCargo", "_magazineCargo", "_backpackCargo"];
+
+_box = GVAR(box);
 if (isNil "_box") exitWith {ACE_LOGERROR("box is nil")};
 
-local _contents = [];
+_contents = [];
 
-local _itemCargo = getItemCargo _box;
-local _weaponCargo = getWeaponCargo _box;
-local _magazineCargo = getMagazineCargo _box;
-local _backpackCargo = getBackpackCargo _box;
+_itemCargo = getItemCargo _box;
+_weaponCargo = getWeaponCargo _box;
+_magazineCargo = getMagazineCargo _box;
+_backpackCargo = getBackpackCargo _box;
 
 _itemCargo params ["_itemClassNames", "_itemQuantity"];
 {

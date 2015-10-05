@@ -17,20 +17,21 @@
 #include "script_component.hpp"
 
 params ["_selectedCategory"];
+private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
 
 hintSilent "Retrieving data, please stand by!";
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
-local _loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
+_loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
 
 if (_loadData == "loaded") then {
-    local _armoryData = [];
-    local _updateInfo = true;
-    local _entry = [];
+    _armoryData = [];
+    _updateInfo = true;
+    _entry = [];
 
     while {_updateInfo} do {
         // Retrieve the data which is stored in the client's heap
-        local _serverReply = "ApolloClient" callExtension "get";
+        _serverReply = "ApolloClient" callExtension "get";
         TRACE_1("Get Chronos Data",_serverReply);
 
         if (_serverReply == "done") then {
