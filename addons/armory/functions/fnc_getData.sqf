@@ -17,9 +17,8 @@
 #include "script_component.hpp"
 
 params ["_selectedCategory"];
-private ["_armoryData"];
 
-_armoryData = [];
+local _armoryData = [];
 
 // Rifles
 if (_selectedCategory == "rifle") then {

@@ -21,9 +21,8 @@ params ["_type"];
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
 _type = if (_type == "stash") then {"put"} else {"remove"};
 
-private ["_selectedItem", "_selectedAmount"];
-_selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
-_selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
+local _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
+local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
 
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
@@ -31,7 +30,7 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};
 
 // @todo - change to ACE Events (in Apollo as well)
-if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) then {
+if (!isNil "ChronosLoaded" && {ChronosLoaded == "true"} || {CHRONOS_DEBUG}) then {
     lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
     publicVariableServer "lockerAction";
 };

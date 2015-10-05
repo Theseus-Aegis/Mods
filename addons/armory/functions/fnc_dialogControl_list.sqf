@@ -50,8 +50,5 @@ lbClear DROPDOWN; // Clear Dropdown
     lbAdd [DROPDOWN, _x];
 } forEach _subCategories;
 
-// Make global for sub-category selection (Dialog.hpp)
-GVAR(armoryData) = _armoryData;
-
 // Fill List
 [_armoryData] call FUNC(dialogControl_populateList);

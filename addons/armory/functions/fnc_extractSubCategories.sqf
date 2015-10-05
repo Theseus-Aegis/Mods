@@ -17,11 +17,9 @@
 
 params ["_armoryData"];
 
-private ["_subCategories", "_subCategory"];
-
-_subCategories = ["All"];
+local _subCategories = ["All"];
 {
-    _subCategory = _x select 1;
+    local _subCategory = _x select 1;
 
     if !(_subCategory in _subCategories) then {
         _subCategories pushBack _subCategory;

@@ -18,8 +18,7 @@
 
 params ["_armoryData", "_selectedItem", "_selectedAmount"];
 
-private ["_armoryDataSubtracted"];
-_armoryDataSubtracted = [];
+local _armoryDataSubtracted = [];
 {
     _x params ["_className", "_subCategory", "_description", "_quantity"];
 

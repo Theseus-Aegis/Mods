@@ -17,6 +17,4 @@ PREP(init);
 PREP(sendData);
 PREP(subtractData);
 
-GVAR(chronosReplied) = false;
-
 ADDON = true;
