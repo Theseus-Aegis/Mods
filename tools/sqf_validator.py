@@ -95,6 +95,7 @@ def main():
 
     print("#########################")
     print("# Validate SQF files missing brackets  #")
+    print("# (~ ACE3 24505f5)  #")
     print("#########################")
 
     sqf_list = []

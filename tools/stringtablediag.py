@@ -6,6 +6,7 @@ import sys
 from xml.dom import minidom
 
 # STRINGTABLE DIAG TOOL
+# (~ ACE3 cec16d6)
 # Author: KoffeinFlummi
 # ---------------------
 # Checks for missing translations and all that jazz.
@@ -60,6 +61,7 @@ def main():
     if "--markdown" not in sys.argv:
         print("#########################")
         print("# Stringtable Diag Tool #")
+        print("#   (~ ACE3 cec16d6)    #")
         print("#########################")
 
     languages = get_all_languages(projectpath)

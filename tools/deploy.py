@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 ####################################
-# ACE3 automatic deployment script #
+# TAC automatic deployment script  #
+#        (~ ACE3 72abe20)          #
 # ================================ #
 # This is not meant to be run      #
 # directly!                        #
@@ -18,7 +19,7 @@ from pygithub3 import Github
 TRANSLATIONISSUE = 51
 TRANSLATIONBODY = """**How to translate TAC Mods:**
 http://ace3mod.com/wiki/development/how-to-translate-ace3.html
-(Replace `acemods/ACE3` with `Theseus-Aegis/tac-a3-mods`)
+(ACE3 Guide - same principle applies)
 
 {}
 """

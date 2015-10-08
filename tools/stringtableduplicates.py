@@ -7,6 +7,7 @@ import xml.dom
 from xml.dom import minidom
 
 # STRINGTABLE DIAG TOOL
+# (~ ACE3 dc9ba7a)
 # Author: KoffeinFlummi
 # ---------------------
 # Counts duplicates stringtable entries
@@ -45,6 +46,7 @@ def main():
 
     print("###############################")
     print("# Stringtable Duplicates Tool #")
+    print("#      (~ ACE3 dc9ba7a)       #")
     print("###############################\n")
 
     duplicates = 0
