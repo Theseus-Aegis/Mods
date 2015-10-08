@@ -9,10 +9,13 @@
         <img src="http://img.shields.io/badge/Download-14.2_MB-green.svg?style=flat-square" alt="TAC Mods Download">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
-        <img src="http://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?label=Issues?style=flat-square" alt="TAC Mods Issues">
+        <img src="https://img.shields.io/github/issues/badges/shields.svg?style=flat-square" alt="TAC Mods Issues">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/LICENSE">
         <img src="http://img.shields.io/badge/License-GPLv2-red.svg?style=flat-square" alt="TAC Mods License">
+    </a>
+    <a href="https://travis-ci.org/Theseus-Aegis/tac-a3-mods">
+        <img src="https://img.shields.io/travis/Theseus-Aegis/tac-a3-mods.svg?style=flat-square" alt="TAC Mods Build Status">
     </a>
 </p>
 <p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a> and <a href="https://github.com/acemod/ACE3/releases">ACE3</a>.</strong></sup></p>
