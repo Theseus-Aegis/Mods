@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/badge/Version-1.1.0-blue.svg?style=flat-square" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/download/v1.1.0/tac_mods_1.1.0.zip">
-        <img src="https://img.shields.io/badge/Download-14.2_MB-green.svg?style=flat-square" alt="TAC Mods Download">
+        <img src="https://img.shields.io/badge/Download-13.5_MB-green.svg?style=flat-square" alt="TAC Mods Download">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?style=flat-square&label=Issues" alt="TAC Mods Issues">
