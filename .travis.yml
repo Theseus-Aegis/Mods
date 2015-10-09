@@ -7,7 +7,7 @@ python:
 before_script:
 - if [ "${TRAVIS_BRANCH}" = "master" ]; then
     [ -z "${GH_TOKEN}" ] && exit 0;
-    [ "${TRAVIS_PULL_REQUEST}" = "false" ] && pip install pygithub; exit 0;
+    [ "${TRAVIS_PULL_REQUEST}" = "false" ] && pip install pygithub && exit 0;
   fi
 - if [ "${TRAVIS_BRANCH}" = "master" ]; then
     [ -z "${GH_TOKEN}" ] && exit 0;
