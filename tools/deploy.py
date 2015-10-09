@@ -17,9 +17,8 @@ from pygithub3 import Github
 
 
 TRANSLATIONISSUE = 51
-TRANSLATIONBODY = """**How to translate TAC Mods:**
-http://ace3mod.com/wiki/development/how-to-translate-ace3.html
-(ACE3 Guide - same principle applies)
+TRANSLATIONBODY = """**[ACE3 Translation Guide](http://ace3mod.com/wiki/development/how-to-translate-ace3.html)**
+(Keep in mind, TAC Mods project and repository information is different!)
 
 {}
 """
