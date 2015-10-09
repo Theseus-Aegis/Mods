@@ -25,3 +25,11 @@
 The mod is on the same foundation as the ACE3 mod, using its framework, systems, tools and standards. It is entirely **open-source** and licensed under the GNU General Public License ([GPLv2](https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/LICENSE)).
 
 Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for their open-source nature and permission to use their systems.
+
+
+### Development Notes
+
+[GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
+```
+github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --date-format %Y-%m-%d --no-issues-wo-labels --no-pr-wo-labels --no-unreleased
+```
