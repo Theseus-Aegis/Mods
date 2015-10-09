@@ -9,7 +9,7 @@
         <img src="https://img.shields.io/badge/Download-14.2_MB-green.svg?style=flat-square" alt="TAC Mods Download">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
-        <img src="https://img.shields.io/github/issues/Theseus-Aegis/tac-a3-mods.svg?style=flat-square&label=Issues" alt="TAC Mods Issues">
+        <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?style=flat-square&label=Issues" alt="TAC Mods Issues">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/License-GPLv2-red.svg?style=flat-square" alt="TAC Mods License">
