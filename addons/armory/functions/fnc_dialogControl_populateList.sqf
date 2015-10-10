@@ -43,6 +43,9 @@ local _rowNum = 0; // Needed for proper row images
         if (isText (configFile >> "CfgVehicles" >> _className >> "displayName")) then {
             _configCfg = "CfgVehicles";
         };
+        if (isText (configFile >> "CfgGlasses" >> _className >> "displayName")) then {
+            _configCfg = "CfgGlasses";
+        };
 
         // Check sub-category for proper listing
         if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {

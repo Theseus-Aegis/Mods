@@ -65,5 +65,11 @@ if (_selectedCategory == "attachment") then {
         ["optic_MRD", "Optic", "Blabla, this item, blabla", "1"]
     ];
 };
+if (_selectedCategory == "wearable") then {
+    _armoryData = [
+        // Classname, Subcategory, Description, Quantity
+        ["G_Bandanna_Shades", "Goggles", "Blabla, this item, blabla", "4"]
+    ];
+};
 
 _armoryData
