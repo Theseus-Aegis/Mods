@@ -23,9 +23,9 @@ source code of the individual modules.
 When publishing a derivative of this product you may not use a name that
 might create the impression that your version is an official release.
 
-Some folders of this project may contain a seperate LICENSE file. Should
-that be the case, everything in that folder and all subfolders is subject
-to that license instead.
+Some folders of this project may contain a separate LICENSE or LICENSE.md
+or LICENSES.md file. Should that be the case, everything in that folder
+and all subfolders is subject to that license instead.
 
 
                     GNU GENERAL PUBLIC LICENSE

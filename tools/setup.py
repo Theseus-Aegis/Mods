@@ -2,7 +2,7 @@
 
 #######################
 #  TAC Setup Script   #
-#  ACE3 Setup Script  #
+#  (~ ACE3 0771ab2)   #
 #######################
 
 import os
@@ -21,25 +21,25 @@ CBA = "P:\\x\\cba"
 def main():
     FULLDIR = "{}\\{}".format(MAINDIR,PROJECTDIR)
     print("""
-  ##################################################
-  #       TAC Development Environment Setup        #
-  # (~ ACE3 Development Environment Setup 0771ab2) #
-  ##################################################
+  ######################################
+  # TAC Development Environment Setup  #
+  #          (~ ACE3 0771ab2)          #
+  ######################################
 
   This script will create your TAC dev environment for you.
-  
+
   Before you run this, you should already have:
     - The Arma 3 Tools installed properly via Steam
     - A properly set up P-drive
-  
+
   If you have not done those things yet, please abort this script in the next step and do so first.
-  
+
   This script will create two hard links on your system, both pointing to your TAC project folder:
     [Arma 3 installation directory]\\{} => TAC project folder
     P:\\{}                              => TAC project folder
-  
+
   It will also copy the required CBA includes to {}, if you do not have the CBA source code already.""".format(FULLDIR,FULLDIR,CBA))
-    print("\n") 
+    print("\n")
 
     try:
         reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)

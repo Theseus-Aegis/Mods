@@ -10,5 +10,6 @@ DaC
 Jonpas <jonpas33@gmail.com>
 
 # CONTRIBUTORS
+Omnirock
 Rory
 Takelmeifter

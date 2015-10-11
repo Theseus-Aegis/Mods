@@ -770,7 +770,7 @@ def version_stamp_pboprefix(module,commitID):
 
 def main(argv):
     """Build an Arma addon suite in a directory from rules in a make.cfg file."""
-    print_blue("\nmake.py for Arma v{}, modified for Theseus Inc. (~ ACE3 make.py 1187b73)".format(__version__))
+    print_blue("\nmake.py for Arma v{}, modified for Theseus Inc. (~ ACE3 1187b73)".format(__version__))
 
     global project_version
     global arma3tools_path

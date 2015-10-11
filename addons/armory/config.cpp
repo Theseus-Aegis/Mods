@@ -6,12 +6,11 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_common"};
-        author[]= {"DaC", "Jonpas"};
-        authorUrl = "http://www.theseus-aegis.com/";
+        author[]= {"Jonpas"};
+        authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
-#include "CfgSounds.hpp"
+#include "Dialog.hpp"
