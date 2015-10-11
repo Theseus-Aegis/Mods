@@ -31,5 +31,5 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
 ```
-github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --date-format %Y-%m-%d --no-issues-wo-labels --no-pr-wo-labels --no-unreleased
+github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --date-format %Y-%m-%d --bugs-label "**Fixed Bugs:**" --enhancement-label "**Implemented Features & Enhancements:**" --header-label "# Changelog" --pr-label "**Merged Pull Requests**" --no-issues-wo-labels --no-pr-wo-labels --no-unreleased --exclude-labels duplicate,question,invalid,wontfix,tools --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request"
 ```
