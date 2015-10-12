@@ -140,7 +140,7 @@ def check_sqf_syntax(filepath):
 
 def main():
 
-    print("Validating SQF (~ ACE3 d926a4a)")
+    print("Validating SQF (~ ACE3 3e4906f)")
 
     sqf_list = []
     bad_count = 0
@@ -150,11 +150,11 @@ def main():
     args = parser.parse_args()
 
     # Allow running from root directory as well as from inside the tools directory
-    rootDir = "..\\addons"
+    rootDir = "../addons"
     if (os.path.exists("addons")):
         rootDir = "addons"
 
-    for root, dirnames, filenames in os.walk(rootDir + '\\' + args.module):
+    for root, dirnames, filenames in os.walk(rootDir + '/' + args.module):
       for filename in fnmatch.filter(filenames, '*.sqf'):
         sqf_list.append(os.path.join(root, filename))
 
