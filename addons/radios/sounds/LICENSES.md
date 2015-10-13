@@ -8,7 +8,7 @@
 "[Smokin' Camels](https://soundcloud.com/william-j-lepetomane/smokin-camels)" by [WJLP](https://soundcloud.com/william-j-lepetomane), used under [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/) / Converted to Ogg Vorbis, Normalized to -3.0 dB
 
 **Track 4 (track4.ogg):**  
-"[Microvolt](https://soundcloud.com/pc-one/microvolt)" by [PC-ONE](https://soundcloud.com/pc-one), used under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/) / Converted to Ogg Vorbis
+"[Microvolt](https://soundcloud.com/pc-one/microvolt)" by [PC-ONE](https://soundcloud.com/pc-one), used under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/) / Converted to Ogg Vorbis, Normalized to -3.0 dB
 
 **Track 5 (track5.ogg):**  
 "[Silhouette](https://soundcloud.com/whatfunk/silhouette)" by [whatfunk](https://soundcloud.com/whatfunk), used under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/) / Converted to Ogg Vorbis, Normalized to -3.0 dB
