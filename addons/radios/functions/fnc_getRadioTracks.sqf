@@ -9,7 +9,7 @@
  * Radio Tracks <ARRAY>
  *
  * Example:
- * call tac_radios_fnc_getRadioTracks;
+ * _tracks = call tac_radios_fnc_getRadioTracks;
  *
  * Public: No
  */
@@ -21,9 +21,9 @@ _config = configFile >> "CfgSounds";
 _tracks = [];
 
 for "_x" from 0 to (count _config - 1) do {
-    _configName = toLower configName (_config select _x);
+    _configName = configName (_config select _x);
 
-    if (_configName find QUOTE(ADDON) != -1) then {
+    if ((toLower _configName) find QUOTE(ADDON) != -1) then {
         _tracks pushBack _configName;
     };
 };

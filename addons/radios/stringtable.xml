@@ -9,35 +9,5 @@
             <English>Stop Radio</English>
             <Spanish>Detener Radio</Spanish>
         </Key>
-        <Key ID="STR_TAC_Radios_track1">
-            <English>Ride of the Valkyries</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track2">
-            <English>Hot Nights In Los Angeles</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track3">
-            <English>Smokin' Camels</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track4">
-            <English>Microvolt</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track5">
-            <English>Silhouette</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track6">
-            <English>Scorpion</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track7">
-            <English>Lost In The Shadows</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track8">
-            <English>Flight</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track9">
-            <English>Gravity</English>
-        </Key>
-        <Key ID="STR_TAC_Radios_track10">
-            <English>Heat</English>
-        </Key>
     </Package>
 </Project>

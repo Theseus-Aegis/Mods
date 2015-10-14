@@ -15,17 +15,15 @@
  */
 #include "script_component.hpp"
 
-private ["_actions", "_config"];
 params ["_vehicle"];
 
-_actions = [];
+local _actions = [];
 {
-    _config = configFile >> "CfgSounds" >> _x;
     _actions pushBack
     [
         [
             format ["RadioTrack%1", _forEachIndex],
-            getText (_config >> "name"),
+            getText (configFile >> "CfgSounds" >> _x >> "name") splitString "_" joinString " ",
             "",
             {(_this select 2) call FUNC(playRadio)},
             {true},
