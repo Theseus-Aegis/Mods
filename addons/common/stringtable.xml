@@ -3,6 +3,7 @@
     <Package name="Common">
         <Key ID="STR_TAC_Common_Author">
             <English>TAC Mod Team</English>
+            <Spanish>TAC Mod Team</Spanish>
         </Key>
     </Package>
 </Project>
