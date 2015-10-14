@@ -3,9 +3,11 @@
     <Package name="Radios">
         <Key ID="STR_TAC_Radios_PlayRadio">
             <English>Play Radio</English>
+            <Spanish>Escuchar Radio</Spanish>
         </Key>
         <Key ID="STR_TAC_Radios_StopRadio">
             <English>Stop Radio</English>
+            <Spanish>Detener Radio</Spanish>
         </Key>
         <Key ID="STR_TAC_Radios_track1">
             <English>Ride of the Valkyries</English>
