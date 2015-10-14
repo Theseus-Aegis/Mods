@@ -3,21 +3,27 @@
     <Package name="Air_Security">
         <Key ID="STR_TAC_Air_Security_Secure">
             <English>Secure Crew</English>
+            <Spanish>Asegurar Tripulación</Spanish>
         </Key>
         <Key ID="STR_TAC_Air_Security_Unsecure">
             <English>Unsecure Crew</English>
+            <Spanish>Liberar Tripulación</Spanish>
         </Key>
         <Key ID="STR_TAC_Air_Security_Security">
             <English>Set Crew Security</English>
+            <Spanish>Definir Seguridad de la Tripulación</Spanish>
         </Key>
         <Key ID="STR_TAC_Air_Security_Secured">
             <English>Crew Secured</English>
+            <Spanish>Tripulación Segura</Spanish>
         </Key>
         <Key ID="STR_TAC_Air_Security_Unsecured">
             <English>Crew Unsecured</English>
+            <Spanish>Tripulación Libre</Spanish>
         </Key>
         <Key ID="STR_TAC_Air_Security_SetSecurity">
             <English>Secure/Unsecure Crew</English>
+            <Spanish>Asegurar/Liberar Tripulación</Spanish>
         </Key>
     </Package>
 </Project>

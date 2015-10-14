@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Edited with tabler - 2015-02-01 -->
 <Project name="TAC">
     <Package name="RatelMarker">
         <Key ID="STR_TAC_RatelMarker_DisplayName">
             <English>RATEL Marker</English>
+            <Spanish>Marcador RATEL</Spanish>
         </Key>
         <Key ID="STR_TAC_RatelMarker_Open">
             <English>Open RATEL Marker</English>
+            <Spanish>Abril Marcador RATEL</Spanish>
         </Key>
         <Key ID="STR_TAC_RatelMarker_InvalidCoordinates">
             <English>Invalid Coordinates!</English>
+            <Spanish>Coordenadas Inválidas!</Spanish>
         </Key>
         <Key ID="STR_TAC_RatelMarker_MarkerCreated">
             <English>RATEL Marker Created (Open Map to Focus)</English>
+            <Spanish>Marcador RATEL Creado (Abrir Mapa para Centrarse)</Spanish>
         </Key>
     </Package>
 </Project>

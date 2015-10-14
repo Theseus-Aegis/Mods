@@ -1,27 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- Edited with tabler - 2015-02-26 -->
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
-  <Package name="HeavyLifter">
-    <Key ID="STR_TAC_HeavyLifter_Helper">
-      <English>Heavy Duty Hooks</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Attach">
-      <English>Attach Hooks</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Detach">
-      <English>Detach Hooks</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Attaching">
-      <English>Attaching Hooks ...</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Detaching">
-      <English>Detaching Hooks ...</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Attached">
-      <English>Hooks Attached</English>
-    </Key>
-    <Key ID="STR_TAC_HeavyLifter_Detached">
-      <English>Hooks Detached</English>
-    </Key>
-  </Package>
+    <Package name="HeavyLifter">
+        <Key ID="STR_TAC_HeavyLifter_Helper">
+            <English>Heavy Duty Hooks</English>
+            <Spanish>Ganchos</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Attach">
+            <English>Attach Hooks</English>
+            <Spanish>Fijar Ganchos</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Detach">
+            <English>Detach Hooks</English>
+            <Spanish>Soltar Ganchos</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Attaching">
+            <English>Attaching Hooks ...</English>
+            <Spanish>Fijando Ganchos ...</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Detaching">
+            <English>Detaching Hooks ...</English>
+            <Spanish>Soltando Ganchos ...</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Attached">
+            <English>Hooks Attached</English>
+            <Spanish>Ganchos Fijados</Spanish>
+        </Key>
+        <Key ID="STR_TAC_HeavyLifter_Detached">
+            <English>Hooks Detached</English>
+            <Spanish>Ganchos Sueltos</Spanish>
+        </Key>
+    </Package>
 </Project>
