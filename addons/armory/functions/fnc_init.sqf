@@ -17,6 +17,17 @@
 
 params [["_object", this]];
 
+// Check if object has inventory
+local _config = configFile >> "CfgVehicles" >> typeOf _object;
+
+if (getNumber (_config >> "transportMaxBackpacks") isEqualTo 0 ||
+    {getNumber (_config >> "transportMaxMagazines") isEqualTo 0} ||
+    {getNumber (_config >> "transportMaxWeapons") isEqualTo 0}
+) exitWith {
+    ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
+};
+
+// Add action
 local _armoryAction = [
     QGVAR(OpenAction),
     localize LSTRING(Open),
