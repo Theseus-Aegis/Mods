@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [box] call tac_armory_fnc_init
+ * [object] call tac_armory_fnc_init
  *
  * Public: Yes
  */
@@ -18,12 +18,7 @@
 params [["_object", this]];
 
 // Check if object has inventory
-local _config = configFile >> "CfgVehicles" >> typeOf _object;
-
-if (getNumber (_config >> "transportMaxBackpacks") isEqualTo 0 ||
-    {getNumber (_config >> "transportMaxMagazines") isEqualTo 0} ||
-    {getNumber (_config >> "transportMaxWeapons") isEqualTo 0}
-) exitWith {
+if !([_object] call FUNC(canAddLocker)) exitWith {
     ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
 };
 
@@ -32,11 +27,7 @@ local _armoryAction = [
     QGVAR(OpenAction),
     localize LSTRING(Open),
     "",
-    {
-        GVAR(box) = _this select 2; // Set global variable for later reference
-        createDialog QGVAR(Display);
-        ["main"] call FUNC(dialogControl);
-    },
+    {[_this select 2] call FUNC(openArmory)},
     {true},
     {},
     _object

@@ -2,7 +2,10 @@
 <Project name="TAC">
     <Package name="Armory">
         <Key ID="STR_TAC_Armory_Open">
-            <English>Open Armory</English>
+            <English>Open Armory Locker</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Locker">
+            <English>Armory Locker</English>
         </Key>
     </Package>
 </Project>

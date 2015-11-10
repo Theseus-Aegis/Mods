@@ -2,6 +2,7 @@
 
 ADDON = false;
 
+PREP(canAddArmory);
 PREP(dialogControl);
 PREP(dialogControl_amountSelection);
 PREP(dialogControl_back);
@@ -14,6 +15,7 @@ PREP(getBoxContents);
 PREP(getData);
 PREP(getDataChronos);
 PREP(init);
+PREP(openArmory);
 PREP(sendData);
 PREP(subtractData);
 
