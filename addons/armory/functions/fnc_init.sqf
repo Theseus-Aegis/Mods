@@ -3,7 +3,7 @@
  * Adds the Armory action to an Object and handles the GUI initialization.
  *
  * Arguments:
- * Object <OBJECT> (Optional)
+ * Object <OBJECT/ARRAY> (Optional)
  *
  * Return Value:
  * None
@@ -17,10 +17,18 @@
 
 params [["_object", this]];
 
-// Change to ACE Interaction
-_object addAction ["<t color='#ff1111'>Open Armory</t>", {
-    GVAR(box) = _this select 0;
+local _armoryAction = [
+    QGVAR(OpenAction),
+    localize LSTRING(Open),
+    "",
+    {
+        GVAR(box) = _this select 2; // Set global variable for later reference
+        createDialog QGVAR(Display);
+        ["main"] call FUNC(dialogControl);
+    },
+    {true},
+    {},
+    _object
+] call ACE_Interact_Menu_fnc_createAction;
 
-    createDialog QGVAR(Display);
-    ["main"] call FUNC(dialogControl);
-}, nil, 6, true, true, "", QUOTE(_this distance _target < 3)];
+[_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;

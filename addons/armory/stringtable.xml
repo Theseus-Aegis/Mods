@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Armory">
+        <Key ID="STR_TAC_Armory_Open">
+            <English>Open Armory</English>
+        </Key>
+    </Package>
+</Project>
