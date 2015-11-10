@@ -25,4 +25,7 @@ for "_x" from 1 to (parseNumber _quantity) do {
     lbAdd [DROPDOWNAMOUNT, str(_x)];
 };
 
+// Set initial value to 1 (will not fire onLBSelChanged)
+lbSetCurSel [DROPDOWNAMOUNT, 0];
+
 ctrlShow [DROPDOWNAMOUNT, true];
