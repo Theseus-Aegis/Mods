@@ -13,7 +13,6 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_type"];
@@ -27,7 +26,9 @@ local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; 
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
-if (_selectedItem == "" || _selectedAmount == "") exitWith {diag_log "[ERROR] Armory: Send data called with empty variables"};
+if (_selectedItem == "" || _selectedAmount == "") exitWith {
+    ACE_LOGERROR_2("Send data called with empty variables! Item: %1, Amount: %2",_selectedItem,_selectedAmount);
+};
 
 // @todo - change to ACE Events (in Apollo as well)
 if ((!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) || {CHRONOS_DEBUG}) then {

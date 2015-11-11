@@ -13,7 +13,6 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 local _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
@@ -24,5 +23,8 @@ lbClear DROPDOWNAMOUNT;
 for "_x" from 1 to (parseNumber _quantity) do {
     lbAdd [DROPDOWNAMOUNT, str(_x)];
 };
+
+// Set initial value to 1 (will not fire onLBSelChanged)
+lbSetCurSel [DROPDOWNAMOUNT, 0];
 
 ctrlShow [DROPDOWNAMOUNT, true];

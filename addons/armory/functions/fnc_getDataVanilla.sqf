@@ -9,11 +9,10 @@
  * Armory Data <ARRAY>
  *
  * Example:
- * ["category"] call tac_armory_fnc_getData
+ * ["category"] call tac_armory_fnc_getDataVanilla
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_selectedCategory"];

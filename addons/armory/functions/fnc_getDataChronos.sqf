@@ -13,7 +13,6 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_selectedCategory"];
@@ -50,6 +49,5 @@ if (_loadData == "loaded") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
-    hintSilent "Athena server is down!\n(Contact server administrator)";
     false
 };

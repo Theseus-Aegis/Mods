@@ -3,13 +3,13 @@
  * Adds the Armory action to an Object and handles the GUI initialization.
  *
  * Arguments:
- * Object <OBJECT> (Optional)
+ * Object <OBJECT/ARRAY> (Optional)
  *
  * Return Value:
  * None
  *
  * Example:
- * [box] call tac_armory_fnc_init
+ * [object] call tac_armory_fnc_init
  *
  * Public: Yes
  */
@@ -17,10 +17,20 @@
 
 params [["_object", this]];
 
-// Change to ACE Interaction
-_object addAction ["<t color='#ff1111'>Open Armory</t>", {
-    GVAR(box) = _this select 0;
+// Check if object has inventory
+if !([_object] call FUNC(canAddArmory)) exitWith {
+    ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
+};
 
-    createDialog QGVAR(Display);
-    ["main"] call FUNC(dialogControl);
-}, nil, 6, true, true, "", QUOTE(_this distance _target < 3)];
+// Add action
+local _armoryAction = [
+    QGVAR(OpenAction),
+    localize LSTRING(Open),
+    "",
+    {[_this select 2] call FUNC(openArmory)},
+    {true},
+    {},
+    _object
+] call ACE_Interact_Menu_fnc_createAction;
+
+[_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;

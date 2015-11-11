@@ -13,3 +13,4 @@ class CfgPatches {
 };
 
 #include "CfgModuleCategories.hpp"
+#include "CfgVehicleClasses.hpp"
