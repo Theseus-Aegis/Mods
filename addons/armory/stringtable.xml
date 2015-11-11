@@ -7,5 +7,29 @@
         <Key ID="STR_TAC_Armory_Locker">
             <English>Armory Locker</English>
         </Key>
+        <Key ID="STR_TAC_Armory_Module">
+            <English>Armory</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_ModuleDesc">
+            <English>This module allows you to set Armory Locker on objects and tweak its settings.</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_System">
+            <English>System</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_SystemDesc">
+            <English>System used for compatibility assurance.</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_System_Vanilla">
+            <English>None (Vanilla)</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_System_Chronos">
+            <English>Chronos</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Objects">
+            <English>Objects</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_ObjectsDesc">
+            <English>List of object names that will have Armory Locker on them, separated by commas.</English>
+        </Key>
     </Package>
 </Project>

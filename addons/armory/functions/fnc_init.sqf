@@ -18,7 +18,7 @@
 params [["_object", this]];
 
 // Check if object has inventory
-if !([_object] call FUNC(canAddLocker)) exitWith {
+if !([_object] call FUNC(canAddArmory)) exitWith {
     ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
 };
 

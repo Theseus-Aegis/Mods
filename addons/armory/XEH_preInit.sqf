@@ -15,6 +15,7 @@ PREP(getBoxContents);
 PREP(getData);
 PREP(getDataChronos);
 PREP(init);
+PREP(moduleInit);
 PREP(openArmory);
 PREP(sendData);
 PREP(subtractData);
