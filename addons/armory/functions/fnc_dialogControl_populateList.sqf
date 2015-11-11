@@ -16,6 +16,8 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+#define DISPLAYNAME_LENGTH 25
+
 params ["_armoryData"];
 
 local _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
@@ -24,7 +26,7 @@ TRACE_2("Populating list",_armoryData,_selectedSubCategory);
 
 // Clear List
 lnbClear NLIST;
-local _rowNum = 0; // Needed for proper row images
+local _rowNum = 0; // Needed for proper row images and data
 
 // Fill List
 {
@@ -49,9 +51,18 @@ local _rowNum = 0; // Needed for proper row images
 
         // Check sub-category for proper listing
         if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
-            // Set name
             local _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
-            lnbAddRow [NLIST, ["", _displayName, _quantity]]; // Add row with information
+            local _tooltip = _displayName; // Display name gets cropped
+
+            // Cut full name to prevent overlapping in shown name
+            if ([_displayName] call CBA_fnc_strLen > DISPLAYNAME_LENGTH + 3) then {
+                _displayName = [_displayName, 0, DISPLAYNAME_LENGTH] call CBA_fnc_substr;
+                _displayName = [_displayName] call CBA_fnc_rightTrim;
+                _displayName = [_displayName, "..."] joinString "";
+            };
+
+            lnbAddRow [NLIST, ["", _displayName, _quantity]];
+            lbSetTooltip [NLIST, _rowNum, _tooltip];
 
             // Set hidden data with classname to displayName column and quantity to quantity column
             lnbSetData [NLIST, [_rowNum, 1], _className];
