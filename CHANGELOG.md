@@ -1,5 +1,26 @@
 # Changelog
 
+## [v1.1.1](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.1) (2015-11-11)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.0...v1.1.1)
+
+**Implemented Features & Enhancements:**
+
+- Change radios track names to be parsed from config [\#65](https://github.com/Theseus-Aegis/tac-a3-mods/issues/65)
+- Armory Fixes and Improvements [\#74](https://github.com/Theseus-Aegis/tac-a3-mods/pull/74) ([jonpas](https://github.com/jonpas))
+- Change track interaction menu text to be parsed from config [\#66](https://github.com/Theseus-Aegis/tac-a3-mods/pull/66) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- RATEL Marker action shows up for passengers as well [\#68](https://github.com/Theseus-Aegis/tac-a3-mods/issues/68)
+
+**Merged Pull Requests**
+
+- Fix RATEL Marker showing for passengers [\#73](https://github.com/Theseus-Aegis/tac-a3-mods/pull/73) ([jonpas](https://github.com/jonpas))
+- Add forgotten TAC Mod Team Spanish stringtable [\#67](https://github.com/Theseus-Aegis/tac-a3-mods/pull/67) ([jonpas](https://github.com/jonpas))
+- Add Spanish Translations [\#64](https://github.com/Theseus-Aegis/tac-a3-mods/pull/64) ([jonpas](https://github.com/jonpas))
+- Add missing normalized note to Radios' LICENSE [\#63](https://github.com/Theseus-Aegis/tac-a3-mods/pull/63) ([jonpas](https://github.com/jonpas))
+- Fix glasses not showing in Armory [\#59](https://github.com/Theseus-Aegis/tac-a3-mods/pull/59) ([jonpas](https://github.com/jonpas))
+
 ## [v1.1.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.0) (2015-10-09)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.0.0...v1.1.0)
 
@@ -25,7 +46,6 @@
 
 **Closed issues:**
 
-- Setup Travis CI [\#49](https://github.com/Theseus-Aegis/tac-a3-mods/issues/49)
 - Write full README [\#43](https://github.com/Theseus-Aegis/tac-a3-mods/issues/43)
 - All keybinds to common TAC category [\#30](https://github.com/Theseus-Aegis/tac-a3-mods/issues/30)
 - Remove Slideshow [\#27](https://github.com/Theseus-Aegis/tac-a3-mods/issues/27)
