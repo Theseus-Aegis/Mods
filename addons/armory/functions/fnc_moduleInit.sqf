@@ -20,7 +20,7 @@ params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
 
-[_logic, QGVAR(system), "system"] call EFUNC(common,readSettingFromModule);
+[_logic, QGVAR(system), "system"] call ACE_Common_fnc_readSettingFromModule;
 
 // Extract objects from logic
 local _objects = [_logic getVariable ["Objects", ""], true, true] call ACE_Common_fnc_parseList;

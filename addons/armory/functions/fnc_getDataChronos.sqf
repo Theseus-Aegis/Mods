@@ -50,6 +50,5 @@ if (_loadData == "loaded") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
-    hintSilent "Athena server is down!\n(Contact server administrator)";
     false
 };

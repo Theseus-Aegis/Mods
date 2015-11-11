@@ -27,19 +27,23 @@ ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
 
 // Get box contents if selected category is stash, get data from Chronos if enabled or use preset data
 local _armoryData = [];
-local _chronosError = false;
+local _exit = false;
 if (_selectedCategory == "stash") then {
     _armoryData = call FUNC(getBoxContents);
 } else {
-    if ((!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) || {CHRONOS_DEBUG}) then {
-        _armoryData = [_selectedCategory] call FUNC(getDataChronos);
-        if (_armoryData isEqualTo false) exitWith {_chronosError = true};
-    } else {
+    if (GVAR(system) == 0) then {
         _armoryData = [_selectedCategory] call FUNC(getData);
+    };
+    if (GVAR(system) == 1) then {
+        _armoryData = [_selectedCategory] call FUNC(getDataChronos);
+        if (_armoryData isEqualTo false) exitWith {
+            hintSilent "Athena server is down!\n(Contact server administrator)";
+            _exit = true;
+        };
     };
 };
 
-if (_chronosError) exitWith {diag_log "[ERROR] Armory: Athena server is down"};
+if (_exit) exitWith {};
 
 // Extract sub-categories
 local _subCategories = [_armoryData] call FUNC(extractSubCategories);
@@ -49,6 +53,9 @@ lbClear DROPDOWN; // Clear Dropdown
 {
     lbAdd [DROPDOWN, _x];
 } forEach _subCategories;
+
+// Set initial value to 'All' (will not fire onLBSelChanged)
+lbSetCurSel [DROPDOWN, 0];
 
 // Fill List
 [_armoryData] call FUNC(dialogControl_populateList);
