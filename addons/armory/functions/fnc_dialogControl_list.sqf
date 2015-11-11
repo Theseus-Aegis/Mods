@@ -31,7 +31,7 @@ if (_selectedCategory == "stash") then {
     _armoryData = call FUNC(getBoxContents);
 } else {
     if (GVAR(system) == 0) then {
-        _armoryData = [_selectedCategory] call FUNC(getData);
+        _armoryData = [_selectedCategory] call FUNC(getDataVanilla);
     };
     if (GVAR(system) == 1) then {
         _armoryData = [_selectedCategory] call FUNC(getDataChronos);

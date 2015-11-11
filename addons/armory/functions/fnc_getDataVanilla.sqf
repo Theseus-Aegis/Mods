@@ -9,7 +9,7 @@
  * Armory Data <ARRAY>
  *
  * Example:
- * ["category"] call tac_armory_fnc_getData
+ * ["category"] call tac_armory_fnc_getDataVanilla
  *
  * Public: No
  */
