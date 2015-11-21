@@ -23,7 +23,7 @@ if !([_object] call FUNC(canAddArmory)) exitWith {
 };
 
 // Add action
-local _armoryAction = [
+private _armoryAction = [
     QGVAR(OpenAction),
     localize LSTRING(Open),
     "",

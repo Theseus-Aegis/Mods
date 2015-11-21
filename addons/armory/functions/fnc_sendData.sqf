@@ -20,8 +20,8 @@ params ["_type"];
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
 _type = if (_type == "stash") then {"put"} else {"remove"};
 
-local _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
-local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
+private _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
+private _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
 
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 

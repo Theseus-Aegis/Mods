@@ -17,7 +17,7 @@
 
 params ["_vehicle"];
 
-local _actions = [];
+private _actions = [];
 {
     _actions pushBack
     [
