@@ -11,9 +11,6 @@
 
 #include "\z\ace\addons\main\script_macros.hpp"
 
-// Chronos Debug
-#define CHRONOS_DEBUG false
-
 /*
  * JNS Tag 3-ID = 333
  * Project 2-ID = 00
