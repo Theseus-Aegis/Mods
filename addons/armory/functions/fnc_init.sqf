@@ -30,7 +30,7 @@ local _armoryAction = [
     {[_this select 2] call FUNC(openArmory)},
     {[_this select 2] call FUNC(canOpenArmory)},
     {},
-    _object
+    [_object, _player]
 ] call ACE_Interact_Menu_fnc_createAction;
 
 [_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;

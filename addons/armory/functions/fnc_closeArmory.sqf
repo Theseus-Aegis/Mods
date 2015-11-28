@@ -16,9 +16,9 @@
 #include "script_component.hpp"
 
 // Allow others to use the object's Armory
-GVAR(box) setVariable [QGVAR(inUse), nil];
+local _object = ACE_player getVariable [QGVAR(object), objNull];
+_object setVariable [QGVAR(inUse), nil, true];
 
 // Clean up variables
-GVAR(box) = nil;
 GVAR(selectedCategory) = nil;
 GVAR(armoryData) = nil;

@@ -22,6 +22,7 @@ _type = if (_type == "stash") then {"put"} else {"remove"};
 
 local _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
+local _object = ACE_player getVariable [QGVAR(object), objNull];
 
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
@@ -29,10 +30,13 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 if (_selectedItem == "" || _selectedAmount == "") exitWith {
     ACE_LOGERROR_2("Send data called with empty variables! Item: %1, Amount: %2",_selectedItem,_selectedAmount);
 };
+if (isNull _object) exitWith {
+    ACE_LOGERROR("Object is nil");
+};
 
 // @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
-    lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
+    lockerAction = [player, _type, _object, _selectedItem, _selectedAmount];
     publicVariableServer "lockerAction";
 };
 
