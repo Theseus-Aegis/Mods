@@ -52,9 +52,11 @@ class CfgVehicles {
         };
     };
     class GVAR(Locker): B_supplyCrate_F {
+        scope = 2;
+        scopeCurator = 2;
         author = ECSTRING(common,Author);
         displayName = CSTRING(Locker);
-        vehicleClass = "TAC";
+        ace_cargo_canLoad = 0;
 
         // Empty inventory
         class TransportBackpacks {};
