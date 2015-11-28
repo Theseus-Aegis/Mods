@@ -70,7 +70,7 @@ class CfgVehicles {
                 class GVAR(Open) {
                     displayName = CSTRING(Open);
                     condition = QUOTE(_target call FUNC(canOpenArmory));
-                    statement = QUOTE(_target call FUNC(openArmory));
+                    statement = QUOTE(_this call FUNC(openArmory));
                 };
             };
         };

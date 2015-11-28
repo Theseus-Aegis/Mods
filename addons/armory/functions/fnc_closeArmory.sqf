@@ -19,6 +19,8 @@
 local _object = ACE_player getVariable [QGVAR(object), objNull];
 _object setVariable [QGVAR(inUse), nil, true];
 
+ACE_player setVariable [QGVAR(object), nil, true];
+
 // Clean up variables
 GVAR(selectedCategory) = nil;
 GVAR(armoryData) = nil;

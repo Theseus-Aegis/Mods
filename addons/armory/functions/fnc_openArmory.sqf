@@ -22,7 +22,7 @@ params ["_object", "_player"];
 _object setVariable [QGVAR(inUse), true, true];
 
 // Set varaible for later reference
-_player setVariable [QGVAR(object), _object, true]
+_player setVariable [QGVAR(object), _object, true];
 
 // Create display and load main menu
 createDialog QGVAR(Display);
