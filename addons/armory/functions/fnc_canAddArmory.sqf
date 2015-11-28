@@ -20,6 +20,6 @@ params ["_object"];
 local _config = configFile >> "CfgVehicles" >> typeOf _object;
 
 (_object getVariable [QGVAR(notInUse), true]) &&
-{(getNumber (_config >> "transportMaxBackpacks") > 0} &&
+{getNumber (_config >> "transportMaxBackpacks") > 0} &&
 {getNumber (_config >> "transportMaxMagazines") > 0} &&
 {getNumber (_config >> "transportMaxWeapons") > 0}
