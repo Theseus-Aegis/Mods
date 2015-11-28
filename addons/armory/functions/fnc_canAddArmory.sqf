@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Checks if armory can be added to the object (object has inventory and is not in use).
+ * Checks if armory can be added to the object (object has inventory).
  *
  * Arguments:
  * 0: Object <OBJECT>
@@ -19,7 +19,6 @@ params ["_object"];
 
 local _config = configFile >> "CfgVehicles" >> typeOf _object;
 
-(_object getVariable [QGVAR(notInUse), true]) &&
-{getNumber (_config >> "transportMaxBackpacks") > 0} &&
+(getNumber (_config >> "transportMaxBackpacks") > 0) &&
 {getNumber (_config >> "transportMaxMagazines") > 0} &&
 {getNumber (_config >> "transportMaxWeapons") > 0}

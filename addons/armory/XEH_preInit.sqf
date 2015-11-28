@@ -3,6 +3,7 @@
 ADDON = false;
 
 PREP(canAddArmory);
+PREP(canOpenArmory);
 PREP(closeArmory);
 PREP(dialogControl_amountSelection);
 PREP(dialogControl_back);

@@ -28,7 +28,7 @@ local _armoryAction = [
     localize LSTRING(Open),
     "",
     {[_this select 2] call FUNC(openArmory)},
-    {true},
+    {[_this select 2] call FUNC(canOpenArmory)},
     {},
     _object
 ] call ACE_Interact_Menu_fnc_createAction;

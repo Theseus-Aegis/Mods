@@ -18,7 +18,7 @@
 params ["_object"];
 
 // Prevent others using the same Armory object
-_object setVariable [QGVAR(notInUse), false];
+_object setVariable [QGVAR(inUse), true, true];
 
 // Set global variable for later reference
 GVAR(box) = _object;

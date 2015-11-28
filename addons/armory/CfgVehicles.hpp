@@ -69,7 +69,7 @@ class CfgVehicles {
             class ACE_MainActions: ACE_MainActions {
                 class GVAR(Open) {
                     displayName = CSTRING(Open);
-                    condition = QUOTE(_target call FUNC(canAddArmory));
+                    condition = QUOTE(_target call FUNC(canOpenArmory));
                     statement = QUOTE(_target call FUNC(openArmory));
                 };
             };
