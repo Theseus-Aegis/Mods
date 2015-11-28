@@ -31,7 +31,7 @@ if (_selectedItem == "" || _selectedAmount == "") exitWith {
 };
 
 // @todo - change to ACE Events (in Apollo as well)
-if ((!isNil "ChronosLoaded" && {ChronosLoaded == "true"}) || {CHRONOS_DEBUG}) then {
+if (GVAR(system) == 1) then {
     lockerAction = [player, _type, GVAR(box), _selectedItem, _selectedAmount];
     publicVariableServer "lockerAction";
 };
