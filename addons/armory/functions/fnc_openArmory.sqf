@@ -17,7 +17,11 @@
 
 params ["_object"];
 
-GVAR(box) = _object; // Set global variable for later reference
+// Prevent others using the same Armory object
+_object setVariable [QGVAR(notInUse), false];
+
+// Set global variable for later reference
+GVAR(box) = _object;
 
 // Create display and load main menu
 createDialog QGVAR(Display);

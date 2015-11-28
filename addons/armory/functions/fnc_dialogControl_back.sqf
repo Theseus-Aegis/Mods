@@ -27,6 +27,6 @@ if (_type == "back") then {
 // Set Exit (and destroy GVARs)
 if (_type == "exit") then {
     ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnExit.paa))];
-    buttonSetAction [BACKBTN, QUOTE(closeDialog 0; GVAR(box) = nil; GVAR(selectedCategory) = nil; GVAR(armoryData) = nil)];
+    buttonSetAction [BACKBTN, QUOTE(call FUNC(closeArmory))];
     CTRL(BACKBTN) ctrlSetTooltip "Exit Armory";
 };
