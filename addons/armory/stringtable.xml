@@ -1,92 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Armory">
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>
+            <German>Waffenkammer-Spind öffnen</German>
         </Key>
         <Key ID="STR_TAC_Armory_Locker">
             <English>[TAC] Armory Locker</English>
+            <German>[TAC] Waffenkammer-Spind</German>
         </Key>
         <Key ID="STR_TAC_Armory_Module">
             <English>Armory</English>
+            <German>Waffenkammer</German>
         </Key>
         <Key ID="STR_TAC_Armory_ModuleDesc">
             <English>This module allows you to set Armory Locker on objects and tweak its settings.</English>
+            <German>Dieses Modul erlaubt es dir, ein Objekt dem Waffenkammer-Spind zuzuweisen und seine Einstellungen zu verändern.</German>
         </Key>
         <Key ID="STR_TAC_Armory_System">
             <English>System</English>
+            <German>System</German>
         </Key>
         <Key ID="STR_TAC_Armory_SystemDesc">
             <English>System used for compatibility assurance.</English>
+            <German>System um die Kompatibilität zu garantieren.</German>
         </Key>
         <Key ID="STR_TAC_Armory_System_Vanilla">
             <English>None (Vanilla)</English>
+            <German>Keine (Vanilla)</German>
         </Key>
         <Key ID="STR_TAC_Armory_System_Chronos">
             <English>Chronos</English>
+            <German>Chronos</German>
         </Key>
         <Key ID="STR_TAC_Armory_Objects">
             <English>Objects</English>
+            <German>Objekte</German>
         </Key>
         <Key ID="STR_TAC_Armory_ObjectsDesc">
             <English>List of object names that will have Armory Locker on them, separated by commas.</English>
+            <German>Liste aller Objektnamen, die dem Waffenkammer-Spind zugwiesen wurden, mit Kommas getrennt.</German>
         </Key>
-
-
         <Key ID="STR_TAC_Armory_BtnBackTooltip">
             <English>Back to Main Menu</English>
+            <German>Zurück zum Hauptmenü</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnExitTooltip">
             <English>Exit Armory</English>
+            <German>Waffenkammer verlassen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashItemTooltip">
             <English>Stash selected item</English>
+            <German>Ausgewählten Gegenstand wegpacken</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnTakeItemTooltip">
             <English>Take selected item</English>
+            <German>Ausgewählten Gegenstand nehmen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnRiflesTooltip">
             <English>Access Rifles</English>
+            <German>Auf Gewehre zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnPistolsTooltip">
             <English>Access Pistols</English>
+            <German>Auf Pistolen zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnLaunchersTooltip">
             <English>Access Launchers</English>
+            <German>Auf Werfer zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAmmoTooltip">
             <English>Access Ammo</English>
+            <German>Auf Munition zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnItemsTooltip">
             <English>Access Items</English>
+            <German>Auf Gegenstände zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAttachmentsTooltip">
             <English>Access Attachments</English>
+            <German>Auf Waffenaufsätze zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnBackpacksTooltip">
             <English>Access Backpacks</English>
+            <German>Auf Rucksäcke zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnApparelTooltip">
             <English>Access Apparel</English>
+            <German>Auf Bekleidung zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashTooltip">
             <English>Stash Container Contents</English>
+            <German>Containerinhalt wegpacken</German>
         </Key>
-
         <Key ID="STR_TAC_Armory_Notification_ChronosWorking">
             <English>Retrieving data, please stand by!</English>
+            <German>Rufe Daten ab, bitte warten!</German>
         </Key>
         <Key ID="STR_TAC_Armory_Notification_ChronosError">
             <English>Athena server is down!\n(Contact server administrator)</English>
+            <German>Athena Server ist offline!\n(Kontaktiere den Server Administrator)</German>
         </Key>
         <Key ID="STR_TAC_Armory_Notification_ContainsItemsWeapon">
             <English>Weapon must be without Attachments and Magazines for stashing!</English>
+            <German>Die Waffe kann nur ohne Magazin und Aufsätze weggepackt werden! </German>
         </Key>
         <Key ID="STR_TAC_Armory_Notification_ContainsItemsContainer">
             <English>Uniform/Vest/Backpack must be empty for stashing!</English>
+            <German>Uniform/Veste/Rucksack muss vor dem Wegpacken leer sein!</German>
         </Key>
         <Key ID="STR_TAC_Armory_Notification_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
+            <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
         </Key>
     </Package>
 </Project>

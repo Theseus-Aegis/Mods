@@ -1,33 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="HeavyLifter">
         <Key ID="STR_TAC_HeavyLifter_Helper">
             <English>Heavy Duty Hooks</English>
             <Spanish>Ganchos</Spanish>
+            <German>Schwerlasthaken</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attach">
             <English>Attach Hooks</English>
             <Spanish>Fijar Ganchos</Spanish>
+            <German>Schwerlasthaken befestigen</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detach">
             <English>Detach Hooks</English>
             <Spanish>Soltar Ganchos</Spanish>
+            <German>Schwerlasthaken lösen</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attaching">
             <English>Attaching Hooks ...</English>
             <Spanish>Fijando Ganchos ...</Spanish>
+            <German>Befestige Schwerlasthaken...</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detaching">
             <English>Detaching Hooks ...</English>
             <Spanish>Soltando Ganchos ...</Spanish>
+            <German>Löse Schwerlasthaken...</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attached">
             <English>Hooks Attached</English>
             <Spanish>Ganchos Fijados</Spanish>
+            <German>Schwerlasthaken befestigt</German>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detached">
             <English>Hooks Detached</English>
             <Spanish>Ganchos Sueltos</Spanish>
+            <German>Schwerlasthaken gelöst</German>
         </Key>
     </Package>
 </Project>
