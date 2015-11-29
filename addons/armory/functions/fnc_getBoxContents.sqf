@@ -15,17 +15,16 @@
  */
 #include "script_component.hpp"
 
-private ["_box", "_contents", "_itemCargo", "_weaponCargo", "_magazineCargo", "_backpackCargo"];
+private ["_contents", "_itemCargo", "_weaponCargo", "_magazineCargo", "_backpackCargo"];
 
-_box = GVAR(box);
-if (isNil "_box") exitWith {ACE_LOGERROR("box is nil")};
+local _object = ACE_player getVariable [QGVAR(object), objNull];
 
 _contents = [];
 
-_itemCargo = getItemCargo _box;
-_weaponCargo = getWeaponCargo _box;
-_magazineCargo = getMagazineCargo _box;
-_backpackCargo = getBackpackCargo _box;
+_itemCargo = getItemCargo _object;
+_weaponCargo = getWeaponCargo _object;
+_magazineCargo = getMagazineCargo _object;
+_backpackCargo = getBackpackCargo _object;
 
 _itemCargo params ["_itemClassNames", "_itemQuantity"];
 {

@@ -52,9 +52,11 @@ class CfgVehicles {
         };
     };
     class GVAR(Locker): B_supplyCrate_F {
+        scope = 2;
+        scopeCurator = 2;
         author = ECSTRING(common,Author);
         displayName = CSTRING(Locker);
-        vehicleClass = "TAC";
+        ace_cargo_canLoad = 0;
 
         // Empty inventory
         class TransportBackpacks {};
@@ -67,8 +69,8 @@ class CfgVehicles {
             class ACE_MainActions: ACE_MainActions {
                 class GVAR(Open) {
                     displayName = CSTRING(Open);
-                    condition = QUOTE(_target call FUNC(canAddArmory));
-                    statement = QUOTE(_target call FUNC(openArmory));
+                    condition = QUOTE(_target call FUNC(canOpenArmory));
+                    statement = QUOTE(_this call FUNC(openArmory));
                 };
             };
         };

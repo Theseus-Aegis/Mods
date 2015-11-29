@@ -164,6 +164,7 @@ class GVAR(RscListNBox) {
 class GVAR(Display) {
     idd = DISPLAYID;
     movingEnable = 1;
+    onUnload = QUOTE(call FUNC(closeArmory));
     class controlsBackground {
         class BackgroundPic: GVAR(RscPicture) {
             moving = 1;

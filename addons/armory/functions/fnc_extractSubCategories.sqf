@@ -19,7 +19,7 @@ params ["_armoryData"];
 
 private _subCategories = ["All"];
 {
-    private _subCategory = _x select 1;
+    _x params ["", "_subCategory"];
 
     if !(_subCategory in _subCategories) then {
         _subCategories pushBack _subCategory;

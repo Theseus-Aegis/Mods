@@ -18,7 +18,7 @@
 params ["_selectedCategory"];
 private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
 
-hintSilent "Retrieving data, please stand by!";
+hintSilent localize LSTRING(Notification_ChronosWorking);
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
 _loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);

@@ -5,7 +5,7 @@
             <English>Open Armory Locker</English>
         </Key>
         <Key ID="STR_TAC_Armory_Locker">
-            <English>Armory Locker</English>
+            <English>[TAC] Armory Locker</English>
         </Key>
         <Key ID="STR_TAC_Armory_Module">
             <English>Armory</English>
@@ -30,6 +30,63 @@
         </Key>
         <Key ID="STR_TAC_Armory_ObjectsDesc">
             <English>List of object names that will have Armory Locker on them, separated by commas.</English>
+        </Key>
+
+
+        <Key ID="STR_TAC_Armory_BtnBackTooltip">
+            <English>Back to Main Menu</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnExitTooltip">
+            <English>Exit Armory</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnStashItemTooltip">
+            <English>Stash selected item</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnTakeItemTooltip">
+            <English>Take selected item</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnRiflesTooltip">
+            <English>Access Rifles</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnPistolsTooltip">
+            <English>Access Pistols</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnLaunchersTooltip">
+            <English>Access Launchers</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnAmmoTooltip">
+            <English>Access Ammo</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnItemsTooltip">
+            <English>Access Items</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnAttachmentsTooltip">
+            <English>Access Attachments</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnBackpacksTooltip">
+            <English>Access Backpacks</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnApparelTooltip">
+            <English>Access Apparel</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnStashTooltip">
+            <English>Stash Container Contents</English>
+        </Key>
+
+        <Key ID="STR_TAC_Armory_Notification_ChronosWorking">
+            <English>Retrieving data, please stand by!</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Notification_ChronosError">
+            <English>Athena server is down!\n(Contact server administrator)</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Notification_ContainsItemsWeapon">
+            <English>Weapon must be without Attachments and Magazines for stashing!</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Notification_ContainsItemsContainer">
+            <English>Uniform/Vest/Backpack must be empty for stashing!</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Notification_ContainerFull">
+            <English>Container is full! Make space for retrieval.</English>
         </Key>
     </Package>
 </Project>

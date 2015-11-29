@@ -21,12 +21,12 @@ params ["_type"];
 if (_type == "back") then {
     ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnBack.paa))];
     buttonSetAction [BACKBTN, QUOTE(['main'] call FUNC(dialogControl))];
-    CTRL(BACKBTN) ctrlSetTooltip "Back to Main Menu";
+    CTRL(BACKBTN) ctrlSetTooltip localize LSTRING(BtnBackTooltip);
 };
 
 // Set Exit (and destroy GVARs)
 if (_type == "exit") then {
     ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnExit.paa))];
-    buttonSetAction [BACKBTN, QUOTE(closeDialog 0; GVAR(box) = nil; GVAR(selectedCategory) = nil; GVAR(armoryData) = nil)];
-    CTRL(BACKBTN) ctrlSetTooltip "Exit Armory";
+    buttonSetAction [BACKBTN, QUOTE(closeDialog 0; call FUNC(closeArmory))];
+    CTRL(BACKBTN) ctrlSetTooltip localize LSTRING(BtnExitTooltip);
 };

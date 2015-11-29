@@ -34,19 +34,11 @@ private _rowNum = 0; // Needed for proper row images and data
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
         // Get correct config
-        private _configCfg = "";
-        if (isText (configFile >> "CfgWeapons" >> _className >> "displayName")) then {
-            _configCfg = "CfgWeapons";
+        local _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        if (_configCfg == "") then {
+            _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
         };
-        if (isText (configFile >> "CfgMagazines" >> _className >> "displayName")) then {
-            _configCfg = "CfgMagazines";
-        };
-        if (isText (configFile >> "CfgVehicles" >> _className >> "displayName")) then {
-            _configCfg = "CfgVehicles";
-        };
-        if (isText (configFile >> "CfgGlasses" >> _className >> "displayName")) then {
-            _configCfg = "CfgGlasses";
-        };
+        if (_configCfg == "") exitWith {ACE_LOGERROR_1("Config Type not found for classname: %1",_className)};
 
         // Check sub-category for proper listing
         if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
