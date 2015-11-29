@@ -36,7 +36,7 @@ if (_selectedCategory == "stash") then {
     if (GVAR(system) == 1) then {
         _armoryData = [_selectedCategory] call FUNC(getDataChronos);
         if (_armoryData isEqualTo false) exitWith {
-            hintSilent "Athena server is down!\n(Contact server administrator)";
+            hintSilent localize LSTRING(Notification_ChronosError);
             _exit = true;
         };
     };
