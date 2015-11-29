@@ -18,7 +18,7 @@
 params ["_type"];
 
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
-_type = if (_type == "stash") then {"put"} else {"remove"};
+local _typeChronos = if (_type == "stash") then {"put"} else {"remove"};
 
 local _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
@@ -35,11 +35,18 @@ if (isNull _object) exitWith {
 };
 
 // Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
-if ([_selectedItem] call FUNC(containsItems)) exitWith {};
+if (_type == "stash") then {
+    if ([_selectedItem] call FUNC(containsItems)) exitWith {};
+};
+
+// Prevent taking if container is full
+if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
+    hintSilent localize LSTRING(Notification_ContainerFull);
+};
 
 // @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
-    lockerAction = [player, _type, _object, _selectedItem, _selectedAmount];
+    lockerAction = [player, _typeChronos, _object, _selectedItem, _selectedAmount];
     publicVariableServer "lockerAction";
 };
 

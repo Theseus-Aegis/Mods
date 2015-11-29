@@ -85,5 +85,8 @@
         <Key ID="STR_TAC_Armory_Notification_ContainsItemsContainer">
             <English>Uniform/Vest/Backpack must be empty for stashing!</English>
         </Key>
+        <Key ID="STR_TAC_Armory_Notification_ContainerFull">
+            <English>Container is full! Make space for retrieval.</English>
+        </Key>
     </Package>
 </Project>
