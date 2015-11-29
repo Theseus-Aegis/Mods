@@ -17,8 +17,8 @@
 
 params ["_itemClass"];
 
-local _itemType = [_itemClass] call ACE_Common_fnc_getItemType;
-local _return = false;
+private _itemType = [_itemClass] call ACE_Common_fnc_getItemType;
+private _return = false;
 
 // Weapons with Attachments or Magazines
 if (_itemType select 0 == "weapon") then {

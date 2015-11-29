@@ -17,7 +17,7 @@
 
 private ["_contents", "_itemCargo", "_weaponCargo", "_magazineCargo", "_backpackCargo"];
 
-local _object = ACE_player getVariable [QGVAR(object), objNull];
+private _object = ACE_player getVariable [QGVAR(object), objNull];
 
 _contents = [];
 

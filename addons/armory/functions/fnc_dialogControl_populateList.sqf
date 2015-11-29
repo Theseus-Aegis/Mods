@@ -34,7 +34,7 @@ private _rowNum = 0; // Needed for proper row images and data
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
         // Get correct config
-        local _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        private _configCfg = [_className] call ACE_Common_fnc_getConfigType;
         if (_configCfg == "") then {
             _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
         };
