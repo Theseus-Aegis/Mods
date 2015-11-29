@@ -34,22 +34,8 @@ if (isNull _object) exitWith {
     ACE_LOGERROR("Object is nil");
 };
 
-local _exit = false;
-// Prevent taking if is weapon with attachments
-if (([_selectedItem] call ACE_Common_fnc_getItemType) select 0 == "weapon") then {
-    {
-        if (_x select 0 == _selectedItem) then {
-            for "_i" from 1 to ((count _x) - 1) do {
-                if !(_i isEqualTo "") exitWith {
-                    hintSilent "Weapon must be without Attachments and Magazines for stashing!";
-                    _exit = true;
-                };
-            };
-        };
-    } forEach (weaponsItems _object);
-};
-
-if (_exit) exitWith {};
+// Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
+if ([_selectedItem] call FUNC(containsItems)) exitWith {};
 
 // @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
