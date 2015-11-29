@@ -35,6 +35,9 @@ local _rowNum = 0; // Needed for proper row images and data
     if (parseNumber _quantity > 0) then {
         // Get correct config
         local _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        if (_configCfg == "") then {
+            _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
+        };
         if (_configCfg == "") exitWith {ACE_LOGERROR_1("Config Type not found for classname: %1",_className)};
 
         // Check sub-category for proper listing

@@ -34,6 +34,9 @@ if (isNull _object) exitWith {
     ACE_LOGERROR("Object is nil");
 };
 
+// Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
+if ([_selectedItem] call FUNC(containsItems)) exitWith {};
+
 // @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
     lockerAction = [player, _type, _object, _selectedItem, _selectedAmount];
