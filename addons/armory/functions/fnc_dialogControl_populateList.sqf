@@ -19,13 +19,13 @@
 
 params ["_armoryData"];
 
-local _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
+private _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
 
 TRACE_2("Populating list",_armoryData,_selectedSubCategory);
 
 // Clear List
 lnbClear NLIST;
-local _rowNum = 0; // Needed for proper row images and data
+private _rowNum = 0; // Needed for proper row images and data
 
 // Fill List
 {
@@ -34,7 +34,7 @@ local _rowNum = 0; // Needed for proper row images and data
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
         // Get correct config
-        local _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        private _configCfg = [_className] call ACE_Common_fnc_getConfigType;
         if (_configCfg == "") then {
             _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
         };
@@ -42,8 +42,8 @@ local _rowNum = 0; // Needed for proper row images and data
 
         // Check sub-category for proper listing
         if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
-            local _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
-            local _tooltip = _displayName; // Display name gets cropped
+            private _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
+            private _tooltip = _displayName; // Display name gets cropped
 
             // Cut full name to prevent overlapping in shown name
             if ([_displayName] call CBA_fnc_strLen > DISPLAYNAME_LENGTH + 3) then {
@@ -60,7 +60,7 @@ local _rowNum = 0; // Needed for proper row images and data
             lnbSetData [NLIST, [_rowNum, 2], _quantity];
 
             // Set picture
-            local _picture = getText (configFile >> _configCfg >> _className >> "picture");
+            private _picture = getText (configFile >> _configCfg >> _className >> "picture");
             lnbSetPicture [NLIST, [_rowNum, 0], _picture];
             _rowNum = _rowNum + 1;
         };

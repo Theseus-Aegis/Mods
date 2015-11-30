@@ -17,7 +17,7 @@
 
 params ["_selectedCategory"];
 
-local _armoryData = [];
+private _armoryData = [];
 
 // Rifles
 if (_selectedCategory == "rifle") then {

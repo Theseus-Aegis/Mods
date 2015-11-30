@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-local _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
+private _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
 TRACE_1("Amount of selected item",_quantity);
 
 lbClear DROPDOWNAMOUNT;

@@ -17,7 +17,7 @@
 
 params ["_armoryData"];
 
-local _subCategories = ["All"];
+private _subCategories = ["All"];
 {
     _x params ["", "_subCategory"];
 

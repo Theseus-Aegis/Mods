@@ -18,7 +18,7 @@
 
 params ["_vehicle"];
 
-local _vehicleRole = assignedVehicleRole ACE_player;
+private _vehicleRole = assignedVehicleRole ACE_player;
 
 (_vehicle isKindOf "Air") &&
 {driver _vehicle == ACE_player ||

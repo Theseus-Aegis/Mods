@@ -25,8 +25,8 @@ ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
 } forEach [DROPDOWN, AMOUNT, NLIST];
 
 // Get box contents if selected category is stash, get data from Chronos if enabled or use preset data
-local _armoryData = [];
-local _exit = false;
+private _armoryData = [];
+private _exit = false;
 if (_selectedCategory == "stash") then {
     _armoryData = call FUNC(getBoxContents);
 } else {
@@ -45,7 +45,7 @@ if (_selectedCategory == "stash") then {
 if (_exit) exitWith {};
 
 // Extract sub-categories
-local _subCategories = [_armoryData] call FUNC(extractSubCategories);
+private _subCategories = [_armoryData] call FUNC(extractSubCategories);
 
 // Fill Dropdown
 lbClear DROPDOWN; // Clear Dropdown

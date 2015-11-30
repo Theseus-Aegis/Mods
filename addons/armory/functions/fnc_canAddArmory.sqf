@@ -17,7 +17,7 @@
 
 params ["_object"];
 
-local _config = configFile >> "CfgVehicles" >> typeOf _object;
+private _config = configFile >> "CfgVehicles" >> typeOf _object;
 
 (getNumber (_config >> "transportMaxBackpacks") > 0) &&
 {getNumber (_config >> "transportMaxMagazines") > 0} &&

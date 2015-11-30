@@ -18,11 +18,11 @@
 params ["_type"];
 
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
-local _typeChronos = if (_type == "stash") then {"put"} else {"remove"};
+private _typeChronos = if (_type == "stash") then {"put"} else {"remove"};
 
-local _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
-local _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
-local _object = ACE_player getVariable [QGVAR(object), objNull];
+private _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
+private _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
+private _object = ACE_player getVariable [QGVAR(object), objNull];
 
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
