@@ -1,5 +1,27 @@
 # Changelog
 
+## [v1.1.2](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.2) (2015-11-30)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.1...v1.1.2)
+
+**Implemented Features & Enhancements:**
+
+- Armory Improvements [\#48](https://github.com/Theseus-Aegis/tac-a3-mods/issues/48)
+- Prevent taking from Armory if container is full [\#81](https://github.com/Theseus-Aegis/tac-a3-mods/pull/81) ([jonpas](https://github.com/jonpas))
+- Stash Failsafes [\#79](https://github.com/Theseus-Aegis/tac-a3-mods/pull/79) ([jonpas](https://github.com/jonpas))
+- Misc Armory Improvements [\#78](https://github.com/Theseus-Aegis/tac-a3-mods/pull/78) ([jonpas](https://github.com/jonpas))
+- Add Armory Locker Zeus compatibility [\#77](https://github.com/Theseus-Aegis/tac-a3-mods/pull/77) ([jonpas](https://github.com/jonpas))
+- Prevent multiple people using same Armory Locker [\#76](https://github.com/Theseus-Aegis/tac-a3-mods/pull/76) ([jonpas](https://github.com/jonpas))
+
+**Closed issues:**
+
+- Replace local keyword with private [\#69](https://github.com/Theseus-Aegis/tac-a3-mods/issues/69)
+
+**Merged Pull Requests**
+
+- Added german translations [\#82](https://github.com/Theseus-Aegis/tac-a3-mods/pull/82) ([System98](https://github.com/System98))
+- Stringtable all hints [\#80](https://github.com/Theseus-Aegis/tac-a3-mods/pull/80) ([jonpas](https://github.com/jonpas))
+- Local to Private conversion [\#75](https://github.com/Theseus-Aegis/tac-a3-mods/pull/75) ([jonpas](https://github.com/jonpas))
+
 ## [v1.1.1](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.1) (2015-11-11)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.0...v1.1.1)
 
