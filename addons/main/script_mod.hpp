@@ -5,10 +5,10 @@
 #define MAJOR 1
 #define MINOR 1
 #define PATCHLVL 2
-#define BUILD 0
+#define BUILD 1
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 0.5
+#define REQUIRED_VERSION 1.54
