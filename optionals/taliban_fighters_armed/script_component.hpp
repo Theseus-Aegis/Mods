@@ -5,6 +5,7 @@
 #include "\x\tac\addons\main\script_macros.hpp"
 
 
+// += doesn't work correctly with inheritance
 #define MOD_WEAPONS "Throw", "Put"
 #define MOD_MAGAZINES ITEMS_2(HandGrenade)
 
