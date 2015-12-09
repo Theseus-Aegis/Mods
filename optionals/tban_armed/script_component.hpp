@@ -1,4 +1,4 @@
-#define COMPONENT taliban_fighters_armed
+#define COMPONENT tban_armed
 
 #include "\x\tac\addons\main\script_mod.hpp"
 
@@ -13,3 +13,10 @@
 #define ITEMS_3(item) #item, #item, #item
 #define ITEMS_4(item) #item, #item, #item, #item
 #define ITEMS_5(item) #item, #item, #item, #item, #item
+
+#define MACRO_VEHICLE_TBAN_ARMED \
+    scope = 2; \
+    scopeCurator = 2; \
+    side = 0; \
+    faction = "Tban"; \
+    author = ECSTRING(common,Author);
