@@ -26,7 +26,7 @@ if (_itemType select 0 == "weapon") then {
         if (_x select 0 == _itemClass) then {
             _x deleteAt 0; // Errors when combined with forEach
             {
-                if !(_x isEqualTo "") exitWith {
+                if !(_x in ["", []]) exitWith {
                     hintSilent localize LSTRING(Notification_ContainsItemsWeapon);
                     _return = true;
                 };
