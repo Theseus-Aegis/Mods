@@ -96,6 +96,7 @@ class CfgVehicles {
         respawnWeapons[] = {MOD_WEAPONS, "hgun_PDW2000_F"};
         magazines[] = {MOD_MAGAZINES, ITEMS_5(30rnd_9x21_mag)};
         respawnMagazines[] = {MOD_MAGAZINES, ITEMS_5(30rnd_9x21_mag)};
+        backpack = ""; // Fix nonexistent "B_FieldPack_PIFLMG" (part of another mod by EricJ)
     };
     class TBan_Recruit3NH: TBan_Fighter1 {
         weapons[] = {MOD_WEAPONS, "hgun_PDW2000_F"};
@@ -131,12 +132,14 @@ class CfgVehicles {
     // Vehicles
     class B_G_Offroad_01_armed_F;
     class Tban_O_Offroad_01_F: B_G_Offroad_01_armed_F {
+        _generalMacro = "Tban_O_Offroad_01_F";
         scopeCurator = 2;
         crew = "TBan_Fighter1";
     };
 
     class B_G_Offroad_01_F;
     class GVAR(offroad): B_G_Offroad_01_F {
+        _generalMacro = QGVAR(offroad);
         MACRO_VEHICLE_TBAN_ARMED
         displayName = "Taliban Offroad";
         crew = "TBan_Fighter3NH";
@@ -144,6 +147,7 @@ class CfgVehicles {
 
     class B_G_Van_01_transport_F;
     class GVAR(truck): B_G_Van_01_transport_F {
+        _generalMacro = QGVAR(truck);
         MACRO_VEHICLE_TBAN_ARMED
         displayname = "Taliban Truck";
         crew = "TBan_Fighter3NH";
