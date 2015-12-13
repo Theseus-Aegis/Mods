@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [object] call tac_armory_fnc_openArmory
+ * [object, player] call tac_armory_fnc_openArmory
  *
  * Public: No
  */

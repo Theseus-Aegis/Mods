@@ -29,6 +29,20 @@ if (_selectedCategory == "rifle") then {
         ["arifle_Katiba_GL_F", "Assault Rifle", "Blabla, this item, blabla", "45"],
         ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "18"],
         ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "20"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
+        ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
         ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"]
     ];
 };

@@ -1,19 +1,19 @@
 // Size definitions
-// Base
-#define TITLE_X safezoneX + 0.3925 * safezoneW
-#define TITLE_Y safezoneY + 0.233 * safezoneH
-#define TITLE_W safezoneW * 0.20
-#define TITLE_H safezoneH * 0.023
+#define SIZEX ((safezoneW / safezoneH) min 1.2) // Grid width (from aspect ratio, 1.2 clamp for the largest possible size)
+#define SIZEY (SIZEX / 1.2) // Grid height (from width)
+#define W_PART(num) (num * (SIZEX / 40)) // Split grid into 40 columns
+#define H_PART(num) (num * (SIZEY / 25)) // Split grid into 25 rows
+#define X_PART(num) (W_PART(num) + (safezoneX + (safezoneW - SIZEX)/2)) // Translate by columns and find left of grid
+#define Y_PART(num) (H_PART(num) + (safezoneY + (safezoneH - SIZEY)/2)) // Translate by rows and find top of grid
 
-#define PIC_X 0.235
-#define PIC_Y 0.115
+#define PIC_X X_PART(11.15)
+#define PIC_Y Y_PART(2.8)
+#define PIC_W W_PART(8.5)
+#define PIC_H H_PART(2.2)
 #define BTN_Y PIC_Y
+#define BTN_W PIC_W * 0.64
 #define BTN_W_WIDE BTN_W * 1.5
-
-#define TEXTPIC_X PIC_X + 0.41
-#define TEXTPIC_Y PIC_Y + 0.04
-#define TEXTPIC_W safezoneW * 0.045
-#define TEXTPIC_H safezoneH * 0.023
+#define BTN_H PIC_H
 
 // Col 1
 #define PIC_X_C1 PIC_X
@@ -45,11 +45,6 @@
 #define ST_LEFT 0x00
 #define LB_TEXTURES 0x10
 
-// Size definitions
-#define PIC_W safezoneW * 0.105
-#define PIC_H safezoneH * 0.047
-#define BTN_W PIC_W * 0.64
-#define BTN_H PIC_H
 
 class GVAR(RscPicture) {
     idc = -1;
@@ -107,10 +102,6 @@ class GVAR(RscCombo) {
     soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1, 1};
     soundCollapse[] = {"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1, 1};
     soundSelect[] = {"\a3\ui_f\data\Sound\RscListbox\soundSelect", 0.09, 1};
-    x = PIC_X - 0.03;
-    y = PIC_Y - 0.03;
-    w = safezoneW * 0.245;
-    h = safezoneH * 0.03;
     arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
     arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
     wholeHeight = safezoneH * 0.3;
@@ -143,12 +134,8 @@ class GVAR(RscListNBox) {
     drawSideArrows = 0;
     idcLeft = -1;
     idcRight = -1;
-    rowHeight = 0.05;
+    rowHeight = 0.051;
     columns[] = {0, 0.18, 0.8};
-    x = PIC_X - 0.03;
-    y = PIC_Y + 0.08;
-    w = safezoneW * 0.245;
-    h = safezoneH * 0.3;
     class ListScrollBar {
         color[] = {1, 1, 1, 0.6};
         colorActive[] = {1, 1, 1, 1};
@@ -168,10 +155,10 @@ class GVAR(Display) {
     class controlsBackground {
         class BackgroundPic: GVAR(RscPicture) {
             moving = 1;
-            x = safezoneX + 0.2875 * safezoneW;
-            y = safezoneY + 0.125 * safezoneH;
-            w = safezoneW * 0.425;
-            h = safezoneH * 0.75;
+            x = X_PART(3);
+            y = Y_PART(-4.5);
+            w = W_PART(34);
+            h = H_PART(34);
             text = QUOTE(PATHTOF(UI\background.paa));
         };
     };
@@ -179,41 +166,49 @@ class GVAR(Display) {
         // Title
         class Title: GVAR(RscPicture) {
             idc = TITLE;
-            x = TITLE_X;
-            y = TITLE_Y;
-            w = TITLE_W;
-            h = TITLE_H;
+            x = X_PART(11.4);
+            y = Y_PART(0.4);
+            w = W_PART(16);
+            h = H_PART(1.1);
         };
 
         // Dropdown Menu
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
             onLBSelChanged = QUOTE([GVAR(armoryData)] call FUNC(dialogControl_populateList));
+            x = X_PART(10.3);
+            y = Y_PART(2.3);
+            w = W_PART(19.3);
+            h = H_PART(1.3);
         };
 
         // Amount
         class Amount: GVAR(RscPicture) {
             idc = AMOUNT;
-            x = TEXTPIC_X;
-            y = TEXTPIC_Y;
-            w = TEXTPIC_W;
-            h = TEXTPIC_H;
+            x = X_PART(25);
+            y = Y_PART(3.9);
+            w = W_PART(4);
+            h = H_PART(1.1);
         };
 
         // List
         class List: GVAR(RscListNBox) {
             idc = NLIST;
             onLBSelChanged  = QUOTE(call FUNC(dialogControl_amountSelection); call FUNC(dialogControl_takestash));
+            x = X_PART(10);
+            y = Y_PART(5);
+            w = W_PART(20);
+            h = H_PART(14);
         };
 
         // Dropdown Amount Selection
         class DropdownAmount: GVAR(RscCombo) {
             idc = DROPDOWNAMOUNT;
             onLBSelChanged = QUOTE(call FUNC(dialogControl_takestash));
-            x = PIC_X + 0.4;
-            y = PIC_Y + 0.675;
-            w = safezoneW * 0.05;
-            h = safezoneH * 0.03;
+            x = X_PART(24.6);
+            y = Y_PART(20.2);
+            w = W_PART(3.9);
+            h = H_PART(1.3);
         };
 
         // Exit-Back

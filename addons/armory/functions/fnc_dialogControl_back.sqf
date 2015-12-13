@@ -27,6 +27,6 @@ if (_type == "back") then {
 // Set Exit (and destroy GVARs)
 if (_type == "exit") then {
     ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnExit.paa))];
-    buttonSetAction [BACKBTN, QUOTE(closeDialog 0; call FUNC(closeArmory))];
+    buttonSetAction [BACKBTN, QUOTE(closeDialog 0)];
     CTRL(BACKBTN) ctrlSetTooltip localize LSTRING(BtnExitTooltip);
 };
