@@ -2,14 +2,15 @@
 
 class CfgPatches {
     class ADDON {
-        units[] = {};
+        units[] = {QGVAR(offroad), QGVAR(truck)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cha_av8b", "tac_heavylifter"};
-        author[]= {"Jonpas"};
+        requiredAddons[] = {"tac_common", "Taliban_fighters", "hlcweapons_aks"};
+        author[]= {"Jonpas", "Rory"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };
 
+#include "CfgGroups.hpp"
 #include "CfgVehicles.hpp"
