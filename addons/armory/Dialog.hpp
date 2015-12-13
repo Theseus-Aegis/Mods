@@ -102,10 +102,6 @@ class GVAR(RscCombo) {
     soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1, 1};
     soundCollapse[] = {"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1, 1};
     soundSelect[] = {"\a3\ui_f\data\Sound\RscListbox\soundSelect", 0.09, 1};
-    x = PIC_X - 0.03;
-    y = PIC_Y - 0.03;
-    w = safezoneW * 0.245;
-    h = safezoneH * 0.03;
     arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
     arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
     wholeHeight = safezoneH * 0.3;
@@ -138,12 +134,8 @@ class GVAR(RscListNBox) {
     drawSideArrows = 0;
     idcLeft = -1;
     idcRight = -1;
-    rowHeight = 0.05;
+    rowHeight = 0.051;
     columns[] = {0, 0.18, 0.8};
-    x = PIC_X - 0.03;
-    y = PIC_Y + 0.08;
-    w = safezoneW * 0.245;
-    h = safezoneH * 0.3;
     class ListScrollBar {
         color[] = {1, 1, 1, 0.6};
         colorActive[] = {1, 1, 1, 1};
@@ -184,31 +176,39 @@ class GVAR(Display) {
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
             onLBSelChanged = QUOTE([GVAR(armoryData)] call FUNC(dialogControl_populateList));
+            x = X_PART(10.3);
+            y = Y_PART(2.3);
+            w = W_PART(19.3);
+            h = H_PART(1.3);
         };
 
         // Amount
         class Amount: GVAR(RscPicture) {
             idc = AMOUNT;
-            x = PIC_X + 0.41;
-            y = PIC_Y + 0.04;
-            w = safezoneW * 0.045;
-            h = safezoneH * 0.023;
+            x = X_PART(25);
+            y = Y_PART(3.9);
+            w = W_PART(4);
+            h = H_PART(1.1);
         };
 
         // List
         class List: GVAR(RscListNBox) {
             idc = NLIST;
             onLBSelChanged  = QUOTE(call FUNC(dialogControl_amountSelection); call FUNC(dialogControl_takestash));
+            x = X_PART(10);
+            y = Y_PART(5);
+            w = W_PART(20);
+            h = H_PART(14);
         };
 
         // Dropdown Amount Selection
         class DropdownAmount: GVAR(RscCombo) {
             idc = DROPDOWNAMOUNT;
             onLBSelChanged = QUOTE(call FUNC(dialogControl_takestash));
-            x = PIC_X + 0.4;
-            y = PIC_Y + 0.675;
-            w = safezoneW * 0.05;
-            h = safezoneH * 0.03;
+            x = X_PART(24.6);
+            y = Y_PART(20.2);
+            w = W_PART(3.9);
+            h = H_PART(1.3);
         };
 
         // Exit-Back
