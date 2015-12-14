@@ -1,5 +1,27 @@
 # Changelog
 
+## [v1.1.3](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.3) (2015-12-14)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.2...v1.1.3)
+
+**Implemented Features & Enhancements:**
+
+- Add optional - Taliban Fighters weapons and groups [\#85](https://github.com/Theseus-Aegis/tac-a3-mods/issues/85)
+- Optional Taliban Fighters Armed [\#86](https://github.com/Theseus-Aegis/tac-a3-mods/pull/86) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- Misaligned UI elements in Armory [\#71](https://github.com/Theseus-Aegis/tac-a3-mods/issues/71)
+- Wrong Armory GUI Offset [\#58](https://github.com/Theseus-Aegis/tac-a3-mods/issues/58)
+
+**Closed issues:**
+
+- Items duplicated on Armory stashing [\#72](https://github.com/Theseus-Aegis/tac-a3-mods/issues/72)
+
+**Merged Pull Requests**
+
+- Fix Armory UI scaling on different resolutions [\#88](https://github.com/Theseus-Aegis/tac-a3-mods/pull/88) ([jonpas](https://github.com/jonpas))
+- Fix stash fail-safe [\#87](https://github.com/Theseus-Aegis/tac-a3-mods/pull/87) ([jonpas](https://github.com/jonpas))
+
 ## [v1.1.2](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.2) (2015-11-30)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.1...v1.1.2)
 
