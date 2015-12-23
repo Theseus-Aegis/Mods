@@ -5,24 +5,32 @@
  * Arguments:
  * 0: Controller <OBJECT>
  * 1: Name <STRING>
+ * 2: Targets <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [controller, "range"] call tac_shootingrange_fnc_checkConfig;
+ * [controller, "range", [target1, target2]] call tac_shootingrange_fnc_checkConfig;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_controller", "_name"];
+params ["_controller", "_name", "_targets"];
 
 private _duration = _controller getVariable [QGVAR(configDuration), nil];
 private _pauseDuration = _controller getVariable [QGVAR(configPauseDuration), nil];
-if (isNil "_duration" || {isNil "_pauseDuration"}) exitWith { ACE_LOGERROR("No configuration found!"); };
+private _targetChangeEvent = (_targets select 0) getVariable [QGVAR(targetChangeEvent), nil];
+if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_targetChangeEvent"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
 private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
-private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration];
 
-[_text, 3.5] call ACE_Common_fnc_displayTextStructured;
+private _textEvent = localize LSTRING(Time);
+if (_targetChangeEvent == 2) then {
+    _textEvent = localize LSTRING(Hit);
+};
+
+private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s<br/>%8:<br/>%9", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(TargetChangeEvent), _textEvent];
+
+[_text, 4.5] call ACE_Common_fnc_displayTextStructured;

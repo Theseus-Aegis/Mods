@@ -55,8 +55,11 @@ private _pauseDurations = [];
 // Extract countdown time
 private _countdownTime = _logic getVariable "CountdownTime";
 
+// Extract target change event
+private _targetChangeEvent = _logic getVariable "TargetChangeEvent";
+
 
 // Prepare with actions
-[_name, _targets, _controllers, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTime] call FUNC(create);
+[_name, _targets, _controllers, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTime, _targetChangeEvent] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

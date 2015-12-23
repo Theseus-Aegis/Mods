@@ -23,7 +23,8 @@ params ["_controller", "_controllers", "_name", "_targets", "_countdownTime"];
 
 private _duration = _controller getVariable [QGVAR(configDuration), nil];
 private _pauseDuration = _controller getVariable [QGVAR(configPauseDuration), nil];
-if (isNil "_duration" || {isNil "_pauseDuration"}) exitWith { ACE_LOGERROR("No configuration found!"); };
+private _targetChangeEvent = (_targets select 0) getVariable [QGVAR(targetChangeEvent), nil];
+if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_targetChangeEvent"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
 
 // Prepare targets
@@ -46,6 +47,9 @@ private _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>By: %8", l
 private _size = [4.5, 4] select (_name isEqualTo "");
 [_text, _size, true] call FUNC(notifyVicinity);
 
+// Prepare score variables
+GVAR(score) = 0;
+GVAR(maxScore) = 0;
 
 // Countdown timer notifications
 {
@@ -66,7 +70,7 @@ private _size = [4.5, 4] select (_name isEqualTo "");
 
 // Start pop-up handling and final countdown notification
 [{
-    params ["_controller", "_pauseDuration", "_duration", "_targets", "_controller", "_controllers", "_name"];
+    params ["_controller", "_pauseDuration", "_duration", "_targets", "_controller", "_controllers", "_name", "_targetChangeEvent"];
 
     // Exit if not running (eg. stopped)
     if !(_controller getVariable [QGVAR(running), false]) exitWith {};
@@ -82,6 +86,12 @@ private _size = [4.5, 4] select (_name isEqualTo "");
     nopop = true;
 
     // Start PFH
-    [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targets, _controller, _controllers, _name]] call CBA_fnc_addPerFrameHandler;
+    [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targets, _controller, _controllers, _name, _targetChangeEvent]] call CBA_fnc_addPerFrameHandler;
 
-}, [_controller, _pauseDuration, _duration, _targets, _controller, _controllers, _name], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+}, [_controller, _pauseDuration, _duration, _targets, _controller, _controllers, _name, _targetChangeEvent], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+
+
+if (_targetChangeEvent == 2) then {
+    // Player count bullets fired
+    GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
+};

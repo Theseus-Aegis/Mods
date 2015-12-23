@@ -58,6 +58,21 @@
         <Key ID="STR_TAC_ShootingRange_CountdownTimeDesc">
             <English>Time it takes from pressing start to first target pop-up. Default: 9</English>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetChangeEvent">
+            <English>Target Change Event</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetChangeEventDesc">
+            <English>Event which triggers target change. Default: Time</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Time">
+            <English>Time</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Hit">
+            <English>Hit</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Trigger">
+            <English>Trigger</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Start">
             <English>Start</English>
         </Key>
@@ -105,6 +120,15 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_Warning">
             <English>Warning!</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Hits">
+            <English>Hits</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TimeElapsed">
+            <English>Time Elapsed</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_By">
+            <English>By</English>
         </Key>
     </Package>
 </Project>

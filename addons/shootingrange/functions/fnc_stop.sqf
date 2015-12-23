@@ -10,6 +10,7 @@
  * 4: Success <BOOL> (default: false)
  * 5: Score <NUMBER> (default: 0)
  * 6: Maximum Score <NUMBER> (default: 0)
+ * 7: Time Elapsed <NUMBER> (default: 0)
  *
  * Return Value:
  * None
@@ -21,12 +22,11 @@
  */
 #include "script_component.hpp"
 
-params ["_controller", "_controllers", "_name", "_targets", ["_success", false], ["_score", 0], ["_maxScore", 0]];
+params ["_controller", "_controllers", "_name", "_targets", ["_success", false], ["_score", 0], ["_maxScore", 0], ["_timeElapsed", 0]];
 
 // Set targets to original
 {
     _x animate ["terc", 0]; // Up
-    _x setVariable [QGVAR(starter), nil, true];
 } forEach _targets;
 
 // Set variables
@@ -39,10 +39,18 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
 
 if (_success) then {
-    private _scorePercentage = round (_score / _maxScore * 100);
-    private _text = format ["%1%2 %3<br/><br/>By: %4<br/>Hits: %5/%6 (%7%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), _playerName, _score, _maxScore, _scorePercentage, "%"];
-    private _size = [3.5, 3] select (_name isEqualTo "");
+    private _scorePercentage = 0;
+    if (_maxScore > 0) then {
+        _scorePercentage = round (_score / _maxScore * 100);
+    };
 
+    private _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7/%8 (%9%10)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(By), _playerName, localize LSTRING(Hits), _score, _maxScore, _scorePercentage, "%"];
+
+    if (_timeElapsed > 0) then {
+        _text = format ["%1<br/>%2: %3", _text, localize LSTRING(TimeElapsed), _timeElapsed];
+    };
+
+    private _size = [3.5, 3] select (_name isEqualTo "");
     [_text, _size, true] call FUNC(notifyVicinity);
 } else {
     private _text = format ["%1%2 %3<br/><br/>By: %4", localize LSTRING(Range), _name, localize LSTRING(Stopped), _playerName];
@@ -50,3 +58,8 @@ if (_success) then {
 
     [_text, _size] call ACE_Common_fnc_displayTextStructured;
 };
+
+
+// Cleanup variables
+GVAR(score) = nil;
+GVAR(maxScore) = nil;

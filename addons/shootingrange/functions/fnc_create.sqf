@@ -11,12 +11,13 @@
  * 5: Pause Durations <ARRAY> (default: [1, 2, 3, 4, 5])
  * 6: Default Pause Duration <NUMBER> (default: 5)
  * 7: Countdown Time <NUMBER> (default: 9)
+ * 8: Target Change Event (1 = Time, 2 = Hit, 3 = Trigger) <NUMBER> (default: 1)
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", [target1, target2], [controller1, controller2], [30, 60], 60,  [3, 5], 5, 10] call tac_shootingrange_fnc_create;
+ * ["range", [target1, target2], [controller1, controller2], [30, 60], 60,  [3, 5], 5, 10, 1] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
  */
@@ -30,7 +31,8 @@ params [
     ["_defaultDuration", DURATION_DEFAULT, [0] ],
     ["_pauseDurations", [], [[]] ],
     ["_defaultPauseDuration", PAUSEDURATION_DEFAULT, [0] ],
-    ["_countdownTime", COUNTDOWNTIME_DEFAULT, [0] ]
+    ["_countdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
+    ["_targetChangeEvent", TARGETCHANGEEVENT_DEFAULT, [0] ]
 ];
 
 // Verify data
@@ -70,14 +72,14 @@ _durations sort true;
 _pauseDurations sort true;
 
 
-TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDurations,_defaultPauseDuration,_countdownTime);
+TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDurations,_defaultPauseDuration,_countdownTime,_targetChangeEvent);
 
 
 // Set up controllers
 {
     // Default configuration
-    _x setVariable [QGVAR(configDuration), DURATION_DEFAULT, true];
-    _x setVariable [QGVAR(configPauseDuration), PAUSEDURATION_DEFAULT, true];
+    _x setVariable [QGVAR(configDuration), _defaultDuration, true];
+    _x setVariable [QGVAR(configPauseDuration), _defaultPauseDuration, true];
 
     // Add main shooting course interaction
     private _actionRange = [
@@ -136,7 +138,7 @@ TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDur
         {(_this select 2) call FUNC(checkConfig)},
         {true},
         {},
-        [_x, _name]
+        [_x, _name, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
 
     private _actionConfigDuration = [
@@ -159,15 +161,64 @@ TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDur
         [_name, _x, _controllers, _pauseDurations]
     ] call ACE_Interact_Menu_fnc_createAction;
 
+    private _actionConfigCountdownTime = [
+        QGVAR(RangeConfigCountdownTime),
+        localize LSTRING(CountdownTime),
+        "",
+        {true},
+        {true},
+        {(_this select 2) call FUNC(addConfigCountdownTimes)},
+        [_name, _x, _controllers, _pauseDurations]
+    ] call ACE_Interact_Menu_fnc_createAction;
+
+    private _actionConfigTargetChangeEvent = [
+        QGVAR(RangeConfigTargetChangeEvent),
+        localize LSTRING(TargetChangeEvent),
+        "",
+        {true},
+        {true},
+        {},
+        []
+    ] call ACE_Interact_Menu_fnc_createAction;
+
     [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACE_Interact_Menu_fnc_addActionToObject;
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionCheckConfig] call ACE_Interact_Menu_fnc_addActionToObject;
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigDuration] call ACE_Interact_Menu_fnc_addActionToObject;
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigPauseDuration] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetChangeEvent] call ACE_Interact_Menu_fnc_addActionToObject;
+
+
+    // Add target change event configuration actions
+    private _actionConfigTargetChangeEventTime = [
+        QGVAR(RangeConfigTargetChangeEventTime),
+        localize LSTRING(Time),
+        "",
+        {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
+        {true},
+        {},
+        [_name, 1, _targets]
+    ] call ACE_Interact_Menu_fnc_createAction;
+
+    private _actionConfigTargetChangeEventHit = [
+        QGVAR(RangeConfigTargetChangeEventHit),
+        localize LSTRING(Hit),
+        "",
+        {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
+        {true},
+        {},
+        [_name, 2, _targets]
+    ] call ACE_Interact_Menu_fnc_createAction;
+
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventTime] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventHit] call ACE_Interact_Menu_fnc_addActionToObject;
 } forEach _controllers;
 
 
 // Set up targets
 {
     _x setVariable [QGVAR(controllers), _controllers, true];
+    _x setVariable [QGVAR(targetChangeEvent), _targetChangeEvent, true];
+    _x setVariable [QGVAR(targets), _targets, true];
     _x addEventHandler ["HitPart", { (_this select 0) call FUNC(handleHitPart); }];
 } forEach _targets;

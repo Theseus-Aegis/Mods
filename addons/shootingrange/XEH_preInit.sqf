@@ -15,6 +15,7 @@ PREP(popupPFH);
 PREP(popupPFHexit);
 PREP(setConfigDuration);
 PREP(setConfigPauseDuration);
+PREP(setConfigTargetChangeEvent);
 PREP(start);
 PREP(stop);
 

@@ -59,6 +59,26 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = COUNTDOWNTIME_DEFAULT;
             };
+            class TargetChangeEvent {
+                displayName = CSTRING(TargetChangeEvent);
+                description = CSTRING(TargetChangeEventDesc);
+                typeName = "NUMBER";
+                class values {
+                    class Time {
+                        name = CSTRING(Time);
+                        value = 1;
+                        default = 1;
+                    };
+                    class Hit {
+                        name = CSTRING(Hit);
+                        value = 2;
+                    };
+                    /*class Trigger {
+                        name = CSTRING(Trigger);
+                        value = 3;
+                    };*/
+                };
+            };
         };
         class ModuleDescription {
             description = CSTRING(ModuleStaticDesc);
