@@ -7,6 +7,12 @@
         <Key ID="STR_TAC_ShootingRange_ModuleDesc">
             <English>This module allows you to set up a Shooting Range.</English>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_Name">
+            <English>Name</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_NameDesc">
+            <English>Name of the current range.</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Targets">
             <English>Targets</English>
         </Key>
@@ -23,31 +29,58 @@
             <English>Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
-            <English>List of available shooting durations, separated by commas.</English>
+            <English>List of available shooting durations in seconds, separated by commas. Default: 60</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurations">
             <English>Pause Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurationsDesc">
-            <English>List of available pause durations during target pop-ups, separated by commas.</English>
+            <English>List of available pause durations during target pop-ups in seconds, separated by commas. Default: 5</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_StartCourse">
-            <English>Start Shooting Course</English>
+        <Key ID="STR_TAC_ShootingRange_Start">
+            <English>Start</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_StopCourse">
-            <English>Stop Shooting Course</English>
+        <Key ID="STR_TAC_ShootingRange_Stop">
+            <English>Stop</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_Infinite">
-            <English>Infinite</English>
+        <Key ID="STR_TAC_ShootingRange_Configure">
+            <English>Configure</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Configuration">
+            <English>Configuration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_ConfigurationCheck">
+            <English>Check Current</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Seconds">
             <English>Seconds</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_CourseStarted">
-            <English>Shooting course started</English>
+        <Key ID="STR_TAC_ShootingRange_Started">
+            <English>Started</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_CourseStopped">
-            <English>Shooting course stopped</English>
+        <Key ID="STR_TAC_ShootingRange_Stopped">
+            <English>Stopped</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Finished">
+            <English>Finished</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Configured">
+            <English>Configured</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Duration">
+            <English>Duration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_PauseDuration">
+            <English>Pause Duration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Infinite">
+            <English>Infinite</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_GetReady">
+            <English>Get Ready!</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Go">
+            <English>Go!</English>
         </Key>
     </Package>
 </Project>

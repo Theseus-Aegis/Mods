@@ -2,13 +2,19 @@
 
 ADDON = false;
 
-PREP(addDurationActions);
-PREP(addPauseDurationActions);
-PREP(canStartRange);
-PREP(canStopRange);
-PREP(createRange);
+PREP(addConfigDurations);
+PREP(addConfigPauseDurations);
+PREP(canStart);
+PREP(canStop);
+PREP(checkConfig);
+PREP(create);
 PREP(moduleInit);
-PREP(startRange);
-PREP(stopRange);
+PREP(notifyVicinity);
+PREP(popupPFH);
+PREP(popupPFHexit);
+PREP(setConfigDuration);
+PREP(setConfigPauseDuration);
+PREP(start);
+PREP(stop);
 
 ADDON = true;

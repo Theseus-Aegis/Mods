@@ -11,6 +11,12 @@ class CfgVehicles {
         isDisposable = 0;
         //icon = QUOTE(PATHTOF(UI\Icon_Module_ShootingRange_ca.paa));//@todo
         class Arguments {
+            class Name {
+                displayName = CSTRING(Name);
+                description = CSTRING(NameDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
             class Targets {
                 displayName = CSTRING(Targets);
                 description = CSTRING(TargetsDesc);

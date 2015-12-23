@@ -12,14 +12,18 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-if (!isServer) exitWith {};
+// Exit on Headless Client
+if (!hasInterface && !isDedicated) exitWith {};
 
 params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
+if (isNull _logic) exitWith {};
+
+// Extract name
+private _name = _logic getVariable ["Name", ""];
 
 // Extract target objects and add synchronized objects
 private _targets = [_logic getVariable ["Targets", ""], true, true] call ACE_Common_fnc_parseList;
@@ -43,6 +47,6 @@ private _pauseDurations = [];
 
 
 // Prepare with actions
-[_targets, _controllers, _durations, _pauseDurations] call FUNC(createRange);
+[_name, _targets, _controllers, _durations, _pauseDurations] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

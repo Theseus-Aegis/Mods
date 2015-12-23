@@ -9,7 +9,7 @@
  * Can Start Range <BOOL>
  *
  * Example:
- * [controller] call tac_shootingrange_fnc_canStartRange;
+ * [controller] call tac_shootingrange_fnc_canStart;
  *
  * Public: No
  */
@@ -17,4 +17,4 @@
 
 params ["_controller"];
 
-!(_controller getVariable [QGVAR(rangeRunning), false])
+!(_controller getVariable [QGVAR(running), false])
