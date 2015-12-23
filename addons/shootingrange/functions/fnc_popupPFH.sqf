@@ -32,13 +32,15 @@ if !(_controller getVariable [QGVAR(running), false]) exitWith {
 
 // Remove when time limit (duration) reached - success
 if (diag_tickTime >= _timeStart + _duration) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, true, 5 /*@todo _score*/] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, true, GVAR(score), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 
 // Keep original array on first run, delete last target from index in all subsequent runs
 private _targetsTemp = +_targets; // Copy array (for deleteAt usage)
 if (GVAR(firstRun)) then {
     GVAR(firstRun) = false;
+    GVAR(score) = 0;
+    GVAR(maxScore) = 0;
 } else {
     _targetsTemp deleteAt GVAR(randomIndex);
     TRACE_2("Target Index Removal",count _targetsTemp,count _targets);
@@ -58,3 +60,4 @@ TRACE_3("Targets",GVAR(randomIndex),GVAR(targetUp),GVAR(nextTarget));
 
 // Prepare for next loop
 GVAR(targetUp) = GVAR(nextTarget);
+GVAR(maxScore) = GVAR(maxScore) + 1;

@@ -24,5 +24,5 @@ params ["_name", "_controllers", "_pauseDuration"];
 } forEach _controllers;
 
 // Notification
-private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Module), _name, localize LSTRING(Configured), localize LSTRING(PauseDuration), _pauseDuration];
+private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Configured), localize LSTRING(PauseDuration), _pauseDuration];
 [_text, 3] call ACE_Common_fnc_displayTextStructured;

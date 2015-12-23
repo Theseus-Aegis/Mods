@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="ShootingRange">
-        <Key ID="STR_TAC_ShootingRange_Module">
-            <English>Shooting Range</English>
+        <Key ID="STR_TAC_ShootingRange_ModuleStatic">
+            <English>Shooting Range (Static)</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_ModuleDesc">
+        <Key ID="STR_TAC_ShootingRange_ModuleStaticDesc">
             <English>This module allows you to set up a Shooting Range.</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Range">
+            <English>Shooting Range</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Name">
             <English>Name</English>
@@ -29,13 +32,31 @@
             <English>Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
-            <English>List of available shooting durations in seconds, separated by commas. Default: 60</English>
+            <English>List of available shooting durations in seconds, separated by commas.</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultDuration">
+            <English>Default Duration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultDurationDesc">
+            <English>Default shooting duration in seconds. Default: 60</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurations">
             <English>Pause Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurationsDesc">
-            <English>List of available pause durations during target pop-ups in seconds, separated by commas. Default: 5</English>
+            <English>List of available pause durations during target pop-ups in seconds, separated by commas.</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultPauseDuration">
+            <English>Default Pause Duration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultPauseDurationDesc">
+            <English>Default pause duration during target pop-ups in seconds. Default: 3</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_CountdownTime">
+            <English>Countdown Time</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_CountdownTimeDesc">
+            <English>Time it takes from pressing start to first target pop-up. Default: 9</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Start">
             <English>Start</English>
@@ -81,6 +102,9 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_Go">
             <English>Go!</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Warning">
+            <English>Warning!</English>
         </Key>
     </Package>
 </Project>

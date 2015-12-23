@@ -10,6 +10,7 @@
  * 4: Targets <ARRAY>
  * 5: Success <BOOL>
  * 6: Score <NUMBER> (default: 0)
+ * 7: Maximum Score <NUMBER> (default: 0)
  *
  * Return Value:
  * None
@@ -21,19 +22,21 @@
  */
 #include "script_component.hpp"
 
-params ["_idPFH", "_controller", "_controllers", "_name", "_targets", "_success", ["_score", 0]];
+params ["_idPFH", "_controller", "_controllers", "_name", "_targets", "_success", ["_score", 0], ["_maxScore", 0]];
+
+// Remove PFH
+[_idPFH] call CBA_fnc_removePerFrameHandler;
+
+// Enable automatic pop-ups
+nopop = false;
+
+// Finish or Stop
+[_controller, _controllers, _name, _targets, _success, _score, _maxScore] call FUNC(stop);
 
 // Cleanup variables
 GVAR(firstRun) = nil;
 GVAR(randomIndex) = nil;
 GVAR(nextTarget) = nil;
 GVAR(targetUp) = nil;
-
-// Enable automatic pop-ups
-nopop = false;
-
-// Finish or Stop
-[_controller, _controllers, _name, _targets, _success, _score] call FUNC(stop);
-
-// Remove PFH
-[_idPFH] call CBA_fnc_removePerFrameHandler;
+GVAR(score) = nil;
+GVAR(maxScore) = nil;

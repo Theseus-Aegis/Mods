@@ -3,8 +3,8 @@ class CfgVehicles {
     class GVAR(module): ACE_Module {
         author = ECSTRING(common,Author);
         category = "TAC";
-        displayName = CSTRING(Module);
-        function = QFUNC(moduleInit);
+        displayName = CSTRING(ModuleStatic);
+        function = QFUNC(moduleStaticInit);
         scope = 2;
         isGlobal = 1; // Global
         isTriggerActivated = 0;
@@ -35,15 +35,33 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
-            class PauseDurations {
+            class DefaultDuration {
+                displayName = CSTRING(DefaultDuration);
+                description = CSTRING(DefaultDurationDesc);
+                typeName = "NUMBER";
+                defaultValue = DURATION_DEFAULT;
+            };
+            class PauseDuration {
                 displayName = CSTRING(PauseDurations);
                 description = CSTRING(PauseDurationsDesc);
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class DefaultPauseDuration {
+                displayName = CSTRING(DefaultPauseDuration);
+                description = CSTRING(DefaultPauseDurationDesc);
+                typeName = "NUMBER";
+                defaultValue = PAUSEDURATION_DEFAULT;
+            };
+            class CountdownTime {
+                displayName = CSTRING(CountdownTime);
+                description = CSTRING(CountdownTimeDesc);
+                typeName = "NUMBER";
+                defaultValue = COUNTDOWNTIME_DEFAULT;
+            };
         };
         class ModuleDescription {
-            description = CSTRING(ModuleDesc);
+            description = CSTRING(ModuleStaticDesc);
         };
     };
 };

@@ -25,5 +25,5 @@ params ["_name", "_controllers", "_duration"];
 
 // Notification
 private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
-private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Module), _name, localize LSTRING(Configured), localize LSTRING(Duration), _textDuration];
+private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Configured), localize LSTRING(Duration), _textDuration];
 [_text, 3] call ACE_Common_fnc_displayTextStructured;
