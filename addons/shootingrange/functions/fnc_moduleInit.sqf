@@ -58,8 +58,11 @@ private _countdownTime = _logic getVariable "CountdownTime";
 // Extract target change event
 private _targetChangeEvent = _logic getVariable "TargetChangeEvent";
 
+// Exctract triggers
+private _triggers = [_logic getVariable "Triggers", true, true] call ACE_Common_fnc_parseList;
+
 
 // Prepare with actions
-[_name, _targets, _controllers, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTime, _targetChangeEvent] call FUNC(create);
+[_name, _targets, _controllers, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTime, _targetChangeEvent, _triggers] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

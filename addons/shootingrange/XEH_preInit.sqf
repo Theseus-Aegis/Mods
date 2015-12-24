@@ -9,7 +9,7 @@ PREP(canStop);
 PREP(checkConfig);
 PREP(create);
 PREP(handleHitPart);
-PREP(moduleStaticInit);
+PREP(moduleInit);
 PREP(notifyVicinity);
 PREP(popupPFH);
 PREP(popupPFHexit);

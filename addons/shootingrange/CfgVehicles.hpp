@@ -1,9 +1,9 @@
 class CfgVehicles {
     class ACE_Module;
-    class GVAR(module): ACE_Module {
+    class GVAR(Module): ACE_Module {
         author = ECSTRING(common,Author);
         category = "TAC";
-        displayName = CSTRING(ModuleStatic);
+        displayName = CSTRING(Range);
         function = QFUNC(moduleStaticInit);
         scope = 2;
         isGlobal = 1; // Global
@@ -73,15 +73,21 @@ class CfgVehicles {
                         name = CSTRING(Hit);
                         value = 2;
                     };
-                    /*class Trigger {
+                    class Trigger {
                         name = CSTRING(Trigger);
                         value = 3;
-                    };*/
+                    };
                 };
+            };
+            class Triggers {
+                displayName = CSTRING(Triggers);
+                description = CSTRING(TriggersDesc);
+                typeName = "STRING";
+                defaultValue = "";
             };
         };
         class ModuleDescription {
-            description = CSTRING(ModuleStaticDesc);
+            description = CSTRING(ModuleDesc);
         };
     };
 };

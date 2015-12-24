@@ -33,7 +33,7 @@ params ["_idPFH", "_controller", "_controllers", "_name", "_targets", "_targetCh
 nopop = false;
 
 // Finish or Stop
-[_controller, _controllers, _name, _targets, _success, _score, _maxScore] call FUNC(stop);
+[_controller, _controllers, _name, _targets, _success, _score, _maxScore, _timeElapsed] call FUNC(stop);
 
 // Cleanup variables
 GVAR(firstRun) = nil;
@@ -42,7 +42,7 @@ GVAR(nextTarget) = nil;
 GVAR(targetUp) = nil;
 
 // Remove Fired EH if needed
-if (_targetChangeEvent == 2) then {
+if (_targetChangeEvent > 1) then {
     ACE_player removeEventHandler ["Fired", GVAR(firedEHid)];
     GVAR(firedEHid) = nil;
 };

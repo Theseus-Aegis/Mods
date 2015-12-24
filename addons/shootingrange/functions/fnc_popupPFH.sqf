@@ -38,7 +38,7 @@ if (diag_tickTime >= _timeStart + _duration) exitWith {
 
 
 // Exit if target change event is not "Time" (only handle duration and first target)
-if (_targetChangeEvent == 2) exitWith {
+if (_targetChangeEvent > 1) exitWith {
     if (GVAR(firstRun)) then {
         GVAR(firstRun) = false;
 

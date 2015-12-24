@@ -12,6 +12,7 @@
  * 6: Default Pause Duration <NUMBER> (default: 5)
  * 7: Countdown Time <NUMBER> (default: 9)
  * 8: Target Change Event (1 = Time, 2 = Hit, 3 = Trigger) <NUMBER> (default: 1)
+ * 9: Triggers <ARRAY> (default: [])
  *
  * Return Value:
  * None
@@ -32,7 +33,8 @@ params [
     ["_pauseDurations", [], [[]] ],
     ["_defaultPauseDuration", PAUSEDURATION_DEFAULT, [0] ],
     ["_countdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
-    ["_targetChangeEvent", TARGETCHANGEEVENT_DEFAULT, [0] ]
+    ["_targetChangeEvent", TARGETCHANGEEVENT_DEFAULT, [0] ],
+    ["_triggers", [], [[]] ]
 ];
 
 // Verify data
@@ -42,6 +44,10 @@ if (_targets isEqualTo [] || {_controllers isEqualTo []}) exitWith {
 
 if (_countdownTime < COUNTDOWNTIME_LOWEST) then {
     ACE_LOGWARNING("Countdown Time field/argument is below 5! Reverted to default value.");
+};
+
+if (_targetChangeEvent == 3 && {_triggers isEqualTo []}) exitWith {
+    ACE_LOGERROR("Triggers field/argument must NOT be empty when Trigger is used as Target Change Event!");
 };
 
 
@@ -72,7 +78,7 @@ _durations sort true;
 _pauseDurations sort true;
 
 
-TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDurations,_defaultPauseDuration,_countdownTime,_targetChangeEvent);
+TRACE_9("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDurations,_defaultPauseDuration,_countdownTime,_targetChangeEvent,_triggers);
 
 
 // Set up controllers
@@ -146,9 +152,9 @@ TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDur
         localize LSTRING(Duration),
         "",
         {true},
-        {true},
+        {((_this select 2) select 4) getVariable [QGVAR(targetChangeEvent)] < 3},
         {(_this select 2) call FUNC(addConfigDurations)},
-        [_name, _x, _controllers, _durations]
+        [_name, _x, _controllers, _durations, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
 
     private _actionConfigPauseDuration = [
@@ -176,9 +182,9 @@ TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDur
         localize LSTRING(TargetChangeEvent),
         "",
         {true},
-        {true},
+        {((_this select 2) select 0) getVariable [QGVAR(targetChangeEvent)] < 3},
         {},
-        []
+        [_targets]
     ] call ACE_Interact_Menu_fnc_createAction;
 
     [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACE_Interact_Menu_fnc_addActionToObject;
@@ -189,29 +195,31 @@ TRACE_8("Data",_name,_targets,_controllers,_durations,_defaultDuration,_pauseDur
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetChangeEvent] call ACE_Interact_Menu_fnc_addActionToObject;
 
 
-    // Add target change event configuration actions
-    private _actionConfigTargetChangeEventTime = [
-        QGVAR(RangeConfigTargetChangeEventTime),
-        localize LSTRING(Time),
-        "",
-        {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
-        {true},
-        {},
-        [_name, 1, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    if (_targetChangeEvent < 3) then {
+        // Add target change event configuration actions
+        private _actionConfigTargetChangeEventTime = [
+            QGVAR(RangeConfigTargetChangeEventTime),
+            localize LSTRING(Time),
+            "",
+            {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
+            {true},
+            {},
+            [_name, 1, _targets]
+        ] call ACE_Interact_Menu_fnc_createAction;
 
-    private _actionConfigTargetChangeEventHit = [
-        QGVAR(RangeConfigTargetChangeEventHit),
-        localize LSTRING(Hit),
-        "",
-        {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
-        {true},
-        {},
-        [_name, 2, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+        private _actionConfigTargetChangeEventHit = [
+            QGVAR(RangeConfigTargetChangeEventHit),
+            localize LSTRING(Hit),
+            "",
+            {(_this select 2) call FUNC(setConfigTargetChangeEvent)},
+            {true},
+            {},
+            [_name, 2, _targets]
+        ] call ACE_Interact_Menu_fnc_createAction;
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventTime] call ACE_Interact_Menu_fnc_addActionToObject;
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventHit] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventTime] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigTargetChangeEvent)], _actionConfigTargetChangeEventHit] call ACE_Interact_Menu_fnc_addActionToObject;
+    };
 } forEach _controllers;
 
 

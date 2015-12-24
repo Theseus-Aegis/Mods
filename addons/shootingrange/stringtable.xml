@@ -1,14 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="ShootingRange">
-        <Key ID="STR_TAC_ShootingRange_ModuleStatic">
-            <English>Shooting Range (Static)</English>
-        </Key>
-        <Key ID="STR_TAC_ShootingRange_ModuleStaticDesc">
-            <English>This module allows you to set up a Shooting Range.</English>
-        </Key>
         <Key ID="STR_TAC_ShootingRange_Range">
             <English>Shooting Range</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_ModuleDesc">
+            <English>This module allows you to set up a Shooting Range.</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Name">
             <English>Name</English>
@@ -32,7 +29,7 @@
             <English>Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
-            <English>List of available shooting durations in seconds, separated by commas.</English>
+            <English>List of available shooting durations in seconds, separated by commas. Redundant if Trigger is selected in Target Change Event field.</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDuration">
             <English>Default Duration</English>
@@ -44,7 +41,7 @@
             <English>Pause Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurationsDesc">
-            <English>List of available pause durations during target pop-ups in seconds, separated by commas.</English>
+            <English>List of available pause durations during target pop-ups in seconds, separated by commas. Used as time from entering a trigger to target pop-up if Trigger is selected in Target Change Event field.</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultPauseDuration">
             <English>Default Pause Duration</English>
@@ -62,7 +59,13 @@
             <English>Target Change Event</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetChangeEventDesc">
-            <English>Event which triggers target change. Default: Time</English>
+            <English>Event which triggers target change. Trigger requires Trigger field. Default: Time</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Triggers">
+            <English>Triggers</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TriggersDesc">
+            <English>List of triggers used as target change event, separated by commas. Must be in same order as they are connected with targets.</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Time">
             <English>Time</English>

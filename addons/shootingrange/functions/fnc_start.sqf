@@ -40,12 +40,22 @@ if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_targetChangeEvent"
 
 
 // Started notification (including players in vicinity)
-private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
 private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
-private _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>By: %8", localize LSTRING(Range), _name, localize LSTRING(Started), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, _playerName];
+private _text = "";
+private _size = 0;
 
-private _size = [4.5, 4] select (_name isEqualTo "");
+if (_targetChangeEvent < 3) then {
+    private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
+    _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>By: %8", localize LSTRING(Range), _name, localize LSTRING(Started), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, _playerName];
+    _size = 4.5;
+} else {
+    _text = format ["%1%2 %3<br/><br/>%6: %7s<br/><br/>By: %8", localize LSTRING(Range), _name, localize LSTRING(Started), localize LSTRING(PauseDuration), _pauseDuration, _playerName];
+    _size = 4;
+};
+
+private _size = [_size, _size - 0.5] select (_name isEqualTo "");
 [_text, _size, true] call FUNC(notifyVicinity);
+
 
 // Prepare score variables
 GVAR(score) = 0;
@@ -91,7 +101,7 @@ GVAR(maxScore) = 0;
 }, [_controller, _pauseDuration, _duration, _targets, _controller, _controllers, _name, _targetChangeEvent], _countdownTime] call ACE_Common_fnc_waitAndExecute;
 
 
-if (_targetChangeEvent == 2) then {
+if (_targetChangeEvent > 1) then {
     // Player count bullets fired
     GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
 };
