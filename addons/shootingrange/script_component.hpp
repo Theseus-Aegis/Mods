@@ -12,15 +12,18 @@
 #include "\z\ace\addons\main\script_macros.hpp"
 
 
+#define MODE_DEFAULT 1
+
 #define DURATIONS_DEFAULT [0, 30, 60, 150, 300]
 #define DURATION_DEFAULT 60
 
 #define PAUSEDURATIONS_DEFAULT [1, 2, 3, 4, 5]
 #define PAUSEDURATION_DEFAULT 3
 
+#define COUNTDOWNTIMES_DEFAULT [6, 9, 12, 15]
 #define COUNTDOWNTIME_DEFAULT 9
 #define COUNTDOWNTIME_LOWEST 5
 
-#define TARGETCHANGEEVENT_DEFAULT 1
-
 #define NOTIFY_DISTANCE 100
+
+#define TIME_ROUND_CHARS 4

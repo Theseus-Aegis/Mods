@@ -20,7 +20,7 @@
 params ["_name", "_controllers", "_duration"];
 
 {
-    _x setVariable [QGVAR(configDuration), _duration, true];
+    _x setVariable [QGVAR(duration), _duration, true];
 } forEach _controllers;
 
 // Notification

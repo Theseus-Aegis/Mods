@@ -19,20 +19,21 @@
 
 params ["_controller", "_name", "_targets"];
 
-private _duration = _controller getVariable [QGVAR(configDuration), nil];
-private _pauseDuration = _controller getVariable [QGVAR(configPauseDuration), nil];
-private _targetChangeEvent = (_targets select 0) getVariable [QGVAR(targetChangeEvent), nil];
-if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_targetChangeEvent"}) exitWith { ACE_LOGERROR("No configuration found!"); };
+private _duration = _controller getVariable [QGVAR(duration), nil];
+private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
+private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
+private _mode = (_targets select 0) getVariable [QGVAR(mode), nil];
+if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
-if (_targetChangeEvent < 3) then {
+if (_mode < 3) then {
     private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
-    private _textEvent = [localize LSTRING(Time), localize LSTRING(Hit)] select (_targetChangeEvent == 2);
+    private _textEvent = [localize LSTRING(Timed), localize LSTRING(Hit)] select (_mode == 2);
 
-    private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s<br/>%8:<br/>%9", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(TargetChangeEvent), _textEvent];
+    private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s<br/>%8: %9s<br/>%10:<br/>%11", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(CountdownTime), _countdownTime, localize LSTRING(Mode), _textEvent];
 
-    [_text, 4.5] call ACE_Common_fnc_displayTextStructured;
+    [_text, 5] call ACE_Common_fnc_displayTextStructured;
 } else {
-    private _text = format ["%1 %2 %3<br/><br/>%4: %5s<br/>%6:<br/>%7", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(TargetChangeEvent), localize LSTRING(Trigger)];
+    private _text = format ["%1 %2 %3<br/><br/>%4: %5s<br/>%6:<br/>%7", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(CountdownTime), _countdownTime, localize LSTRING(Mode), localize LSTRING(Trigger)];
 
     [_text, 4] call ACE_Common_fnc_displayTextStructured;
 };

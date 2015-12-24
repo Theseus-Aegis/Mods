@@ -4,7 +4,7 @@ class CfgVehicles {
         author = ECSTRING(common,Author);
         category = "TAC";
         displayName = CSTRING(Range);
-        function = QFUNC(moduleStaticInit);
+        function = QFUNC(moduleInit);
         scope = 2;
         isGlobal = 1; // Global
         isTriggerActivated = 0;
@@ -28,6 +28,30 @@ class CfgVehicles {
                 description = CSTRING(ControllersDesc);
                 typeName = "STRING";
                 defaultValue = "";
+            };
+            class Mode {
+                displayName = CSTRING(Mode);
+                description = CSTRING(ModeDesc);
+                typeName = "NUMBER";
+                class values {
+                    class Time {
+                        name = CSTRING(Timed);
+                        value = 1;
+                        default = 1;
+                    };
+                    class HitTimeLimited {
+                        name = CSTRING(HitTimeLimited);
+                        value = 2;
+                    };
+                    /*class HitTargetLimited {
+                        name = CSTRING(HitTargetLimited);
+                        value = 2;
+                    };*/
+                    class Trigger {
+                        name = CSTRING(Trigger);
+                        value = 3;
+                    };
+                };
             };
             class Durations {
                 displayName = CSTRING(Durations);
@@ -53,35 +77,21 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = PAUSEDURATION_DEFAULT;
             };
-            class CountdownTime {
-                displayName = CSTRING(CountdownTime);
-                description = CSTRING(CountdownTimeDesc);
+            class CountdownTimes {
+                displayName = CSTRING(CountdownTimes);
+                description = CSTRING(CountdownTimesDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
+            class DefaultCountdownTime {
+                displayName = CSTRING(DefaultCountdownTime);
+                description = CSTRING(DefaultCountdownTimeDesc);
                 typeName = "NUMBER";
                 defaultValue = COUNTDOWNTIME_DEFAULT;
             };
-            class TargetChangeEvent {
-                displayName = CSTRING(TargetChangeEvent);
-                description = CSTRING(TargetChangeEventDesc);
-                typeName = "NUMBER";
-                class values {
-                    class Time {
-                        name = CSTRING(Time);
-                        value = 1;
-                        default = 1;
-                    };
-                    class Hit {
-                        name = CSTRING(Hit);
-                        value = 2;
-                    };
-                    class Trigger {
-                        name = CSTRING(Trigger);
-                        value = 3;
-                    };
-                };
-            };
-            class Triggers {
-                displayName = CSTRING(Triggers);
-                description = CSTRING(TriggersDesc);
+            class TriggerMarkers {
+                displayName = CSTRING(TriggerMarkers);
+                description = CSTRING(TriggerMarkersDesc);
                 typeName = "STRING";
                 defaultValue = "";
             };

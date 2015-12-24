@@ -32,6 +32,9 @@ _targets append (synchronizedObjects _logic);
 // Exctract controller objects
 private _controllers = [_logic getVariable "Controllers", true, true] call ACE_Common_fnc_parseList;
 
+// Extract target change event
+private _mode = _logic getVariable "Mode";
+
 // Extract duration string and convert to numbers
 private _durationsString = [_logic getVariable "Durations", true, false] call ACE_Common_fnc_parseList;
 private _durations = [];
@@ -42,9 +45,6 @@ private _durations = [];
 // Extract default duration
 private _defaultDuration = _logic getVariable "DefaultDuration";
 
-// Extract default duration
-private _defaultPauseDuration = _logic getVariable "DefaultPauseDuration";
-
 // Extract pause duration string and convert to numbers
 private _pauseDurationsString = [_logic getVariable "PauseDurations", true, false] call ACE_Common_fnc_parseList;
 private _pauseDurations = [];
@@ -52,17 +52,20 @@ private _pauseDurations = [];
     _pauseDurations pushBack (parseNumber _x);
 } forEach _pauseDurationsString;
 
-// Extract countdown time
-private _countdownTime = _logic getVariable "CountdownTime";
+// Extract default pause duration
+private _defaultPauseDuration = _logic getVariable "DefaultPauseDuration";
 
-// Extract target change event
-private _targetChangeEvent = _logic getVariable "TargetChangeEvent";
+// Extract countdown times
+private _countdownTimes = [_logic getVariable "CountdownTimes", true, false] call ACE_Common_fnc_parseList;
+
+// Extract default countdown time
+private _defaultCountdownTime = _logic getVariable "DefaultCountdownTime";
 
 // Exctract triggers
-private _triggers = [_logic getVariable "Triggers", true, true] call ACE_Common_fnc_parseList;
+private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] call ACE_Common_fnc_parseList;
 
 
 // Prepare with actions
-[_name, _targets, _controllers, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTime, _targetChangeEvent, _triggers] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

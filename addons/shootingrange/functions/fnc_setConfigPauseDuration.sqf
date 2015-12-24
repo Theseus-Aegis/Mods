@@ -20,7 +20,7 @@
 params ["_name", "_controllers", "_pauseDuration"];
 
 {
-    _x setVariable [QGVAR(configPauseDuration), _pauseDuration, true];
+    _x setVariable [QGVAR(pauseDuration), _pauseDuration, true];
 } forEach _controllers;
 
 // Notification
