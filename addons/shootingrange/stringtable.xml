@@ -59,7 +59,7 @@
             <English>Pause Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurationsDesc">
-            <English>List of available pause durations during target pop-ups in seconds, separated by commas. Redundant in Trigger Mode. Default: 1, 2, 3, 4, 5</English>
+            <English>List of available pause durations during target pop-ups in seconds, separated by commas. Only used in Timed Mode. Default: 1, 2, 3, 4, 5</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultPauseDuration">
             <English>Default Pause Duration</English>

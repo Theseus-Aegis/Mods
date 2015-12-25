@@ -57,7 +57,7 @@ if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
     };
 } forEach _countdownTimes;
 
-if (_mode == 4 && (_triggerMarkers isEqualTo [] || {count _triggerMarkers != count _targets})) exitWith {
+if (_mode == 4 && {_triggerMarkers isEqualTo [] || {count _triggerMarkers != count _targets}}) exitWith {
     ACE_LOGERROR("Trigger Markers field/argument must NOT be empty and must have same number of elements when Trigger Mode is used!");
 };
 
@@ -202,13 +202,13 @@ _countdownTimes sort true;
 
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetAmount] call ACE_Interact_Menu_fnc_addActionToObject;
 
-    if (_mode in [1, 2]) then {
+    if (_mode < 4) then {
         private _actionConfigPauseDuration = [
             QGVAR(RangeConfigPauseDuration),
             localize LSTRING(PauseDuration),
             "",
             {true},
-            {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 4},
+            {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] == 1},
             {(_this select 2) call FUNC(addConfigPauseDurations)},
             [_name, _x, _controllers, _pauseDurations, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
