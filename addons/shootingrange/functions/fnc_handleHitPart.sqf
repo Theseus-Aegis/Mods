@@ -27,9 +27,6 @@
 
 params ["_target", "_shooter", "", "_impactPosition", "", "", "", "", "", "", "_directHit"];
 
-diag_log _impactPosition;
-diag_log (_target worldToModel _impactPosition);
-
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 
 // Exit if not running

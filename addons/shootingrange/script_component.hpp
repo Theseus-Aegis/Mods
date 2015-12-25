@@ -27,6 +27,10 @@
 #define COUNTDOWNTIME_DEFAULT 9
 #define COUNTDOWNTIME_LOWEST 5
 
+
 #define NOTIFY_DISTANCE 100
+
+#define HIT_HEAD_CENTER [0,0.175,0.665] //@todo accuracy rating
+#define HIT_TORSO_CENTER [0,0.175,0.175] //@todo accuracy rating
 
 #define TIME_ROUND_CHARS 4
