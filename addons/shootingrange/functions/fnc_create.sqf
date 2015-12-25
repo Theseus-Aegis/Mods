@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Creates a shooting range.
+ * Creates a shooting range. Local effect, must be called on each client machine.
  *
  * Arguments:
  * 0: Name <STRING>
@@ -108,11 +108,11 @@ _countdownTimes sort true;
 
 // Set up controllers
 {
-    // Default configuration
-    _x setVariable [QGVAR(duration), _defaultDuration, true];
-    _x setVariable [QGVAR(targetAmount), _defaultTargetAmount, true];
-    _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration, true];
-    _x setVariable [QGVAR(countdownTime), _defaultCountdownTime, true];
+    // Default client configuration
+    _x setVariable [QGVAR(duration), _defaultDuration];
+    _x setVariable [QGVAR(targetAmount), _defaultTargetAmount];
+    _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration];
+    _x setVariable [QGVAR(countdownTime), _defaultCountdownTime];
 
     // Add main shooting course interaction
     private _actionRange = [
@@ -310,9 +310,9 @@ if (_mode == 4) then {
 
 // Set up targets
 {
-    _x setVariable [QGVAR(targets), _targets, true];
-    _x setVariable [QGVAR(controllers), _controllers, true];
-    _x setVariable [QGVAR(mode), _mode, true];
-    _x setVariable [QGVAR(triggers), _triggers, true];
+    _x setVariable [QGVAR(targets), _targets];
+    _x setVariable [QGVAR(controllers), _controllers];
+    _x setVariable [QGVAR(mode), _mode];
+    _x setVariable [QGVAR(triggers), _triggers];
     _x addEventHandler ["HitPart", { (_this select 0) call FUNC(handleHitPart); }];
 } forEach _targets;

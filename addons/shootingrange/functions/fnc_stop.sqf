@@ -27,6 +27,7 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 // Set targets to original
 {
     _x animate ["terc", 0]; // Up
+    _x setVariable [QGVAR(starter), nil, true];
 } forEach _targets;
 
 // Set variables

@@ -42,6 +42,6 @@ private _currentTargetGroup = [];
 {
     private _targetGroup = _x;
     {
-        _x setVariable [QGVAR(targetGroup), _targetGroup, true];
+        _x setVariable [QGVAR(targetGroup), _targetGroup];
     } forEach _x;
 } forEach _targetGroups;
