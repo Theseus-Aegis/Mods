@@ -163,8 +163,8 @@
         <Key ID="STR_TAC_ShootingRange_By">
             <English>By</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_WrongTarget">
-            <English>Wrong target!</English>
+        <Key ID="STR_TAC_ShootingRange_TargetHitBy">
+            <English>Target hit by</English>
         </Key>
     </Package>
 </Project>
