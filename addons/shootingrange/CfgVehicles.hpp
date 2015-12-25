@@ -40,16 +40,16 @@ class CfgVehicles {
                         default = 1;
                     };
                     class HitTimeLimited {
-                        name = CSTRING(HitTimeLimited);
+                        name = CSTRING(HitTimeLimit);
                         value = 2;
                     };
-                    /*class HitTargetLimited {
-                        name = CSTRING(HitTargetLimited);
-                        value = 2;
-                    };*/
+                    class HitTargetLimited {
+                        name = CSTRING(HitTargetLimit);
+                        value = 3;
+                    };
                     class Trigger {
                         name = CSTRING(Trigger);
-                        value = 3;
+                        value = 4;
                     };
                 };
             };
@@ -64,6 +64,18 @@ class CfgVehicles {
                 description = CSTRING(DefaultDurationDesc);
                 typeName = "NUMBER";
                 defaultValue = DURATION_DEFAULT;
+            };
+            class TargetAmounts {
+                displayName = CSTRING(TargetAmounts);
+                description = CSTRING(TargetAmountsDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
+            class DefaultTargetAmount {
+                displayName = CSTRING(DefaultTargetAmount);
+                description = CSTRING(DefaultTargetAmountDesc);
+                typeName = "NUMBER";
+                defaultValue = TARGETAMOUNT_DEFAULT;
             };
             class PauseDuration {
                 displayName = CSTRING(PauseDurations);

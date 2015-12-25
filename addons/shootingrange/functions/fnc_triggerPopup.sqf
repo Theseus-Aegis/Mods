@@ -4,13 +4,13 @@
  *
  * Arguments:
  * 0: Target <OBJECT>
- * 1: Up (true) / Down (false) <BOOL>
+ * 1: Up (0) / Down (1) <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [target, true] call tac_shootingrange_fnc_triggerPopup;
+ * [target, 0] call tac_shootingrange_fnc_triggerPopup;
  *
  * Public: No
  */
@@ -18,8 +18,9 @@
 
 params ["_target", "_up"];
 
-if (_up) then {
-    _target animate ["terc", 0]; // Up
-} else {
-    _target animate ["terc", 1]; // Down
-};
+private _targetGroup = _target getVariable [QGVAR(targetGroup), []];
+if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); };
+
+{
+    _x animate ["terc", _up];
+} forEach _targetGroup;

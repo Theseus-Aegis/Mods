@@ -6,23 +6,23 @@
  * 0: Name <STRING>
  * 1: Controllers <ARRAY>
  * 2: Countdown Time <NUMBER>
+ * 3: Targets <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", [controller1, controller2], 9] call tac_shootingrange_fnc_setConfigCountdownTime;
+ * ["range", [controller1, controller2], 9, [target1, target2]] call tac_shootingrange_fnc_setConfigCountdownTime;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_name", "_controllers", "_countdownTime"];
+params ["_name", "_controllers", "_countdownTime", "_targets"];
 
 {
     _x setVariable [QGVAR(countdownTime), _countdownTime, true];
 } forEach _controllers;
 
 // Notification
-private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Configured), localize LSTRING(CountdownTime), _countdownTime];
-[_text, 3] call ACE_Common_fnc_displayTextStructured;
+[_controllers select 0, _name, _targets] call FUNC(checkConfig);

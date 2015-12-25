@@ -7,18 +7,19 @@
  * 1: Controller <OBJECT>
  * 2: Controllers <ARRAY>
  * 3: Durations <ARRAY>
+ * 4: Targets <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", controller, [controller1, controller2], [5, 10, 20]] call tac_shootingrange_fnc_addConfigDurations;
+ * ["range", controller, [controller1, controller2], [5, 10, 20], [target1, target2]] call tac_shootingrange_fnc_addConfigDurations;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_name", "_controller", "_controllers", "_durations"];
+params ["_name", "_controller", "_controllers", "_durations", "_targets"];
 
 private _actions = [];
 {
@@ -33,7 +34,7 @@ private _actions = [];
             {(_this select 2) call FUNC(setConfigDuration)},
             {true},
             {},
-            [_name, _controllers, _x]
+            [_name, _controllers, _x, _targets]
         ] call ACE_Interact_Menu_fnc_createAction,
         [],
         _controller

@@ -35,13 +35,25 @@
             <English>Durations</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
-            <English>List of available shooting durations in seconds, separated by commas. Redundant in Trigger Mode. Default: 0, 30, 60, 150, 300</English>
+            <English>List of available shooting durations in seconds, separated by commas. Only used in Time and Hit (Time Limited) Modes. Default: 0, 30, 60, 150, 300</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDuration">
             <English>Default Duration</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDurationDesc">
-            <English>Default shooting duration in seconds. Default: 60</English>
+            <English>Default shooting duration in seconds. Only used in Time and Hit (Time Limited) Modes. Default: 60</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetAmounts">
+            <English>Target Amounts</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetAmountsDesc">
+            <English>List of available number of target pop-ups, separated by commas. Only used in Hit (Target Limited) Mode. Default: 5, 10, 15, 30, 45</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultTargetAmount">
+            <English>Default Target Amount</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_DefaultTargetAmountDesc">
+            <English>Default amount of target pop-ups. Only used in Hit (Target Limited) Mode. Default: 15</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurations">
             <English>Pause Durations</English>
@@ -79,11 +91,11 @@
         <Key ID="STR_TAC_ShootingRange_Hit">
             <English>Hit</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_HitTimeLimited">
-            <English>Hit (Time Limited)</English>
+        <Key ID="STR_TAC_ShootingRange_HitTimeLimit">
+            <English>Hit (Time Limit)</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_HitTargetLimited">
-            <English>Hit (Target Limited)</English>
+        <Key ID="STR_TAC_ShootingRange_HitTargetLimit">
+            <English>Hit (Target Limit)</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Trigger">
             <English>Trigger</English>
@@ -115,14 +127,17 @@
         <Key ID="STR_TAC_ShootingRange_Finished">
             <English>Finished</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_Configured">
-            <English>Configured</English>
-        </Key>
         <Key ID="STR_TAC_ShootingRange_Duration">
             <English>Duration</English>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetAmount">
+            <English>Target Amount</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDuration">
             <English>Pause Duration</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_PauseDuration">
+            <English>Targets</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_CountdownTime">
             <English>Countdown Time</English>

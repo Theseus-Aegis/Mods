@@ -31,7 +31,8 @@ private _starter = _target getVariable [QGVAR(starter), nil];
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 private _mode = _target getVariable [QGVAR(mode), nil];
 private _targets = +(_target getVariable [QGVAR(targets), nil]); // Copy array (for deleteAt usage)
-if (isNil "_starter" || {isNil "_controller"} || {isNil "_mode"} || {isNil "_targets"}) exitWith {};
+private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
+if (isNil "_starter" || {isNil "_controller"} || {isNil "_mode"} || {isNil "_targets"} || {isNil "_targetAmount"}) exitWith {};
 
 // Exit if not running
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
@@ -53,8 +54,8 @@ if (_target animationPhase "terc" > 0) exitWith {};
 GVAR(score) = GVAR(score) + 1;
 
 
-// Handle random pop-ups in hit based
-if (_mode == 2) then {
+// Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
+if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _targetAmount}}) then {
     // Select random index (save for later removal from array) and new target
     _targets deleteAt GVAR(randomIndex);
     GVAR(randomIndex) = floor (random (count _targets));
@@ -69,9 +70,17 @@ if (_mode == 2) then {
 };
 
 // Handle pop-ups in trigger based
-if (_mode == 3) then {
-    if (_target == _targets select GVAR(targetNumber)) then {
-        // Set next trigger number
-        GVAR(targetNumber) = GVAR(targetNumber) + 1;
+if (_mode in [3, 4]) then {
+    // Set next target
+    GVAR(targetNumber) = GVAR(targetNumber) + 1;
+
+    if (_mode == 4) then {
+        GVAR(targetNumberGroup) = GVAR(targetNumberGroup) + 1;
+
+        // Set next target group if it's last target in group and not last target overall
+        if (GVAR(targetNumberGroup) == count GVAR(targetGroup) && {GVAR(targetNumber) <= count _targets}) then {
+            GVAR(targetGroup) = (_targets select GVAR(targetNumber)) getVariable [QGVAR(targetGroup), nil];
+            GVAR(targetNumberGroup) = 0;
+        };
     };
 };

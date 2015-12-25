@@ -7,26 +7,26 @@
  * 1: Controllers <ARRAY>
  * 2: Name <STRING>
  * 3: Targets <ARRAY>
- * 4: Trigger Markers <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [controller, [controller1, controller2], "range", [target1, target2], [marker1, marker2]] call tac_shootingrange_fnc_start;
+ * [controller, [controller1, controller2], "range", [target1, target2]] call tac_shootingrange_fnc_start;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_controller", "_controllers", "_name", "_targets", "_triggerMarkers"];
+params ["_controller", "_controllers", "_name", "_targets"];
 
 private _duration = _controller getVariable [QGVAR(duration), nil];
+private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
 private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
 private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
 private _mode = (_targets select 0) getVariable [QGVAR(mode), nil];
 private _triggers = (_targets select 0) getVariable [QGVAR(triggers), nil];
-if (isNil "_duration" || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"} || {isNil "_triggers"}) exitWith { ACE_LOGERROR("No configuration found!"); };
+if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"} || {isNil "_triggers"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
 
 // Prepare targets
@@ -46,10 +46,32 @@ private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
 private _text = "";
 private _size = 0;
 
-if (_mode < 3) then {
-    private _textDuration = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
-    _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>By: %8", localize LSTRING(Range), _name, localize LSTRING(Started), localize LSTRING(Duration), _textDuration, localize LSTRING(PauseDuration), _pauseDuration, _playerName];
-    _size = 4.5;
+if (_mode < 4) then {
+    private _textConfig = "";
+    private _textDurationOrTargetAmount = "";
+    switch (_mode) do {
+        case 1: {
+            _textConfig = localize LSTRING(Duration);
+            _textDurationOrTargetAmount = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
+        };
+        case 2: {
+            _textConfig = localize LSTRING(Duration);
+            _textDurationOrTargetAmount = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
+        };
+        case 3: {
+            _textConfig = localize LSTRING(TargetAmount);
+            _textDurationOrTargetAmount = _targetAmount;
+        };
+        default {_textMode = "ERORR"};
+    };
+
+    if (_mode in [1, 2]) then {
+        _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>By: %8", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(PauseDuration), _pauseDuration, _playerName];
+        _size = 4.5;
+    } else {
+        _text = format ["%1%2 %3<br/><br/>%4: %5<br/>By: %6", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, _playerName];
+        _size = 4;
+    };
 } else {
     _text = format ["%1%2 %3<br/><br/>By: %4", localize LSTRING(Range), _name, localize LSTRING(Started), _playerName];
     _size = 3;
@@ -82,7 +104,7 @@ GVAR(maxScore) = 0;
 
 // Start pop-up handling and final countdown notification
 [{
-    params ["_controller", "_pauseDuration", "_duration", "_targets", "_controller", "_controllers", "_name", "_mode", "_triggers"];
+    params ["_controller", "_pauseDuration", "_duration", "_targetAmount", "_targets", "_controller", "_controllers", "_name", "_mode", "_triggers"];
 
     // Exit if not running (eg. stopped)
     if !(_controller getVariable [QGVAR(running), false]) exitWith {};
@@ -98,9 +120,9 @@ GVAR(maxScore) = 0;
     nopop = true;
 
     // Start PFH
-    [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
+    [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
-}, [_controller, _pauseDuration, _duration, _targets, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
 
 
 if (_mode > 1) then {
@@ -111,10 +133,13 @@ if (_mode > 1) then {
         GVAR(targetNumber) = 0;
         GVAR(timeStartCountdown) = diag_tickTime;
 
-        if (_mode == 3) then {
+        if (_mode == 4) then {
             {
                 _x enableSimulation true;
             } forEach _triggers;
+
+            GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
+            GVAR(targetNumberGroup) = 0;
         };
     };
 };

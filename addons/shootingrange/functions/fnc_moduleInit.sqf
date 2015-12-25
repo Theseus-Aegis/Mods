@@ -45,6 +45,16 @@ private _durations = [];
 // Extract default duration
 private _defaultDuration = _logic getVariable "DefaultDuration";
 
+// Extract target amounts string and convert to numbers
+private _targetAmountsString = [_logic getVariable "TargetAmounts", true, false] call ACE_Common_fnc_parseList;
+private _targetAmounts = [];
+{
+    _targetAmounts pushBack (parseNumber _x);
+} forEach _targetAmountsString;
+
+// Extract default target amount
+private _defaultTargetAmount = _logic getVariable "DefaultTargetAmount";
+
 // Extract pause duration string and convert to numbers
 private _pauseDurationsString = [_logic getVariable "PauseDurations", true, false] call ACE_Common_fnc_parseList;
 private _pauseDurations = [];
@@ -66,6 +76,6 @@ private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] cal
 
 
 // Prepare with actions
-[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

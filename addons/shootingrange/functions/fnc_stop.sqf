@@ -39,6 +39,7 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 if (_success) then {
     private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
 
+    // Check for zero divisor
     private _scorePercentage = 0;
     if (_maxScore > 0) then {
         _scorePercentage = round (_score / _maxScore * 100);
@@ -59,8 +60,3 @@ if (_success) then {
     private _size = [2, 1.5] select (_name isEqualTo "");
     [_text, _size] call ACE_Common_fnc_displayTextStructured;
 };
-
-
-// Cleanup variables
-GVAR(score) = nil;
-GVAR(maxScore) = nil;

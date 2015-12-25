@@ -32,6 +32,8 @@ params [
     ["_mode", MODE_DEFAULT, [0] ],
     ["_durations", [], [[]] ],
     ["_defaultDuration", DURATION_DEFAULT, [0] ],
+    ["_targetAmounts", [], [[]] ],
+    ["_defaultTargetAmount", TARGETAMOUNT_DEFAULT, [0] ],
     ["_pauseDurations", [], [[]] ],
     ["_defaultPauseDuration", PAUSEDURATION_DEFAULT, [0] ],
     ["_countdownTimes", COUNTDOWNTIMES_DEFAULT, [[]] ],
@@ -44,17 +46,20 @@ if (_targets isEqualTo [] || {_controllers isEqualTo []}) exitWith {
     ACE_LOGERROR("Targets and Controllers fields/arguments must NOT be empty!");
 };
 
-if (_mode == 3 && (_triggerMarkers isEqualTo [] || {count _triggerMarkers != count _targets})) exitWith {
-    ACE_LOGERROR("Trigger Markers field/argument must NOT be empty and must have same number of elements when Trigger Mode is used!");
+if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
+    ACE_LOGWARNING("Default Countdown Time field/argument is below 5! Value set to default.");
+    _defaultCountdownTime = COUNTDOWNTIME_DEFAULT;
 };
-
 {
     if (_x < COUNTDOWNTIME_LOWEST) then {
-        ACE_LOGWARNING("Countdown Times field/argument contaisn a value below 5! Removed value.");
+        ACE_LOGWARNING("Countdown Times field/argument contains a value below 5! Removed value.");
         _countdownTimes deleteAt _forEachIndex;
     };
 } forEach _countdownTimes;
 
+if (_mode == 4 && (_triggerMarkers isEqualTo [] || {count _triggerMarkers != count _targets})) exitWith {
+    ACE_LOGERROR("Trigger Markers field/argument must NOT be empty and must have same number of elements when Trigger Mode is used!");
+};
 
 // Defaults
 if !(_name isEqualTo "") then {
@@ -65,6 +70,10 @@ if (_durations isEqualTo []) then {
     _durations = DURATIONS_DEFAULT;
 } else {
     _durations pushBack 0; // Add infinite duration
+};
+
+if (_targetAmounts isEqualTo []) then {
+    _targetAmounts = TARGETAMOUNTS_DEFAULT;
 };
 
 if (_pauseDurations isEqualTo []) then {
@@ -79,6 +88,10 @@ if !(_defaultDuration in _durations) then {
     _durations pushBack _defaultDuration;
 };
 
+if !(_defaultTargetAmount in _targetAmounts) then {
+    _targetAmounts pushBack _defaultTargetAmount;
+};
+
 if !(_defaultPauseDuration in _pauseDurations) then {
     _pauseDurations pushBack _defaultPauseDuration;
 };
@@ -88,17 +101,16 @@ if !(_defaultCountdownTime in _countdownTimes) then {
 };
 
 _durations sort true;
+_targetAmounts sort true;
 _pauseDurations sort true;
 _countdownTimes sort true;
-
-
-TRACE_9("Data",_name,_targets,_controllers,_mode,_durations,_defaultDuration,_pauseDurations,_defaultPauseDuration,_countdownTime,_triggerMarkers);
 
 
 // Set up controllers
 {
     // Default configuration
     _x setVariable [QGVAR(duration), _defaultDuration, true];
+    _x setVariable [QGVAR(targetAmount), _defaultTargetAmount, true];
     _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration, true];
     _x setVariable [QGVAR(countdownTime), _defaultCountdownTime, true];
 
@@ -152,6 +164,8 @@ TRACE_9("Data",_name,_targets,_controllers,_mode,_durations,_defaultDuration,_pa
         [_x]
     ] call ACE_Interact_Menu_fnc_createAction;
 
+    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACE_Interact_Menu_fnc_addActionToObject;
+
     private _actionCheckConfig = [
         QGVAR(RangeConfigCheck),
         localize LSTRING(ConfigurationCheck),
@@ -162,31 +176,43 @@ TRACE_9("Data",_name,_targets,_controllers,_mode,_durations,_defaultDuration,_pa
         [_x, _name, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACE_Interact_Menu_fnc_addActionToObject;
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionCheckConfig] call ACE_Interact_Menu_fnc_addActionToObject;
 
-    if (_mode < 3) then {
-        private _actionConfigDuration = [
-            QGVAR(RangeConfigDuration),
-            localize LSTRING(Duration),
-            "",
-            {true},
-            {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
-            {(_this select 2) call FUNC(addConfigDurations)},
-            [_name, _x, _controllers, _durations, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+    private _actionConfigDuration = [
+        QGVAR(RangeConfigDuration),
+        localize LSTRING(Duration),
+        "",
+        {true},
+        {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
+        {(_this select 2) call FUNC(addConfigDurations)},
+        [_name, _x, _controllers, _durations, _targets]
+    ] call ACE_Interact_Menu_fnc_createAction;
 
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigDuration] call ACE_Interact_Menu_fnc_addActionToObject;
+
+    private _actionConfigTargetAmount = [
+        QGVAR(RangeConfigTargetAmount),
+        localize LSTRING(TargetAmount),
+        "",
+        {true},
+        {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] == 3},
+        {(_this select 2) call FUNC(addConfigTargetAmounts)},
+        [_name, _x, _controllers, _targetAmounts, _targets]
+    ] call ACE_Interact_Menu_fnc_createAction;
+
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetAmount] call ACE_Interact_Menu_fnc_addActionToObject;
+
+    if (_mode in [1, 2]) then {
         private _actionConfigPauseDuration = [
             QGVAR(RangeConfigPauseDuration),
             localize LSTRING(PauseDuration),
             "",
             {true},
-            {true},
+            {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 4},
             {(_this select 2) call FUNC(addConfigPauseDurations)},
-            [_name, _x, _controllers, _pauseDurations]
+            [_name, _x, _controllers, _pauseDurations, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
 
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigDuration] call ACE_Interact_Menu_fnc_addActionToObject;
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigPauseDuration] call ACE_Interact_Menu_fnc_addActionToObject;
     };
 
@@ -197,23 +223,24 @@ TRACE_9("Data",_name,_targets,_controllers,_mode,_durations,_defaultDuration,_pa
         {true},
         {true},
         {(_this select 2) call FUNC(addConfigCountdownTimes)},
-        [_name, _x, _controllers, _countdownTimes]
+        [_name, _x, _controllers, _countdownTimes, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
+
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACE_Interact_Menu_fnc_addActionToObject;
 
     private _actionConfigMode = [
         QGVAR(RangeConfigMode),
         localize LSTRING(Mode),
         "",
         {true},
-        {(((_this select 2) select 0) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
+        {(((_this select 2) select 0) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 4},
         {},
         [_targets]
     ] call ACE_Interact_Menu_fnc_createAction;
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACE_Interact_Menu_fnc_addActionToObject;
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACE_Interact_Menu_fnc_addActionToObject;
 
-    if (_mode < 3) then {
+    if (_mode < 4) then {
         // Add target change event configuration actions
         private _actionConfigModeTime = [
             QGVAR(RangeConfigModeTime),
@@ -222,47 +249,63 @@ TRACE_9("Data",_name,_targets,_controllers,_mode,_durations,_defaultDuration,_pa
             {(_this select 2) call FUNC(setConfigMode)},
             {true},
             {},
-            [_name, 1, _targets]
+            [_name, 1, _targets, _x]
         ] call ACE_Interact_Menu_fnc_createAction;
 
-        private _actionConfigModeHit = [
+        private _actionConfigModeHitTimeLimited = [
             QGVAR(RangeConfigModeHit),
-            localize LSTRING(Hit),
+            localize LSTRING(HitTimeLimit),
             "",
             {(_this select 2) call FUNC(setConfigMode)},
             {true},
             {},
-            [_name, 2, _targets]
+            [_name, 2, _targets, _x]
+        ] call ACE_Interact_Menu_fnc_createAction;
+
+        private _actionConfigModeHitTargetLimited = [
+            QGVAR(RangeConfigModeHit),
+            localize LSTRING(HitTargetLimit),
+            "",
+            {(_this select 2) call FUNC(setConfigMode)},
+            {true},
+            {},
+            [_name, 3, _targets, _x]
         ] call ACE_Interact_Menu_fnc_createAction;
 
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeTime] call ACE_Interact_Menu_fnc_addActionToObject;
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHit] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTimeLimited] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTargetLimited] call ACE_Interact_Menu_fnc_addActionToObject;
     };
 } forEach _controllers;
 
 
-// Set up triggers
 private _triggers = [];
-{
-    private _trigger = createTrigger ["EmptyDetector", getMarkerPos _x, false];
+if (_mode == 4) then {
+    // Prepare target groups
+    [_targets, _triggerMarkers] call FUNC(setTargetGroups);
 
-    (getMarkerSize _x) params ["_markerSizeX", "_markerSizeY"];
-    _trigger setTriggerArea [_markerSizeX, _markerSizeY, markerDir _x, markerShape _x == "RECTANGLE"];
+    // Set up triggers
+    {
+        private _trigger = createTrigger ["EmptyDetector", getMarkerPos _x, false];
 
-    _trigger setTriggerActivation ["ANY", "PRESENT", true];
+        (getMarkerSize _x) params ["_markerSizeX", "_markerSizeY"];
+        _trigger setTriggerArea [_markerSizeX, _markerSizeY, markerDir _x, markerShape _x == "RECTANGLE"];
 
-    private _target = _targets select _forEachIndex;
-    private _controller = _controllers select 0;
-    _trigger setTriggerStatements [
-        format ["[%1, %2, %3] call %4", _controller, _target, _forEachIndex, QFUNC(canActivateTrigger)],
-        format ["[%1, %2] call %3", _target, true, QFUNC(triggerPopup)],
-        format ["[%1, %2] call %3", _target, false, QFUNC(triggerPopup)]
-    ];
+        _trigger setTriggerActivation ["ANY", "PRESENT", true];
 
-    _trigger enableSimulation false;
+        private _target = _targets select _forEachIndex;
+        private _controller = _controllers select 0;
+        _trigger setTriggerStatements [
+            format ["[%1, %2, %3] call %4", _controller, _target, _forEachIndex, QFUNC(canActivateTrigger)],
+            format ["[%1, %2] call %3", _target, 0, QFUNC(triggerPopup)],
+            format ["[%1, %2] call %3", _target, 1, QFUNC(triggerPopup)]
+        ];
 
-    _triggers pushBack _trigger;
-} forEach _triggerMarkers;
+        _trigger enableSimulation false;
+
+        _triggers pushBack _trigger;
+    } forEach _triggerMarkers;
+};
 
 
 // Set up targets
