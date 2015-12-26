@@ -21,7 +21,7 @@
 params ["_name", "_mode", "_targets", "_controller"];
 
 {
-    _x setVariable [QGVAR(mode), _mode];
+    _x setVariable [QGVAR(mode), _mode, true];
 } forEach _targets;
 
 // Notification

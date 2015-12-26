@@ -29,6 +29,7 @@
 
 
 #define NOTIFY_DISTANCE 100
+#define NOTIFY_DISTANCE_SUPERVISOR 25
 
 #define HIT_HEAD_CENTER [0,0.175,0.665] //@todo accuracy rating
 #define HIT_TORSO_CENTER [0,0.175,0.175] //@todo accuracy rating

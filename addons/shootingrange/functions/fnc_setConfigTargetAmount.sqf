@@ -21,7 +21,7 @@
 params ["_name", "_controllers", "_targetAmount", "_targets"];
 
 {
-    _x setVariable [QGVAR(targetAmount), _targetAmount];
+    _x setVariable [QGVAR(targetAmount), _targetAmount, true];
 } forEach _controllers;
 
 // Notification

@@ -35,18 +35,19 @@ if !(_controller getVariable [QGVAR(running), false]) exitWith {
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2] && {diag_tickTime >= _timeStart + _duration}) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(score), GVAR(maxScore)] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(targetNumber), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 
 // Remove when all targets hit - success
 if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode == 4 && {GVAR(targetNumber) >= count _targets}}) exitWith {
+    diag_log "exit PFH";
     // Round time elapsed to decimal places
     private _timeElapsed = diag_tickTime - _timeStart;
     _timeElapsed = (str _timeElapsed) splitString ".";
     _timeElapsed = format ["%1.%2", _timeElapsed select 0, (_timeElapsed select 1) select [0, TIME_ROUND_CHARS]];
     _timeElapsed = parseNumber (_timeElapsed);
 
-    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(score), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(targetNumber), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
 };
 
 // Handle automatic target pop-ups in time-based mode

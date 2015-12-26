@@ -45,12 +45,12 @@ if (_target animationPhase "terc" > 0) exitWith {};
 if (!_directHit) exitWith {};
 
 
-// Update score
-GVAR(score) = GVAR(score) + 1;
+// Update score / Set next target
+GVAR(targetNumber) = GVAR(targetNumber) + 1;
 
 
 private _mode = _target getVariable [QGVAR(mode), 0];
-private _targets = +(_target getVariable [QGVAR(targets), nil]); // Copy array (for deleteAt usage)
+private _targets = +(_target getVariable [QGVAR(targets), nil]); // Copy array (for deleteAt)
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
@@ -68,17 +68,13 @@ if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [
 };
 
 // Handle pop-ups in trigger based
-if (_mode in [3, 4]) then {
-    // Set next target
-    GVAR(targetNumber) = GVAR(targetNumber) + 1;
+if (_mode == 4) then {
+    // Set next target group index
+    GVAR(targetGroupIndex) = GVAR(targetGroupIndex) + 1;
 
-    if (_mode == 4) then {
-        GVAR(targetNumberGroup) = GVAR(targetNumberGroup) + 1;
-
-        // Set next target group if it's last target in group and not last target overall
-        if (GVAR(targetNumberGroup) == count GVAR(targetGroup) && {GVAR(targetNumber) <= count _targets}) then {
-            GVAR(targetGroup) = (_targets select GVAR(targetNumber)) getVariable [QGVAR(targetGroup), nil];
-            GVAR(targetNumberGroup) = 0;
-        };
+    // Set next target group if it's last target in group and not last target overall
+    if ((GVAR(targetGroupIndex) >= count GVAR(targetGroup)) && {GVAR(targetNumber) <= count _targets}) then {
+        GVAR(targetGroup) = (_targets select GVAR(targetNumber)) getVariable [QGVAR(targetGroup), nil];
+        GVAR(targetGroupIndex) = 0;
     };
 };

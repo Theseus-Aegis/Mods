@@ -105,16 +105,25 @@ _targetAmounts sort true;
 _pauseDurations sort true;
 _countdownTimes sort true;
 
+// Default client configuration
 
-// Set up controllers
+
+// Set up default configuration and interactions
 {
-    // Default client configuration
-    _x setVariable [QGVAR(duration), _defaultDuration];
-    _x setVariable [QGVAR(targetAmount), _defaultTargetAmount];
-    _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration];
-    _x setVariable [QGVAR(countdownTime), _defaultCountdownTime];
+    if (_x getVariable [QGVAR(duration), 0] > 0) then {
+        _x setVariable [QGVAR(duration), _defaultDuration, true];
+    };
+    if (_x getVariable [QGVAR(targetAmount), 0] > 0) then {
+        _x setVariable [QGVAR(targetAmount), _defaultTargetAmount, true];
+    };
+    if (_x getVariable [QGVAR(pauseDuration), 0] > 0) then {
+        _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration, true];
+    };
+    if (_x getVariable [QGVAR(countdownTime), 0] > 0) then {
+        _x setVariable [QGVAR(countdownTime), _defaultCountdownTime, true];
+    };
 
-    // Add main shooting course interaction
+    // Main
     private _actionRange = [
         QGVAR(Range),
         format ["%1%2", localize LSTRING(Range), _name],
@@ -125,6 +134,7 @@ _countdownTimes sort true;
         [_x]
     ] call ACE_Interact_Menu_fnc_createAction;
 
+    // Stop
     private _actionStop = [
         QGVAR(RangeStop),
         format ["%1 %2%3", localize LSTRING(Stop), localize LSTRING(Range), _name],
@@ -139,7 +149,7 @@ _countdownTimes sort true;
     [_x, 0, ["ACE_MainActions"], _actionStop] call ACE_Interact_Menu_fnc_addActionToObject;
 
 
-    // Add start/stop actions
+    // Start
     private _actionStart = [
         QGVAR(RangeStart),
         localize LSTRING(Start),
@@ -153,7 +163,7 @@ _countdownTimes sort true;
     [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionStart] call ACE_Interact_Menu_fnc_addActionToObject;
 
 
-    // Add configuration actions
+    // Configuration
     private _actionConfig = [
         QGVAR(RangeConfig),
         localize LSTRING(Configure),
@@ -228,20 +238,17 @@ _countdownTimes sort true;
 
     [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACE_Interact_Menu_fnc_addActionToObject;
 
-    private _actionConfigMode = [
-        QGVAR(RangeConfigMode),
-        localize LSTRING(Mode),
-        "",
-        {true},
-        {(((_this select 2) select 0) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 4},
-        {},
-        [_targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
-
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACE_Interact_Menu_fnc_addActionToObject;
-
     if (_mode < 4) then {
-        // Add target change event configuration actions
+        private _actionConfigMode = [
+            QGVAR(RangeConfigMode),
+            localize LSTRING(Mode),
+            "",
+            {true},
+            {true},
+            {},
+            []
+        ] call ACE_Interact_Menu_fnc_createAction;
+
         private _actionConfigModeTime = [
             QGVAR(RangeConfigModeTime),
             localize LSTRING(Timed),
@@ -272,6 +279,7 @@ _countdownTimes sort true;
             [_name, 3, _targets, _x]
         ] call ACE_Interact_Menu_fnc_createAction;
 
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACE_Interact_Menu_fnc_addActionToObject;
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeTime] call ACE_Interact_Menu_fnc_addActionToObject;
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTimeLimited] call ACE_Interact_Menu_fnc_addActionToObject;
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTargetLimited] call ACE_Interact_Menu_fnc_addActionToObject;

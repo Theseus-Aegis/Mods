@@ -82,8 +82,26 @@ private _size = [_size, _size - 0.5] select (_name isEqualTo "");
 
 
 // Prepare variables
-GVAR(score) = 0;
+GVAR(targetNumber) = 0;
 GVAR(maxScore) = 0;
+
+if (_mode > 1) then {
+    // Player count bullets fired
+    GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
+
+    if (_mode > 2) then {
+        GVAR(timeStartCountdown) = diag_tickTime;
+
+        if (_mode == 4) then {
+            {
+                _x enableSimulation true;
+            } forEach _triggers;
+
+            GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
+            GVAR(targetGroupIndex) = 0;
+        };
+    };
+};
 
 // Countdown timer notifications
 {
@@ -111,6 +129,10 @@ GVAR(maxScore) = 0;
 
     // Final countdown notification
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
+    // Notify supervisor(s) (closer than start/stop notifications)
+    private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+    private _text = format ["%1 %2!", _playerName, localize LSTRING(Started)];
+    [_text, 1.5, false, NOTIFY_DISTANCE_SUPERVISOR] call FUNC(notifyVicinity);
 
     // Prepare target pop-up handling
     private _timeStart = diag_tickTime;
@@ -123,23 +145,3 @@ GVAR(maxScore) = 0;
     [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
 }, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
-
-
-if (_mode > 1) then {
-    // Player count bullets fired
-    GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
-
-    if (_mode > 2) then {
-        GVAR(targetNumber) = 0;
-        GVAR(timeStartCountdown) = diag_tickTime;
-
-        if (_mode == 4) then {
-            {
-                _x enableSimulation true;
-            } forEach _triggers;
-
-            GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
-            GVAR(targetNumberGroup) = 0;
-        };
-    };
-};

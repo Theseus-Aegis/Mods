@@ -37,7 +37,7 @@ nopop = false;
 [_controller, _controllers, _name, _targets, _success, _score, _maxScore, _timeElapsed] call FUNC(stop);
 
 // Cleanup variables
-GVAR(score) = nil;
+GVAR(targetNumber) = nil;
 GVAR(maxScore) = nil;
 GVAR(firstRun) = nil;
 GVAR(randomIndex) = nil;
@@ -50,7 +50,6 @@ if (_mode > 1) then {
     GVAR(firedEHid) = nil;
 
     if (_mode > 2) then {
-        GVAR(targetNumber) = nil;
         GVAR(timeStartCountdown) = nil;
 
         if (_mode == 4) then {
@@ -59,7 +58,7 @@ if (_mode > 1) then {
             } forEach _triggers;
 
             GVAR(targetGroup) = nil;
-            GVAR(targetNumberGroup) = nil;
+            GVAR(targetGroupIndex) = nil;
         };
     };
 };
