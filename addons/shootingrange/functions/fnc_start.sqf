@@ -32,12 +32,12 @@ if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || 
 // Prepare targets
 {
     _x animate ["terc", 1]; // Down
-    _x setVariable [QGVAR(starter), ACE_player, true];
 } forEach _targets;
 
 // Set variables
 {
     _x setVariable [QGVAR(running), true, true];
+    _x setVariable [QGVAR(starter), ACE_player, true];
 } forEach _controllers;
 
 

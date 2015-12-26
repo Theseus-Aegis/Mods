@@ -154,8 +154,8 @@
         <Key ID="STR_TAC_ShootingRange_Warning">
             <English>Warning!</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_Hits">
-            <English>Hits</English>
+        <Key ID="STR_TAC_ShootingRange_Accuracy">
+            <English>Accuracy</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TimeElapsed">
             <English>Time Elapsed</English>

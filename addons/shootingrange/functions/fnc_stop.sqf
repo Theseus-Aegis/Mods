@@ -27,13 +27,13 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 // Set targets to original
 {
     _x animate ["terc", 0]; // Up
-    _x setVariable [QGVAR(starter), nil, true];
     _x setVariable [QGVAR(alreadyHit), nil];
 } forEach _targets;
 
 // Set variables
 {
     _x setVariable [QGVAR(running), false, true];
+    _x setVariable [QGVAR(starter), nil, true];
 } forEach _controllers;
 
 
@@ -47,7 +47,7 @@ if (_success) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _text = format ["%1%2 %3<br/><br/>%4: %5/%6 (%7%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Hits), _score, _maxScore, _scorePercentage, "%"];
+    private _text = format ["%1%2 %3<br/><br/>%4: %5/%6 (%7%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Accuracy), _score, _maxScore, _scorePercentage, "%"];
     private _size = 4;
 
     if (_timeElapsed > 0) then {

@@ -32,13 +32,7 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 // Exit if not running
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
-// Exit if hit by someone else
-if (_shooter != _target getVariable [QGVAR(starter), nil]) exitWith {
-    private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooter];
-    [_text, 2.5] call ACE_Common_fnc_displayTextStructured;
-};
-
-// Exit if target already hit once (moving or in down animation)
+// Exit if target already not correct target (moving or in down animation)
 if (_target animationPhase "terc" > 0) exitWith {};
 
 // Exit if target already hit
@@ -48,6 +42,14 @@ if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 if (!_directHit) exitWith {
     hint "[TAC] Debug: Indirect Hit";
     _target animate ["terc", 0]; // Up
+};
+
+// Exit if hit by someone else
+ private _starter = _controller getVariable [QGVAR(starter), nil];
+if (_shooter != _starter) exitWith {
+    private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
+    private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
+    ["displayTextStructured", [_starter, _shooter], [_text, 3]] call ACE_Common_fnc_targetEvent;
 };
 
 

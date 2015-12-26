@@ -19,6 +19,6 @@
 params ["_controller", "_target"];
 
 (_controller getVariable [QGVAR(running), false]) &&
-{(_target getVariable [QGVAR(starter), objNull]) in thisList} &&
+{(_controller getVariable [QGVAR(starter), objNull]) in thisList} &&
 {!isNil QGVAR(targetGroup) && {_target in GVAR(targetGroup)}} &&
 {!isNil QGVAR(timeStartCountdown) && {diag_tickTime >= GVAR(timeStartCountdown) + (_controller getVariable [QGVAR(countdownTime), COUNTDOWNTIME_DEFAULT])}}
