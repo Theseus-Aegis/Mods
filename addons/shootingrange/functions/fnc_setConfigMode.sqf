@@ -4,25 +4,26 @@
  *
  * Arguments:
  * 0: Name <STRING>
- * 1: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited)) <NUMBER>
- * 2: Targets <ARRAY>
- * 3: Controller <OBJECT>
+ * 1: Controller <OBJECT>
+ * 2: Controllers <ARRAY>
+ * 3: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited)) <NUMBER>
+ * 4: Targets <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", 1, [target1, target2], controller] call tac_shootingrange_fnc_setConfigMode;
+ * ["range", controller, [controller1, controller2], 1, [target1, target2]] call tac_shootingrange_fnc_setConfigMode;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_name", "_mode", "_targets", "_controller"];
+params ["_name", "_controller", "_controllers", "_mode", "_targets"];
 
 {
     _x setVariable [QGVAR(mode), _mode, true];
-} forEach _targets;
+} forEach _controllers;
 
 // Notification
 [_controller, _name, _targets] call FUNC(checkConfig);

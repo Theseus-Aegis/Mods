@@ -41,15 +41,24 @@ if (_shooter != _target getVariable [QGVAR(starter), nil]) exitWith {
 // Exit if target already hit once (moving or in down animation)
 if (_target animationPhase "terc" > 0) exitWith {};
 
-// Exit if not direct hit (does not seem to count bullet bouncing)
-if (!_directHit) exitWith {};
+// Exit if target already hit
+if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 
+// Exit if not direct hit (does not seem to count bullet bouning)
+if (!_directHit) exitWith {
+    hint "[TAC] Debug: Indirect Hit";
+    _target animate ["terc", 0]; // Up
+};
+
+
+// Mark target as already hit
+_target setVariable [QGVAR(alreadyHit), true];
 
 // Update score / Set next target
 GVAR(targetNumber) = GVAR(targetNumber) + 1;
 
 
-private _mode = _target getVariable [QGVAR(mode), 0];
+private _mode = _controller getVariable [QGVAR(mode), 0];
 private _targets = +(_target getVariable [QGVAR(targets), nil]); // Copy array (for deleteAt)
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
@@ -65,6 +74,9 @@ if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [
 
     // Prepare for next hit
     GVAR(targetUp) = GVAR(nextTarget);
+
+    // Mark target as not yet hit
+    GVAR(targetUp) setVariable [QGVAR(alreadyHit), false];
 };
 
 // Handle pop-ups in trigger based

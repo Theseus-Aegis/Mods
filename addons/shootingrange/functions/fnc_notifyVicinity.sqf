@@ -22,8 +22,8 @@ params ["_text", "_size", ["_includeCaller", false], ["_vicinityRange", NOTIFY_D
 
 private _nearbyPlayers = (getPosATL ACE_player) nearObjects ["CAManBase", _vicinityRange];
 
-if (_includeCaller) then {
-    _nearbyPlayers pushBack ACE_player;
+if (!_includeCaller) then {
+    _nearbyPlayers deleteAt (_nearbyPlayers find ACE_player);
 };
 
 ["displayTextStructured", _nearbyPlayers, [_text, _size]] call ACE_Common_fnc_targetEvent;

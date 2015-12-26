@@ -40,7 +40,6 @@ if (_mode in [1, 2] && {diag_tickTime >= _timeStart + _duration}) exitWith {
 
 // Remove when all targets hit - success
 if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode == 4 && {GVAR(targetNumber) >= count _targets}}) exitWith {
-    diag_log "exit PFH";
     // Round time elapsed to decimal places
     private _timeElapsed = diag_tickTime - _timeStart;
     _timeElapsed = (str _timeElapsed) splitString ".";

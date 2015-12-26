@@ -110,17 +110,20 @@ _countdownTimes sort true;
 
 // Set up default configuration and interactions
 {
-    if (_x getVariable [QGVAR(duration), 0] > 0) then {
+    if (_x getVariable [QGVAR(duration), 0] == 0) then {
         _x setVariable [QGVAR(duration), _defaultDuration, true];
     };
-    if (_x getVariable [QGVAR(targetAmount), 0] > 0) then {
+    if (_x getVariable [QGVAR(targetAmount), 0] == 0) then {
         _x setVariable [QGVAR(targetAmount), _defaultTargetAmount, true];
     };
-    if (_x getVariable [QGVAR(pauseDuration), 0] > 0) then {
+    if (_x getVariable [QGVAR(pauseDuration), 0] == 0) then {
         _x setVariable [QGVAR(pauseDuration), _defaultPauseDuration, true];
     };
-    if (_x getVariable [QGVAR(countdownTime), 0] > 0) then {
+    if (_x getVariable [QGVAR(countdownTime), 0] == 0) then {
         _x setVariable [QGVAR(countdownTime), _defaultCountdownTime, true];
+    };
+    if (_x getVariable [QGVAR(mode), 0] == 0) then {
+        _x setVariable [QGVAR(mode), _mode, true];
     };
 
     // Main
@@ -178,7 +181,7 @@ _countdownTimes sort true;
 
     private _actionCheckConfig = [
         QGVAR(RangeConfigCheck),
-        localize LSTRING(ConfigurationCheck),
+        localize LSTRING(Check),
         "",
         {(_this select 2) call FUNC(checkConfig)},
         {true},
@@ -193,7 +196,7 @@ _countdownTimes sort true;
         localize LSTRING(Duration),
         "",
         {true},
-        {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
+        {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
         {(_this select 2) call FUNC(addConfigDurations)},
         [_name, _x, _controllers, _durations, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
@@ -205,7 +208,7 @@ _countdownTimes sort true;
         localize LSTRING(TargetAmount),
         "",
         {true},
-        {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] == 3},
+        {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] == 3},
         {(_this select 2) call FUNC(addConfigTargetAmounts)},
         [_name, _x, _controllers, _targetAmounts, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
@@ -218,7 +221,7 @@ _countdownTimes sort true;
             localize LSTRING(PauseDuration),
             "",
             {true},
-            {(((_this select 2) select 4) select 0) getVariable [QGVAR(mode), MODE_DEFAULT] == 1},
+            {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] == 1},
             {(_this select 2) call FUNC(addConfigPauseDurations)},
             [_name, _x, _controllers, _pauseDurations, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
@@ -256,7 +259,7 @@ _countdownTimes sort true;
             {(_this select 2) call FUNC(setConfigMode)},
             {true},
             {},
-            [_name, 1, _targets, _x]
+            [_name, _x, _controllers, 1, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
 
         private _actionConfigModeHitTimeLimited = [
@@ -266,7 +269,7 @@ _countdownTimes sort true;
             {(_this select 2) call FUNC(setConfigMode)},
             {true},
             {},
-            [_name, 2, _targets, _x]
+            [_name, _x, _controllers, 2, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
 
         private _actionConfigModeHitTargetLimited = [
@@ -276,7 +279,7 @@ _countdownTimes sort true;
             {(_this select 2) call FUNC(setConfigMode)},
             {true},
             {},
-            [_name, 3, _targets, _x]
+            [_name, _x, _controllers, 3, _targets]
         ] call ACE_Interact_Menu_fnc_createAction;
 
         [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACE_Interact_Menu_fnc_addActionToObject;
@@ -320,7 +323,6 @@ if (_mode == 4) then {
 {
     _x setVariable [QGVAR(targets), _targets];
     _x setVariable [QGVAR(controllers), _controllers];
-    _x setVariable [QGVAR(mode), _mode];
     _x setVariable [QGVAR(triggers), _triggers];
     _x addEventHandler ["HitPart", { (_this select 0) call FUNC(handleHitPart); }];
 } forEach _targets;

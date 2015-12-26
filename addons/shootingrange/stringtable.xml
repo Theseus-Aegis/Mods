@@ -112,8 +112,8 @@
         <Key ID="STR_TAC_ShootingRange_Configuration">
             <English>Configuration</English>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_ConfigurationCheck">
-            <English>Check Current</English>
+        <Key ID="STR_TAC_ShootingRange_Check">
+            <English>Check</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Seconds">
             <English>Seconds</English>

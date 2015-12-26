@@ -28,6 +28,7 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 {
     _x animate ["terc", 0]; // Up
     _x setVariable [QGVAR(starter), nil, true];
+    _x setVariable [QGVAR(alreadyHit), nil];
 } forEach _targets;
 
 // Set variables
@@ -37,27 +38,29 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 
 
 // Notification
-if (_success) then {
-    private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
 
+if (_success) then {
     // Check for zero divisor
     private _scorePercentage = 0;
     if (_maxScore > 0) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7/%8 (%9%10)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(By), _playerName, localize LSTRING(Hits), _score, _maxScore, _scorePercentage, "%"];
-    private _size = 3.5;
+    private _text = format ["%1%2 %3<br/><br/>%4: %5/%6 (%7%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Hits), _score, _maxScore, _scorePercentage, "%"];
+    private _size = 4;
 
     if (_timeElapsed > 0) then {
         _text = format ["%1<br/>%2: %3s", _text, localize LSTRING(TimeElapsed), _timeElapsed];
         _size = _size + 0.5;
     };
 
+    _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
+
     private _size = [_size, _size - 0.5] select (_name isEqualTo "");
     [_text, _size, true] call FUNC(notifyVicinity);
 } else {
-    private _text = format ["%1%2 %3", localize LSTRING(Range), _name, localize LSTRING(Stopped)];
+    private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
     private _size = [2, 1.5] select (_name isEqualTo "");
     [_text, _size] call ACE_Common_fnc_displayTextStructured;
 };

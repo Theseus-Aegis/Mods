@@ -24,7 +24,7 @@ private _duration = _controller getVariable [QGVAR(duration), nil];
 private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
 private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
 private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
-private _mode = (_targets select 0) getVariable [QGVAR(mode), nil];
+private _mode = _controller getVariable [QGVAR(mode), nil];
 private _triggers = (_targets select 0) getVariable [QGVAR(triggers), nil];
 if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"} || {isNil "_triggers"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
@@ -69,7 +69,7 @@ if (_mode < 4) then {
         _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>%8: %9", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(By), _playerName];
         _size = 4.5;
     } else {
-        _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(By), _playerName];
+        _text = format ["%1%2 %3<br/><br/>%4: %5<br/><br/>%6: %7", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(By), _playerName];
         _size = 4;
     };
 } else {
@@ -105,18 +105,18 @@ if (_mode > 1) then {
 
 // Countdown timer notifications
 {
-    _x params ["_execTime", "_text"];
+    _x params ["_execTime", "_textCountdown"];
 
     [{
-        params ["_controller", "_text"];
+        params ["_controller", "_textCountdown"];
 
         // Exit if not running (eg. stopped)
         if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
         // Countdown timer notification
-        [_text] call ACE_Common_fnc_displayTextStructured;
+        [_textCountdown] call ACE_Common_fnc_displayTextStructured;
 
-    }, [_controller, _text], _execTime] call ACE_Common_fnc_waitAndExecute;
+    }, [_controller, _textCountdown], _execTime] call ACE_Common_fnc_waitAndExecute;
 
 } forEach [ [_countdownTime - 5, localize LSTRING(GetReady)], [_countDownTime - 3, "3"], [_countdownTime - 2, "2"], [_countdownTime - 1, "1"] ];
 
@@ -129,10 +129,11 @@ if (_mode > 1) then {
 
     // Final countdown notification
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
+
     // Notify supervisor(s) (closer than start/stop notifications)
     private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
-    private _text = format ["%1 %2!", _playerName, localize LSTRING(Started)];
-    [_text, 1.5, false, NOTIFY_DISTANCE_SUPERVISOR] call FUNC(notifyVicinity);
+    private _textNotify = format ["%1 %2!", _playerName, localize LSTRING(Started)];
+    [_textNotify, 1.5, false, NOTIFY_DISTANCE_SUPERVISOR] call FUNC(notifyVicinity);
 
     // Prepare target pop-up handling
     private _timeStart = diag_tickTime;

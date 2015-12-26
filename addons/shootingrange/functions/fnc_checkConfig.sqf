@@ -23,7 +23,7 @@ private _duration = _controller getVariable [QGVAR(duration), nil];
 private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
 private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
 private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
-private _mode = (_targets select 0) getVariable [QGVAR(mode), nil];
+private _mode = _controller getVariable [QGVAR(mode), nil];
 if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"}) exitWith { ACE_LOGERROR("No configuration found!"); };
 
 if (_mode < 4) then {
