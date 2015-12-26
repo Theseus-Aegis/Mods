@@ -47,7 +47,7 @@ if (_success) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _text = format ["%1%2 %3<br/><br/>%4: %5/%6 (%7%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Accuracy), _score, _maxScore, _scorePercentage, "%"];
+    private _text = format ["%1%2 %3<br/><br/>%4: %5%6 (%7/%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Accuracy), _scorePercentage, "%", _score, _maxScore];
     private _size = 4;
 
     if (_timeElapsed > 0) then {
