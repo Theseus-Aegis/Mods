@@ -19,7 +19,7 @@
  * None
  *
  * Example:
- * [@todo] call tac_shootingrange_fnc_handleHitPart;
+ * [target, shooter, nil, [0, 0, 0], nil, nil, nil, nil, nil, nil, true] call tac_shootingrange_fnc_handleHitPart;
  *
  * Public: No
  */
@@ -47,6 +47,8 @@ if (!_directHit) exitWith {
 // Exit if hit by someone else
  private _starter = _controller getVariable [QGVAR(starter), nil];
 if (_shooter != _starter) exitWith {
+    _target animate ["terc", 0]; // Up
+
     private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
     private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
     ["displayTextStructured", [_starter, _shooter], [_text, 3]] call ACE_Common_fnc_targetEvent;
