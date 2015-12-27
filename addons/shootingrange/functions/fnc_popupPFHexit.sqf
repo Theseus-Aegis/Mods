@@ -61,4 +61,6 @@ if (_mode > 1) then {
             GVAR(targetGroupIndex) = nil;
         };
     };
+} else {
+    GVAR(lastPauseTime) = nil;
 };

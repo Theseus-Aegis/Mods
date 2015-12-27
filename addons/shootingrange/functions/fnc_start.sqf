@@ -86,9 +86,6 @@ GVAR(targetNumber) = 0;
 GVAR(maxScore) = 0;
 
 if (_mode > 1) then {
-    // Used as PFH delay, no delay if not Timed Mode
-    _pauseDuration = 0;
-
     // Player count bullets fired
     GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
 
@@ -104,6 +101,8 @@ if (_mode > 1) then {
             GVAR(targetGroupIndex) = 0;
         };
     };
+} else {
+    GVAR(lastPauseTime) = 0;
 };
 
 // Countdown timer notifications
@@ -146,6 +145,6 @@ if (_mode > 1) then {
     nopop = true;
 
     // Start PFH
-    [FUNC(popupPFH), _pauseDuration, [_timeStart, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
+    [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
 }, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
