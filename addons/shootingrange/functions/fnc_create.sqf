@@ -3,7 +3,7 @@
  * Creates a shooting range. Local effect, must be called on each client machine.
  *
  * Arguments:
- * 0: Name <STRING>
+ * 0: Name <STRING> (default: "")
  * 1: Targets <ARRAY>
  * 2: Controllers <ARRAY>
  * 3: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger) <NUMBER> (default: 1)
@@ -30,11 +30,11 @@ params [
     ["_targets", [], [[]] ],
     ["_controllers", [], [[]] ],
     ["_mode", MODE_DEFAULT, [0] ],
-    ["_durations", [], [[]] ],
+    ["_durations", DURATIONS_DEFAULT, [[]] ],
     ["_defaultDuration", DURATION_DEFAULT, [0] ],
-    ["_targetAmounts", [], [[]] ],
+    ["_targetAmounts", TARGETAMOUNTS_DEFAULT, [[]] ],
     ["_defaultTargetAmount", TARGETAMOUNT_DEFAULT, [0] ],
-    ["_pauseDurations", [], [[]] ],
+    ["_pauseDurations", PAUSEDURATIONS_DEFAULT, [[]] ],
     ["_defaultPauseDuration", PAUSEDURATION_DEFAULT, [0] ],
     ["_countdownTimes", COUNTDOWNTIMES_DEFAULT, [[]] ],
     ["_defaultCountdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
@@ -57,8 +57,8 @@ if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
     };
 } forEach _countdownTimes;
 
-if (_mode == 4 && {_triggerMarkers isEqualTo [] || {count _triggerMarkers != count _targets}}) exitWith {
-    ACE_LOGERROR("Trigger Markers field/argument must NOT be empty and must have same number of elements when Trigger Mode is used!");
+if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
+    ACE_LOGERROR("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used!");
 };
 
 // Defaults
@@ -104,8 +104,6 @@ _durations sort true;
 _targetAmounts sort true;
 _pauseDurations sort true;
 _countdownTimes sort true;
-
-// Default client configuration
 
 
 // Set up default configuration and interactions
