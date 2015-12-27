@@ -6,8 +6,8 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common", "ace_interaction", "ace_zeus"};
-        author[]= {"TAC Mod Team"};
-        authorUrl = "http://www.theseus-aegis.com/";
+        author[]= {"Jonpas"};
+        authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };
@@ -20,6 +20,9 @@ class CfgMods {
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
-        action = "http://www.theseus-aegis.com/";
+        action = "http://www.theseus-aegis.com";
     };
 };
+
+#include "CfgModuleCategories.hpp"
+#include "CfgVehicleClasses.hpp"

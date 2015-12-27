@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {QGVAR(Locker)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_common"};
+        requiredAddons[] = {"tac_main"};
         author[]= {"Jonpas"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
