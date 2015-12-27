@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Headless">
+        <Key ID="STR_TAC_Headless_Module">
+            <English>Headless</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_ModuleDesc">
+            <English>This module allows you to setup automatic passing of AI to Headless Clients. (Default: No)</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_EnabledDesc">
+            <English>Enables passing of AI to Headless Clients.</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_HeadlessClients">
+            <English>Headless Clients</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_HeadlessClientsDesc">
+            <English>List of Headless Client object names, separated by commas.</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_Delay">
+            <English>Delay</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_DelayDesc">
+            <English>Delay between rounds of passes, in seconds. (Default: 60)</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_Log">
+            <English>Log</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_LogDesc">
+            <English>Log passing statistics to RPT file. (Default: No)</English>
+        </Key>
+    </Package>
+</Project>
