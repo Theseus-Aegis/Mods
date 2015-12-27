@@ -1,7 +1,7 @@
 class CfgVehicles {
     class Module_F;
     class GVAR(moduleBase): Module_F {
-        author = ECSTRING(common,Author);
+        author = ECSTRING(main,Author);
         category = "TAC";
         functionPriority = 1;
         isGlobal = 1;

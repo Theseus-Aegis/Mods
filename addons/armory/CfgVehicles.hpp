@@ -1,7 +1,7 @@
 class CfgVehicles {
     class ACE_Module;
     class GVAR(module): ACE_Module {
-        author = ECSTRING(common,Author);
+        author = ECSTRING(main,Author);
         category = "TAC";
         displayName = CSTRING(Module);
         function = QFUNC(moduleInit);
@@ -54,7 +54,7 @@ class CfgVehicles {
     class GVAR(Locker): B_supplyCrate_F {
         scope = 2;
         scopeCurator = 2;
-        author = ECSTRING(common,Author);
+        author = ECSTRING(main,Author);
         displayName = CSTRING(Locker);
         ace_cargo_canLoad = 0;
 
