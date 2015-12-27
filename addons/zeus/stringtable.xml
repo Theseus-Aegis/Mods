@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Zeus">
+        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos">
+            <English>Add To Chronos</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos_Desc">
+            <English>Adds an object to Chronos persistence</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_ChronosNotEnabled">
+            <English>Chronos is not enabled!</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_AlreadyChronosPersistent">
+            <English>Object is already Chronos persistent!</English>
+        </Key>
+    </Package>
+</Project>
