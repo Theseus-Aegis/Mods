@@ -86,6 +86,9 @@ GVAR(targetNumber) = 0;
 GVAR(maxScore) = 0;
 
 if (_mode > 1) then {
+    // Used as PFH delay, no delay if not Timed Mode
+    _pauseDuration = 0;
+
     // Player count bullets fired
     GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
 
