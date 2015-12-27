@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Adds an object to Chronos persistence (server - executed after local).
+ * Adds an object to Chronos persistence (executed on server through server event).
  *
  * Arguments:
  * 0: Object <OBJECT>

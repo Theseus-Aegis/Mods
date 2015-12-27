@@ -2,7 +2,9 @@
 
 class CfgPatches {
     class ADDON {
-        units[] = {};
+        units[] = {
+            QGVAR(moduleAddObjectToChronos)
+        };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_common"};

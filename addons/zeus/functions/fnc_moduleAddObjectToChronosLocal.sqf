@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Adds an object to Chronos persistence (local - executed before server).
+ * Adds an object to Chronos persistence (executed locally on client who placed the module).
  *
  * Arguments:
  * 0: The module logic <OBJECT>
@@ -20,16 +20,16 @@ if !(_activated && local _logic) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if !(ChronosLoaded isEqualTo "true") then {
-    [LSTRING(ChronosNotEnabled)] call ACE_Common_fnc_displayTextStructured;
+if (isNil "ChronosLoaded" || {!isNil "ChronosLoaded" && {!(ChronosLoaded isEqualTo "true")}}) then {
+    [LSTRING(EnableChronos)] call ACE_Common_fnc_displayTextStructured;
 } else {
     if (_mouseOverType != "OBJECT") then {
         ["STR_ACE_Zeus_NothingSelected"] call ACE_Common_fnc_displayTextStructured;
     } else {
-        if !(_mouseOverUnit getVariable ["vehicleChronosID", "None"] isEqualTo "None") then {
-            [LSTRING(AlreadyChronosPersistent)] call ACE_Common_fnc_displayTextStructured;
+        if !((_mouseOverUnit getVariable ["vehicleChronosID", "None"]) isEqualTo "None") then {
+            [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;
         } else {
-            [_mouseOverUnit] call FUNC(moduleAddObjectToChronosServer);
+            ["AddObjectToChronos", _mouseOverUnit] call ACE_Common_fnc_serverEvent;
         };
     };
 };

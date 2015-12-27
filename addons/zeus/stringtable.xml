@@ -7,11 +7,11 @@
         <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos_Desc">
             <English>Adds an object to Chronos persistence</English>
         </Key>
-        <Key ID="STR_TAC_Zeus_ChronosNotEnabled">
-            <English>Chronos is not enabled!</English>
+        <Key ID="STR_TAC_Zeus_EnableChronos">
+            <English>Enable Chronos</English>
         </Key>
-        <Key ID="STR_TAC_Zeus_AlreadyChronosPersistent">
-            <English>Object is already Chronos persistent!</English>
+        <Key ID="STR_TAC_Zeus_AlreadyInChronos">
+            <English>Already in Chronos</English>
         </Key>
     </Package>
 </Project>
