@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Zeus">
+        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos">
+            <English>Add To Chronos</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos_Desc">
+            <English>Adds an object to Chronos persistence</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_PlaceOnObject">
+            <English>Place on object</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_EnableChronos">
+            <English>Enable Chronos</English>
+        </Key>
+        <Key ID="STR_TAC_Zeus_AlreadyInChronos">
+            <English>Already in Chronos</English>
+        </Key>
+    </Package>
+</Project>
