@@ -23,8 +23,8 @@ if !(_activated && local _logic) exitWith {};
 if (isNil "ChronosLoaded" || {!isNil "ChronosLoaded" && {!(ChronosLoaded isEqualTo "true")}}) then {
     [LSTRING(EnableChronos)] call ACE_Common_fnc_displayTextStructured;
 } else {
-    if (_mouseOverType != "OBJECT") then {
-        ["STR_ACE_Zeus_NothingSelected"] call ACE_Common_fnc_displayTextStructured;
+    if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
+        [LSTRING(PlaceOnObject)] call ACE_Common_fnc_displayTextStructured;
     } else {
         if !((_mouseOverUnit getVariable ["vehicleChronosID", "None"]) isEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;

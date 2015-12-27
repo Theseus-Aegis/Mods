@@ -17,6 +17,9 @@
 
 params ["_object"];
 
+// Exit if Chronos invoker is not compiled
+if (isNil "invoke_java_method") exitWith { ACE_LOGERROR("Chronos invoke_java_method not found!"); };
+
 // Get suitable Chronos ID
 private _chronosUniqueID = ["generateUniqueID"] call invoke_java_method;
 
