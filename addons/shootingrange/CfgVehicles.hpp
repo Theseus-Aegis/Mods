@@ -9,7 +9,7 @@ class CfgVehicles {
         isGlobal = 1; // Global
         isTriggerActivated = 0;
         isDisposable = 0;
-        //icon = QUOTE(PATHTOF(UI\Icon_Module_ShootingRange_ca.paa));//@todo
+        icon = QUOTE(PATHTOF(UI\Icon_Module_ShootingRange_ca.paa));
         class Arguments {
             class Name {
                 displayName = CSTRING(Name);
