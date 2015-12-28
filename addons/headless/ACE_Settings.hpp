@@ -12,7 +12,7 @@ class ACE_Settings {
         description = CSTRING(HeadlessClientsDesc);
     };
     class GVAR(Delay) {
-        value = 60;
+        value = DELAY_DEFAULT;
         typeName = "SCALAR";
         displayName = CSTRING(Delay);
         description = CSTRING(DelayDesc);
