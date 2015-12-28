@@ -2,7 +2,9 @@
 
 class CfgPatches {
     class ADDON {
-        units[] = {};
+        units[] = {
+            QGVAR(moduleAddObjectToChronos)
+        };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
@@ -12,5 +14,5 @@ class CfgPatches {
     };
 };
 
-#include "CfgModuleCategories.hpp"
-#include "CfgVehicleClasses.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
