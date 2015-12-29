@@ -31,7 +31,7 @@ if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || 
 
 // Prepare targets
 {
-    _x animate ["terc", 1]; // Down
+    [_x, 1] call FUNC(animateTarget); // Down
 } forEach _targets;
 
 // Set variables

@@ -32,3 +32,13 @@
 #define NOTIFY_DISTANCE_SUPERVISOR 25
 
 #define TIME_ROUND_CHARS 4
+
+
+#define OVAL_TARGETS ["Land_Target_Oval_F", "Land_Target_Oval_Wall_Bottom_F", "Land_Target_Oval_Wall_Left_F", "Land_Target_Oval_Wall_Right_F", "Land_Target_Oval_Wall_Top_F"]
+#define OVAL_TARGET_ANIMS [ \
+    ["Bottom_Rotate", "Target_Bottom_Rotate"], \
+    ["Bottom_Rotate", "Target_Bottom_Rotate"], \
+    ["Left_Rotate", "Target_Left_Rotate"], \
+    ["Right_Rotate", "Target_Right_Rotate"], \
+    ["Top_Rotate", "Target_Top_Rotate"] \
+]

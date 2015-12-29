@@ -33,7 +33,7 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
 // Exit if target already not correct target (moving or in down animation)
-if (_target animationPhase "terc" > 0) exitWith {};
+if (_target animationPhase "Terc" > 0) exitWith {};
 
 // Exit if target already hit
 if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
@@ -41,13 +41,13 @@ if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 // Exit if not direct hit (does not seem to count bullet bouning)
 if (!_directHit) exitWith {
     hint "[TAC] Debug: Indirect Hit";
-    _target animate ["terc", 0]; // Up
+    [_target, 0] call FUNC(animateTarget); // Up
 };
 
 // Exit if hit by someone else
  private _starter = _controller getVariable [QGVAR(starter), nil];
 if (_shooter != _starter) exitWith {
-    _target animate ["terc", 0]; // Up
+    [_target, 0] call FUNC(animateTarget); // Up
 
     private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
     private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
@@ -73,8 +73,8 @@ if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [
     GVAR(nextTarget) = _targets select GVAR(randomIndex);
 
     // Animate targets
-    GVAR(targetUp) animate ["terc", 1]; // Down
-    GVAR(nextTarget) animate ["terc", 0]; // Up
+    [GVAR(targetUp), 1] call FUNC(animateTarget); // Down
+    [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
     // Prepare for next hit
     GVAR(targetUp) = GVAR(nextTarget);

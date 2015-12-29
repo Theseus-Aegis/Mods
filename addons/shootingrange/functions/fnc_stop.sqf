@@ -26,7 +26,7 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 
 // Set targets to original
 {
-    _x animate ["terc", 0]; // Up
+    [_x, 0] call FUNC(animateTarget); // Up
     _x setVariable [QGVAR(alreadyHit), nil];
 } forEach _targets;
 

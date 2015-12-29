@@ -1,10 +1,10 @@
 /*
  * Author: Jonpas
- * Handles hit part event handler.
+ * Pops targets on trigger.
  *
  * Arguments:
  * 0: Target <OBJECT>
- * 1: Up (0) / Down (1) <BOOL>
+ * 1: State (Up = 0, Down = 1) <BOOL>
  *
  * Return Value:
  * None
@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params ["_target", "_up"];
+params ["_target", "_state"];
 
 private _targetGroup = _target getVariable [QGVAR(targetGroup), []];
 if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); };
 
 {
-    _x animate ["terc", _up];
+    [_x, _state] call FUNC(animateTarget);
 } forEach _targetGroup;

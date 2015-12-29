@@ -64,7 +64,7 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
         _targetsTemp deleteAt GVAR(randomIndex);
 
         // Animate old target
-        GVAR(targetUp) animate ["terc", 1]; // Down
+        [GVAR(targetUp), 1] call FUNC(animateTarget); // Down
     };
 
     // Select random index (save for later removal from array) and new target
@@ -72,7 +72,7 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     GVAR(nextTarget) = _targetsTemp select GVAR(randomIndex);
 
     // Animate new target
-    GVAR(nextTarget) animate ["terc", 0]; // Up
+    [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
     TRACE_3("Targets",GVAR(randomIndex),GVAR(targetUp),GVAR(nextTarget));
 
@@ -90,5 +90,5 @@ if (_mode in [2, 3] && {GVAR(firstRun)}) exitWith {
     GVAR(targetUp) = _targets select GVAR(randomIndex);
 
     // Animate new target
-    GVAR(targetUp) animate ["terc", 0]; // Up
+    [GVAR(targetUp), 0] call FUNC(animateTarget); // Up
 };

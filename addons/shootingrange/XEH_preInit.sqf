@@ -6,6 +6,7 @@ PREP(addConfigCountdownTimes);
 PREP(addConfigDurations);
 PREP(addConfigPauseDurations);
 PREP(addConfigTargetAmounts);
+PREP(animateTarget);
 PREP(canActivateTrigger);
 PREP(canStart);
 PREP(canStop);
