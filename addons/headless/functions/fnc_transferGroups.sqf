@@ -3,7 +3,7 @@
  * Transfers AI groups to Headess Client(s).
  *
  * Arguments:
- * 0: Force <BOOL> (default: false)
+ * 0: Force <BOOL>
  *
  * Return Value:
  * None
