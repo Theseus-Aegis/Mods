@@ -2,14 +2,17 @@
 
 ADDON = false;
 
+PREP(handleConnectHC);
 PREP(handleDisconnect);
+PREP(handleInitPost);
 PREP(moduleInit);
+PREP(rebalance);
 PREP(transferGroups);
-PREP(registerHeadlessClient);
 
 if (isServer) then {
     GVAR(headlessClients) = [];
-    ["TAC_HeadlessClientJoined", FUNC(registerHeadlessClient)] call ACE_Common_fnc_addEventHandler;
+    GVAR(inRebalance) = false;
+    ["TAC_HeadlessClientJoined", FUNC(handleConnectHC)] call ACE_Common_fnc_addEventHandler;
 };
 
 ADDON = true;

@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Handles disconnect.
+ * Removes Headless Client from use.
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -17,6 +17,7 @@
 
 params ["_unit"];
 
+// Exit if not HC
 if !(_unit in GVAR(headlessClients)) exitWith {};
 
 // Remove HC
@@ -25,6 +26,9 @@ GVAR(headlessClients) deleteAt (GVAR(headlessClients) find _unit);
 if (GVAR(Log)) then {
     ACE_LOGINFO_1("Removed HC: %1",_unit);
 };
+
+// Rebalance
+[true] call FUNC(rebalance);
 
 // Prevent transferring of HC to server
 false

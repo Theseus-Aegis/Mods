@@ -12,4 +12,4 @@
 #include "\x\tac\addons\main\script_macros.hpp"
 
 
-#define DELAY_DEFAULT 60
+#define DELAY_DEFAULT 15

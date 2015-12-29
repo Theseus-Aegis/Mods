@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Registers Headless Client for use.
+ * Registers connected Headless Client for use.
  *
  * Arguments:
  * 0: Headless Client <OBJECT>
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [headlessClient] call tac_headless_registerHeadlessClient;
+ * [headlessClient] call tac_headless_handleConnectHC;
  *
  * Public: No
  */
@@ -26,3 +26,6 @@ GVAR(headlessClients) pushBack _headlessClient;
 if (GVAR(Log)) then {
     ACE_LOGINFO_1("Registered HC: %1",_headlessClient);
 };
+
+// Rebalance
+[true] call FUNC(rebalance);
