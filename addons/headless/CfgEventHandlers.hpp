@@ -9,3 +9,11 @@ class Extended_PostInit_EventHandlers {
         serverInit = QUOTE(call COMPILE_FILE(XEH_postInitServer));
     };
 };
+
+class Extended_InitPost_EventHandlers {
+    class HeadlessClient_F {
+        class ADDON {
+            serverInit = QUOTE([_this select 0] call FUNC(registerHeadless));
+        };
+    };
+};

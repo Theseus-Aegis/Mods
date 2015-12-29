@@ -9,19 +9,13 @@ class CfgVehicles {
         isGlobal = 1; // Global
         isTriggerActivated = 0;
         isDisposable = 0;
-        icon = QUOTE(PATHTOF(UI\Icon_Module_Armory_ca.paa)); //icon = QUOTE(PATHTOF(UI\Icon_Module_Headless_ca.paa));//@todo
+        icon = QUOTE(PATHTOEF(armory,UI\Icon_Module_Armory_ca.paa)); //icon = QUOTE(PATHTOF(UI\Icon_Module_Headless_ca.paa));//@todo
         class Arguments {
             class Enabled {
-                displayName = "STR_ACE_Common_Enabled";
+                displayName = "$STR_ACE_Common_Enabled";
                 description = CSTRING(EnabledDesc);
                 typeName = "BOOL";
                 defaultValue = 0;
-            };
-            class HeadlessClients {
-                displayName = CSTRING(HeadlessClients);
-                description = CSTRING(HeadlessClientsDesc);
-                typeName = "STRING";
-                defaultValue = "";
             };
             class Delay {
                 displayName = CSTRING(Delay);

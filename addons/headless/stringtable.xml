@@ -10,12 +10,6 @@
         <Key ID="STR_TAC_Headless_EnabledDesc">
             <English>Enables passing of AI to Headless Clients.</English>
         </Key>
-        <Key ID="STR_TAC_Headless_HeadlessClients">
-            <English>Headless Clients</English>
-        </Key>
-        <Key ID="STR_TAC_Headless_HeadlessClientsDesc">
-            <English>List of Headless Client object names, separated by commas.</English>
-        </Key>
         <Key ID="STR_TAC_Headless_Delay">
             <English>Delay</English>
         </Key>

@@ -21,7 +21,6 @@ params ["_logic", "", "_activated"];
 if (!_activated) exitWith {};
 
 [_logic, QGVAR(Enabled), "Enabled"] call ACE_Common_fnc_readSettingFromModule;
-[_logic, QGVAR(HeadlessClients), "HeadlessClients"] call ACE_Common_fnc_readSettingFromModule;
 [_logic, QGVAR(Delay), "Delay"] call ACE_Common_fnc_readSettingFromModule;
 [_logic, QGVAR(Log), "Log"] call ACE_Common_fnc_readSettingFromModule;
 

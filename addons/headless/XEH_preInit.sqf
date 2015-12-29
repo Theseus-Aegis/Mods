@@ -2,7 +2,13 @@
 
 ADDON = false;
 
+PREP(handleDisconnect);
 PREP(moduleInit);
-PREP(passToHCs);
+PREP(pass);
+PREP(registerHeadless);
+
+if (isServer) then {
+    GVAR(headlessClients) = [];
+};
 
 ADDON = true;
