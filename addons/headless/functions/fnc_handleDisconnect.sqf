@@ -3,10 +3,10 @@
  * Removes Headless Client from use.
  *
  * Arguments:
- * 0: Unit <OBJECT>
+ * 0: Object <OBJECT>
  *
  * Return Value:
- * None
+ * Transfer To Server <BOOL>
  *
  * Example:
  * [unit] call tac_headless_handleDisconnect;
@@ -15,16 +15,16 @@
  */
 #include "script_component.hpp"
 
-params ["_unit"];
+params ["_object"];
 
 // Exit if not HC
-if !(_unit in GVAR(headlessClients)) exitWith {};
+if !(_object in GVAR(headlessClients)) exitWith {};
 
 // Remove HC
-GVAR(headlessClients) deleteAt (GVAR(headlessClients) find _unit);
+GVAR(headlessClients) deleteAt (GVAR(headlessClients) find _object);
 
 if (GVAR(Log)) then {
-    ACE_LOGINFO_1("Removed HC: %1",_unit);
+    ACE_LOGINFO_1("Removed HC: %1",_object);
 };
 
 // Rebalance

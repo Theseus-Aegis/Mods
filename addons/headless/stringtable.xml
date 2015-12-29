@@ -14,7 +14,7 @@
             <English>Delay</English>
         </Key>
         <Key ID="STR_TAC_Headless_DelayDesc">
-            <English>Delay between rounds of passes, in seconds. (Default: 60)</English>
+            <English>Minimal delay between transfers, in seconds. (Default: 15)</English>
         </Key>
         <Key ID="STR_TAC_Headless_Log">
             <English>Log</English>
