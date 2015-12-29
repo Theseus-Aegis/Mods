@@ -63,14 +63,11 @@ GVAR(targetNumber) = GVAR(targetNumber) + 1;
 
 
 private _mode = _controller getVariable [QGVAR(mode), 0];
-private _targets = +(_target getVariable [QGVAR(targets), nil]); // Copy array (for deleteAt)
+private _targets = _target getVariable [QGVAR(targets), nil];
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
-    // Select random index (save for later removal from array) and new target
-    _targets deleteAt GVAR(randomIndex);
-    GVAR(randomIndex) = floor (random (count _targets));
-    GVAR(nextTarget) = _targets select GVAR(randomIndex);
+    GVAR(nextTarget) = _targets select (floor (random (count _targets)));
 
     // Animate targets
     [GVAR(targetUp), 1] call FUNC(animateTarget); // Down

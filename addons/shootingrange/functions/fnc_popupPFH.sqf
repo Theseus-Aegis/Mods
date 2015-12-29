@@ -56,25 +56,20 @@ if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode == 4 && {GVA
 if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWith {
     GVAR(lastPauseTime) = _currentTime;
 
-    // Keep original array on first run, delete last target from index in all subsequent runs
-    private _targetsTemp = +_targets; // Copy array (for deleteAt usage)
     if (GVAR(firstRun)) then {
         GVAR(firstRun) = false;
     } else {
-        _targetsTemp deleteAt GVAR(randomIndex);
-
         // Animate old target
         [GVAR(targetUp), 1] call FUNC(animateTarget); // Down
     };
 
     // Select random index (save for later removal from array) and new target
-    GVAR(randomIndex) = floor (random (count _targetsTemp));
-    GVAR(nextTarget) = _targetsTemp select GVAR(randomIndex);
+    GVAR(nextTarget) = _targets select (floor (random (count _targets)));
 
     // Animate new target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
-    TRACE_3("Targets",GVAR(randomIndex),GVAR(targetUp),GVAR(nextTarget));
+    TRACE_2("Targets",GVAR(targetUp),GVAR(nextTarget));
 
     // Prepare for next loop
     GVAR(targetUp) = GVAR(nextTarget);
@@ -86,8 +81,7 @@ if (_mode in [2, 3] && {GVAR(firstRun)}) exitWith {
     GVAR(firstRun) = false;
 
     // Select random index (save for later removal from array) and new target
-    GVAR(randomIndex) = floor (random (count _targets));
-    GVAR(targetUp) = _targets select GVAR(randomIndex);
+    GVAR(targetUp) = _targets select (floor (random (count _targets)));
 
     // Animate new target
     [GVAR(targetUp), 0] call FUNC(animateTarget); // Up

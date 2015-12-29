@@ -40,7 +40,6 @@ nopop = false;
 GVAR(targetNumber) = nil;
 GVAR(maxScore) = nil;
 GVAR(firstRun) = nil;
-GVAR(randomIndex) = nil;
 GVAR(nextTarget) = nil;
 GVAR(targetUp) = nil;
 
