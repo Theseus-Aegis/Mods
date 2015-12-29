@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [headlessClient] call tac_headless_registerHeadless;
+ * [headlessClient] call tac_headless_registerHeadlessClient;
  *
  * Public: No
  */

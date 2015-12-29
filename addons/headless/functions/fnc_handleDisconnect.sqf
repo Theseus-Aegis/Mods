@@ -25,3 +25,6 @@ GVAR(headlessClients) deleteAt (GVAR(headlessClients) find _unit);
 if (GVAR(Log)) then {
     ACE_LOGINFO_1("Removed HC: %1",_unit);
 };
+
+// Prevent transferring of HC to server
+false
