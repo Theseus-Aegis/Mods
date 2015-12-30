@@ -18,8 +18,6 @@
 params ["_selectedCategory"];
 private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
 
-hintSilent localize LSTRING(Notification_ChronosWorking);
-
 // Call Chronos for Data - no further HTTP calls are needed after this one
 _loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
 
@@ -35,7 +33,6 @@ if (_loadData == "loaded") then {
 
         if (_serverReply == "done") then {
             _updateInfo = false;
-            hintSilent "";
         } else {
             _entry pushBack _serverReply;
 
@@ -49,5 +46,6 @@ if (_loadData == "loaded") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
+    [LSTRING(ChronosError), 2.5] call ACE_Common_fnc_displayTextStructured;
     false
 };
