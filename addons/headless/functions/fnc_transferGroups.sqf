@@ -131,7 +131,7 @@ private _numTransferredHC3 = 0;
                 };
             };
             default {
-                TRACE_1("No Valid HC to pass to",_currentHC);
+                TRACE_1("No Valid HC to transfer to",_currentHC);
             };
         };
     };
