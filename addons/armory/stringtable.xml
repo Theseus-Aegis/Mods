@@ -93,23 +93,19 @@
             <English>Stash Container Contents</English>
             <German>Containerinhalt wegpacken</German>
         </Key>
-        <Key ID="STR_TAC_Armory_Notification_ChronosWorking">
-            <English>Retrieving data, please stand by!</English>
-            <German>Rufe Daten ab, bitte warten!</German>
+        <Key ID="STR_TAC_Armory_ChronosError">
+            <English>Athena server is down!&lt;br/&gt;(Contact server administrator)</English>
+            <German>Athena Server ist offline!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
         </Key>
-        <Key ID="STR_TAC_Armory_Notification_ChronosError">
-            <English>Athena server is down!\n(Contact server administrator)</English>
-            <German>Athena Server ist offline!\n(Kontaktiere den Server Administrator)</German>
-        </Key>
-        <Key ID="STR_TAC_Armory_Notification_ContainsItemsWeapon">
+        <Key ID="STR_TAC_Armory_ContainsItemsWeapon">
             <English>Weapon must be without Attachments and Magazines for stashing!</English>
             <German>Die Waffe kann nur ohne Magazin und Aufsätze weggepackt werden! </German>
         </Key>
-        <Key ID="STR_TAC_Armory_Notification_ContainsItemsContainer">
+        <Key ID="STR_TAC_Armory_ContainsItemsContainer">
             <English>Uniform/Vest/Backpack must be empty for stashing!</English>
             <German>Uniform/Veste/Rucksack muss vor dem Wegpacken leer sein!</German>
         </Key>
-        <Key ID="STR_TAC_Armory_Notification_ContainerFull">
+        <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
             <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
         </Key>
