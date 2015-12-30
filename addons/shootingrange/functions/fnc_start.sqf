@@ -66,19 +66,22 @@ if (_mode < 4) then {
     };
 
     if (_mode in [1, 2]) then {
-        _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s<br/><br/>%8: %9", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(By), _playerName];
-        _size = 4.5;
+        _text = format ["%1%2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(PauseDuration), _pauseDuration];
+        _size = 3.5;
     } else {
-        _text = format ["%1%2 %3<br/><br/>%4: %5<br/><br/>%6: %7", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount, localize LSTRING(By), _playerName];
-        _size = 4;
+        _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Started), _textConfig, _textDurationOrTargetAmount];
+        _size = 3;
     };
 } else {
-    _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Started), localize LSTRING(By), _playerName];
-    _size = 3;
+    _text = format ["%1%2 %3", localize LSTRING(Range), _name, localize LSTRING(Started)];
+    _size = 2;
 };
 
 private _size = [_size, _size - 0.5] select (_name isEqualTo "");
-[_text, _size, true] call FUNC(notifyVicinity);
+[_text, _size] call ACE_Common_fnc_displayTextStructured;
+
+_text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
+[_text, _size + 1, false] call FUNC(notifyVicinity);
 
 
 // Prepare variables

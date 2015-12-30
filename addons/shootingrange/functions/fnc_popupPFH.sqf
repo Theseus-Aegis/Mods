@@ -69,6 +69,9 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     // Animate new target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
+    // Mark target as not yet hit
+    GVAR(nextTarget) setVariable [QGVAR(alreadyHit), false];
+
     TRACE_2("Targets",GVAR(targetUp),GVAR(nextTarget));
 
     // Prepare for next loop

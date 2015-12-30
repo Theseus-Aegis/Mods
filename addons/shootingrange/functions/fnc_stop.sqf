@@ -48,17 +48,18 @@ if (_success) then {
     };
 
     private _text = format ["%1%2 %3<br/><br/>%4: %5%6 (%7/%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Accuracy), _scorePercentage, "%", _score, _maxScore];
-    private _size = 4;
+    private _size = 3;
 
     if (_timeElapsed > 0) then {
         _text = format ["%1<br/>%2: %3s", _text, localize LSTRING(TimeElapsed), _timeElapsed];
         _size = _size + 0.5;
     };
 
-    _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
-
     private _size = [_size, _size - 0.5] select (_name isEqualTo "");
-    [_text, _size, true] call FUNC(notifyVicinity);
+    [_text, _size] call ACE_Common_fnc_displayTextStructured;
+
+    _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
+    [_text, _size + 1, false] call FUNC(notifyVicinity);
 } else {
     private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
     private _size = [2, 1.5] select (_name isEqualTo "");

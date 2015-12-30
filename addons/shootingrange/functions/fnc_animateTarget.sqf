@@ -18,32 +18,32 @@
 
 params ["_target", "_state"];
 
-// Find oval target
-private _index = OVAL_TARGETS find (typeOf _target);
-
-TRACE_3("Animate",_target,_state,_index);
-
 
 private _fnc_animate = {
-    params ["_target", "_state", "_anim"];
-    private _timeStart = diag_tickTime;
+    params ["_target", "_state", "_anims"];
+    // Wait animation time before changing animation again
     [{
-        params ["_target", "_state", "_anim", "_timeStart"];
-        private _neededState = [0, 1] select (_state == 0);
-        (_target animationPhase _anim == _neededState) || (_timeStart + 0.5 <= diag_tickTime);
-    }, {
-        params ["_target", "_state", "_anim"];
-        _target animate [_anim, _state];
-    }, [_target, _state, _anim, _timeStart]] call ACE_Common_fnc_waitUntilAndExecute;
+        params ["_target", "_state", "_anims"];
+        TRACE_3("Wait Animate",_target,_state,_anims);
+        {
+            _target animate [_x, _state];
+        } forEach _anims;
+    }, [_target, _state, _anims], 0.3] call ACE_Common_fnc_waitAndExecute;
 };
 
 
+// Find oval target
+private _index = OVAL_TARGETS find (typeOf _target);
+TRACE_3("Animate",_target,_state,_index);
+
 if (_index != -1) then {
-    // Oval target found
+    // Oval target
+    private _anims = [];
     {
-        [_target, _state, _x] call _fnc_animate;
+        _anims pushBack _x;
     } forEach (OVAL_TARGET_ANIMS select _index);
+    [_target, _state, _anims] call _fnc_animate;
 } else {
     // Normal target
-    [_target, _state, "Terc"] call _fnc_animate;
+    [_target, _state, ["Terc"]] call _fnc_animate;
 };

@@ -32,9 +32,6 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 // Exit if not running
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
-// Exit if target already not correct target (moving or in down animation)
-if (_target animationPhase "Terc" > 0) exitWith {};
-
 // Exit if target already hit
 if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 
@@ -69,15 +66,11 @@ private _targets = _target getVariable [QGVAR(targets), nil];
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
     GVAR(nextTarget) = _targets select (floor (random (count _targets)));
 
-    // Animate targets
-    [GVAR(targetUp), 1] call FUNC(animateTarget); // Down
+    // Animate target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
-    // Prepare for next hit
-    GVAR(targetUp) = GVAR(nextTarget);
-
     // Mark target as not yet hit
-    GVAR(targetUp) setVariable [QGVAR(alreadyHit), false];
+    GVAR(nextTarget) setVariable [QGVAR(alreadyHit), false];
 };
 
 // Handle pop-ups in trigger based
@@ -90,4 +83,5 @@ if (_mode == 4) then {
         GVAR(targetGroup) = (_targets select GVAR(targetNumber)) getVariable [QGVAR(targetGroup), nil];
         GVAR(targetGroupIndex) = 0;
     };
+    TRACE_2("Trigger Hit",GVAR(targetGroupIndex),GVAR(targetGroup));
 };
