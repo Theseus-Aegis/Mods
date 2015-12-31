@@ -3,18 +3,23 @@
     <Package name="Zeus">
         <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos">
             <English>Add To Chronos</English>
+            <German>Zu Chronos hinzufügen</German>
         </Key>
         <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos_Desc">
             <English>Adds an object to Chronos persistence</English>
+            <German>Fügt ein beständiges Objekt zu Chronos hinzu</German>
         </Key>
         <Key ID="STR_TAC_Zeus_PlaceOnObject">
             <English>Place on object</English>
+            <German>Auf Objekt platzieren</German>
         </Key>
         <Key ID="STR_TAC_Zeus_EnableChronos">
             <English>Enable Chronos</English>
+            <German>Chronos aktivieren</German>
         </Key>
         <Key ID="STR_TAC_Zeus_AlreadyInChronos">
             <English>Already in Chronos</English>
+            <German>Bereits in Chronos</German>
         </Key>
     </Package>
 </Project>
