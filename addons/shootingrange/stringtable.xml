@@ -22,8 +22,8 @@
             <German>Ziele</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsDesc">
-            <English>List of object names used as targets, separated by commas. Can be synchronized objects. (Objects must support animation 'terc'!)</English>
-            <German>Liste der Objektnamen, die als Ziele benutzt werden. Durch Kommas trennen. Die Objekte können synchronisiert sein. (Objekte müssen die 'terc' Animation unterstützen!)</German>
+            <English>List of object names used as targets, separated by commas. Can be synchronized objects.</English>
+            <German>Liste der Objektnamen, die als Ziele benutzt werden. Durch Kommas trennen. Die Objekte können synchronisiert sein.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Controllers">
             <English>Controllers</English>
