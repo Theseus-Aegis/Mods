@@ -39,7 +39,7 @@ if (_type == "stash" && {[_selectedItem] call FUNC(containsItems)}) exitWith {};
 
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
-    hintSilent localize LSTRING(Notification_ContainerFull);
+    [LSTRING(ContainerFull), 2] call ACE_Common_fnc_displayTextStructured;
 };
 
 // @todo - change to ACE Events (in Apollo as well)
