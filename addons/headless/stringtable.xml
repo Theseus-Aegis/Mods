@@ -19,7 +19,7 @@
         </Key>
         <Key ID="STR_TAC_Headless_DelayDesc">
             <English>Minimal delay between transfers, in seconds. (Default: 15)</English>
-            <German>Minimale Verzögerung zwischen Transfers inSekunden. (Standard:15)</German>
+            <German>Minimale Verzögerung zwischen Transfers in Sekunden. (Standard: 15)</German>
         </Key>
         <Key ID="STR_TAC_Headless_Log">
             <English>Log</English>
