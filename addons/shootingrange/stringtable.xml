@@ -15,7 +15,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_NameDesc">
             <English>Name of the current range.</English>
-            <German>Name des aktuellenSchießstands</German>
+            <German>Name des aktuellen Schießstands.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Targets">
             <English>Targets</English>
@@ -47,7 +47,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
             <English>List of available shooting durations in seconds, separated by commas. Only used in Time and Hit (Time Limited) Modes. Default: 0, 30, 60, 150, 300</English>
-            <German>Liste der möglichen Schießstand Laufzeiten in Sekunden. Durch Kommas trennen. Wird nur im Zeit- und Treffermodus (Zeitlimit) genutzt. Standard: 0, 30, 60, 150, 300</German>
+            <German>Liste der möglichen Schießstand-Laufzeiten in Sekunden. Durch Kommas trennen. Wird nur im Zeit- und Treffermodus (Zeitlimit) genutzt. Standard: 0, 30, 60, 150, 300</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDuration">
             <English>Default Duration</English>
@@ -71,11 +71,11 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultTargetAmountDesc">
             <English>Default amount of target pop-ups. Only used in Hit (Target Limited) Mode. Default: 15</English>
-            <German>Standard Anzahl an aufklappbaren Zielen. Wird nur im Treffermodus (Ziellimit) genutzt. Standard: 15</German>
+            <German>Standard Anzahl an aufklappbaren Ziele. Wird nur im Treffermodus (Ziellimit) genutzt. Standard: 15</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurations">
             <English>Pause Durations</English>
-            <German>Pausenlänge</German>
+            <German>Pausenlängen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PauseDurationsDesc">
             <English>List of available pause durations during target pop-ups in seconds, separated by commas. Only used in Timed Mode. Default: 1, 2, 3, 4, 5</English>
@@ -83,11 +83,11 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultPauseDuration">
             <English>Default Pause Duration</English>
-            <German>Standard Pausenlänge</German>
+            <German>Standard-Pausenlänge</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultPauseDurationDesc">
             <English>Default pause duration during target pop-ups in seconds. Default: 3</English>
-            <German>Standard Pausenlänge während Ziele aufklappen in Sekunden. Standard: 3</German>
+            <German>Standard-Pausenlänge während Ziele aufklappen in Sekunden. Standard: 3</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_CountdownTimes">
             <English>Countdown Times</English>
