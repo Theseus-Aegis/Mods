@@ -103,7 +103,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultCountdownTimeDesc">
             <English>Default time it takes from pressing start to first target pop-up. Default: 9</English>
-            <German>Standard Countdown-Zeit die benötigt wird, bis nach dem Druck auf Start die ersten Ziele aufklappen.</German>
+            <German>Standard Countdown-Zeit die benötigt wird, bis nach dem Druck auf Start die ersten Ziele aufklappen. Standard: 9</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TriggerMarkers">
             <English>Trigger Markers</English>
