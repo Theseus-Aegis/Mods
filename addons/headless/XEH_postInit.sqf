@@ -13,4 +13,4 @@ if (hasInterface && !isServer) exitWith {};
         // Register HC on server (this part happens on HC only)
         ["TAC_HeadlessClientJoined", [player]] call ACE_Common_fnc_serverEvent;
     };
-}] call ACE_Common_fnc_addEventHandler
+}] call ACE_Common_fnc_addEventHandler;
