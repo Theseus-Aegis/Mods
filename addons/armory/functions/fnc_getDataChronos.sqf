@@ -18,8 +18,11 @@
 params ["_selectedCategory"];
 private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
 
+// Set Chronos to debug if flag set
+private _debug = ["", "test"] select (!isNil QEGVAR(chronos,debug) && {EGVAR(chronos,debug)});
+
 // Call Chronos for Data - no further HTTP calls are needed after this one
-_loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
+_loadData = "ApolloClient" callExtension (format ["%1%2/%3%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug]);
 
 if (_loadData == "loaded") then {
     _armoryData = [];
