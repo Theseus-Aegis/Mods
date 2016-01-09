@@ -20,7 +20,7 @@ if !(_activated && local _logic) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if (isNil "ChronosLoaded" || {!isNil "ChronosLoaded" && {!(ChronosLoaded isEqualTo "true")}}) then {
+if (isNil QEGVAR(chronos,loaded) || {!isNil QEGVAR(chronos,loaded) && {!EGVAR(chronos,loaded)}}) then {
     [LSTRING(EnableChronos)] call ACE_Common_fnc_displayTextStructured;
 } else {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
