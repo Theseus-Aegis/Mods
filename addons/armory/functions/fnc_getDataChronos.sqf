@@ -18,7 +18,7 @@
 params ["_selectedCategory"];
 
 // Set Chronos to debug if flag set
-private _debug = ["", "test"] select (!isNil QEGVAR(chronos,debug) && {EGVAR(chronos,debug)});
+private _debug = [false, EGVAR(chronos,debug)] select (!isNil QEGVAR(chronos,debug));
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
 private _loadData = "ApolloClient" callExtension (format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug]);
