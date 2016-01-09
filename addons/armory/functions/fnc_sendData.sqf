@@ -42,7 +42,6 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACE_Common_fnc_displayTextStructured;
 };
 
-// @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
     ["TAC_LockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call ACE_Common_fnc_serverEvent;
 };
