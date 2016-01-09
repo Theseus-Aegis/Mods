@@ -20,7 +20,7 @@ if !(_activated && local _logic) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if (isNil QEGVAR(chronos,loaded) || {!isNil QEGVAR(chronos,loaded) && {!EGVAR(chronos,loaded)}}) then {
+if (isNil QEGVAR(chronos,loaded) || {!isNil QEGVAR(chronos,loaded) && {!EGVAR(chronos,loaded)}}) then { //@todo remoev isNil when Chronos is ported
     [LSTRING(EnableChronos)] call ACE_Common_fnc_displayTextStructured;
 } else {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
@@ -29,7 +29,7 @@ if (isNil QEGVAR(chronos,loaded) || {!isNil QEGVAR(chronos,loaded) && {!EGVAR(ch
         if !((_mouseOverUnit getVariable ["vehicleChronosID", "None"]) isEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;
         } else {
-            ["AddObjectToChronos", _mouseOverUnit] call ACE_Common_fnc_serverEvent;
+            ["TAC_AddObjectToChronos", _mouseOverUnit] call ACE_Common_fnc_serverEvent;
         };
     };
 };

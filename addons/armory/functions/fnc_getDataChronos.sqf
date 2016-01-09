@@ -18,10 +18,11 @@
 params ["_selectedCategory"];
 
 // Set Chronos to debug if flag set
-private _debug = [false, EGVAR(chronos,debug)] select (!isNil QEGVAR(chronos,debug));
+private _debug = [false, true] select (!isNil QEGVAR(chronos,debug) && {EGVAR(chronos,debug)}); //@todo remove isNil when Chronos is ported
+TRACE_2("Chronos Debug",EGVAR(chronos,debug),_debug);
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
-private _loadData = "ApolloClient" callExtension (format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug]);
+private _loadData = "ApolloClient" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
 
 if (_loadData == "loaded") then {
     private _armoryData = [];
