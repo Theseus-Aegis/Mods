@@ -44,8 +44,7 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 
 // @todo - change to ACE Events (in Apollo as well)
 if (GVAR(system) == 1) then {
-    lockerAction = [player, _typeChronos, _object, _selectedItem, _selectedAmount];
-    publicVariableServer "lockerAction";
+    ["TAC_LockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call ACE_Common_fnc_serverEvent;
 };
 
 // Update list
