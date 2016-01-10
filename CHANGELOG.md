@@ -1,5 +1,30 @@
 # Changelog
 
+## [v1.2.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.0) (2016-01-03)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.3...v1.2.0)
+
+**Implemented Features & Enhancements:**
+
+- Add Pass to Headless Clients [\#57](https://github.com/Theseus-Aegis/tac-a3-mods/issues/57)
+- Create zeus module to add persistent vehicles [\#54](https://github.com/Theseus-Aegis/tac-a3-mods/issues/54)
+- Change Armory hints to ACE3's displayTextStructured [\#98](https://github.com/Theseus-Aegis/tac-a3-mods/pull/98) ([jonpas](https://github.com/jonpas))
+- Add pass to Headless Clients [\#95](https://github.com/Theseus-Aegis/tac-a3-mods/pull/95) ([jonpas](https://github.com/jonpas))
+- Add add object to Chronos Zeus module [\#94](https://github.com/Theseus-Aegis/tac-a3-mods/pull/94) ([jonpas](https://github.com/jonpas))
+- Shooting Range [\#92](https://github.com/Theseus-Aegis/tac-a3-mods/pull/92) ([jonpas](https://github.com/jonpas))
+
+**Closed issues:**
+
+- Remove optional Taliban Fighters Armed's dependecy fixes [\#90](https://github.com/Theseus-Aegis/tac-a3-mods/issues/90)
+
+**Merged Pull Requests**
+
+- German translations for Headless Module. [\#102](https://github.com/Theseus-Aegis/tac-a3-mods/pull/102) ([System98](https://github.com/System98))
+- Shooting range german [\#101](https://github.com/Theseus-Aegis/tac-a3-mods/pull/101) ([jonpas](https://github.com/jonpas))
+- German translations for Zeus [\#99](https://github.com/Theseus-Aegis/tac-a3-mods/pull/99) ([System98](https://github.com/System98))
+- Merge main and common modules [\#97](https://github.com/Theseus-Aegis/tac-a3-mods/pull/97) ([jonpas](https://github.com/jonpas))
+- Fix Armory logging wrong mod prefix [\#96](https://github.com/Theseus-Aegis/tac-a3-mods/pull/96) ([jonpas](https://github.com/jonpas))
+- Removed redundant Taliban Fighters Armed dependency fixes [\#93](https://github.com/Theseus-Aegis/tac-a3-mods/pull/93) ([jonpas](https://github.com/jonpas))
+
 ## [v1.1.3](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.3) (2015-12-14)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.2...v1.1.3)
 
