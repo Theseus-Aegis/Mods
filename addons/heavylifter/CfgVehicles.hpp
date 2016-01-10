@@ -41,7 +41,8 @@
 class CfgVehicles {
 // Custom Helper object
     class Land_Pod_Heli_Transport_04_fuel_F;
-        class GVAR(Helper): Land_Pod_Heli_Transport_04_fuel_F {
+    class GVAR(Helper): Land_Pod_Heli_Transport_04_fuel_F {
+        scope = 1;
         displayName = CSTRING(Helper);
         transportFuel = 0;
         hiddenSelectionsTextures[] = {""};
