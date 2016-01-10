@@ -3,9 +3,9 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases">
-        <img src="https://img.shields.io/badge/Version-1.2.0-blue.svg?style=flat-square" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.2.1-blue.svg?style=flat-square" alt="TAC Mods Version">
     </a>
-    <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/download/v1.2.0/tac_mods_1.2.0.zip">
+    <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/download/v1.2.1/tac_mods_1.2.1.zip">
         <img src="https://img.shields.io/badge/Download-13.5_MB-green.svg?style=flat-square" alt="TAC Mods Download">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
