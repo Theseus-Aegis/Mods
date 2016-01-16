@@ -4,4 +4,4 @@
 if (!isServer) exitWith {};
 
 // Add Add Object To Chronos (server)
-["AddObjectToChronos", {_this call FUNC(moduleAddObjectToChronosServer)}] call ACE_Common_fnc_addEventHandler;
+["TAC_AddObjectToChronos", {_this call FUNC(moduleAddObjectToChronosServer)}] call ACE_Common_fnc_addEventHandler;

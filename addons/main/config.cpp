@@ -13,10 +13,14 @@ class CfgPatches {
 };
 
 class CfgMods {
-    class PREFIX {
+    class Mod_Base;
+    class PREFIX: Mod_Base {
         dir = "@tac_mods";
         name = "Theseus Inc. Mods";
-        picture = "A3\Ui_f\data\Logos\arma3_expansion_alpha_ca";
+        picture = QUOTE(PATHTOF(UI\logo_tac_ca.paa));
+        logo = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
+        logoOver = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
+        logoSmall = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";

@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {QGVAR(offroad), QGVAR(truck)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_common", "Taliban_fighters", "hlcweapons_aks"};
+        requiredAddons[] = {"tac_main", "Taliban_fighters", "hlcweapons_aks"};
         author[]= {"Jonpas", "Rory"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;

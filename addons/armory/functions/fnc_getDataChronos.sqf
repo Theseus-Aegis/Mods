@@ -16,19 +16,22 @@
 #include "script_component.hpp"
 
 params ["_selectedCategory"];
-private ["_loadData", "_armoryData", "_updateInfo", "_entry", "_serverReply"];
+
+// Set Chronos to debug if flag set
+private _debug = [false, true] select (!isNil QEGVAR(chronos,debug) && {EGVAR(chronos,debug)}); //@todo remove isNil when Chronos is ported
+TRACE_2("Chronos Debug",EGVAR(chronos,debug),_debug);
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
-_loadData = "ApolloClient" callExtension "loadArmory" + (_selectedCategory + "/" + getPlayerUID player);
+private _loadData = "ApolloClient" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
 
 if (_loadData == "loaded") then {
-    _armoryData = [];
-    _updateInfo = true;
-    _entry = [];
+    private _armoryData = [];
+    private _updateInfo = true;
+    private _entry = [];
 
     while {_updateInfo} do {
         // Retrieve the data which is stored in the client's heap
-        _serverReply = "ApolloClient" callExtension "get";
+        private _serverReply = "ApolloClient" callExtension "get";
         TRACE_1("Get Chronos Data",_serverReply);
 
         if (_serverReply == "done") then {
