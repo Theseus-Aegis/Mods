@@ -1,5 +1,22 @@
 # Changelog
 
+## [v1.2.1](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.1) (2016-01-16)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.2.0...v1.2.1)
+
+**Implemented Features & Enhancements:**
+
+- Add icon to insignia, Remove Heavy Lifter Helper from Editor [\#111](https://github.com/Theseus-Aegis/tac-a3-mods/pull/111) ([jonpas](https://github.com/jonpas))
+- Add small logo for nicer scaling [\#110](https://github.com/Theseus-Aegis/tac-a3-mods/pull/110) ([jonpas](https://github.com/jonpas))
+- Add new Chronos support [\#109](https://github.com/Theseus-Aegis/tac-a3-mods/pull/109) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- Taliban Fighters Armed requires removed Common [\#107](https://github.com/Theseus-Aegis/tac-a3-mods/issues/107)
+
+**Merged Pull Requests**
+
+- Fix Taliban Fighters Armed dependency [\#108](https://github.com/Theseus-Aegis/tac-a3-mods/pull/108) ([jonpas](https://github.com/jonpas))
+
 ## [v1.2.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.0) (2016-01-03)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.3...v1.2.0)
 
