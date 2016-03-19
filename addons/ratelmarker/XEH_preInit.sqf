@@ -2,9 +2,6 @@
 
 ADDON = false;
 
-PREP(canUseMarkerMenu);
-PREP(createMarker);
-PREP(createMarkerMenu);
-PREP(prepareMarker);
+#include "XEH_PREP.hpp"
 
 ADDON = true;
