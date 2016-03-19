@@ -15,8 +15,6 @@
  */
 #include "script_component.hpp"
 
-#define DISPLAYNAME_LENGTH 25
-
 params ["_armoryData"];
 
 private _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
