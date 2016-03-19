@@ -2,7 +2,6 @@
 
 ADDON = false;
 
-PREP(moduleAddObjectToChronosLocal);
-PREP(moduleAddObjectToChronosServer);
+#include "XEH_PREP.hpp"
 
 ADDON = true;

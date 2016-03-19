@@ -2,10 +2,6 @@
 
 ADDON = false;
 
-PREP(canAttach);
-PREP(canDetach);
-PREP(prepare);
-PREP(progress);
-PREP(unprepare);
+#include "XEH_PREP.hpp"
 
 ADDON = true;

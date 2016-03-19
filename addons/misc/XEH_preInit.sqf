@@ -2,6 +2,6 @@
 
 ADDON = false;
 
-PREP(toggleAlarm);
+#include "XEH_PREP.hpp"
 
 ADDON = true;

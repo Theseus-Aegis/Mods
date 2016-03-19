@@ -2,6 +2,6 @@
 
 ADDON = false;
 
-PREP(setInsignia);
+#include "XEH_PREP.hpp"
 
 ADDON = true;
