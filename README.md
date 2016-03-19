@@ -3,19 +3,16 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases">
-        <img src="https://img.shields.io/badge/Version-1.2.1-blue.svg?style=flat-square" alt="TAC Mods Version">
-    </a>
-    <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/download/v1.2.1/tac_mods_1.2.1.zip">
-        <img src="https://img.shields.io/badge/Download-13.5_MB-green.svg?style=flat-square" alt="TAC Mods Download">
+        <img src="https://img.shields.io/badge/Version-1.2.1-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
-        <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?style=flat-square&label=Issues" alt="TAC Mods Issues">
+        <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?label=Issues" alt="TAC Mods Issues">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/License-GPLv2-red.svg?style=flat-square" alt="TAC Mods License">
+        <img src="https://img.shields.io/badge/License-GPLv2-red.svg" alt="TAC Mods License">
     </a>
     <a href="https://travis-ci.org/Theseus-Aegis/tac-a3-mods">
-        <img src="https://img.shields.io/travis/Theseus-Aegis/tac-a3-mods.svg?style=flat-square" alt="TAC Mods Build Status">
+        <img src="https://img.shields.io/travis/Theseus-Aegis/tac-a3-mods.svg" alt="TAC Mods Build Status">
     </a>
 </p>
 <p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a> and <a href="https://github.com/acemod/ACE3/releases">ACE3</a>.</strong></sup></p>
