@@ -23,7 +23,7 @@ _marker setMarkerTypeLocal "KIA";
 [localize LSTRING(MarkerCreated), QUOTE(PATHTOF(UI\ratelMarker_ca.paa))] call ACE_Common_fnc_displayTextPicture;
 
 // Exit if map EH already installed
-if (isNil GVAR(openMapEH)) exitWith {};
+if (!isNil QGVAR(openMapEH)) exitWith {};
 
 // Attach map open EH, animate focus to marker and remove the EH
 GVAR(openMapEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", {
