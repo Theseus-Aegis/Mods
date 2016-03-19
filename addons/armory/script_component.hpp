@@ -72,3 +72,7 @@
 
 // MACROS
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)
+
+
+// CONSTANTS
+#define DISPLAYNAME_LENGTH 35

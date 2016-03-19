@@ -53,7 +53,7 @@ class GVAR(RscPicture) {
     text = "";
     colorText[] = {1, 1, 1, 1};
     colorBackground[] = {1, 1, 1, 0};
-    font = "PuristaMedium";
+    font = "RobotoCondensed";
     sizeEx = 0.02;
     w = PIC_W;
     h = PIC_H;
@@ -80,7 +80,7 @@ class GVAR(RscButton) {
     offsetY = 0;
     offsetPressedX = 0;
     offsetPressedY = 0;
-    font = "PuristaMedium";
+    font = "RobotoCondensed";
     sizeEx = 0.02;
     text = "";
     w = BTN_W;
@@ -91,7 +91,7 @@ class GVAR(RscCombo) {
     idc = -1;
     type = CT_COMBO;
     style = ST_LEFT + LB_TEXTURES;
-    font = "PuristaMedium";
+    font = "RobotoCondensed";
     sizeEx = "0.04";
     shadow = 0;
     colorText[] = {0, 0, 0, 1};
@@ -119,7 +119,7 @@ class GVAR(RscListNBox) {
     idc = -1;
     type = CT_LISTNBOX;
     style = ST_MULTI;
-    font = "PuristaMedium";
+    font = "RobotoCondensed";
     sizeEx = "0.04";
     colorText[] = {0, 0, 0, 1};
     colorDisabled[] = {0, 0, 0, 0.25};
@@ -135,7 +135,7 @@ class GVAR(RscListNBox) {
     idcLeft = -1;
     idcRight = -1;
     rowHeight = 0.051;
-    columns[] = {0, 0.18, 0.8};
+    columns[] = {0.02, 0.17, 0.8};
     class ListScrollBar {
         color[] = {1, 1, 1, 0.6};
         colorActive[] = {1, 1, 1, 1};
