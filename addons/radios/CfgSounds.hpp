@@ -1,7 +1,17 @@
 #define SOUND(var1,var2) \
+    class GVAR(DOUBLES(var2,Quiet)) { \
+        name = var2; \
+        sound[] = {QUOTE(PATHTOF(sounds\var1.ogg)), db+5, 1, 10}; \
+        titles[] = {}; \
+    }; \
     class GVAR(var2) { \
         name = var2; \
-        sound[] = {QUOTE(PATHTOF(sounds\var1.ogg)), db+25, 1, 500}; \
+        sound[] = {QUOTE(PATHTOF(sounds\var1.ogg)), db+15, 1, 10}; \
+        titles[] = {}; \
+    }; \
+    class GVAR(DOUBLES(var2,Loud)) { \
+        name = var2; \
+        sound[] = {QUOTE(PATHTOF(sounds\var1.ogg)), db+25, 1, 10}; \
         titles[] = {}; \
     };
 
