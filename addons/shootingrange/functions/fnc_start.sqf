@@ -46,7 +46,7 @@ private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
 private _text = "";
 private _size = 0;
 
-if (_mode < 4) then {
+if (_mode != 4) then {
     private _textConfig = "";
     private _textDurationOrTargetAmount = "";
     switch (_mode) do {
@@ -61,6 +61,10 @@ if (_mode < 4) then {
         case 3: {
             _textConfig = localize LSTRING(TargetAmount);
             _textDurationOrTargetAmount = _targetAmount;
+        };
+        case 5: {
+            _textConfig = localize LSTRING(Duration);
+            _textDurationOrTargetAmount = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
         };
         default {_textMode = "ERORR"};
     };
@@ -86,23 +90,22 @@ _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 
 // Prepare variables
 GVAR(targetNumber) = 0;
-GVAR(maxScore) = 0;
+GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 
 if (_mode > 1) then {
-    // Player count bullets fired
-    GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
+    if (_mode < 5) then {
+        // Player count bullets fired
+        GVAR(firedEHid) = ACE_player addEventHandler ["Fired", { GVAR(maxScore) = GVAR(maxScore) + 1; }];
+    };
 
-    if (_mode > 2) then {
+    if (_mode == 4) then {
+        {
+            _x enableSimulation true;
+        } forEach _triggers;
+
+        GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
+        GVAR(targetGroupIndex) = 0;
         GVAR(timeStartCountdown) = diag_tickTime;
-
-        if (_mode == 4) then {
-            {
-                _x enableSimulation true;
-            } forEach _triggers;
-
-            GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
-            GVAR(targetGroupIndex) = 0;
-        };
     };
 } else {
     GVAR(lastPauseTime) = 0;
@@ -146,6 +149,13 @@ if (_mode > 1) then {
 
     // Disable automatic pop-ups
     nopop = true;
+
+    // Pop up all targets in Rampage mode
+    if (_mode == 5) then {
+        {
+            [_x, 0] call FUNC(animateTarget); // Up
+        } forEach _targets;
+    };
 
     // Start PFH
     [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;

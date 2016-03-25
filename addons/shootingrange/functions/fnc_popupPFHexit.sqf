@@ -45,20 +45,19 @@ GVAR(targetUp) = nil;
 
 // Remove Fired EH if needed
 if (_mode > 1) then {
-    ACE_player removeEventHandler ["Fired", GVAR(firedEHid)];
-    GVAR(firedEHid) = nil;
+    if (_mode < 5) then {
+        ACE_player removeEventHandler ["Fired", GVAR(firedEHid)];
+        GVAR(firedEHid) = nil;
+    };
 
-    if (_mode > 2) then {
+    if (_mode == 4) then {
+        {
+            _x enableSimulation false;
+        } forEach _triggers;
+
+        GVAR(targetGroup) = nil;
+        GVAR(targetGroupIndex) = nil;
         GVAR(timeStartCountdown) = nil;
-
-        if (_mode == 4) then {
-            {
-                _x enableSimulation false;
-            } forEach _triggers;
-
-            GVAR(targetGroup) = nil;
-            GVAR(targetGroupIndex) = nil;
-        };
     };
 } else {
     GVAR(lastPauseTime) = nil;
