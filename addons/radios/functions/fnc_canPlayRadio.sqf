@@ -18,7 +18,14 @@
 
 params ["_vehicle", "_unit"];
 
-(isNil {_vehicle getVariable QGVAR(playingRadio)}) &&
-{driver _vehicle == _unit ||
-    {_vehicle turretUnit [0] == _unit}
-}
+if (!isNil {_vehicle getVariable QGVAR(playingRadio)}) exitWith {false};
+
+private _return = false;
+
+{
+    if (_vehicle turretUnit _x == _unit && {!(_unit call CBA_fnc_canUseWeapon)}) exitWith {
+        _return = true;
+    };
+} forEach (allTurrets _vehicle);
+
+driver _vehicle == _unit || {_return}
