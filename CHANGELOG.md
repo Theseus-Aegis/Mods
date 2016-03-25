@@ -1,5 +1,32 @@
 # Changelog
 
+## [v1.3.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.3.0) (2016-03-25)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.2.1...v1.3.0)
+
+**Implemented Features & Enhancements:**
+
+- Replace Purista with Roboto [\#120](https://github.com/Theseus-Aegis/tac-a3-mods/issues/120)
+- Change radio to only be heard inside and available in all vehicles [\#119](https://github.com/Theseus-Aegis/tac-a3-mods/issues/119)
+- Add additional Shooting Range mode [\#118](https://github.com/Theseus-Aegis/tac-a3-mods/issues/118)
+- Lower shooting range notification distance [\#114](https://github.com/Theseus-Aegis/tac-a3-mods/issues/114)
+- Add ApolloClient.dll [\#112](https://github.com/Theseus-Aegis/tac-a3-mods/issues/112)
+- Add Rampage mode to shooting range [\#129](https://github.com/Theseus-Aegis/tac-a3-mods/pull/129) ([jonpas](https://github.com/jonpas))
+- Repurpose radios to be in-vehicle radios [\#128](https://github.com/Theseus-Aegis/tac-a3-mods/pull/128) ([jonpas](https://github.com/jonpas))
+- Replace Purista with Roboto [\#127](https://github.com/Theseus-Aegis/tac-a3-mods/pull/127) ([jonpas](https://github.com/jonpas))
+- Add debug defines and convert to preStart PREP [\#126](https://github.com/Theseus-Aegis/tac-a3-mods/pull/126) ([jonpas](https://github.com/jonpas))
+- Lower shooting range notification distance to 50m [\#117](https://github.com/Theseus-Aegis/tac-a3-mods/pull/117) ([jonpas](https://github.com/jonpas))
+- Add ApolloClient.dll v1.1 [\#116](https://github.com/Theseus-Aegis/tac-a3-mods/pull/116) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- RATEL Marker map focus persists [\#122](https://github.com/Theseus-Aegis/tac-a3-mods/issues/122)
+- Air Security fails on non-local vehicle [\#121](https://github.com/Theseus-Aegis/tac-a3-mods/issues/121)
+
+**Merged Pull Requests**
+
+- Fix air security on non-local vehicle [\#125](https://github.com/Theseus-Aegis/tac-a3-mods/pull/125) ([jonpas](https://github.com/jonpas))
+- Possibly fix RATEL Marker focus persist indefinitely [\#124](https://github.com/Theseus-Aegis/tac-a3-mods/pull/124) ([jonpas](https://github.com/jonpas))
+
 ## [v1.2.1](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.1) (2016-01-16)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.2.0...v1.2.1)
 
