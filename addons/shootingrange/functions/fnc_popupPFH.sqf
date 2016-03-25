@@ -12,7 +12,7 @@
  *   5: Controller <OBJECT>
  *   6: Controllers <ARRAY>
  *   7: Name <STRING>
- *   8: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger) <NUMBER>
+ *   8: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER>
  *   9: Triggers <ARRAY>
  * 1: Per-Frame Handler ID <NUMBER>
  *
@@ -37,7 +37,7 @@ if !(_controller getVariable [QGVAR(running), false]) exitWith {
 private _currentTime = diag_tickTime;
 
 // Remove when time limit (duration) reached - success
-if (_mode in [1, 2] && {_currentTime >= _timeStart + _duration}) exitWith {
+if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
     [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(targetNumber), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 

@@ -38,7 +38,7 @@
             <German>Modus</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_ModeDesc">
-            <English>Time and Hit require Duration, Trigger requires Trigger Markers. Default: Time</English>
+            <English>Time and Hit require Duration, Trigger requires Trigger Markers. Default: Timed</English>
             <German>Zeit- und Treffermodus benötigen Zeit. Auslösermodus benötigt Auslöser-Markierungen. Standard: Zeitmodus</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Durations">
@@ -46,16 +46,14 @@
             <German>Laufzeiten</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
-            <English>List of available shooting durations in seconds, separated by commas. Only used in Time and Hit (Time Limited) Modes. Default: 0, 30, 60, 150, 300</English>
-            <German>Liste der möglichen Schießstand-Laufzeiten in Sekunden. Durch Kommas trennen. Wird nur im Zeit- und Treffermodus (Zeitlimit) genutzt. Standard: 0, 30, 60, 150, 300</German>
+            <English>List of available shooting durations in seconds, separated by commas. Only used in Timed, Hit (Time Limited) and Rampage Modes. Default: 0, 30, 60, 150, 300</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDuration">
             <English>Default Duration</English>
             <German>Standardzeit</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDurationDesc">
-            <English>Default shooting duration in seconds. Only used in Time and Hit (Time Limited) Modes. Default: 60</English>
-            <German>Standardzeit in Sekunden. Wird nur im Zeit- und Treffermodus (Zeitlimit) genutzt. Standard: 60</German>
+            <English>Default shooting duration in seconds. Only used in Timed, Hit (Time Limited) and Rampage Modes. Default: 60</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetAmounts">
             <English>Target Amounts</English>
@@ -132,6 +130,9 @@
         <Key ID="STR_TAC_ShootingRange_Trigger">
             <English>Trigger</English>
             <German>Auslöser</German>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_Rampage">
+            <English>Rampage</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Start">
             <English>Start</English>
@@ -216,6 +217,9 @@
         <Key ID="STR_TAC_ShootingRange_TargetHitBy">
             <English>Target hit by</English>
             <German>Ziel getroffen von</German>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetsHit">
+            <English>Targets Hit</English>
         </Key>
     </Package>
 </Project>

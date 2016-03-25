@@ -51,6 +51,10 @@ class CfgVehicles {
                         name = CSTRING(Trigger);
                         value = 4;
                     };
+                    class Rampage {
+                        name = CSTRING(Rampage);
+                        value = 5;
+                    };
                 };
             };
             class Durations {

@@ -47,7 +47,8 @@ if (_success) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _text = format ["%1%2 %3<br/><br/>%4: %5%6 (%7/%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), localize LSTRING(Accuracy), _scorePercentage, "%", _score, _maxScore];
+    private _ratingType = [localize LSTRING(Accuracy), localize LSTRING(TargetsHit)] select (_mode == 5);
+    private _text = format ["%1%2 %3<br/><br/>%4: %5%6 (%7/%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), _ratingType, _scorePercentage, "%", _score, _maxScore];
     private _size = 3;
 
     if (_timeElapsed > 0) then {
