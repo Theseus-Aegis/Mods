@@ -16,11 +16,19 @@
  */
 #include "script_component.hpp"
 
-private ["_radio"];
 params ["_vehicle", "_track"];
 
+private _volume = _vehicle getVariable [QGVAR(Volume), 1];
+
+if (_volume != 1) then {
+    private _volumeText = ["_quiet", "_loud"] select (_volume == 2);
+    _track = [_track, _volumeText] joinString "";
+};
+
+TRACE_2("Play",_volume,_track);
+
 // Create and Attach the radio object to the helicopter
-_radio = "Sign_Sphere10cm_F" createVehicle position _vehicle; // Non-collidable
+private _radio = "Sign_Sphere10cm_F" createVehicle position _vehicle; // Non-collidable
 _radio attachTo [_vehicle, [0, 0, 0]];
 
 // Make the radio object invisible (MP and SP support)
@@ -34,4 +42,4 @@ if (isMultiplayer) then {
 _vehicle setVariable [QGVAR(playingRadio), _radio, true];
 
 // Star playing music on radio object
-[_radio,_track] call CBA_fnc_globalSay3d;
+[_radio, _track] call CBA_fnc_globalSay3d;
