@@ -3,22 +3,26 @@
  * Prepares a marker based on input and executes it on pilot and turrets.
  *
  * Arguments:
- * 0: X Coordinate (String)
- * 1: Y Coordinate (String)
+ * 0: X Coordinate <STRING>
+ * 1: Y Coordinate <STRING>
  *
  * Return Value:
  * None
+ *
+ * Example:
+ * ["100", "200"] call tac_ratelmarker_fnc_canUseMarkerMenu;
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
 disableSerialization;
 
-private ["_lenFirst", "_lenSecond", "_firstCoordinate", "_secondCoordinate", "_heli"];
 params ["_firstCoordinateRaw", "_secondCoordinateRaw"];
 
 // Put numbers into array elements
-_lenFirst = count(toArray _firstCoordinateRaw);
-_lenSecond = count(toArray _secondCoordinateRaw);
+private _lenFirst = count (toArray _firstCoordinateRaw);
+private _lenSecond = count (toArray _secondCoordinateRaw);
 
 // Add last 1 or 2 numbers of a coordinate based on number of input numbers
 if (_lenFirst == 3) then {
@@ -36,15 +40,15 @@ if (_lenSecond == 4) then {
 };
 
 // Parse the string into number
-_firstCoordinate = parseNumber _firstCoordinateRaw;
-_secondCoordinate = parseNumber _secondCoordinateRaw;
+private _firstCoordinate = parseNumber _firstCoordinateRaw;
+private _secondCoordinate = parseNumber _secondCoordinateRaw;
 
 // If any coordinate is 0 exit, otherwise place the marker
 if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
     // Show ACE Hint
     [localize LSTRING(InvalidCoordinates), QUOTE(PATHTOF(UI\ratelMarker_ca.paa))] call ACE_Common_fnc_displayTextPicture;
 } else {
-    _heli = vehicle ACE_player;
+    private _heli = vehicle ACE_player;
 
     // Feed only occupied turrets
     _seeMarkerUnits = [];

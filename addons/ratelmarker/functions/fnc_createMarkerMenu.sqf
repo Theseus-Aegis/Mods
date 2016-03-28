@@ -1,14 +1,19 @@
 /*
  * Author: Jonpas
- * Draws RATEL Marker resource on main display.
+ * Opens coordiante input display.
  *
  * Arguments:
  * None
  *
  * Return Value:
  * None
+ *
+ * Example:
+ * [] call tac_ratelmarker_fnc_createMarkerMenu;
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
-// Need to use createDisplay to allow movement with GUI open
+// Has to be display to allow movement
 (findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);

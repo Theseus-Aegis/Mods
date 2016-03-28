@@ -1,22 +1,26 @@
 /*
  * Author: DaC, Jonpas
- * Places (or not) a marker based on input.
+ * Creates a marker at coordiantes and adds animation on map open.
  *
  * Arguments:
- * 0: X Coordinate (Number)
- * 1: Y Coordinate (Number)
+ * 0: X Coordinate <NUMBER>
+ * 1: Y Coordinate <NUMBER>
  *
  * Return Value:
  * None
+ *
+ * Example:
+ * [100, 200] call tac_ratelmarker_fnc_createMarker;
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
-private ["_marker"];
 params ["_firstCoordinate", "_secondCoordinate"];
 
 deleteMarkerLocal QGVAR(marker);
 
-_marker = createMarkerLocal [QGVAR(marker), [_firstCoordinate,_secondCoordinate]];
+private _marker = createMarkerLocal [QGVAR(marker), [_firstCoordinate,_secondCoordinate]];
 _marker setMarkerTypeLocal "KIA";
 
 // Show ACE Hint
