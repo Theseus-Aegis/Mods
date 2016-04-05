@@ -1,4 +1,16 @@
 class CfgVehicles {
+    // Backpacks
+    class B_FieldPack_blk;
+    class GVAR(FieldPack_Black_Filled): B_FieldPack_blk {
+        scope = 1;
+        class TransportMagazines {
+            class _xx_rpg32_f {
+                magazine = "rpg32_f";
+                count = 2;
+            };
+        };
+    };
+
     // Units
     class O_Soldier_base_F;
     class TBan_Fighter1: O_Soldier_base_F {
@@ -14,16 +26,18 @@ class CfgVehicles {
 		respawnMagazines[] = {MOD_MAGAZINES, ITEMS_3(hlc_30Rnd_545x39_B_AK), ITEMS_2(hlc_30Rnd_545x39_T_AK)};
     };
     class TBan_Fighter2: TBan_Fighter1 {
+        backpack = QGVAR(FieldPack_Black_Filled); // Required to be able to hold RPG rounds without RPT warnings
         weapons[] = {MOD_WEAPONS, "hlc_rifle_ak74", "launch_RPG32_F"};
         respawnWeapons[] = {MOD_WEAPONS, "hlc_rifle_ak74", "launch_RPG32_F"};
-        magazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK), ITEMS_2(rpg32_f)};
-		respawnMagazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK), ITEMS_2(rpg32_f)};
+        magazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK)};
+		respawnMagazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK)};
     };
     class TBan_Fighter2NH: TBan_Fighter1 {
+        backpack = QGVAR(FieldPack_Black_Filled); // Required to be able to hold RPG rounds without RPT warnings
         weapons[] = {MOD_WEAPONS, "hlc_rifle_ak74", "launch_RPG32_F"};
         respawnWeapons[] = {MOD_WEAPONS, "hlc_rifle_ak74", "launch_RPG32_F"};
-        magazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK), ITEMS_2(rpg32_f)};
-		respawnMagazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK), ITEMS_2(rpg32_f)};
+        magazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK)};
+		respawnMagazines[] = {MOD_MAGAZINES, ITEMS_5(hlc_30Rnd_545x39_B_AK)};
     };
     class TBan_Fighter3: TBan_Fighter1 {
         weapons[] = {MOD_WEAPONS, "hlc_rifle_ak74"};
