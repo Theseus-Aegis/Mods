@@ -10,7 +10,7 @@
  * The return value <BOOL>
  *
  * Example:
- * ["something", player] call tac_common_fnc_exampleFunction
+ * ["something", player] call tac_blank_fnc_exampleFunction
  *
  * Public: [Yes/No]
  */
