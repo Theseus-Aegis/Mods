@@ -116,4 +116,22 @@ class CfgVehicles {
             description = CSTRING(ModuleDesc);
         };
     };
+
+
+    class TargetBase;
+    class TargetP_Inf_F: TargetBase {
+        class AnimationSources {
+            class Terc {
+                sound = QGVAR(TargetLargeSound);
+            };
+        };
+    };
+
+    class Land_Target_Oval_F: TargetBase {
+        class AnimationSources {
+            class Left_Rotate {
+                sound = QGVAR(TargetSmallSound);
+            };
+        };
+    };
 };

@@ -12,5 +12,6 @@ class CfgPatches {
     };
 };
 
+#include "CfgAnimationSourceSounds.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
