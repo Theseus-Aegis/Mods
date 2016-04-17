@@ -123,6 +123,7 @@ if (_mode > 1) then {
 
         // Countdown timer notification
         [_textCountdown] call ACE_Common_fnc_displayTextStructured;
+        [_controller, "FD_Timer_F", 50] call CBA_fnc_globalSay3d;
 
     }, [_controller, _textCountdown], _execTime] call ACE_Common_fnc_waitAndExecute;
 
@@ -137,6 +138,7 @@ if (_mode > 1) then {
 
     // Final countdown notification
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
+    [_controller, "FD_Start_F", 50] call CBA_fnc_globalSay3d;
 
     // Notify supervisor(s) (closer than start/stop notifications)
     private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;

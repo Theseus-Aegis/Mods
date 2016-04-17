@@ -39,6 +39,7 @@ params ["_controller", "_controllers", "_name", "_targets", ["_success", false],
 
 // Notification
 private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+[_controller, "FD_Finish_F", 50] call CBA_fnc_globalSay3d;
 
 if (_success) then {
     // Check for zero divisor

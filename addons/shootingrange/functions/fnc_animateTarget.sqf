@@ -20,15 +20,16 @@ params ["_target", "_state"];
 
 
 private _fnc_animate = {
-    params ["_target", "_state", "_anims"];
+    params ["_target", "_state", "_anims", "_sounds"];
     // Wait animation time before changing animation again
     [{
-        params ["_target", "_state", "_anims"];
-        TRACE_3("Wait Animate",_target,_state,_anims);
+        params ["_target", "_state", "_anims", "_sounds"];
+        TRACE_4("Wait Animate",_target,_state,_anims,_sounds);
         {
             _target animate [_x, _state];
+            [_target, _sounds select _state, 50] call CBA_fnc_globalSay3d;
         } forEach _anims;
-    }, [_target, _state, _anims], 0.3] call ACE_Common_fnc_waitAndExecute;
+    }, [_target, _state, _anims, _sounds], 0.3] call ACE_Common_fnc_waitAndExecute;
 };
 
 
@@ -42,8 +43,8 @@ if (_index != -1) then {
     {
         _anims pushBack _x;
     } forEach (OVAL_TARGET_ANIMS select _index);
-    [_target, _state, _anims] call _fnc_animate;
+    [_target, _state, _anims, ["FD_Target_PopUp_Small_F", "FD_Target_PopDown_Small_F"]] call _fnc_animate;
 } else {
     // Normal target
-    [_target, _state, ["Terc"]] call _fnc_animate;
+    [_target, _state, ["Terc"], ["FD_Target_PopUp_Large_F", "FD_Target_PopDown_Large_F"]] call _fnc_animate;
 };
