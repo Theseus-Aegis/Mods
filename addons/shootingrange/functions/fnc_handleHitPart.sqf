@@ -52,7 +52,7 @@ if (_shooter != _starter) exitWith {
 };
 
 
-[_controller, "Beep_Target", 50] call CBA_fnc_globalSay3d;
+[_controller, "Beep_Target", 25] call CBA_fnc_globalSay3d;
 
 // Mark target as already hit
 _target setVariable [QGVAR(alreadyHit), true];
