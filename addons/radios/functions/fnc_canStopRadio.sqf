@@ -18,10 +18,4 @@
 
 params ["_vehicle", "_unit"];
 
-(!isNil {_vehicle getVariable QGVAR(playingRadio)}) &&
-{driver _vehicle != _unit ||
-    {_vehicle turretUnit [0] != _unit} ||
-    {!alive (driver _vehicle) &&
-        {!alive (_vehicle turretUnit [0])}
-    }
-}
+!isNil {_vehicle getVariable QGVAR(playingRadio)}

@@ -2,11 +2,6 @@
 
 ADDON = false;
 
-PREP(addRadioTrackActions);
-PREP(canPlayRadio);
-PREP(canStopRadio);
-PREP(getRadioTracks);
-PREP(playRadio);
-PREP(stopRadio);
+#include "XEH_PREP.hpp"
 
 ADDON = true;

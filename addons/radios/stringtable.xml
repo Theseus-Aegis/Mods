@@ -6,6 +6,21 @@
             <Spanish>Escuchar Radio</Spanish>
             <German>Radio starten</German>
         </Key>
+        <Key ID="STR_TAC_Radios_Tracks">
+            <English>Tracks</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_Volume">
+            <English>Volume</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_Quiet">
+            <English>Quiet</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_Normal">
+            <English>Normal</English>
+        </Key>
+        <Key ID="STR_TAC_Radios_Loud">
+            <English>Loud</English>
+        </Key>
         <Key ID="STR_TAC_Radios_StopRadio">
             <English>Stop Radio</English>
             <Spanish>Detener Radio</Spanish>

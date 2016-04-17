@@ -27,7 +27,7 @@ if (_itemType select 0 == "weapon") then {
             _x deleteAt 0; // Errors when combined with forEach
             {
                 if !(_x in ["", []]) exitWith {
-                    hintSilent localize LSTRING(Notification_ContainsItemsWeapon);
+                    [LSTRING(ContainsItemsWeapon), 2.5] call ACE_Common_fnc_displayTextStructured;
                     _return = true;
                 };
             } forEach _x;
@@ -44,7 +44,7 @@ if (_itemType isEqualTo ["item", "uniform"] || {_itemType isEqualTo ["item", "ve
                 {!((weaponCargo _container) isEqualTo [])} ||
                 {!((magazineCargo _container) isEqualTo [])} ||
                 {!((backpackCargo _container) isEqualTo [])}) exitWith {
-                    hintSilent localize LSTRING(Notification_ContainsItemsContainer);
+                    [LSTRING(ContainsItemsContainer), 2.5] call ACE_Common_fnc_displayTextStructured;
                     _return = true;
             };
         };

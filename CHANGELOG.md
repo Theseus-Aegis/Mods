@@ -1,5 +1,74 @@
 # Changelog
 
+## [v1.3.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.3.0) (2016-03-25)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.2.1...v1.3.0)
+
+**Implemented Features & Enhancements:**
+
+- Replace Purista with Roboto [\#120](https://github.com/Theseus-Aegis/tac-a3-mods/issues/120)
+- Change radio to only be heard inside and available in all vehicles [\#119](https://github.com/Theseus-Aegis/tac-a3-mods/issues/119)
+- Add additional Shooting Range mode [\#118](https://github.com/Theseus-Aegis/tac-a3-mods/issues/118)
+- Lower shooting range notification distance [\#114](https://github.com/Theseus-Aegis/tac-a3-mods/issues/114)
+- Add ApolloClient.dll [\#112](https://github.com/Theseus-Aegis/tac-a3-mods/issues/112)
+- Add Rampage mode to shooting range [\#129](https://github.com/Theseus-Aegis/tac-a3-mods/pull/129) ([jonpas](https://github.com/jonpas))
+- Repurpose radios to be in-vehicle radios [\#128](https://github.com/Theseus-Aegis/tac-a3-mods/pull/128) ([jonpas](https://github.com/jonpas))
+- Replace Purista with Roboto [\#127](https://github.com/Theseus-Aegis/tac-a3-mods/pull/127) ([jonpas](https://github.com/jonpas))
+- Add debug defines and convert to preStart PREP [\#126](https://github.com/Theseus-Aegis/tac-a3-mods/pull/126) ([jonpas](https://github.com/jonpas))
+- Lower shooting range notification distance to 50m [\#117](https://github.com/Theseus-Aegis/tac-a3-mods/pull/117) ([jonpas](https://github.com/jonpas))
+- Add ApolloClient.dll v1.1 [\#116](https://github.com/Theseus-Aegis/tac-a3-mods/pull/116) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- RATEL Marker map focus persists [\#122](https://github.com/Theseus-Aegis/tac-a3-mods/issues/122)
+- Air Security fails on non-local vehicle [\#121](https://github.com/Theseus-Aegis/tac-a3-mods/issues/121)
+
+**Merged Pull Requests**
+
+- Fix air security on non-local vehicle [\#125](https://github.com/Theseus-Aegis/tac-a3-mods/pull/125) ([jonpas](https://github.com/jonpas))
+- Possibly fix RATEL Marker focus persist indefinitely [\#124](https://github.com/Theseus-Aegis/tac-a3-mods/pull/124) ([jonpas](https://github.com/jonpas))
+
+## [v1.2.1](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.1) (2016-01-16)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.2.0...v1.2.1)
+
+**Implemented Features & Enhancements:**
+
+- Add icon to insignia, Remove Heavy Lifter Helper from Editor [\#111](https://github.com/Theseus-Aegis/tac-a3-mods/pull/111) ([jonpas](https://github.com/jonpas))
+- Add small logo for nicer scaling [\#110](https://github.com/Theseus-Aegis/tac-a3-mods/pull/110) ([jonpas](https://github.com/jonpas))
+- Add new Chronos support [\#109](https://github.com/Theseus-Aegis/tac-a3-mods/pull/109) ([jonpas](https://github.com/jonpas))
+
+**Fixed Bugs:**
+
+- Taliban Fighters Armed requires removed Common [\#107](https://github.com/Theseus-Aegis/tac-a3-mods/issues/107)
+
+**Merged Pull Requests**
+
+- Fix Taliban Fighters Armed dependency [\#108](https://github.com/Theseus-Aegis/tac-a3-mods/pull/108) ([jonpas](https://github.com/jonpas))
+
+## [v1.2.0](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.2.0) (2016-01-03)
+[Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.3...v1.2.0)
+
+**Implemented Features & Enhancements:**
+
+- Add Pass to Headless Clients [\#57](https://github.com/Theseus-Aegis/tac-a3-mods/issues/57)
+- Create zeus module to add persistent vehicles [\#54](https://github.com/Theseus-Aegis/tac-a3-mods/issues/54)
+- Change Armory hints to ACE3's displayTextStructured [\#98](https://github.com/Theseus-Aegis/tac-a3-mods/pull/98) ([jonpas](https://github.com/jonpas))
+- Add pass to Headless Clients [\#95](https://github.com/Theseus-Aegis/tac-a3-mods/pull/95) ([jonpas](https://github.com/jonpas))
+- Add add object to Chronos Zeus module [\#94](https://github.com/Theseus-Aegis/tac-a3-mods/pull/94) ([jonpas](https://github.com/jonpas))
+- Shooting Range [\#92](https://github.com/Theseus-Aegis/tac-a3-mods/pull/92) ([jonpas](https://github.com/jonpas))
+
+**Closed issues:**
+
+- Remove optional Taliban Fighters Armed's dependecy fixes [\#90](https://github.com/Theseus-Aegis/tac-a3-mods/issues/90)
+
+**Merged Pull Requests**
+
+- German translations for Headless Module. [\#102](https://github.com/Theseus-Aegis/tac-a3-mods/pull/102) ([System98](https://github.com/System98))
+- Shooting range german [\#101](https://github.com/Theseus-Aegis/tac-a3-mods/pull/101) ([jonpas](https://github.com/jonpas))
+- German translations for Zeus [\#99](https://github.com/Theseus-Aegis/tac-a3-mods/pull/99) ([System98](https://github.com/System98))
+- Merge main and common modules [\#97](https://github.com/Theseus-Aegis/tac-a3-mods/pull/97) ([jonpas](https://github.com/jonpas))
+- Fix Armory logging wrong mod prefix [\#96](https://github.com/Theseus-Aegis/tac-a3-mods/pull/96) ([jonpas](https://github.com/jonpas))
+- Removed redundant Taliban Fighters Armed dependency fixes [\#93](https://github.com/Theseus-Aegis/tac-a3-mods/pull/93) ([jonpas](https://github.com/jonpas))
+
 ## [v1.1.3](https://github.com/Theseus-Aegis/tac-a3-mods/tree/v1.1.3) (2015-12-14)
 [Full Changelog](https://github.com/Theseus-Aegis/tac-a3-mods/compare/v1.1.2...v1.1.3)
 

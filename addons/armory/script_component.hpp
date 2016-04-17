@@ -1,6 +1,11 @@
 #define COMPONENT armory
 #include "\x\tac\addons\main\script_mod.hpp"
 
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
+// #define ENABLE_PERFORMANCE_COUNTERS
+
 #ifdef DEBUG_ENABLED_ARMORY
     #define DEBUG_MODE_FULL
 #endif
@@ -9,7 +14,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_ARMORY
 #endif
 
-#include "\z\ace\addons\main\script_macros.hpp"
+#include "\x\tac\addons\main\script_macros.hpp"
 
 /*
  * JNS Tag 3-ID = 333
@@ -67,3 +72,7 @@
 
 // MACROS
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)
+
+
+// CONSTANTS
+#define DISPLAYNAME_LENGTH 35

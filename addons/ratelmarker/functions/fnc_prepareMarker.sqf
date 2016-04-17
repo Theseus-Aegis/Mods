@@ -3,65 +3,50 @@
  * Prepares a marker based on input and executes it on pilot and turrets.
  *
  * Arguments:
- * 0: X Coordinate (String)
- * 1: Y Coordinate (String)
+ * 0: RATEL Marker Menu <CONTROL>
  *
  * Return Value:
  * None
+ *
+ * Example:
+ * [control] call tac_ratelmarker_fnc_canUseMarkerMenu;
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
 disableSerialization;
 
-private ["_lenFirst", "_lenSecond", "_firstCoordinate", "_secondCoordinate", "_heli"];
-params ["_firstCoordinateRaw", "_secondCoordinateRaw"];
+params ["_ctrl"];
 
-// Put numbers into array elements
-_lenFirst = count(toArray _firstCoordinateRaw);
-_lenSecond = count(toArray _secondCoordinateRaw);
+private _ctrlParent = ctrlParent _ctrl;
 
-// Add last 1 or 2 numbers of a coordinate based on number of input numbers
-if (_lenFirst == 3) then {
-    _firstCoordinateRaw = _firstCoordinateRaw + "50";
-};
-if (_lenFirst == 4) then {
-    _firstCoordinateRaw = _firstCoordinateRaw + "0";
-};
+private _grid = format ["%1%2", ctrlText (_ctrlParent displayCtrl GUI_ID_INPUT_X), ctrlText (_ctrlParent displayCtrl GUI_ID_INPUT_Y)];
 
-if (_lenSecond == 3) then {
-    _secondCoordinateRaw = _secondCoordinateRaw + "50";
-};
-if (_lenSecond == 4) then {
-    _secondCoordinateRaw = _secondCoordinateRaw + "0";
-};
+// Close marker menu
+_ctrlParent closeDisplay 0;
 
-// Parse the string into number
-_firstCoordinate = parseNumber _firstCoordinateRaw;
-_secondCoordinate = parseNumber _secondCoordinateRaw;
+private _pos = [_grid] call ace_common_fnc_getMapPosFromGrid;
+TRACE_2("Grid to Position",_grid,_pos);
 
-// If any coordinate is 0 exit, otherwise place the marker
-if (_firstCoordinate == 0 || _secondCoordinate == 0) then {
-    // Show ACE Hint
-    [localize LSTRING(InvalidCoordinates), QUOTE(PATHTOF(UI\ratelMarker_ca.paa))] call ACE_Common_fnc_displayTextPicture;
-} else {
-    _heli = vehicle ACE_player;
 
-    // Feed only occupied turrets
-    _seeMarkerUnits = [];
-    {
-        if (!isNull (_heli turretUnit _x) && !local (_heli turretUnit _x)) then {
-            _seeMarkerUnits pushBack (_heli turretUnit _x);
-        };
-    } forEach allTurrets _heli; // Get all turret paths in the vehicle (without person turrets)
+private _heli = vehicle ACE_player;
 
-    // Add driver if there is one
-    if (!isNull (driver _heli) && !local (driver _heli)) then {
-        _seeMarkerUnits pushBack (driver _heli);
+// Feed only occupied turrets
+_seeMarkerUnits = [];
+{
+    if (!isNull (_heli turretUnit _x) && !local (_heli turretUnit _x)) then {
+        _seeMarkerUnits pushBack (_heli turretUnit _x);
     };
+} forEach allTurrets _heli; // Get all turret paths in the vehicle (without person turrets)
 
-    // Create marker locally
-    [_firstCoordinate,_secondCoordinate] call FUNC(createMarker);
-
-    // Create marker remotely on array of objects
-    ["TAC_ratelMarkerCreated", _seeMarkerUnits, [_firstCoordinate,_secondCoordinate]] call ACE_Common_fnc_targetEvent;
+// Add driver if there is one
+if (!isNull (driver _heli) && !local (driver _heli)) then {
+    _seeMarkerUnits pushBack (driver _heli);
 };
+
+// Create marker locally
+[_pos] call FUNC(createMarker);
+
+// Create marker remotely on array of objects
+["TAC_ratelMarkerCreated", _seeMarkerUnits, [_pos]] call ACE_Common_fnc_targetEvent;

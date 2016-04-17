@@ -1,6 +1,11 @@
 #define COMPONENT ratelmarker
 #include "\x\tac\addons\main\script_mod.hpp"
 
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
+// #define ENABLE_PERFORMANCE_COUNTERS
+
 #ifdef DEBUG_ENABLED_RATELMARKER
     #define DEBUG_MODE_FULL
 #endif
@@ -19,4 +24,4 @@
  * IDs: <TAC Tag 6-ID> + <Project 2-ID> + <Control 2-ID>
  */
 #define GUI_ID_INPUT_X 2133201
-#define GUI_ID_INPUT_Y 2133201
+#define GUI_ID_INPUT_Y 2133202

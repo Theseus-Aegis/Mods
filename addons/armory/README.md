@@ -1,6 +1,6 @@
 # About
 
-Common functions and systems used by other components.
+Adds Armory with support Chronos support.
 
 ### Authors
 

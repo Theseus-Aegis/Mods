@@ -13,3 +13,7 @@ if (!hasInterface) exitWith {};
     };
     false
 }, {false}, [31, [true, false, true]], false] call CBA_fnc_addKeybind; // Alt+Shift+S
+
+
+// Add vehicle lock event
+[QGVAR(setVehicleLock), {(_this select 0) setVehicleLock (_this select 1)}] call ACE_Common_fnc_addEventHandler;

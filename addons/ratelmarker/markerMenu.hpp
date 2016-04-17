@@ -10,7 +10,7 @@ class RscButton;
 class GVAR(RatelMarkerMenu) {
     idd = -1;
     movingEnable = 0;
-    enableSimulation = 1; 
+    enableSimulation = 1;
     class controlsBackground {
         class Background: RscBackground {
             x = COORDINATE_X;
@@ -52,7 +52,7 @@ class GVAR(RatelMarkerMenu) {
         class CreateMarker: RscButton {
             idc = -1;
             text = "Create Marker";
-            onButtonClick = QUOTE((ctrlParent (_this select 0)) closeDisplay 0; [ARR_2(ctrlText((ctrlParent (_this select 0)) displayCtrl GUI_ID_INPUT_X), ctrlText((ctrlParent (_this select 0)) displayCtrl GUI_ID_INPUT_Y))] call FUNC(prepareMarker));
+            onButtonClick = QUOTE(_this call FUNC(prepareMarker));
             x = COORDINATE_X + 0.03;
             y = COORDINATE_Y + 0.05;
             w = COORDINATE_W + 0.09;
