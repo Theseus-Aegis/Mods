@@ -28,9 +28,10 @@ private _weaponHolder = createVehicle ["WeaponHolderSimulated", _bodybag, [], 0,
     _weaponHolder addWeaponCargoGlobal [_x, 1];
 } forEach _droppedWeapons;
 
+// Move weapons to body bag position next frame for the body bag handling to be finished
 [{
     params ["_weaponHolder", "_bodybag"];
     _weaponHolder setPosASL (getPosASL _bodybag);
 }, [_weaponHolder, _bodybag]] call ACE_Common_fnc_execNextFrame;
 
-TRACE_4("Weapon Holder",_weaponHolder,getPosASL _weaponHolder,_bodybag,getPosASL _bodybag);
+TRACE_4("Weapons Position",_weaponHolder,getPosASL _weaponHolder,_bodybag,getPosASL _bodybag);
