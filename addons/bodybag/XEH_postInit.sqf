@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 // Exit on clients and non-hosts
-if (hasInterface && !isServer) exitWith {};
+if (!isServer) exitWith {};
 
 ["placedInBodyBag", {
     // Move all inventory from body to bodybag

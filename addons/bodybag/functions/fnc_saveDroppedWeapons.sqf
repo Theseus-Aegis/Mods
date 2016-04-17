@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [killed, killer] call tac_bodybag_fnc_saveDroppedWeapons
+ * [killed] call tac_bodybag_fnc_saveDroppedWeapons
  *
  * Public: No
  */
@@ -20,6 +20,8 @@ params ["_unit"];
 private _droppedPrimary = primaryWeapon _unit;
 private _droppedSecondary = secondaryWeapon _unit;
 
-TRACE_2("Dropped Weapons",_droppedPrimary,_droppedSecondary);
+private _weapons = [_droppedPrimary, _droppedSecondary] select {_x != ""};
 
-_unit setVariable [QGVAR(droppedWeapons), [_droppedPrimary, _droppedSecondary], false];
+_unit setVariable [QGVAR(droppedWeapons), _weapons, true];
+
+TRACE_3("Dropped Weapons",_droppedPrimary,_droppedSecondary,_weapons);
