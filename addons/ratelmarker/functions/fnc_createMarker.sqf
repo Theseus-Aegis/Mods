@@ -3,24 +3,23 @@
  * Creates a marker at coordiantes and adds animation on map open.
  *
  * Arguments:
- * 0: X Coordinate <NUMBER>
- * 1: Y Coordinate <NUMBER>
+ * 0: Position <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [100, 200] call tac_ratelmarker_fnc_createMarker;
+ * [[100, 200]] call tac_ratelmarker_fnc_createMarker;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_firstCoordinate", "_secondCoordinate"];
+params ["_pos"];
 
 deleteMarkerLocal QGVAR(marker);
 
-private _marker = createMarkerLocal [QGVAR(marker), [_firstCoordinate,_secondCoordinate]];
+private _marker = createMarkerLocal [QGVAR(marker), _pos];
 _marker setMarkerTypeLocal "KIA";
 
 // Show ACE Hint
