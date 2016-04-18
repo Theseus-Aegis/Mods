@@ -2,7 +2,7 @@
     <img src="https://github.com/Theseus-Aegis/tac-a3-mods/blob/master/extras/assets/logo/TAC-Logo.jpg">
 </p>
 <p align="center">
-    <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases">
+    <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/latest">
         <img src="https://img.shields.io/badge/Version-1.4.0-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
@@ -15,7 +15,7 @@
         <img src="https://img.shields.io/travis/Theseus-Aegis/tac-a3-mods.svg" alt="TAC Mods Build Status">
     </a>
 </p>
-<p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a> and <a href="https://github.com/acemod/ACE3/releases">ACE3</a>.</strong></sup></p>
+<p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
 
 **Theseus Inc. Mods**, also known as **TAC Mods**, is a joint effort by the members of <a href="http://www.theseus-aegis.com/">Theseus Inc.</a> to bend the features and game-play of Arma 3 to the community's needs.
 
@@ -33,5 +33,5 @@ make.py force checkexternal release MAJOR.MINOR.PATCH
 
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
 ```
-github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --date-format %Y-%m-%d --bugs-label "**Fixed Bugs:**" --enhancement-label "**Implemented Features & Enhancements:**" --header-label "# Changelog" --pr-label "**Merged Pull Requests**" --no-issues-wo-labels --no-pr-wo-labels --no-unreleased --exclude-labels duplicate,question,invalid,wontfix,tools --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request"
+github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --no-issues --no-pr-wo-labels --unreleased-only --exclude-labels "can't reproduce",duplicate,question,invalid,wontfix --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request" --no-author --no-compare-link
 ```
