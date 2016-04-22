@@ -2,17 +2,14 @@
 
 class CfgPatches {
     class ADDON {
-        units[] = {
-            QGVAR(moduleAddObjectToChronos)
-        };
+        units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_zeus"};
+        requiredAddons[] = {"tac_main"};
         author[]= {"Jonpas"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };
 
-#include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
+#include "CfgDifficultyPresets.hpp"
