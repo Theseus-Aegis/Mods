@@ -44,7 +44,7 @@ if (_requestedMenu == "main") exitWith {
 [false] call FUNC(dialogControl_main);
 
 // Set Title
-ctrlSetText [TITLE, format[QUOTE(PATHTOF(UI\titleCategory_%1.paa)), _requestedMenu]];
+ctrlSetText [TITLE, format [QUOTE(PATHTOF(UI\titleCategory_%1.paa)), _requestedMenu]];
 
 // Show List
 [_requestedMenu] call FUNC(dialogControl_list);

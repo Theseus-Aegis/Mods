@@ -25,3 +25,11 @@ class Extended_Take_EventHandlers {
         };
     };
 };
+
+class Extended_InventoryOpened_EventHandlers {
+    class CAManBase {
+        class ADDON {
+            clientInventoryOpened = QUOTE(_this call FUNC(getInsignia));
+        };
+    };
+};

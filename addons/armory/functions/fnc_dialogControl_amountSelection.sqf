@@ -21,7 +21,7 @@ TRACE_1("Amount of selected item",_quantity);
 lbClear DROPDOWNAMOUNT;
 
 for "_x" from 1 to (parseNumber _quantity) do {
-    lbAdd [DROPDOWNAMOUNT, str(_x)];
+    lbAdd [DROPDOWNAMOUNT, str _x];
 };
 
 // Set initial value to 1 (will not fire onLBSelChanged)

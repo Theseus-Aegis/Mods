@@ -24,6 +24,11 @@ private _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 private _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
 private _object = ACE_player getVariable [QGVAR(object), objNull];
 
+// Insignia application
+if (isClass (configFile >> "CfgUnitInsignia" >> _selectedItem)) exitWith {
+    [ACE_player, _selectedItem] call BIS_fnc_setUnitInsignia;
+};
+
 TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set

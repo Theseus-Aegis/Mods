@@ -89,6 +89,9 @@
             <English>Access Apparel</English>
             <German>Auf Bekleidung zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnInsigniasTooltip">
+            <English>Access Insignias</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnStashTooltip">
             <English>Stash Container Contents</English>
             <German>Containerinhalt wegpacken</German>

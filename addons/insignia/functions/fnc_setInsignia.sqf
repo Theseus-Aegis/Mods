@@ -13,14 +13,11 @@
  *
  * Public: No
  */
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_unit"];
 
-if (local _unit && {_unit == player}) then {
-    [_unit, QGVAR(logoStitch)] call BIS_fnc_setUnitInsignia;
-    TRACE_2("Insignia added",_unit,player);
-} else {
-    TRACE_2("Insignia NOT added",_unit,player);
-};
+if (!local _unit || !(_unit == player)) exitWith {};
+
+[_unit, GVAR(activeInsignia)] call BIS_fnc_setUnitInsignia;
+TRACE_2("Insignia added",_unit,GVAR(activeInsignia));
