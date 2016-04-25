@@ -26,6 +26,7 @@ lnbClear NLIST;
 private _rowNum = 0; // Needed for proper row images and data
 
 // Fill List
+_armoryData sort true; // Errors when used in combination with forEach
 {
     _x params ["_className", "_subCategory", "_description", "_quantity"];
 
