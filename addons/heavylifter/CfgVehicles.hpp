@@ -46,6 +46,7 @@ class CfgVehicles {
         displayName = CSTRING(Helper);
         transportFuel = 0;
         hiddenSelectionsTextures[] = {""};
+        class ACE_Actions {};
     };
 
 // ACE Interaction
