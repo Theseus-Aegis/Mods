@@ -12,7 +12,7 @@
         icon = QUOTE(PATHTOF(UI\musicStart_ca.paa)); \
         class GVAR(Volume) { \
             displayName = CSTRING(Volume); \
-            condition = QUOTE(_this call FUNC(canPlayRadio)); \
+            condition = "true"; \
             statement = "true"; \
             icon = ""; \
             class GVAR(Volume_Quiet) { \
@@ -41,6 +41,8 @@
             icon = QUOTE(PATHTOF(UI\musicStart_ca.paa)); \
         }; \
     };
+
+class CBA_Extended_EventHandlers;
 
 class CfgVehicles {
     class LandVehicle;
@@ -71,6 +73,36 @@ class CfgVehicles {
     class Ship_F: Ship {
         class ACE_SelfActions {
             MACRO_RADIO_ACTIONS
+        };
+    };
+
+    class Items_base_F;
+    class Land_SurvivalRadio_F: Items_base_F {
+        GVAR(isRadio) = 1;
+        class ACE_Actions {
+            class ACE_MainActions {
+                selection = "";
+                distance = 5;
+                condition = "true";
+                MACRO_RADIO_ACTIONS
+            };
+        };
+        class EventHandlers {
+            class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
+        };
+    };
+    class Land_FMradio_F: Items_base_F {
+        GVAR(isRadio) = 1;
+        class ACE_Actions {
+            class ACE_MainActions {
+                selection = "";
+                distance = 5;
+                condition = "true";
+                MACRO_RADIO_ACTIONS
+            };
+        };
+        class EventHandlers {
+            class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
         };
     };
 };

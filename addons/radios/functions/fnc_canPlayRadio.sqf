@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Check if vehicle radio can played.
+ * Check if vehicle or static radio can played.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -18,10 +18,14 @@
 
 params ["_vehicle", "_unit"];
 
+// Playing radio
 if (!isNil {_vehicle getVariable QGVAR(playingRadio)}) exitWith {false};
 
-private _return = false;
+// Static radio objects
+if (getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> QGVAR(isRadio)) == 1) exitWith {true};
 
+// Check vehicle seat
+private _return = false;
 {
     if (_vehicle turretUnit _x == _unit && {!(_unit call CBA_fnc_canUseWeapon)}) exitWith {
         _return = true;
