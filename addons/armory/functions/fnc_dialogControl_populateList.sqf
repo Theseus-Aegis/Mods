@@ -26,6 +26,7 @@ lnbClear NLIST;
 private _rowNum = 0; // Needed for proper row images and data
 
 // Fill List
+_armoryData sort true; // Errors when used in combination with forEach
 {
     _x params ["_className", "_subCategory", "_description", "_quantity"];
 
@@ -36,7 +37,10 @@ private _rowNum = 0; // Needed for proper row images and data
         if (_configCfg == "") then {
             _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
         };
-        if (_configCfg == "") exitWith {ACE_LOGERROR_1("Config Type not found for classname: %1",_className)};
+        if (_configCfg == "") then {
+            _configCfg = ["", "CfgUnitInsignia"] select (isClass (configFile >> "CfgUnitInsignia" >> _className));
+        };
+        if (_configCfg == "") exitWith {ACE_LOGERROR_2("Config type not found for classname: %1, Config return: %2",_className,_configCfg)};
 
         // Check sub-category for proper listing
         if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
@@ -50,7 +54,8 @@ private _rowNum = 0; // Needed for proper row images and data
                 _displayName = [_displayName, "..."] joinString "";
             };
 
-            lnbAddRow [NLIST, ["", _displayName, _quantity]];
+            private _quantityList = [_quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
+            lnbAddRow [NLIST, ["", _displayName, _quantityList]];
             lbSetTooltip [NLIST, _rowNum, _tooltip];
 
             // Set hidden data with classname to displayName column and quantity to quantity column
@@ -58,7 +63,8 @@ private _rowNum = 0; // Needed for proper row images and data
             lnbSetData [NLIST, [_rowNum, 2], _quantity];
 
             // Set picture
-            private _picture = getText (configFile >> _configCfg >> _className >> "picture");
+            private _pictureType = ["picture", "texture"] select (_configCfg == "CfgUnitInsignia");
+            private _picture = getText (configFile >> _configCfg >> _className >> _pictureType);
             lnbSetPicture [NLIST, [_rowNum, 0], _picture];
             _rowNum = _rowNum + 1;
         };

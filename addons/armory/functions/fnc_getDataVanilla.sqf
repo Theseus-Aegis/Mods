@@ -84,5 +84,18 @@ if (_selectedCategory == "wearable") then {
         ["G_Bandanna_Shades", "Goggles", "Blabla, this item, blabla", "4"]
     ];
 };
+if (_selectedCategory == "insignia") then {
+    /*_armoryData = [
+        // Classname, Subcategory, Description, Quantity
+        ["Curator", "Insignia", "Blabla, this item, blabla", "1"],
+        ["MANW", "Insignia", "Blabla, this item, blabla", "1"],
+        ["BI", "Insignia", "Blabla, this item, blabla", "1"]
+    ];*/
+    private _config = configFile >> "CfgUnitInsignia";
+    for "_x" from 0 to (count _config - 1) do {
+        private _configName = configName (_config select _x);
+        _armoryData pushBack [_configName, "Insignia", "Insignia", "1"];
+    };
+};
 
 _armoryData
