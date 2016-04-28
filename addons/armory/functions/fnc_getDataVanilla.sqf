@@ -17,7 +17,34 @@
 
 params ["_selectedCategory"];
 
+private _object = ACE_player getVariable [QGVAR(object), objNull];
+
+if (isNull _object) exitWith {
+    ACE_LOGERROR_1("Object non-existent: %1",_object);
+    []
+};
+
+private _armoryDataVar = _object getVariable [QGVAR(armoryData), []];
+
+// Verify armory data
 private _armoryData = [];
+{
+    _x params [
+        ["_category", "", [""]],
+        ["_className", "", [""]],
+        ["_subCategory", "", [""]],
+        ["_description", "", [""]],
+        ["_quantity", 1, [0]]
+    ];
+
+    if (_category == _selectedCategory && {_className != ""} && {_subCategory != ""} && {_quantity > 0}) then {
+        _armoryData pushBack [_className, _subCategory, _description, str _quantity];
+    };
+} forEach _armoryDataVar;
+
+
+// TESTING
+/*private _armoryData = [];
 
 // Rifles
 if (_selectedCategory == "rifle") then {
@@ -85,17 +112,11 @@ if (_selectedCategory == "wearable") then {
     ];
 };
 if (_selectedCategory == "insignia") then {
-    /*_armoryData = [
-        // Classname, Subcategory, Description, Quantity
-        ["Curator", "Insignia", "Blabla, this item, blabla", "1"],
-        ["MANW", "Insignia", "Blabla, this item, blabla", "1"],
-        ["BI", "Insignia", "Blabla, this item, blabla", "1"]
-    ];*/
     private _config = configFile >> "CfgUnitInsignia";
     for "_x" from 0 to (count _config - 1) do {
         private _configName = configName (_config select _x);
         _armoryData pushBack [_configName, "Insignia", "Insignia", "1"];
     };
-};
+};*/
 
 _armoryData

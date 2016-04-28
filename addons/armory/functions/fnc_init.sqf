@@ -3,7 +3,7 @@
  * Adds the Armory action to an Object and handles the GUI initialization.
  *
  * Arguments:
- * Object <OBJECT/ARRAY> (Optional)
+ * 0: Object <OBJECT> (Optional)
  *
  * Return Value:
  * None
@@ -30,7 +30,9 @@ private _armoryAction = [
     {[_this select 2] call FUNC(openArmory)},
     {[_this select 2] call FUNC(canOpenArmory)},
     {},
-    [_object, _player]
+    _object
 ] call ACE_Interact_Menu_fnc_createAction;
 
 [_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;
+
+_object setVariable [QGVAR(armoryEnabled), true];
