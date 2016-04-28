@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Object <OBJECT>
- * 1: Item <ARRAY>
+ * 1: Items <ARRAY>
  *   0: Category <STRING>
  *   1: Class Name <STRING>
  *   2: SubCategory <STRING>
@@ -15,7 +15,7 @@
  * Successfully Added <BOOL>
  *
  * Example:
- * [object, [["rifle", "arifle_MX_F", "Assault Rifle", "", 5], ["rifle", "srifle_EBR_F", "Marksman Rifle", "", 5]] ] call tac_armory_fnc_addArmoryItems
+ * [object, [["rifle", "arifle_MX_F", "Assault Rifle", "", 5], ["rifle", "srifle_EBR_F", "Marksman Rifle", "", 5]] ] call tac_armory_fnc_addItems
  *
  * Public: Yes
  */

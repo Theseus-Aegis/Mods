@@ -47,6 +47,35 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACE_Common_fnc_displayTextStructured;
 };
 
+if (GVAR(system) == 0) then {
+    private _isBackpack = [_selectedItem] call ACE_Backpacks_fnc_isBackpack;
+    private _itemType = ([_selectedItem] call ACE_Common_fnc_getItemType) select 0;
+
+    if (_type == "take") then {
+        if (_isBackpack) exitWith {
+            _object addBackpackCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+        };
+        if (_itemType == "weapon") exitWith {
+            _object addWeaponCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+        };
+        if (_itemType == "magazine") exitWith {
+            _object addMagazineCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+        };
+        _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
+    } else {
+        if (_isBackpack) exitWith {
+            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargoGlobal;
+        };
+        if (_itemType == "weapon") exitWith {
+            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargoGlobal;
+        };
+        if (_itemType == "magazine") exitWith {
+            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargoGlobal;
+        };
+        [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargoGlobal; //default "item"
+    };
+};
+
 if (GVAR(system) == 1) then {
     ["TAC_LockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call ACE_Common_fnc_serverEvent;
 };
