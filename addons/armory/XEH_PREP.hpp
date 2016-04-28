@@ -1,3 +1,4 @@
+PREP(addArmoryItems);
 PREP(canAddArmory);
 PREP(canOpenArmory);
 PREP(closeArmory);

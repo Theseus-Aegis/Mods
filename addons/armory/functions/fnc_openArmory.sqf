@@ -4,7 +4,6 @@
  *
  * Arguments:
  * 0: Object <OBJECT>
- * 1: Player <OBJECT>
  *
  * Return Value:
  * None
@@ -16,13 +15,13 @@
  */
 #include "script_component.hpp"
 
-params ["_object", "_player"];
+params ["_object"];
 
 // Prevent others using the same Armory object
 _object setVariable [QGVAR(inUse), true, true];
 
 // Set varaible for later reference
-_player setVariable [QGVAR(object), _object, true];
+ACE_player setVariable [QGVAR(object), _object, true];
 
 // Create display and load main menu
 createDialog QGVAR(Display);
