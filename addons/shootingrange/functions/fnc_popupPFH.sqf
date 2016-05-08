@@ -42,7 +42,7 @@ if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
 };
 
 // Remove when all targets hit - success
-if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode == 4 && {GVAR(targetNumber) >= count _targets}}) exitWith {
+if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode > 3 && {GVAR(targetNumber) >= count _targets}}) exitWith {
     // Round time elapsed to decimal places
     private _timeElapsed = _currentTime - _timeStart;
     _timeElapsed = (str _timeElapsed) splitString ".";
