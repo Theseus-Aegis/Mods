@@ -1,3 +1,4 @@
+VERSION = 1.5.0
 BIN = bin
 RELEASE = release
 SRC = addons
@@ -17,5 +18,5 @@ release: all
 	@cp *.dll $(RELEASE)/@tac_mods/
 	@cp *.cpp $(RELEASE)/@tac_mods/
 	@cp AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa README.md $(RELEASE)/@tac_mods/
-	@echo "  ZIP  $(RELEASE)/tac_mods_x.y.z.zip"
-	@cd $(RELEASE); zip -r tac_mods_x.y.z.zip @tac_mods &> /dev/null; cd ..
+	@echo "  ZIP  $(RELEASE)/tac_mods_$(VERSION).zip"
+	@cd $(RELEASE); zip -r tac_mods_$(VERSION).zip @tac_mods &> /dev/null; cd ..
