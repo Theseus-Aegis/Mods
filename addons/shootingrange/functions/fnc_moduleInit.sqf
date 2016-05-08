@@ -78,8 +78,11 @@ private _defaultCountdownTime = _logic getVariable "DefaultCountdownTime";
 // Exctract triggers
 private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] call ACE_Common_fnc_parseList;
 
+// Extract pop targets down on trigger exit setting
+private _popOnTriggerExit = _logic getVariable "PopOnTriggerExit";
+
 
 // Prepare with actions
-[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

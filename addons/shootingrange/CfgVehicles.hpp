@@ -111,6 +111,12 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class PopOnTriggerExit {
+                displayName = CSTRING(PopOnTriggerExit);
+                description = CSTRING(PopOnTriggerExitDesc);
+                typeName = "BOOL";
+                defaultValue = 1;
+            };
         };
         class ModuleDescription {
             description = CSTRING(ModuleDesc);

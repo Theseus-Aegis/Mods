@@ -14,6 +14,7 @@
  * 8: Countdown Times <ARRAY> (default: 6, 9, 12, 15)
  * 9: Default Countdown Time <NUMBER> (default: 9)
  * 10: Trigger Markers <ARRAY> (default: [])
+ * 11: Pop on Trigger Exit <BOOL> (default: true)
  *
  * Return Value:
  * None
@@ -38,7 +39,8 @@ params [
     ["_defaultPauseDuration", PAUSEDURATION_DEFAULT, [0] ],
     ["_countdownTimes", COUNTDOWNTIMES_DEFAULT, [[]] ],
     ["_defaultCountdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
-    ["_triggerMarkers", [], [[]] ]
+    ["_triggerMarkers", [], [[]] ],
+    ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ]
 ];
 
 // Verify data
@@ -318,7 +320,7 @@ if (_mode == 4) then {
         _trigger setTriggerStatements [
             format ["[%1, %2, %3] call %4", _controller, _target, _forEachIndex, QFUNC(canActivateTrigger)],
             format ["[%1, %2] call %3", _target, 0, QFUNC(triggerPopup)],
-            format ["[%1, %2] call %3", _target, 1, QFUNC(triggerPopup)]
+            format ["if (%1) then { [%2, %3] call %4 }", _popOnTriggerExit, _target, 1, QFUNC(triggerPopup)]
         ];
 
         _trigger enableSimulation false;
