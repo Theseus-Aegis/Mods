@@ -48,6 +48,8 @@ Temporary Items
 
 # Release
 release/*
+bin/*
+include/*
 *.cache
 
 # Swap
