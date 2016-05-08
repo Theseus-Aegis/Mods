@@ -7,28 +7,29 @@
  * 1: Controllers <ARRAY>
  * 2: Name <STRING>
  * 3: Targets <ARRAY>
- * 4: Success <BOOL> (default: false)
- * 5: Score <NUMBER> (default: 0)
- * 6: Maximum Score <NUMBER> (default: 0)
- * 7: Time Elapsed <NUMBER> (default: 0)
+ * 4: Invalid Targets <ARRAY>
+ * 5: Success <BOOL> (default: false)
+ * 6: Score <NUMBER> (default: 0)
+ * 7: Maximum Score <NUMBER> (default: 0)
+ * 8: Time Elapsed <NUMBER> (default: 0)
  *
  * Return Value:
  * None
  *
  * Example:
- * [controller, [controller1, controller2], "range", [target1, target2]] call tac_shootingrange_fnc_stop;
+ * [controller, [controller1, controller2], "range", [target1, target2], [invalidTarget1, invalidTarget2]] call tac_shootingrange_fnc_stop;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_controller", "_controllers", "_name", "_targets", ["_success", false], ["_score", 0], ["_maxScore", 0], ["_timeElapsed", 0]];
+params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", ["_success", false], ["_score", 0], ["_maxScore", 0], ["_timeElapsed", 0]];
 
 // Set targets to original
 {
     [_x, 0] call FUNC(animateTarget); // Up
     _x setVariable [QGVAR(alreadyHit), nil];
-} forEach _targets;
+} forEach (_targets + _targetsInvalid);
 
 // Set variables
 {
@@ -63,7 +64,13 @@ if (_success) then {
     _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
     [_text, _size + 1, false] call FUNC(notifyVicinity);
 } else {
-    private _text = format ["%1%2 %3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
-    private _size = [2, 1.5] select (_name isEqualTo "");
+    private _text = format ["%1%2 %3<br/><br/>", localize LSTRING(Range), _name, localize LSTRING(Stopped)];
+    if (GVAR(invalidTargetHit)) then {
+        _text = format ["%1%2", _text, localize LSTRING(InvalidTargetHit)];
+    } else {
+        _text = format ["%1%2: %3", _text, localize LSTRING(By), _playerName];
+    };
+    private _size = [3, 2.5] select (_name isEqualTo "");
     [_text, _size] call ACE_Common_fnc_displayTextStructured;
+    GVAR(invalidTargetHit) = nil;
 };

@@ -18,7 +18,7 @@
  */
 #include "script_component.hpp"
 
-params ["_controller", "_controllers", "_name", "_targets"];
+params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid"];
 
 private _duration = _controller getVariable [QGVAR(duration), nil];
 private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
@@ -32,7 +32,7 @@ if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || 
 // Prepare targets
 {
     [_x, 1] call FUNC(animateTarget); // Down
-} forEach _targets;
+} forEach (_targets + _targetsInvalid);
 
 // Set variables
 {
@@ -91,6 +91,7 @@ _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 // Prepare variables
 GVAR(targetNumber) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
+GVAR(invalidTargetHit) = false;
 
 if (_mode > 1) then {
     if (_mode < 5) then {
@@ -131,7 +132,7 @@ if (_mode > 1) then {
 
 // Start pop-up handling and final countdown notification
 [{
-    params ["_controller", "_pauseDuration", "_duration", "_targetAmount", "_targets", "_controller", "_controllers", "_name", "_mode", "_triggers"];
+    params ["_controller", "_pauseDuration", "_duration", "_targetAmount", "_targets", "_targetsInvalid", "_controller", "_controllers", "_name", "_mode", "_triggers"];
 
     // Exit if not running (eg. stopped)
     if !(_controller getVariable [QGVAR(running), false]) exitWith {};
@@ -156,10 +157,10 @@ if (_mode > 1) then {
     if (_mode == 5) then {
         {
             [_x, 0] call FUNC(animateTarget); // Up
-        } forEach _targets;
+        } forEach (_targets + _targetsInvalid);
     };
 
     // Start PFH
-    [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
+    [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
-}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;

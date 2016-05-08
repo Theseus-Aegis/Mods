@@ -32,6 +32,11 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 // Exit if not running
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
+// Exit if invalid target hit and set variable checked in PFH
+if !(_target in (_target getVariable [QGVAR(targets), []])) exitWith {
+    GVAR(invalidTargetHit) = true;
+};
+
 // Exit if target already hit
 if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 
@@ -66,7 +71,7 @@ private _targets = _target getVariable [QGVAR(targets), nil];
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
-    GVAR(nextTarget) = _targets select (floor (random (count _targets)));
+    GVAR(nextTarget) = selectRandom _targets;
 
     // Animate target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up

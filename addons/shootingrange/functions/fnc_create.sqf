@@ -15,6 +15,7 @@
  * 9: Default Countdown Time <NUMBER> (default: 9)
  * 10: Trigger Markers <ARRAY> (default: [])
  * 11: Pop on Trigger Exit <BOOL> (default: true)
+ * 12: Invalid Targets <ARRAY> (default: [])
  *
  * Return Value:
  * None
@@ -40,7 +41,8 @@ params [
     ["_countdownTimes", COUNTDOWNTIMES_DEFAULT, [[]] ],
     ["_defaultCountdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
     ["_triggerMarkers", [], [[]] ],
-    ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ]
+    ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ],
+    ["_targetsInvalid", [], [[]] ]
 ];
 
 // Verify data
@@ -160,7 +162,7 @@ _countdownTimes sort true;
         {(_this select 2) call FUNC(start)},
         {true},
         {},
-        [_x, _controllers, _name, _targets, _triggerMarkers]
+        [_x, _controllers, _name, _targets, _targetsInvalid]
     ] call ACE_Interact_Menu_fnc_createAction;
 
     [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionStart] call ACE_Interact_Menu_fnc_addActionToObject;
@@ -336,4 +338,4 @@ if (_mode == 4) then {
     _x setVariable [QGVAR(controllers), _controllers];
     _x setVariable [QGVAR(triggers), _triggers];
     _x addEventHandler ["HitPart", { (_this select 0) call FUNC(handleHitPart); }];
-} forEach _targets;
+} forEach (_targets + _targetsInvalid);
