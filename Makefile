@@ -1,6 +1,7 @@
 BIN = bin
 RELEASE = release
 SRC = addons
+FLAGS = -w unquoted-string
 
 $(BIN)/tac_%.pbo: $(SRC)/%
 	@mkdir -p $(BIN)
@@ -13,6 +14,7 @@ release: all
 	@mkdir $(RELEASE) 2> /dev/null || rm -rf $(RELEASE)/*
 	@mkdir -p $(RELEASE)/@tac_mods/addons
 	@cp $(BIN)/* $(RELEASE)/@tac_mods/addons/
+	@cp *.dll $(RELEASE)/@tac_mods/
 	@cp *.cpp $(RELEASE)/@tac_mods/
 	@cp AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa README.md $(RELEASE)/@tac_mods/
 	@echo "  ZIP  $(RELEASE)/tac_mods_x.y.z.zip"
