@@ -6,7 +6,7 @@
  * 0: Name <STRING> (default: "")
  * 1: Targets <ARRAY>
  * 2: Controllers <ARRAY>
- * 3: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger) <NUMBER> (default: 1)
+ * 3: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER> (default: 1)
  * 4: Durations <ARRAY> (default: [0, 30, 60, 150, 300])
  * 5: Default Duration <NUMBER> (default: 60)
  * 6: Pause Durations <ARRAY> (default: [1, 2, 3, 4, 5])
@@ -194,7 +194,7 @@ _countdownTimes sort true;
         localize LSTRING(Duration),
         "",
         {true},
-        {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] < 3},
+        {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] in [1, 2, 5]},
         {(_this select 2) call FUNC(addConfigDurations)},
         [_name, _x, _controllers, _durations, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
