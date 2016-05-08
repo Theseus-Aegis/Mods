@@ -64,13 +64,12 @@ if (_success) then {
     _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
     [_text, _size + 1, false] call FUNC(notifyVicinity);
 } else {
-    private _text = format ["%1%2 %3<br/><br/>", localize LSTRING(Range), _name, localize LSTRING(Stopped)];
+    private _text = "";
     if (GVAR(invalidTargetHit)) then {
-        _text = format ["%1%2", _text, localize LSTRING(InvalidTargetHit)];
+        _text = format ["%1%2<br/>%3<br/><br/>%4", localize LSTRING(Range), _name, localize LSTRING(Failed), localize LSTRING(InvalidTargetHit)];
     } else {
-        _text = format ["%1%2: %3", _text, localize LSTRING(By), _playerName];
+        _text = format ["%1%2<br/>%3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
     };
-    private _size = [3, 2.5] select (_name isEqualTo "");
-    [_text, _size] call ACE_Common_fnc_displayTextStructured;
+    [_text, 3] call ACE_Common_fnc_displayTextStructured;
     GVAR(invalidTargetHit) = nil;
 };

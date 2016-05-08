@@ -178,6 +178,9 @@
             <English>Stopped</English>
             <German>Gestoppt</German>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_Failed">
+            <English>Failed</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Finished">
             <English>Finished</English>
             <German>Beendet</German>
