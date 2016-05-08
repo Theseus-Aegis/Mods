@@ -66,7 +66,11 @@ private _pauseDurations = [];
 private _defaultPauseDuration = _logic getVariable "DefaultPauseDuration";
 
 // Extract countdown times
-private _countdownTimes = [_logic getVariable "CountdownTimes", true, false] call ACE_Common_fnc_parseList;
+private _countdownTimesString = [_logic getVariable "CountdownTimes", true, false] call ACE_Common_fnc_parseList;
+private _countdownTimes = [];
+{
+    _countdownTimes pushBack (parseNumber _x);
+} forEach _countdownTimesString;
 
 // Extract default countdown time
 private _defaultCountdownTime = _logic getVariable "DefaultCountdownTime";
