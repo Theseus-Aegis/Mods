@@ -38,6 +38,4 @@ private _actions = [];
     ];
 } forEach _countdownTimes;
 
-TRACE_1("Children actions",_actions);
-
 _actions

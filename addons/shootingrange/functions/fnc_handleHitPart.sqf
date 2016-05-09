@@ -32,10 +32,17 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 // Exit if not running
 if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
+private _targets = _target getVariable [QGVAR(targets), []];
+
+// Exit if invalid target hit and set variable checked in PFH
+if !(_target in _targets) exitWith {
+    GVAR(invalidTargetHit) = true;
+};
+
 // Exit if target already hit
 if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
 
-// Exit if not direct hit (does not seem to count bullet bouning)
+// Exit if not direct hit (does not seem to count bullet bouncing)
 if (!_directHit) exitWith {
     hint "[TAC] Debug: Indirect Hit";
     [_target, 0] call FUNC(animateTarget); // Up
@@ -62,11 +69,10 @@ GVAR(targetNumber) = GVAR(targetNumber) + 1;
 
 
 private _mode = _controller getVariable [QGVAR(mode), 0];
-private _targets = _target getVariable [QGVAR(targets), nil];
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
-    GVAR(nextTarget) = _targets select (floor (random (count _targets)));
+    GVAR(nextTarget) = selectRandom _targets;
 
     // Animate target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up

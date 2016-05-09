@@ -29,6 +29,11 @@ private _name = _logic getVariable "Name";
 private _targets = [_logic getVariable "Targets", true, true] call ACE_Common_fnc_parseList;
 _targets append (synchronizedObjects _logic);
 
+// Extract invalid target objects and manually check nil (use object if exists, otherwise objNull)
+private _targetsInvalid = [_logic getVariable "TargetsInvalid", true, false] call ACE_Common_fnc_parseList;
+_targetsInvalid = _targetsInvalid apply { [missionNamespace getVariable _x, objNull] select (isNil _x) };
+//TRACE_1("Invalid Targets",_targetsInvalid);
+
 // Exctract controller objects
 private _controllers = [_logic getVariable "Controllers", true, true] call ACE_Common_fnc_parseList;
 
@@ -66,7 +71,11 @@ private _pauseDurations = [];
 private _defaultPauseDuration = _logic getVariable "DefaultPauseDuration";
 
 // Extract countdown times
-private _countdownTimes = [_logic getVariable "CountdownTimes", true, false] call ACE_Common_fnc_parseList;
+private _countdownTimesString = [_logic getVariable "CountdownTimes", true, false] call ACE_Common_fnc_parseList;
+private _countdownTimes = [];
+{
+    _countdownTimes pushBack (parseNumber _x);
+} forEach _countdownTimesString;
 
 // Extract default countdown time
 private _defaultCountdownTime = _logic getVariable "DefaultCountdownTime";
@@ -74,8 +83,11 @@ private _defaultCountdownTime = _logic getVariable "DefaultCountdownTime";
 // Exctract triggers
 private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] call ACE_Common_fnc_parseList;
 
+// Extract pop targets down on trigger exit setting
+private _popOnTriggerExit = _logic getVariable "PopOnTriggerExit";
+
 
 // Prepare with actions
-[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

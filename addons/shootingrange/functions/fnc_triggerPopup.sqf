@@ -19,6 +19,8 @@
 params ["_target", "_state"];
 
 private _targetGroup = _target getVariable [QGVAR(targetGroup), []];
+private _targetInvalidGroup = _target getVariable [QGVAR(targetInvalidGroup), []];
+
 if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); };
 
 {
@@ -27,4 +29,4 @@ if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); }
     // Mark target as not yet hit
     private _alreadyHit = [true, false] select (_state == 0);
     _x setVariable [QGVAR(alreadyHit), _alreadyHit];
-} forEach _targetGroup;
+} forEach (_targetGroup + _targetInvalidGroup);

@@ -25,6 +25,12 @@
             <English>List of object names used as targets, separated by commas. Can be synchronized objects.</English>
             <German>Liste der Objektnamen, die als Ziele benutzt werden. Durch Kommas trennen. Die Objekte können synchronisiert sein.</German>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetsInvalid">
+            <English>Invalid Targets</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_TargetsInvalidDesc">
+            <English>List of object names used as invalid targets, separated by commas. Must be same amount as targets when used in Trigger mode, fill empty slots with 'nil'.</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Controllers">
             <English>Controllers</English>
             <German>Regler</German>
@@ -111,6 +117,12 @@
             <English>List of trigger markers used for controlled target pop-ups, separated by commas. Must be in order with targets. Available in Trigger Mode only.</English>
             <German>Liste der Auslöser-Markierungen die für gezielt aufklappbare Ziele genutzt werden können. Durch Kommas trennen. Muss in der Reihenfolge der Ziele sein. Nur im Auslösermodus verfügbar.</German>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_PopOnTriggerExit">
+            <English>Pop on Trigger Exit</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_PopOnTriggerExitDesc">
+            <English>Pop targets down when exiting the trigger. Available in Trigger Mode only.</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Timed">
             <English>Timed</English>
             <German>Auf Zeit</German>
@@ -166,6 +178,9 @@
             <English>Stopped</English>
             <German>Gestoppt</German>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_Failed">
+            <English>Failed</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Finished">
             <English>Finished</English>
             <German>Beendet</German>
@@ -220,6 +235,9 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsHit">
             <English>Targets Hit</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_InvalidTargetHit">
+            <English>Invalid Target Hit</English>
         </Key>
     </Package>
 </Project>

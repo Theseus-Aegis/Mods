@@ -9,47 +9,48 @@
  *   2: Pause Duration <NUMBER>
  *   3: Target Amount <NUMBER>
  *   4: Targets <ARRAY>
- *   5: Controller <OBJECT>
- *   6: Controllers <ARRAY>
- *   7: Name <STRING>
- *   8: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER>
- *   9: Triggers <ARRAY>
+ *   5: Invalid Targets <ARRAY>
+ *   6: Controller <OBJECT>
+ *   7: Controllers <ARRAY>
+ *   8: Name <STRING>
+ *   9: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER>
+ *   10: Triggers <ARRAY>
  * 1: Per-Frame Handler ID <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [ [450, 60, 3, [target1, target2], controller, [controller1, controller2], "range", 1, [trigger1, trigger2]], idPFH] call tac_shootingrange_fnc_popupPFH;
+ * [ [450, 60, 3, [target1, target2], [invalidTarget1, invalidTarget2], controller, [controller1, controller2], "range", 1, [trigger1, trigger2]], idPFH] call tac_shootingrange_fnc_popupPFH;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 params ["_args", "_idPFH"];
-_args params ["_timeStart", "_duration", "_pauseDuration", "_targetAmount", "_targets", "_controller", "_controllers", "_name", "_mode", "_triggers"];
+_args params ["_timeStart", "_duration", "_pauseDuration", "_targetAmount", "_targets", "_targetsInvalid", "_controller", "_controllers", "_name", "_mode", "_triggers"];
 
 // Remove if stopped - fail
-if !(_controller getVariable [QGVAR(running), false]) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, _mode, false] call FUNC(popupPFHexit);
+if (!(_controller getVariable [QGVAR(running), false]) || {GVAR(invalidTargetHit)}) exitWith {
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, false] call FUNC(popupPFHexit);
 };
 
 private _currentTime = diag_tickTime;
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(targetNumber), GVAR(maxScore)] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(targetNumber), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 
 // Remove when all targets hit - success
-if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode == 4 && {GVAR(targetNumber) >= count _targets}}) exitWith {
+if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode > 3 && {GVAR(targetNumber) >= count _targets}}) exitWith {
     // Round time elapsed to decimal places
     private _timeElapsed = _currentTime - _timeStart;
     _timeElapsed = (str _timeElapsed) splitString ".";
     _timeElapsed = format ["%1.%2", _timeElapsed select 0, (_timeElapsed select 1) select [0, TIME_ROUND_CHARS]];
-    _timeElapsed = parseNumber (_timeElapsed);
+    _timeElapsed = parseNumber _timeElapsed;
 
-    [_idPFH, _controller, _controllers, _name, _targets, _mode, true, GVAR(targetNumber), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(targetNumber), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
 };
 
 // Handle automatic target pop-ups in time-based mode
@@ -64,7 +65,7 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     };
 
     // Select random index (save for later removal from array) and new target
-    GVAR(nextTarget) = _targets select (floor (random (count _targets)));
+    GVAR(nextTarget) = selectRandom _targets;
 
     // Animate new target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
@@ -84,7 +85,7 @@ if (_mode in [2, 3] && {GVAR(firstRun)}) exitWith {
     GVAR(firstRun) = false;
 
     // Select random index (save for later removal from array) and new target
-    GVAR(targetUp) = _targets select (floor (random (count _targets)));
+    GVAR(targetUp) = selectRandom _targets;
 
     // Animate new target
     [GVAR(targetUp), 0] call FUNC(animateTarget); // Up
