@@ -64,6 +64,9 @@ if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
 if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
     ACE_LOGERROR("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used!");
 };
+if (_mode == 4 && {count _triggerMarkers < count _targetsInvalid}) exitWith {
+    ACE_LOGERROR("Invalid Targets field/argument must have equal or less elements than Trigger Markers and Targets fields/arguments when Trigger Mode is used!");
+};
 
 // Defaults
 if !(_name isEqualTo "") then {
