@@ -39,6 +39,12 @@
             <English>List of object names used as controllers, separated by commas.</English>
             <German>Liste der Objektnamen, die als Regler genutzt werden. Durch Kommas trennen.</German>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_SoundSources">
+            <English>Sound Sources</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_SoundSourcesDesc">
+            <English>List of object names used as sound sources (in addition to controllers), separated by commas.</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Mode">
             <English>Mode</English>
             <German>Modus</German>
