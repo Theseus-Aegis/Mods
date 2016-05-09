@@ -2,8 +2,9 @@ VERSION = 1.5.0
 BIN = bin
 RELEASE = release
 SRC = addons
+CBA = ../CBA_A3
 ACE3 = ../ACE3
-FLAGS = -i $(ACE3) -w unquoted-string
+FLAGS = -i $(CBA) -i $(ACE3) -w unquoted-string
 
 $(BIN)/tac_%.pbo: $(SRC)/%
 	@mkdir -p $(BIN)
