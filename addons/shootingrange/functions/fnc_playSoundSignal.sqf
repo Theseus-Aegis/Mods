@@ -19,9 +19,8 @@
 
 params ["_controller", "_sound", ["_range", 25]];
 
-private _controllers = _controller getVariable [QGVAR(controllers), []];
 private _soundSources = _controller getVariable [QGVAR(soundSources), []];
 
 {
     [_x, _sound, _range] call CBA_fnc_globalSay3d;
-} forEach (_controllers + _soundSources);
+} forEach _soundSources;

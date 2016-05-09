@@ -132,8 +132,7 @@ _countdownTimes sort true;
     if (_x getVariable [QGVAR(mode), 0] == 0) then {
         _x setVariable [QGVAR(mode), _mode, true];
     };
-    _x setVariable [QGVAR(controllers), _controllers];
-    _x setVariable [QGVAR(soundSources), _soundSources];
+    _x setVariable [QGVAR(soundSources), _controllers + _soundSources];
 
     // Main
     private _actionRange = [
