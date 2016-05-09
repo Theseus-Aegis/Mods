@@ -6,8 +6,11 @@ branches:
 language: python
 python:
 - '3.4'
+before_install:
+- sudo add-apt-repository ppa:koffeinflummi/armake -y
+- sudo apt-get update -q
+- sudo apt-get install armake -y
 before_script:
-- sudo add-apt-repository ppa:koffeinflummi/armake && sudo apt-get update && sudo apt-get install armake
 - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
     pip install pygithub;
     pip install pygithub3;
