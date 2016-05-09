@@ -29,7 +29,7 @@
             <English>Invalid Targets</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsInvalidDesc">
-            <English>List of object names used as invalid targets, separated by commas. Can be synchronized objects.</English>
+            <English>List of object names used as invalid targets, separated by commas. Must be same amount as targets when used in Trigger mode, fill empty slots with 'nil'.</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Controllers">
             <English>Controllers</English>
