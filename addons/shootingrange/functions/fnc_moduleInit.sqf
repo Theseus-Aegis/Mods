@@ -29,8 +29,10 @@ private _name = _logic getVariable "Name";
 private _targets = [_logic getVariable "Targets", true, true] call ACE_Common_fnc_parseList;
 _targets append (synchronizedObjects _logic);
 
-// Extract invalid target objects
-private _targetsInvalid = [_logic getVariable "TargetsInvalid", true, true] call ACE_Common_fnc_parseList;
+// Extract invalid target objects and manually check nil (use object if exists, otherwise objNull)
+private _targetsInvalid = [_logic getVariable "TargetsInvalid", true, false] call ACE_Common_fnc_parseList;
+_targetsInvalid = _targetsInvalid apply { [missionNamespace getVariable _x, objNull] select (isNil _x) };
+//TRACE_1("Invalid Targets",_targetsInvalid);
 
 // Exctract controller objects
 private _controllers = [_logic getVariable "Controllers", true, true] call ACE_Common_fnc_parseList;

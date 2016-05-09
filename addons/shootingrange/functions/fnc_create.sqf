@@ -306,7 +306,7 @@ _countdownTimes sort true;
 private _triggers = [];
 if (_mode == 4) then {
     // Prepare target groups
-    [_targets, _triggerMarkers] call FUNC(setTargetGroups);
+    [_targets, _targetsInvalid, _triggerMarkers] call FUNC(setTargetGroups);
 
     // Set up triggers
     {
