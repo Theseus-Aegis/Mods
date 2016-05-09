@@ -24,7 +24,7 @@ private _fnc_animate = {
     // Wait animation time before changing animation again
     [{
         params ["_target", "_state", "_anims"];
-        TRACE_3("Wait Animate",_target,_state,_anims);
+        //TRACE_3("Wait Animate",_target,_state,_anims);
         {
             _target animate [_x, _state];
         } forEach _anims;
@@ -34,7 +34,7 @@ private _fnc_animate = {
 
 // Find oval target
 private _index = OVAL_TARGETS find (typeOf _target);
-TRACE_3("Animate",_target,_state,_index);
+//TRACE_3("Animate",_target,_state,_index);
 
 if (_index != -1) then {
     // Oval target

@@ -23,6 +23,12 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class TargetsInvalid {
+                displayName = CSTRING(TargetsInvalid);
+                description = CSTRING(TargetsInvalidDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
             class Controllers {
                 displayName = CSTRING(Controllers);
                 description = CSTRING(ControllersDesc);
@@ -110,6 +116,12 @@ class CfgVehicles {
                 description = CSTRING(TriggerMarkersDesc);
                 typeName = "STRING";
                 defaultValue = "";
+            };
+            class PopOnTriggerExit {
+                displayName = CSTRING(PopOnTriggerExit);
+                description = CSTRING(PopOnTriggerExitDesc);
+                typeName = "BOOL";
+                defaultValue = 1;
             };
         };
         class ModuleDescription {
