@@ -64,12 +64,12 @@ if (_success) then {
     _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
     [_text, _size + 1, false] call FUNC(notifyVicinity);
 } else {
-    private _text = "";
+    private _text = format ["%1<br/>%2", localize LSTRING(Range), _name];
     if (GVAR(invalidTargetHit)) then {
-        _text = format ["%1%2<br/>%3<br/><br/>%4", localize LSTRING(Range), _name, localize LSTRING(Failed), localize LSTRING(InvalidTargetHit)];
+        _text = format ["%1<br/><br/>%2<br/>%3", _text, localize LSTRING(Failed), localize LSTRING(InvalidTargetHit)];
     } else {
-        _text = format ["%1%2<br/>%3<br/><br/>%4: %5", localize LSTRING(Range), _name, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
+        _text = format ["%1<br/><br/>%2<br/>%3: %4", _text, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
     };
-    [_text, 3] call ACE_Common_fnc_displayTextStructured;
+    [_text, 3.5] call ACE_Common_fnc_displayTextStructured;
     GVAR(invalidTargetHit) = nil;
 };
