@@ -55,7 +55,10 @@ extensions/build/*
 extensions/include/*
 extensions/lib/*
 extensions/vcproj/*
-CMakeFiles
+*.ilk
+*.pdb
+*.lib
+*.exp
 
 # Swap
 *.swp

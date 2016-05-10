@@ -7,7 +7,7 @@ if(WIN32)
     add_definitions(/DWINVER=0x0600 /D_WIN32_WINNT=0x0600)
 endif()
 
-if (NOT CMAKE_BUILD_TYPE AND CMAKE_COMPILER_IS_GNUCXX)
+if(NOT CMAKE_BUILD_TYPE AND CMAKE_COMPILER_IS_GNUCXX)
 	message(STATUS "No build type selected, default to Debug")
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
@@ -31,7 +31,7 @@ endif()
 # Build every configuration directly to build/
 foreach(CONF ${CMAKE_CONFIGURATION_TYPES})
     string(TOUPPER "${CONF}" CONF)
-    set("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" ${PROJECT_SOURCE_DIR}/build)
+    set("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" ${PROJECT_SOURCE_DIR}/../intercept)
 endforeach()
 
 string(TIMESTAMP TAC_BUILDSTAMP "%Y-%m-%dT%H:%M:%SZ")

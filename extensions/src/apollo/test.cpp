@@ -1,7 +1,9 @@
-//#include <Windows.h>
 #include "intercept.hpp"
 
-using namespace intercept;
+
+int __cdecl intercept::api_version() {
+    return 1;
+}
 
 
 void __cdecl intercept::fired(
@@ -15,6 +17,7 @@ void __cdecl intercept::fired(
 {
     sqf::hint("weapon fired" + std::to_string(sqf::diag_frameno()));
 }
+
 
 
 BOOL APIENTRY DllMain(HMODULE hModule,
