@@ -50,6 +50,10 @@ Temporary Items
 release/*
 *.cache
 
+# Extensions
+extensions/vcproj/*
+CMakeFiles
+
 # Swap
 *.swp
 
