@@ -51,6 +51,9 @@ release/*
 *.cache
 
 # Extensions
+extensions/build/*
+extensions/include/*
+extensions/lib/*
 extensions/vcproj/*
 CMakeFiles
 

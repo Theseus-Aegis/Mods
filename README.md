@@ -31,6 +31,13 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 make.py force checkexternal release MAJOR.MINOR.PATCH
 ```
 
+[Extensions Building](extensions):  
+Copy or symlink intercept includes to `include` and client library to `lib`, then execute:
+```
+cd extensions/vcproj
+cmake ..
+```
+
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
 ```
 github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --no-issues --no-pr-wo-labels --unreleased-only --exclude-labels "can't reproduce",duplicate,question,invalid,wontfix --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request" --no-author --no-compare-link
