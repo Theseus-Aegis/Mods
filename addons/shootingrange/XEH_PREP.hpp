@@ -11,6 +11,7 @@ PREP(create);
 PREP(handleHitPart);
 PREP(moduleInit);
 PREP(notifyVicinity);
+PREP(playSoundSignal);
 PREP(popupPFH);
 PREP(popupPFHexit);
 PREP(setConfigCountdownTime);

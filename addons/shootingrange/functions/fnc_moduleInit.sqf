@@ -37,6 +37,9 @@ _targetsInvalid = _targetsInvalid apply { [missionNamespace getVariable _x, objN
 // Exctract controller objects
 private _controllers = [_logic getVariable "Controllers", true, true] call ACE_Common_fnc_parseList;
 
+// Exctract sound source objects
+private _soundSources = [_logic getVariable "SoundSources", true, true] call ACE_Common_fnc_parseList;
+
 // Extract target change event
 private _mode = _logic getVariable "Mode";
 
@@ -88,6 +91,6 @@ private _popOnTriggerExit = _logic getVariable "PopOnTriggerExit";
 
 
 // Prepare with actions
-[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");

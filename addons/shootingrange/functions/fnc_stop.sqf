@@ -40,7 +40,7 @@ params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", [
 
 // Notification
 private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
-[_controller, "FD_Finish_F", 25] call CBA_fnc_globalSay3d;
+[_controller, "FD_Finish_F"] call FUNC(playSoundSignal);
 
 if (_success) then {
     // Check for zero divisor
