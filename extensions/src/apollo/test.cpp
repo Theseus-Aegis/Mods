@@ -1,5 +1,5 @@
-#include "intercept.hpp"
 
+#include "intercept.hpp"
 
 int __cdecl intercept::api_version() {
     return 1;
