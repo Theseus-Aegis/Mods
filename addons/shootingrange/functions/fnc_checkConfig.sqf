@@ -49,7 +49,7 @@ if (_mode < 4) then {
         default {_textMode = "ERORR"};
     };
 
-    if (_mode == 2) then {
+    if (_mode in [2, 3]) then {
         private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7<br/>%8: %9s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, _textConfig, _textDurationOrTargetAmount, localize LSTRING(CountdownTime), _countdownTime];
         [_text, 4] call ACE_Common_fnc_displayTextStructured;
     } else {
@@ -57,7 +57,8 @@ if (_mode < 4) then {
         [_text, 4.5] call ACE_Common_fnc_displayTextStructured;
     };
 } else {
-    private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), localize LSTRING(Trigger), localize LSTRING(CountdownTime), _countdownTime];
+    private _textMode = [localize LSTRING(Trigger), localize LSTRING(Rampage)] select (_mode == 5);
+    private _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, localize LSTRING(CountdownTime), _countdownTime];
 
     [_text, 3.5] call ACE_Common_fnc_displayTextStructured;
 };
