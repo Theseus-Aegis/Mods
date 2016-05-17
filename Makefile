@@ -1,24 +1,32 @@
 VERSION = 1.5.0
-BIN = bin
-RELEASE = release
-SRC = addons
+PREFIX = tac
+BIN = @tac_mods
+ZIP = tac_mods
 CBA = ../CBA_A3
-ACE3 = ../ACE3
+ACE = ../ACE3
 FLAGS = -i $(CBA) -i $(ACE3) -w unquoted-string
 
-$(BIN)/tac_%.pbo: $(SRC)/%
-	@mkdir -p $(BIN)
+$(BIN)/addons/$(PREFIX)_%.pbo: addons/%
+	@mkdir -p $(BIN)/addons
 	@echo "  PBO  $@"
 	@armake build ${FLAGS} -f $< $@
 
-all: $(patsubst $(SRC)/%, $(BIN)/tac_%.pbo, $(wildcard $(SRC)/*))
+$(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
+	@mkdir -p $(BIN)/optionals
+	@echo "  PBO  $@"
+	@armake build ${FLAGS} -f $< $@
+
+# Shortcut for building single addons (eg. "make <component>.pbo")
+%.pbo:
+	make $(patsubst %, $(BIN)/addons/$(PREFIX)_%, $@)
+
+all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
+		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo, $(wildcard optionals/*))
+
+clean:
+	rm -rf $(BIN) $(ZIP)_*.zip
 
 release: all
-	@mkdir $(RELEASE) 2> /dev/null || rm -rf $(RELEASE)/*
-	@mkdir -p $(RELEASE)/@tac_mods/addons
-	@cp $(BIN)/* $(RELEASE)/@tac_mods/addons/
-	@cp *.dll $(RELEASE)/@tac_mods/
-	@cp *.cpp $(RELEASE)/@tac_mods/
-	@cp AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa README.md $(RELEASE)/@tac_mods/
-	@echo "  ZIP  $(RELEASE)/tac_mods_$(VERSION).zip"
-	@cd $(RELEASE); zip -r tac_mods_$(VERSION).zip @tac_mods &> /dev/null; cd ..
+	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
+	@cp AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
+	@zip -r $(ZIP)_$(VERSION).zip $(BIN) &> /dev/null

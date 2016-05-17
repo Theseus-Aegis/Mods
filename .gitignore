@@ -47,8 +47,8 @@ Temporary Items
 # =========================
 
 # Release
-release/*
-bin/*
+@*
+*.zip
 *.cache
 
 # Swap
