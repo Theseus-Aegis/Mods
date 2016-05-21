@@ -35,6 +35,12 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class SoundSources {
+                displayName = CSTRING(SoundSources);
+                description = CSTRING(SoundSourcesDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
             class Mode {
                 displayName = CSTRING(Mode);
                 description = CSTRING(ModeDesc);

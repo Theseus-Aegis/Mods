@@ -16,6 +16,7 @@
  * 10: Trigger Markers <ARRAY> (default: [])
  * 11: Pop on Trigger Exit <BOOL> (default: true)
  * 12: Invalid Targets <ARRAY> (default: [])
+ * 13: Sound Sources <ARRAY> (default: [])
  *
  * Return Value:
  * None
@@ -42,7 +43,8 @@ params [
     ["_defaultCountdownTime", COUNTDOWNTIME_DEFAULT, [0] ],
     ["_triggerMarkers", [], [[]] ],
     ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ],
-    ["_targetsInvalid", [], [[]] ]
+    ["_targetsInvalid", [], [[]] ],
+    ["_soundSources", [], [[]] ]
 ];
 
 // Verify data
@@ -130,6 +132,7 @@ _countdownTimes sort true;
     if (_x getVariable [QGVAR(mode), 0] == 0) then {
         _x setVariable [QGVAR(mode), _mode, true];
     };
+    _x setVariable [QGVAR(soundSources), _controllers + _soundSources];
 
     // Main
     private _actionRange = [
