@@ -28,7 +28,7 @@ private _fnc_animate = {
         {
             _target animate [_x, _state];
         } forEach _anims;
-    }, [_target, _state, _anims], 0.3] call ACE_Common_fnc_waitAndExecute;
+    }, [_target, _state, _anims], 0.3] call CBA_fnc_waitAndExecute;
 };
 
 

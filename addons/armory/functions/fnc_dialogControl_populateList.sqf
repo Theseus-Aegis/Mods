@@ -33,9 +33,9 @@ _armoryData sort true; // Errors when used in combination with forEach
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
         // Get correct config
-        private _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        private _configCfg = configName (configHierarchy (_className call CBA_fnc_getItemConfig) param [1, configNull]);
         if (_configCfg == "") then {
-            _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
+            _configCfg = configName (configHierarchy (_className call CBA_fnc_getObjectConfig) param [1, configNull]);
         };
         if (_configCfg == "") then {
             _configCfg = ["", "CfgUnitInsignia"] select (isClass (configFile >> "CfgUnitInsignia" >> _className));
