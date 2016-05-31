@@ -17,9 +17,9 @@
 
 params ["_armoryData"];
 
-private _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
+private _selSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
 
-TRACE_2("Populating list",_armoryData,_selectedSubCategory);
+TRACE_2("Populating list",_armoryData,_selSubCategory);
 
 // Clear List
 lnbClear NLIST;
@@ -43,7 +43,7 @@ _armoryData sort true; // Errors when used in combination with forEach
         if (_configCfg == "") exitWith {ACE_LOGERROR_2("Config type not found for classname: %1, Config return: %2",_className,_configCfg)};
 
         // Check sub-category for proper listing
-        if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
+        if (_selSubCategory == "" || {_selSubCategory == _subCategory} || {_selSubCategory == "Compatible" && [_className] call FUNC(isCompatible)}) then {
             private _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
             private _tooltip = _displayName; // Display name gets cropped
 

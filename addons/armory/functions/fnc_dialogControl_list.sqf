@@ -44,7 +44,8 @@ if (_selectedCategory == "stash") then {
 if (_exit) exitWith {};
 
 // Extract sub-categories
-private _subCategories = [_armoryData] call FUNC(extractSubCategories);
+private _hasCompatibleItems = _selectedCategory in ["ammo", "attachment"];
+private _subCategories = [_armoryData, _hasCompatibleItems] call FUNC(extractSubCategories);
 
 // Fill Dropdown
 lbClear DROPDOWN; // Clear Dropdown
