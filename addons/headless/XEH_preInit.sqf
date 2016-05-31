@@ -7,7 +7,7 @@ ADDON = false;
 if (isServer) then {
     GVAR(headlessClients) = [];
     GVAR(inRebalance) = false;
-    ["TAC_HeadlessClientJoined", FUNC(handleConnectHC)] call ACE_Common_fnc_addEventHandler;
+    [QGVAR(connected), FUNC(handleConnectHC)] call CBA_fnc_addEventHandler;
 };
 
 ADDON = true;

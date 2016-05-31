@@ -12,4 +12,4 @@ if (!hasInterface) exitWith {};
 }, {false}, [19, [true, true, true]], false] call CBA_fnc_addKeybind; // Ctrl+Alt+Shift+R
 
 // Client EH
-["TAC_ratelMarkerCreated", FUNC(createMarker)] call ACE_Common_fnc_addEventHandler;
+[QGVAR(created), FUNC(createMarker)] call CBA_fnc_addEventHandler;

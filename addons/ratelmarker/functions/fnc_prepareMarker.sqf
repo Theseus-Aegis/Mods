@@ -49,4 +49,4 @@ if (!isNull (driver _heli) && !local (driver _heli)) then {
 [_pos] call FUNC(createMarker);
 
 // Create marker remotely on array of objects
-["TAC_ratelMarkerCreated", _seeMarkerUnits, [_pos]] call ACE_Common_fnc_targetEvent;
+[QGVAR(created), _seeMarkerUnits, [_pos]] call CBA_fnc_targetEvent;
