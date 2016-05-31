@@ -32,6 +32,6 @@ private _weaponHolder = createVehicle ["WeaponHolderSimulated", _bodybag, [], 0,
 [{
     params ["_weaponHolder", "_bodybag"];
     _weaponHolder setPosASL (getPosASL _bodybag);
-}, [_weaponHolder, _bodybag]] call ACE_Common_fnc_execNextFrame;
+}, [_weaponHolder, _bodybag]] call CBA_fnc_execNextFrame;
 
 TRACE_4("Weapons Position",_weaponHolder,getPosASL _weaponHolder,_bodybag,getPosASL _bodybag);

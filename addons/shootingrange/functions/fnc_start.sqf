@@ -126,7 +126,7 @@ if (_mode > 1) then {
         [_textCountdown] call ACE_Common_fnc_displayTextStructured;
         [_controller, "FD_Timer_F"] call FUNC(playSoundSignal);
 
-    }, [_controller, _textCountdown], _execTime] call ACE_Common_fnc_waitAndExecute;
+    }, [_controller, _textCountdown], _execTime] call CBA_fnc_waitAndExecute;
 
 } forEach [ [_countdownTime - 5, localize LSTRING(GetReady)], [_countDownTime - 3, "3"], [_countdownTime - 2, "2"], [_countdownTime - 1, "1"] ];
 
@@ -163,4 +163,4 @@ if (_mode > 1) then {
     // Start PFH
     [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
-}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call CBA_fnc_waitAndExecute;

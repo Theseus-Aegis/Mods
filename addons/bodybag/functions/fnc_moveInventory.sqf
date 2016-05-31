@@ -34,7 +34,7 @@ _items append (handgunItems _unit);
 _magazines append (handgunMagazine _unit);
 _items append (assignedItems _unit);
 _weapons pushBack (binocular _unit);
-_magazines pushBack ([_unit] call ACE_Common_fnc_binocularMagazine);
+_magazines pushBack ([_unit] call CBA_fnc_binocularMagazine);
 
 _items = _items select {_x != ""};
 _weapons = _weapons select {_x != ""};

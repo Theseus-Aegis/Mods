@@ -42,4 +42,4 @@ if (isMultiplayer) then {
 _vehicle setVariable [QGVAR(playingRadio), _radio, true];
 
 // Star playing music on radio object
-[_radio, _track] call CBA_fnc_globalSay3d;
+[QGVAR(play), [_radio, _track]] call CBA_fnc_globalEvent;
