@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Bodybag">
+        <Key ID="STR_TAC_Bodybag_DestroyChance">
+            <English>Item Destroy Chance</English>
+        </Key>
+        <Key ID="STR_TAC_Bodybag_DestroyChanceDesc">
+            <English>Destroy chance of each item when placing a unit into a bodybag.</English>
+        </Key>
+    </Package>
+</Project>

@@ -15,3 +15,6 @@
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
+
+
+#define DESTROY_CHANCE_DEFAULT 20
