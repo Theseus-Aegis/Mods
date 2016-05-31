@@ -9,7 +9,7 @@ class CfgVehicles {
         isGlobal = 1; // Global
         isTriggerActivated = 0;
         isDisposable = 0;
-        icon = QUOTE(PATHTOF(UI\Icon_Module_Headless_ca.paa));
+        icon = QPATHTOF(UI\Icon_Module_Headless_ca.paa);
         class Arguments {
             class Enabled {
                 displayName = "$STR_ACE_Common_Enabled";

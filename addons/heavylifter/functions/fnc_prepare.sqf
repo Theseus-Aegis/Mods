@@ -50,4 +50,4 @@ _helper enableSimulationGlobal true;
 _vehicle setVariable [QGVAR(prepared), [_vehicle, _helper], true];
 
 // Show ACE Hint
-[localize LSTRING(Attached), QUOTE(PATHTOF(UI\attach_ca.paa))] call ACE_Common_fnc_displayTextPicture;
+[localize LSTRING(Attached), QPATHTOF(UI\attach_ca.paa)] call ACE_Common_fnc_displayTextPicture;

@@ -15,6 +15,6 @@ class CfgVehicles {
         curatorCanAttach = 1;
         displayName = CSTRING(ModuleAddObjectToChronos);
         function = QFUNC(moduleAddObjectToChronosLocal);
-        icon = QUOTE(PATHTOF(UI\Icon_Module_Zeus_Chronos_ca.paa));
+        icon = QPATHTOF(UI\Icon_Module_Zeus_Chronos_ca.paa);
     };
 };

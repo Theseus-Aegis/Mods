@@ -30,7 +30,7 @@ if (_requestedMenu == "main") exitWith {
     } forEach [TITLE, BACKPIC, BACKBTN];
 
     // Set Title
-    ctrlSetText [TITLE, format[QUOTE(PATHTOF(UI\title_%1.paa)), _requestedMenu]];
+    ctrlSetText [TITLE, format[QPATHTOF(UI\title_%1.paa), _requestedMenu]];
 
     // Show Main
     [true] call FUNC(dialogControl_main);
@@ -44,7 +44,7 @@ if (_requestedMenu == "main") exitWith {
 [false] call FUNC(dialogControl_main);
 
 // Set Title
-ctrlSetText [TITLE, format [QUOTE(PATHTOF(UI\titleCategory_%1.paa)), _requestedMenu]];
+ctrlSetText [TITLE, format [QPATHTOF(UI\titleCategory_%1.paa), _requestedMenu]];
 
 // Show List
 [_requestedMenu] call FUNC(dialogControl_list);

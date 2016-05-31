@@ -17,10 +17,10 @@ class CfgMods {
     class PREFIX: Mod_Base {
         dir = "@tac_mods";
         name = "Theseus Inc. Mods";
-        picture = QUOTE(PATHTOF(UI\logo_tac_ca.paa));
-        logo = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
-        logoOver = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
-        logoSmall = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
+        picture = QPATHTOF(UI\logo_tac_ca.paa);
+        logo = QPATHTOF(UI\logo_tac_small_ca.paa);
+        logoOver = QPATHTOF(UI\logo_tac_small_ca.paa);
+        logoSmall = QPATHTOF(UI\logo_tac_small_ca.paa);
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";

@@ -19,7 +19,7 @@ params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 
 // Show Dropdown, Amount and List
-ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
+ctrlSetText [AMOUNT, QPATHTOF(UI\textAmount.paa)];
 {
     ctrlShow [_x, true];
 } forEach [DROPDOWN, AMOUNT, NLIST];
