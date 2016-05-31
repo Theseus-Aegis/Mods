@@ -35,7 +35,9 @@ private _currentTargetInvalidGroup = [];
     };
 
     _currentTargetGroup pushBack (_targets select _forEachIndex);
-    _currentTargetInvalidGroup pushBack (_targetsInvalid select _forEachIndex);
+    if !(_targetsInvalid isEqualTo []) then {
+        _currentTargetInvalidGroup pushBack (_targetsInvalid select _forEachIndex);
+    };
 
     if (_forEachIndex + 1 == count _markers) then {
         _targetGroups pushBack _currentTargetGroup;
