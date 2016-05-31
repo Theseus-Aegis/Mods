@@ -56,7 +56,7 @@ _armoryData sort true; // Errors when used in combination with forEach
 
             private _quantityList = [_quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
             lnbAddRow [NLIST, ["", _displayName, _quantityList]];
-            lbSetTooltip [NLIST, _rowNum, _tooltip];
+            lbSetTooltip [NLIST, _rowNum * 3, _tooltip]; // Requires multiplication by 3 to be set on proper index (no idea why)
 
             // Set hidden data with classname to displayName column and quantity to quantity column
             lnbSetData [NLIST, [_rowNum, 1], _className];
