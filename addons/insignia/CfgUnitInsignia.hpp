@@ -3,7 +3,7 @@ class CfgUnitInsignia {
         dlc = QUOTE(PREFIX);
         displayName = "Theseus Inc.";
         author = ECSTRING(main,Author);
-        texture = QUOTE(PATHTOF(data\tac_logo_stitch_ca.paa));
+        texture = QPATHTOF(data\tac_logo_stitch_ca.paa);
         textureVehicle = "";
     };
 };

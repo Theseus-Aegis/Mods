@@ -8,7 +8,7 @@ class CfgVehicles {
                 statement = QUOTE([ARR_2({call FUNC(createMarkerMenu)}, [])] call ACE_Common_fnc_execNextFrame); // Wait a frame for interaction menu to disappear to allow new display creation
                 showDisabled = 0;
                 priority = 0;
-                icon = QUOTE(PATHTOF(UI\ratelMarker_ca.paa));
+                icon = QPATHTOF(UI\ratelMarker_ca.paa);
             };
         };
     };

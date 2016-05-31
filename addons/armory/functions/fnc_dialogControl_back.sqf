@@ -19,14 +19,14 @@ params ["_type"];
 
 // Set Back
 if (_type == "back") then {
-    ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnBack.paa))];
+    ctrlSetText [BACKPIC, QPATHTOF(UI\btnBack.paa)];
     buttonSetAction [BACKBTN, QUOTE(['main'] call FUNC(dialogControl))];
     CTRL(BACKBTN) ctrlSetTooltip localize LSTRING(BtnBackTooltip);
 };
 
 // Set Exit (and destroy GVARs)
 if (_type == "exit") then {
-    ctrlSetText [BACKPIC, QUOTE(PATHTOF(UI\btnExit.paa))];
+    ctrlSetText [BACKPIC, QPATHTOF(UI\btnExit.paa)];
     buttonSetAction [BACKBTN, QUOTE(closeDialog 0)];
     CTRL(BACKBTN) ctrlSetTooltip localize LSTRING(BtnExitTooltip);
 };

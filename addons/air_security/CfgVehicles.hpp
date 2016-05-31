@@ -1,5 +1,5 @@
-#define ICON_SECURE QUOTE(PATHTOF(UI\secure_ca.paa))
-#define ICON_UNSECURE QUOTE(PATHTOF(UI\unsecure_ca.paa))
+#define ICON_SECURE QPATHTOF(UI\secure_ca.paa)
+#define ICON_UNSECURE QPATHTOF(UI\unsecure_ca.paa)
 
 #define MACRO_SECURITY \
     class ACE_Actions { \
