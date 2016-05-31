@@ -6,6 +6,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "Taliban_fighters", "hlcweapons_aks"};
+        author = ECSTRING(main,Author);
         authors[] = {"Jonpas", "Rory"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
