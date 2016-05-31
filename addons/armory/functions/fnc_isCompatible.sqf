@@ -20,11 +20,10 @@ params ["_itemClass"];
 _itemClass = toLower _itemClass;
 
 {
-    private _compatibleItems = [_x] call CBA_fnc_compatibleItems apply (toLower _x);
+    private _compatibleItems = ([_x] call CBA_fnc_compatibleItems) apply {toLower _x};
 
     if (_itemClass in _compatibleItems) exitWith {
         true
     };
+    false
 } forEach (weapons ACE_player);
-
-false

@@ -18,16 +18,21 @@
 
 params ["_armoryData", "_compatible"];
 
+private _subCategories = [ ["All", ""] ];
+if (_compatible) then {
+    _subCategories pushBack ["Compatible", localize LSTRING(ShowOnlyCompatible)];
+};
+
 private _dataSubCategories = [];
 {
     _x params ["", "_subCategory"];
 
-    _dataSubCategories pushBackUnique _subCategory;
+    _dataSubCategories pushBackUnique [_subCategory, ""];
 } forEach _armoryData;
 
 _dataSubCategories sort true;
 
-private _subCategories = [["All"], ["All", "Compatible"]] select _compatible;
 _subCategories append _dataSubCategories;
 
+TRACE_1("SubCategories",_subCategories);
 _subCategories

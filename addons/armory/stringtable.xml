@@ -112,5 +112,8 @@
             <English>Container is full! Make space for retrieval.</English>
             <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
         </Key>
+        <Key ID="STR_TAC_Armory_ShowOnlyCompatible">
+            <English>Show only items compatible with equipped weapons.</English>
+        </Key>
     </Package>
 </Project>

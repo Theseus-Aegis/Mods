@@ -50,7 +50,8 @@ private _subCategories = [_armoryData, _hasCompatibleItems] call FUNC(extractSub
 // Fill Dropdown
 lbClear DROPDOWN; // Clear Dropdown
 {
-    lbAdd [DROPDOWN, _x];
+    lbAdd [DROPDOWN, _x select 0];
+    lbSetTooltip [DROPDOWN, _forEachIndex, _x select 1];
 } forEach _subCategories;
 
 // Set initial value to 'All' (will not fire onLBSelChanged)
