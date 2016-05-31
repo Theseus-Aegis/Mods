@@ -15,16 +15,8 @@
  */
 #include "script_component.hpp"
 
-private _config = configFile >> "CfgSounds";
-private _tracks = [];
-
-for "_x" from 0 to (count _config - 1) do {
-    private _configName = toLower (configName (_config select _x));
-
-    if (_configName find QUOTE(ADDON) != -1 && {_configName find "_quiet" == -1} && {_configName find "_loud" == -1}) then {
-        _tracks pushBack _configName;
-    };
-};
+private _tracks = ("true" configClasses (configFile >> "CfgSounds")) apply {toLower (configName _x)};
+_tracks = _tracks select {_x find QUOTE(ADDON) != -1 && {_x find "_quiet" == -1} && {_x find "_loud" == -1}};
 
 TRACE_1("Tracks",_tracks);
 _tracks
