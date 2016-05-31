@@ -1,6 +1,7 @@
 /*
  * Author: Jonpas
  * Handles hit part event handler.
+ * Incorporated vanilla handlers from "a3\structures_f\training\data\scripts"
  *
  * Arguments:
  * 0: Target <OBJECT>
@@ -8,7 +9,7 @@
  * 2: Bullet <OBJECT> (Unused)
  * 3: Impact Position (Position, ASL) <ARRAY>
  * 4: Bullet Velocity (Vector) <ARRAY> (Unused)
- * 5: Impact Selections <ARRAY> (Unused)
+ * 5: Impact Selections <ARRAY>
  * 6: Ammo Information <ARRAY> (Unused)
  * 7: Impact Direction (Vector) <ARRAY> (Unused)
  * 8: Impact Radius <NUMBER> (Unused)
@@ -19,18 +20,30 @@
  * None
  *
  * Example:
- * [target, shooter, nil, [0, 0, 0], nil, nil, nil, nil, nil, nil, true] call tac_shootingrange_fnc_handleHitPart;
+ * [target, shooter, nil, [0, 0, 0], nil, ["target"], nil, nil, nil, nil, true] call tac_shootingrange_fnc_handleHitPart;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_target", "_shooter", "", "_impactPosition", "", "", "", "", "", "", "_directHit"];
+params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
+
+// Exit if target are is not hit (eg. stand is hit)
+if !("target" in _impactSelections) exitWith {};
 
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 
-// Exit if not running
-if !(_controller getVariable [QGVAR(running), false]) exitWith {};
+// Exit if not part of a range or not running
+if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])}) exitWith {
+    _target setDamage 0;
+    [_target, 1] call FUNC(animateTarget); // Down
+
+    if ((!isNil "nopop" && nopop) || _target getVariable [QGVAR(stayDown), false]) exitWith {};
+
+    [{
+        [_this, 0] call FUNC(animateTarget); // Up
+    }, _target, 3] call CBA_fnc_waitAndExecute;
+};
 
 private _targets = _target getVariable [QGVAR(targets), []];
 

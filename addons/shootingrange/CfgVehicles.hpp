@@ -143,6 +143,9 @@ class CfgVehicles {
                 sound = QGVAR(TargetLargeSound);
             };
         };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
+        };
     };
 
     class Land_Target_Oval_F: TargetBase {
@@ -150,6 +153,9 @@ class CfgVehicles {
             class Left_Rotate {
                 sound = QGVAR(TargetSmallSound);
             };
+        };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
         };
     };
 };

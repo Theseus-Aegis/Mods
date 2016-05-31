@@ -150,15 +150,14 @@ if (_mode > 1) then {
     private _timeStart = diag_tickTime;
     GVAR(firstRun) = true;
 
-    // Disable automatic pop-ups
-    nopop = true;
-
-    // Pop up all targets in Rampage mode
-    if (_mode == 5) then {
         {
-            [_x, 0] call FUNC(animateTarget); // Up
+            _x setVariable [QGVAR(stayDown), true, true]; // Disable automatic pop-ups
+
+            // Pop up all targets in Rampage mode
+            if (_mode == 5) then {
+                [_x, 0] call FUNC(animateTarget); // Up
+            };
         } forEach (_targets + _targetsInvalid);
-    };
 
     // Start PFH
     [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
