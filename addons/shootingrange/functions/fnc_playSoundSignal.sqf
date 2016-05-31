@@ -22,5 +22,5 @@ params ["_controller", "_sound", ["_range", 25]];
 private _soundSources = _controller getVariable [QGVAR(soundSources), []];
 
 {
-    [_x, _sound, _range] call CBA_fnc_globalSay3d;
+    [QGVAR(playSignal), [_x, _sound, _range]] call CBA_fnc_globalEvent;
 } forEach _soundSources;
