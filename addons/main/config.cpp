@@ -6,7 +6,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common", "ace_interaction"};
-        author[]= {"Jonpas"};
+        author = CSTRING(Author);
+        url = "http://www.theseus-aegis.com/";
+        authors[] = {"Jonpas"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
