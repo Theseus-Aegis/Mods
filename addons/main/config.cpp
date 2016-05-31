@@ -6,7 +6,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common", "ace_interaction"};
-        author[]= {"Jonpas"};
+        authors[] = {"Jonpas"};
         authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
