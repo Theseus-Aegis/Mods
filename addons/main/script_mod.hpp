@@ -3,7 +3,7 @@
 #define PREFIX tac
 
 #define MAJOR 1
-#define MINOR 6
+#define MINOR 7
 #define PATCHLVL 0
 #define BUILD 0
 
@@ -14,5 +14,6 @@
 #define PBO_URL url = WEB_URL
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.58
+#define REQUIRED_VERSION 1.60
+#define REQUIRED_CBA_VERSION {2,4,0}
 #define REQUIRED_ACE_VERSION {3,5,1}
