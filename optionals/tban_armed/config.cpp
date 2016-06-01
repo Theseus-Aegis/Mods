@@ -7,8 +7,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "Taliban_fighters", "hlcweapons_aks"};
         author = ECSTRING(main,Author);
-        url = "http://www.theseus-aegis.com/";
         authors[] = {"Jonpas", "Rory"};
+        url = "http://www.theseus-aegis.com/";
         VERSION_CONFIG;
     };
 };

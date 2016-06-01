@@ -7,8 +7,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common", "ace_interaction"};
         author = CSTRING(Author);
-        url = "http://www.theseus-aegis.com/";
         authors[] = {"Jonpas"};
+        url = "http://www.theseus-aegis.com/";
         VERSION_CONFIG;
     };
 };
