@@ -58,17 +58,18 @@ switch (_mode) do {
 };
 
 private _text = "";
-private _size = 2.5;
+private _size = 4;
 
-if (_mode == 1) exitWith {
+if (_mode == 1) then {
     _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7<br/>%8: %9s<br/>%10: %11s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, _textConfig, _textDurationOrTargetAmount, localize LSTRING(PauseDuration), _pauseDuration, localize LSTRING(CountdownTime), _countdownTime];
+    _size = _size + 0.5;
 };
 
-if (_mode in [2, 3, 5]) exitWith {
+if (_mode in [2, 3, 5]) then {
     _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7<br/>%8: %9s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, _textConfig, _textDurationOrTargetAmount, localize LSTRING(CountdownTime), _countdownTime];
 };
 
-if (_mode == 4) exitWith {
+if (_mode == 4) then {
     _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, localize LSTRING(CountdownTime), _countdownTime];
 };
 

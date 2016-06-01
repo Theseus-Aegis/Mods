@@ -26,7 +26,7 @@ if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); }
 {
     [_x, _state] call FUNC(animateTarget);
 
-    // Mark target as not yet hit
-    private _alreadyHit = [true, false] select (_state == 0);
-    _x setVariable [QGVAR(alreadyHit), _alreadyHit];
+    // Mark target hit
+    private _hits = [_x getVariable [QGVAR(hits), 1], 0] select (_state == 0);
+    _x setVariable [QGVAR(hit), _hits];
 } forEach (_targetGroup + _targetInvalidGroup);

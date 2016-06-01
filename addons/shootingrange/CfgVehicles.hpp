@@ -23,6 +23,12 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class Hits {
+                displayName = CSTRING(Hits);
+                description = CSTRING(HitsDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
             class TargetsInvalid {
                 displayName = CSTRING(TargetsInvalid);
                 description = CSTRING(TargetsInvalidDesc);
@@ -129,6 +135,12 @@ class CfgVehicles {
                 typeName = "BOOL";
                 defaultValue = 1;
             };
+            class ShowHits {
+                displayName = CSTRING(ShowHits);
+                description = CSTRING(ShowHitsDesc);
+                typeName = "BOOL";
+                defaultValue = 1;
+            };
         };
         class ModuleDescription {
             description = CSTRING(ModuleDesc);
@@ -143,6 +155,9 @@ class CfgVehicles {
                 sound = QGVAR(TargetLargeSound);
             };
         };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
+        };
     };
 
     class Land_Target_Oval_F: TargetBase {
@@ -150,6 +165,9 @@ class CfgVehicles {
             class Left_Rotate {
                 sound = QGVAR(TargetSmallSound);
             };
+        };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
         };
     };
 };

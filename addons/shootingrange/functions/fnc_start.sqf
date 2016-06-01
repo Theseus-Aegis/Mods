@@ -31,6 +31,7 @@ if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || 
 
 // Prepare targets
 {
+    _x setDamage 0;
     [_x, 1] call FUNC(animateTarget); // Down
 } forEach (_targets + _targetsInvalid);
 
@@ -90,6 +91,7 @@ _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 
 // Prepare variables
 GVAR(targetNumber) = 0;
+GVAR(score) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 GVAR(invalidTargetHit) = false;
 
@@ -150,15 +152,14 @@ if (_mode > 1) then {
     private _timeStart = diag_tickTime;
     GVAR(firstRun) = true;
 
-    // Disable automatic pop-ups
-    nopop = true;
+    {
+        _x setVariable [QGVAR(stayDown), true, true]; // Disable automatic pop-ups
 
-    // Pop up all targets in Rampage mode
-    if (_mode == 5) then {
-        {
+        // Pop up all targets in Rampage mode
+        if (_mode == 5) then {
             [_x, 0] call FUNC(animateTarget); // Up
-        } forEach (_targets + _targetsInvalid);
-    };
+        };
+    } forEach (_targets + _targetsInvalid);
 
     // Start PFH
     [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;

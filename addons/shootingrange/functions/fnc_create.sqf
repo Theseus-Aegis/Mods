@@ -17,12 +17,14 @@
  * 11: Pop on Trigger Exit <BOOL> (default: true)
  * 12: Invalid Targets <ARRAY> (default: [])
  * 13: Sound Sources <ARRAY> (default: [])
+ * 14: Hits <ARRAY> (default: [])
+ * 15: Show Hits <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2]] call tac_shootingrange_fnc_create;
+ * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2], [2, 2], true] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
  */
@@ -44,12 +46,25 @@ params [
     ["_triggerMarkers", [], [[]] ],
     ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ],
     ["_targetsInvalid", [], [[]] ],
-    ["_soundSources", [], [[]] ]
+    ["_soundSources", [], [[]] ],
+    ["_hits", HITS_DEFAULT, [[]] ],
+    ["_showHits", SHOWHITS_DEFAULT, [true] ]
 ];
 
 // Verify data
 if (_targets isEqualTo [] || {_controllers isEqualTo []}) exitWith {
     ACE_LOGERROR("Targets and Controllers fields/arguments must NOT be empty!");
+};
+
+if ((count _hits > 1 && count _hits < count _targets) || {count _hits > count _targets}) exitWith {
+    ACE_LOGERROR("Hits field/argument must have exactly 1 element ot equal elements as Targets fields/arguments!");
+};
+
+if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
+    ACE_LOGERROR("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used!");
+};
+if (_mode == 4 && {count _triggerMarkers < count _targetsInvalid}) exitWith {
+    ACE_LOGERROR("Invalid Targets field/argument must have equal or less elements than Trigger Markers and Targets fields/arguments when Trigger Mode is used!");
 };
 
 if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
@@ -63,13 +78,6 @@ if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
     };
 } forEach _countdownTimes;
 
-if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
-    ACE_LOGERROR("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used!");
-};
-if (_mode == 4 && {count _triggerMarkers < count _targetsInvalid}) exitWith {
-    ACE_LOGERROR("Invalid Targets field/argument must have equal or less elements than Trigger Markers and Targets fields/arguments when Trigger Mode is used!");
-};
-
 // Defaults
 if !(_name isEqualTo "") then {
     _name = [" (", _name, ")"] joinString "";
@@ -79,6 +87,12 @@ if (_durations isEqualTo []) then {
     _durations = DURATIONS_DEFAULT;
 } else {
     _durations pushBack 0; // Add infinite duration
+};
+
+if (count _hits < 2) then {
+    {
+        _hits pushBack ([_hits select 0, 1] select (_hits isEqualTo []));
+    } forEach _targets;
 };
 
 if (_targetAmounts isEqualTo []) then {
@@ -133,6 +147,7 @@ _countdownTimes sort true;
         _x setVariable [QGVAR(mode), _mode, true];
     };
     _x setVariable [QGVAR(soundSources), _controllers + _soundSources];
+    _x setVariable [QGVAR(showHits), _showHits];
 
     // Main
     private _actionRange = [
@@ -337,11 +352,13 @@ if (_mode == 4) then {
     } forEach _triggerMarkers;
 };
 
-
 // Set up targets
 {
     _x setVariable [QGVAR(targets), _targets];
     _x setVariable [QGVAR(controllers), _controllers];
     _x setVariable [QGVAR(triggers), _triggers];
-    _x addEventHandler ["HitPart", { (_this select 0) call FUNC(handleHitPart); }];
+
+    if (_x in _targets) then {
+        _x setVariable [QGVAR(hits), _hits select _forEachIndex];
+    };
 } forEach (_targets + _targetsInvalid);
