@@ -8,7 +8,7 @@ class CfgPatches {
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas", "DaC"};
-        url = "http://www.theseus-aegis.com/";
+        PBO_URL
         VERSION_CONFIG;
     };
 };

@@ -10,6 +10,9 @@
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
+#define WEB_URL "http://www.theseus-aegis.com/"
+#define PBO_URL url = WEB_URL;
+
 // MINIMAL required version for the Mod. Components can specify others..
 #define REQUIRED_VERSION 1.58
 #define REQUIRED_ACE_VERSION {3,5,1}
