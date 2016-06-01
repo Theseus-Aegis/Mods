@@ -5,25 +5,26 @@
  * Arguments:
  * 0: Name <STRING> (default: "")
  * 1: Targets <ARRAY>
- * 2: Hits <ARRAY>
- * 3: Controllers <ARRAY>
- * 4: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER> (default: 1)
- * 5: Durations <ARRAY> (default: [0, 30, 60, 150, 300])
- * 6: Default Duration <NUMBER> (default: 60)
- * 7: Pause Durations <ARRAY> (default: [1, 2, 3, 4, 5])
- * 8: Default Pause Duration <NUMBER> (default: 5)
- * 9: Countdown Times <ARRAY> (default: 6, 9, 12, 15)
- * 10: Default Countdown Time <NUMBER> (default: 9)
- * 11: Trigger Markers <ARRAY> (default: [])
- * 12: Pop on Trigger Exit <BOOL> (default: true)
- * 13: Invalid Targets <ARRAY> (default: [])
- * 14: Sound Sources <ARRAY> (default: [])
+ * 2: Controllers <ARRAY>
+ * 3: Mode (1 = Time, 2 = Hit (Time Limited), 3 = Hit (Target Limited), 4 = Trigger, 5 = Rampage) <NUMBER> (default: 1)
+ * 4: Durations <ARRAY> (default: [0, 30, 60, 150, 300])
+ * 5: Default Duration <NUMBER> (default: 60)
+ * 6: Pause Durations <ARRAY> (default: [1, 2, 3, 4, 5])
+ * 7: Default Pause Duration <NUMBER> (default: 5)
+ * 8: Countdown Times <ARRAY> (default: 6, 9, 12, 15)
+ * 9: Default Countdown Time <NUMBER> (default: 9)
+ * 10: Trigger Markers <ARRAY> (default: [])
+ * 11: Pop on Trigger Exit <BOOL> (default: true)
+ * 12: Invalid Targets <ARRAY> (default: [])
+ * 13: Sound Sources <ARRAY> (default: [])
+ * 14: Hits <ARRAY> (default: [])
+ * 15: Show Hits <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", [target1, target2], [2, 2] [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2]] call tac_shootingrange_fnc_create;
+ * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2], [2, 2], true] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
  */
@@ -32,7 +33,6 @@
 params [
     ["_name", [""], [""] ],
     ["_targets", [], [[]] ],
-    ["_hits", [], [[]] ],
     ["_controllers", [], [[]] ],
     ["_mode", MODE_DEFAULT, [0] ],
     ["_durations", DURATIONS_DEFAULT, [[]] ],
@@ -46,7 +46,9 @@ params [
     ["_triggerMarkers", [], [[]] ],
     ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ],
     ["_targetsInvalid", [], [[]] ],
-    ["_soundSources", [], [[]] ]
+    ["_soundSources", [], [[]] ],
+    ["_hits", HITS_DEFAULT, [[]] ],
+    ["_showHits", SHOWHITS_DEFAULT, [true] ]
 ];
 
 // Verify data
@@ -87,12 +89,9 @@ if (_durations isEqualTo []) then {
     _durations pushBack 0; // Add infinite duration
 };
 
-if (_hits isEqualTo []) then {
-    _hits = [1];
-};
-if (count _hits == 1) then {
+if (count _hits < 2) then {
     {
-        _hits pushBack (_hits select 0);
+        _hits pushBack ([_hits select 0, 1] select (_hits isEqualTo []));
     } forEach _targets;
 };
 
@@ -148,6 +147,7 @@ _countdownTimes sort true;
         _x setVariable [QGVAR(mode), _mode, true];
     };
     _x setVariable [QGVAR(soundSources), _controllers + _soundSources];
+    _x setVariable [QGVAR(showHits), _showHits];
 
     // Main
     private _actionRange = [
@@ -351,7 +351,6 @@ if (_mode == 4) then {
         _triggers pushBack _trigger;
     } forEach _triggerMarkers;
 };
-
 
 // Set up targets
 {

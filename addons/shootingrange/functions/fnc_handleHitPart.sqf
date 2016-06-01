@@ -79,7 +79,7 @@ _target setVariable [QGVAR(hit), _hit];
 [_controller, "Beep_Target"] call FUNC(playSoundSignal);
 GVAR(score) = GVAR(score) + 1;
 
-if (_hits > 1) then {
+if (_hits > 1 && {_controller getVariable [QGVAR(showHits), true]}) then {
     [[_hit, _hits] joinString "/"] call ACE_Common_fnc_displayTextStructured;
 };
 

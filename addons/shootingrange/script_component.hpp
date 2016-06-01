@@ -1,9 +1,9 @@
 #define COMPONENT shootingrange
 #include "\x\tac\addons\main\script_mod.hpp"
 
-#define DEBUG_MODE_FULL
-#define DISABLE_COMPILE_CACHE
-#define CBA_DEBUG_SYNCHRONOUS
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
 // #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SHOOTINGRANGE
@@ -33,6 +33,9 @@
 #define COUNTDOWNTIME_LOWEST 5
 
 #define POPONTRIGGEREXIT_DEFAULT true
+
+#define HITS_DEFAULT [1]
+#define SHOWHITS_DEFAULT true
 
 
 #define NOTIFY_DISTANCE 50

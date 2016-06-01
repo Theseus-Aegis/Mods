@@ -135,6 +135,12 @@
         <Key ID="STR_TAC_ShootingRange_PopOnTriggerExitDesc">
             <English>Pop targets down when exiting the trigger. Available in Trigger Mode only.</English>
         </Key>
+        <Key ID="STR_TAC_ShootingRange_ShowHits">
+            <English>Show Hits</English>
+        </Key>
+        <Key ID="STR_TAC_ShootingRange_ShowHitsDesc">
+            <English>Show number of hits out of number of hits necessary on each hit. Available only when more than 1 hit is necessary.</English>
+        </Key>
         <Key ID="STR_TAC_ShootingRange_Timed">
             <English>Timed</English>
             <German>Auf Zeit</German>

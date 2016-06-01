@@ -135,6 +135,12 @@ class CfgVehicles {
                 typeName = "BOOL";
                 defaultValue = 1;
             };
+            class ShowHits {
+                displayName = CSTRING(ShowHits);
+                description = CSTRING(ShowHitsDesc);
+                typeName = "BOOL";
+                defaultValue = 1;
+            };
         };
         class ModuleDescription {
             description = CSTRING(ModuleDesc);

@@ -76,8 +76,11 @@ private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] cal
 // Extract pop targets down on trigger exit setting
 private _popOnTriggerExit = _logic getVariable "PopOnTriggerExit";
 
+// Extract show hits setting
+private _showHits = _logic getVariable "ShowHits";
+
 
 // Prepare with actions
-[_name, _targets, _hits, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources, _hits, _showHits] call FUNC(create);
 
 ACE_LOGINFO("Shooting Range Module Initialized");
