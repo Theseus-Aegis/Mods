@@ -9,7 +9,6 @@ class CfgPatches {
         author = CSTRING(Author);
         url = "http://www.theseus-aegis.com/";
         authors[] = {"Jonpas"};
-        authorUrl = "https://github.com/jonpas";
         VERSION_CONFIG;
     };
 };

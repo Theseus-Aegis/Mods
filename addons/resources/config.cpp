@@ -9,7 +9,6 @@ class CfgPatches {
         author = ECSTRING(main,Author);
         url = "http://www.theseus-aegis.com/";
         authors[] = {"DaC", "Jonpas", "Rory"};
-        authorUrl = "http://www.theseus-aegis.com";
         VERSION_CONFIG;
     };
 };
