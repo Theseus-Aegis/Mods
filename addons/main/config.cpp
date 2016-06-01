@@ -8,7 +8,7 @@ class CfgPatches {
         requiredAddons[] = {"ace_common", "ace_interaction"};
         author = CSTRING(Author);
         authors[] = {"Jonpas"};
-        PBO_URL
+        PBO_URL;
         VERSION_CONFIG;
     };
 };
