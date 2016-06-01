@@ -23,6 +23,12 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
+            class Hits {
+                displayName = CSTRING(Hits);
+                description = CSTRING(HitsDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
             class TargetsInvalid {
                 displayName = CSTRING(TargetsInvalid);
                 description = CSTRING(TargetsInvalidDesc);

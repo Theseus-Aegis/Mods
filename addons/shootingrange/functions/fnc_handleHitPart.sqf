@@ -29,21 +29,22 @@
 params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
 
 // Exit if target are is not hit (eg. stand is hit)
-if !("target" in _impactSelections) exitWith {};
+if !("target" in _impactSelections || {"pole_bottom" in _impactSelections}) exitWith {};
 
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 
-// Exit if not part of a range or not running
+// Exit with vanilla-like handling if not part of a range or not running
 if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])}) exitWith {
-    _target setDamage 0;
     [_target, 1] call FUNC(animateTarget); // Down
 
     if ((!isNil "nopop" && nopop) || _target getVariable [QGVAR(stayDown), false]) exitWith {};
 
     [{
-        [_this, 0] call FUNC(animateTarget); // Up
+        _target setDamage 0;
+        [_target, 0] call FUNC(animateTarget); // Up
     }, _target, 3] call CBA_fnc_waitAndExecute;
 };
+
 
 private _targets = _target getVariable [QGVAR(targets), []];
 
@@ -52,32 +53,44 @@ if !(_target in _targets) exitWith {
     GVAR(invalidTargetHit) = true;
 };
 
-// Exit if target already hit
-if (_target getVariable [QGVAR(alreadyHit), false]) exitWith {};
-
 // Exit if not direct hit (does not seem to count bullet bouncing)
 if (!_directHit) exitWith {
     hint "[TAC] Debug: Indirect Hit";
-    [_target, 0] call FUNC(animateTarget); // Up
 };
 
 // Exit if hit by someone else
  private _starter = _controller getVariable [QGVAR(starter), nil];
 if (_shooter != _starter) exitWith {
-    [_target, 0] call FUNC(animateTarget); // Up
-
     private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
     private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
     ["displayTextStructured", [_starter, _shooter], [_text, 3]] call ACE_Common_fnc_targetEvent;
 };
 
 
+private _hits = _target getVariable [QGVAR(hits), 1];
+private _hit = _target getVariable [QGVAR(hit), 0];
+
+// Exit if target already hit
+if (_hit > _hits) exitWith {};
+
+// Mark target as hit
+_hit = _hit + 1;
+_target setVariable [QGVAR(hit), _hit];
 [_controller, "Beep_Target"] call FUNC(playSoundSignal);
+GVAR(score) = GVAR(score) + 1;
 
-// Mark target as already hit
-_target setVariable [QGVAR(alreadyHit), true];
+if (_hits > 1) then {
+    [[_hit, _hits] joinString "/"] call ACE_Common_fnc_displayTextStructured;
+};
 
-// Update score / Set next target
+TRACE_2("Hit",_hits,_hit);
+
+// Exit if not enough hits yet
+if (_hit < _hits) exitWith {};
+
+[_target, 1] call FUNC(animateTarget); // Down
+
+// Set next target
 GVAR(targetNumber) = GVAR(targetNumber) + 1;
 
 
@@ -87,11 +100,12 @@ private _mode = _controller getVariable [QGVAR(mode), 0];
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
     GVAR(nextTarget) = selectRandom _targets;
 
-    // Animate target
-    [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
-
     // Mark target as not yet hit
-    GVAR(nextTarget) setVariable [QGVAR(alreadyHit), false];
+    GVAR(nextTarget) setVariable [QGVAR(hit), 0];
+
+    // Animate target
+    _target setDamage 0;
+    [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 };
 
 // Handle pop-ups in trigger based

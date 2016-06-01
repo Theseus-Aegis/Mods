@@ -27,8 +27,9 @@ params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", [
 
 // Set targets to original
 {
+    _x setDamage 0;
     [_x, 0] call FUNC(animateTarget); // Up
-    _x setVariable [QGVAR(alreadyHit), nil];
+    _x setVariable [QGVAR(hit), nil];
     _x setVariable [QGVAR(stayDown), false, true]; // Enable automatic pop-ups
 } forEach (_targets + _targetsInvalid);
 

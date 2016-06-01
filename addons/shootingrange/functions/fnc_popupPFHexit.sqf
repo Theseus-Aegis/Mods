@@ -36,6 +36,7 @@ params ["_idPFH", "_controller", "_controllers", "_name", "_targets", "_targetsI
 
 // Cleanup variables
 GVAR(targetNumber) = nil;
+GVAR(score) = nil;
 GVAR(maxScore) = nil;
 GVAR(firstRun) = nil;
 GVAR(nextTarget) = nil;

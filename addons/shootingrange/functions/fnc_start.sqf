@@ -31,6 +31,7 @@ if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || 
 
 // Prepare targets
 {
+    _x setDamage 0;
     [_x, 1] call FUNC(animateTarget); // Down
 } forEach (_targets + _targetsInvalid);
 
@@ -90,6 +91,7 @@ _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 
 // Prepare variables
 GVAR(targetNumber) = 0;
+GVAR(score) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 GVAR(invalidTargetHit) = false;
 
