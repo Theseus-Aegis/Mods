@@ -71,7 +71,7 @@ private _hits = _target getVariable [QGVAR(hits), 1];
 private _hit = _target getVariable [QGVAR(hit), 0];
 
 // Exit if target already hit
-if (_hit > _hits) exitWith {};
+if (_hit >= _hits) exitWith {};
 
 // Mark target as hit
 _hit = _hit + 1;
