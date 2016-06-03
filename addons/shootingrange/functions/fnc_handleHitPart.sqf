@@ -37,11 +37,11 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])}) exitWith {
     [_target, 1] call FUNC(animateTarget); // Down
 
-    if ((!isNil "nopop" && nopop) || _target getVariable [QGVAR(stayDown), false]) exitWith {};
+    if (nopop || {_target getVariable [QGVAR(stayDown), false]}) exitWith {};
 
     [{
-        _target setDamage 0;
-        [_target, 0] call FUNC(animateTarget); // Up
+        _this setDamage 0;
+        [_this, 0] call FUNC(animateTarget); // Up
     }, _target, 3] call CBA_fnc_waitAndExecute;
 };
 
