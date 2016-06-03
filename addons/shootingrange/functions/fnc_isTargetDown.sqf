@@ -1,25 +1,27 @@
 /*
  * Author: Jonpas
- * Animates a target.
+ * Checks if a target is in "down" animation phase.
  *
  * Arguments:
  * 0: Target <OBJECT>
- * 1: State (Up = 0, Down = 1) <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [target, 0] call tac_shootingrange_fnc_animateTarget;
+ * _isDown = target call tac_shootingrange_fnc_isTargetDown;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_target", "_state"];
+params ["_target"];
 
 private _anims = _target call FUNC(getTargetAnimations);
-//TRACE_3("Animate",_target,_state,_anims);
+
 {
-    _target animate [_x, _state];
+    if (_target animationPhase _x > 0) exitWith {
+        true
+    };
+    false
 } forEach _anims;

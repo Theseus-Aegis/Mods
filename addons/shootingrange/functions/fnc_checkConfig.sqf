@@ -71,6 +71,7 @@ if (_mode in [2, 3, 5]) then {
 
 if (_mode == 4) then {
     _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, localize LSTRING(CountdownTime), _countdownTime];
+    _size = _size - 0.5;
 };
 
 [_text, _size] call ACE_Common_fnc_displayTextStructured;

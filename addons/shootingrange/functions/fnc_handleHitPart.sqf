@@ -28,7 +28,10 @@
 
 params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
 
-// Exit if target are is not hit (eg. stand is hit)
+// Exit if target in "down" animation
+if (_target call FUNC(isTargetDown)) exitWith {};
+
+// Exit if target is not actually hit (eg. stand is hit)
 if !("target" in _impactSelections || {"pole_bottom" in _impactSelections}) exitWith {};
 
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
