@@ -34,5 +34,5 @@ _dataSubCategories sort true;
 
 _subCategories append _dataSubCategories;
 
-TRACE_1("SubCategories",_subCategories);
+//TRACE_1("SubCategories",_subCategories);
 _subCategories
