@@ -20,14 +20,12 @@
 
 params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid"];
 
-private _duration = _controller getVariable [QGVAR(duration), nil];
-private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
-private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
-private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
-private _mode = _controller getVariable [QGVAR(mode), nil];
-private _triggers = (_targets select 0) getVariable [QGVAR(triggers), nil];
-if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"} || {isNil "_triggers"}) exitWith { ACE_LOGERROR("No configuration found!"); };
-
+private _duration = _controller getVariable [QGVAR(duration), DURATION_DEFAULT];
+private _targetAmount = _controller getVariable [QGVAR(targetAmount), TARGETAMOUNT_DEFAULT];
+private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), PAUSEDURATION_DEFAULT];
+private _countdownTime = _controller getVariable [QGVAR(countdownTime), COUNTDOWNTIME_DEFAULT];
+private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
+private _triggers = (_targets select 0) getVariable [QGVAR(triggers), []];
 
 // Prepare targets
 {

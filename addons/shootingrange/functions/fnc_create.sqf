@@ -155,9 +155,9 @@ _countdownTimes sort true;
         format ["%1%2", localize LSTRING(Range), _name],
         "",
         {true},
-        {(_this select 2) call FUNC(canStart)},
+        {!((_this select 2) getVariable [QGVAR(running), false])},
         {},
-        [_x]
+        _x
     ] call ACE_Interact_Menu_fnc_createAction;
 
     // Stop
@@ -166,7 +166,7 @@ _countdownTimes sort true;
         format ["%1 %2%3", localize LSTRING(Stop), localize LSTRING(Range), _name],
         "",
         {(_this select 2) call FUNC(stop)},
-        {(_this select 2) call FUNC(canStop)},
+        {((_this select 2) select 0) getVariable [QGVAR(running), false]},
         {},
         [_x, _controllers, _name, _targets]
     ] call ACE_Interact_Menu_fnc_createAction;
