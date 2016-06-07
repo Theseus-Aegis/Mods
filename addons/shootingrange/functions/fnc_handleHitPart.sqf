@@ -101,7 +101,7 @@ private _mode = _controller getVariable [QGVAR(mode), 0];
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
-    GVAR(nextTarget) = selectRandom _targets;
+    GVAR(nextTarget) = selectRandom (_targets - [_target]);
 
     // Mark target as not yet hit
     GVAR(nextTarget) setVariable [QGVAR(hit), 0];
