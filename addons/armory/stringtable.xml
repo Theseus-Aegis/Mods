@@ -116,7 +116,6 @@
         <Key ID="STR_TAC_Armory_ShowOnlyCompatible">
             <English>Show only items compatible with equipped weapons.</English>
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind</German>
-            <Italian>.</Italian>
         </Key>
     </Package>
 </Project>
