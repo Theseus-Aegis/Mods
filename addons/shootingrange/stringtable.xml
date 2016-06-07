@@ -110,16 +110,14 @@
             <German>Countdown-Zeiten</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_CountdownTimesDesc">
-            <English>List of times it takes from pressing start to first target pop-up. Default: 6, 9, 12, 15</English>
-            <German>Liste der möglichen Zeiten die es dauert, bis nach dem Druck auf Start die ersten Ziele aufklappen. Standard: 6, 9, 12, 15</German>
+            <English>List of times it takes from pressing start to first target pop-up (lowest: 5). Default: 6, 9, 12, 15</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultCountdownTime">
             <English>Default Countdown Time</English>
             <German>Standard Countdown-Zeit</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultCountdownTimeDesc">
-            <English>Default time it takes from pressing start to first target pop-up. Default: 9</English>
-            <German>Standard Countdown-Zeit die benötigt wird, bis nach dem Druck auf Start die ersten Ziele aufklappen. Standard: 9</German>
+            <English>Default time it takes from pressing start to first target pop-up (lowest: 5). Default: 9</English>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TriggerMarkers">
             <English>Trigger Markers</English>
