@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params ["_controller", "_sound", ["_range", 25]];
+params ["_controller", "_sound", ["_range", NOTIFY_DISTANCE]];
 
 private _soundSources = _controller getVariable [QGVAR(soundSources), []];
 

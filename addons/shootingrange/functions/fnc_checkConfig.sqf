@@ -19,12 +19,11 @@
 
 params ["_controller", "_name", "_targets"];
 
-private _duration = _controller getVariable [QGVAR(duration), nil];
-private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
-private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
-private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
-private _mode = _controller getVariable [QGVAR(mode), nil];
-if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"}) exitWith { ACE_LOGERROR("No configuration found!"); };
+private _duration = _controller getVariable [QGVAR(duration), DURATION_DEFAULT];
+private _targetAmount = _controller getVariable [QGVAR(targetAmount), TARGETAMOUNT_DEFAULT];
+private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), PAUSEDURATION_DEFAULT];
+private _countdownTime = _controller getVariable [QGVAR(countdownTime), COUNTDOWNTIME_DEFAULT];
+private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
 
 private _textMode = "";
 private _textConfig = localize LSTRING(Duration);
@@ -71,6 +70,7 @@ if (_mode in [2, 3, 5]) then {
 
 if (_mode == 4) then {
     _text = format ["%1 %2 %3<br/><br/>%4: %5<br/>%6: %7s", localize LSTRING(Range), _name, localize LSTRING(Configuration), localize LSTRING(Mode), _textMode, localize LSTRING(CountdownTime), _countdownTime];
+    _size = _size - 0.5;
 };
 
 [_text, _size] call ACE_Common_fnc_displayTextStructured;

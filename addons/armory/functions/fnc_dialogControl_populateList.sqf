@@ -19,7 +19,7 @@ params ["_armoryData"];
 
 private _selSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
 
-TRACE_2("Populating list",_armoryData,_selSubCategory);
+//TRACE_2("Populating list",_armoryData,_selSubCategory);
 
 // Clear List
 lnbClear NLIST;

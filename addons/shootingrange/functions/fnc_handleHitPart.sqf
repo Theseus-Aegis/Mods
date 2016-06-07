@@ -28,7 +28,10 @@
 
 params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
 
-// Exit if target are is not hit (eg. stand is hit)
+// Exit if target in "down" animation
+if (_target call FUNC(isTargetDown)) exitWith {};
+
+// Exit if target is not actually hit (eg. stand is hit)
 if !("target" in _impactSelections || {"pole_bottom" in _impactSelections}) exitWith {};
 
 private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
@@ -37,11 +40,11 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])}) exitWith {
     [_target, 1] call FUNC(animateTarget); // Down
 
-    if ((!isNil "nopop" && nopop) || _target getVariable [QGVAR(stayDown), false]) exitWith {};
+    if (nopop || {_target getVariable [QGVAR(stayDown), false]}) exitWith {};
 
     [{
-        _target setDamage 0;
-        [_target, 0] call FUNC(animateTarget); // Up
+        _this setDamage 0;
+        [_this, 0] call FUNC(animateTarget); // Up
     }, _target, 3] call CBA_fnc_waitAndExecute;
 };
 
@@ -98,7 +101,7 @@ private _mode = _controller getVariable [QGVAR(mode), 0];
 
 // Handle random pop-ups in hit-based (exit if last target in hit-based with target limit)
 if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [QGVAR(targetAmount), 0]}}) then {
-    GVAR(nextTarget) = selectRandom _targets;
+    GVAR(nextTarget) = selectRandom (_targets - [_target]);
 
     // Mark target as not yet hit
     GVAR(nextTarget) setVariable [QGVAR(hit), 0];

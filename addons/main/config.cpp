@@ -8,7 +8,7 @@ class CfgPatches {
         requiredAddons[] = {"ace_common", "ace_interaction"};
         author = CSTRING(Author);
         authors[] = {"Jonpas"};
-        PBO_URL;
+        url = CSTRING(URL);
         VERSION_CONFIG;
     };
 };
@@ -25,7 +25,7 @@ class CfgMods {
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
-        action = "http://www.theseus-aegis.com";
+        action = CSTRING(URL);
     };
 };
 

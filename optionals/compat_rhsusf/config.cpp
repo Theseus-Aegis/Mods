@@ -8,7 +8,7 @@ class CfgPatches {
         requiredAddons[] = {"tac_heavylifter"};
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
-        PBO_URL;
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };

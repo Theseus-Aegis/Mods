@@ -49,4 +49,4 @@ if (!isNull (driver _heli) && !local (driver _heli)) then {
 [_pos] call FUNC(createMarker);
 
 // Create marker remotely on array of objects
-[QGVAR(created), _seeMarkerUnits, [_pos]] call CBA_fnc_targetEvent;
+[QGVAR(created), [_pos], _seeMarkerUnits] call CBA_fnc_targetEvent;

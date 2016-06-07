@@ -21,6 +21,9 @@ _itemClass = toLower _itemClass;
 
 {
     private _compatibleItems = ([_x] call CBA_fnc_compatibleItems) apply {toLower _x};
+    _compatibleItems append ((getArray (configFile >> "CfgWeapons" >> _x >> "magazines")) apply {toLower _x});
+
+    TRACE_2("Compatible Items",_x,_compatibleItems);
 
     if (_itemClass in _compatibleItems) exitWith {
         true
