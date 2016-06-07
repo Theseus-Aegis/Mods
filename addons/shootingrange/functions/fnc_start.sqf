@@ -141,10 +141,10 @@ if (_mode > 1) then {
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
     [_controller, "FD_Start_F"] call FUNC(playSoundSignal);
 
-    // Notify supervisor(s) (closer than start/stop notifications)
+    // Notify spectators
     private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
     private _textNotify = format ["%1 %2!", _playerName, localize LSTRING(Started)];
-    [_textNotify, 1.5, false, NOTIFY_DISTANCE_SUPERVISOR] call FUNC(notifyVicinity);
+    [_textNotify, 1.5, false] call FUNC(notifyVicinity);
 
     // Prepare target pop-up handling
     private _timeStart = diag_tickTime;
