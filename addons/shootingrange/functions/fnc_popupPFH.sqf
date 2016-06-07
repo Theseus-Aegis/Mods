@@ -65,7 +65,7 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     };
 
     // Select random index (save for later removal from array) and new target
-    GVAR(nextTarget) = selectRandom _targets;
+    GVAR(nextTarget) = selectRandom (_targets - [GVAR(targetUp)]);
 
     // Animate new target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
