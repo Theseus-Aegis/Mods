@@ -91,6 +91,7 @@
         </Key>
         <Key ID="STR_TAC_Armory_BtnInsigniasTooltip">
             <English>Access Insignias</English>
+            <German>Auf Abzeichen zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashTooltip">
             <English>Stash Container Contents</English>
@@ -114,6 +115,8 @@
         </Key>
         <Key ID="STR_TAC_Armory_ShowOnlyCompatible">
             <English>Show only items compatible with equipped weapons.</English>
+            <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind</German>
+            <Italian>.</Italian>
         </Key>
     </Package>
 </Project>
