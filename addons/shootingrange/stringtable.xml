@@ -27,15 +27,19 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_Hits">
             <English>Hits</English>
+            <German>Treffer</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_HitsDesc">
             <English>List of numbers used as hits the target takes before falling, separated by commas.</English>
+            <German>Liste der Nummern, die genutzt werden, um die zum Umfallen eines Zieles benötigte Anzahl an Treffern festzulegen. Durch Kommas trennen.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsInvalid">
             <English>Invalid Targets</English>
+            <German>Ungültige Ziele</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsInvalidDesc">
             <English>List of object names used as invalid targets, separated by commas. Must be same amount as targets when used in Trigger mode, fill empty slots with 'nil'.</English>
+            <German>Liste der Objektnamen, die als ungültige Ziele genutzt werden. Durch Kommas trennen. Muss die selbe Anzahl wie die Zahl der Ziele haben, wenn es im Auslöser-Modus genutzt werden soll. Leere Slots mit 'nil' füllen.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Controllers">
             <English>Controllers</English>
@@ -47,9 +51,11 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_SoundSources">
             <English>Sound Sources</English>
+            <German>Soundquellen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_SoundSourcesDesc">
             <English>List of object names used as sound sources (in addition to controllers), separated by commas.</English>
+            <German>Liste der Objektnamen, die als Soundquelle (zusätzlich zu Reglern)  genutzt werden. Durch Kommas trennen.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Mode">
             <English>Mode</English>
@@ -65,6 +71,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DurationsDesc">
             <English>List of available shooting durations in seconds, separated by commas. Only used in Timed, Hit (Time Limited) and Rampage Modes. Default: 0, 30, 60, 150, 300</English>
+            <German>Liste der möglichen Standardzeiten für einen Durchgang. Durch Kommas trennen. Wird nur im Auf Zeit, Treffer (Zeitlimit) und Amoklauf Modus genutzt. Standard: 0, 30, 60, 150, 300</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDuration">
             <English>Default Duration</English>
@@ -72,6 +79,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultDurationDesc">
             <English>Default shooting duration in seconds. Only used in Timed, Hit (Time Limited) and Rampage Modes. Default: 60</English>
+            <German>Standardzeit, die für einen Durchgang genutzt wird. Wird nur im Auf Zeit, Treffer (Zeitlimit) und Amoklauf Modus genutzt. Standard: 60</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetAmounts">
             <English>Target Amounts</English>
@@ -111,6 +119,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_CountdownTimesDesc">
             <English>List of times it takes from pressing start to first target pop-up (lowest: 5). Default: 6, 9, 12, 15</English>
+            <German>Liste der Zeiten, die nach dem Drücken von Start vergehen können, bis das erste Ziel aufklappt (niedrigste: 5). Standard: 6, 9, 12, 15</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultCountdownTime">
             <English>Default Countdown Time</English>
@@ -118,6 +127,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_DefaultCountdownTimeDesc">
             <English>Default time it takes from pressing start to first target pop-up (lowest: 5). Default: 9</English>
+            <German>Standardzeit, die nach dem Drücken von Start vergeht, bis das erste Ziel aufklappt (niedrigste: 5). Standard: 9</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TriggerMarkers">
             <English>Trigger Markers</English>
@@ -125,19 +135,23 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_TriggerMarkersDesc">
             <English>List of trigger markers used for controlled target pop-ups, separated by commas. Must be in order with targets. Available in Trigger Mode only.</English>
-            <German>Liste der Auslöser-Markierungen die für gezielt aufklappbare Ziele genutzt werden können. Durch Kommas trennen. Muss in der Reihenfolge der Ziele sein. Nur im Auslösermodus verfügbar.</German>
+            <German>Liste der Auslöser-Markierungen, die für gezielt aufklappbare Ziele genutzt werden können. Durch Kommas trennen. Muss in der Reihenfolge der Ziele sein. Nur im Auslösermodus verfügbar.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PopOnTriggerExit">
             <English>Pop on Trigger Exit</English>
+            <German>Abklappen, wenn Auslöserbereich verlassen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PopOnTriggerExitDesc">
             <English>Pop targets down when exiting the trigger. Available in Trigger Mode only.</English>
+            <German>Klappt Ziele ab, wenn der Auslöserbereich verlassen wird. Nur im Auslöser-Modus verfügbar.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_ShowHits">
             <English>Show Hits</English>
+            <German>Zeige Treffer</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_ShowHitsDesc">
             <English>Show number of hits out of number of hits necessary on each hit. Available only when more than 1 hit is necessary.</English>
+            <German>Zeige pro Treffer die Anzahl an bisherigen Treffern von der insgesamt benötigten Zahl an Treffern. Nur verfügbar wenn mehr als 1 Treffer benötigt wird.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Timed">
             <English>Timed</English>
@@ -161,6 +175,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_Rampage">
             <English>Rampage</English>
+            <German>Amoklauf</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Start">
             <English>Start</English>
@@ -196,6 +211,7 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_Failed">
             <English>Failed</English>
+            <German>Fehlgeschlagen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Finished">
             <English>Finished</English>
@@ -251,9 +267,11 @@
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsHit">
             <English>Targets Hit</English>
+            <German>Ziele getroffen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_InvalidTargetHit">
             <English>Invalid Target Hit</English>
+            <German>Ungültiges Ziel getroffen</German>
         </Key>
     </Package>
 </Project>
