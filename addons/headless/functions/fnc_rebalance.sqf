@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [false] call tac_headless_rebalance;
+ * [false] call tac_headless_fnc_rebalance;
  *
  * Public: No
  */
