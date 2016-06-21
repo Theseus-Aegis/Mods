@@ -40,7 +40,7 @@ private _controller = (_target getVariable [QGVAR(controllers), nil]) select 0;
 if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])}) exitWith {
     [_target, 1] call FUNC(animateTarget); // Down
 
-    if (nopop || {_target getVariable [QGVAR(stayDown), false]}) exitWith {};
+    if ((!isNil "nopop" && {nopop}) || {_target getVariable [QGVAR(stayDown), false]}) exitWith {};
 
     [{
         _this setDamage 0;
