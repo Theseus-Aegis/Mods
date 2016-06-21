@@ -27,13 +27,13 @@ private _doors = [
 private _newDoorStatus = 1;
 
 if (locked _vehicle < 2) then {
-    [QGVAR(setVehicleLock), _vehicle, [_vehicle, "LOCKED"]] call ACE_Common_fnc_objectEvent;
+    [QGVAR(setLock), [_vehicle, "LOCKED"], _vehicle] call CBA_fnc_targetEvent;
     _newDoorStatus = 0;
-    [localize LSTRING(Secured), QUOTE(PATHTOF(UI\secure_ca.paa))] call ace_common_fnc_displayTextPicture;
+    [localize LSTRING(Secured), QPATHTOF(UI\secure_ca.paa)] call ace_common_fnc_displayTextPicture;
 } else {
-    [QGVAR(setVehicleLock), _vehicle, [_vehicle, "UNLOCKED"]] call ACE_Common_fnc_objectEvent;
+    [QGVAR(setLock), [_vehicle, "UNLOCKED"], _vehicle] call CBA_fnc_targetEvent;
     _newDoorStatus = 1;
-    [localize LSTRING(Unsecured), QUOTE(PATHTOF(UI\unsecure_ca.paa))] call ace_common_fnc_displayTextPicture;
+    [localize LSTRING(Unsecured), QPATHTOF(UI\unsecure_ca.paa)] call ace_common_fnc_displayTextPicture;
 };
 
 // Animate doors

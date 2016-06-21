@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.5.0-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.7.1-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -15,7 +15,7 @@
         <img src="https://img.shields.io/travis/Theseus-Aegis/tac-a3-mods.svg" alt="TAC Mods Build Status">
     </a>
 </p>
-<p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
+<p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases/latest">CBA</a> and <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
 
 **Theseus Inc. Mods**, also known as **TAC Mods**, is a joint effort by the members of <a href="http://www.theseus-aegis.com/">Theseus Inc.</a> to bend the features and game-play of Arma 3 to the community's needs.
 

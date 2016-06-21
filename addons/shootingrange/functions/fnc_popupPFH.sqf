@@ -39,7 +39,7 @@ private _currentTime = diag_tickTime;
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(targetNumber), GVAR(maxScore)] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(score), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 
 // Remove when all targets hit - success
@@ -50,7 +50,7 @@ if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode > 3 && {GVAR
     _timeElapsed = format ["%1.%2", _timeElapsed select 0, (_timeElapsed select 1) select [0, TIME_ROUND_CHARS]];
     _timeElapsed = parseNumber _timeElapsed;
 
-    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(targetNumber), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(score), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
 };
 
 // Handle automatic target pop-ups in time-based mode
@@ -65,13 +65,13 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     };
 
     // Select random index (save for later removal from array) and new target
-    GVAR(nextTarget) = selectRandom _targets;
+    GVAR(nextTarget) = selectRandom (_targets - [GVAR(targetUp)]);
 
     // Animate new target
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
     // Mark target as not yet hit
-    GVAR(nextTarget) setVariable [QGVAR(alreadyHit), false];
+    GVAR(nextTarget) setVariable [QGVAR(hit), 0];
 
     TRACE_2("Targets",GVAR(targetUp),GVAR(nextTarget));
 
@@ -88,5 +88,6 @@ if (_mode in [2, 3] && {GVAR(firstRun)}) exitWith {
     GVAR(targetUp) = selectRandom _targets;
 
     // Animate new target
+    _target setDamage 0;
     [GVAR(targetUp), 0] call FUNC(animateTarget); // Up
 };

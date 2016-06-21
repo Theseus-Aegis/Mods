@@ -159,7 +159,7 @@ class GVAR(Display) {
             y = Y_PART(-4.5);
             w = W_PART(34);
             h = H_PART(34);
-            text = QUOTE(PATHTOF(UI\background.paa));
+            text = QPATHTOF(UI\background.paa);
         };
     };
     class controls {

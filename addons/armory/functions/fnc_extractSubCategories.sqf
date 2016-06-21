@@ -4,28 +4,35 @@
  *
  * Arguments:
  * 0: Requested Menu <STRING>
+ * 1: Compatible Category <BOOL>
  *
  * Return Value:
  * Sub-Categories <ARRAY>
  *
  * Example:
- * ["menu"] call tac_armory_fnc_extractSubCategories
+ * ["menu", true] call tac_armory_fnc_extractSubCategories
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_armoryData"];
+params ["_armoryData", "_compatible"];
 
-private _subCategories = ["All"];
+private _subCategories = [ ["All", ""] ];
+if (_compatible) then {
+    _subCategories pushBack ["Compatible", localize LSTRING(ShowOnlyCompatible)];
+};
+
+private _dataSubCategories = [];
 {
     _x params ["", "_subCategory"];
 
-    if !(_subCategory in _subCategories) then {
-        _subCategories pushBack _subCategory;
-    };
+    _dataSubCategories pushBackUnique [_subCategory, ""];
 } forEach _armoryData;
 
-_subCategories sort true;
+_dataSubCategories sort true;
 
+_subCategories append _dataSubCategories;
+
+//TRACE_1("SubCategories",_subCategories);
 _subCategories

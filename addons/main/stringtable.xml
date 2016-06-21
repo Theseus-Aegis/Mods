@@ -6,5 +6,16 @@
             <Spanish>TAC Mod Team</Spanish>
             <German>TAC Mod Team</German>
         </Key>
+        <Key ID="STR_TAC_Main_URL">
+            <English>http://www.theseus-aegis.com/</English>
+            <German>http://www.theseus-aegis.com/</German>
+            <Polish>http://www.theseus-aegis.com/</Polish>
+            <Portuguese>http://www.theseus-aegis.com/</Portuguese>
+            <Russian>http://www.theseus-aegis.com/</Russian>
+            <Czech>http://www.theseus-aegis.com/</Czech>
+            <Spanish>http://www.theseus-aegis.com/</Spanish>
+            <Italian>http://www.theseus-aegis.com/</Italian>
+            <French>http://www.theseus-aegis.com/</French>
+        </Key>
     </Package>
 </Project>

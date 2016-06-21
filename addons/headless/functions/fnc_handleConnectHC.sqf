@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [headlessClient] call tac_headless_handleConnectHC;
+ * [headlessClient] call tac_headless_fnc_handleConnectHC;
  *
  * Public: No
  */

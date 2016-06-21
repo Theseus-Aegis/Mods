@@ -31,14 +31,12 @@ params ["_idPFH", "_controller", "_controllers", "_name", "_targets", "_targetsI
 // Remove PFH
 [_idPFH] call CBA_fnc_removePerFrameHandler;
 
-// Enable automatic pop-ups
-nopop = false;
-
 // Finish or Stop
 [_controller, _controllers, _name, _targets, _targetsInvalid, _success, _score, _maxScore, _timeElapsed] call FUNC(stop);
 
 // Cleanup variables
 GVAR(targetNumber) = nil;
+GVAR(score) = nil;
 GVAR(maxScore) = nil;
 GVAR(firstRun) = nil;
 GVAR(nextTarget) = nil;

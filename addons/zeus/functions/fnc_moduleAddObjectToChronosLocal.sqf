@@ -29,7 +29,7 @@ if (isNil QEGVAR(chronos,loaded) || {!isNil QEGVAR(chronos,loaded) && {!EGVAR(ch
         if !((_mouseOverUnit getVariable ["vehicleChronosID", "None"]) isEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;
         } else {
-            ["TAC_AddObjectToChronos", _mouseOverUnit] call ACE_Common_fnc_serverEvent;
+            [QGVAR(addObjectToChronos), _mouseOverUnit] call CBA_fnc_serverEvent;
         };
     };
 };

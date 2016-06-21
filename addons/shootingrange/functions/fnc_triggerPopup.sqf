@@ -19,14 +19,17 @@
 params ["_target", "_state"];
 
 private _targetGroup = _target getVariable [QGVAR(targetGroup), []];
-private _targetInvalidGroup = _target getVariable [QGVAR(targetInvalidGroup), []];
 
 if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); };
 
 {
-    [_x, _state] call FUNC(animateTarget);
+    // Animate only targets that haven't been cleared yet
+    if (_x getVariable [QGVAR(hit), 0] < _x getVariable [QGVAR(hits), 1]) then {
+        [_x, _state] call FUNC(animateTarget);
+    };
+} forEach _targetGroup;
 
-    // Mark target as not yet hit
-    private _alreadyHit = [true, false] select (_state == 0);
-    _x setVariable [QGVAR(alreadyHit), _alreadyHit];
-} forEach (_targetGroup + _targetInvalidGroup);
+private _targetInvalidGroup = _target getVariable [QGVAR(targetInvalidGroup), []];
+{
+    [_x, _state] call FUNC(animateTarget);
+} forEach _targetInvalidGroup;

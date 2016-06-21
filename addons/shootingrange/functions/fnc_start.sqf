@@ -20,17 +20,16 @@
 
 params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid"];
 
-private _duration = _controller getVariable [QGVAR(duration), nil];
-private _targetAmount = _controller getVariable [QGVAR(targetAmount), nil];
-private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), nil];
-private _countdownTime = _controller getVariable [QGVAR(countdownTime), nil];
-private _mode = _controller getVariable [QGVAR(mode), nil];
-private _triggers = (_targets select 0) getVariable [QGVAR(triggers), nil];
-if (isNil "_duration" || {isNil "_targetAmount"} || {isNil "_pauseDuration"} || {isNil "_countdownTime"} || {isNil "_mode"} || {isNil "_triggers"}) exitWith { ACE_LOGERROR("No configuration found!"); };
-
+private _duration = _controller getVariable [QGVAR(duration), DURATION_DEFAULT];
+private _targetAmount = _controller getVariable [QGVAR(targetAmount), TARGETAMOUNT_DEFAULT];
+private _pauseDuration = _controller getVariable [QGVAR(pauseDuration), PAUSEDURATION_DEFAULT];
+private _countdownTime = _controller getVariable [QGVAR(countdownTime), COUNTDOWNTIME_DEFAULT];
+private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
+private _triggers = (_targets select 0) getVariable [QGVAR(triggers), []];
 
 // Prepare targets
 {
+    _x setDamage 0;
     [_x, 1] call FUNC(animateTarget); // Down
 } forEach (_targets + _targetsInvalid);
 
@@ -90,6 +89,7 @@ _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 
 // Prepare variables
 GVAR(targetNumber) = 0;
+GVAR(score) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 GVAR(invalidTargetHit) = false;
 
@@ -126,7 +126,7 @@ if (_mode > 1) then {
         [_textCountdown] call ACE_Common_fnc_displayTextStructured;
         [_controller, "FD_Timer_F"] call FUNC(playSoundSignal);
 
-    }, [_controller, _textCountdown], _execTime] call ACE_Common_fnc_waitAndExecute;
+    }, [_controller, _textCountdown], _execTime] call CBA_fnc_waitAndExecute;
 
 } forEach [ [_countdownTime - 5, localize LSTRING(GetReady)], [_countDownTime - 3, "3"], [_countdownTime - 2, "2"], [_countdownTime - 1, "1"] ];
 
@@ -141,26 +141,25 @@ if (_mode > 1) then {
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
     [_controller, "FD_Start_F"] call FUNC(playSoundSignal);
 
-    // Notify supervisor(s) (closer than start/stop notifications)
+    // Notify spectators
     private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
     private _textNotify = format ["%1 %2!", _playerName, localize LSTRING(Started)];
-    [_textNotify, 1.5, false, NOTIFY_DISTANCE_SUPERVISOR] call FUNC(notifyVicinity);
+    [_textNotify, 1.5, false] call FUNC(notifyVicinity);
 
     // Prepare target pop-up handling
     private _timeStart = diag_tickTime;
     GVAR(firstRun) = true;
 
-    // Disable automatic pop-ups
-    nopop = true;
+    {
+        _x setVariable [QGVAR(stayDown), true, true]; // Disable automatic pop-ups
 
-    // Pop up all targets in Rampage mode
-    if (_mode == 5) then {
-        {
+        // Pop up all targets in Rampage mode
+        if (_mode == 5) then {
             [_x, 0] call FUNC(animateTarget); // Up
-        } forEach (_targets + _targetsInvalid);
-    };
+        };
+    } forEach (_targets + _targetsInvalid);
 
     // Start PFH
     [FUNC(popupPFH), 0, [_timeStart, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
 
-}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call ACE_Common_fnc_waitAndExecute;
+}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call CBA_fnc_waitAndExecute;

@@ -9,7 +9,7 @@ class CfgVehicles {
         isGlobal = 1; // Global
         isTriggerActivated = 0;
         isDisposable = 0;
-        icon = QUOTE(PATHTOF(UI\Icon_Module_ShootingRange_ca.paa));
+        icon = QPATHTOF(UI\Icon_Module_ShootingRange_ca.paa);
         class Arguments {
             class Name {
                 displayName = CSTRING(Name);
@@ -20,6 +20,12 @@ class CfgVehicles {
             class Targets {
                 displayName = CSTRING(Targets);
                 description = CSTRING(TargetsDesc);
+                typeName = "STRING";
+                defaultValue = "";
+            };
+            class Hits {
+                displayName = CSTRING(Hits);
+                description = CSTRING(HitsDesc);
                 typeName = "STRING";
                 defaultValue = "";
             };
@@ -129,6 +135,12 @@ class CfgVehicles {
                 typeName = "BOOL";
                 defaultValue = 1;
             };
+            class ShowHits {
+                displayName = CSTRING(ShowHits);
+                description = CSTRING(ShowHitsDesc);
+                typeName = "BOOL";
+                defaultValue = 1;
+            };
         };
         class ModuleDescription {
             description = CSTRING(ModuleDesc);
@@ -143,6 +155,9 @@ class CfgVehicles {
                 sound = QGVAR(TargetLargeSound);
             };
         };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
+        };
     };
 
     class Land_Target_Oval_F: TargetBase {
@@ -150,6 +165,9 @@ class CfgVehicles {
             class Left_Rotate {
                 sound = QGVAR(TargetSmallSound);
             };
+        };
+        class EventHandlers {
+            hitPart = QUOTE((_this select 0) call FUNC(handleHitPart)); // Replace vanilla script handler
         };
     };
 };
