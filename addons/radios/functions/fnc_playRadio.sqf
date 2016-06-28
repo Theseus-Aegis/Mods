@@ -33,7 +33,7 @@ _radio attachTo [_vehicle, [0, 0, 0]];
 
 // Make the radio object invisible (MP and SP support)
 if (isMultiplayer) then {
-    ["hideObjectGlobal", [_radio, true]] call ACE_Common_fnc_serverEvent; // hideObjectGlobal must be executed on server
+    ["hideObjectGlobal", [_radio, true]] call CBA_fnc_serverEvent; // hideObjectGlobal must be executed on server
 } else {
     hideObject _radio;
 };
