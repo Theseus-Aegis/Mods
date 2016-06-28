@@ -6,8 +6,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
-        author[]= {""};
-        authorUrl = "";
+        author = ECSTRING(main,Author);
+        authors[] = {""};
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };

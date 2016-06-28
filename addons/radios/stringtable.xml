@@ -8,18 +8,23 @@
         </Key>
         <Key ID="STR_TAC_Radios_Tracks">
             <English>Tracks</English>
+            <German>Titel</German>
         </Key>
         <Key ID="STR_TAC_Radios_Volume">
             <English>Volume</English>
+            <German>Lautstärke</German>
         </Key>
         <Key ID="STR_TAC_Radios_Quiet">
             <English>Quiet</English>
+            <German>Leise</German>
         </Key>
         <Key ID="STR_TAC_Radios_Normal">
             <English>Normal</English>
+            <German>Normal</German>
         </Key>
         <Key ID="STR_TAC_Radios_Loud">
             <English>Loud</English>
+            <German>Laut</German>
         </Key>
         <Key ID="STR_TAC_Radios_StopRadio">
             <English>Stop Radio</English>

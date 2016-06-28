@@ -5,7 +5,7 @@
         statement = QUOTE(_this call FUNC(progress)); \
         showDisabled = 0; \
         priority = -5.0; \
-        icon = QUOTE(PATHTOF(UI\attach_ca.paa)); \
+        icon = QPATHTOF(UI\attach_ca.paa); \
     };
 
 #define MACRO_DETACH \
@@ -15,7 +15,7 @@
         statement = QUOTE(_this call FUNC(progress)); \
         showDisabled = 0; \
         priority = -5.0; \
-        icon = QUOTE(PATHTOF(UI\detach_ca.paa)); \
+        icon = QPATHTOF(UI\detach_ca.paa); \
     };
 
 #define MACRO_ATTACH_WRECK \
@@ -25,7 +25,7 @@
         statement = QUOTE(_this call FUNC(progress)); \
         showDisabled = 0; \
         priority = -5.0; \
-        icon = QUOTE(PATHTOF(UI\attach_ca.paa)); \
+        icon = QPATHTOF(UI\attach_ca.paa); \
     };
 
 #define MACRO_DETACH_WRECK \
@@ -35,7 +35,7 @@
         statement = QUOTE(_this call FUNC(progress)); \
         showDisabled = 0; \
         priority = -5.0; \
-        icon = QUOTE(PATHTOF(UI\detach_ca.paa)); \
+        icon = QPATHTOF(UI\detach_ca.paa); \
     };
 
 class CfgVehicles {

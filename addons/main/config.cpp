@@ -6,8 +6,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"ace_common", "ace_interaction"};
-        author[]= {"Jonpas"};
-        authorUrl = "https://github.com/jonpas";
+        author = CSTRING(Author);
+        authors[] = {"Jonpas"};
+        url = CSTRING(URL);
         VERSION_CONFIG;
     };
 };
@@ -17,14 +18,14 @@ class CfgMods {
     class PREFIX: Mod_Base {
         dir = "@tac_mods";
         name = "Theseus Inc. Mods";
-        picture = QUOTE(PATHTOF(UI\logo_tac_ca.paa));
-        logo = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
-        logoOver = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
-        logoSmall = QUOTE(PATHTOF(UI\logo_tac_small_ca.paa));
+        picture = QPATHTOF(UI\logo_tac_ca.paa);
+        logo = QPATHTOF(UI\logo_tac_small_ca.paa);
+        logoOver = QPATHTOF(UI\logo_tac_small_ca.paa);
+        logoSmall = QPATHTOF(UI\logo_tac_small_ca.paa);
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
-        action = "http://www.theseus-aegis.com";
+        action = CSTRING(URL);
     };
 };
 

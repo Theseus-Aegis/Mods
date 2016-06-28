@@ -17,9 +17,9 @@
 
 params ["_armoryData"];
 
-private _selectedSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
+private _selSubCategory = lbText [DROPDOWN, (lbSelection CTRL(DROPDOWN)) select 0]; // SubCategory
 
-TRACE_2("Populating list",_armoryData,_selectedSubCategory);
+//TRACE_2("Populating list",_armoryData,_selSubCategory);
 
 // Clear List
 lnbClear NLIST;
@@ -33,9 +33,9 @@ _armoryData sort true; // Errors when used in combination with forEach
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
         // Get correct config
-        private _configCfg = [_className] call ACE_Common_fnc_getConfigType;
+        private _configCfg = configName (configHierarchy (_className call CBA_fnc_getItemConfig) param [1, configNull]);
         if (_configCfg == "") then {
-            _configCfg = [_className] call ACE_Common_fnc_getConfigTypeObject;
+            _configCfg = configName (configHierarchy (_className call CBA_fnc_getObjectConfig) param [1, configNull]);
         };
         if (_configCfg == "") then {
             _configCfg = ["", "CfgUnitInsignia"] select (isClass (configFile >> "CfgUnitInsignia" >> _className));
@@ -43,7 +43,7 @@ _armoryData sort true; // Errors when used in combination with forEach
         if (_configCfg == "") exitWith {ACE_LOGERROR_2("Config type not found for classname: %1, Config return: %2",_className,_configCfg)};
 
         // Check sub-category for proper listing
-        if (_selectedSubCategory == "" || {_selectedSubCategory == _subCategory}) then {
+        if (_selSubCategory == "" || {_selSubCategory == _subCategory} || {_selSubCategory == "Compatible" && [_className] call FUNC(isCompatible)}) then {
             private _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
             private _tooltip = _displayName; // Display name gets cropped
 
@@ -56,7 +56,7 @@ _armoryData sort true; // Errors when used in combination with forEach
 
             private _quantityList = [_quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
             lnbAddRow [NLIST, ["", _displayName, _quantityList]];
-            lbSetTooltip [NLIST, _rowNum, _tooltip];
+            lbSetTooltip [NLIST, _rowNum * 3, _tooltip]; // Requires multiplication by 3 to be set on proper index (no idea why)
 
             // Set hidden data with classname to displayName column and quantity to quantity column
             lnbSetData [NLIST, [_rowNum, 1], _className];

@@ -11,6 +11,6 @@ if (hasInterface && !isServer) exitWith {};
         addMissionEventHandler ["HandleDisconnect", {_this call FUNC(handleDisconnect)}];
     } else {
         // Register HC on server (this part happens on HC only)
-        ["TAC_HeadlessClientJoined", [player]] call ACE_Common_fnc_serverEvent;
+        [QGVAR(connected), [player]] call CBA_fnc_serverEvent;
     };
 }] call ACE_Common_fnc_addEventHandler;

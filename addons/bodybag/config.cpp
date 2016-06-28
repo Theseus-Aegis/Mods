@@ -6,11 +6,13 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "ace_medical"};
-        author[]= {"Jonpas"};
-        authorUrl = "https://github.com/jonpas";
+        author = ECSTRING(main,Author);
+        authors[] = {"Jonpas"};
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
+#include "ACE_Settings.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"

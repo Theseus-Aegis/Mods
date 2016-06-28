@@ -16,4 +16,4 @@ if (!hasInterface) exitWith {};
 
 
 // Add vehicle lock event
-[QGVAR(setVehicleLock), {(_this select 0) setVehicleLock (_this select 1)}] call ACE_Common_fnc_addEventHandler;
+[QGVAR(setLock), {(_this select 0) setVehicleLock (_this select 1)}] call CBA_fnc_addEventHandler;

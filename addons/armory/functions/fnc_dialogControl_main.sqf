@@ -40,50 +40,50 @@ params ["_show"];
 if (!_show) exitWith {};
 
 // Set up Main
-ctrlSetText [MAINPIC1, QUOTE(PATHTOF(UI\btnCategory_rifle.paa))];
+ctrlSetText [MAINPIC1, QPATHTOF(UI\btnCategory_rifle.paa)];
 buttonSetAction [MAINBTN1, QUOTE(['rifle'] call FUNC(dialogControl))];
 CTRL(MAINBTN1) ctrlSetTooltip localize LSTRING(BtnRiflesTooltip);
 
-ctrlSetText [MAINPIC2, QUOTE(PATHTOF(UI\btnCategory_pistol.paa))];
+ctrlSetText [MAINPIC2, QPATHTOF(UI\btnCategory_pistol.paa)];
 buttonSetAction [MAINBTN2, QUOTE(['pistol'] call FUNC(dialogControl))];
 CTRL(MAINBTN2) ctrlSetTooltip localize LSTRING(BtnPistolsTooltip);
 
-ctrlSetText [MAINPIC3, QUOTE(PATHTOF(UI\btnCategory_launcher.paa))];
+ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
 buttonSetAction [MAINBTN3, QUOTE(['launcher'] call FUNC(dialogControl))];
 CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);
 
-ctrlSetText [MAINPIC4, QUOTE(PATHTOF(UI\btnCategory_ammo.paa))];
+ctrlSetText [MAINPIC4, QPATHTOF(UI\btnCategory_ammo.paa)];
 buttonSetAction [MAINBTN4, QUOTE(['ammo'] call FUNC(dialogControl))];
 CTRL(MAINBTN4) ctrlSetTooltip localize LSTRING(BtnAmmoTooltip);
 
-ctrlSetText [MAINPIC5, QUOTE(PATHTOF(UI\btnCategory_item.paa))];
+ctrlSetText [MAINPIC5, QPATHTOF(UI\btnCategory_item.paa)];
 buttonSetAction [MAINBTN5, QUOTE(['item'] call FUNC(dialogControl))];
 CTRL(MAINBTN5) ctrlSetTooltip localize LSTRING(BtnItemsTooltip);
 
-ctrlSetText [MAINPIC6, QUOTE(PATHTOF(UI\btnCategory_attachment.paa))];
+ctrlSetText [MAINPIC6, QPATHTOF(UI\btnCategory_attachment.paa)];
 buttonSetAction [MAINBTN6, QUOTE(['attachment'] call FUNC(dialogControl))];
 CTRL(MAINBTN6) ctrlSetTooltip localize LSTRING(BtnAttachmentsTooltip);
 
-ctrlSetText [MAINPIC7, QUOTE(PATHTOF(UI\btnCategory_backpack.paa))];
+ctrlSetText [MAINPIC7, QPATHTOF(UI\btnCategory_backpack.paa)];
 buttonSetAction [MAINBTN7, QUOTE(['backpack'] call FUNC(dialogControl))];
 CTRL(MAINBTN7) ctrlSetTooltip localize LSTRING(BtnBackpacksTooltip);
 
-ctrlSetText [MAINPIC8, QUOTE(PATHTOF(UI\btnCategory_wearable.paa))];
+ctrlSetText [MAINPIC8, QPATHTOF(UI\btnCategory_wearable.paa)];
 buttonSetAction [MAINBTN8, QUOTE(['wearable'] call FUNC(dialogControl))];
 CTRL(MAINBTN8) ctrlSetTooltip localize LSTRING(BtnApparelTooltip);
 
-/*ctrlSetText [MAINPIC9, QUOTE(PATHTOF(UI\btnCategory_.paa))];
+/*ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_.paa)];
 buttonSetAction [MAINBTN9, QUOTE([''] call FUNC(dialogControl))];
 CTRL(MAINBTN9) ctrlSetTooltip "Access ";*/
 
-ctrlSetText [MAINPIC10, QUOTE(PATHTOF(UI\btnCategory_insignia.paa))];
+ctrlSetText [MAINPIC10, QPATHTOF(UI\btnCategory_insignia.paa)];
 buttonSetAction [MAINBTN10, QUOTE(['insignia'] call FUNC(dialogControl))];
 CTRL(MAINBTN10) ctrlSetTooltip localize LSTRING(BtnInsigniasTooltip);
 
-/*ctrlSetText [MAINPIC11, QUOTE(PATHTOF(UI\btnCategory_locker.paa))];
+/*ctrlSetText [MAINPIC11, QPATHTOF(UI\btnCategory_locker.paa)];
 buttonSetAction [MAINBTN11, QUOTE([''] call FUNC(dialogControl))];
 CTRL(MAINBTN11) ctrlSetTooltip "Access ";*/
 
-ctrlSetText [MAINPIC12, QUOTE(PATHTOF(UI\btnStash.paa))];
+ctrlSetText [MAINPIC12, QPATHTOF(UI\btnStash.paa)];
 buttonSetAction [MAINBTN12, QUOTE(['stash'] call FUNC(dialogControl))];
 CTRL(MAINBTN12) ctrlSetTooltip localize LSTRING(BtnStashTooltip);

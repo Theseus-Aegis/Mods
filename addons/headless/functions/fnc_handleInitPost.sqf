@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [object] call tac_headless_handleInitPost;
+ * [object] call tac_headless_fnc_handleInitPost;
  *
  * Public: No
  */

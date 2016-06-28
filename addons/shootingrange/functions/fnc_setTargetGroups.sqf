@@ -25,6 +25,7 @@ private _targetInvalidGroups = [];
 private _lastMarker = "";
 private _currentTargetGroup = [];
 private _currentTargetInvalidGroup = [];
+private _numTargetsInvalid = count _targetsInvalid;
 
 {
     if (_forEachIndex != 0 && {_x != _lastMarker}) then {
@@ -35,7 +36,9 @@ private _currentTargetInvalidGroup = [];
     };
 
     _currentTargetGroup pushBack (_targets select _forEachIndex);
-    _currentTargetInvalidGroup pushBack (_targetsInvalid select _forEachIndex);
+    if (_numTargetsInvalid > _forEachIndex) then {
+        _currentTargetInvalidGroup pushBack (_targetsInvalid select _forEachIndex);
+    };
 
     if (_forEachIndex + 1 == count _markers) then {
         _targetGroups pushBack _currentTargetGroup;

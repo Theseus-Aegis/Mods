@@ -34,14 +34,15 @@
 
 #define POPONTRIGGEREXIT_DEFAULT true
 
+#define HITS_DEFAULT [1]
+#define SHOWHITS_DEFAULT true
 
-#define NOTIFY_DISTANCE 50
-#define NOTIFY_DISTANCE_SUPERVISOR 25
+#define NOTIFY_DISTANCE 10
 
 #define TIME_ROUND_CHARS 4
 
 
-#define OVAL_TARGETS ["Land_Target_Oval_F", "Land_Target_Oval_Wall_Bottom_F", "Land_Target_Oval_Wall_Left_F", "Land_Target_Oval_Wall_Right_F", "Land_Target_Oval_Wall_Top_F"]
+#define OVAL_TARGETS ["land_target_oval_f", "land_target_oval_wall_bottom_f", "land_target_oval_wall_left_f", "land_target_oval_wall_right_f", "land_target_oval_wall_top_f"]
 #define OVAL_TARGET_ANIMS [ \
     ["Bottom_Rotate", "Target_Bottom_Rotate"], \
     ["Bottom_Rotate", "Target_Bottom_Rotate"], \

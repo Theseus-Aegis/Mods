@@ -19,7 +19,7 @@ params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 
 // Show Dropdown, Amount and List
-ctrlSetText [AMOUNT, QUOTE(PATHTOF(UI\textAmount.paa))];
+ctrlSetText [AMOUNT, QPATHTOF(UI\textAmount.paa)];
 {
     ctrlShow [_x, true];
 } forEach [DROPDOWN, AMOUNT, NLIST];
@@ -44,12 +44,14 @@ if (_selectedCategory == "stash") then {
 if (_exit) exitWith {};
 
 // Extract sub-categories
-private _subCategories = [_armoryData] call FUNC(extractSubCategories);
+private _hasCompatibleItems = _selectedCategory in ["ammo", "attachment"];
+private _subCategories = [_armoryData, _hasCompatibleItems] call FUNC(extractSubCategories);
 
 // Fill Dropdown
 lbClear DROPDOWN; // Clear Dropdown
 {
-    lbAdd [DROPDOWN, _x];
+    lbAdd [DROPDOWN, _x select 0];
+    lbSetTooltip [DROPDOWN, _forEachIndex, _x select 1];
 } forEach _subCategories;
 
 // Set initial value to 'All' (will not fire onLBSelChanged)

@@ -3,13 +3,13 @@
         displayName = CSTRING(StopRadio); \
         condition = QUOTE(_this call FUNC(canStopRadio)); \
         statement = QUOTE(_this call FUNC(stopRadio)); \
-        icon = QUOTE(PATHTOF(UI\musicStop_ca.paa)); \
+        icon = QPATHTOF(UI\musicStop_ca.paa); \
     }; \
     class GVAR(RadioPlay) { \
         displayName = CSTRING(PlayRadio); \
         condition = QUOTE(_this call FUNC(canPlayRadio)); \
         statement = "true"; \
-        icon = QUOTE(PATHTOF(UI\musicStart_ca.paa)); \
+        icon = QPATHTOF(UI\musicStart_ca.paa); \
         class GVAR(Volume) { \
             displayName = CSTRING(Volume); \
             condition = "true"; \
@@ -38,7 +38,7 @@
             displayName = CSTRING(Tracks); \
             condition = "true"; \
             insertChildren = QUOTE(_this call FUNC(addRadioTrackActions)); \
-            icon = QUOTE(PATHTOF(UI\musicStart_ca.paa)); \
+            icon = QPATHTOF(UI\musicStart_ca.paa); \
         }; \
     };
 
