@@ -77,7 +77,7 @@ if (GVAR(system) == 0) then {
 };
 
 if (GVAR(system) == 1) then {
-    ["TAC_LockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call ACE_Common_fnc_serverEvent;
+    ["tac_apollo_lockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 };
 
 // Update list
