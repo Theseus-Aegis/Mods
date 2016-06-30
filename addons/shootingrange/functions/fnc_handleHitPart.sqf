@@ -66,7 +66,7 @@ if (!_directHit) exitWith {
 if (_shooter != _starter) exitWith {
     private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
     private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
-    ["ace_displayTextStructured", [_starter, _shooter], [_text, 3]] call CBA_targetEvent;
+    ["ace_common_displayTextStructured", [_text, 3], [_starter, _shooter]] call CBA_fnc_targetEvent;
 };
 
 

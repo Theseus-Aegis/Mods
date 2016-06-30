@@ -26,4 +26,4 @@ if (!_includeCaller) then {
     _nearbyPlayers deleteAt (_nearbyPlayers find ACE_player);
 };
 
-["ace_displayTextStructured", [_text, _size], _nearbyPlayers] call CBA_fnc_targetEvent;
+["ace_common_displayTextStructured", [_text, _size], _nearbyPlayers] call CBA_fnc_targetEvent;
