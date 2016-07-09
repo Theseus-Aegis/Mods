@@ -15,7 +15,7 @@ class CfgVehicles {
                 displayName = "$STR_ACE_Common_Enabled";
                 description = CSTRING(EnabledDesc);
                 typeName = "BOOL";
-                defaultValue = 0;
+                defaultValue = 1;
             };
             class enabledPlayers {
                 displayName = CSTRING(EnabledPlayers);

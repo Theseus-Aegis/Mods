@@ -28,16 +28,13 @@ removeUniform _player;
 removeAllWeapons _player:
 removeAllAssignedItems _player;
 
-private _loadData = "ApolloClient" callExtension "version";
-if (_loadData != "1.1") exitWith {
-    ["Your connection has been terminated due to missing ApolloClient.dll extension"] call FUNC(endMissionError);
-};
-
+TRACE_1("Loading Client",_player);
 private _return = false;
 
-TRACE_1("Loading Client",_player);
+// @todo - debug inventory load in ApolloClient extension when UID is "_SP_PLAYER_"
+if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID player, EGVAR(chronos,debug)];
+private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, EGVAR(chronos,debug)];
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {
