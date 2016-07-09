@@ -18,14 +18,14 @@
     if (GVAR(enabledPlayers)) then {
         // Save player
         [QGVAR(savePlayer), {
-            params ["_unit", "_type"];
-            [_unit, getPlayerUID _unit, _type] call FUNC(playerSingletonSave);
+            params ["_player", "_type"];
+            [_player, getPlayerUID _player, _type] call FUNC(playerSingletonSave);
         }] call CBA_fnc_addEventHandler;
 
         // Player died
         [QGVAR(playerDied), {
-            params ["_unit", "_killedBy"];
-            ["playerDied", getPlayerUID _unit, _killedBy] call FUNC(invokeJavaMethod);
+            params ["_player", "_killedBy"];
+            ["playerDied", getPlayerUID _player, _killedBy] call FUNC(invokeJavaMethod);
         }] call CBA_fnc_addEventHandler;
 
         // Corpse removal (prevent item multiplication when leaving nicely)

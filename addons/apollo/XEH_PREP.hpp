@@ -5,7 +5,6 @@ PREP(invokeJavaMethod);
 PREP(lockerAction);
 PREP(moduleInit);
 PREP(playerLoadClient);
-PREP(playerSaveClient);
 PREP(playerSingletonSave);
 PREP(vehicleLoad);
 PREP(vehicleSaveServer);
