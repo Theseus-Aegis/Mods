@@ -17,14 +17,9 @@
  */
 #include "script_component.hpp"
 
-params ["_unit", "", "_id"];
+params ["_unit", "", "_uid"];
 
 // @todo - figure out if saving on disconnect is reliable enough
-//[_unit, _id, "save"] call playerSaveModule;
+[_unit, _uid, "save"] call FUNC(playerSingletonSave);
 
-// @todo - move bodybag weapon save and check if that weapon in holder into common and use here
-private _nearWeaponHolders = nearestObjects [_unit, ["WeaponHolderSimulated"], 3];
-_nearWeaponHolders pushBack _unit;
-{
-    deleteVehicle _x;
-} forEach _nearWeaponHolders;
+deleteVehicle _unit;
