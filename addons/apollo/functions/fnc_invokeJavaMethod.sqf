@@ -1,6 +1,7 @@
 /*
  * Author: Jonpas
  * Invokes Java code through JNI extension and returns the return value from extension.
+ * Uses + operator to bypass 8192 character limit.
  *
  * Arguments:
  * Packet of methods <ARRAY>
@@ -21,8 +22,9 @@ if (!(_this isEqualType []) || {_this isEqualTo []}) exitWith {""};
 private _argument_str = "";
 _this deleteAt 0; // Errors when combined with forEach
 {
-    _argument_str = format ["%1<A>%2</A>", _argument_str, _x];
+    [str _x, _x] select (_x isEqualType "");
+    _argument_str = _argument_str + "<A>" + _x + "</A>";
 } count _this;
 
-// Return Java Extension answer - uses + operator to bypass 8192 character limit
+// Return Java Extension answer
 "jni" callExtension ("<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>")
