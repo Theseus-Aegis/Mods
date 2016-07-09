@@ -3,6 +3,7 @@ PREP(handleDisconnect);
 PREP(handleRespawn);
 PREP(invokeJavaMethod);
 PREP(lockerAction);
+PREP(moduleInit);
 PREP(playerLoadClient);
 PREP(playerSaveClient);
 PREP(playerSingletonSave);
