@@ -37,7 +37,7 @@ private _return = false;
 
 TRACE_1("Loading Client",_player);
 
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID player, GVAR(debug)];
+private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID player, EGVAR(chronos,debug)];
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {

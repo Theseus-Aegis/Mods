@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params ["_playerObject", "_id", "_type"];
+params ["_playerObject", "_uid", "_type"];
 
 // Base
 private _name = name _playerObject;
@@ -111,21 +111,18 @@ private _fatigue = getFatigue _playerObject;
 
 // Variables
 private _playerVariables = [];
-//Disable until we decide on ACE medical vars
-/**
-{
+/*{ //Disable until we decide on ACE medical vars
     if ((toLower (_x select [0, 3])) isEqualTo "ace") then {
         _playerVariables pushBack [_x, _playerObject getVariable [_x, "None"]];
     };
-} forEach (allVariables _playerObject);
-**/
+} forEach (allVariables _playerObject);*/
 
-private _serverReply = ["storeInfantry", _type, _id, _name, _playerPos, _playerDir, _playerHeadgear, _playerGoggles, _uniform, _uniformCargo, _uniformMagazines, _vest, _vestCargo, _vestMagazines, _backpack, _backpackCargo, _backpackMagazines, _inventory, _weapons, _primaryWepAttachments, _secondaryWepAttachments, _handgunAttachments , _weaponMagazines, _inVehicle, _alive, _selectedWeapon, _currentStance, _fatigue, _uniformWeapons, _vestWeapons, _backpackWeapons, _playerVariables] call FUNC(invokeJavaMethod);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _playerHeadgear, _playerGoggles, _uniform, _uniformCargo, _uniformMagazines, _vest, _vestCargo, _vestMagazines, _backpack, _backpackCargo, _backpackMagazines, _inventory, _weapons, _primaryWepAttachments, _secondaryWepAttachments, _handgunAttachments , _weaponMagazines, _inVehicle, _alive, _selectedWeapon, _currentStance, _fatigue, _uniformWeapons, _vestWeapons, _backpackWeapons, _playerVariables] call FUNC(invokeJavaMethod);
 
 if (_type == "validate" && {_serverReply == "success"}) then {
     _playerObject enableSimulationGlobal true;
     _playerObject hideObjectGlobal false;
-    ["infantryLoaded", _id] call FUNC(invokeJavaMethod);
+    ["infantryLoaded", _uid] call FUNC(invokeJavaMethod);
 };
 
 if (_serverReply == "terminated") then {
