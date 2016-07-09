@@ -1,22 +1,23 @@
 /*
  * Author: Jonpas
- * Invokes Java code through JNI extension and returns the return value from extension.
+ * Invokes Java code through JNI extension with XML marshalling and returns the return value from extension.
  * Uses + operator to bypass 8192 character limit.
  *
  * Arguments:
- * Packet of methods <ARRAY>
+ * 0: Method <STRING>
+ * 1-inf: Arguments <ANY>
  *
  * Return Value:
  * Extension Return Value <STRING>
  *
  * Example:
- * ["someJavaMethod"] call tac_apollo_fnc_invokeJavaMethod
+ * ["someJavaMethod", "arg1", "arg2"] call tac_apollo_fnc_invokeJavaMethod
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-if (!(_this isEqualType []) || {_this isEqualTo []}) exitWith {""};
+if (!(_this isEqualType []) || {_this isEqualTo []} || {{!(_method isEqualType "")}}) exitWith {""};
 
 // Parse arguments with correct syntax
 private _argument_str = "";
