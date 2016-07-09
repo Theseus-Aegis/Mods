@@ -1,6 +1,7 @@
 /*
  * Author: Jonpas
  * Invokes Java code through JNI extension and returns the return value from extension.
+ * Must combine strings with + operator to bypass 8192 characters limit.
  *
  * Arguments:
  * Packet of methods <ARRAY>
@@ -24,11 +25,11 @@ if (isNil "_packet" || {!(_packet isEqualType [])} || {(count _packet) isEqualTo
 private _argument_str = "";
 _packet deleteAt 0; // Errors when combined with forEach
 {
-    if (!(_x isEqualType "")) then {
+    if !(_x isEqualType "") then {
         _x = str _x;
     };
-    _argument_str = format ["%1<A>%2</A>", _argument_str, _x];
+    _argument_str = _argument_str + "<A>" + _x + "</A>";
 } count _packet;
 
 // Return Java Extension answer
-"jni" callExtension format ["<MI><M>%1</M><AL>%2</AL></MI>", _method, _argument_str]
+"jni" callExtension ("<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>")
