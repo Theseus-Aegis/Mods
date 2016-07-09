@@ -35,13 +35,5 @@ if (!hasInterface) exitWith {};
     };
 
     // Save on each inventory change with at least 10 seconds between each save
-    ["loadout", {
-        params ["_player"]; // second parameter is old loadout, not useful for us
-
-        // Only save if not remote controlling a unit and more than 10 seconds have passed from previous save
-        if (_player == player && {!isNull _player} && {alive _player} && {(_player getVariable [QGVAR(lastSavedTime), 0]) + 10 <= diag_tickTime}) then {
-            [QGVAR(savePlayer), [_player, "save"]] call CBA_fnc_serverEvent;
-            _player setVariable [QGVAR(lastSavedTime), diag_tickTime];
-        };
-    }] call CBA_fnc_addPlayerEventHandler;
+    ["loadout", FUNC(handleLoadoutChanged)] call CBA_fnc_addPlayerEventHandler;
 }] call CBA_fnc_addEventHandler;

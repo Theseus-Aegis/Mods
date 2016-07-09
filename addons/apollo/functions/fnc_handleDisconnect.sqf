@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Handles corpse removal on disconnect.
+ * Handles save and corpse removal on disconnect.
  *
  * Arguments:
  * 0: Unit <OBJECT>
