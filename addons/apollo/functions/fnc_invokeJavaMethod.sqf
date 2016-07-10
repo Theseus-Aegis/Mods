@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-if (!(_this isEqualType []) || {_this isEqualTo []} || {{!(_method isEqualType "")}}) exitWith {""};
+if (!(_this isEqualType []) || {_this isEqualTo []} || {!((_this select 0) isEqualType "")}) exitWith {""};
 
 // Parse arguments with correct syntax
 private _argument_str = "";
@@ -28,4 +28,4 @@ _this deleteAt 0; // Errors when combined with forEach
 } count _this;
 
 // Return Java Extension answer
-"jni" callExtension ("<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>")
+"jni" callExtension ("<MI><M>" + (_this select 0) + "</M><AL>" + _argument_str + "</AL></MI>")
