@@ -36,10 +36,15 @@ if (_retrieveVehicles == "ready") then {
     };
 };
 
+
 // Allow damage on vehicles once all loaded and start saving
 [{
-    (["isVehiclesAllLoaded"] call FUNC(invokeJavaMethod)) isEqualTo "true"
-}, {
+    // Exit if not all loaded yet
+    if (["isVehiclesAllLoaded"] call FUNC(invokeJavaMethod) != "true") exitWith {};
+
+    [_this select 1] call CBA_fnc_removePerFrameHandler;
+
+    // Allow damage on all vehicles
     {
         private _vehicleID = _x getVariable ["vehicleChronosID", "None"];
         if (_vehicleID select [0, 3] == "TAC") then {
@@ -47,10 +52,11 @@ if (_retrieveVehicles == "ready") then {
         };
     } forEach vehicles;
 
-    // Set Chronos flag
-    tac_chronos_loaded = true;
-    publicVariable "tac_chronos_loaded";
+    // Set vehicles loaded flag
+    GVAR(vehiclesLoaded) = true;
+    publicVariable QGVAR(vehiclesLoaded);
+    TRACE_1("Vehicles Loaded",GVAR(vehiclesLoaded));
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;
-}, []] call CBA_fnc_waitUntilAndExecute;
+}, 5, []] call CBA_fnc_addPerFrameHandler;

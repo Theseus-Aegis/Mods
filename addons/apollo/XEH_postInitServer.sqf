@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 ["ace_settingsInitialized", {
-    if (!GVAR(enabled)) exitWith {};
+    if (!GVAR(enabled)) exitWith { TRACE_1("Apollo Disabled",GVAR(enabled)) };
 
     // Check JNI presence
     if ("jni" callExtension "version" == "") exitWith {
@@ -36,6 +36,8 @@
         // Start client initialization
         [QGVAR(initialized), []] call CBA_fnc_globalEventJIP;
     };
+
+    TRACE_4("Server Load Info",GVAR(enabledVehicles),GVAR(enabledPlayers),_serverType,EGVAR(chronos,debug));
 
     [QGVAR(lockerAction), FUNC(lockerAction)] call CBA_fnc_addEventHandler;
 }] call CBA_fnc_addEventHandler;

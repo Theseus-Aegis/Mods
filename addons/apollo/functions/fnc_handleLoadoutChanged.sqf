@@ -17,12 +17,15 @@
 #include "script_component.hpp"
 
 params ["_player"];
+TRACE_1("Loadout Changed",_player);
 
 // Only save if not remote controlling a unit and more than 10 seconds have passed from previous save
-if (_player != player || {isNull _player} || {!alive _player} || {_player getVariable [QGVAR(inSaveDelay), false]}) exitWith {};
+if (_player != player || {isNull _player} || {!alive _player} || {(_player getVariable [QGVAR(lastSavedTime), 0]) + 10 > CBA_missionTime}) exitWith {
+    TRACE_1("Loadout Changed - Not Saving",CBA_missionTime);
+};
 
-// Mark saving delay running
-_player setVariable [QGVAR(inSaveDelay), true];
+// Prevent more save calls while delay is running
+_player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
 
 [{
     params ["_player"];
@@ -31,7 +34,8 @@ _player setVariable [QGVAR(inSaveDelay), true];
     if (isNull _player || {!alive _player}) exitWith {};
 
     [QGVAR(savePlayer), [_player, "save"]] call CBA_fnc_serverEvent;
+    TRACE_1("Loadout Changed - Saving Done",_player);
 
-    // Mark saving delay ended
-    _player setVariable [QGVAR(inSaveDelay), false];
-}, [_player], _delay] call CBA_fnc_waitAndExecute;
+    // Mark last save
+    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+}, [_player], SAVE_DELAY] call CBA_fnc_waitAndExecute;

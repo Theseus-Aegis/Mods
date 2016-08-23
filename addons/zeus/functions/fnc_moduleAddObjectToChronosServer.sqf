@@ -17,11 +17,8 @@
 
 params ["_object"];
 
-// Exit if Chronos invoker is not compiled - @todo remove once Chronos is ported
-if (isNil QEFUNC(chronos,invokeJavaMethod)) exitWith { ACE_LOGERROR("Chronos invokeJavaMethod not found!"); };
-
 // Get suitable Chronos ID
-private _chronosUniqueID = ["generateUniqueID"] call EFUNC(chronos,invokeJavaMethod);
+private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMethod);
 
 // Make persistent
 _object setVariable ["vehicleChronosID", _chronosUniqueID, true];

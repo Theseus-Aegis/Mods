@@ -65,5 +65,4 @@ if (_loadData == "loaded") then {
     };
 };
 
-TRACE_1("Load Completed",_return);
 _return

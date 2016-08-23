@@ -119,6 +119,8 @@ private _playerVariables = [];
 
 private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _playerHeadgear, _playerGoggles, _uniform, _uniformCargo, _uniformMagazines, _vest, _vestCargo, _vestMagazines, _backpack, _backpackCargo, _backpackMagazines, _inventory, _weapons, _primaryWepAttachments, _secondaryWepAttachments, _handgunAttachments , _weaponMagazines, _inVehicle, _alive, _selectedWeapon, _currentStance, _fatigue, _uniformWeapons, _vestWeapons, _backpackWeapons, _playerVariables] call FUNC(invokeJavaMethod);
 
+TRACE_2("Singletone Save",_type,_serverReply);
+
 if (_type == "validate" && {_serverReply == "success"}) then {
     _playerObject enableSimulationGlobal true;
     _playerObject hideObjectGlobal false;

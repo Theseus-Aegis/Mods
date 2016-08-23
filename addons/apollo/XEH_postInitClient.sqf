@@ -4,11 +4,6 @@
 if (!hasInterface) exitWith {};
 
 [QGVAR(initialized), {
-    // Prevent double initialization due to CBA_fnc_globalEventJIP
-    // Temporary fix - source fix: https://github.com/CBATeam/CBA_A3/pull/418 (remove after CBA >2.4.1)
-    if (player getVariable [QGVAR(initialized), false]) exitWith {};
-    player setVariable [QGVAR(initialized), true];
-
     // Check ApolloClient presenece and version
     private _apolloClientVersion = "ApolloClient" callExtension "version";
     if (_apolloClientVersion == "") exitWith {
@@ -27,8 +22,11 @@ if (!hasInterface) exitWith {};
 
     // Load player
     private _successfullyLoaded = [player] call FUNC(playerLoadClient);
+
     // Save load time to prevent instant saving after load
-    player setVariable [QGVAR(lastSavedTime), diag_tickTime];
+    player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+
+    TRACE_2("Client Load Info",_successfullyLoaded,CBA_missionTime);
 
     if (!_successfullyLoaded) exitWith {
         ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID player);

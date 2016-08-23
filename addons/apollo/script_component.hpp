@@ -3,7 +3,7 @@
 
 #define DEBUG_MODE_FULL
 #define DISABLE_COMPILE_CACHE
-// #define CBA_DEBUG_SYNCHRONOUS
+#define CBA_DEBUG_SYNCHRONOUS
 // #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_APOLLO
@@ -15,3 +15,6 @@
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
+
+
+#define SAVE_DELAY 10
