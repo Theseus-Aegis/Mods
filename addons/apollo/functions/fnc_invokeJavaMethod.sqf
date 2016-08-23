@@ -17,15 +17,17 @@
  */
 #include "script_component.hpp"
 
-if (!(_this isEqualType []) || {_this isEqualTo []} || {!((_this select 0) isEqualType "")}) exitWith {""};
+params ["_method"];
+
+if (isNil "_this" || {!(_this isEqualType [])} || {_this isEqualTo []} || {!(_method isEqualType "")}) exitWith {""};
 
 // Parse arguments with correct syntax
 private _argument_str = "";
 _this deleteAt 0; // Errors when combined with forEach
 {
-    [str _x, _x] select (_x isEqualType "");
+    _x = [str _x, _x] select (_x isEqualType "");
     _argument_str = _argument_str + "<A>" + _x + "</A>";
 } count _this;
 
 // Return Java Extension answer
-"jni" callExtension ("<MI><M>" + (_this select 0) + "</M><AL>" + _argument_str + "</AL></MI>")
+"jni" callExtension ("<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>")
