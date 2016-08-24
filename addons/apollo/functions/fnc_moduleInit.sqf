@@ -24,4 +24,4 @@ if (!_activated) exitWith {};
 [_logic, QGVAR(enabledPlayers), "enabledPlayers"] call ace_common_fnc_readSettingFromModule;
 [_logic, QGVAR(enabledVehicles), "enabledVehicles"] call ace_common_fnc_readSettingFromModule;
 
-ACE_LOGINFO("Apollo Module Initialized");
+ACE_LOGINFO_1("Apollo Module Initialized. Enabled: %1",GVAR(enabled));

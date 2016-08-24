@@ -34,7 +34,7 @@ private _return = false;
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, EGVAR(chronos,debug)];
+private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {

@@ -19,17 +19,15 @@ private _activePlayers = call CBA_fnc_players; // allPlayers returns headless cl
 
 // Save only if there are players connected
 if !(_activePlayers isEqualTo []) then {
-    private _savedVehicles = 0;
+    private _savedVehicles = [];
     {
         private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
         if (_vehicleID select [0, 3] == "TAC") then {
             [_x, _vehicleID] call FUNC(vehicleSingletonSave);
-
-            TRACE_1("Saving Vehicle",_vehicleID);
-            _savedVehicles = _savedVehicles + 1;
+            _savedVehicles pushBack _vehicleID;
         };
     } forEach vehicles;
-    TRACE_2("All Vehicles Saved",_savedVehicles,count _activePlayers);
+    TRACE_2("All Vehicles Saved",count _savedVehicles,_savedVehicles,count _activePlayers);
 };
 
 // Save again in 60 seconds

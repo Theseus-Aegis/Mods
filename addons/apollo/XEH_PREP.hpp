@@ -1,5 +1,6 @@
 PREP(endMissionError);
 PREP(handleDisconnect);
+PREP(handleKilled);
 PREP(handleLoadoutChanged);
 PREP(handleRespawn);
 PREP(invokeJavaMethod);

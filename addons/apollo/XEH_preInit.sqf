@@ -5,5 +5,6 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 
 GVAR(vehiclesLoaded) = false;
+GVAR(isDebug) = false;
 
 ADDON = true;

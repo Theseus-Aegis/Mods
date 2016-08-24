@@ -45,17 +45,20 @@ if (_retrieveVehicles == "ready") then {
     [_this select 1] call CBA_fnc_removePerFrameHandler;
 
     // Allow damage on all vehicles
+    private _savedVehicles = 0;
     {
         private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
         if (_vehicleID select [0, 3] == "TAC") then {
             _x allowDamage true;
-        };
+            _savedVehicles = _savedVehicles + 1;
+       };
     } forEach vehicles;
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
     publicVariable QGVAR(vehiclesLoaded);
-    TRACE_1("Vehicles Loaded",GVAR(vehiclesLoaded));
+
+    ACE_LOGINFO_1("%1 vehicle(s) loaded.",_savedVehicles);
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;

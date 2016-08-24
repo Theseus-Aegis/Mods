@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Handles respawn (kick back to lobby to force reinitialization).
+ * Handles respawn event (mark in backend for fresh inventory).
  *
  * Arguments:
  * 0: Player <OBJECT>
@@ -17,7 +17,8 @@
 #include "script_component.hpp"
 
 params ["_player", "_corpse"];
+TRACE_1("Handle Respawn",_this);
 
-[QGVAR(playerDied), _this] call CBA_fnc_serverEvent;
+private _killerUID = _corpse getVariable [QGVAR(killerUID), ""];
 
-[localize LSTRING(RespawnReinitialization)] call FUNC(endMissionError);
+[QGVAR(playerDied), [_player, _killerUID]] call CBA_fnc_serverEvent;
