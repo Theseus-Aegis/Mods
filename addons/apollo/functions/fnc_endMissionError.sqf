@@ -22,5 +22,5 @@ titleText [_errorMessage, "black"];
 titleFadeOut 9999;
 
 [{
-    endMission _errorMessage;
-}, [], 3] call CBA_fnc_waitAndExecute;
+    ["end1", false, 0] call BIS_fnc_endMission;
+}, [], 5] call CBA_fnc_waitAndExecute;

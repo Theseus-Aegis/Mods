@@ -20,5 +20,4 @@ params ["_player", "_corpse"];
 
 [QGVAR(playerDied), _this] call CBA_fnc_serverEvent;
 
-// @todo - reinitialize with new gear, todo in extension as well
-["War... War never changes"] call FUNC(endMissionError);
+[localize LSTRING(RespawnReinitialization)] call FUNC(endMissionError);

@@ -26,8 +26,8 @@
 
         // Player died
         [QGVAR(playerDied), {
-            params ["_player", "_killedBy"];
-            ["playerDied", getPlayerUID _player, _killedBy] call FUNC(invokeJavaMethod);
+            params ["_player", "_corpse"];
+            ["playerDied", getPlayerUID _player, _corpse] call FUNC(invokeJavaMethod);
         }] call CBA_fnc_addEventHandler;
 
         // Corpse removal (prevent item multiplication when leaving nicely)

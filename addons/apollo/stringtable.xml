@@ -22,5 +22,8 @@
         <Key ID="STR_TAC_Apollo_EnabledVehiclesDesc">
             <English>Enables persistence for vehicles.</English>
         </Key>
+        <Key ID="STR_TAC_Apollo_RespawnReinitialization">
+            <English>You are being moved back to lobby for reinitialization.</English>
+        </Key>
     </Package>
 </Project>

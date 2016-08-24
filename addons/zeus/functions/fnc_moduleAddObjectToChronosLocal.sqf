@@ -26,7 +26,7 @@ if (!(["tac_apollo"] call ace_common_fnc_isModLoaded) || {!EGVAR(apollo,vehicles
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
         [LSTRING(PlaceOnObject)] call ACE_Common_fnc_displayTextStructured;
     } else {
-        if !((_mouseOverUnit getVariable ["vehicleChronosID", "None"]) isEqualTo "None") then {
+        if !((_mouseOverUnit getVariable [QEGVAR(apollo,vehicleID), "None"]) isEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;
         } else {
             [QGVAR(addObjectToChronos), _mouseOverUnit] call CBA_fnc_serverEvent;

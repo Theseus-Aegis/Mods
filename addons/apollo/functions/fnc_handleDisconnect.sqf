@@ -19,7 +19,6 @@
 
 params ["_unit", "", "_uid"];
 
-// @todo - figure out if saving on disconnect is reliable enough
 [_unit, _uid, "save"] call FUNC(playerSingletonSave);
 
 deleteVehicle _unit;

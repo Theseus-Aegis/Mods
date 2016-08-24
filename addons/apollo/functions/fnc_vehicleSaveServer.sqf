@@ -21,7 +21,7 @@ private _activePlayers = call CBA_fnc_players; // allPlayers returns headless cl
 if !(_activePlayers isEqualTo []) then {
     private _savedVehicles = 0;
     {
-        private _vehicleID = _x getVariable ["vehicleChronosID", "None"];
+        private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
         if (_vehicleID select [0, 3] == "TAC") then {
             [_x, _vehicleID] call FUNC(vehicleSingletonSave);
 

@@ -46,7 +46,7 @@ if (_retrieveVehicles == "ready") then {
 
     // Allow damage on all vehicles
     {
-        private _vehicleID = _x getVariable ["vehicleChronosID", "None"];
+        private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
         if (_vehicleID select [0, 3] == "TAC") then {
             _x allowDamage true;
         };

@@ -21,4 +21,4 @@ params ["_object"];
 private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMethod);
 
 // Make persistent
-_object setVariable ["vehicleChronosID", _chronosUniqueID, true];
+_object setVariable [QEGVAR(apollo,vehicleID), _chronosUniqueID, true];
