@@ -35,7 +35,7 @@ if (_retrieveVehicles == "ready") then {
         };
     };
 
-    _vehList = _vehList apply {missionNamespace getVariable [_x, objNull]} select {!isNull _x};
+    _vehList = (_vehList apply {missionNamespace getVariable [_x, objNull]}) select {!isNull _x};
     TRACE_1("Vehicles loaded with disabled damage",_vehList);
 
     // Allow damage and enable simulation on all vehicles
