@@ -31,7 +31,9 @@ _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
     params ["_player"];
 
     // Exit if things changed during delay
-    if (isNull _player || {!alive _player}) exitWith {};
+    if (isNull _player || {!alive _player}) exitWith {
+        TRACE_3("Loadout Changed - Exiting Delay",_player,isNull _player,alive _player);
+    };
 
     [QGVAR(savePlayer), [_player, "save"]] call CBA_fnc_serverEvent;
     TRACE_1("Loadout Changed - Saving Done",_player);

@@ -26,16 +26,10 @@ if (!hasInterface) exitWith {};
         params ["_player", "_registeredDeath"];
         TRACE_1("Registered Death",_this);
 
+        // Load player
         if (_registeredDeath == "done") then {
-            // Load player
-            private _successfullyLoaded = [_player] call FUNC(playerLoadClient);
-
-            // Save load time to prevent instant saving after load
-            _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-
-            if (!_successfullyLoaded) exitWith {
-                ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
-                ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+            if ([_player] call FUNC(playerLoadClient)) then {
+                ACE_LOGINFO("Client respawned successfully.")
             };
         } else {
             ACE_LOGERROR("Connection terminated - Death failed to register!");
@@ -43,16 +37,8 @@ if (!hasInterface) exitWith {};
         };
     }] call CBA_fnc_addEventHandler;
 
-    // Load player
-    private _successfullyLoaded = [player] call FUNC(playerLoadClient);
-
-    // Save load time to prevent instant saving after load
-    player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-
-    if (!_successfullyLoaded) exitWith {
-        ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID player);
-        ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
-    };
+    // Load player and exit if loading failed
+    if !([player] call FUNC(playerLoadClient)) exitWith {};
 
     // Save on each inventory change with at least 10 seconds between each save
     ["loadout", FUNC(handleLoadoutChanged)] call CBA_fnc_addPlayerEventHandler;

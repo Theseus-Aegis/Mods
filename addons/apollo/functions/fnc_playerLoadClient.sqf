@@ -54,6 +54,9 @@ if (_loadData == "loaded") then {
                 // Has to be executed where unit is local
                 _player allowDamage true;
 
+                // Save load time to prevent instant saving after load
+                _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+
                 // Initialization complete
                 _return = true;
             } else {
@@ -63,6 +66,11 @@ if (_loadData == "loaded") then {
             };
         };
     };
+};
+
+if (!_return) then {
+    ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
+    ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
 };
 
 _return
