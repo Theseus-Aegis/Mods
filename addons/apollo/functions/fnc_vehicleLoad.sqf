@@ -16,9 +16,9 @@
 #include "script_component.hpp"
 
 private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(invokeJavaMethod);
-private _vehList = [];
 
 if (_retrieveVehicles == "ready") then {
+    private _vehList = [];
     private _updateInfo = true;
 
     while {_updateInfo} do {
@@ -34,32 +34,24 @@ if (_retrieveVehicles == "ready") then {
             _vehList pushBack _serverReply;
         };
     };
-};
 
+    _vehList = _vehList apply {missionNamespace getVariable [_x, objNull]} select {!isNull _x};
+    TRACE_1("Vehicles loaded with disabled damage",_vehList);
 
-// Allow damage on vehicles once all loaded and start saving
-[{
-    // Exit if not all loaded yet
-    if (["isVehiclesAllLoaded"] call FUNC(invokeJavaMethod) != "true") exitWith {};
-
-    [_this select 1] call CBA_fnc_removePerFrameHandler;
-
-    // Allow damage on all vehicles
-    private _savedVehicles = 0;
+    // Allow damage and enable simulation on all vehicles
     {
-        private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
-        if (_vehicleID select [0, 3] == "TAC") then {
-            _x allowDamage true;
-            _savedVehicles = _savedVehicles + 1;
-       };
-    } forEach vehicles;
+        _x enableSimulationGlobal true;
+        _x allowDamage true;
+    } forEach _vehList;
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
     publicVariable QGVAR(vehiclesLoaded);
 
-    ACE_LOGINFO_1("%1 vehicle(s) loaded.",_savedVehicles);
+    ACE_LOGINFO_1("%1 vehicle(s) loaded.",count _vehList);
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;
-}, 5, []] call CBA_fnc_addPerFrameHandler;
+} else {
+    ACE_LOGERROR("Failed to retrieve vehicles list!");
+};
