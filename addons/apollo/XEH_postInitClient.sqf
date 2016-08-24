@@ -30,7 +30,9 @@ if (!hasInterface) exitWith {};
 
     if (!_successfullyLoaded) exitWith {
         ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID player);
-        ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+        if (getPlayerUID _player != "_SP_PLAYER_") then {
+            ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+        };
     };
 
     // Save on each inventory change with at least 10 seconds between each save

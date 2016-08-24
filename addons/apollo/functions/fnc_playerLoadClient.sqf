@@ -31,7 +31,7 @@ removeAllAssignedItems _player;
 TRACE_1("Loading Client",_player);
 private _return = false;
 
-// Load debug inventory in ApolloClient extension when UID is "_SP_PLAYER_" - @todo
+// Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
 private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, EGVAR(chronos,debug)];
