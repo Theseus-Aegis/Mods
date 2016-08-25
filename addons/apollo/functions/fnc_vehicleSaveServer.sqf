@@ -27,7 +27,7 @@ if !(_activePlayers isEqualTo []) then {
             _savedVehicles pushBack _vehicleID;
         };
     } forEach vehicles;
-    TRACE_2("All Vehicles Saved",count _savedVehicles,_savedVehicles,count _activePlayers);
+    TRACE_3("All Vehicles Saved",count _savedVehicles,_savedVehicles,count _activePlayers);
 };
 
 // Save again in 60 seconds
