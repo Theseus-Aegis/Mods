@@ -15,19 +15,15 @@
  */
 #include "script_component.hpp"
 
+private _vehList = GVAR(vehiclesList); // Make safe copy in case of new vehicles during this save round
 private _activePlayers = call CBA_fnc_players; // allPlayers returns headless clients as well
 
 // Save only if there are players connected
 if !(_activePlayers isEqualTo []) then {
-    private _savedVehicles = [];
     {
-        private _vehicleID = _x getVariable [QGVAR(vehicleID), "None"];
-        if (_vehicleID select [0, 3] == "TAC") then {
-            [_x, _vehicleID] call FUNC(vehicleSingletonSave);
-            _savedVehicles pushBack _vehicleID;
-        };
-    } forEach vehicles;
-    TRACE_3("All Vehicles Saved",count _savedVehicles,_savedVehicles,count _activePlayers);
+        [_x] call FUNC(vehicleSingletonSave);
+    } forEach _vehList;
+    TRACE_3("All Vehicles Saved",count _vehList,_vehList,count _activePlayers);
 };
 
 // Save again in 60 seconds

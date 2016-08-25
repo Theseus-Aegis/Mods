@@ -35,8 +35,9 @@ if (_retrieveVehicles == "ready") then {
         };
     };
 
+    // Make sure all vehicles exist, save them into a global variable for API
     _vehList = (_vehList apply {missionNamespace getVariable [_x, objNull]}) select {!isNull _x};
-    TRACE_1("Vehicles loaded with disabled damage",_vehList);
+    GVAR(vehiclesList) = _vehList; // Don't use global variable directly in case of new vehicles during this time
 
     // Allow damage and enable simulation on all vehicles
     {
@@ -49,6 +50,7 @@ if (_retrieveVehicles == "ready") then {
     publicVariable QGVAR(vehiclesLoaded);
 
     ACE_LOGINFO_1("%1 vehicles loaded.",count _vehList);
+    TRACE_1("Vehicles loaded",_vehList);
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;

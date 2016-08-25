@@ -22,3 +22,4 @@ private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMeth
 
 // Make persistent
 _object setVariable [QEGVAR(apollo,vehicleID), _chronosUniqueID, true];
+EGVAR(apollo,vehiclesList) pushBack _object;

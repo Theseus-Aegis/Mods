@@ -6,5 +6,6 @@ ADDON = false;
 
 GVAR(vehiclesLoaded) = false;
 GVAR(isDebug) = false;
+GVAR(vehiclesList) = [];
 
 ADDON = true;

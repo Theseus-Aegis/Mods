@@ -4,20 +4,20 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Vehicle Chronos ID <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle, TAC_veh1] call tac_apollo_fnc_vehicleSingletonSave
+ * [vehicle] call tac_apollo_fnc_vehicleSingletonSave
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_vehicleObject", "_vehicleID"];
+params ["_vehicleObject"];
 
+private _vehicleID = _vehicleObject getVariable QGVAR(vehicleID);
 private _vehicleType = typeOf _vehicleObject;
 
 private _hitpoints = [];
