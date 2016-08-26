@@ -17,6 +17,9 @@
 
 params [["_object", this]];
 
+// Exit if Armroy already set (necessary for Eden attribute which calls it twice)
+if (_object getVariable [QGVAR(armoryEnabled), false]) exitWith {};
+
 // Check if object has inventory
 if !([_object] call FUNC(canAddArmory)) exitWith {
     ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
