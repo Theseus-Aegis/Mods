@@ -15,7 +15,8 @@
  */
 #include "script_component.hpp"
 
-private _vehList = GVAR(vehiclesList); // Make safe copy in case of new vehicles during this save round
+// Make safe copy in case of new vehicles during this save round
+private _vehList = GVAR(vehiclesList);
 
 {
     [_x] call FUNC(vehicleSingletonSave);

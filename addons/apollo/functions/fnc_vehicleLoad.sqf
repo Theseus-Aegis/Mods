@@ -45,6 +45,10 @@ if (_retrieveVehicles == "ready") then {
         _x allowDamage true;
     } forEach _vehList;
 
+    // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
+    _vehList params ["_vehFixPhysics"];
+    _vehFixPhysics setDamage (damage _vehFixPhysics);
+
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
     publicVariable QGVAR(vehiclesLoaded);
