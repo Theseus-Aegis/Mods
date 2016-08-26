@@ -84,4 +84,4 @@ if (_vehicleAlive) then {
 
 private _vehicleNamePretty = getText (configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
 
-_serverReply = ["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty] call FUNC(invokeJavaMethod);
+["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty] call FUNC(invokeJavaMethod);
