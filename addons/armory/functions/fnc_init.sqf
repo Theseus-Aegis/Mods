@@ -18,9 +18,7 @@
 params [["_object", this]];
 
 // Check if object has inventory
-if !([_object] call FUNC(canAddArmory)) exitWith {
-    ACE_LOGWARNING_1("Aborted adding Armory to an object without inventory. Object classname: %1",typeOf _object);
-};
+if !([_object] call FUNC(canAddArmory)) exitWith {};
 
 // Add action
 private _armoryAction = [
@@ -35,4 +33,4 @@ private _armoryAction = [
 
 [_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;
 
-_object setVariable [QGVAR(armoryEnabled), true];
+_object setVariable [QGVAR(enabled), true];

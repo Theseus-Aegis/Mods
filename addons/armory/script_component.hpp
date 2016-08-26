@@ -1,6 +1,7 @@
 #define COMPONENT armory
 #include "\x\tac\addons\main\script_mod.hpp"
 
+// #define ADD_DEBUG_ITEMS
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define CBA_DEBUG_SYNCHRONOUS
