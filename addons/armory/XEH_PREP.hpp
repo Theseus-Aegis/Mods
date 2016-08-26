@@ -18,5 +18,5 @@ PREP(init);
 PREP(isCompatible);
 PREP(moduleInit);
 PREP(openArmory);
-PREP(sendData);
+PREP(processAction);
 PREP(subtractData);

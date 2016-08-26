@@ -42,16 +42,11 @@ if (_armoryData isEqualTo []) exitWith {
 };
 
 // Add Armory if not added yet
-if !(_object getVariable [QGVAR(armoryEnabled), false]) then {
-    private _return = true;
+[_object] call FUNC(init);
 
-    if ([_object] call FUNC(canAddArmory)) then {
-        [_object] call FUNC(init);
-        _return = true;
-    } else {
-        ACE_LOGERROR_1("Armory cannot be added to an object without inventory: %1",_object);
-        _return = false;
-    };
+if (_object getVariable [QGVAR(enabled), false]) exitWith {
+    _object setVariable [QGVAR(armoryData), _armoryData, true];
+    true
 };
 
-_object setVariable [QGVAR(armoryData), _armoryData, true];
+false

@@ -25,12 +25,12 @@ if (lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] == "") exitWith {
 if (GVAR(selectedCategory) == "stash") then {
     // Stash
     ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnStash.paa)];
-    buttonSetAction [TAKESTASHBTN, QUOTE(['stash'] call FUNC(sendData))];
+    buttonSetAction [TAKESTASHBTN, QUOTE(['stash'] call FUNC(processAction))];
     CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnStashItemTooltip);
 } else {
     // Take
     ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnTake.paa)];
-    buttonSetAction [TAKESTASHBTN, QUOTE(['take'] call FUNC(sendData))];
+    buttonSetAction [TAKESTASHBTN, QUOTE(['take'] call FUNC(processAction))];
     CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnTakeItemTooltip);
 };
 
