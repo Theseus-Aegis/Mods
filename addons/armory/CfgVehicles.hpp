@@ -57,6 +57,7 @@ class CfgVehicles {
         author = ECSTRING(main,Author);
         displayName = CSTRING(Locker);
         ace_cargo_canLoad = 0;
+        GVAR(enabled) = 1;
 
         // Empty inventory
         class TransportBackpacks {};

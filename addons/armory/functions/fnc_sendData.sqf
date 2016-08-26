@@ -48,6 +48,7 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 };
 
 if (GVAR(system) == 0) then {
+    // Set box contents
     private _isBackpack = [_selectedItem] call ACE_Backpacks_fnc_isBackpack;
     private _itemType = ([_selectedItem] call ACE_Common_fnc_getItemType) select 0;
 
@@ -74,6 +75,20 @@ if (GVAR(system) == 0) then {
         };
         [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
     };
+
+    // Set Armory contents
+    private _armoryDataVar = _object getVariable [QGVAR(armoryData), []];
+    private _amountChange = [_selectedAmount, format ["-%1", _selectedAmount]] select (_type == "take");
+
+    _armoryDataVar = _armoryDataVar apply {
+        if (_x select 1 == _selectedItem) then {
+            [_x select 0, _x select 1, _x select 2, _x select 3, (_x select 4) + (parseNumber _amountChange)]
+        } else {
+            _x
+        };
+    };
+
+    _object setVariable [QGVAR(armoryData), _armoryDataVar];
 };
 
 if (GVAR(system) == 1) then {

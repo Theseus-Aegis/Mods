@@ -27,94 +27,19 @@ if (isNull _object) exitWith {
 private _armoryDataVar = _object getVariable [QGVAR(armoryData), []];
 private _armoryData = [];
 
-#ifndef DEBUG_MODE_FULL
-    // Verify armory data
-    {
-        _x params [
-            ["_category", "", [""]],
-            ["_className", "", [""]],
-            ["_subCategory", "", [""]],
-            ["_description", "", [""]],
-            ["_quantity", 1, [0]]
-        ];
+// Verify armory data
+{
+    _x params [
+        ["_category", "", [""]],
+        ["_className", "", [""]],
+        ["_subCategory", "", [""]],
+        ["_description", "", [""]],
+        ["_quantity", 1, [0]]
+    ];
 
-        if (_category == _selectedCategory && {_className != ""} && {_subCategory != ""} && {_quantity > 0}) then {
-            _armoryData pushBack [_className, _subCategory, _description, str _quantity];
-        };
-    } forEach _armoryDataVar;
-#else
-    // Rifles
-    if (_selectedCategory == "rifle") then {
-        _armoryData = [
-            // Classname, Subcategory, Description, Quantity
-            ["arifle_MX_F", "Assault Rifle", "Blabla, this item, blabla", "23"],
-            ["srifle_DMR_01_F", "Marksman Rifle", "Blabla, this item, blabla", "4"],
-            ["srifle_EBR_F", "Marksman Rifle", "Blabla, this item, blabla", "5"],
-            ["arifle_Katiba_GL_F", "Assault Rifle", "Blabla, this item, blabla", "45"],
-            ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "18"],
-            ["arifle_Mk20C_plain_F", "Assault Rifle", "Blabla, this item, blabla", "20"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"],
-            ["arifle_MXC_F", "Shotgun", "Blabla, this item, blabla", "33"]
-        ];
+    if (_category == _selectedCategory && {_className != ""} && {_subCategory != ""} && {_quantity > 0}) then {
+        _armoryData pushBack [_className, _subCategory, _description, str _quantity];
     };
-    if (_selectedCategory == "ammo") then {
-        _armoryData = [
-            // Classname, Subcategory, Description, Quantity
-            ["30Rnd_65x39_caseless_mag", "Magazine", "Blabla, this item, blabla", "333"],
-            ["100Rnd_65x39_caseless_mag", "Magazine", "Blabla, this item, blabla", "123"],
-            ["NLAW_F", "Missile", "Blabla, this item, blabla", "7"],
-            ["1Rnd_HE_Grenade_shell", "Shell", "Blabla, this item, blabla", "19"],
-            ["SmokeShellBlue", "Shell", "Blabla, this item, blabla", "15"]
-        ];
-    };
-    if (_selectedCategory == "item") then {
-        _armoryData = [
-            // Classname, Subcategory, Description, Quantity
-            ["NVGoggles", "Headgear", "Blabla, this item, blabla", "23"],
-            ["Laserdesignator", "Item", "Blabla, this item, blabla", "7"],
-            ["ItemGPS", "Item", "Blabla, this item, blabla", "5"],
-            ["MediKit", "Item", "Blabla, this item, blabla", "2"],
-            ["ToolKit", "Item", "Blabla, this item, blabla", "18"],
-            ["B_UavTerminal", "Item", "Blabla, this item, blabla", "20"]
-        ];
-    };
-    if (_selectedCategory == "attachment") then {
-        _armoryData = [
-            // Classname, Subcategory, Description, Quantity
-            ["optic_Hamr", "Optic", "Blabla, this item, blabla", "4"],
-            ["optic_Aco", "Optic", "Blabla, this item, blabla", "45"],
-            ["optic_DMS", "Optic", "Blabla, this item, blabla", "33"],
-            ["muzzle_snds_93mmg", "Muzzle", "Blabla, this item, blabla", "6"],
-            ["muzzle_snds_H", "Muzzle", "Blabla, this item, blabla", "13"],
-            ["optic_MRD", "Optic", "Blabla, this item, blabla", "1"]
-        ];
-    };
-    if (_selectedCategory == "wearable") then {
-        _armoryData = [
-            // Classname, Subcategory, Description, Quantity
-            ["G_Bandanna_Shades", "Goggles", "Blabla, this item, blabla", "4"]
-        ];
-    };
-    if (_selectedCategory == "insignia") then {
-        private _config = configFile >> "CfgUnitInsignia";
-        for "_x" from 0 to (count _config - 1) do {
-            private _configName = configName (_config select _x);
-            _armoryData pushBack [_configName, "Insignia", "Insignia", "1"];
-        };
-    };
-#endif
+} forEach _armoryDataVar;
 
 _armoryData

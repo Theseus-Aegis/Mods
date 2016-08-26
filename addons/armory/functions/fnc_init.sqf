@@ -35,4 +35,4 @@ private _armoryAction = [
 
 [_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;
 
-_object setVariable [QGVAR(armoryEnabled), true];
+_object setVariable [QGVAR(enabled), true];
