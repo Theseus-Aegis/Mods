@@ -41,20 +41,12 @@ if (_armoryData isEqualTo []) exitWith {
     false
 };
 
-private _return = true;
-
 // Add Armory if not added yet
-if (!(_object getVariable [QGVAR(enabled), false]) && {getNumber (configFile >> "CfgVehicles" >> typeOf _object >> QGVAR(enabled)) != 1}) then {
-    if ([_object] call FUNC(canAddArmory)) then {
-        [_object] call FUNC(init);
-    } else {
-        ACE_LOGERROR_1("Armory cannot be added to an object without inventory: %1",_object);
-        _return = false;
-    };
-};
+[_object] call FUNC(init);
 
-if (_return) then {
+if (_object getVariable [QGVAR(enabled), false]) exitWith {
     _object setVariable [QGVAR(armoryData), _armoryData, true];
+    true
 };
 
-_return
+false

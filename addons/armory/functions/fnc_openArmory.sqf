@@ -82,5 +82,6 @@ private _itemsData = [
     _itemsData pushBack ["insignia", configName _x, "Insignia", "This item is an insignia", 1];
 } forEach ("true" configClasses (configFile >> "CfgUnitInsignia"));
 
-[_object, _itemsData] call FUNC(addItems);
+private _return = [_object, _itemsData] call FUNC(addItems);
+TRACE_1("Debug items add",_return);
 #endif
