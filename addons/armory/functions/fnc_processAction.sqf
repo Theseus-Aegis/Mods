@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Prepares and sends data back to Apollo (Chronos).
+ * Processes performed action and modifies Vanilla data or sends data back to Apollo (Chronos).
  *
  * Arguments:
  * 0: Take/Stash <STRING>
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["type"] call tac_armory_fnc_sendData
+ * ["type"] call tac_armory_fnc_processAction
  *
  * Public: No
  */
