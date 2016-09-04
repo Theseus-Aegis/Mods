@@ -17,7 +17,7 @@
 
 params [["_object", this]];
 
-// Check if object has inventory
+// Check if object has inventory and Armory is not yet enabled on it
 if !([_object] call FUNC(canAddArmory)) exitWith {};
 
 // Add action
