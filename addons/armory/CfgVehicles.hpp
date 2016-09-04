@@ -11,12 +11,6 @@ class CfgVehicles {
         isDisposable = 0;
         icon = QPATHTOF(UI\Icon_Module_Armory_ca.paa);
         class Arguments {
-            class Objects {
-                displayName = CSTRING(Objects);
-                description = CSTRING(ObjectsDesc);
-                typeName = "STRING";
-                defaultValue = "";
-            };
             class System {
                 displayName = CSTRING(System);
                 description = CSTRING(SystemDesc);

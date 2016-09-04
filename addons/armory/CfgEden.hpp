@@ -8,8 +8,8 @@ class Cfg3DEN {
                         tooltip = CSTRING(ModuleDesc);
                         property = QGVAR(enabled);
                         control = "Checkbox";
-                        expression = QUOTE(if (_value) then {_this call FUNC(init)}); // @todo - make MP compatible, this just runs on server
-                        defaultValue = "false";
+                        expression = QUOTE(if (_value) then { [ARR_2(QQGVAR(init),_this)] call CBA_fnc_globalEventJIP });
+                        defaultValue = "(false)";
                         condition = "objectHasInventoryCargo";
                         typeName = "BOOL";
                     };
