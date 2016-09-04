@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Apollo">
+        <Key ID="STR_TAC_Apollo_Module">
+            <English>Apollo</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_ModuleDesc">
+            <English>This module allows you to enable Chronos persistence functionality in-game.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledDesc">
+            <English>Enables overall persistence.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledPlayers">
+            <English>Enable Players</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledPlayersDesc">
+            <English>Enables persistence for players.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledVehicles">
+            <English>Enable Vehicles</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledVehiclesDesc">
+            <English>Enables persistence for vehicles.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_RespawnReinitialization">
+            <English>You are being moved back to lobby for reinitialization.</English>
+        </Key>
+    </Package>
+</Project>

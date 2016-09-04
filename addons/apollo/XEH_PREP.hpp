@@ -1,0 +1,15 @@
+PREP(endMissionError);
+PREP(handleConnect);
+PREP(handleDisconnect);
+PREP(handleKilled);
+PREP(handleLoadoutChanged);
+PREP(handleRespawn);
+PREP(invokeJavaMethod);
+PREP(lockerAction);
+PREP(moduleInit);
+PREP(playerLoadClient);
+PREP(playerSingletonSave);
+PREP(vehicleLoad);
+PREP(vehicleSaveServer);
+PREP(vehicleSingletonLoad);
+PREP(vehicleSingletonSave);

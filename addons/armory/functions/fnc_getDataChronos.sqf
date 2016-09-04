@@ -17,9 +17,15 @@
 
 params ["_selectedCategory"];
 
+// Exit if Apollo not loaded
+if !(["tac_apollo"] call ace_common_fnc_isModLoaded) exitWith {
+    ACE_LOGERROR("Apollo is not loaded! Chronos data cannot be retrieved.");
+    false
+};
+
 // Set Chronos to debug if flag set
-private _debug = [false, true] select (!isNil QEGVAR(chronos,debug) && {EGVAR(chronos,debug)}); //@todo remove isNil when Chronos is ported
-TRACE_2("Chronos Debug",EGVAR(chronos,debug),_debug);
+private _debug = [false, true] select EGVAR(apollo,isDebug);
+TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
 private _loadData = "ApolloClient" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
@@ -49,6 +55,7 @@ if (_loadData == "loaded") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
+    ACE_LOGERROR("Armory data failed to load!");
     [LSTRING(ChronosError), 2.5] call ACE_Common_fnc_displayTextStructured;
     false
 };
