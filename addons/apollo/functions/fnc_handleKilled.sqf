@@ -21,7 +21,16 @@ params ["_player", "_killer"];
 TRACE_1("Handle Killed",_this);
 
 private _killerUID = getPlayerUID _killer;
-_killerUID = [_killerUID, "AI/Self"] select (_killerUID == "");
+
+// Try to get UID from ACE3's damage source (ace_medical uses setDamage which makes killer always objNull)
+if (_killerUID == "") then {
+    _killerUID = getPlayerUID (_player getVariable ["ace_medical_lastDamageSource", objNull]);
+
+    // No valid UID found, assume killer was AI or Self
+    if (_killerUID == "") then {
+        _killerUID = "AI/Self";
+    };
+};
 
 // Save Killed EH data for use in Respawn EH
 _player setVariable [QGVAR(killerUID), _killerUID];

@@ -1,4 +1,5 @@
 PREP(endMissionError);
+PREP(handleConnect);
 PREP(handleDisconnect);
 PREP(handleKilled);
 PREP(handleLoadoutChanged);

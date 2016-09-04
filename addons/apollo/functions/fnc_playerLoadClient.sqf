@@ -18,8 +18,7 @@
 params ["_player"];
 
 _player allowDamage false;
-["ace_common_enableSimulationGlobal", [_player, false]] call CBA_fnc_serverEvent;
-["ace_common_hideObjectGlobal", [_player, true]] call CBA_fnc_serverEvent;
+
 removeHeadgear _player:
 removeGoggles _player;
 removeVest _player;
