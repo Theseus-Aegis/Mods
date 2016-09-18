@@ -17,4 +17,5 @@
 #include "\x\tac\addons\main\script_macros.hpp"
 
 
-#define SAVE_DELAY 10
+#define SAVE_DELAY_PERIODIC 30
+#define SAVE_DELAY_INV_CHANGE 10

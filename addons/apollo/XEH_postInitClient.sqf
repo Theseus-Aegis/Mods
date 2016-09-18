@@ -40,8 +40,9 @@ if (!hasInterface) exitWith {};
     // Load player and exit if loading failed
     if !([player] call FUNC(playerLoadClient)) exitWith {};
 
-    // Save on each inventory change with at least 10 seconds between each save
-    ["loadout", FUNC(handleLoadoutChanged)] call CBA_fnc_addPlayerEventHandler;
+    // Save on each inventory change and every 10s with a delay between each save
+    ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
+    [FUNC(playerSaveClient), [player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 
     ACE_LOGINFO("Client loaded successfully.");
 }] call CBA_fnc_addEventHandler;
