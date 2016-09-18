@@ -13,7 +13,7 @@ class Extended_PreInit_EventHandlers {
 class Extended_InitPost_EventHandlers {
     class CAManBase {
         class ADDON {
-            clientInit = QUOTE(_this call FUNC(setInsignia));
+            clientInit = QUOTE(if (!(['tac_apollo'] call ace_common_fnc_isModLoaded) || {!EGVAR(apollo,enabled)} || {!EGVAR(apollo,enabledPlayers)}) then {_this call FUNC(setInsignia)});
         };
     };
 };
