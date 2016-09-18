@@ -17,61 +17,61 @@
  */
 #include "script_component.hpp"
 
-params ["_playerObject", "_uid", "_type"];
+params ["_player", "_uid", "_type"];
 
 // Base
-private _name = name _playerObject;
-private _playerPos = getPosASL _playerObject;
-private _playerDir = getDir _playerObject;
-private _playerHeadgear = headgear _playerObject;
-private _playerGoggles = goggles _playerObject;
+private _name = name _player;
+private _playerPos = getPosASL _player;
+private _playerDir = getDir _player;
+private _playerHeadgear = headgear _player;
+private _playerGoggles = goggles _player;
 
 // Uniform
-private _uniform = uniform _playerObject;
+private _uniform = uniform _player;
 private _uniformCargo = [];
 private _uniformMagazines = [];
 private _uniformWeapons = [];
 
 if (_uniform != "") then {
-    private _uniformContainer = uniformContainer _playerObject;
+    private _uniformContainer = uniformContainer _player;
     _uniformCargo append (itemCargo _uniformContainer);
     _uniformMagazines append (getMagazineCargo _uniformContainer);
     _uniformWeapons append (weaponsItems _uniformContainer);
 };
 
 // Vest
-private _vest = vest _playerObject;
+private _vest = vest _player;
 private _vestCargo = [];
 private _vestMagazines = [];
 private _vestWeapons = [];
 
 if (_vest != "") then {
-    private _vestContainer = vestContainer _playerObject;
+    private _vestContainer = vestContainer _player;
     _vestCargo append (itemCargo _vestContainer);
     _vestMagazines append (getMagazineCargo _vestContainer);
     _vestWeapons append (weaponsItems _vestContainer);
 };
 
 // Backpack
-private _backpack = backpack _playerObject;
+private _backpack = backpack _player;
 private _backpackCargo = [];
 private _backpackMagazines = [];
 private _backpackWeapons = [];
 
 if (_backpack != "") then {
-    private _backpackContainer = backpackContainer _playerObject;
+    private _backpackContainer = backpackContainer _player;
     _backpackCargo append (itemCargo _backpackContainer);
     _backpackMagazines append (getMagazineCargo _backpackContainer);
     _backpackWeapons append (weaponsItems _backpackContainer);
 };
 
 // Inventory
-private _inventory = assignedItems _playerObject;
+private _inventory = assignedItems _player;
 
 // Weapons
-private _primaryWeapon = primaryWeapon _playerObject;
-private _secondaryWeapon = secondaryWeapon _playerObject;
-private _handgunWeapon = handgunWeapon _playerObject;
+private _primaryWeapon = primaryWeapon _player;
+private _secondaryWeapon = secondaryWeapon _player;
+private _handgunWeapon = handgunWeapon _player;
 
 private _weapons = [];
 _weapons pushBack _primaryWeapon;
@@ -81,33 +81,33 @@ _weapons pushBack _handgunWeapon;
 // Primary Weapon Attachments
 private _primaryWepAttachments = [];
 if (_primaryWeapon != "" ) then {
-    _primaryWepAttachments append (primaryWeaponItems _playerObject);
+    _primaryWepAttachments append (primaryWeaponItems _player);
 };
 
 // Secondary Weapon Attachments
 private _secondaryWepAttachments = [];
 if (_secondaryWeapon != "" ) then {
-    _secondaryWepAttachments append (secondaryWeaponItems _playerObject);
+    _secondaryWepAttachments append (secondaryWeaponItems _player);
 };
 
 // Handgun Attachments
 private _handgunAttachments = [];
 if (_handgunWeapon != "" ) then {
-    _handgunAttachments append (handgunItems _playerObject);
+    _handgunAttachments append (handgunItems _player);
 };
 
 // Weapon Magazines
 private _weaponMagazines = [];
-_weaponMagazines pushBack (primaryWeaponMagazine _playerObject);
-_weaponMagazines pushBack (secondaryWeaponMagazine _playerObject);
-_weaponMagazines pushBack (handgunMagazine _playerObject);
+_weaponMagazines pushBack (primaryWeaponMagazine _player);
+_weaponMagazines pushBack (secondaryWeaponMagazine _player);
+_weaponMagazines pushBack (handgunMagazine _player);
 
 // Other
-private _inVehicle = (vehicle _playerObject) != _playerObject;
-private _alive = alive _playerObject;
-private _selectedWeapon = currentWeapon _playerObject;
-private _currentStance = animationState _playerObject;
-private _fatigue = getFatigue _playerObject;
+private _inVehicle = (vehicle _player) != _player;
+private _alive = alive _player;
+private _selectedWeapon = currentWeapon _player;
+private _currentStance = animationState _player;
+private _fatigue = getFatigue _player;
 
 // Variables
 private _playerVariables = [];
@@ -122,11 +122,11 @@ private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _player
 TRACE_2("Singleton Save",_type,_serverReply);
 
 if (_type == "validate" && {_serverReply == "success"}) then {
-    _playerObject enableSimulationGlobal true;
-    _playerObject hideObjectGlobal false;
+    _player enableSimulationGlobal true;
+    _player hideObjectGlobal false;
     ["infantryLoaded", _uid] call FUNC(invokeJavaMethod);
 };
 
 if (_serverReply == "terminated") then {
-    [QGVAR(terminatePlayer), [], _playerObject] call CBA_fnc_targetEvent;
+    [QGVAR(terminatePlayer), [], _player] call CBA_fnc_targetEvent;
 };

@@ -19,5 +19,12 @@ params ["_unit"];
 
 if (!local _unit || !(_unit == player)) exitWith {};
 
-GVAR(activeInsignia) = [_unit] call BIS_fnc_getUnitInsignia;
-TRACE_2("Insignia getted",_unit,GVAR(activeInsignia));
+private _insignia = [_unit] call BIS_fnc_getUnitInsignia;
+
+if (_insignia == "") then {
+    _unit setVariable [QGVAR(activeInsignia), QGVAR(logoStitch)];
+} else {
+    _unit setVariable [QGVAR(activeInsignia), _insignia];
+};
+
+TRACE_2("Insignia getted",_unit,_insignia);
