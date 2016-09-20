@@ -122,7 +122,7 @@ private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _player
 TRACE_2("Singleton Save",_type,_serverReply);
 
 if (_type == "validate" && {_serverReply == "success"}) then {
-    _player enableSimulationGlobal true;
+    // No simulation toggling due to possible lag breaking correct position and direction setting
     _player hideObjectGlobal false;
     ["infantryLoaded", _uid] call FUNC(invokeJavaMethod);
 };

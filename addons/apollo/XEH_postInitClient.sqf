@@ -28,6 +28,9 @@ if (!hasInterface) exitWith {};
 
         // Load player
         if (_registeredDeath == "done") then {
+            // Prevent saving during reinitialization
+            _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+            // Reinitialize
             if ([_player] call FUNC(playerLoadClient)) then {
                 ACE_LOGINFO("Client respawned successfully.")
             };

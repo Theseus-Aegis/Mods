@@ -19,7 +19,7 @@
 
 params ["_unit"];
 
-_unit enableSimulationGlobal false;
+// No simulation toggling due to possible lag breaking correct position and direction setting
 _unit hideObjectGlobal true;
 TRACE_4("Handle Client Connect",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
 
@@ -36,10 +36,9 @@ if (isPlayer _unit) exitWith {
     params ["_unit"];
 
     if (!isPlayer _unit) then {
-        _unit enableSimulationGlobal true;
         _unit hideObjectGlobal false;
         TRACE_4("Handle Client Connect - Not Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
     } else {
-        TRACE_1("Handle Client Connect - Delayed Is Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
+        TRACE_4("Handle Client Connect - Delayed Is Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
     };
 }, [_unit, CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
