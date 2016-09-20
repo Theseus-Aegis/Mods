@@ -21,7 +21,7 @@ params ["_unit"];
 
 // No simulation toggling due to possible lag breaking correct position and direction setting
 _unit hideObjectGlobal true;
-TRACE_4("Handle Client Connect",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
+TRACE_3("Handle Client Connect",_unit,isObjectHidden _unit,isPlayer _unit);
 
 // Exit if already player (when loading in with server client init finishes sooner)
 if (isPlayer _unit) exitWith {
@@ -37,8 +37,8 @@ if (isPlayer _unit) exitWith {
 
     if (!isPlayer _unit) then {
         _unit hideObjectGlobal false;
-        TRACE_4("Handle Client Connect - Not Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
+        TRACE_3("Handle Client Connect - Not Player",_unit,isObjectHidden _unit,isPlayer _unit);
     } else {
-        TRACE_4("Handle Client Connect - Delayed Is Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
+        TRACE_3("Handle Client Connect - Delayed Is Player",_unit,isObjectHidden _unit,isPlayer _unit);
     };
 }, [_unit, CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
