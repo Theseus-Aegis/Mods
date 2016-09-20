@@ -45,18 +45,8 @@ if (_loadData == "loaded") then {
             _updateInfo = false;
         } else {
             if (_loadData == "done") then {
-                _updateInfo = false;
-
-                // Validate
-                [QGVAR(savePlayer), [_player, "validate"]] call CBA_fnc_serverEvent;
-
-                // Has to be executed where unit is local
-                _player allowDamage true;
-
-                // Save load time to prevent instant saving after load
-                _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-
                 // Initialization complete
+                _updateInfo = false;
                 _return = true;
             } else {
                 _codePacket = _loadData select [17, count _loadData];
@@ -70,6 +60,13 @@ if (_loadData == "loaded") then {
 if (!_return) then {
     ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+} else {
+    // Validate
+    [QGVAR(savePlayer), [_player, "validate"]] call CBA_fnc_serverEvent;
+    // Has to be executed where unit is local
+    _player allowDamage true;
+    // Save load time to prevent instant saving after load
+    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
 };
 
 _return
