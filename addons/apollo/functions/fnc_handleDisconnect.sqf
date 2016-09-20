@@ -18,6 +18,7 @@
 #include "script_component.hpp"
 
 params ["_unit", "", "_uid"];
+TRACE_1("Handle Disconnect",_this);
 
 if (isNull _unit) exitWith {
     ACE_LOGERROR_1("Player not saved on disconnect - null unit (UID: %1)!",getPlayerUID _player);

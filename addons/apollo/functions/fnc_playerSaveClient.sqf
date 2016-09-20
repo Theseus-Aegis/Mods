@@ -27,7 +27,7 @@ if (_periodic) then {
 
 // Only save if not remote controlling a unit and more than 10 seconds have passed from previous save
 private _delay = [SAVE_DELAY_INV_CHANGE, SAVE_DELAY_PERIODIC] select _periodic;
-if (_player != player || {isNull _player} || {!alive _player} || {(_player getVariable [QGVAR(lastSavedTime), 0]) + _delay > CBA_missionTime}) exitWith {
+if (_player != player || {isNull _player} || {!alive _player} || {(_player getVariable [QGVAR(lastSavedTime), CBA_missionTime]) + _delay > CBA_missionTime}) exitWith {
     TRACE_1("Save - Not Saving",CBA_missionTime);
 };
 

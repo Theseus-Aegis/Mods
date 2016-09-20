@@ -39,5 +39,7 @@ if (isPlayer _unit) exitWith {
         _unit enableSimulationGlobal true;
         _unit hideObjectGlobal false;
         TRACE_4("Handle Client Connect - Not Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
+    } else {
+        TRACE_1("Handle Client Connect - Delayed Is Player",_unit,isObjectHidden _unit,isPlayer _unit,getPlayerUID _unit);
     };
 }, [_unit, CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
