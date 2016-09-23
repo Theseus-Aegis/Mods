@@ -6,10 +6,10 @@
  * 0: Player <OBJECT>
  *
  * Return Value:
- * Successfully Loaded <BOOL>
+ * None
  *
  * Example:
- * _success = [player] call tac_apollo_fnc_playerLoadClient
+ * [player] call tac_apollo_fnc_playerLoadClient
  *
  * Public: No
  */
@@ -17,18 +17,8 @@
 
 params ["_player"];
 
-_player allowDamage false;
-
-removeHeadgear _player:
-removeGoggles _player;
-removeVest _player;
-removeBackpack _player;
-removeUniform _player;
-removeAllWeapons _player:
-removeAllAssignedItems _player;
-
 TRACE_1("Loading Client",_player);
-private _return = false;
+private _success = false;
 
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
@@ -47,7 +37,7 @@ if (_loadData == "loaded") then {
             if (_loadData == "done") then {
                 // Initialization complete
                 _updateInfo = false;
-                _return = true;
+                _success = true;
             } else {
                 _codePacket = _loadData select [17, count _loadData];
                 //TRACE_1("Code Packet",_codePacket);
@@ -57,16 +47,22 @@ if (_loadData == "loaded") then {
     };
 };
 
-if (!_return) then {
-    ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
-    ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
-} else {
+if (_success) then {
     // Validate
     [QGVAR(savePlayer), [_player, "validate"]] call CBA_fnc_serverEvent;
+
     // Has to be executed where unit is local
     _player allowDamage true;
-    // Save load time to prevent instant saving after load
-    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-};
 
-_return
+    // Allow saving and save load time to prevent instant saving after load
+    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+
+    // Save on each inventory change and periodically with a delay between each save
+    ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
+    [FUNC(playerSaveClient), [_player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
+
+    ACE_LOGINFO("Client loaded successfully.");
+} else {
+    ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
+    ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+};

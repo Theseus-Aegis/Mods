@@ -40,12 +40,8 @@ if (!hasInterface) exitWith {};
         };
     }] call CBA_fnc_addEventHandler;
 
-    // Load player and exit if loading failed
-    if !([player] call FUNC(playerLoadClient)) exitWith {};
-
-    // Save on each inventory change and every 10s with a delay between each save
-    ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
-    [FUNC(playerSaveClient), [player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
-
-    ACE_LOGINFO("Client loaded successfully.");
+    // Load client, add inventory one frame after removing initial inventory to prevent possible inventory desync
+    player allowDamage false;
+    player setUnitLoadout [[],[],[],[],[],[],"","",[],["","","","","",""]];
+    [FUNC(playerLoadClient), [player]] call CBA_fnc_execNextFrame;
 }] call CBA_fnc_addEventHandler;
