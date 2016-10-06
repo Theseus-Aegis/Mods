@@ -16,6 +16,7 @@ import winreg
 MAINDIR = "x"
 PROJECTDIR = "tac"
 CBA = "P:\\x\\cba"
+ACE = "P:\\z\\ace"
 ##########################
 
 def main():
@@ -38,8 +39,10 @@ def main():
     [Arma 3 installation directory]\\{} => TAC project folder
     P:\\{}                              => TAC project folder
 
-  It will also copy the required CBA includes to {}, if you do not have the CBA source code already.""".format(FULLDIR,FULLDIR,CBA))
-    print("\n")
+  It will also copy the required includes, if you do not have their source code already:
+    CBA  => {}
+    ACE3 => {}
+    \n""".format(FULLDIR,FULLDIR,CBA,ACE))
 
     try:
         reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
@@ -109,6 +112,22 @@ def main():
         return 7
 
     print("# CBA includes copied successfully to {}.".format(CBA))
+
+
+    print("\n# Copying required ACE3 includes ...")
+
+    if os.path.exists(ACE):
+        print("{} already exists, skipping.".format(ACE))
+        return -1
+
+    try:
+        shutil.copytree(os.path.join(projectpath, "tools", "ace"), ACE)
+    except:
+        raise
+        print("Something went wrong while copying ACE3 includes. Please copy tools\\ace to {} manually.".format(ACE))
+        return 7
+
+    print("# ACE3 includes copied successfully to {}.".format(ACE))
 
     return 0
 
