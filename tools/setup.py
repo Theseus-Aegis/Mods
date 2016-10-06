@@ -100,34 +100,30 @@ def main():
 
     print("\n# Copying required CBA includes ...")
 
-    if os.path.exists(CBA):
+    if not os.path.exists(CBA):
+        try:
+            shutil.copytree(os.path.join(projectpath, "tools", "cba"), CBA)
+            print("# CBA includes copied successfully to {}.".format(CBA))
+        except:
+            raise
+            print("Something went wrong while copying CBA includes. Please copy tools\\cba to {} manually.".format(CBA))
+            return 7
+    else:
         print("{} already exists, skipping.".format(CBA))
-        return -1
-
-    try:
-        shutil.copytree(os.path.join(projectpath, "tools", "cba"), CBA)
-    except:
-        raise
-        print("Something went wrong while copying CBA includes. Please copy tools\\cba to {} manually.".format(CBA))
-        return 7
-
-    print("# CBA includes copied successfully to {}.".format(CBA))
 
 
     print("\n# Copying required ACE3 includes ...")
 
-    if os.path.exists(ACE):
+    if not os.path.exists(ACE):
+        try:
+            shutil.copytree(os.path.join(projectpath, "tools", "ace"), ACE)
+            print("# ACE3 includes copied successfully to {}.".format(ACE))
+        except:
+            raise
+            print("Something went wrong while copying ACE3 includes. Please copy tools\\ace to {} manually.".format(ACE))
+            return 8
+    else:
         print("{} already exists, skipping.".format(ACE))
-        return -1
-
-    try:
-        shutil.copytree(os.path.join(projectpath, "tools", "ace"), ACE)
-    except:
-        raise
-        print("Something went wrong while copying ACE3 includes. Please copy tools\\ace to {} manually.".format(ACE))
-        return 7
-
-    print("# ACE3 includes copied successfully to {}.".format(ACE))
 
     return 0
 
