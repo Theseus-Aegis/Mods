@@ -24,7 +24,7 @@ if (getNumber (_config >> "transportMaxBackpacks") == 0 ||
     {getNumber (_config >> "transportMaxMagazines") == 0} ||
     {getNumber (_config >> "transportMaxWeapons") == 0}
 ) exitWith {
-    ACE_LOGWARNING_1("Armory cannot be added to an object without inventory. Object classname: %1",_objectClass);
+    WARNING_1("Armory cannot be added to an object without inventory. Object classname: %1",_objectClass);
 };
 
 if (isClass (_config >> "ACE_Actions" >> "ACE_MainActions" >> QGVAR(Open))) then {

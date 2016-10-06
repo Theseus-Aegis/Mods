@@ -53,11 +53,11 @@ if (_retrieveVehicles == "ready") then {
     GVAR(vehiclesLoaded) = true;
     publicVariable QGVAR(vehiclesLoaded);
 
-    ACE_LOGINFO_1("%1 vehicles loaded.",count _vehList);
+    INFO_1("%1 vehicles loaded.",count _vehList);
     TRACE_1("Vehicles loaded",_vehList);
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;
 } else {
-    ACE_LOGERROR("Failed to retrieve vehicles list!");
+    ERROR("Failed to retrieve vehicles list!");
 };

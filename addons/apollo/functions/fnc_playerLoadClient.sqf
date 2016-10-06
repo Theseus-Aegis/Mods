@@ -58,7 +58,7 @@ if (_loadData == "loaded") then {
 };
 
 if (!_return) then {
-    ACE_LOGERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
+    ERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
 } else {
     // Validate

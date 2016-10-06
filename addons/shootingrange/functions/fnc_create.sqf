@@ -53,27 +53,27 @@ params [
 
 // Verify data
 if (_targets isEqualTo [] || {_controllers isEqualTo []}) exitWith {
-    ACE_LOGERROR_1("Targets and Controllers fields/arguments must NOT be empty! (%1)",_name);
+    ERROR_1("Targets and Controllers fields/arguments must NOT be empty! (%1)",_name);
 };
 
 if ((count _hits > 1 && count _hits < count _targets) || {count _hits > count _targets}) exitWith {
-    ACE_LOGERROR_1("Hits field/argument must have exactly 1 element ot equal elements as Targets fields/arguments! (%1)",_name);
+    ERROR_1("Hits field/argument must have exactly 1 element ot equal elements as Targets fields/arguments! (%1)",_name);
 };
 
 if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
-    ACE_LOGERROR_1("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used! (%1)",_name);
+    ERROR_1("Trigger Markers field/argument must have the same number of elements as Targets field/argument when Trigger Mode is used! (%1)",_name);
 };
 if (_mode == 4 && {count _triggerMarkers < count _targetsInvalid}) exitWith {
-    ACE_LOGERROR_1("Invalid Targets field/argument must have equal or less elements than Trigger Markers and Targets fields/arguments when Trigger Mode is used! (%1)",_name);
+    ERROR_1("Invalid Targets field/argument must have equal or less elements than Trigger Markers and Targets fields/arguments when Trigger Mode is used! (%1)",_name);
 };
 
 if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
-    ACE_LOGWARNING_1("Default Countdown Time field/argument is below 5! Value set to default. (%1)",_name);
+    WARNING_1("Default Countdown Time field/argument is below 5! Value set to default. (%1)",_name);
     _defaultCountdownTime = COUNTDOWNTIME_DEFAULT;
 };
 {
     if (_x < COUNTDOWNTIME_LOWEST) then {
-        ACE_LOGWARNING_1("Countdown Times field/argument contains a value below 5! Removed value. (%1)",_name);
+        WARNING_1("Countdown Times field/argument contains a value below 5! Removed value. (%1)",_name);
         _countdownTimes deleteAt _forEachIndex;
     };
 } forEach _countdownTimes;

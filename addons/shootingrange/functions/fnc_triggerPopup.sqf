@@ -20,7 +20,7 @@ params ["_target", "_state"];
 
 private _targetGroup = _target getVariable [QGVAR(targetGroup), []];
 
-if (_targetGroup isEqualTo []) exitWith { ACE_LOGERROR("Target Group empty!"); };
+if (_targetGroup isEqualTo []) exitWith { ERROR("Target Group empty!"); };
 
 {
     // Animate only targets that haven't been cleared yet

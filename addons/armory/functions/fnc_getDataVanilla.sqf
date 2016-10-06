@@ -20,7 +20,7 @@ params ["_selectedCategory"];
 private _object = ACE_player getVariable [QGVAR(object), objNull];
 
 if (isNull _object) exitWith {
-    ACE_LOGERROR_1("Object non-existent: %1",_object);
+    ERROR_1("Object non-existent: %1",_object);
     []
 };
 
