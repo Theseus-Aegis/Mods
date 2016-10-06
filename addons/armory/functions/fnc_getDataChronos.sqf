@@ -19,7 +19,7 @@ params ["_selectedCategory"];
 
 // Exit if Apollo not loaded
 if !(["tac_apollo"] call ace_common_fnc_isModLoaded) exitWith {
-    ACE_LOGERROR("Apollo is not loaded! Chronos data cannot be retrieved.");
+    ERROR("Apollo is not loaded! Chronos data cannot be retrieved.");
     false
 };
 
@@ -55,7 +55,7 @@ if (_loadData == "loaded") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
-    ACE_LOGERROR("Armory data failed to load!");
+    ERROR("Armory data failed to load!");
     [LSTRING(ChronosError), 2.5] call ACE_Common_fnc_displayTextStructured;
     false
 };

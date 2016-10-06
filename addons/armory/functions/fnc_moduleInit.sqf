@@ -22,4 +22,4 @@ if (!_activated) exitWith {};
 
 [_logic, QGVAR(system), "system"] call ACE_Common_fnc_readSettingFromModule;
 
-ACE_LOGINFO("Armory Module Initialized.");
+INFO("Armory Module Initialized.");

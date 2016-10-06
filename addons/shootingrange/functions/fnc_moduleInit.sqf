@@ -83,4 +83,4 @@ private _showHits = _logic getVariable "ShowHits";
 // Prepare with actions
 [_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources, _hits, _showHits] call FUNC(create);
 
-ACE_LOGINFO_1("Shooting Range Module Initialized (%1)",_name);
+INFO_1("Shooting Range Module Initialized (%1)",_name);

@@ -33,10 +33,10 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
 if (_selectedItem == "" || _selectedAmount == "") exitWith {
-    ACE_LOGERROR_2("Send data called with empty variables! Item: %1, Amount: %2",_selectedItem,_selectedAmount);
+    ERROR_2("Send data called with empty variables! Item: %1, Amount: %2",_selectedItem,_selectedAmount);
 };
 if (isNull _object) exitWith {
-    ACE_LOGERROR("Object is nil");
+    ERROR("Object is nil");
 };
 
 // Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents

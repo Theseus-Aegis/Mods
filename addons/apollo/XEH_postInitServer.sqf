@@ -5,7 +5,7 @@
 
     // Check JNI presence
     if ("jni" callExtension "version" == "") exitWith {
-        ACE_LOGERROR("Failed to initialize - Missing JNI extension!");
+        ERROR("Failed to initialize - Missing JNI extension!");
     };
 
     // Set server type (debug or live) globally
@@ -44,5 +44,5 @@
 
     [QGVAR(lockerAction), FUNC(lockerAction)] call CBA_fnc_addEventHandler;
 
-    ACE_LOGINFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug));
+    INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug));
 }] call CBA_fnc_addEventHandler;

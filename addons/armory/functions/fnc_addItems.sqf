@@ -27,17 +27,17 @@ params [
 ];
 
 if (isNull _object) exitWith {
-    ACE_LOGERROR_1("Non-existent object: %1",_object);
+    ERROR_1("Non-existent object: %1",_object);
     false
 };
 
 if (GVAR(system) != 0) exitWith {
-    ACE_LOGERROR_1("Items cannot be added to Armory using non-Vanilla system: %1",GVAR(system));
+    ERROR_1("Items cannot be added to Armory using non-Vanilla system: %1",GVAR(system));
     false
 };
 
 if (_armoryData isEqualTo []) exitWith {
-    ACE_LOGERROR_1("No items data supplied: %1",_armoryData);
+    ERROR_1("No items data supplied: %1",_armoryData);
     false
 };
 
