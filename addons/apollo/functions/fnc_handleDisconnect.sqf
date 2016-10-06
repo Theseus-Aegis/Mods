@@ -21,7 +21,7 @@ params ["_unit", "", "_uid"];
 TRACE_1("Handle Disconnect",_this);
 
 if (isNull _unit) exitWith {
-    ACE_LOGERROR_1("Player not saved on disconnect - null unit (UID: %1)!",getPlayerUID _player);
+    ERROR_1("Player not saved on disconnect - null unit (UID: %1)!",getPlayerUID _player);
 };
 
 [_unit, _uid, "save"] call FUNC(playerSingletonSave);
