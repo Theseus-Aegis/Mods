@@ -25,12 +25,13 @@ if (_periodic) then {
     [FUNC(playerSaveClient), [_player, [], _periodic], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 };
 
-// Only save if not remote controlling a unit and more than 10 seconds have passed from previous save
+// Exit if delay has not passed yet
 private _delay = [SAVE_DELAY_INV_CHANGE, SAVE_DELAY_PERIODIC] select _periodic;
 if ((_player getVariable [QGVAR(lastSavedTime), CBA_missionTime]) + _delay > CBA_missionTime) exitWith {
     TRACE_1("Save - Not Saving (Delay Running)",CBA_missionTime);
 };
 
+// Exit if remote controlling a unit or the player is still invisible
 if (_player != player || {isNull _player} || {!alive _player} || {isObjectHidden _player}) exitWith {
     TRACE_1("Save - Not Saving",CBA_missionTime);
 };
