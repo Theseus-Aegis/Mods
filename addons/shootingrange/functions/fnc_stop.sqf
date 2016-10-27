@@ -65,6 +65,14 @@ if (_success) then {
 
     _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
     [_text, _size + 1, false] call FUNC(notifyVicinity);
+
+    // Print result to server and client RPT
+    _text = [_text, "<br/><br/>", ". "] call CBA_fnc_replace; // Remove double newlines first
+    _text = [_text, "<br/>", ". "] call CBA_fnc_replace;
+    [QGVAR(logResult), _text] call CBA_fnc_serverEvent;
+    if (!isServer) then {
+        INFO_1("%1",_text);
+    };
 } else {
     private _text = format ["%1<br/>%2", localize LSTRING(Range), _name];
     if (GVAR(invalidTargetHit)) then {
