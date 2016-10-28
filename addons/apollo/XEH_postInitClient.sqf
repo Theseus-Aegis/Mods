@@ -31,13 +31,13 @@ if (!hasInterface) exitWith {};
             // Prevent saving during reinitialization
             _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
             // Reinitialize
-            [player] call FUNC(initializeGear);
+            [_player] call FUNC(initializeGear);
 
             [{
                 if (_this call FUNC(playerLoadClient)) then {
                     INFO("Client respawned successfully.")
                 };
-            }, [player]] call CBA_fnc_execNextFrame;
+            }, [_player]] call CBA_fnc_execNextFrame;
         } else {
             ERROR("Connection terminated - Death failed to register!");
             [localize LSTRING(RespawnReinitialization)] call FUNC(endMissionError);

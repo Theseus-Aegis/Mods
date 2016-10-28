@@ -14,7 +14,7 @@
  * Public: No
  */
 #include "script_component.hpp"
-params [["_player", objNull, [objNull]]];
+params ["_player"];
 
 _player allowDamage false;
 _player setUnitLoadout [[],[],[],[],[],[],"","",[],["","","","","",""]];
