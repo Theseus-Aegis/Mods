@@ -3,6 +3,7 @@ PREP(handleConnect);
 PREP(handleDisconnect);
 PREP(handleKilled);
 PREP(handleRespawn);
+PREP(initializeGear);
 PREP(invokeJavaMethod);
 PREP(lockerAction);
 PREP(moduleInit);
