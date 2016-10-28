@@ -1,19 +1,20 @@
 /*
  * Author: alganthe
- * Removes gear and call extension to load gear next frame
+ * Prepare the player for the apollo extension
  *
  * Arguments:
- * None
+ * 0: Target unit <OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * call tac_apollo_fnc_initializeGear
+ * [player] call tac_apollo_fnc_initializeGear
  *
  * Public: No
  */
 #include "script_component.hpp"
+params [["_player", objNull, [objNull]]];
 
-player setUnitLoadout [[],[],[],[],[],[],"","",[],["","","","","",""]];
-[FUNC(playerLoadClient), [player]] call CBA_fnc_execNextFrame;
+_player allowDamage false;
+_player setUnitLoadout [[],[],[],[],[],[],"","",[],["","","","","",""]];
