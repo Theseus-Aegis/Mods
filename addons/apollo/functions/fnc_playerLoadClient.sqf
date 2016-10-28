@@ -61,8 +61,10 @@ if (_success) then {
     ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
     [FUNC(playerSaveClient), [_player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 
-    INFO("Client loaded successfully.");
+    true
 } else {
     ERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
+
+    false
 };
