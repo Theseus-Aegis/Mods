@@ -1,4 +1,5 @@
 #define COMPONENT insignia
+#define COMPONENT_BEAUTIFIED Insignia
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

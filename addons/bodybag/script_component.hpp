@@ -1,4 +1,5 @@
 #define COMPONENT bodybag
+#define COMPONENT_BEAUTIFIED Bodybag
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

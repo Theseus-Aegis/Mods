@@ -1,4 +1,5 @@
 #define COMPONENT difficulties
+#define COMPONENT_BEAUTIFIED Difficulties
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

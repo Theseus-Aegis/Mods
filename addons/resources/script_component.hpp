@@ -1,4 +1,5 @@
 #define COMPONENT resources
+#define COMPONENT_BEAUTIFIED Resources
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

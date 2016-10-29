@@ -1,4 +1,5 @@
 #define COMPONENT ratelmarker
+#define COMPONENT_BEAUTIFIED RATEL Marker
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

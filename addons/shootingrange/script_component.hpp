@@ -1,4 +1,5 @@
 #define COMPONENT shootingrange
+#define COMPONENT_BEAUTIFIED Shooting Range
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

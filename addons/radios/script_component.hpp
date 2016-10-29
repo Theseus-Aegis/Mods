@@ -1,4 +1,5 @@
 #define COMPONENT radios
+#define COMPONENT_BEAUTIFIED Radios
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
