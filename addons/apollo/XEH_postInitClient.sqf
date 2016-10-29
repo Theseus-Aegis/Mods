@@ -7,7 +7,7 @@ if (!hasInterface) exitWith {};
     // Check ApolloClient presenece and version
     private _apolloClientVersion = "ApolloClient" callExtension "version";
     if (_apolloClientVersion == "") exitWith {
-        ERROR("Failed to initialize - Missing ApolloClient extension!");
+        ERROR_MSG("Failed to initialize - Missing ApolloClient extension!");
         ["Your connection has been terminated - Missing ApolloClient extension!"] call FUNC(endMissionError);
     };
     if (_apolloClientVersion != "1.1") exitWith {
