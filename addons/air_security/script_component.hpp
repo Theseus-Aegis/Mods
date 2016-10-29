@@ -1,4 +1,5 @@
 #define COMPONENT air_security
+#define COMPONENT_BEAUTIFIED Air Security
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
