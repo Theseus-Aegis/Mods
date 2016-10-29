@@ -4,18 +4,19 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
+ * 1: Load type ("loaded" or "respawned") <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [player] call tac_apollo_fnc_playerLoadClient
+ * [player, "loaded"] call tac_apollo_fnc_playerLoadClient
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_player"];
+params ["_player", "_loadType"];
 
 TRACE_1("Loading Client",_player);
 private _success = false;
@@ -61,7 +62,7 @@ if (_success) then {
     ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
     [FUNC(playerSaveClient), [_player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 
-    INFO("Client loaded successfully.");
+    INFO_1("Client %1 successfully.",_loadType);
 } else {
     ERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);

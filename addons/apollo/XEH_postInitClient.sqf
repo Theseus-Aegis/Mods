@@ -30,18 +30,14 @@ if (!hasInterface) exitWith {};
         if (_registeredDeath == "done") then {
             // Prevent saving during reinitialization
             _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-            // Reinitialize
-            if ([_player] call FUNC(playerLoadClient)) then {
-                INFO("Client respawned successfully.")
-            };
+            // Reinitialize client
+            [_player, "respawned"] call FUNC(startPlayerLoadClient);
         } else {
             ERROR("Connection terminated - Death failed to register!");
             [localize LSTRING(RespawnReinitialization)] call FUNC(endMissionError);
         };
     }] call CBA_fnc_addEventHandler;
 
-    // Load client, add inventory one frame after removing initial inventory to prevent possible inventory desync
-    player allowDamage false;
-    player setUnitLoadout [[],[],[],[],[],[],"","",[],["","","","","",""]];
-    [FUNC(playerLoadClient), [player]] call CBA_fnc_execNextFrame;
+    // Load player
+    [player, "loaded"] call FUNC(startPlayerLoadClient);
 }] call CBA_fnc_addEventHandler;
