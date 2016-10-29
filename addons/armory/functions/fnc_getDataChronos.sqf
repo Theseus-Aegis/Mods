@@ -19,7 +19,7 @@ params ["_selectedCategory"];
 
 // Exit if Apollo not loaded
 if !(["tac_apollo"] call ace_common_fnc_isModLoaded) exitWith {
-    ERROR("Apollo is not loaded! Chronos data cannot be retrieved.");
+    ERROR_MSG("Apollo is not loaded! Chronos data cannot be retrieved.");
     false
 };
 
