@@ -1,4 +1,5 @@
 #define COMPONENT apollo
+#define COMPONENT_BEAUTIFIED Apollo
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

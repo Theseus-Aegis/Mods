@@ -1,4 +1,5 @@
 #define COMPONENT armory
+#define COMPONENT_BEAUTIFIED Armory
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define ADD_DEBUG_ITEMS

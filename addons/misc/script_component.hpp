@@ -1,4 +1,5 @@
 #define COMPONENT misc
+#define COMPONENT_BEAUTIFIED Misc
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
