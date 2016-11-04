@@ -34,8 +34,6 @@
 
 #define POPONTRIGGEREXIT_DEFAULT true
 
-#define HITS_DEFAULT [1]
-#define SHOWHITS_DEFAULT true
 
 #define NOTIFY_DISTANCE 10
 

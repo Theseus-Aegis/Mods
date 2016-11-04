@@ -17,14 +17,14 @@
  * 11: Pop on Trigger Exit <BOOL> (default: true)
  * 12: Invalid Targets <ARRAY> (default: [])
  * 13: Sound Sources <ARRAY> (default: [])
- * 14: Hits <ARRAY> (default: [])
- * 15: Show Hits <BOOL>
+ * 14: Deprecated - used to be: Hits <ARRAY> (default: [1])
+ * 15: Deprecated - used to be: Show Hits <BOOL> (default: true)
  *
  * Return Value:
  * None
  *
  * Example:
- * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2], [2, 2], true] call tac_shootingrange_fnc_create;
+ * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2], nil, nil] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
  */
@@ -47,17 +47,13 @@ params [
     ["_popOnTriggerExit", POPONTRIGGEREXIT_DEFAULT, [true] ],
     ["_targetsInvalid", [], [[]] ],
     ["_soundSources", [], [[]] ],
-    ["_hits", HITS_DEFAULT, [[]] ],
-    ["_showHits", SHOWHITS_DEFAULT, [true] ]
+    "", // deprecated - backwards compatibility
+    "" // deprecated - backwards compatibility
 ];
 
 // Verify data
 if (_targets isEqualTo [] || {_controllers isEqualTo []}) exitWith {
     ERROR_1("Targets and Controllers fields/arguments must NOT be empty! (%1)",_name);
-};
-
-if ((count _hits > 1 && count _hits < count _targets) || {count _hits > count _targets}) exitWith {
-    ERROR_1("Hits field/argument must have exactly 1 element ot equal elements as Targets fields/arguments! (%1)",_name);
 };
 
 if (_mode == 4 && {count _triggerMarkers != count _targets}) exitWith {
@@ -87,12 +83,6 @@ if (_durations isEqualTo []) then {
     _durations = DURATIONS_DEFAULT;
 } else {
     _durations pushBack 0; // Add infinite duration
-};
-
-if (count _hits < 2) then {
-    {
-        _hits pushBack ([_hits select 0, 1] select (_hits isEqualTo []));
-    } forEach _targets;
 };
 
 if (_targetAmounts isEqualTo []) then {
@@ -147,7 +137,6 @@ _countdownTimes sort true;
         _x setVariable [QGVAR(mode), _mode, true];
     };
     _x setVariable [QGVAR(soundSources), _controllers + _soundSources];
-    _x setVariable [QGVAR(showHits), _showHits];
 
     // Main
     private _actionRange = [
@@ -357,8 +346,4 @@ if (_mode == 4) then {
     _x setVariable [QGVAR(targets), _targets];
     _x setVariable [QGVAR(controllers), _controllers];
     _x setVariable [QGVAR(triggers), _triggers];
-
-    if (_x in _targets) then {
-        _x setVariable [QGVAR(hits), _hits select _forEachIndex];
-    };
 } forEach (_targets + _targetsInvalid);

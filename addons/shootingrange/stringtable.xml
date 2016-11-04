@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="ShootingRange">
         <Key ID="STR_TAC_ShootingRange_Range">
@@ -25,13 +25,6 @@
             <English>List of object names used as targets, separated by commas. Can be synchronized objects.</English>
             <German>Liste der Objektnamen, die als Ziele benutzt werden. Durch Kommas trennen. Die Objekte können synchronisiert sein.</German>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_Hits">
-            <English>Hits</English>
-            <German>Treffer</German>
-        </Key>
-        <Key ID="STR_TAC_ShootingRange_HitsDesc">
-            <English>List of numbers used as hits the target takes before falling, separated by commas.</English>
-            <German>Liste der Nummern, die genutzt werden, um die zum Umfallen eines Zieles benötigte Anzahl an Treffern festzulegen. Durch Kommas trennen.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsInvalid">
             <English>Invalid Targets</English>
@@ -144,14 +137,6 @@
         <Key ID="STR_TAC_ShootingRange_PopOnTriggerExitDesc">
             <English>Pop targets down when exiting the trigger. Available in Trigger Mode only.</English>
             <German>Klappt Ziele ab, wenn der Auslöserbereich verlassen wird. Nur im Auslöser-Modus verfügbar.</German>
-        </Key>
-        <Key ID="STR_TAC_ShootingRange_ShowHits">
-            <English>Show Hits</English>
-            <German>Zeige Treffer</German>
-        </Key>
-        <Key ID="STR_TAC_ShootingRange_ShowHitsDesc">
-            <English>Show number of hits out of number of hits necessary on each hit. Available only when more than 1 hit is necessary.</English>
-            <German>Zeige pro Treffer die Anzahl an bisherigen Treffern von der insgesamt benötigten Zahl an Treffern. Nur verfügbar wenn mehr als 1 Treffer benötigt wird.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_Timed">
             <English>Timed</English>

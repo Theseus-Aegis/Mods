@@ -29,9 +29,6 @@ private _name = _logic getVariable "Name";
 private _targets = [_logic getVariable "Targets", true, true] call ACE_Common_fnc_parseList;
 _targets append (synchronizedObjects _logic);
 
-// Extract hits and convert to numbers
-private _hits = ([_logic getVariable "Hits", true, false] call ACE_Common_fnc_parseList) apply {parseNumber _x};
-
 // Extract invalid target objects and manually check nil (use object if exists, otherwise objNull)
 private _targetsInvalid = [_logic getVariable "TargetsInvalid", true, false] call ACE_Common_fnc_parseList;
 _targetsInvalid = _targetsInvalid apply { [missionNamespace getVariable _x, objNull] select (isNil _x) };
@@ -76,11 +73,8 @@ private _triggerMarkers = [_logic getVariable "TriggerMarkers", true, false] cal
 // Extract pop targets down on trigger exit setting
 private _popOnTriggerExit = _logic getVariable "PopOnTriggerExit";
 
-// Extract show hits setting
-private _showHits = _logic getVariable "ShowHits";
-
 
 // Prepare with actions
-[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources, _hits, _showHits] call FUNC(create);
+[_name, _targets, _controllers, _mode, _durations, _defaultDuration, _targetAmounts, _defaultTargetAmount, _pauseDurations, _defaultPauseDuration, _countdownTimes, _defaultCountdownTime, _triggerMarkers, _popOnTriggerExit, _targetsInvalid, _soundSources] call FUNC(create);
 
 INFO_1("Shooting Range Module Initialized (%1)",_name);
