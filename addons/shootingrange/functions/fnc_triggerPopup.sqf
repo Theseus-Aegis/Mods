@@ -24,7 +24,7 @@ if (_targetGroup isEqualTo []) exitWith { ERROR("Target Group empty!"); };
 
 {
     // Animate only targets that haven't been cleared yet
-    if (_x getVariable [QGVAR(hit), 0] < _x getVariable [QGVAR(hits), 1]) then {
+    if !(_x getVariable [QGVAR(hit), false]) then {
         [_x, _state] call FUNC(animateTarget);
     };
 } forEach _targetGroup;

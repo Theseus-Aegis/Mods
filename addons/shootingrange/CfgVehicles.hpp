@@ -23,12 +23,6 @@ class CfgVehicles {
                 typeName = "STRING";
                 defaultValue = "";
             };
-            class Hits {
-                displayName = CSTRING(Hits);
-                description = CSTRING(HitsDesc);
-                typeName = "STRING";
-                defaultValue = "";
-            };
             class TargetsInvalid {
                 displayName = CSTRING(TargetsInvalid);
                 description = CSTRING(TargetsInvalidDesc);
@@ -132,12 +126,6 @@ class CfgVehicles {
             class PopOnTriggerExit {
                 displayName = CSTRING(PopOnTriggerExit);
                 description = CSTRING(PopOnTriggerExitDesc);
-                typeName = "BOOL";
-                defaultValue = 1;
-            };
-            class ShowHits {
-                displayName = CSTRING(ShowHits);
-                description = CSTRING(ShowHitsDesc);
                 typeName = "BOOL";
                 defaultValue = 1;
             };

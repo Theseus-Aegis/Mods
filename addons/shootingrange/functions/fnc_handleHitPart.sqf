@@ -1,7 +1,7 @@
 /*
  * Author: Jonpas
  * Handles hit part event handler.
- * Incorporated vanilla handlers from "a3\structures_f\training\data\scripts"
+ * Incorporated vanilla handlers from "a3\structures_f\training\data\scripts".
  *
  * Arguments:
  * 0: Target <OBJECT>
@@ -70,27 +70,10 @@ if (_shooter != _starter) exitWith {
 };
 
 
-private _hits = _target getVariable [QGVAR(hits), 1];
-private _hit = _target getVariable [QGVAR(hit), 0];
-
-// Exit if target already hit
-if (_hit >= _hits) exitWith {};
-
 // Mark target as hit
-_hit = _hit + 1;
-_target setVariable [QGVAR(hit), _hit];
+_target setVariable [QGVAR(hit), true]; // For trigger popup
 [_controller, "Beep_Target"] call FUNC(playSoundSignal);
 GVAR(score) = GVAR(score) + 1;
-
-if (_hits > 1 && {_controller getVariable [QGVAR(showHits), true]}) then {
-    [[_hit, _hits] joinString "/"] call ACE_Common_fnc_displayTextStructured;
-};
-
-TRACE_2("Hit",_hits,_hit);
-
-// Exit if not enough hits yet
-if (_hit < _hits) exitWith {};
-
 [_target, 1] call FUNC(animateTarget); // Down
 
 // Set next target
@@ -104,7 +87,7 @@ if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [
     GVAR(nextTarget) = selectRandom (_targets - [_target]);
 
     // Mark target as not yet hit
-    GVAR(nextTarget) setVariable [QGVAR(hit), 0];
+    GVAR(nextTarget) setVariable [QGVAR(hit), false];
 
     // Animate target
     _target setDamage 0;
