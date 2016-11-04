@@ -95,7 +95,7 @@ if (_allTargetsNewControllers isEqualTo [] || {!(_allTargetsNewControllers isEqu
 {
     _x setVariable [QGVAR(targetsRuntime), _targetsNew];
     _x setVariable [QGVAR(targetsInvalidRuntime), _targetsInvalidNew];
-} forEach (_targetsOld + _targetsInvalidOld);
+} forEach _allTargetsOld;
 
 
 if (_mode == 5 && {count _targetsNew != count _targetsOld}) then {

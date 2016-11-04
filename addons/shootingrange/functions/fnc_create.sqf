@@ -335,7 +335,7 @@ if (_mode == 4) then {
         private _target = _targets select _forEachIndex;
         private _controller = _controllers select 0;
         _trigger setTriggerStatements [
-            format ["[%1, %2, %3] call %4", _controller, _target, _forEachIndex, QFUNC(canActivateTrigger)],
+            format ["[%1, %2] call %3", _controller, _target, QFUNC(canActivateTrigger)],
             format ["[%1, %2] call %3", _target, 0, QFUNC(triggerPopup)],
             format ["if (%1) then { [%2, %3] call %4 }", _popOnTriggerExit, _target, 1, QFUNC(triggerPopup)]
         ];

@@ -107,7 +107,6 @@ if (_mode > 1) then {
 
         GVAR(targetGroup) = (_targets select 0) getVariable [QGVAR(targetGroup), nil];
         GVAR(targetGroupIndex) = 0;
-        GVAR(timeStartCountdown) = CBA_missionTime;
     };
 } else {
     GVAR(lastPauseTime) = 0;
