@@ -24,7 +24,10 @@
  * None
  *
  * Example:
- * ["range", [target1, target2], [controller1, controller2], 1, [30, 60], 60,  [3, 5], 5, 10, [marker1, marker2], nil, nil] call tac_shootingrange_fnc_create;
+ * [
+ *     "range", [target1, target2], [controller1, controller2], 1, [30, 60], 60, [3, 5], 5, 10, [5, 9],
+ *     [marker1, marker2], true, [invalidTarget1, invalidTarget2], [source1, source2]
+ * ] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
  */
@@ -344,6 +347,7 @@ if (_mode == 4) then {
 // Set up targets
 {
     _x setVariable [QGVAR(targets), _targets];
+    _x setVariable [QGVAR(targetsInvalid), _targetsInvalid];
     _x setVariable [QGVAR(controllers), _controllers];
     _x setVariable [QGVAR(triggers), _triggers];
 } forEach (_targets + _targetsInvalid);

@@ -7,12 +7,13 @@
  * 1: Controllers <ARRAY>
  * 2: Name <STRING>
  * 3: Targets <ARRAY>
+ * 4: Invalid Targets <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [controller, [controller1, controller2], "range", [target1, target2]] call tac_shootingrange_fnc_start;
+ * [controller, [controller1, controller2], "range", [target1, target2], [invalidTarget1, invalidTarget2]] call tac_shootingrange_fnc_start;
  *
  * Public: No
  */
@@ -113,7 +114,7 @@ if (_mode > 1) then {
 };
 
 // Public API event
-[QGVAR(started), [_controller, _mode, _playerName, _targets]] call CBA_fnc_localEvent;
+[QGVAR(started), [_controller, _name, _mode, _targets, _targetsInvalid]] call CBA_fnc_localEvent;
 
 // Countdown timer notifications
 {
@@ -143,6 +144,8 @@ if (_mode > 1) then {
     // Use targets set by API on runtime if they exist
     private _targetsRuntime = (_targets select 0) getVariable [QGVAR(targetsRuntime), []];
     _targets = [_targetsRuntime, _targets] select (_targetsRuntime isEqualTo []);
+    private _targetsInvalidRuntime = (_targets select 0) getVariable [QGVAR(targetsInvalidRuntime), []];
+    _targetsInvalid = [_targetsInvalidRuntime, _targetsInvalid] select (_targetsInvalidRuntime isEqualTo []);
 
     // Final countdown notification
     [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
