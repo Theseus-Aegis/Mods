@@ -35,15 +35,15 @@ if (_name == "") exitWith {
     false
 };
 if (isNull _controller) exitWith {
-    ERROR_1("Controller invalid on%1! Unable to configure on run-time!",_name);
+    ERROR_1("Controller invalid on Shooting Range%1! Unable to configure on run-time!",_name);
     false
 };
 if (_mode < 1 || {_mode > 5}) exitWith {
-    ERROR_1("No shooting range found on%1! Unable to configure on run-time!",_name);
+    ERROR_1("No shooting range found on Shooting Range%1! Unable to configure on run-time!",_name);
     false
 };
 if (_mode == 4) exitWith {
-    ERROR_1("Run-time configuration for Trigger mode not supported on%1!",_name);
+    ERROR_1("Run-time configuration for Trigger mode not supported on Shooting Range%1!",_name);
     false
 };
 
@@ -59,7 +59,7 @@ private _targetsOld = (_targetsNew select 0) getVariable [QGVAR(targets), []];
 private _targetsInvalidOld = (_targetsNew select 0) getVariable [QGVAR(targetsInvalid), []];
 
 if (_targetsOld isEqualTo []) exitWith {
-    ERROR_1("Unknown error on%1! Unable to retrieve data for run-time configuration!",_name);
+    ERROR_1("Unknown error on Shooting Range%1! Unable to retrieve data for run-time configuration!",_name);
     false
 };
 
@@ -67,7 +67,7 @@ private _allTargetsNew = _targetsNew + _targetsInvalidNew;
 private _allTargetsOld = _targetsOld + _targetsInvalidOld;
 
 if (!(_targetsNew isEqualTo []) && {count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0}) exitWith {
-    ERROR_1("Unknown (invalid) target found on%1! Only targets defined on mission start can be configured at run-time!",_name);
+    ERROR_1("Unknown (invalid) target found on Shooting Range%1! Only targets defined on mission start can be configured at run-time!",_name);
     false
 };
 
@@ -86,7 +86,7 @@ private _allTargetsOldControllers = [];
 } forEach _allTargetsOld;
 
 if (_allTargetsNewControllers isEqualTo [] || {!(_allTargetsNewControllers isEqualTo _allTargetsOldControllers)}) exitWith {
-    ERROR_1("Controllers not matching for old and new targets on%1! Make sure targets from other ranges or non-defined targets are not used!",_name);
+    ERROR_1("Controllers not matching for old and new targets on Shooting Range%1! Make sure targets from other ranges or non-defined targets are not used!",_name);
     false
 };
 
