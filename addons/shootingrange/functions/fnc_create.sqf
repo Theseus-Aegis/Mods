@@ -34,7 +34,7 @@
 #include "script_component.hpp"
 
 params [
-    ["_name", [""], [""] ],
+    ["_name", "", [""] ],
     ["_targets", [], [[]] ],
     ["_controllers", [], [[]] ],
     ["_mode", MODE_DEFAULT, [0] ],
@@ -124,6 +124,8 @@ _countdownTimes sort true;
 
 // Set up default configuration and interactions
 {
+    _x setVariable [QGVAR(targets), _targets];
+    _x setVariable [QGVAR(targetsInvalid), _targetsInvalid];
     if (_x getVariable [QGVAR(duration), 0] == 0) then {
         _x setVariable [QGVAR(duration), _defaultDuration, true];
     };

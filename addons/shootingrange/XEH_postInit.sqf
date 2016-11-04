@@ -27,8 +27,8 @@ if (!hasInterface) exitWith {};
     systemChat format ["Old: %1 - %2", _targets, _targetsInvalid];
 
     // Modified
-    private _targetsNew = [_targets select 0, _targets select 1];
-    private _targetsInvalidNew = _targetsInvalid + [_targets select 3, _targets select 4];
+    private _targetsNew = [_targets select 0, _targets select 1] + _targetsInvalid;
+    private _targetsInvalidNew = _targetsInvalid + [_targets select 2, _targets select 3, _targets select 4];
     systemChat format ["New: %1 - %2", _targetsNew, _targetsInvalidNew];
 
     // Configure

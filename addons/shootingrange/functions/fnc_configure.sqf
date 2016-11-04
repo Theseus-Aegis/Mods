@@ -1,6 +1,7 @@
 /*
  * Author: Jonpas
- * Configures shooting range post-start. Used to modify (eg. randomize targets) range on run-time. Should be called from started event locally.
+ * Configures shooting range on run-time, to modify (eg. randomize targets) range dynamically. Should be called from started event locally.
+ * Use [] to keep old configuration for the parameter.
  * Not available for Trigger mode!
  *
  * Arguments:
@@ -20,10 +21,24 @@
  */
 #include "script_component.hpp"
 
-params ["_controller", "_name", "_mode", ["_targetsNew", []], ["_targetsInvalidNew", []]];
+params [
+    ["_controller", objNull, [objNull] ],
+    ["_name", "", [""] ],
+    ["_mode", 0, [0] ],
+    ["_targetsNew", [], [[]] ],
+    ["_targetsInvalidNew", [], [[]] ]
+];
 
 // Verify data
-if (_mode == 0) exitWith {
+if (_name == "") exitWith {
+    ERROR("Name invalid! Unable to configure on run-time!");
+    false
+};
+if (isNull _controller) exitWith {
+    ERROR_1("Controller invalid on%1! Unable to configure on run-time!",_name);
+    false
+};
+if (_mode < 1 || {_mode > 5}) exitWith {
     ERROR_1("No shooting range found on%1! Unable to configure on run-time!",_name);
     false
 };
@@ -32,13 +47,26 @@ if (_mode == 4) exitWith {
     false
 };
 
+// Remove one from the other if found in both (targets have priority over invalid targets)
+if (_targetsNew isEqualTo []) then {
+    _targetsNew = (_controller getVariable [QGVAR(targets), []]) select {!(_x in _targetsInvalidNew)};
+};
+if (_targetsInvalidNew isEqualTo []) then {
+    _targetsInvalidNew = (_controller getVariable [QGVAR(targetsInvalid), []]) select {!(_x in _targetsNew)};
+};
+
 private _targetsOld = (_targetsNew select 0) getVariable [QGVAR(targets), []];
 private _targetsInvalidOld = (_targetsNew select 0) getVariable [QGVAR(targetsInvalid), []];
+
+if (_targetsOld isEqualTo []) exitWith {
+    ERROR_1("Unknown error on%1! Unable to retrieve data for run-time configuration!",_name);
+    false
+};
 
 private _allTargetsNew = _targetsNew + _targetsInvalidNew;
 private _allTargetsOld = _targetsOld + _targetsInvalidOld;
 
-if (count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0) exitWith {
+if (!(_targetsNew isEqualTo []) && {count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0}) exitWith {
     ERROR_1("Unknown (invalid) target found on%1! Only targets defined on mission start can be configured at run-time!",_name);
     false
 };
