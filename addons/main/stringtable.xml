@@ -19,6 +19,7 @@
         </Key>
         <Key ID="STR_TAC_Main_Attributes">
             <English>TAC Attributes</English>
+            <German>TAC Attribute</German>
         </Key>
     </Package>
 </Project>

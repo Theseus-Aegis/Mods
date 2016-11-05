@@ -25,7 +25,6 @@
             <English>List of object names used as targets, separated by commas. Can be synchronized objects.</English>
             <German>Liste der Objektnamen, die als Ziele benutzt werden. Durch Kommas trennen. Die Objekte können synchronisiert sein.</German>
         </Key>
-        </Key>
         <Key ID="STR_TAC_ShootingRange_TargetsInvalid">
             <English>Invalid Targets</English>
             <German>Ungültige Ziele</German>
