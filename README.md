@@ -28,7 +28,7 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 
 [Release Build](tools/make.py) command line:
 ```
-make.py force checkexternal version release MAJOR.MINOR.PATCH
+make.py version increment_build <other-increment-args> force checkexternal release
 ```
 
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
