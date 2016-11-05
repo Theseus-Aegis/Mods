@@ -2,10 +2,7 @@
 
 #define PREFIX tac
 
-#define MAJOR 1
-#define MINOR 8
-#define PATCHLVL 2
-#define BUILD 0
+#include "script_version.hpp"
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
