@@ -21,4 +21,9 @@
 #define __WARNING 0
 #define __PASS 1
 
-#define COLUMN_SIZE 0, 0.05
+#define FINDINGS_COLUMN_SIZE 0, 0.05
+
+// Limits
+#define GROUP_SIZE_WARNING 100
+#define AI_AMOUNT_WARNING 100
+#define AI_AMOUNT_ERROR 150

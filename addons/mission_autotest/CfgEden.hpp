@@ -310,7 +310,7 @@ class Cfg3DEN {
                     drawSideArrows = 0;
                     idcLeft = -1;
                     idcRight = -1;
-                    columns[] = {COLUMN_SIZE};
+                    columns[] = {FINDINGS_COLUMN_SIZE};
                     disableOverflow = 1;
                 };
             };

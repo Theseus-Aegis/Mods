@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * None
+ * Findings <ARRAY>
  *
  * Example:
  * [] call tac_mission_autotest_fnc_testInit
@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-private _output = [];
+private _findings = [];
 {
     (_x get3DENAttribute 'Init') params ["_init", ""];
     _init = toLower _init;
@@ -29,7 +29,7 @@ private _output = [];
         case (_count < 50): {};
         case (_count < 150): {
             if (!_isServer && {!_isLocal}) then {
-                _output pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
+                _findings pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
             };
         };
         // >= 150
@@ -37,19 +37,19 @@ private _output = [];
             // check _VA
             if (_VA) then {
                 if (_isServer || {_isLocal}) then {
-                    _output pushBack [__WARNING, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];
+                    _findings pushBack [__WARNING, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];
                 } else {
-                    _output pushBack [__ERROR, format [localize LSTRING(VirtualArsenalCodeDetectedAndNoChecks), _x]];
+                    _findings pushBack [__ERROR, format [localize LSTRING(VirtualArsenalCodeDetectedAndNoChecks), _x]];
                 };
             } else {
                 if (!_isServer && {!_isLocal}) then {
-                    _output pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
+                    _findings pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
                 };
             };
         };
     };
 } forEach (all3DENEntities select 0);
 
-_output pushBack [_PASS, format [localize LSTRING(InitFieldCheckCompleted), count _output]];
+_findings pushBack [_PASS, format [localize LSTRING(InitFieldCheckCompleted), count _findings]];
 
-_output
+_findings

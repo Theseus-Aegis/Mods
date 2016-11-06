@@ -17,36 +17,16 @@
 
 // Fix entries positioning
 private _ctrlListbox = _this controlsGroupCtrl 101;
-_ctrlListbox lnbSetColumnsPos [COLUMN_SIZE];
+_ctrlListbox lnbSetColumnsPos [FINDINGS_COLUMN_SIZE];
 
 
 // Do the tests
-private _output = [];
-_output append (call FUNC(testInit));
+private _output = call FUNC(testInit);
+_output append (call FUNC(testGroupSizes));
+_output append (call FUNC(testAIAmount));
 
 
-// Group check
-{
-    private _side = _x;
-    private _groupCount = {(side _x) isEqualTo _side} count allGroups;
-
-    if (_groupCount > 100) then {
-        _output pushBack [__WARNING, format [localize LSTRING(GroupLimit), _side, _groupCount]];
-    }
-} forEach [west, east, civilian, resistance];
-
-// AI amount check
-private _aiCount = allUnits - playableUnits;
-if (_aiCount > 100) then {
-    if (_aiCount > 150) then {
-        _output pushBack [__ERROR, format [localize LSTRING(AIAmount), _aiCount]];
-    } else {
-        _output pushBack [__WARNING, format [localize LSTRING(AIAmount), _aiCount]];
-    };
-};
-
-
-// Set picture
+// Set pictures
 {
     _x params ["_type", "_message"];
     private _lnbAdd = _ctrlListbox lnbAddRow ["", _message];
