@@ -36,8 +36,7 @@ _output append (call FUNC(testInit));
 } forEach [west, east, civilian, resistance];
 
 // AI amount check
-private _aiCount = {!([_x] call ace_common_fnc_isPlayer)} count allUnits;
-
+private _aiCount = allUnits - playableUnits;
 if (_aiCount > 100) then {
     if (_aiCount > 150) then {
         _output pushBack [__ERROR, format [localize LSTRING(AIAmount), _aiCount]];
@@ -45,6 +44,7 @@ if (_aiCount > 100) then {
         _output pushBack [__WARNING, format [localize LSTRING(AIAmount), _aiCount]];
     };
 };
+
 
 // Set picture
 {

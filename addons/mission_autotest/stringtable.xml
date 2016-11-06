@@ -58,5 +58,8 @@
         <Key ID="STR_TAC_Mission_Autotest_AIAmount">
             <English>You have placed %1 AI. You may wish to consider the performance impact.</English>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
+            <English>Should be</English>
+        </Key>
     </Package>
 </Project>

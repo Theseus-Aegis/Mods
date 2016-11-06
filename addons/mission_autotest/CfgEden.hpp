@@ -82,7 +82,7 @@ class Cfg3DEN {
         };
         class GVAR(missionName): Title {
             attributeLoad = QUOTE( \
-                _value = 'Scenario' get3DENMissionAttribute 'IntelBriefingName'; \
+                private _value = 'Scenario' get3DENMissionAttribute 'IntelBriefingName'; \
                 (_this controlsGroupCtrl 100) ctrlSetText _value; \
                 if (_value == '') then { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
@@ -121,7 +121,7 @@ class Cfg3DEN {
         };
         class GVAR(missionDescription): Title {
             attributeLoad = QUOTE( \
-                _value = 'Multiplayer' get3DENMissionAttribute 'IntelOverviewText'; \
+                private _value = 'Multiplayer' get3DENMissionAttribute 'IntelOverviewText'; \
                 (_this controlsGroupCtrl 100) ctrlSetText _value; \
                 if (_value == '' || {_value == '*** Insert mission description here. ***'}) then { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
@@ -160,7 +160,7 @@ class Cfg3DEN {
         };
         class GVAR(author): Title {
             attributeLoad = QUOTE( \
-                _value = 'Scenario' get3DENMissionAttribute 'Author'; \
+                private _value = 'Scenario' get3DENMissionAttribute 'Author'; \
                 (_this controlsGroupCtrl 100) ctrlSetText _value; \
                 if (_value find profileName  == -1) then { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
@@ -198,9 +198,8 @@ class Cfg3DEN {
         };
         class GVAR(minPlayers): Title {
             attributeLoad = QUOTE( \
-                _value = 'Multiplayer' get3DENMissionAttribute 'minplayers'; \
-                _playerCount = (playableUnits + switchableUnits + [player]) - [objNull]; \
-                _playerCount = count (_playerCount arrayIntersect _playerCount); \
+                private _value = 'Multiplayer' get3DENMissionAttribute 'minplayers'; \
+                private _playerCount = count playableUnits; \
                 (_this controlsGroupCtrl 100) ctrlSetText (str _value); \
                 if (_value >= 0 && {_value <= _playerCount}) then { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
@@ -238,13 +237,12 @@ class Cfg3DEN {
         };
         class GVAR(maxPlayers): Title {
             attributeLoad = QUOTE( \
-                _value = 'Multiplayer' get3DENMissionAttribute 'maxplayers'; \
-                _playerCount = (playableUnits + switchableUnits + [player]) - [objNull]; \
-                _playerCount = count (_playerCount arrayIntersect _playerCount); \
+                private _value = 'Multiplayer' get3DENMissionAttribute 'maxplayers'; \
+                private _playerCount = count playableUnits; \
                 (_this controlsGroupCtrl 100) ctrlSetText (str _value); \
                 if (_value != _playerCount) then { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                    (_this controlsGroupCtrl 100) ctrlSetText ((str _value) + ' should be: ' + (str _playerCount)); \
+                    (_this controlsGroupCtrl 100) ctrlSetText (format [ARR_4('%1 (%2: %3)',_value,localize QUOTE(LSTRING(ShouldBe)),_playerCount)]); \
                 } else { \
                     (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
                 };);
