@@ -25,7 +25,7 @@
 #define ERROR_PICTURE QPATHTOF(UI\error.paa)
 #define WARNING_PICTURE QPATHTOF(UI\warning.paa)
 #define PASS_PICTURE QPATHTOF(UI\pass.paa)
-#define MESSAGE_PICTURE "" //@todo
+#define MESSAGE_PICTURE QPATHTOF(UI\message.paa)
 
 #define CTRL_VALUE 100
 #define CTRL_PICTURE 101
