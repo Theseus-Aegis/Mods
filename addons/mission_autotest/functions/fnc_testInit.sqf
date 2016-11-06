@@ -21,7 +21,7 @@ private _findings = [];
     _init = toLower _init;
 
     private _count = count _init;
-    private _VA = _init find "exported from arsenal" != -1;
+    private _virtualArsenal = _init find "exported from arsenal" != -1;
     private _isServer = _init find "isserver" != -1;
     private _isLocal = _init find "local" != -1;
 
@@ -29,27 +29,27 @@ private _findings = [];
         case (_count < 50): {};
         case (_count < 150): {
             if (!_isServer && {!_isLocal}) then {
-                _findings pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
+                _findings pushBack [WARNING_CODE, format [localize LSTRING(LargeInitField), _x, _count]];
             };
         };
         // >= 150
         default {
-            // check _VA
-            if (_VA) then {
+            // check Virtual Arsenal
+            if (_virtualArsenal) then {
                 if (_isServer || {_isLocal}) then {
-                    _findings pushBack [__WARNING, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];
+                    _findings pushBack [WARNING_CODE, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];
                 } else {
-                    _findings pushBack [__ERROR, format [localize LSTRING(VirtualArsenalCodeDetectedAndNoChecks), _x]];
+                    _findings pushBack [ERROR_CODE, format [localize LSTRING(VirtualArsenalCodeDetectedAndNoChecks), _x]];
                 };
             } else {
                 if (!_isServer && {!_isLocal}) then {
-                    _findings pushBack [__WARNING, format [localize LSTRING(LargeInitField), _x, _count]];
+                    _findings pushBack [WARNING_CODE, format [localize LSTRING(LargeInitField), _x, _count]];
                 };
             };
         };
     };
 } forEach (all3DENEntities select 0);
 
-_findings pushBack [_PASS, format [localize LSTRING(InitFieldCheckCompleted), count _findings]];
+_findings pushBack [MESSAGE_CODE, format [localize LSTRING(InitFieldCheckCompleted), count _findings]];
 
 _findings

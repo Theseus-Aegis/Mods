@@ -15,16 +15,13 @@
  */
 #include "script_component.hpp"
 
-// Fix entries positioning
-private _ctrlListbox = _this controlsGroupCtrl 101;
-_ctrlListbox lnbSetColumnsPos [FINDINGS_COLUMN_SIZE];
-
+private _ctrlListbox = _this controlsGroupCtrl CTRL_PICTURE;
+_ctrlListbox lnbSetColumnsPos [FINDINGS_COLUMN_SIZE]; // Fix entries positioning
 
 // Do the tests
-private _output = call FUNC(testInit);
-_output append (call FUNC(testGroupSizes));
-_output append (call FUNC(testAIAmount));
-
+private _findings = call FUNC(testInit);
+_findings append (call FUNC(testGroupSizes));
+_findings append (call FUNC(testAIAmount));
 
 // Set pictures
 {
@@ -32,14 +29,17 @@ _output append (call FUNC(testAIAmount));
     private _lnbAdd = _ctrlListbox lnbAddRow ["", _message];
 
     switch (_type) do {
-        case __ERROR: {
-            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], QPATHTOF(UI\error.paa)];
+        case ERROR_CODE: {
+            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], ERROR_PICTURE];
         };
-        case __WARNING: {
-            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], QPATHTOF(UI\warning.paa)];
+        case WARNING_CODE: {
+            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], WARNING_PICTURE];
         };
-        case __PASS: {
-            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], QPATHTOF(UI\pass.paa)];
+        case PASS_CODE: {
+            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], PASS_PICTURE];
+        };
+        case MESSAGE_CODE: {
+            _ctrlListbox lnbSetPicture [[_lnbAdd, 0], MESSAGE_PICTURE];
         };
     };
-} forEach _output;
+} forEach _findings;

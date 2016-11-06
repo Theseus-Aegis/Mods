@@ -17,10 +17,18 @@
 #include "\x\tac\addons\main\script_macros.hpp"
 
 
-#define __ERROR -1
-#define __WARNING 0
-#define __PASS 1
+#define ERROR_CODE -1
+#define WARNING_CODE 0
+#define PASS_CODE 1
+#define MESSAGE_CODE 2
 
+#define ERROR_PICTURE QPATHTOF(UI\error.paa)
+#define WARNING_PICTURE QPATHTOF(UI\warning.paa)
+#define PASS_PICTURE QPATHTOF(UI\pass.paa)
+#define MESSAGE_PICTURE "" //@todo
+
+#define CTRL_VALUE 100
+#define CTRL_PICTURE 101
 #define FINDINGS_COLUMN_SIZE 0, 0.05
 
 // Limits

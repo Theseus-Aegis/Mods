@@ -17,13 +17,13 @@
 
 private _findings = [];
 
-private _aiAmount = allUnits - playableUnits;
+private _aiAmount = count (allUnits - playableUnits);
 
 if (_aiAmount > AI_AMOUNT_WARNING) then {
     if (_aiAmount > AI_AMOUNT_ERROR) then {
-        _output pushBack [__ERROR, format [localize LSTRING(AIAmount), _aiAmount]];
+        _findings pushBack [ERROR_CODE, format [localize LSTRING(AIAmount), _aiAmount]];
     } else {
-        _output pushBack [__WARNING, format [localize LSTRING(AIAmount), _aiAmount]];
+        _findings pushBack [WARNING_CODE, format [localize LSTRING(AIAmount), _aiAmount]];
     };
 };
 

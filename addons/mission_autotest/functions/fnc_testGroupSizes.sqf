@@ -21,7 +21,7 @@ private _findings = [];
     private _groupCount = {(side _x) isEqualTo _side} count allGroups;
 
     if (_groupCount > GROUP_SIZE_WARNING) then {
-        _findings pushBack [__WARNING, format [localize LSTRING(GroupLimit), _side, _groupCount]];
+        _findings pushBack [WARNING_CODE, format [localize LSTRING(GroupLimit), _side, _groupCount]];
     }
 } forEach [west, east, civilian, resistance];
 

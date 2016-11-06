@@ -20,19 +20,19 @@ class Cfg3DEN {
                 class PREFIX {
                     displayName = CSTRING(Autotest); // Category name visible in Edit Attributes window
                     class Attributes {
-                        class missionName {
+                        class name {
                             property = "missionName";
                             displayName = CSTRING(Name);
                             tooltip = CSTRING(NameDesc);
-                            control = QGVAR(missionName);
+                            control = QGVAR(name);
                             defaultValue = "true";
                             condition = "true";
                         };
-                        class missionDescription {
+                        class description {
                             property = "missionDescription";
                             displayName = CSTRING(Description);
                             tooltip = CSTRING(DescriptionDesc);
-                            control = QGVAR(missionDescription);
+                            control = QGVAR(description);
                             defaultValue = "true";
                             condition = "true";
                         };
@@ -80,20 +80,13 @@ class Cfg3DEN {
                 class Title;
             };
         };
-        class GVAR(missionName): Title {
-            attributeLoad = QUOTE( \
-                private _value = 'Scenario' get3DENMissionAttribute 'IntelBriefingName'; \
-                (_this controlsGroupCtrl 100) ctrlSetText _value; \
-                if (_value == '') then { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                } else { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
-                };);
+        class GVAR(name): Title {
+            attributeLoad = QUOTE(_this call FUNC(testName));
             attributeSave = "true";
             class Controls: Controls {
                 class Title: Title {};
                 class Value: ctrlEdit {
-                    idc = 100;
+                    idc = CTRL_VALUE;
                     type = CT_EDIT; // Type
                     colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
 
@@ -111,7 +104,7 @@ class Cfg3DEN {
                 };
                 class Picture: RscPicture {
                     text = QPATHTOF(UI\pass.paa); // Default
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     y = 0;
                     h = SIZE_M * GRID_H;
                     x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
@@ -119,20 +112,13 @@ class Cfg3DEN {
                 };
             };
         };
-        class GVAR(missionDescription): Title {
-            attributeLoad = QUOTE( \
-                private _value = 'Multiplayer' get3DENMissionAttribute 'IntelOverviewText'; \
-                (_this controlsGroupCtrl 100) ctrlSetText _value; \
-                if (_value == '' || {_value == '*** Insert mission description here. ***'}) then { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                } else { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
-                };);
+        class GVAR(description): Title {
+            attributeLoad = QUOTE(_this call FUNC(testDescription));
             attributeSave = "true";
             class Controls: Controls {
                 class Title: Title {};
                 class Value: ctrlEdit {
-                    idc = 100;
+                    idc = CTRL_VALUE;
                     type = CT_EDIT; // Type
                     colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
 
@@ -150,7 +136,7 @@ class Cfg3DEN {
                 };
                 class Picture: RscPicture {
                     text = QPATHTOF(UI\pass.paa); // Default
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     y = 0;
                     h = SIZE_M * GRID_H;
                     x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
@@ -159,19 +145,12 @@ class Cfg3DEN {
             };
         };
         class GVAR(author): Title {
-            attributeLoad = QUOTE( \
-                private _value = 'Scenario' get3DENMissionAttribute 'Author'; \
-                (_this controlsGroupCtrl 100) ctrlSetText _value; \
-                if (_value find profileName  == -1) then { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                } else { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
-                };);
+            attributeLoad = QUOTE(_this call FUNC(testAuthor));
             attributeSave = "true";
             class Controls: Controls {
                 class Title: Title {};
                 class Value: ctrlEdit {
-                    idc = 100;
+                    idc = CTRL_VALUE;
                     type = CT_EDIT; // Type
                     colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
 
@@ -188,7 +167,7 @@ class Cfg3DEN {
                 };
                 class Picture: RscPicture {
                     text = QPATHTOF(UI\pass.paa); // Default
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
                     w = 1.25 * SIZE_M * GRID_W;
                     h = SIZE_M * GRID_H;
@@ -197,20 +176,12 @@ class Cfg3DEN {
             };
         };
         class GVAR(minPlayers): Title {
-            attributeLoad = QUOTE( \
-                private _value = 'Multiplayer' get3DENMissionAttribute 'minplayers'; \
-                private _playerCount = count playableUnits; \
-                (_this controlsGroupCtrl 100) ctrlSetText (str _value); \
-                if (_value >= 0 && {_value <= _playerCount}) then { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
-                } else { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                };);
+            attributeLoad = QUOTE(_this call FUNC(testMinPlayers));
             attributeSave = "true";
             class Controls: Controls {
                 class Title: Title {};
                 class Value: ctrlEdit {
-                    idc = 100;
+                    idc = CTRL_VALUE;
                     type = CT_EDIT; // Type
                     colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
 
@@ -227,7 +198,7 @@ class Cfg3DEN {
                 };
                 class Picture: RscPicture {
                     text = QPATHTOF(UI\pass.paa); // Default
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
                     w = 1.25 * SIZE_M * GRID_W;
                     h = SIZE_M * GRID_H;
@@ -236,21 +207,12 @@ class Cfg3DEN {
             };
         };
         class GVAR(maxPlayers): Title {
-            attributeLoad = QUOTE( \
-                private _value = 'Multiplayer' get3DENMissionAttribute 'maxplayers'; \
-                private _playerCount = count playableUnits; \
-                (_this controlsGroupCtrl 100) ctrlSetText (str _value); \
-                if (_value != _playerCount) then { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\error.paa)); \
-                    (_this controlsGroupCtrl 100) ctrlSetText (format [ARR_4('%1 (%2: %3)',_value,localize QUOTE(LSTRING(ShouldBe)),_playerCount)]); \
-                } else { \
-                    (_this controlsGroupCtrl 101) ctrlSetText QUOTE(QPATHTOF(UI\pass.paa)); \
-                };);
+            attributeLoad = QUOTE(_this call FUNC(testMaxPlayers));
             attributeSave = "true";
             class Controls: Controls {
                 class Title: Title {};
                 class Value: ctrlEdit {
-                    idc = 100;
+                    idc = CTRL_VALUE;
                     type = CT_EDIT; // Type
                     colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
 
@@ -267,7 +229,7 @@ class Cfg3DEN {
                 };
                 class Picture: RscPicture {
                     text = QPATHTOF(UI\pass.paa); // Default
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     x = (ATTRIBUTE_TITLE_W+ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
                     w = 1.25 * SIZE_M * GRID_W;
                     h = SIZE_M * GRID_H;
@@ -302,7 +264,7 @@ class Cfg3DEN {
                     colorBackground[] = {0.33, 0.33, 0.33, 1};
                 };
                 class ActionList: ctrlListNBox {
-                    idc = 101;
+                    idc = CTRL_PICTURE;
                     x = SIZE_M * GRID_H;
                     y = 1 * SIZE_M * GRID_H;
                     w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M) ) * GRID_W;

@@ -1,3 +1,9 @@
 PREP(autotest);
+PREP(testAIAmount);
+PREP(testAuthor);
+PREP(testDescription);
 PREP(testGroupSizes);
 PREP(testInit);
+PREP(testMaxPlayers);
+PREP(testMinPlayers);
+PREP(testName);
