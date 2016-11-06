@@ -34,3 +34,4 @@ class CfgMods {
 #include "CfgModuleCategories.hpp"
 #include "CfgSettings.hpp"
 #include "CfgVehicleClasses.hpp"
+#include "displayEden.hpp"

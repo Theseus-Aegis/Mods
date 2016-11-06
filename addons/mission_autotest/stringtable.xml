@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Mission_Autotest">
+        <Key ID="STR_TAC_Mission_Autotest_Autotest">
+            <English>Autotest</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TAC_Autotest">
+            <English>TAC Autotest</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Name">
+            <English>Name:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_NameDesc">
+            <English>Checks if the name has been set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Description">
+            <English>Description:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
+            <English>Checks if the description has been set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Author">
+            <English>Author:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AuthorDesc">
+            <English>Checks if the author field has your Arma profile name in it.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayers">
+            <English>Min Players:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayersDesc">
+            <English>Checks if the minimum players amount has been set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayers">
+            <English>Max Players:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayersDesc">
+            <English>Checks if the maximum players amount has been set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Findings">
+            <English>Findings:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
+            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' check!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
+            <English>Virtual Arsenal code detected in init field of %1!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
+            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' check!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
+            <English>Init field checks complete, %1 issues detected.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
+            <English>Side %1 has %2 groups. Note that Arma has a 144 group limit per side.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
+            <English>You have placed %1 AI. You may wish to consider the performance impact.</English>
+        </Key>
+    </Package>
+</Project>
