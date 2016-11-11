@@ -89,14 +89,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
-                        /*class headlessClients {
-                            property = "headlessClients";
-                            displayName = CSTRING(HeadlessClients);
-                            tooltip = CSTRING(HeadlessClientsDesc);
-                            control = QGVAR(headlessClients);
+                        class hcAmount {
+                            property = "hcAmount";
+                            displayName = CSTRING(HCAmount);
+                            tooltip = CSTRING(HCAmountDesc);
+                            control = QGVAR(hcAmount);
                             defaultValue = "true";
                             condition = "true";
-                        };*/
+                        };
                         class findings {
                             property = "findings";
                             displayName = "";
@@ -142,11 +142,11 @@ class Cfg3DEN {
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
-        /*class GVAR(headlessClients): Title {
-            attributeLoad = QUOTE(_this call FUNC(testHeadlessClients));
+        class GVAR(hcAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testHCAmount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
-        };*/
+        };
 
         class Toolbox;
         class GVAR(findings): Toolbox {

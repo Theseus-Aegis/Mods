@@ -3,6 +3,7 @@ PREP(testAIAmount);
 PREP(testAuthor);
 PREP(testDescription);
 PREP(testGroupSizes);
+PREP(testHCAmount);
 PREP(testInit);
 PREP(testMaxPlayers);
 PREP(testMinPlayers);
