@@ -16,7 +16,15 @@
 #include "script_component.hpp"
 
 private _value = getMissionConfigValue ["author", ""];
-private _picture = [PASS_PICTURE, ERROR_PICTURE] select (_value find profileName == -1);
 
 (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText _value;
-(_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText _picture;
+
+if (_value == "") then {
+    (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText ERROR_PICTURE;
+} else {
+    if (_value find profileName == -1) then {
+        (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText WARNING_PICTURE;
+    } else {
+        (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText PASS_PICTURE;
+    };
+};

@@ -1,6 +1,7 @@
 PREP(autotest);
 PREP(testAIAmount);
 PREP(testAuthor);
+PREP(testDebugConsole);
 PREP(testDescription);
 PREP(testAIPosession);
 PREP(testGameType);

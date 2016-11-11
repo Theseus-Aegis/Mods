@@ -121,6 +121,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class debugConsole {
+                            property = "debugConsole";
+                            displayName = CSTRING(DebugConsole);
+                            tooltip = CSTRING(DebugConsoleDesc);
+                            control = QGVAR(debugConsole);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class findings {
                             property = "findings";
                             displayName = "";
@@ -183,6 +191,11 @@ class Cfg3DEN {
         };
         class GVAR(aiAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testAIAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(debugConsole): Title {
+            attributeLoad = QUOTE(_this call FUNC(testDebugConsole));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
