@@ -12,6 +12,35 @@ class RscButtonMenu;
 class RscText;
 class RscPicture;
 
+#define ATTRIBUTE_CONTROLS \
+    class Controls: Controls { \
+        class Title: Title {}; \
+        class Value: ctrlEdit { \
+            idc = CTRL_VALUE; \
+            type = CT_EDIT; \
+            colorBackground[] = {COLOR_OVERLAY_RGBA}; \
+            text = ""; \
+            colorText[] = {COLOR_TEXT_RGBA}; \
+            colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; \
+            colorSelection[] = {COLOR_ACTIVE_RGBA}; \
+            canModify = 0; \
+            autocomplete = ""; \
+            y = 0 * SIZE_M * GRID_H; \
+            x = ATTRIBUTE_TITLE_W * GRID_W; \
+            h = SIZE_M * GRID_H; \
+            w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
+        }; \
+        class Picture: RscPicture { \
+            text = QPATHTOF(UI\pass.paa); \
+            idc = CTRL_PICTURE; \
+            y = 0; \
+            h = SIZE_M * GRID_H; \
+            x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
+            w = 1.25 * SIZE_M * GRID_W; \
+        }; \
+    };
+
+
 class Cfg3DEN {
     class Mission {
         class ADDON { // Custom section class, everything inside will be opened in one window (MySection)
@@ -60,6 +89,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        /*class headlessClients {
+                            property = "headlessClients";
+                            displayName = CSTRING(HeadlessClients);
+                            tooltip = CSTRING(HeadlessClientsDesc);
+                            control = QGVAR(headlessClients);
+                            defaultValue = "true";
+                            condition = "true";
+                        };*/
                         class findings {
                             property = "findings";
                             displayName = "";
@@ -83,160 +120,33 @@ class Cfg3DEN {
         class GVAR(name): Title {
             attributeLoad = QUOTE(_this call FUNC(testName));
             attributeSave = "true";
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: ctrlEdit {
-                    idc = CTRL_VALUE;
-                    type = CT_EDIT; // Type
-                    colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
-
-                    text = ""; // Displayed text
-                    colorText[] = {COLOR_TEXT_RGBA}; // Text and frame color
-                    colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; // Disabled text and frame color
-                    colorSelection[] = {COLOR_ACTIVE_RGBA}; // Text selection color
-                    canModify = 0; // True (1) to allow text editing, 0 to disable it
-                    autocomplete = ""; // Text autocomplete, can be "scripting" (scripting commands) or "general" (previously typed text)
-                    y = 0 * SIZE_M * GRID_H;
-                    x = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-
-                };
-                class Picture: RscPicture {
-                    text = QPATHTOF(UI\pass.paa); // Default
-                    idc = CTRL_PICTURE;
-                    y = 0;
-                    h = SIZE_M * GRID_H;
-                    x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                    w = 1.25 * SIZE_M * GRID_W;
-                };
-            };
+            ATTRIBUTE_CONTROLS
         };
         class GVAR(description): Title {
             attributeLoad = QUOTE(_this call FUNC(testDescription));
             attributeSave = "true";
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: ctrlEdit {
-                    idc = CTRL_VALUE;
-                    type = CT_EDIT; // Type
-                    colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
-
-                    text = ""; // Displayed text
-                    colorText[] = {COLOR_TEXT_RGBA}; // Text and frame color
-                    colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; // Disabled text and frame color
-                    colorSelection[] = {COLOR_ACTIVE_RGBA}; // Text selection color
-                    canModify = 0; // True (1) to allow text editing, 0 to disable it
-                    autocomplete = ""; // Text autocomplete, can be "scripting" (scripting commands) or "general" (previously typed text)
-                    y = 0 * SIZE_M * GRID_H;
-                    x = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-
-                };
-                class Picture: RscPicture {
-                    text = QPATHTOF(UI\pass.paa); // Default
-                    idc = CTRL_PICTURE;
-                    y = 0;
-                    h = SIZE_M * GRID_H;
-                    x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                    w = 1.25 * SIZE_M * GRID_W;
-                };
-            };
+            ATTRIBUTE_CONTROLS
         };
         class GVAR(author): Title {
             attributeLoad = QUOTE(_this call FUNC(testAuthor));
             attributeSave = "true";
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: ctrlEdit {
-                    idc = CTRL_VALUE;
-                    type = CT_EDIT; // Type
-                    colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
-
-                    text = ""; // Displayed text
-                    colorText[] = {COLOR_TEXT_RGBA}; // Text and frame color
-                    colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; // Disabled text and frame color
-                    colorSelection[] = {COLOR_ACTIVE_RGBA}; // Text selection color
-                    canModify = 0; // True (1) to allow text editing, 0 to disable it
-                    autocomplete = ""; // Text autocomplete, can be "scripting" (scripting commands) or "general" (previously typed text)
-                    y = 0 * SIZE_M * GRID_H;
-                    x = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                };
-                class Picture: RscPicture {
-                    text = QPATHTOF(UI\pass.paa); // Default
-                    idc = CTRL_PICTURE;
-                    x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                    w = 1.25 * SIZE_M * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    y = 0;
-                };
-            };
+            ATTRIBUTE_CONTROLS
         };
         class GVAR(minPlayers): Title {
             attributeLoad = QUOTE(_this call FUNC(testMinPlayers));
             attributeSave = "true";
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: ctrlEdit {
-                    idc = CTRL_VALUE;
-                    type = CT_EDIT; // Type
-                    colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
-
-                    text = ""; // Displayed text
-                    colorText[] = {COLOR_TEXT_RGBA}; // Text and frame color
-                    colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; // Disabled text and frame color
-                    colorSelection[] = {COLOR_ACTIVE_RGBA}; // Text selection color
-                    canModify = 0; // True (1) to allow text editing, 0 to disable it
-                    autocomplete = ""; // Text autocomplete, can be "scripting" (scripting commands) or "general" (previously typed text)
-                    y = 0 * SIZE_M * GRID_H;
-                    x = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                };
-                class Picture: RscPicture {
-                    text = QPATHTOF(UI\pass.paa); // Default
-                    idc = CTRL_PICTURE;
-                    x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                    w = 1.25 * SIZE_M * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    y = 0;
-                };
-            };
+            ATTRIBUTE_CONTROLS
         };
         class GVAR(maxPlayers): Title {
             attributeLoad = QUOTE(_this call FUNC(testMaxPlayers));
             attributeSave = "true";
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: ctrlEdit {
-                    idc = CTRL_VALUE;
-                    type = CT_EDIT; // Type
-                    colorBackground[] = {COLOR_OVERLAY_RGBA}; // Background color
-
-                    text = ""; // Displayed text
-                    colorText[] = {COLOR_TEXT_RGBA}; // Text and frame color
-                    colorDisabled[] = {COLOR_TEXT_RGB, 0.25}; // Disabled text and frame color
-                    colorSelection[] = {COLOR_ACTIVE_RGBA}; // Text selection color
-                    canModify = 0; // True (1) to allow text editing, 0 to disable it
-                    autocomplete = ""; // Text autocomplete, can be "scripting" (scripting commands) or "general" (previously typed text)
-                    y = 0 * SIZE_M * GRID_H;
-                    x = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                };
-                class Picture: RscPicture {
-                    text = QPATHTOF(UI\pass.paa); // Default
-                    idc = CTRL_PICTURE;
-                    x = (ATTRIBUTE_TITLE_W+ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W;
-                    w = 1.25 * SIZE_M * GRID_W;
-                    h = SIZE_M * GRID_H;
-                    y = 0;
-                };
-            };
+            ATTRIBUTE_CONTROLS
         };
+        /*class GVAR(headlessClients): Title {
+            attributeLoad = QUOTE(_this call FUNC(testHeadlessClients));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };*/
 
         class Toolbox;
         class GVAR(findings): Toolbox {
