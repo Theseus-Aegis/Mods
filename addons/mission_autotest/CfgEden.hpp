@@ -97,6 +97,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class aiPosession {
+                            property = "aiPosession";
+                            displayName = CSTRING(AIPosession);
+                            tooltip = CSTRING(AIPosessionDesc);
+                            control = QGVAR(aiPosession);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class hcAmount {
                             property = "hcAmount";
                             displayName = CSTRING(HCAmount);
@@ -160,6 +168,11 @@ class Cfg3DEN {
         };
         class GVAR(maxPlayers): Title {
             attributeLoad = QUOTE(_this call FUNC(testMaxPlayers));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(aiPosession): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAIPosession));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

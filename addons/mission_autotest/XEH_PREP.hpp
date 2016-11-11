@@ -2,6 +2,7 @@ PREP(autotest);
 PREP(testAIAmount);
 PREP(testAuthor);
 PREP(testDescription);
+PREP(testAIPosession);
 PREP(testGameType);
 PREP(testGroupSizes);
 PREP(testHCAmount);
