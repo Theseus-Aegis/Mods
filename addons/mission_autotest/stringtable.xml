@@ -19,6 +19,12 @@
         <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
             <English>Checks if the description has been set.</English>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameType">
+            <English>Game Type:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameTypeDesc">
+            <English>Checks if the game type has been set.</English>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_Author">
             <English>Author:</English>
         </Key>

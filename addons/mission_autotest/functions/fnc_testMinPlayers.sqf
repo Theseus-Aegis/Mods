@@ -18,7 +18,7 @@
 private _config = missionConfigFile >> "Header" >> "minPlayers";
 private _value = getNumber _config; // Returns 0 even if not set
 if (!isNumber _config) then {
-    _value = "Multiplayer" get3DENMissionAttribute "minplayers";
+    _value = "Multiplayer" get3DENMissionAttribute "MinPlayers";
 };
 
 private _playerCount = count playableUnits;

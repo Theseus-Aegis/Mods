@@ -18,7 +18,7 @@
 private _config = missionConfigFile >> "Header" >> "maxPlayers";
 private _value = getNumber _config; // Returns 0 even if not set
 if (!isNumber _config) then {
-    _value = "Multiplayer" get3DENMissionAttribute "maxplayers";
+    _value = "Multiplayer" get3DENMissionAttribute "MaxPlayers";
 };
 
 private _playerCount = count playableUnits;

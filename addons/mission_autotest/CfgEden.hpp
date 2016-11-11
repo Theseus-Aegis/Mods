@@ -65,6 +65,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class gameType {
+                            property = "gameType";
+                            displayName = CSTRING(GameType);
+                            tooltip = CSTRING(GameTypeDesc);
+                            control = QGVAR(gameType);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class author {
                             property = "author";
                             displayName = CSTRING(Author);
@@ -132,6 +140,11 @@ class Cfg3DEN {
         };
         class GVAR(description): Title {
             attributeLoad = QUOTE(_this call FUNC(testDescription));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(gameType): Title {
+            attributeLoad = QUOTE(_this call FUNC(testGameType));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
