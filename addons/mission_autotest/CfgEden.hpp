@@ -97,6 +97,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class aiAmount {
+                            property = "aiAmount";
+                            displayName = CSTRING(AIAmount);
+                            tooltip = CSTRING(AIAmountDesc);
+                            control = QGVAR(aiAmount);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class findings {
                             property = "findings";
                             displayName = "";
@@ -144,6 +152,11 @@ class Cfg3DEN {
         };
         class GVAR(hcAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testHCAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(aiAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAIAmount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

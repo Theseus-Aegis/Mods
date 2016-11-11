@@ -27,6 +27,6 @@ if (_value >= 0 && {_value <= _playerCount}) then {
     (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (str _value);
     (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText PASS_PICTURE;
 } else {
-    (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (format ["%1 (%2: 0 - %3)", _value, localize LSTRING(ShouldBe), _playerCount]);
+    (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (format ["%1 (%2: <%3)", _value, localize LSTRING(ShouldBe), _playerCount]);
     (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText ERROR_PICTURE;
 };

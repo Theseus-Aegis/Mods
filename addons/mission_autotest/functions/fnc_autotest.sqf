@@ -21,7 +21,6 @@ _ctrlListbox lnbSetColumnsPos [FINDINGS_COLUMN_SIZE]; // Fix entries positioning
 // Do the tests
 private _findings = call FUNC(testInit);
 _findings append (call FUNC(testGroupSizes));
-_findings append (call FUNC(testAIAmount));
 
 // Set pictures
 {

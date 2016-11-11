@@ -46,6 +46,12 @@
         <Key ID="STR_TAC_Mission_Autotest_HCPlayableOnlyUseful">
             <English>Only playable Headless Clients can be used!</English>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
+            <English>AI:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
+            <English>Checks if recommended amount of AI are present.</English>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_Findings">
             <English>Findings:</English>
         </Key>
@@ -63,9 +69,6 @@
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
             <English>Side %1 has %2 groups. Note that Arma has a 144 group limit per side.</English>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
-            <English>%1 AI placed. Consider the performance impact.</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
             <English>Should be</English>
