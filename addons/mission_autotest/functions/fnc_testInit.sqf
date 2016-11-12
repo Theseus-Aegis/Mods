@@ -36,7 +36,6 @@ private _findings = [];
         };
         // >= 150
         default {
-            // check Virtual Arsenal
             if (_virtualArsenal) then {
                 if (_isServer || {_isLocal} || {_isHasInterface}) then {
                     _findings pushBack [WARNING_CODE, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];

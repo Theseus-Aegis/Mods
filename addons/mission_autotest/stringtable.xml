@@ -110,13 +110,13 @@
             <English>Findings:</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
-            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' check!</English>
+            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' or 'hasInterface' check!</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
             <English>Virtual Arsenal code detected in init field of %1!</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
-            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' check!</English>
+            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' or 'hasInterface' check!</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
             <English>Init field checks complete, %1 issues detected.</English>

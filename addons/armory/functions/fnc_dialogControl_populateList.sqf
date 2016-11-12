@@ -45,15 +45,18 @@ _armoryData sort true; // Errors when used in combination with forEach
         // Check sub-category for proper listing
         if (_selSubCategory == "" || {_selSubCategory == _subCategory} || {_selSubCategory == "Compatible" && [_className] call FUNC(isCompatible)}) then {
             private _displayName = getText (configFile >> _configCfg >> _className >> "displayName"); // Get display name from config
+            private _tooltip = _displayName; // Display name gets cropped
 
             // Cut full name to prevent overlapping in shown name
-            private _displayNameCut = [_displayName, 0, DISPLAYNAME_LENGTH] call CBA_fnc_substr;
-            _displayNameCut = [_displayNameCut] call CBA_fnc_rightTrim;
-            _displayNameCut = [_displayNameCut, "..."] joinString "";
+            if (count _displayName > DISPLAYNAME_LENGTH + 3) then {
+                _displayName = [_displayName, 0, DISPLAYNAME_LENGTH] call CBA_fnc_substr;
+                _displayName = [_displayName] call CBA_fnc_rightTrim;
+                _displayName = [_displayName, "..."] joinString "";
+            };
 
             private _quantityList = [_quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
-            lnbAddRow [NLIST, ["", _displayNameCut, _quantityList]];
-            lbSetTooltip [NLIST, _rowNum * 3, _displayName]; // Requires multiplication by 3 to be set on proper index (no idea why)
+            lnbAddRow [NLIST, ["", _displayName, _quantityList]];
+            lbSetTooltip [NLIST, _rowNum * 3, _tooltip]; // Requires multiplication by 3 to be set on proper index (no idea why)
 
             // Set hidden data with classname to displayName column and quantity to quantity column
             lnbSetData [NLIST, [_rowNum, 1], _className];

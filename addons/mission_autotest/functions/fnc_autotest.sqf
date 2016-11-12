@@ -27,9 +27,12 @@ _findings append (call FUNC(testGroupSizes));
     _x params ["_type", "_message"];
 
     // Cut full name to prevent overlapping scroll bar
-    private _messageCut = [_message, 0, MESSAGE_LENGTH] call CBA_fnc_substr;
-    _messageCut = [_messageCut] call CBA_fnc_rightTrim;
-    _messageCut = [_messageCut, "..."] joinString "";
+    private _messageCut = _message;
+    if (count _messageCut > MESSAGE_LENGTH + 3) then {
+        _messageCut = [_messageCut, 0, MESSAGE_LENGTH] call CBA_fnc_substr;
+        _messageCut = [_messageCut] call CBA_fnc_rightTrim;
+        _messageCut = [_messageCut, "..."] joinString "";
+    };
 
     private _lnbAdd = _ctrlListbox lnbAddRow ["", _messageCut];
     _ctrlListbox lbSetTooltip [_forEachIndex * 2, _message]; // Requires multiplication by 2 to be set on proper index (no idea why)
