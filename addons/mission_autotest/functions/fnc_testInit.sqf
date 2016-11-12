@@ -17,18 +17,20 @@
 
 private _findings = [];
 {
-    (_x get3DENAttribute 'Init') params ["_init", ""];
+    (_x get3DENAttribute "Init") params ["_init"];
     _init = toLower _init;
-
     private _count = count _init;
+
+    // Checks
     private _virtualArsenal = _init find "exported from arsenal" != -1;
     private _isServer = _init find "isserver" != -1;
     private _isLocal = _init find "local" != -1;
+    private _isHasInterface = _init find "hasinterface" != -1;
 
     switch (true) do {
         case (_count < INIT_SIZE_WARNING): {};
         case (_count < INIT_SIZE_ERROR): {
-            if (!_isServer && {!_isLocal}) then {
+            if (!_isServer && {!_isLocal} && {!_isHasInterface}) then {
                 _findings pushBack [WARNING_CODE, format [localize LSTRING(LargeInitField), _x, _count]];
             };
         };
@@ -36,13 +38,13 @@ private _findings = [];
         default {
             // check Virtual Arsenal
             if (_virtualArsenal) then {
-                if (_isServer || {_isLocal}) then {
+                if (_isServer || {_isLocal} || {_isHasInterface}) then {
                     _findings pushBack [WARNING_CODE, format [localize LSTRING(VirtualArsenalCodeDetected), _x]];
                 } else {
                     _findings pushBack [ERROR_CODE, format [localize LSTRING(VirtualArsenalCodeDetectedAndNoChecks), _x]];
                 };
             } else {
-                if (!_isServer && {!_isLocal}) then {
+                if (!_isServer && {!_isLocal} && {!_isHasInterface}) then {
                     _findings pushBack [WARNING_CODE, format [localize LSTRING(LargeInitField), _x, _count]];
                 };
             };
