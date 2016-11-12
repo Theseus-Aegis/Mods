@@ -157,6 +157,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class apollo {
+                            property = "apollo";
+                            displayName = CSTRING(Apollo);
+                            tooltip = CSTRING(ApolloDesc);
+                            control = QGVAR(apollo);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class findings {
                             property = "findings";
                             displayName = "";
@@ -244,6 +252,11 @@ class Cfg3DEN {
         };
         class GVAR(debugConsole): Title {
             attributeLoad = QUOTE(_this call FUNC(testDebugConsole));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(apollo): Title {
+            attributeLoad = QUOTE(_this call FUNC(testApollo));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

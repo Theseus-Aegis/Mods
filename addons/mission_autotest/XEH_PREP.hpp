@@ -1,9 +1,10 @@
 PREP(autotest);
 PREP(testAIAmount);
+PREP(testAIPosession);
+PREP(testAPollo);
 PREP(testAuthor);
 PREP(testDebugConsole);
 PREP(testDescription);
-PREP(testAIPosession);
 PREP(testGameType);
 PREP(testGroupSizes);
 PREP(testHCAmount);
