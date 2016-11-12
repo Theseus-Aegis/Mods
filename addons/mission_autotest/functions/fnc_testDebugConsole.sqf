@@ -1,5 +1,5 @@
 /*
- * Author: TMF Team, Jonpas
+ * Author: Jonpas
  * Tests debug console availability.
  *
  * Arguments:

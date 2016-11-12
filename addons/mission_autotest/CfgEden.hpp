@@ -97,14 +97,6 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
-                        class aiPosession {
-                            property = "aiPosession";
-                            displayName = CSTRING(AIPosession);
-                            tooltip = CSTRING(AIPosessionDesc);
-                            control = QGVAR(aiPosession);
-                            defaultValue = "true";
-                            condition = "true";
-                        };
                         class hcAmount {
                             property = "hcAmount";
                             displayName = CSTRING(HCAmount);
@@ -118,6 +110,42 @@ class Cfg3DEN {
                             displayName = CSTRING(AIAmount);
                             tooltip = CSTRING(AIAmountDesc);
                             control = QGVAR(aiAmount);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
+                        class respawnMode {
+                            property = "respawnMode";
+                            displayName = CSTRING(RespawnMode);
+                            tooltip = CSTRING(RespawnModeDesc);
+                            control = QGVAR(respawnMode);
+                            defaultValue = "true";
+                        };
+                        class respawnButton {
+                            property = "respawnButton";
+                            displayName = CSTRING(RespawnButton);
+                            tooltip = CSTRING(RespawnButtonDesc);
+                            control = QGVAR(respawnButton);
+                            defaultValue = "true";
+                        };
+                        class respawnDelay {
+                            property = "respawnDelay";
+                            displayName = CSTRING(RespawnDelay);
+                            tooltip = CSTRING(RespawnDelayDesc);
+                            control = QGVAR(respawnDelay);
+                            defaultValue = "true";
+                        };
+                        class respawnDialog {
+                            property = "respawnDialog";
+                            displayName = CSTRING(RespawnDialog);
+                            tooltip = CSTRING(RespawnDialogDesc);
+                            control = QGVAR(respawnDialog);
+                            defaultValue = "true";
+                        };
+                        class aiPosession {
+                            property = "aiPosession";
+                            displayName = CSTRING(AIPosession);
+                            tooltip = CSTRING(AIPosessionDesc);
+                            control = QGVAR(aiPosession);
                             defaultValue = "true";
                             condition = "true";
                         };
@@ -179,11 +207,6 @@ class Cfg3DEN {
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
-        class GVAR(aiPosession): Title {
-            attributeLoad = QUOTE(_this call FUNC(testAIPosession));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
-        };
         class GVAR(hcAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testHCAmount));
             attributeSave = "true";
@@ -191,6 +214,31 @@ class Cfg3DEN {
         };
         class GVAR(aiAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testAIAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(respawnMode): Title {
+            attributeLoad = QUOTE(_this call FUNC(testRespawnMode));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(respawnButton): Title {
+            attributeLoad = QUOTE(_this call FUNC(testRespawnButton));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(respawnDelay): Title {
+            attributeLoad = QUOTE(_this call FUNC(testRespawnDelay));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(respawnDialog): Title {
+            attributeLoad = QUOTE(_this call FUNC(testRespawnDialog));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(aiPosession): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAIPosession));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

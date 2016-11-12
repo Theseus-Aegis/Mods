@@ -11,3 +11,7 @@ PREP(testInit);
 PREP(testMaxPlayers);
 PREP(testMinPlayers);
 PREP(testName);
+PREP(testRespawnButton);
+PREP(testRespawnDelay);
+PREP(testRespawnDialog);
+PREP(testRespawnMode);

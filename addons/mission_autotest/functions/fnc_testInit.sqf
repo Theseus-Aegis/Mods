@@ -26,8 +26,8 @@ private _findings = [];
     private _isLocal = _init find "local" != -1;
 
     switch (true) do {
-        case (_count < 50): {};
-        case (_count < 150): {
+        case (_count < INIT_SIZE_WARNING): {};
+        case (_count < INIT_SIZE_ERROR): {
             if (!_isServer && {!_isLocal}) then {
                 _findings pushBack [WARNING_CODE, format [localize LSTRING(LargeInitField), _x, _count]];
             };

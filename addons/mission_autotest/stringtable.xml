@@ -64,6 +64,33 @@
         <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
             <English>Checks if recommended amount of AI are present.</English>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
+            <English>Respawn Mode:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnModeDesc">
+            <English>Checks if respawn mode is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnButton">
+            <English>Respawn Button:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnButtonDesc">
+            <English>Checks if respawn button is enabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDelay">
+            <English>Respawn Delay:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDelayDesc">
+            <English>Checks if respawn delay is set to a reasonable time.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnNoDelayNote">
+            <English>Delay allows players to realize they are dead and will respawn.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDialog">
+            <English>Respawn Dialog:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDialogDesc">
+            <English>Checks if respawn dialog is disabled.</English>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole">
             <English>Debug Console:</English>
         </Key>
