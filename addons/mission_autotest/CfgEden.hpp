@@ -25,18 +25,18 @@ class RscPicture;
             colorSelection[] = {COLOR_ACTIVE_RGBA}; \
             canModify = 0; \
             autocomplete = ""; \
-            y = 0 * SIZE_M * GRID_H; \
             x = ATTRIBUTE_TITLE_W * GRID_W; \
-            h = SIZE_M * GRID_H; \
+            y = 0 * SIZE_M * GRID_H; \
             w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
+            h = SIZE_M * GRID_H; \
         }; \
         class Picture: RscPicture { \
             text = QPATHTOF(UI\pass.paa); \
             idc = CTRL_PICTURE; \
-            y = 0; \
-            h = SIZE_M * GRID_H; \
             x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
-            w = 1.25 * SIZE_M * GRID_W; \
+            y = 0; \
+            w = SIZE_M * GRID_W; \
+            h = SIZE_M * GRID_H; \
         }; \
     };
 
@@ -272,26 +272,26 @@ class Cfg3DEN {
                 class ActionTitle: ctrlStatic {
                     text = CSTRING(Findings);
                     tooltip = "";
-                    w = ATTRIBUTE_TITLE_W * GRID_W;
                     x = SIZE_M * GRID_H;
-                    h = 1 * SIZE_M * GRID_H;
                     y = 0;
+                    w = ATTRIBUTE_TITLE_W * GRID_W;
+                    h = 1 * SIZE_M * GRID_H;
                     colorBackground[] = {0, 0, 0, 0};
                 };
                 class ActionListBackground: ctrlStatic {
                     idc = -1;
                     x = SIZE_M * GRID_H;
                     y = 1 * SIZE_M * GRID_H;
-                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M)) * GRID_W;
                     h = 23 * SIZE_M * GRID_H;
+                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M)) * GRID_W;
                     colorBackground[] = {0.33, 0.33, 0.33, 1};
                 };
                 class ActionList: ctrlListNBox {
                     idc = CTRL_PICTURE;
                     x = SIZE_M * GRID_H;
                     y = 1 * SIZE_M * GRID_H;
-                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M) ) * GRID_W;
                     h = 23 * SIZE_M * GRID_H;
+                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M) ) * GRID_W;
                     drawSideArrows = 0;
                     idcLeft = -1;
                     idcRight = -1;

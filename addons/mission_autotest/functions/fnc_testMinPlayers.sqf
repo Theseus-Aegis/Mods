@@ -18,6 +18,7 @@
 private _config = missionConfigFile >> "Header" >> "minPlayers";
 private _value = getNumber _config; // Returns 0 even if not set
 if (!isNumber _config) then {
+    // getMissionConfigValue does not work (even though attribute name is same)
     _value = "Multiplayer" get3DENMissionAttribute "MinPlayers";
 };
 

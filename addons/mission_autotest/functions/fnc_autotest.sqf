@@ -25,7 +25,16 @@ _findings append (call FUNC(testGroupSizes));
 // Set pictures
 {
     _x params ["_type", "_message"];
+
+    // Cut full name to prevent overlapping scroll bar
+    if (count _message > MESSAGE_LENGTH + 3) then {
+        _message = [_message, 0, MESSAGE_LENGTH] call CBA_fnc_substr;
+        _message = [_message] call CBA_fnc_rightTrim;
+        _message = [_message, "..."] joinString "";
+    };
+
     private _lnbAdd = _ctrlListbox lnbAddRow ["", _message];
+    _ctrlListbox lbSetTooltip [_forEachIndex * 2, _message]; // Requires multiplication by 2 to be set on proper index (no idea why)
 
     switch (_type) do {
         case ERROR_CODE: {
