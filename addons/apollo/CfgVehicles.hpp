@@ -12,7 +12,7 @@ class CfgVehicles {
         //icon = QPATHTOF(UI\Icon_Module_Chronos_ca.paa); @todo
         class Arguments {
             class enabled {
-                displayName = "$STR_ACE_Common_Enabled";
+                displayName = ACECSTRING(Common,Enabled);
                 description = CSTRING(EnabledDesc);
                 typeName = "BOOL";
                 defaultValue = 1;

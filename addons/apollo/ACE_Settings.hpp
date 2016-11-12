@@ -2,7 +2,7 @@ class ACE_Settings {
     class GVAR(enabled) {
         value = 0;
         typeName = "BOOL";
-        displayName = "$STR_ACE_Common_Enabled";
+        displayName = ACECSTRING(Common,Enabled);
         description = CSTRING(EnabledDesc);
     };
     class GVAR(enabledPlayers) {
