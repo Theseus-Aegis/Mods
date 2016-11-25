@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Opens coordiante input display.
+ * Opens coordinate input display.
  *
  * Arguments:
  * None
