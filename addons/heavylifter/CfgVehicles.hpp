@@ -101,46 +101,46 @@ class CfgVehicles {
 
     // Little Bird
     class Heli_Light_01_base_F: Helicopter_Base_H {
-        GVAR(AttachPos[]) = {0, 0, 0.1};
+        GVAR(attachPos[]) = {0, 0, 0.1};
     };
     // M-900
     class Heli_Light_01_unarmed_base_F;
     class Heli_Light_01_civil_base_F: Heli_Light_01_unarmed_base_F {
-        GVAR(AttachPos[]) = {0, -1, -0.7};
+        GVAR(attachPos[]) = {0, -1, -0.7};
     };
     // PO-30 Orca
     class Heli_Light_02_base_F: Helicopter_Base_H {
-        GVAR(AttachPos[]) = {0, 0, 1};
+        GVAR(attachPos[]) = {0, 0, 1};
     };
     // WY-55 Hellcat
     class Heli_light_03_base_F: Helicopter_Base_F {
-        GVAR(AttachPos[]) = {0, -1.5, 0.2};
+        GVAR(attachPos[]) = {0, -1.5, 0.2};
     };
     // UH-80 Ghost Hawk
     class Heli_Transport_01_base_F: Helicopter_Base_H {
-        GVAR(AttachPos[]) = {0, -2, 0.9};
+        GVAR(attachPos[]) = {0, -2, 0.9};
     };
     // CH-49 Mohawk
     class Heli_Transport_02_base_F: Helicopter_Base_H {
-        GVAR(AttachPos[]) = {0, -1.5, 2.25};
+        GVAR(attachPos[]) = {0, -1.5, 2.25};
     };
     // CH-67 Huron
     class Heli_Transport_03_base_F: Helicopter_Base_H {
-        GVAR(AttachPos[]) = {0, -1, 1.75};
+        GVAR(attachPos[]) = {0, -1, 1.75};
     };
     // AH-99 Blackfoot
     class Heli_Attack_01_base_F: Helicopter_Base_F {
-        GVAR(AttachPos[]) = {0, 0, 0.65};
+        GVAR(attachPos[]) = {0, 0, 0.65};
     };
     // Mi-48 Kajman
     class Heli_Attack_02_base_F: Helicopter_Base_F {
-        GVAR(AttachPos[]) = {0, 0, 1.9};
+        GVAR(attachPos[]) = {0, 0, 1.9};
     };
 
     // A-164 Wipeout
     class Plane_Base_F;
     class Plane_CAS_01_base_F: Plane_Base_F {
-        GVAR(AttachPos[]) = {0, 0.5, 0.9};
+        GVAR(attachPos[]) = {0, 0.5, 0.9};
     };
 
 
@@ -148,54 +148,54 @@ class CfgVehicles {
     // HEMTT
     class B_Truck_01_transport_F;
     class B_Truck_01_medical_F: B_Truck_01_transport_F {
-        GVAR(AttachPos[]) = {0, 0, 0.7};
+        GVAR(attachPos[]) = {0, 0, 0.7};
     };
     class B_Truck_01_mover_F: B_Truck_01_transport_F {
-        GVAR(AttachPos[]) = {0, -2, 0.4};
+        GVAR(attachPos[]) = {0, -2, 0.4};
     };
     class B_Truck_01_Repair_F: B_Truck_01_mover_F {
-        GVAR(AttachPos[]) = {0, 0, 0.8};
+        GVAR(attachPos[]) = {0, 0, 0.8};
     };
     class B_Truck_01_ammo_F: B_Truck_01_mover_F {
-        GVAR(AttachPos[]) = {0, 0, 0.4};
+        GVAR(attachPos[]) = {0, 0, 0.4};
     };
     class B_Truck_01_box_F: B_Truck_01_mover_F {
-        GVAR(AttachPos[]) = {0, 0, 0.8};
+        GVAR(attachPos[]) = {0, 0, 0.8};
     };
     class B_Truck_01_fuel_F: B_Truck_01_mover_F {
-        GVAR(AttachPos[]) = {0, 0, 0.4};
+        GVAR(attachPos[]) = {0, 0, 0.4};
     };
 
     class Truck_F;
     // Zamak
     class Truck_02_base_F: Truck_F {
-        GVAR(AttachPos[]) = {-0.1, 1.5, 0.8};
+        GVAR(attachPos[]) = {-0.1, 1.5, 0.8};
     };
     // Tempest
     class Truck_03_base_F: Truck_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 1};
+        GVAR(attachPos[]) = {-0.1, 1, 1};
     };
     class O_Truck_03_repair_F: Truck_03_base_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 0.7};
+        GVAR(attachPos[]) = {-0.1, 1, 0.7};
     };
     class O_Truck_03_fuel_F: Truck_03_base_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 0.7};
+        GVAR(attachPos[]) = {-0.1, 1, 0.7};
     };
     class O_Truck_03_ammo_F: Truck_03_base_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 0.7};
+        GVAR(attachPos[]) = {-0.1, 1, 0.7};
     };
     class O_Truck_03_device_F: Truck_03_base_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 0.7};
+        GVAR(attachPos[]) = {-0.1, 1, 0.7};
     };
 
     class Wheeled_APC_F;
     // AMV-7 Marshall
     class APC_Wheeled_01_base_F: Wheeled_APC_F {
-        GVAR(AttachPos[]) = {0, 2, 1.05};
+        GVAR(attachPos[]) = {0, 2, 1.05};
     };
     // MSE-3 Marid
     class APC_Wheeled_02_base_F: Wheeled_APC_F {
-        GVAR(AttachPos[]) = {-0.4, 2, 1.1};
+        GVAR(attachPos[]) = {-0.4, 2, 1.1};
     };
 
     /* Tanks */
@@ -204,51 +204,51 @@ class CfgVehicles {
     // IFV-6, CRV-6
     class B_APC_Tracked_01_base_F;
     class B_APC_Tracked_01_AA_F: B_APC_Tracked_01_base_F {
-        GVAR(AttachPos[]) = {0, 2, 1.5};
+        GVAR(attachPos[]) = {0, 2, 1.5};
     };
     class B_APC_Tracked_01_CRV_F: B_APC_Tracked_01_base_F {
-        GVAR(AttachPos[]) = {0, 2.25, 1.15};
+        GVAR(attachPos[]) = {0, 2.25, 1.15};
     };
     class B_APC_Tracked_01_rcws_F: B_APC_Tracked_01_base_F {
-        GVAR(AttachPos[]) = {0, 2, 1.15};
+        GVAR(attachPos[]) = {0, 2, 1.15};
     };
     // ZSU-39 Tigris
     class APC_Tracked_02_base_F;
     class O_APC_Tracked_02_base_F: APC_Tracked_02_base_F {
-        GVAR(AttachPos[]) = {-0.1, 3, 1.3};
+        GVAR(attachPos[]) = {-0.1, 3, 1.3};
     };
     // BTR-K Kamysh
     class O_APC_Tracked_02_cannon_F: O_APC_Tracked_02_base_F {
-        GVAR(AttachPos[]) = {-0.1, 2, 1.1};
+        GVAR(attachPos[]) = {-0.1, 2, 1.1};
     };
     // FV-720 Mora
     class APC_Tracked_03_base_F: Tank_F {
-        GVAR(AttachPos[]) = {-0.1, 1, 0.95};
+        GVAR(attachPos[]) = {-0.1, 1, 0.95};
     };
 
     // M2A1 Slammer
     class MBT_01_base_F: Tank_F {
-        GVAR(AttachPos[]) = {0, 2.25, 0.85};
+        GVAR(attachPos[]) = {0, 2.25, 0.85};
     };
     // M2A4 Slammer UP
     class B_MBT_01_cannon_F;
     class B_MBT_01_TUSK_F: B_MBT_01_cannon_F {
-        GVAR(AttachPos[]) = {0, 2.25, 1.2};
+        GVAR(attachPos[]) = {0, 2.25, 1.2};
     };
     // M4
     class MBT_01_arty_base_F: MBT_01_base_F {
-        GVAR(AttachPos[]) = {0, 4, 1.6};
+        GVAR(attachPos[]) = {0, 4, 1.6};
     };
     // M5
     class MBT_01_mlrs_base_F: MBT_01_base_F {
-        GVAR(AttachPos[]) = {0, 2, 0.35};
+        GVAR(attachPos[]) = {0, 2, 0.35};
     };
     // T-100 Varsuk
     class MBT_02_base_F: Tank_F {
-        GVAR(AttachPos[]) = {-0.1, 2, 0.9};
+        GVAR(attachPos[]) = {-0.1, 2, 0.9};
     };
     // MBT-52 Kuma
     class MBT_03_base_F: Tank_F {
-        GVAR(AttachPos[]) = {-0.1, 1.5, 1.25};
+        GVAR(attachPos[]) = {-0.1, 1.5, 1.25};
     };
 };

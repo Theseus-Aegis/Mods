@@ -16,15 +16,18 @@ params ["_targetVehicle"];
 (_targetVehicle getVariable QGVAR(prepared)) params ["_vehicle", "_helper"];
 
 // Prevent damage on vehicle
-_vehicle allowDamage false;
+[_vehicle, "blockDamage", "tac_heavylifter_unprepare", true] call ace_common_fnc_statusEffect_set;
 _vehicle enableSimulationGlobal false;
 
 // Remove the helper object
 deleteVehicle _helper;
 
 // Enable damage on vehicle
-_vehicle allowDamage true;
+[_vehicle, "blockDamage", "tac_heavylifter", false] call ace_common_fnc_statusEffect_set;
 _vehicle enableSimulationGlobal true;
+
+// Fix floating
+["ace_common_fixFloating", _vehicle, _vehicle] call CBA_fnc_targetEvent;
 
 // Remove variable
 _vehicle setVariable [QGVAR(prepared), nil, true];
