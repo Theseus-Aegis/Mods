@@ -26,7 +26,7 @@
  * Example:
  * [
  *     "range", [target1, target2], [controller1, controller2], 1, [30, 60], 60, [3, 5], 5, 10, [5, 9],
- *     [marker1, marker2], true, [invalidTarget1, invalidTarget2], [source1, source2]
+ *     [trigger1, trigger2], true, [invalidTarget1, invalidTarget2], [source1, source2]
  * ] call tac_shootingrange_fnc_create;
  *
  * Public: Yes
@@ -76,6 +76,19 @@ if (_defaultCountdownTime < COUNTDOWNTIME_LOWEST) then {
         _countdownTimes deleteAt _forEachIndex;
     };
 } forEach _countdownTimes;
+
+// Filter Trigger Markers manually as they can be markers or triggers
+private _triggerMarkersFiltered = _triggerMarkers apply {
+    if (getMarkerColor _x == "") then {
+        [missionNamespace getVariable _x, objNull] select (isNil _x);
+    } else {
+        _x
+    };
+};
+if (count _triggerMarkers != count _triggerMarkersFiltered) then {
+    ERROR_1("Invalid triggers in Trigger Markers! Make sure all triggers are correctly set! (%1)", _name);
+};
+_triggerMarkers = _triggerMarkersFiltered;
 
 // Defaults
 if !(_name isEqualTo "") then {
@@ -319,32 +332,45 @@ _countdownTimes sort true;
 
 
 private _triggers = [];
+private _triggerMarkersSet = [];
 if (_mode == 4) then {
     // Prepare target groups
     [_targets, _targetsInvalid, _triggerMarkers] call FUNC(setTargetGroups);
 
     // Set up triggers
     {
-        private _trigger = createTrigger ["EmptyDetector", getMarkerPos _x, false];
+        if !(_x in _triggerMarkersSet) then {
+            private _trigger = _x;
 
-        (getMarkerSize _x) params ["_markerSizeX", "_markerSizeY"];
-        _trigger setTriggerArea [_markerSizeX, _markerSizeY, markerDir _x, markerShape _x == "RECTANGLE"];
+            if (_x isEqualType "") then {
+                // Marker was passed, we create trigger manually
+                _trigger = createTrigger ["EmptyDetector", getMarkerPos _x, false];
 
-        _trigger setTriggerActivation ["ANY", "PRESENT", true];
+                (getMarkerSize _x) params ["_markerSizeX", "_markerSizeY"];
+                _trigger setTriggerArea [_markerSizeX, _markerSizeY, markerDir _x, markerShape _x == "RECTANGLE"];
+            } else {
+                // Fail-safes for pre-defined triggers
+                _trigger setTriggerType "NONE";
+            };
 
-        private _target = _targets select _forEachIndex;
-        private _controller = _controllers select 0;
-        _trigger setTriggerStatements [
-            format ["[%1, %2] call %3", _controller, _target, QFUNC(canActivateTrigger)],
-            format ["[%1, %2] call %3", _target, 0, QFUNC(triggerPopup)],
-            format ["if (%1) then { [%2, %3] call %4 }", _popOnTriggerExit, _target, 1, QFUNC(triggerPopup)]
-        ];
+            _trigger setTriggerActivation ["ANY", "PRESENT", true];
 
-        _trigger enableSimulation false;
+            private _target = _targets select _forEachIndex;
+            private _controller = _controllers select 0;
+            _trigger setTriggerStatements [
+                format ["[%1, %2] call %3", _controller, _target, QFUNC(canActivateTrigger)],
+                format ["[%1, %2] call %3", _target, 0, QFUNC(triggerPopup)],
+                format ["if (%1) then { [%2, %3] call %4 }", _popOnTriggerExit, _target, 1, QFUNC(triggerPopup)]
+            ];
 
-        _triggers pushBack _trigger;
+            _trigger enableSimulation false;
+
+            _triggers pushBack _trigger;
+            _triggerMarkersSet pushBack _x;
+        };
     } forEach _triggerMarkers;
 };
+
 
 // Set up targets
 {
