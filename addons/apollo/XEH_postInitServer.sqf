@@ -32,9 +32,6 @@
             [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
         }] call CBA_fnc_addEventHandler;
 
-        // Hiding and disabling simulation (has to be executed on server, during init there is lag, so we do it on server directly)
-        ["CAManBase", "InitPost", FUNC(handleConnect), true, [], true] call CBA_fnc_addClassEventHandler;
-
         // Corpse removal (prevent item multiplication when leaving nicely)
         addMissionEventHandler ["HandleDisconnect", FUNC(handleDisconnect)];
 
