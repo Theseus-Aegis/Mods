@@ -29,8 +29,8 @@ private _armoryAction = [
     {[_this select 2] call FUNC(canOpenArmory)},
     {},
     _object
-] call ACE_Interact_Menu_fnc_createAction;
+] call ACEFUNC(interact_menu,createAction);
 
-[_object, 0, ["ACE_MainActions"], _armoryAction] call ACE_Interact_Menu_fnc_addActionToObject;
+[_object, 0, ["ACE_MainActions"], _armoryAction] call ACEFUNC(interact_menu,addActionToObject);
 
 _object setVariable [QGVAR(enabled), true];

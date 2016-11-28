@@ -18,7 +18,7 @@
 params ["_selectedCategory"];
 
 // Exit if Apollo not loaded
-if !(["tac_apollo"] call ace_common_fnc_isModLoaded) exitWith {
+if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     ERROR_MSG("Apollo is not loaded! Chronos data cannot be retrieved.");
     false
 };
@@ -56,6 +56,6 @@ if (_loadData == "loaded") then {
     _armoryData
 } else {
     ERROR("Armory data failed to load!");
-    [LSTRING(ChronosError), 2.5] call ACE_Common_fnc_displayTextStructured;
+    [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
     false
 };

@@ -165,7 +165,7 @@ _countdownTimes sort true;
         {!((_this select 2) getVariable [QGVAR(running), false])},
         {},
         _x
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
     // Stop
     private _actionStop = [
@@ -176,10 +176,10 @@ _countdownTimes sort true;
         {((_this select 2) select 0) getVariable [QGVAR(running), false]},
         {},
         [_x, _controllers, _name, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions"], _actionRange] call ACE_Interact_Menu_fnc_addActionToObject;
-    [_x, 0, ["ACE_MainActions"], _actionStop] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions"], _actionRange] call ACEFUNC(interact_menu,addActionToObject);
+    [_x, 0, ["ACE_MainActions"], _actionStop] call ACEFUNC(interact_menu,addActionToObject);
 
 
     // Start
@@ -191,9 +191,9 @@ _countdownTimes sort true;
         {true},
         {},
         [_x, _controllers, _name, _targets, _targetsInvalid]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionStart] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionStart] call ACEFUNC(interact_menu,addActionToObject);
 
 
     // Configuration
@@ -205,9 +205,9 @@ _countdownTimes sort true;
         {true},
         {},
         [_x]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range)], _actionConfig] call ACEFUNC(interact_menu,addActionToObject);
 
     private _actionCheckConfig = [
         QGVAR(RangeConfigCheck),
@@ -217,9 +217,9 @@ _countdownTimes sort true;
         {true},
         {},
         [_x, _name, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionCheckConfig] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionCheckConfig] call ACEFUNC(interact_menu,addActionToObject);
 
     private _actionConfigDuration = [
         QGVAR(RangeConfigDuration),
@@ -229,9 +229,9 @@ _countdownTimes sort true;
         {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] in [1, 2, 5]},
         {(_this select 2) call FUNC(addConfigDurations)},
         [_name, _x, _controllers, _durations, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigDuration] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigDuration] call ACEFUNC(interact_menu,addActionToObject);
 
     private _actionConfigTargetAmount = [
         QGVAR(RangeConfigTargetAmount),
@@ -241,9 +241,9 @@ _countdownTimes sort true;
         {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] == 3},
         {(_this select 2) call FUNC(addConfigTargetAmounts)},
         [_name, _x, _controllers, _targetAmounts, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetAmount] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigTargetAmount] call ACEFUNC(interact_menu,addActionToObject);
 
     if (_mode != 4) then {
         private _actionConfigPauseDuration = [
@@ -254,9 +254,9 @@ _countdownTimes sort true;
             {((_this select 2) select 1) getVariable [QGVAR(mode), MODE_DEFAULT] == 1},
             {(_this select 2) call FUNC(addConfigPauseDurations)},
             [_name, _x, _controllers, _pauseDurations, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigPauseDuration] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigPauseDuration] call ACEFUNC(interact_menu,addActionToObject);
     };
 
     private _actionConfigCountdownTime = [
@@ -267,9 +267,9 @@ _countdownTimes sort true;
         {true},
         {(_this select 2) call FUNC(addConfigCountdownTimes)},
         [_name, _x, _controllers, _countdownTimes, _targets]
-    ] call ACE_Interact_Menu_fnc_createAction;
+    ] call ACEFUNC(interact_menu,createAction);
 
-    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACE_Interact_Menu_fnc_addActionToObject;
+    [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigCountdownTime] call ACEFUNC(interact_menu,addActionToObject);
 
     if (_mode != 4) then {
         private _actionConfigMode = [
@@ -280,7 +280,7 @@ _countdownTimes sort true;
             {true},
             {},
             []
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
         private _actionConfigModeTime = [
             QGVAR(RangeConfigModeTime),
@@ -290,7 +290,7 @@ _countdownTimes sort true;
             {true},
             {},
             [_name, _x, _controllers, 1, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
         private _actionConfigModeHitTimeLimited = [
             QGVAR(RangeConfigModeHitTimeLimited),
@@ -300,7 +300,7 @@ _countdownTimes sort true;
             {true},
             {},
             [_name, _x, _controllers, 2, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
         private _actionConfigModeHitTargetLimited = [
             QGVAR(RangeConfigModeHitTargetLimited),
@@ -310,7 +310,7 @@ _countdownTimes sort true;
             {true},
             {},
             [_name, _x, _controllers, 3, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
         private _actionConfigModeRampage = [
             QGVAR(RangeConfigModeRampage),
@@ -320,13 +320,13 @@ _countdownTimes sort true;
             {true},
             {},
             [_name, _x, _controllers, 5, _targets]
-        ] call ACE_Interact_Menu_fnc_createAction;
+        ] call ACEFUNC(interact_menu,createAction);
 
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACE_Interact_Menu_fnc_addActionToObject;
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeTime] call ACE_Interact_Menu_fnc_addActionToObject;
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTimeLimited] call ACE_Interact_Menu_fnc_addActionToObject;
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTargetLimited] call ACE_Interact_Menu_fnc_addActionToObject;
-        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeRampage] call ACE_Interact_Menu_fnc_addActionToObject;
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig)], _actionConfigMode] call ACEFUNC(interact_menu,addActionToObject);
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeTime] call ACEFUNC(interact_menu,addActionToObject);
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTimeLimited] call ACEFUNC(interact_menu,addActionToObject);
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeHitTargetLimited] call ACEFUNC(interact_menu,addActionToObject);
+        [_x, 0, ["ACE_MainActions", QGVAR(Range), QGVAR(RangeConfig), QGVAR(RangeConfigMode)], _actionConfigModeRampage] call ACEFUNC(interact_menu,addActionToObject);
     };
 } forEach _controllers;
 

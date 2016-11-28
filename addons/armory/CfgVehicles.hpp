@@ -50,7 +50,7 @@ class CfgVehicles {
         scopeCurator = 2;
         author = ECSTRING(main,Author);
         displayName = CSTRING(Locker);
-        ace_cargo_canLoad = 0;
+        ACEGVAR(cargo,canLoad) = 0;
 
         // Empty inventory
         class TransportBackpacks {};

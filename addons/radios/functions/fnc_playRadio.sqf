@@ -32,7 +32,7 @@ private _radio = "Sign_Sphere10cm_F" createVehicle position _vehicle; // Non-col
 _radio attachTo [_vehicle, [0, 0, 0]];
 
 // Make the radio object invisible (MP and SP support)
-["ace_common_hideObjectGlobal", [_radio, true]] call CBA_fnc_serverEvent; // hideObjectGlobal must be executed on server
+[QACEGVAR(common,hideObjectGlobal)), [_radio, true]] call CBA_fnc_serverEvent; // hideObjectGlobal must be executed on server
 
 // Set Variable for menu conditions
 _vehicle setVariable [QGVAR(playingRadio), _radio, true];
