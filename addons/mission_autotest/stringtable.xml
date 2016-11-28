@@ -1,137 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Mission_Autotest">
         <Key ID="STR_TAC_Mission_Autotest_Autotest">
             <English>Autotest</English>
+            <German>Autotest</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_TAC_Autotest">
             <English>TAC Autotest</English>
+            <German>TAC Autotest</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Name">
             <English>Name:</English>
+            <German>Name:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_NameDesc">
             <English>Checks if the name is set.</English>
+            <German>Überprüft, ob der Name eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Description">
             <English>Description:</English>
+            <German>Beschreibung:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
             <English>Checks if the description is set.</English>
+            <German>Überprüft, ob die Beschreibung eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GameType">
             <English>Game Type:</English>
+            <German>Spieltyp:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GameTypeDesc">
             <English>Checks if the game type is set.</English>
+            <German>Überprüft, ob der Spieltyp eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Author">
             <English>Author:</English>
+            <German>Author:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AuthorDesc">
             <English>Checks if the author field is set and contains your Arma profile name.</English>
+            <German>Überprüft, ob das Autorenfeld eingestellt und dein Arma-Profilname eingetragen ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_MinPlayers">
             <English>Min Players:</English>
+            <German>Minimale Spielerzahl:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_MinPlayersDesc">
             <English>Checks if the minimum players amount is set.</English>
+            <German>Überprüft, ob die minimale Spielerzahl eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_MaxPlayers">
             <English>Max Players:</English>
+            <German>Maximale Spielerzahl:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_MaxPlayersDesc">
             <English>Checks if the maximum players amount is set.</English>
+            <German>Überprüft, ob die maximale Spielerzahl eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIPosession">
             <English>AI Posession:</English>
+            <German>KI-Inbesitznahme</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIPosessionDesc">
-            <English>Checks if the playable unit's AI possession is disabled.</English>
+            <English>Checks if the playable units AI possession is disabled.</English>
+            <German>Überprüft, ob die KI-Inbesitznahme für spielbare Einheiten deaktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_HCAmount">
             <English>Headless Clients:</English>
+            <German>Headless Clients:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_HCAmountDesc">
             <English>Checks if recommended amount of Headless Clients are present and playable.</English>
+            <German>Überprüft, ob die empfohlene Anzahl Headless Clients verfügbar und spielbar sind.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_HCPlayableOnlyUseful">
             <English>Only playable Headless Clients can be used!</English>
+            <German>Nur spielbare Headless Clients können genutzt werden!</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIAmount">
             <English>AI:</English>
+            <German>KI:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
             <English>Checks if recommended amount of AI are present.</English>
+            <German>Überprüft, ob die empfohlene KI-Anzahl anwesend ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
+            <German>Respawn-Modus:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnModeDesc">
             <English>Checks if respawn mode is set.</English>
+            <German>Überprüft, ob der Respawn-Modus eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnButton">
             <English>Respawn Button:</English>
+            <German>Respawn-Knopf:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnButtonDesc">
             <English>Checks if respawn button is enabled.</English>
+            <German>Überprüft, ob der Respawn-Knopf aktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDelay">
             <English>Respawn Delay:</English>
+            <German>Respawn-Verzögerung:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDelayDesc">
             <English>Checks if respawn delay is set to a reasonable time.</English>
+            <German>Überprüft, ob die Respawn-Verzögerung auf einen sinnvollen Wert eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnNoDelayNote">
             <English>Delay allows players to realize they are dead and will respawn.</English>
+            <German>Eine Verzögerung erlaubt den Spielern, ihren Tod und den bevorstehenden Respawn zu realisieren.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDialog">
             <English>Respawn Dialog:</English>
+            <German>Respawn-Dialog:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDialogDesc">
             <English>Checks if respawn dialog is disabled.</English>
+            <German>Überprüft, ob der Respawn-Dialog deaktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole">
             <English>Debug Console:</English>
+            <German>Debug-Konsole:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsoleDesc">
             <English>Checks if debug console is enabled.</English>
+            <German>Überprüft, ob die Debug-Konsole aktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
             <English>Enabled for everyone</English>
+            <German>Aktiviert für alle</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Apollo">
             <English>Apollo:</English>
+            <German>Apollo:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ApolloDesc">
             <English>Checks if Apollo is enabled.</English>
+            <German>Überprüft, ob Apollo aktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Findings">
             <English>Findings:</English>
+            <German>Ergebnisse:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
             <English>%1 has large init field contents (%2) but no 'isServer' or 'local' or 'hasInterface' check!</English>
+            <German>%1 hat große init field Inhalte (%2) aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung!</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
             <English>Virtual Arsenal code detected in init field of %1!</English>
+            <German>Virtueller Arsenal Code in init field von %1 gefunden! </German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
             <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' or 'hasInterface' check!</English>
+            <German>Virtueller Arsenal Code in init field von %1 gefunden, aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung! </German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
             <English>Init field checks complete, %1 issues detected.</English>
+            <German>Init field Überprüfung beendet, %1 Probleme gefunden.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
             <English>Side %1 has %2 groups. Note that Arma has a 144 group limit per side.</English>
+            <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 144 pro Seite hat.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
             <English>Should be</English>
+            <German>Sollte sein</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Unplayable">
             <English>Unplayable</English>
+            <German>Unspielbar</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_NotLoaded">
             <English>Not loaded</English>
+            <German>Nicht geladen</German>
         </Key>
     </Package>
 </Project>
