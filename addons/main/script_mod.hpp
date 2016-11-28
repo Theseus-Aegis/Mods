@@ -2,18 +2,15 @@
 
 #define PREFIX tac
 
-#define MAJOR 1
-#define MINOR 8
-#define PATCHLVL 2
-#define BUILD 0
+#include "script_version.hpp"
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.62
+#define REQUIRED_VERSION 1.64
 #define REQUIRED_CBA_VERSION {3,1,1}
-#define REQUIRED_ACE_VERSION {3,8,0}
+#define REQUIRED_ACE_VERSION {3,8,1}
 
 #ifdef COMPONENT_BEAUTIFIED
     #define COMPONENT_NAME QUOTE(TAC - COMPONENT_BEAUTIFIED)

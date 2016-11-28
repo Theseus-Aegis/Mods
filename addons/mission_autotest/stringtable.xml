@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Mission_Autotest">
+        <Key ID="STR_TAC_Mission_Autotest_Autotest">
+            <English>Autotest</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TAC_Autotest">
+            <English>TAC Autotest</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Name">
+            <English>Name:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_NameDesc">
+            <English>Checks if the name is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Description">
+            <English>Description:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
+            <English>Checks if the description is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameType">
+            <English>Game Type:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameTypeDesc">
+            <English>Checks if the game type is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Author">
+            <English>Author:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AuthorDesc">
+            <English>Checks if the author field is set and contains your Arma profile name.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayers">
+            <English>Min Players:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayersDesc">
+            <English>Checks if the minimum players amount is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayers">
+            <English>Max Players:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayersDesc">
+            <English>Checks if the maximum players amount is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIPosession">
+            <English>AI Posession:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIPosessionDesc">
+            <English>Checks if the playable unit's AI possession is disabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_HCAmount">
+            <English>Headless Clients:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_HCAmountDesc">
+            <English>Checks if recommended amount of Headless Clients are present and playable.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_HCPlayableOnlyUseful">
+            <English>Only playable Headless Clients can be used!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
+            <English>AI:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
+            <English>Checks if recommended amount of AI are present.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
+            <English>Respawn Mode:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnModeDesc">
+            <English>Checks if respawn mode is set.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnButton">
+            <English>Respawn Button:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnButtonDesc">
+            <English>Checks if respawn button is enabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDelay">
+            <English>Respawn Delay:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDelayDesc">
+            <English>Checks if respawn delay is set to a reasonable time.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnNoDelayNote">
+            <English>Delay allows players to realize they are dead and will respawn.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDialog">
+            <English>Respawn Dialog:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnDialogDesc">
+            <English>Checks if respawn dialog is disabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole">
+            <English>Debug Console:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsoleDesc">
+            <English>Checks if debug console is enabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
+            <English>Enabled for everyone</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Apollo">
+            <English>Apollo:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_ApolloDesc">
+            <English>Checks if Apollo is enabled.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Findings">
+            <English>Findings:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
+            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' or 'hasInterface' check!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
+            <English>Virtual Arsenal code detected in init field of %1!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
+            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' or 'hasInterface' check!</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
+            <English>Init field checks complete, %1 issues detected.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
+            <English>Side %1 has %2 groups. Note that Arma has a 144 group limit per side.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
+            <English>Should be</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Unplayable">
+            <English>Unplayable</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_NotLoaded">
+            <English>Not loaded</English>
+        </Key>
+    </Package>
+</Project>

@@ -50,6 +50,9 @@ if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])})
 
 
 private _targets = _target getVariable [QGVAR(targets), []];
+// Use targets set by API on runtime if they exist
+private _targetsRuntime = _target getVariable [QGVAR(targetsRuntime), []];
+_targets = [_targetsRuntime, _targets] select (_targetsRuntime isEqualTo []);
 
 // Exit if invalid target hit and set variable checked in PFH
 if !(_target in _targets) exitWith {

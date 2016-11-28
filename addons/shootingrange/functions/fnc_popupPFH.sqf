@@ -35,7 +35,7 @@ if (!(_controller getVariable [QGVAR(running), false]) || {GVAR(invalidTargetHit
     [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, false] call FUNC(popupPFHexit);
 };
 
-private _currentTime = diag_tickTime;
+private _currentTime = CBA_missionTime;
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
