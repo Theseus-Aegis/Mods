@@ -37,18 +37,23 @@ if (_loadData == "loaded") then {
 
     while {_updateInfo} do {
         // Retrieve the data which is stored in the client's heap
-        private _serverReply = "ApolloClient" callExtension "get";
-        TRACE_1("Get Chronos Data",_serverReply);
+        _loadData = "ApolloClient" callExtension "get";
+        TRACE_1("Get Chronos Data",_loadData);
 
-        if (_serverReply == "done") then {
+        if (_loadData == "error") then {
+            // Bad things happened, stop executing
             _updateInfo = false;
         } else {
-            _entry pushBack _serverReply;
+            if (_loadData == "done") then {
+                _updateInfo = false;
+            } else {
+                _entry pushBack _loadData;
 
-            // Reset
-            if (_serverReply == "next") then {
-                _armoryData pushBack _entry;
-                _entry = [];
+                // Reset
+                if (_loadData == "next") then {
+                    _armoryData pushBack _entry;
+                    _entry = [];
+                };
             };
         };
     };

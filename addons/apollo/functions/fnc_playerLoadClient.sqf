@@ -32,7 +32,7 @@ if (_loadData == "loaded") then {
    	    //TRACE_1("Load Data",_loadData);
 
         if (_loadData == "error") then {
-            // Bad things happend, stop executing
+            // Bad things happened, stop executing
             _updateInfo = false;
         } else {
             if (_loadData == "done") then {
