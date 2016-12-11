@@ -24,7 +24,7 @@ private _killerUID = getPlayerUID _killer;
 
 // Try to get UID from ACE3's damage source (ace_medical uses setDamage which makes killer always objNull)
 if (_killerUID == "") then {
-    _killerUID = getPlayerUID (_player getVariable ["ace_medical_lastDamageSource", objNull]);
+    _killerUID = getPlayerUID (_player getVariable [QACEGVAR(medical,lastDamageSource), objNull]);
 
     // No valid UID found, assume killer was AI or Self
     if (_killerUID == "") then {

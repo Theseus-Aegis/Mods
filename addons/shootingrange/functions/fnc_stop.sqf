@@ -41,7 +41,7 @@ params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", [
 
 
 // Notification
-private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+private _playerName = [ACE_player, true] call ACEFUNC(common,getName);
 [_controller, "FD_Finish_F"] call FUNC(playSoundSignal);
 
 if (_success) then {
@@ -61,7 +61,7 @@ if (_success) then {
     };
 
     private _size = [_size, _size - 0.5] select (_name isEqualTo "");
-    [_text, _size] call ACE_Common_fnc_displayTextStructured;
+    [_text, _size] call ACEFUNC(common,displayTextStructured);
 
     _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
     [_text, _size + 1, false] call FUNC(notifyVicinity);
@@ -80,6 +80,6 @@ if (_success) then {
     } else {
         _text = format ["%1<br/><br/>%2<br/>%3: %4", _text, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
     };
-    [_text, 3.5] call ACE_Common_fnc_displayTextStructured;
+    [_text, 3.5] call ACEFUNC(common,displayTextStructured);
     GVAR(invalidTargetHit) = nil;
 };

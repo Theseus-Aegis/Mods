@@ -42,7 +42,7 @@ private _triggers = (_targets select 0) getVariable [QGVAR(triggers), []];
 
 
 // Started notification (including players in vicinity)
-private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+private _playerName = [ACE_player, true] call ACEFUNC(common,getName);
 private _text = "";
 private _size = 0;
 
@@ -82,7 +82,7 @@ if (_mode != 4) then {
 };
 
 private _size = [_size, _size - 0.5] select (_name isEqualTo "");
-[_text, _size] call ACE_Common_fnc_displayTextStructured;
+[_text, _size] call ACEFUNC(common,displayTextStructured);
 
 _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
 [_text, _size + 1, false] call FUNC(notifyVicinity);
@@ -126,7 +126,7 @@ if (_mode > 1) then {
         if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
         // Countdown timer notification
-        [_textCountdown] call ACE_Common_fnc_displayTextStructured;
+        [_textCountdown] call ACEFUNC(common,displayTextStructured);
         [_controller, "FD_Timer_F"] call FUNC(playSoundSignal);
 
     }, [_controller, _textCountdown], _execTime] call CBA_fnc_waitAndExecute;
@@ -147,11 +147,11 @@ if (_mode > 1) then {
     _targetsInvalid = [_targetsInvalidRuntime, _targetsInvalid] select (_targetsInvalidRuntime isEqualTo []);
 
     // Final countdown notification
-    [localize LSTRING(Go)] call ACE_Common_fnc_displayTextStructured;
+    [localize LSTRING(Go)] call ACEFUNC(common,displayTextStructured);
     [_controller, "FD_Start_F"] call FUNC(playSoundSignal);
 
     // Notify spectators
-    private _playerName = [ACE_player, true] call ACE_Common_fnc_getName;
+    private _playerName = [ACE_player, true] call ACEFUNC(common,getName);
     private _textNotify = format ["%1 %2!", _playerName, localize LSTRING(Started)];
     [_textNotify, 1.5, false] call FUNC(notifyVicinity);
 

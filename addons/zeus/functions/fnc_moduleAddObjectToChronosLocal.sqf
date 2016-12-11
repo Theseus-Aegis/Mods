@@ -20,14 +20,14 @@ if !(_activated && {local _logic}) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if (!(["tac_apollo"] call ace_common_fnc_isModLoaded) || {!EGVAR(apollo,vehiclesLoaded)}) then {
-    [LSTRING(EnableChronos)] call ACE_Common_fnc_displayTextStructured;
+if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded)) || {!EGVAR(apollo,vehiclesLoaded)}) then {
+    [LSTRING(EnableChronos)] call ACEFUNC(common,displayTextStructured);
 } else {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
-        [LSTRING(PlaceOnObject)] call ACE_Common_fnc_displayTextStructured;
+        [LSTRING(PlaceOnObject)] call ACEFUNC(common,displayTextStructured);
     } else {
         if !((_mouseOverUnit getVariable [QEGVAR(apollo,vehicleID), "None"]) isEqualTo "None") then {
-            [LSTRING(AlreadyInChronos)] call ACE_Common_fnc_displayTextStructured;
+            [LSTRING(AlreadyInChronos)] call ACEFUNC(common,displayTextStructured);
         } else {
             [QGVAR(addObjectToChronos), _mouseOverUnit] call CBA_fnc_serverEvent;
         };
