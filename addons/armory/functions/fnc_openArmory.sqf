@@ -75,7 +75,8 @@ private _itemsData = [
     ["attachment", "muzzle_snds_H", "Muzzle", "Blabla, this item, blabla", 13],
     ["attachment", "optic_MRD", "Optic", "Blabla, this item, blabla", 1],
     // Wearables
-    ["wearable", "G_Bandanna_Shades", "Goggles", "Blabla, this item, blabla", 4]
+    ["wearable", "G_Bandanna_Shades", "Goggles", "Blabla, this item, blabla", 4]//,
+    //["wearable", "Unknown_Class", "Goggles", "Blabla, this item, blabla", 12]
 ];
 
 {
