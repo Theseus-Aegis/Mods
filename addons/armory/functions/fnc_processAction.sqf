@@ -50,7 +50,7 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 if (GVAR(system) == 0) then {
     // Set box contents
     private _isBackpack = [_selectedItem] call ACEFUNC(backpacks,isBackpack);
-    private _itemType = ([_selectedItem] call ACEFUNC(common,getItemType) select 0);
+    private _itemType = ([_selectedItem] call ACEFUNC(common,getItemType)) select 0;
 
     if (_type == "take") then {
         if (_isBackpack) exitWith {
