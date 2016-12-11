@@ -18,6 +18,6 @@
 // Has to be display to allow movement
 private _dummyFixDisplay = (findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
 
-// Fix future openings by throwing key events in the display signalling CBA keybind
+// Fix future openings by throwing key events in the display signaling CBA keybind to register the keys
 _dummyFixDisplay displayAddEventHandler ["KeyUp", {[_this, "KeyUp"] call CBA_events_fnc_keyHandler}];
 _dummyFixDisplay displayAddEventHandler ["KeyDown", {[_this,"KeyDown"] call CBA_events_fnc_keyHandler}];
