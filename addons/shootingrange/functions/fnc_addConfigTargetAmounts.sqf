@@ -32,7 +32,7 @@ private _actions = [];
             {true},
             {},
             [_name, _controllers, _x, _targets]
-        ] call ACEFUNC(interact_menu,createAction)),
+        ] call ACEFUNC(interact_menu,createAction),
         [],
         _controller
     ];

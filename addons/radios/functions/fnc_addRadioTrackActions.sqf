@@ -29,7 +29,7 @@ private _actions = [];
             {true},
             {},
             [_vehicle, _x]
-        ] call ACEFUNC(interact_menu,createAction)),
+        ] call ACEFUNC(interact_menu,createAction),
         [],
         _vehicle
     ];
