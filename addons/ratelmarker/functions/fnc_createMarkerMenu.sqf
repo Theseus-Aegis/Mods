@@ -16,4 +16,8 @@
 #include "script_component.hpp"
 
 // Has to be display to allow movement
-(findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
+private _dummyFixDisplay = (findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
+
+// Fix future openings by throwing key events in the display signalling CBA keybind
+_dummyFixDisplay displayAddEventHandler ["KeyUp", {[_this, "KeyUp"] call CBA_events_fnc_keyHandler}];
+_dummyFixDisplay displayAddEventHandler ["KeyDown", {[_this,"KeyDown"] call CBA_events_fnc_keyHandler}];

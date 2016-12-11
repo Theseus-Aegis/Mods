@@ -5,7 +5,6 @@ if (!hasInterface) exitWith {};
 
 // Add Keybind
 ["TAC", QGVAR(OpenRatelMarker), localize LSTRING(Open), {
-    systemChat format ["call ss - %1", CBA_missionTime];
     if ([vehicle ACE_player] call FUNC(canUseMarkerMenu)) then {
         call FUNC(createMarkerMenu);
     };
