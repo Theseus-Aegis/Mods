@@ -18,7 +18,7 @@
 params ["_vehicle"];
 
 if (isNil {_vehicle getVariable QGVAR(prepared)}) then {
-    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(prepare)}, {}, localize LSTRING(Attaching)] call ACE_Common_fnc_progressBar;
+    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(prepare)}, {}, localize LSTRING(Attaching)] call ACEFUNC(common,progressBar);
 } else {
-    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(unprepare)}, {}, localize LSTRING(Detaching)] call ACE_Common_fnc_progressBar;
+    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(unprepare)}, {}, localize LSTRING(Detaching)] call ACEFUNC(common,progressBar);
 };

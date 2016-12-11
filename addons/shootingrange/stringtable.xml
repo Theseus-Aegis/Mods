@@ -126,8 +126,8 @@
             <German>Auslöser-Markierungen</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_TriggerMarkersDesc">
-            <English>List of trigger markers used for controlled target pop-ups, separated by commas. Must be in order with targets. Available in Trigger Mode only.</English>
-            <German>Liste der Auslöser-Markierungen, die für gezielt aufklappbare Ziele genutzt werden können. Durch Kommas trennen. Muss in der Reihenfolge der Ziele sein. Nur im Auslösermodus verfügbar.</German>
+            <English>List of trigger markers (triggers will be generated) or triggers used for controlled target pop-ups, separated by commas. Must be in order with targets. Available in Trigger Mode only.</English>
+            <German>Liste der Auslöser-Markierungen (Auslöser werden generiert) oder der Auslöser zur Kontrolle der aufklappenden Ziele. Durch Kommas trennen. Muss in der Reihenfolge der Ziele sein. Nur im Auslöser-Modus verfügbar.</German>
         </Key>
         <Key ID="STR_TAC_ShootingRange_PopOnTriggerExit">
             <English>Pop on Trigger Exit</English>

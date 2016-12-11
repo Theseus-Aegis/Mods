@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-if !(["tac_apollo"] call ace_common_fnc_isModLoaded) exitWith {
+if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (localize LSTRING(NotLoaded));
     (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText ERROR_PICTURE;
 };

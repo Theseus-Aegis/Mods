@@ -32,7 +32,7 @@ if (_loadData == "loaded") then {
    	    //TRACE_1("Load Data",_loadData);
 
         if (_loadData == "error") then {
-            // Bad things happend, stop executing
+            // Bad things happened, stop executing
             _updateInfo = false;
         } else {
             if (_loadData == "done") then {
@@ -40,7 +40,7 @@ if (_loadData == "loaded") then {
                 _updateInfo = false;
                 _success = true;
             } else {
-                _codePacket = _loadData select [17, count _loadData];
+                private _codePacket = _loadData select [17, count _loadData];
                 //TRACE_1("Code Packet",_codePacket);
                 call (compile _codePacket);
             };

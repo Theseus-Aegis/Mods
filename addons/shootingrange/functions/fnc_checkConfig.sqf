@@ -73,4 +73,4 @@ if (_mode == 4) then {
     _size = _size - 0.5;
 };
 
-[_text, _size] call ACE_Common_fnc_displayTextStructured;
+[_text, _size] call ACEFUNC(common,displayTextStructured);

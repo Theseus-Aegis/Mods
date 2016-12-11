@@ -26,7 +26,7 @@ private _grid = format ["%1%2", ctrlText (_ctrlParent displayCtrl GUI_ID_INPUT_X
 // Close marker menu
 _ctrlParent closeDisplay 0;
 
-private _pos = [_grid] call ace_common_fnc_getMapPosFromGrid;
+private _pos = [_grid] call ACEFUNC(common,getMapPosFromGrid);
 TRACE_2("Grid to Position",_grid,_pos);
 
 
