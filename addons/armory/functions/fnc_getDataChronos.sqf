@@ -27,31 +27,41 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
 private _debug = [false, true] select EGVAR(apollo,isDebug);
 TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 
+private _success = false;
+private _armoryData = [];
+
 // Call Chronos for Data - no further HTTP calls are needed after this one
 private _loadData = "ApolloClient" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
-
 if (_loadData == "loaded") then {
-    private _armoryData = [];
     private _updateInfo = true;
     private _entry = [];
 
     while {_updateInfo} do {
         // Retrieve the data which is stored in the client's heap
-        private _serverReply = "ApolloClient" callExtension "get";
-        TRACE_1("Get Chronos Data",_serverReply);
+        _loadData = "ApolloClient" callExtension "get";
+        TRACE_1("Get Chronos Data",_loadData);
 
-        if (_serverReply == "done") then {
+        if (_loadData == "error") then {
+            // Bad things happened, stop executing
             _updateInfo = false;
         } else {
-            _entry pushBack _serverReply;
+            if (_loadData == "done") then {
+                _updateInfo = false;
+                _success = true;
+            } else {
+                _entry pushBack _loadData;
 
-            // Reset
-            if (_serverReply == "next") then {
-                _armoryData pushBack _entry;
-                _entry = [];
+                // Reset
+                if (_loadData == "next") then {
+                    _armoryData pushBack _entry;
+                    _entry = [];
+                };
             };
         };
     };
+};
+
+if (_success) then {
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
