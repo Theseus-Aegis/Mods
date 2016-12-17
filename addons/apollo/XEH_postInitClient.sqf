@@ -10,9 +10,9 @@ if (!hasInterface) exitWith {};
         ERROR_MSG("Failed to initialize - Missing ApolloClient extension!");
         ["Your connection has been terminated - Missing ApolloClient extension!"] call FUNC(endMissionError);
     };
-    if (_apolloClientVersion != "1.1") exitWith {
-        ERROR_1("Failed to initialize - Wrong ApolloClient extension version (active: %1 - required: 1.1)!",_apolloClientVersion);
-        [format ["Your connection has been terminated - Wrong ApolloClient extension version (active: %1 - required: 1.1)!", _apolloClientVersion]] call FUNC(endMissionError);
+    if (_apolloClientVersion != "1.2") exitWith {
+        ERROR_1("Failed to initialize - Wrong ApolloClient extension version (active: %1 - required: 1.2)!",_apolloClientVersion);
+        [format ["Your connection has been terminated - Wrong ApolloClient extension version (active: %1 - required: 1.2)!", _apolloClientVersion]] call FUNC(endMissionError);
     };
 
     // Terminate to lobby EH
