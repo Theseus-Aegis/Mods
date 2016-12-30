@@ -11,7 +11,7 @@ class CfgPatches {
             "CUP_Creatures_Military_BAF",
             "CUP_Creatures_Military_CDF",
             "CUP_Creatures_Military_Germany",
-            "CUP_Creatures_Military_Chedaki"
+            "CUP_Creatures_Military_Chedaki",
             "CUP_Creatures_Military_NAPA",
             "CUP_Creatures_Military_RACS",
             "CUP_Creatures_Military_Russia",
@@ -20,7 +20,7 @@ class CfgPatches {
             "CUP_Creatures_Military_TakiInsurgents",
             "CUP_Creatures_Military_USArmy",
             "CUP_Creatures_Military_USMC",
-            "CUP_Creatures_People_Civil_Chernarus",
+            "CUP_Creatures_People_Civil_Chernarus"
         };
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
