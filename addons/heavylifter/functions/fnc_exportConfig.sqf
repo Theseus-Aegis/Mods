@@ -1,0 +1,76 @@
+/*
+ * Author: BaerMitUmlaut, 654wak654, Jonpas
+ * Generates the CfgVehicles config for heavy lifter compatibility.
+ * Must be loaded into the game!
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * CfgVehicles Content <STRING>
+ *
+ * Example:
+ * [] call tac_heavylifter_fnc_exportConfig
+ *
+ * Public: Yes
+ */
+#include "script_component.hpp"
+
+#define HELPER_CENTER_HEIGHT 1.5
+
+private _lifter = createVehicle ["O_Heli_Transport_04_F", [0, 0, 0], [], 0, "NONE"];
+
+private _modifyClasses = [];
+private _baseClasses = [];
+{
+    if (getNumber (_x >> "scope") == 2 && {getArray (_x >> QGVAR(attachPos)) isEqualTo []}) then {
+        // Check if it can be slingloaded by default
+        private _vehicle = createVehicle [configName _x, [0, 0, 0], [], 0, "NONE"];
+        //if (getMass _vehicle >= 20000) then {diag_log ("big - " + configName _x)};
+        if (!(_lifter canSlingLoad _vehicle) && {getMass _vehicle < 19999}) then { // 20000 is Skycrane, getMass seems to be off by 1
+            private _baseClass = inheritsFrom _x;
+            private _attachPos = [
+                0,
+                -((getCenterOfMass _vehicle) select 1),
+                -(((boundingBoxReal _vehicle) select 0) select 2) - HELPER_CENTER_HEIGHT
+            ] apply {round (_x * 100) / 100}; // Round to 2 decimal places
+
+            // Check if base class has same values
+            private _baseIndex = (_modifyClasses apply {_x select 0}) find _baseClass != -1;
+            if (!_baseIndex || {_baseIndex && {((_modifyClasses select _baseIndex) select 2) isEqualTo _attachPos}}) then {
+                // Save class and base class
+                _modifyClasses pushBackUnique [_x, _baseClass, _attachPos];
+                if !(_baseClass in (_modifyClasses apply {_x select 0})) then {
+                    _baseClasses pushBackUnique _baseClass;
+                };
+            };
+        };
+        deleteVehicle _vehicle;
+    };
+    false
+} count (
+    (
+        "((configName _x) isKindOf 'Helicopter' || (configName _x) isKindOf 'Plane' || (configName _x) isKindOf 'Car' || (configName _x) isKindOf 'Tank') || (configName _x) isKindOf 'Ship_F' || (configName _x) isKindOf 'Motorcycle'"
+    ) configClasses (configFile >> "CfgVehicles")
+);
+
+deleteVehicle _lifter;
+
+private _nl = toString [13, 10];
+"ace_clipboard" callExtension format ["class CfgVehicles {%1", _nl];
+{
+    "ace_clipboard" callExtension format ["    class %2;%1", _nl, configName _x];
+    false
+} count _baseClasses;
+"ace_clipboard" callExtension _nl;
+{
+    _x params ["_class", "_parent", "_attachPos"];
+    "ace_clipboard" callExtension format [
+        "    class %2: %3 {%1        GVAR(attachPos)[] = {%4, %5, %6};%1    };%1",
+        _nl, configName _class, configName _parent, _attachPos select 0, _attachPos select 1, _attachPos select 2
+    ];
+    false
+} count _modifyClasses;
+"ace_clipboard" callExtension "}; "; // Requires some non-special last char to process special chars
+
+"ace_clipboard" callExtension "--COMPLETE--";
