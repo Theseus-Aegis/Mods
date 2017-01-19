@@ -9,7 +9,7 @@ class CfgVehicles {
         isGlobal = 1; // Global
         isTriggerActivated = 0;
         isDisposable = 0;
-        //icon = QPATHTOF(UI\Icon_Module_Chronos_ca.paa); @todo
+        icon = QPATHTOF(UI\Icon_Module_Apollo_ca.paa);
         class Arguments {
             class enabled {
                 displayName = ACECSTRING(Common,Enabled);
