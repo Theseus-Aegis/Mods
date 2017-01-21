@@ -138,10 +138,6 @@ class CfgVehicles {
     class Truck_03_base_F;
     class Heli_Transport_03_base_F;
     class Heli_Transport_03_unarmed_base_F;
-    class B_Truck_01_ammo_F;
-    class B_Truck_01_box_F;
-    class B_Truck_01_fuel_F;
-    class B_Truck_01_Repair_F;
     class Plane_Civil_01_base_F;
     class UAV_03_base_F;
     class Scooter_Transport_01_base_F;
@@ -184,6 +180,18 @@ class CfgVehicles {
     };
     class B_Truck_01_mover_F: B_Truck_01_transport_F {
         GVAR(attachPos)[] = {0, 0.19, 0.33};
+    };
+    class B_Truck_01_box_F: B_Truck_01_mover_F {
+        GVAR(attachPos)[] = {0, -0.1, 0.73};
+    };
+    class B_Truck_01_Repair_F: B_Truck_01_mover_F {
+        GVAR(attachPos)[] = {0, -0.1, 0.73};
+    };
+    class B_Truck_01_ammo_F: B_Truck_01_mover_F {
+        GVAR(attachPos)[] = {0, 0.15, 0.34};
+    };
+    class B_Truck_01_fuel_F: B_Truck_01_mover_F {
+        GVAR(attachPos)[] = {0, 0.56, 0.33};
     };
     class B_Truck_01_medical_F: B_Truck_01_transport_F {
         GVAR(attachPos)[] = {0, -0.22, 0.63};
@@ -265,18 +273,6 @@ class CfgVehicles {
     };
     class B_Heli_Transport_03_unarmed_F: Heli_Transport_03_unarmed_base_F {
         GVAR(attachPos)[] = {0, 0.06, 2.02};
-    };
-    class B_T_Truck_01_ammo_F: B_Truck_01_ammo_F {
-        GVAR(attachPos)[] = {0, 0.15, 0.34};
-    };
-    class B_T_Truck_01_box_F: B_Truck_01_box_F {
-        GVAR(attachPos)[] = {0, -0.1, 0.73};
-    };
-    class B_T_Truck_01_fuel_F: B_Truck_01_fuel_F {
-        GVAR(attachPos)[] = {0, 0.56, 0.33};
-    };
-    class B_T_Truck_01_Repair_F: B_Truck_01_Repair_F {
-        GVAR(attachPos)[] = {0, -0.1, 0.73};
     };
     class I_C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
         GVAR(attachPos)[] = {0, -0.41, 0.8};
