@@ -143,130 +143,130 @@ class CfgVehicles {
     class Scooter_Transport_01_base_F;
 
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
-        GVAR(attachPos)[] = {0, -0.41, 0.8};
+        GVAR(attachPos)[] = {0, -0.41, 0.08};
     };
     class B_Heli_Light_01_armed_F: Heli_Light_01_armed_base_F {
-        GVAR(attachPos)[] = {0, -0.41, 0.8};
+        GVAR(attachPos)[] = {0, -0.41, 0.08};
     };
     class C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
-        GVAR(attachPos)[] = {0, -1.28, -0.75};
+        GVAR(attachPos)[] = {0, -1.28, -0.72};
     };
     class O_Heli_Light_02_F: Heli_Light_02_base_F {
-        GVAR(attachPos)[] = {0, -1.05, 0.92};
+        GVAR(attachPos)[] = {0, -1.05, 0.85};
     };
     class O_Heli_Light_02_unarmed_F: Heli_Light_02_unarmed_base_F {
-        GVAR(attachPos)[] = {0, -1.05, 0.92};
+        GVAR(attachPos)[] = {0, -1.05, 0.85};
     };
     class O_Heli_Light_02_v2_F: Heli_Light_02_base_F {
-        GVAR(attachPos)[] = {0, -1.05, 0.92};
+        GVAR(attachPos)[] = {0, -1.05, 0.85};
     };
     class B_Heli_Attack_01_F: Heli_Attack_01_base_F {
-        GVAR(attachPos)[] = {0, -1.25, 0.48};
+        GVAR(attachPos)[] = {0, -1.25, 0.61};
     };
     class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
-        GVAR(attachPos)[] = {0, -1.69, 1.01};
+        GVAR(attachPos)[] = {0, -1.69, 0.82};
     };
     class I_Heli_Transport_02_F: Heli_Transport_02_base_F {
-        GVAR(attachPos)[] = {0, -1.88, 2.1};
+        GVAR(attachPos)[] = {0, -1.88, 2.27};
     };
     class C_Boat_Civil_01_F: Boat_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, 0.62, 0.08};
+        GVAR(attachPos)[] = {0, 0.62, 0.24};
     };
     class C_Boat_Civil_01_rescue_F: Boat_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, 0.62, 0.08};
+        GVAR(attachPos)[] = {0, 0.62, 0.24};
     };
     class C_Boat_Civil_01_police_F: Boat_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, 0.62, 0.08};
+        GVAR(attachPos)[] = {0, 0.62, 0.24};
     };
     class B_Truck_01_mover_F: B_Truck_01_transport_F {
-        GVAR(attachPos)[] = {0, 0.19, 0.33};
+        GVAR(attachPos)[] = {0, 0.19, 0.59};
     };
     class B_Truck_01_box_F: B_Truck_01_mover_F {
-        GVAR(attachPos)[] = {0, -0.1, 0.73};
+        GVAR(attachPos)[] = {0, -0.1, 0.99};
     };
     class B_Truck_01_Repair_F: B_Truck_01_mover_F {
-        GVAR(attachPos)[] = {0, -0.1, 0.73};
+        GVAR(attachPos)[] = {0, -0.1, 0.99};
     };
     class B_Truck_01_ammo_F: B_Truck_01_mover_F {
-        GVAR(attachPos)[] = {0, 0.15, 0.34};
+        GVAR(attachPos)[] = {0, 0.15, 0.61};
     };
     class B_Truck_01_fuel_F: B_Truck_01_mover_F {
-        GVAR(attachPos)[] = {0, 0.56, 0.33};
+        GVAR(attachPos)[] = {0, 0.56, 0.6};
     };
     class B_Truck_01_medical_F: B_Truck_01_transport_F {
-        GVAR(attachPos)[] = {0, -0.22, 0.63};
+        GVAR(attachPos)[] = {0, -0.22, 0.89};
     };
     class O_Truck_02_box_F: Truck_02_box_base_F {
-        GVAR(attachPos)[] = {0, -0.17, 0.69};
+        GVAR(attachPos)[] = {0, -0.17, 1.06};
     };
     class O_Truck_02_medical_F: Truck_02_medical_base_F {
-        GVAR(attachPos)[] = {0, -0.28, 0.69};
+        GVAR(attachPos)[] = {0, -0.28, 1.06};
     };
     class O_Truck_02_Ammo_F: Truck_02_Ammo_base_F {
-        GVAR(attachPos)[] = {0, -0.17, 0.69};
+        GVAR(attachPos)[] = {0, -0.17, 1.06};
     };
     class O_Truck_02_fuel_F: Truck_02_fuel_base_F {
-        GVAR(attachPos)[] = {0, 0.02, 0.69};
+        GVAR(attachPos)[] = {0, 0.02, 1.06};
     };
     class I_Truck_02_ammo_F: Truck_02_Ammo_base_F {
-        GVAR(attachPos)[] = {0, -0.17, 0.69};
+        GVAR(attachPos)[] = {0, -0.17, 1.06};
     };
     class I_Truck_02_box_F: Truck_02_box_base_F {
-        GVAR(attachPos)[] = {0, -0.17, 0.69};
+        GVAR(attachPos)[] = {0, -0.17, 1.06};
     };
     class I_Truck_02_medical_F: Truck_02_medical_base_F {
-        GVAR(attachPos)[] = {0, -0.28, 0.69};
+        GVAR(attachPos)[] = {0, -0.28, 1.06};
     };
     class I_Truck_02_fuel_F: Truck_02_fuel_base_F {
-        GVAR(attachPos)[] = {0, 0.02, 0.69};
+        GVAR(attachPos)[] = {0, 0.02, 1.06};
     };
     class C_Truck_02_fuel_F: Truck_02_fuel_base_F {
-        GVAR(attachPos)[] = {0, 0.02, 0.69};
+        GVAR(attachPos)[] = {0, 0.02, 1.06};
     };
     class C_Truck_02_box_F: Truck_02_box_base_F {
-        GVAR(attachPos)[] = {0, -0.17, 0.69};
+        GVAR(attachPos)[] = {0, -0.17, 1.06};
     };
     class I_Heli_light_03_F: Heli_light_03_base_F {
-        GVAR(attachPos)[] = {0, -1.17, 1};
+        GVAR(attachPos)[] = {0, -1.17, 0.21};
     };
     class I_Heli_light_03_unarmed_F: Heli_light_03_unarmed_base_F {
-        GVAR(attachPos)[] = {0, -1.18, 0.81};
+        GVAR(attachPos)[] = {0, -1.18, 0.54};
     };
     class B_Plane_CAS_01_F: Plane_CAS_01_base_F {
-        GVAR(attachPos)[] = {0, -0.67, 0.9};
+        GVAR(attachPos)[] = {0, -0.67, 0.86};
     };
     class O_APC_Wheeled_02_rcws_F: O_APC_Wheeled_02_base_F {
-        GVAR(attachPos)[] = {0, 1.38, 1.01};
+        GVAR(attachPos)[] = {0, 1.38, 1.09};
     };
     class B_UAV_01_F: UAV_01_base_F {
-        GVAR(attachPos)[] = {0, -0.01, -1.35};
+        GVAR(attachPos)[] = {0, -0.01, -1.17};
     };
     class O_UAV_01_F: UAV_01_base_F {
-        GVAR(attachPos)[] = {0, -0.01, -1.35};
+        GVAR(attachPos)[] = {0, -0.01, -1.17};
     };
     class I_UAV_01_F: UAV_01_base_F {
-        GVAR(attachPos)[] = {0, -0.01, -1.35};
+        GVAR(attachPos)[] = {0, -0.01, -1.17};
     };
     class O_Truck_03_transport_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 0.59, 0.81};
+        GVAR(attachPos)[] = {0, 0.59, 1.1};
     };
     class O_Truck_03_covered_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 0.57, 0.81};
+        GVAR(attachPos)[] = {0, 0.57, 1.1};
     };
     class O_Truck_03_repair_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 0.98, 0.54};
+        GVAR(attachPos)[] = {0, 0.98, 0.83};
     };
     class O_Truck_03_ammo_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 0.86, 0.54};
+        GVAR(attachPos)[] = {0, 0.86, 0.83};
     };
     class O_Truck_03_fuel_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 1.07, 0.54};
+        GVAR(attachPos)[] = {0, 1.07, 0.83};
     };
     class O_Truck_03_medical_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 0.57, 0.82};
+        GVAR(attachPos)[] = {0, 0.57, 1.1};
     };
     class O_Truck_03_device_F: Truck_03_base_F {
-        GVAR(attachPos)[] = {0, 1, 0.54};
+        GVAR(attachPos)[] = {0, 1, 0.83};
     };
     class B_Heli_Transport_03_F: Heli_Transport_03_base_F {
         GVAR(attachPos)[] = {0, 0.06, 2.02};
@@ -275,30 +275,30 @@ class CfgVehicles {
         GVAR(attachPos)[] = {0, 0.06, 2.02};
     };
     class I_C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
-        GVAR(attachPos)[] = {0, -0.41, 0.8};
+        GVAR(attachPos)[] = {0, -0.41, 0.08};
     };
     class B_CTRG_Heli_Transport_01_sand_F: Heli_Transport_01_base_F {
-        GVAR(attachPos)[] = {0, -1.69, 1.01};
+        GVAR(attachPos)[] = {0, -1.69, 0.82};
     };
     class B_CTRG_Heli_Transport_01_tropic_F: Heli_Transport_01_base_F {
-        GVAR(attachPos)[] = {0, -1.69, 1.01};
+        GVAR(attachPos)[] = {0, -1.69, 0.82};
     };
     class C_Plane_Civil_01_F: Plane_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, -1.79, 0.1};
+        GVAR(attachPos)[] = {0, -1.79, 0.28};
     };
     class C_Plane_Civil_01_racing_F: Plane_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, -1.79, 0.1};
+        GVAR(attachPos)[] = {0, -1.79, 0.28};
     };
     class I_C_Plane_Civil_01_F: Plane_Civil_01_base_F {
-        GVAR(attachPos)[] = {0, -1.79, 0.1};
+        GVAR(attachPos)[] = {0, -1.79, 0.28};
     };
     class B_T_UAV_03_F: UAV_03_base_F {
-        GVAR(attachPos)[] = {0, 0.1, 0.13};
+        GVAR(attachPos)[] = {0, 0.1, 0.22};
     };
     class O_T_APC_Wheeled_02_rcws_ghex_F: O_APC_Wheeled_02_base_F {
-        GVAR(attachPos)[] = {0, 1.38, 1.01};
+        GVAR(attachPos)[] = {0, 1.38, 1.09};
     };
     class C_Scooter_Transport_01_F: Scooter_Transport_01_base_F {
-        GVAR(attachPos)[] = {0, 0.14, -0.06};
+        GVAR(attachPos)[] = {0, 0.14, 0.08};
     };
 };

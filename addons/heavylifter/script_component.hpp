@@ -2,10 +2,10 @@
 #define COMPONENT_BEAUTIFIED Heavy Lifter
 #include "\x\tac\addons\main\script_mod.hpp"
 
-#define DRAW_ATTACHPOS_INFO
-#define ALLOW_QUICK_PREP
+// #define DRAW_ATTACHPOS_INFO
+// #define ALLOW_QUICK_PREP
 // #define DEBUG_MODE_FULL
-#define DISABLE_COMPILE_CACHE
+// #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_HEAVYLIFTER

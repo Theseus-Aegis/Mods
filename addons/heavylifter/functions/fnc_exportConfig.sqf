@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-#define HELPER_CENTER_HEIGHT 1.5
+#define HELPER_CENTER_HEIGHT 1.32
 
 // Recursive function that checks base classes for already defined attach positions
 private _fnc_checkBase = {
@@ -46,10 +46,11 @@ private _baseClasses = [];
 
         if (!(_lifter canSlingLoad _vehicle) && {getMass _vehicle < 19999}) then { // 20000 is Skycrane, getMass seems to be off by 1
             private _baseClass = inheritsFrom _x;
+            private _posWorldVehicle = ASLToAGL (getPosWorld _vehicle);
             private _attachPos = [
                 0,
                 -((getCenterOfMass _vehicle) select 1),
-                -(((boundingBoxReal _vehicle) select 0) select 2) - HELPER_CENTER_HEIGHT
+                -((_vehicle worldToModelVisual [_posWorldVehicle select 0, _posWorldVehicle select 1, HELPER_CENTER_HEIGHT]) select 2) // Must use correct X and Y as well for worldToModel
             ] apply {round (_x * 100) / 100}; // Round to 2 decimal places
 
             // Backtrack base classes to see if any already has the same value applied, reapply if a different value is find instead of none
