@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * CfgVehicles Content <STRING>
+ * None
  *
  * Example:
  * [] call tac_heavylifter_fnc_exportConfig
