@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * CfgVehicles Content <STRING>
+ * None
  *
  * Example:
  * [] call tac_heavylifter_fnc_exportConfig
@@ -39,6 +39,7 @@ private _lifter = createVehicle ["O_Heli_Transport_04_F", [0, 0, 0], [], 0, "NON
 
 private _modifyClasses = [];
 private _baseClasses = [];
+private _sourcePatches = [];
 {
     if (getNumber (_x >> "scope") == 2 && {getArray (_x >> QGVAR(attachPos)) isEqualTo []}) then {
         // Check if it can be slingloaded by default
@@ -57,6 +58,7 @@ private _baseClasses = [];
             if !([_modifyClasses, _attachPos, _baseClass] call _fnc_checkBase) then {
                 // Save class and base class
                 _modifyClasses pushBackUnique [_x, _baseClass, _attachPos];
+                _sourcePatches pushBackUnique ((configSourceAddonList _x) select 0);
                 if !(_baseClass in (_modifyClasses apply {_x select 0})) then {
                     _baseClasses pushBackUnique _baseClass;
                 };
@@ -89,6 +91,15 @@ private _nl = toString [13, 10];
     ];
     false
 } count _modifyClasses;
-"ace_clipboard" callExtension "}; "; // Requires some non-special last char to process special chars
+"ace_clipboard" callExtension format ["};%1", _nl];
+
+"ace_clipboard" callExtension format ["%1        requiredAddons[] = {%1", _nl];
+{
+    if (_forEachIndex + 1 < count _sourcePatches) then {
+        "ace_clipboard" callExtension format ['            "%2",%1', _nl, _x];
+    } else {
+        "ace_clipboard" callExtension format ['            "%2"%1        };%1', _nl, _x];
+    };
+} forEach _sourcePatches;
 
 "ace_clipboard" callExtension "--COMPLETE--";
