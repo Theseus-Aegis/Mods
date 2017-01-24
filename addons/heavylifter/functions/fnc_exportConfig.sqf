@@ -96,9 +96,9 @@ private _nl = toString [13, 10];
 "ace_clipboard" callExtension format ["%1        requiredAddons[] = {%1", _nl];
 {
     if (_forEachIndex + 1 < count _sourcePatches) then {
-        "ace_clipboard" callExtension format ['            "%2",%1', _nl, _x];
+        "ace_clipboard" callExtension format ["            %2,%1", _nl, str _x];
     } else {
-        "ace_clipboard" callExtension format ['            "%2"%1        };%1', _nl, _x];
+        "ace_clipboard" callExtension format ["            %2%1        };%1", _nl, str _x];
     };
 } forEach _sourcePatches;
 
