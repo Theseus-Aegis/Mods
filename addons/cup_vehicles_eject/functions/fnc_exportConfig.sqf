@@ -27,6 +27,21 @@ private _fnc_insertArranged = {
     };
 };
 
+private _fnc_addMergeTurrets = {
+    params ["_classes", "_class", "_nonEjectTurrets"];
+
+    private _baseClass = inheritsFrom _class;
+    private _index = (_classes apply {_x select 0}) find _class;
+    if (_index == -1) then {
+        [_classes, [_class, _baseClass, _nonEjectTurrets]] call _fnc_insertArranged;
+    } else {
+        // Add only turrets that don't already exist
+        _nonEjectTurrets = _nonEjectTurrets + ((_classes select _index) select 2); // Copy array to not change it in other classes arrays
+        _nonEjectTurrets = _nonEjectTurrets arrayIntersect _nonEjectTurrets;
+        _classes set [_index, [_class, _baseClass, _nonEjectTurrets]]
+    };
+};
+
 private _modifyClasses = [];
 private _baseClasses = [];
 private _baseBaseClasses = [];
@@ -47,28 +62,10 @@ private _sourcePatches = [];
         _sourcePatches pushBackUnique ((configSourceAddonList _x) select 0);
 
         if !(_baseClass in (_modifyClasses apply {_x select 0})) then {
-            private _baseBaseClass = inheritsFrom _baseClass;
-            private _baseIndex = (_baseClasses apply {_x select 0}) find _baseClass;
-            if (_baseIndex == -1) then {
-                [_baseClasses, [_baseClass, _baseBaseClass, _nonEjectTurrets]] call _fnc_insertArranged;
-            } else {
-                // Add only turrets that don't already exist
-                _nonEjectTurrets = _nonEjectTurrets + ((_baseClasses select _baseIndex) select 2); // Copy array to not change it in other classes arrays
-                _nonEjectTurrets = _nonEjectTurrets arrayIntersect _nonEjectTurrets;
-                _baseClasses set [_baseIndex, [_baseClass, _baseBaseClass, _nonEjectTurrets]]
-            };
+            [_baseClasses, _baseClass, _nonEjectTurrets] call _fnc_addMergeTurrets;
 
             if (!(_baseBaseClass in (_modifyClasses apply {_x select 0})) && {!(_baseBaseClass in (_baseClasses apply {_x select 0}))}) then {
-                private _baseBaseBaseClass = inheritsFrom _baseBaseClass;
-                private _baseBaseIndex = (_baseBaseClasses apply {_x select 0}) find _baseBaseClass;
-                if (_baseBaseIndex == -1) then {
-                    [_baseBaseClasses, [_baseBaseClass, _baseBaseBaseClass, _nonEjectTurrets]] call _fnc_insertArranged;
-                } else {
-                    // Add only turrets that don't already exist
-                    _nonEjectTurrets = _nonEjectTurrets + ((_baseBaseClasses select _baseBaseIndex) select 2);  // Copy array to not change it in other classes arrays
-                    _nonEjectTurrets = _nonEjectTurrets arrayIntersect _nonEjectTurrets;
-                    _baseBaseClasses set [_baseBaseIndex, [_baseBaseClass, _baseBaseBaseClass, _nonEjectTurrets]]
-                };
+                [_baseBaseClasses, _baseBaseClass, _nonEjectTurrets] call _fnc_addMergeTurrets;
             };
         };
     };
