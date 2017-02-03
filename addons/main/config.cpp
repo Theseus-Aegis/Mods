@@ -2,6 +2,7 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -29,6 +30,8 @@ class CfgMods {
     };
 };
 
+#include "CfgEden.hpp"
 #include "CfgModuleCategories.hpp"
 #include "CfgSettings.hpp"
 #include "CfgVehicleClasses.hpp"
+#include "displayEden.hpp"

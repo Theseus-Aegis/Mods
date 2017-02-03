@@ -3,7 +3,7 @@
 // Exit on clients and non-hosts
 if (!isServer) exitWith {};
 
-["placedInBodyBag", {
+["ace_placedInBodyBag", {
     // Move all inventory from body to bodybag
     _this call FUNC(moveInventory);
-}] call ACE_Common_fnc_addEventHandler;
+}] call CBA_fnc_addEventHandler;

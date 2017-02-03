@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.7.1-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.11.0-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -28,7 +28,7 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 
 [Release Build](tools/make.py) command line:
 ```
-make.py force checkexternal release MAJOR.MINOR.PATCH
+make.py version increment_build <other-increment-args> force checkexternal release
 ```
 
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:

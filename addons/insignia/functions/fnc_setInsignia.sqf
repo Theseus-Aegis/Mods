@@ -17,7 +17,10 @@
 
 params ["_unit"];
 
-if (!local _unit || !(_unit == player)) exitWith {};
+// Don't exit if insignia already set, BIS_fnc_getUnitInsignia will return the last set insignia even if it's currently not visible
+if (!local _unit || {_unit != player}) exitWith {};
 
-[_unit, GVAR(activeInsignia)] call BIS_fnc_setUnitInsignia;
-TRACE_2("Insignia added",_unit,GVAR(activeInsignia));
+private _insignia = _unit getVariable [QGVAR(activeInsignia), QGVAR(logoStitch)];
+[_unit, _insignia] call BIS_fnc_setUnitInsignia;
+
+TRACE_2("Insignia added",_unit,_insignia);

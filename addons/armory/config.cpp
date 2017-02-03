@@ -2,6 +2,7 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {QGVAR(Locker)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -14,6 +15,7 @@ class CfgPatches {
 };
 
 #include "ACE_Settings.hpp"
+#include "CfgEden.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
 #include "Dialog.hpp"

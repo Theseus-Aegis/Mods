@@ -5,6 +5,7 @@ PREP(addConfigTargetAmounts);
 PREP(animateTarget);
 PREP(canActivateTrigger);
 PREP(checkConfig);
+PREP(configure);
 PREP(create);
 PREP(getTargetAnimations);
 PREP(handleHitPart);

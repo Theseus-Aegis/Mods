@@ -17,5 +17,9 @@
             <Italian>http://www.theseus-aegis.com/</Italian>
             <French>http://www.theseus-aegis.com/</French>
         </Key>
+        <Key ID="STR_TAC_Main_Attributes">
+            <English>TAC Attributes</English>
+            <German>TAC Attribute</German>
+        </Key>
     </Package>
 </Project>

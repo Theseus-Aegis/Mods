@@ -27,31 +27,26 @@ params [
 ];
 
 if (isNull _object) exitWith {
-    ACE_LOGERROR_1("Non-existent object: %1",_object);
+    ERROR_1("Non-existent object: %1",_object);
     false
 };
 
 if (GVAR(system) != 0) exitWith {
-    ACE_LOGERROR_1("Items cannot be added to Armory using non-Vanilla system: %1",GVAR(system));
+    ERROR_1("Items cannot be added to Armory using non-Vanilla system: %1",GVAR(system));
     false
 };
 
 if (_armoryData isEqualTo []) exitWith {
-    ACE_LOGERROR_1("No items data supplied: %1",_armoryData);
+    ERROR_1("No items data supplied: %1",_armoryData);
     false
 };
 
 // Add Armory if not added yet
-if !(_object getVariable [QGVAR(armoryEnabled), false]) then {
-    private _return = true;
+[_object] call FUNC(init);
 
-    if ([_object] call FUNC(canAddArmory)) then {
-        [_object] call FUNC(init);
-        _return = true;
-    } else {
-        ACE_LOGERROR_1("Armory cannot be added to an object without inventory: %1",_object);
-        _return = false;
-    };
+if (_object getVariable [QGVAR(enabled), false]) exitWith {
+    _object setVariable [QGVAR(armoryData), _armoryData, true];
+    true
 };
 
-_object setVariable [QGVAR(armoryData), _armoryData, true];
+false

@@ -1,7 +1,7 @@
 /*
  * Author: Jonpas
  * Handles hit part event handler.
- * Incorporated vanilla handlers from "a3\structures_f\training\data\scripts"
+ * Incorporated vanilla handlers from "a3\structures_f\training\data\scripts".
  *
  * Arguments:
  * 0: Target <OBJECT>
@@ -50,6 +50,9 @@ if (isNil "_controller" || {!(_controller getVariable [QGVAR(running), false])})
 
 
 private _targets = _target getVariable [QGVAR(targets), []];
+// Use targets set by API on runtime if they exist
+private _targetsRuntime = _target getVariable [QGVAR(targetsRuntime), []];
+_targets = [_targetsRuntime, _targets] select (_targetsRuntime isEqualTo []);
 
 // Exit if invalid target hit and set variable checked in PFH
 if !(_target in _targets) exitWith {
@@ -64,33 +67,16 @@ if (!_directHit) exitWith {
 // Exit if hit by someone else
  private _starter = _controller getVariable [QGVAR(starter), nil];
 if (_shooter != _starter) exitWith {
-    private _shooterName = [_shooter, true] call ACE_Common_fnc_getName;
+    private _shooterName = [_shooter, true] call ACEFUNC(common,getName);
     private _text = format ["%1<br/><br/>%2:<br/>%3", localize LSTRING(Warning), localize LSTRING(TargetHitBy), _shooterName];
-    ["displayTextStructured", [_starter, _shooter], [_text, 3]] call ACE_Common_fnc_targetEvent;
+    [QACEGVAR(common,displayTextStructured), [_text, 3], [_starter, _shooter]] call CBA_fnc_targetEvent;
 };
 
-
-private _hits = _target getVariable [QGVAR(hits), 1];
-private _hit = _target getVariable [QGVAR(hit), 0];
-
-// Exit if target already hit
-if (_hit >= _hits) exitWith {};
 
 // Mark target as hit
-_hit = _hit + 1;
-_target setVariable [QGVAR(hit), _hit];
+_target setVariable [QGVAR(hit), true]; // For trigger popup
 [_controller, "Beep_Target"] call FUNC(playSoundSignal);
 GVAR(score) = GVAR(score) + 1;
-
-if (_hits > 1 && {_controller getVariable [QGVAR(showHits), true]}) then {
-    [[_hit, _hits] joinString "/"] call ACE_Common_fnc_displayTextStructured;
-};
-
-TRACE_2("Hit",_hits,_hit);
-
-// Exit if not enough hits yet
-if (_hit < _hits) exitWith {};
-
 [_target, 1] call FUNC(animateTarget); // Down
 
 // Set next target
@@ -104,7 +90,7 @@ if (_mode == 2 || {_mode == 3 && {GVAR(targetNumber) < _controller getVariable [
     GVAR(nextTarget) = selectRandom (_targets - [_target]);
 
     // Mark target as not yet hit
-    GVAR(nextTarget) setVariable [QGVAR(hit), 0];
+    GVAR(nextTarget) setVariable [QGVAR(hit), false];
 
     // Animate target
     _target setDamage 0;

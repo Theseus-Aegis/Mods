@@ -40,7 +40,7 @@ _armoryData sort true; // Errors when used in combination with forEach
         if (_configCfg == "") then {
             _configCfg = ["", "CfgUnitInsignia"] select (isClass (configFile >> "CfgUnitInsignia" >> _className));
         };
-        if (_configCfg == "") exitWith {ACE_LOGERROR_2("Config type not found for classname: %1, Config return: %2",_className,_configCfg)};
+        if (_configCfg == "") exitWith {ERROR_MSG_1("Config type not found for classname: '%1'",_className)};
 
         // Check sub-category for proper listing
         if (_selSubCategory == "" || {_selSubCategory == _subCategory} || {_selSubCategory == "Compatible" && [_className] call FUNC(isCompatible)}) then {
@@ -48,7 +48,7 @@ _armoryData sort true; // Errors when used in combination with forEach
             private _tooltip = _displayName; // Display name gets cropped
 
             // Cut full name to prevent overlapping in shown name
-            if ([_displayName] call CBA_fnc_strLen > DISPLAYNAME_LENGTH + 3) then {
+            if (count _displayName > DISPLAYNAME_LENGTH + 3) then {
                 _displayName = [_displayName, 0, DISPLAYNAME_LENGTH] call CBA_fnc_substr;
                 _displayName = [_displayName] call CBA_fnc_rightTrim;
                 _displayName = [_displayName, "..."] joinString "";

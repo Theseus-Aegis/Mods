@@ -1,5 +1,5 @@
 class CfgVehicleClasses {
-    class TAC {
+    class PREFIX {
         displayName = "TAC";
     };
 };

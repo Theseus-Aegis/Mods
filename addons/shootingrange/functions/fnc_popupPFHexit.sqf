@@ -56,7 +56,6 @@ if (_mode > 1) then {
 
         GVAR(targetGroup) = nil;
         GVAR(targetGroupIndex) = nil;
-        GVAR(timeStartCountdown) = nil;
     };
 } else {
     GVAR(lastPauseTime) = nil;

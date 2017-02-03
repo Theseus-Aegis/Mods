@@ -11,12 +11,6 @@ class CfgVehicles {
         isDisposable = 0;
         icon = QPATHTOF(UI\Icon_Module_Armory_ca.paa);
         class Arguments {
-            class Objects {
-                displayName = CSTRING(Objects);
-                description = CSTRING(ObjectsDesc);
-                typeName = "STRING";
-                defaultValue = "";
-            };
             class System {
                 displayName = CSTRING(System);
                 description = CSTRING(SystemDesc);
@@ -56,7 +50,7 @@ class CfgVehicles {
         scopeCurator = 2;
         author = ECSTRING(main,Author);
         displayName = CSTRING(Locker);
-        ace_cargo_canLoad = 0;
+        ACEGVAR(cargo,canLoad) = 0;
 
         // Empty inventory
         class TransportBackpacks {};

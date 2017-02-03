@@ -35,7 +35,7 @@ if (!(_controller getVariable [QGVAR(running), false]) || {GVAR(invalidTargetHit
     [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, false] call FUNC(popupPFHexit);
 };
 
-private _currentTime = diag_tickTime;
+private _currentTime = CBA_missionTime;
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
@@ -71,7 +71,7 @@ if (_mode == 1 && {GVAR(lastPauseTime) + _pauseDuration <= _currentTime}) exitWi
     [GVAR(nextTarget), 0] call FUNC(animateTarget); // Up
 
     // Mark target as not yet hit
-    GVAR(nextTarget) setVariable [QGVAR(hit), 0];
+    GVAR(nextTarget) setVariable [QGVAR(hit), false];
 
     TRACE_2("Targets",GVAR(targetUp),GVAR(nextTarget));
 
