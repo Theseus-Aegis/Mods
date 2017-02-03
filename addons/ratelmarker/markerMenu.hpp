@@ -11,6 +11,7 @@ class GVAR(RatelMarkerMenu) {
     idd = -1;
     movingEnable = 0;
     enableSimulation = 1;
+    onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(menuDisplay),nil)]);
     class controlsBackground {
         class Background: RscBackground {
             x = COORDINATE_X;
