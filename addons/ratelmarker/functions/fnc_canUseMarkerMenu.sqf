@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if (isNil {uiNamespace getVariable QGVAR(menuDisplay)) exitWith {};
+if (!isNil {uiNamespace getVariable QGVAR(menuDisplay)}) exitWith {};
 
 params ["_vehicle"];
 

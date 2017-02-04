@@ -7,7 +7,7 @@ class RscText;
 class RscEdit;
 class RscButton;
 
-class GVAR(RatelMarkerMenu) {
+class GVAR(menu) {
     idd = -1;
     movingEnable = 0;
     enableSimulation = 1;

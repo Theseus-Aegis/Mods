@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 // Has to be display to allow movement
-private _display = (findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
+private _display = (findDisplay 46) createDisplay QGVAR(menu);
 uiNamespace setVariable [QGVAR(menuDisplay), _display];
 
 // Fix future openings by throwing key events in the display signaling CBA keybind to register the keys
