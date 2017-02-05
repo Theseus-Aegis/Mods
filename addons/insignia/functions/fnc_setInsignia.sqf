@@ -18,7 +18,7 @@
 params ["_unit"];
 
 // Don't exit if insignia already set, BIS_fnc_getUnitInsignia will return the last set insignia even if it's currently not visible
-if (!local _unit || {_unit != player}) exitWith {};
+if (!GVAR(enabled) || {!local _unit} || {_unit != player}) exitWith {};
 
 private _insignia = _unit getVariable [QGVAR(activeInsignia), QGVAR(logoStitch)];
 [_unit, _insignia] call BIS_fnc_setUnitInsignia;

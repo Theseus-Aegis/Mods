@@ -17,7 +17,7 @@
 
 params ["_unit"];
 
-if (!local _unit || !(_unit == player)) exitWith {};
+if (!GVAR(enabled) || {!local _unit} || {_unit != player}) exitWith {};
 
 private _insignia = [_unit] call BIS_fnc_getUnitInsignia;
 
