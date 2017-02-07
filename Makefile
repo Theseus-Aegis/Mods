@@ -1,13 +1,14 @@
+PREFIX = tac
+BIN = @tac_mods
+ZIP = tac_mods
+FLAGS = -i include -w unquoted-string
+
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 VERSION = $(MAJOR).$(MINOR).$(PATCH)
 VERSION_FULL = $(VERSION).$(BUILD)
-PREFIX = tac
-BIN = @tac_mods
-ZIP = tac_mods
-FLAGS = -i include -w unquoted-string
 
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
 	@mkdir -p $(BIN)/addons
@@ -21,6 +22,7 @@ $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 
 # Shortcut for building single addons (eg. "make <component>.pbo")
 %.pbo:
+	@echo $(COMMIT_ID)
 	"$(MAKE)" $(MAKEFLAGS) $(patsubst %, $(BIN)/addons/$(PREFIX)_%, $@)
 
 all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \

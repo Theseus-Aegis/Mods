@@ -1,5 +1,30 @@
-#include "\a3\3den\ui\macros.inc"
-#include "\a3\3den\ui\resincl.inc"
+// a3\3den\ui\macros.inc
+#define pixelScale 0.50
+
+#define GRID_W (pixelW * pixelGrid * pixelScale)
+#define GRID_H (pixelH * pixelGrid * pixelScale)
+
+#define SIZE_M 5
+
+#define ATTRIBUTE_TITLE_W 48
+#define ATTRIBUTE_CONTENT_W 82
+
+#define COLOR_TEXT_RGB 1, 1, 1
+#define COLOR_TEXT_RGBA COLOR_TEXT_RGB, 1
+
+#define COLOR_OVERLAY_RGB 0,  0,  0
+#define COLOR_OVERLAY_RGBA COLOR_OVERLAY_RGB, 0.5
+
+#define COLOR_ACTIVE_RGB_R "(profilenamespace getvariable ['GUI_BCG_RGB_R', 0.77])"
+#define COLOR_ACTIVE_RGB_G "(profilenamespace getvariable ['GUI_BCG_RGB_G', 0.51])"
+#define COLOR_ACTIVE_RGB_B "(profilenamespace getvariable ['GUI_BCG_RGB_B', 0.08])"
+#define COLOR_ACTIVE_RGB_A 1
+#define COLOR_ACTIVE_RGB COLOR_ACTIVE_RGB_R, COLOR_ACTIVE_RGB_G, COLOR_ACTIVE_RGB_B
+#define COLOR_ACTIVE_RGBA COLOR_ACTIVE_RGB,COLOR_ACTIVE_RGB_A
+
+// a3\3den\ui\resincl.inc
+#define CT_EDIT 2
+
 
 class ctrlDefault;
 class ctrlDefaultText;
