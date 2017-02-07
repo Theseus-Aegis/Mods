@@ -22,7 +22,6 @@ $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 
 # Shortcut for building single addons (eg. "make <component>.pbo")
 %.pbo:
-	@echo $(COMMIT_ID)
 	"$(MAKE)" $(MAKEFLAGS) $(patsubst %, $(BIN)/addons/$(PREFIX)_%, $@)
 
 all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
