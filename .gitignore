@@ -49,7 +49,6 @@ Temporary Items
 # Release
 @*
 *.zip
-*.cache
 
 # Swap
 *.swp

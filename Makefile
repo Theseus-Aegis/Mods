@@ -1,15 +1,13 @@
-MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
+MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
+MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
+PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
+BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 VERSION = $(MAJOR).$(MINOR).$(PATCH)
 VERSION_FULL = $(VERSION).$(BUILD)
 PREFIX = tac
 BIN = @tac_mods
 ZIP = tac_mods
-CBA = ../CBA_A3
-ACE = ../ACE3
-FLAGS = -i $(CBA) -i $(ACE) -w unquoted-string
+FLAGS = -i include -w unquoted-string
 
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
 	@mkdir -p $(BIN)/addons
@@ -23,10 +21,13 @@ $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 
 # Shortcut for building single addons (eg. "make <component>.pbo")
 %.pbo:
-	make $(patsubst %, $(BIN)/addons/$(PREFIX)_%, $@)
+	"$(MAKE)" $(MAKEFLAGS) $(patsubst %, $(BIN)/addons/$(PREFIX)_%, $@)
 
 all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
 		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo, $(wildcard optionals/*))
+
+filepatching:
+	"$(MAKE)" $(MAKEFLAGS) FLAGS="-w unquoted-string -p"
 
 $(BIN)/keys/%.biprivatekey:
 	@mkdir -p $(BIN)/keys
@@ -47,8 +48,11 @@ signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSI
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-release: clean signatures
-	@rm $(BIN)/keys/*.biprivatekey
-	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
+release:
+	@"$(MAKE)" clean
+	@"$(MAKE)" $(MAKEFLAGS) signatures
+	@echo "  ZIP  $(ZIP)_$(VERSION_FULL).zip"
 	@cp AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
 	@zip -r $(ZIP)_$(VERSION).zip $(BIN) &> /dev/null
+
+.PHONY: release
