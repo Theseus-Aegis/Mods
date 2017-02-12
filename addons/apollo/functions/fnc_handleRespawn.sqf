@@ -21,4 +21,4 @@ TRACE_1("Handle Respawn",_this);
 
 private _killerUID = _corpse getVariable [QGVAR(killerUID), ""];
 
-[QGVAR(playerDied), [_player, _killerUID]] call CBA_fnc_serverEvent;
+[QGVAR(playerDied), [_player, _killerUID, "respawned"]] call CBA_fnc_serverEvent;
