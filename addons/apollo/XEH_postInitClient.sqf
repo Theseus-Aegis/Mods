@@ -23,7 +23,7 @@ if (!hasInterface) exitWith {};
 
     // Load player after Respawn EH
     [QGVAR(reinitializePlayer), {
-        params ["_player", "_cause", "_registeredDeath"];
+        params ["_player", "_registeredDeath"];
         TRACE_1("Reinitialization",_this);
 
         if (_registeredDeath == "done") then {
@@ -31,7 +31,7 @@ if (!hasInterface) exitWith {};
             _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
 
             // Reinitialize client
-            [_player, _cause] call FUNC(playerLoadClient);
+            [_player, "respawned"] call FUNC(playerLoadClient);
         } else {
             ERROR("Connection terminated - Death failed to register!");
             [localize LSTRING(RespawnReinitialization)] call FUNC(endMissionError);

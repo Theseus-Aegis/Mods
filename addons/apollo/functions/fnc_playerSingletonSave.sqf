@@ -6,7 +6,6 @@
  * 0: Player <OBJECT>
  * 1: Player UID <STRING>
  * 2: Type ("save" or "validate") <STRING>
- * 3: Cause ("loaded" or "respawned") <STRING>
  *
  * Return Value:
  * None
@@ -18,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params ["_player", "_uid", "_type", "_cause"];
+params ["_player", "_uid", "_type"];
 
 // Base
 private _name = name _player;
@@ -33,7 +32,24 @@ if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
     (_loadout select 9) set [2, ""];
 };
 
+// Set ACRE base classes
+private _replaceRadioAcre = {
+    if ([_this select 0] call acre_api_fnc_isRadio) then {
+        _this set [0, [_this select 0] call acre_api_fnc_getBaseRadio];
+    };
+};
+if !((_loadout select 3) isEqualTo []) then {
+    {_x call _replaceRadioAcre} forEach ((_loadout select 3) select 1); // Uniform items
+};
+if !((_loadout select 4) isEqualTo []) then {
+    {_x call _replaceRadioAcre} forEach ((_loadout select 4) select 1); // Vest items
+};
+if !((_loadout select 5) isEqualTo []) then {
+    {_x call _replaceRadioAcre} forEach ((_loadout select 5) select 1); // Backpack items
+};
+
 // Other
+private _inVehicle = (vehicle _player) != _player;
 private _alive = alive _player;
 private _selectedWeapon = currentWeapon _player;
 private _currentStance = animationState _player;
@@ -46,7 +62,7 @@ private _playerVariables = [];
     };
 } forEach (allVariables _playerObject);*/
 
-private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _alive, _selectedWeapon, _currentStance, _playerVariables] call FUNC(invokeJavaMethod);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _inVehicle, _alive, _selectedWeapon, _currentStance, _playerVariables] call FUNC(invokeJavaMethod);
 
 TRACE_2("Singleton Save",_type,_serverReply);
 

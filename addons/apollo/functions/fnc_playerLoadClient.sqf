@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Cause ("loaded" or "respawned") <STRING>
+ * 1: Load Type ("loaded" or "respawned") <STRING>
  *
  * Return Value:
  * None
@@ -14,9 +14,10 @@
  *
  * Public: No
  */
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_player", "_cause"];
+params ["_player", "_loadType"];
 
 _player allowDamage false;
 
