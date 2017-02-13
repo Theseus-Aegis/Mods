@@ -25,7 +25,13 @@ private _name = name _player;
 private _playerPos = getPosASL _player;
 private _playerDir = getDir _player;
 
+// Loadout
 private _loadout = getUnitLoadout _player;
+
+// Remove "ItemRadioAcreFlagged"
+if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
+    (_loadout select 9) set [2, ""];
+};
 
 // Other
 private _alive = alive _player;
