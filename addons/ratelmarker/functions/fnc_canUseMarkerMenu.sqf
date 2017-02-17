@@ -16,6 +16,8 @@
  */
 #include "script_component.hpp"
 
+if (!isNil {uiNamespace getVariable QGVAR(menuDisplay)}) exitWith {};
+
 params ["_vehicle"];
 
 private _vehicleRole = assignedVehicleRole ACE_player;

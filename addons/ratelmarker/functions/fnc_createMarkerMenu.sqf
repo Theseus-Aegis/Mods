@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Opens coordiante input display.
+ * Opens coordinate input display.
  *
  * Arguments:
  * None
@@ -16,4 +16,9 @@
 #include "script_component.hpp"
 
 // Has to be display to allow movement
-(findDisplay 46) createDisplay QGVAR(RatelMarkerMenu);
+private _display = (findDisplay 46) createDisplay QGVAR(menu);
+uiNamespace setVariable [QGVAR(menuDisplay), _display];
+
+// Fix future openings by throwing key events in the display signaling CBA keybind to register the keys
+_display displayAddEventHandler ["KeyUp", {[_this, "KeyUp"] call CBA_events_fnc_keyHandler}];
+_display displayAddEventHandler ["KeyDown", {[_this,"KeyDown"] call CBA_events_fnc_keyHandler}];
