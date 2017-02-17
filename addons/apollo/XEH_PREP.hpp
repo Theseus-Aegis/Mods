@@ -8,7 +8,6 @@ PREP(moduleInit);
 PREP(playerLoadClient);
 PREP(playerSaveClient);
 PREP(playerSingletonSave);
-PREP(startPlayerLoadClient);
 PREP(vehicleLoad);
 PREP(vehicleSaveServer);
 PREP(vehicleSingletonLoad);
