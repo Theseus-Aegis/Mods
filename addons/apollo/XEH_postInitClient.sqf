@@ -29,7 +29,6 @@ if (!hasInterface) exitWith {};
         if (_registeredDeath == "done") then {
             // Prevent saving during reinitialization
             _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
-
             // Reinitialize client
             [_player, "respawned"] call FUNC(playerLoadClient);
         } else {
