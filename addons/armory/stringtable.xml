@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Armory">
         <Key ID="STR_TAC_Armory_Open">
@@ -102,12 +102,10 @@
             <German>Athena Server ist offline!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsWeapon">
-            <English>Weapon must be without Attachments and Magazines for stashing!</English>
-            <German>Die Waffe kann nur ohne Magazin und Aufsätze weggepackt werden! </German>
+            <English>All Weapons in the box must be without Attachments and Magazines for stashing!</English>
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsContainer">
-            <English>Uniform/Vest/Backpack must be empty for stashing!</English>
-            <German>Uniform/Weste/Rucksack muss vor dem Wegpacken leer sein!</German>
+            <English>All Uniforms/Vests/Backpacks in the box must be empty for stashing!</English>
         </Key>
         <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
