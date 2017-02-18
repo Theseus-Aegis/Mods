@@ -6,13 +6,9 @@ if (!hasInterface) exitWith {};
 [QGVAR(initialized), {
     // Check ApolloClient presenece and version
     private _apolloClientVersion = "ApolloClient" callExtension "version";
-    if (_apolloClientVersion == "") exitWith {
-        ERROR_MSG("Failed to initialize - Missing ApolloClient extension!");
-        ["Your connection has been terminated - Missing ApolloClient extension!"] call FUNC(endMissionError);
-    };
-    if (_apolloClientVersion != "1.2") exitWith {
-        ERROR_1("Failed to initialize - Wrong ApolloClient extension version (active: %1 - required: 1.2)!",_apolloClientVersion);
-        [format ["Your connection has been terminated - Wrong ApolloClient extension version (active: %1 - required: 1.2)!", _apolloClientVersion]] call FUNC(endMissionError);
+    if (_apolloClientVersion != REQUIRED_APOLLOCLIENT_VERSION) exitWith {
+        ERROR_2("Failed to initialize - Wrong ApolloClient extension version (active: %1 - required: %2)!",_apolloClientVersion,REQUIRED_APOLLOCLIENT_VERSION);
+        [format ["Your connection has been terminated - Wrong ApolloClient extension version (active: %1 - required: %2)!", _apolloClientVersion, REQUIRED_APOLLOCLIENT_VERSION]] call FUNC(endMissionError);
     };
 
     // Terminate to lobby EH
