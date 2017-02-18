@@ -3,7 +3,8 @@
  * Checks if weapon to be stashed has attachments or magazines and uniform/vest/backpack has contents.
  *
  * Arguments:
- * 0: Item Classname <STRING>
+ * 0: Armory Box <OBJECT>
+ * 1: Item Classname <STRING>
  *
  * Return Value:
  * Contains Items <BOOL>
@@ -15,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params ["_itemClass"];
+params ["_object", "_itemClass"];
 
 private _itemType = [_itemClass] call ACEFUNC(common,getItemType);
 private _return = false;
