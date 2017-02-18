@@ -72,5 +72,5 @@ if (_type == "validate" && {_serverReply == "success"}) exitWith {
 };
 
 if (_serverReply == "terminated") then {
-    [QGVAR(terminatePlayer), [], _player] call CBA_fnc_targetEvent;
+    [QGVAR(terminatePlayer), [_player], _player] call CBA_fnc_targetEvent;
 };

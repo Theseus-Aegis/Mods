@@ -17,6 +17,8 @@ if (!hasInterface) exitWith {};
 
     // Terminate to lobby EH
     [QGVAR(terminatePlayer), {
+        params ["_player"];
+        _player setVariable [QGVAR(lastSavedTime), nil];
         ERROR("Connection terminated - Unknown error with Chronos!");
         ["Your connection has been terminated - Unknown error with Chronos!"] call FUNC(endMissionError);
     }] call CBA_fnc_addEventHandler;
@@ -28,7 +30,7 @@ if (!hasInterface) exitWith {};
 
         if (_registeredDeath == "done") then {
             // Prevent saving during reinitialization
-            _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+            _player setVariable [QGVAR(lastSavedTime), nil];
             // Reinitialize client
             [_player, "respawned"] call FUNC(playerLoadClient);
         } else {
