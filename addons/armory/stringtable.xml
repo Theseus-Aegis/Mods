@@ -103,9 +103,11 @@
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsWeapon">
             <English>All Weapons in the box must be without Attachments and Magazines for stashing!</English>
+            <German>Alle Waffen in der Kiste müssen ohne Magazin und Aufsätze sein, um weggepackt werden zu können! </German>
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsContainer">
             <English>All Uniforms/Vests/Backpacks in the box must be empty for stashing!</English>
+            <German>Alle Uniformen/Westen/Rucksäcke müssen vor dem Wegpacken leer sein!</German>
         </Key>
         <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
