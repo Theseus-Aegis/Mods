@@ -26,9 +26,9 @@ if (_periodic) then {
 };
 
 // Exit if saving has not started yet or delay has not passed yet
-private _lastSavedTime = _player getVariable QGVAR(lastSavedTime);
+private _lastSavedTime = _player getVariable [QGVAR(lastSavedTime), -1];
 private _delay = [SAVE_DELAY_INV_CHANGE, SAVE_DELAY_PERIODIC] select _periodic;
-if (isNil "_lastSavedTime" || {_lastSavedTime + _delay >= CBA_missionTime}) exitWith {
+if (_lastSavedTime == -1 || {_lastSavedTime + _delay >= CBA_missionTime}) exitWith {
     TRACE_1("Save - Not Saving (Delay Running)",CBA_missionTime);
 };
 
@@ -41,4 +41,4 @@ if (_player != player || {isNull _player} || {!alive _player}) exitWith {
 TRACE_1("Save - Saving Done",_player);
 
 // Mark last saved time
-_player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+_player setVariable [QGVAR(lastSavedTime), CBA_missionTime, true];

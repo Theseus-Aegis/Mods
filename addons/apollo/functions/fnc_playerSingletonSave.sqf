@@ -52,7 +52,6 @@ if !((_loadout select 5) isEqualTo []) then {
 private _inVehicle = (vehicle _player) != _player;
 private _alive = alive _player;
 private _selectedWeapon = currentWeapon _player;
-private _currentStance = animationState _player;
 
 // Variables
 private _playerVariables = [];
@@ -62,7 +61,7 @@ private _playerVariables = [];
     };
 } forEach (allVariables _playerObject);*/
 
-private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _inVehicle, _alive, _selectedWeapon, _currentStance, _playerVariables] call FUNC(invokeJavaMethod);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _inVehicle, _alive, _selectedWeapon, _playerVariables] call FUNC(invokeJavaMethod);
 
 TRACE_2("Singleton Save",_type,_serverReply);
 
