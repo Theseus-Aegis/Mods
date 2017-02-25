@@ -60,7 +60,7 @@ if (_success) then {
     _player allowDamage true;
 
     // Allow saving and save load time to prevent instant saving after load
-    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime, true];
 
     // Save on each inventory change and periodically with a delay between each save
     ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
