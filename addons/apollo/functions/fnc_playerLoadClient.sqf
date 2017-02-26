@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Load type ("loaded" or "respawned") <STRING>
+ * 1: Load Type ("loaded" or "respawned") <STRING>
  *
  * Return Value:
  * None
@@ -14,9 +14,12 @@
  *
  * Public: No
  */
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_player", "_loadType"];
+
+_player allowDamage false;
 
 TRACE_1("Loading Client",_player);
 private _success = false;
@@ -25,11 +28,12 @@ private _success = false;
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
 private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
+
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {
         private _loadData = "ApolloClient" callExtension "get";
-   	    //TRACE_1("Load Data",_loadData);
+        //TRACE_1("Load Data",_loadData);
 
         if (_loadData == "error") then {
             // Bad things happened, stop executing
@@ -56,7 +60,7 @@ if (_success) then {
     _player allowDamage true;
 
     // Allow saving and save load time to prevent instant saving after load
-    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime];
+    _player setVariable [QGVAR(lastSavedTime), CBA_missionTime, true];
 
     // Save on each inventory change and periodically with a delay between each save
     ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
@@ -64,6 +68,6 @@ if (_success) then {
 
     INFO_1("Client %1 successfully.",_loadType);
 } else {
-    ERROR_2("Player not successfully loaded (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
+    ERROR_2("Player load failed (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
 };

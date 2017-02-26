@@ -1,6 +1,6 @@
 /*
  * Author: TMF Team, Jonpas
- * Tests group sizes of sides (144 groups per side limit).
+ * Tests group sizes of sides (288 groups per side limit).
  *
  * Arguments:
  * None

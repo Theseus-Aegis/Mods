@@ -20,8 +20,9 @@
 params ["_unit", "", "_uid"];
 TRACE_1("Handle Disconnect",_this);
 
-if (isNull _unit) exitWith {
-    ERROR_1("Player not saved on disconnect - null unit (UID: %1)!",getPlayerUID _player);
+// Exit if null unit or saving never started
+if (isNull _unit || {_unit getVariable [QGVAR(lastSavedTime), -1] == -1}) exitWith {
+    ERROR_1("Player not saved on disconnect - (UID: %1 or LastSavedTime undefined)!",getPlayerUID _player);
 };
 
 [_unit, _uid, "save"] call FUNC(playerSingletonSave);

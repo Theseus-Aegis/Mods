@@ -162,8 +162,8 @@
             <German>Init field Überprüfung beendet, %1 Probleme gefunden.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
-            <English>Side %1 has %2 groups. Note that Arma has a 144 group limit per side.</English>
-            <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 144 pro Seite hat.</German>
+            <English>Side %1 has %2 groups. Note that Arma has a 288 group limit per side.</English>
+            <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 288 pro Seite hat.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
             <English>Should be</English>
