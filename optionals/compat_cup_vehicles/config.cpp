@@ -60,7 +60,8 @@ class CfgPatches {
             "CUP_AirVehicles_MV22",
             "CUP_AirVehciles_SA330",
             "CUP_TrackedVehicles_Bulldog",
-            "CUP_Wheeled_SUV"
+            "CUP_Wheeled_SUV",
+            "CUP_AirVehicles_AmbientPlanes"
         };
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};

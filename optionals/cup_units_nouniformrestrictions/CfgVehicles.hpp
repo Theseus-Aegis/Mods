@@ -7,6 +7,12 @@ class CfgVehicles {
     class CUP_Creatures_Military_NAPA_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
+    class CUP_Creatures_Military_PMC_Soldier_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_PMC_Soldier_Winter_Base: SoldierWB {
+        modelSides[] = {6};
+    };
     class CUP_Creatures_Military_RACS_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
