@@ -1,5 +1,5 @@
-#define COMPONENT settings
-#define COMPONENT_BEAUTIFIED Settings
+#define COMPONENT cba_settings
+#define COMPONENT_BEAUTIFIED CBA Settings
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
@@ -15,5 +15,3 @@
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
-
-#define PATH_SETTINGS_FILE_PBO QPATHTOF(cba\settings.sqf)
