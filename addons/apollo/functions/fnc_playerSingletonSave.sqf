@@ -36,7 +36,7 @@ if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
 private _replaceRadioAcre = {
     params ["_item"];
     // Replace only if string (array can be eg. weapon inside container) and an ACRE radio
-    if (!(_item isEqualTo []) && {[_item] call acre_api_fnc_isRadio}) then {
+    if (!(_item isEqualType []) && {[_item] call acre_api_fnc_isRadio}) then {
         _this set [0, [_item] call acre_api_fnc_getBaseRadio];
     };
 };
