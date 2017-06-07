@@ -31,6 +31,18 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 make.py version increment_build <other-increment-args> force checkexternal release
 ```
 
+[Extensions Building](extensions):  
+32-bit:
+```
+cd extensions/vcproj
+cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
+```
+64-bit:
+```
+cd extensions/vcproj
+cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
+```
+
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
 ```
 github_changelog_generator --user Theseus-Aegis --project tac-a3-mods --token <insert_token> --no-issues --no-pr-wo-labels --unreleased-only --exclude-labels "can't reproduce",duplicate,question,invalid,wontfix --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request" --no-author --no-compare-link

@@ -48,7 +48,10 @@ Temporary Items
 
 # Release
 release/*
+symbols/*
 *.cache
+*.dll
+*.out
 
 # Swap
 *.swp
