@@ -50,11 +50,6 @@ if !((_loadout select 5) isEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 5) select 1); // Backpack items
 };
 
-// Goggles bandaid - #283 (vanilla bug)
-if ((_loadout select 7) == "") then {
-    _loadout set [7, goggles _player];
-};
-
 // Other
 private _inVehicle = (vehicle _player) != _player;
 private _alive = alive _player;
