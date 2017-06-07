@@ -53,6 +53,13 @@ if (_loadData == "loaded") then {
 };
 
 if (_success) then {
+    // Goggles bandaid (#283 - vanilla bug) - setUnitLoadout does not properly set goggles (like dragging in inventory would)
+    private _goggles = goggles _player;
+    if (_goggles != "") then {
+        // Only use addGoggles if not empty (prevents RPT message)
+        _player addGoggles _goggles;
+    };
+
     // Validate
     [QGVAR(savePlayer), [_player, "validate"]] call CBA_fnc_serverEvent;
 
