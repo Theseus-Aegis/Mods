@@ -46,7 +46,7 @@ else()
     message("WARNING: Building 32-bit projects")
     set(TAC_ARCH "x86")
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win32/")
-    string(REPLACE "/lib64" "/lib32" Boost_LIBRARIES ${Boost_LIBRARIES})
+    string(REPLACE "/lib64" "/lib32" Boost_LIBRARIES "${Boost_LIBRARIES}")
 endif()
 
 set(CMAKE_CXX_STANDARD 11)
