@@ -27,12 +27,12 @@ private _success = false;
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
+private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
 
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {
-        private _loadData = "ApolloClient" callExtension "get";
+        private _loadData = "tac_apollo_client" callExtension "get";
         //TRACE_1("Load Data",_loadData);
 
         if (_loadData == "error") then {

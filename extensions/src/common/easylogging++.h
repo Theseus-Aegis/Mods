@@ -1,7 +1,7 @@
 //
 //  Bismillah ar-Rahmaan ar-Raheem
 //
-//  Easylogging++ v9.94.0
+//  Easylogging++ v9.94.2
 //  Single-header only, cross-platform logging library for C++ applications
 //
 //  Copyright (c) 2017 muflihun.com
@@ -10,7 +10,7 @@
 //  http://labs.muflihun.com/easyloggingpp/licence.php
 //
 //  https://github.com/muflihun/easyloggingpp
-//  http://labs.muflihun.com/easyloggingpp
+//  https://muflihun.github.io/easyloggingpp
 //  http://muflihun.com
 //
 #ifndef EASYLOGGINGPP_H
@@ -189,7 +189,7 @@ ELPP_INTERNAL_DEBUGGING_OUT_INFO << ELPP_INTERNAL_DEBUGGING_MSG(internalInfoStre
 #  define ELPP_INTERNAL_INFO(lvl, msg)
 #endif  // (defined(ELPP_DEBUG_INFO))
 #if (defined(ELPP_FEATURE_ALL)) || (defined(ELPP_FEATURE_CRASH_LOG))
-#  if (ELPP_COMPILER_GCC && !ELPP_MINGW)
+#  if (ELPP_COMPILER_GCC && !ELPP_MINGW && !ELPP_OS_ANDROID)
 #    define ELPP_STACKTRACE 1
 #  else
 #      if ELPP_COMPILER_MSVC
@@ -283,7 +283,11 @@ ELPP_INTERNAL_DEBUGGING_OUT_INFO << ELPP_INTERNAL_DEBUGGING_MSG(internalInfoStre
 #define ELPP_VARIADIC_TEMPLATES_SUPPORTED \
 (ELPP_COMPILER_GCC || ELPP_COMPILER_CLANG || ELPP_COMPILER_INTEL || (ELPP_COMPILER_MSVC && _MSC_VER >= 1800))
 // Logging Enable/Disable macros
-#define ELPP_LOGGING_ENABLED (!defined(ELPP_DISABLE_LOGS))
+#if defined(ELPP_DISABLE_LOGS)
+#define ELPP_LOGGING_ENABLED 0
+#else
+#define ELPP_LOGGING_ENABLED 1
+#endif
 #if (!defined(ELPP_DISABLE_DEBUG_LOGS) && (ELPP_LOGGING_ENABLED) && ((defined(_DEBUG)) || (!defined(NDEBUG))))
 #  define ELPP_DEBUG_LOG 1
 #else
@@ -438,6 +442,15 @@ ELPP_INTERNAL_DEBUGGING_OUT_INFO << ELPP_INTERNAL_DEBUGGING_MSG(internalInfoStre
 // For logging wxWidgets based classes & templates
 #   include <wx/vector.h>
 #endif  // defined(ELPP_WXWIDGETS_LOGGING)
+#if defined(ELPP_UTC_DATETIME)
+#   define elpptime_r gmtime_r
+#   define elpptime_s gmtime_s
+#   define elpptime   gmtime
+#else
+#   define elpptime_r localtime_r
+#   define elpptime_s localtime_s
+#   define elpptime   localtime
+#endif  // defined(ELPP_UTC_DATETIME)
 // Forward declarations
 namespace el {
 class Logger;
@@ -694,12 +707,14 @@ namespace consts {
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif
 // Level log values - These are values that are replaced in place of %level format specifier
-static const base::type::char_t* kInfoLevelLogValue     =   ELPP_LITERAL("INFO ");
+// Extra spaces after format specifiers are only for readability purposes in log files
+static const base::type::char_t* kInfoLevelLogValue     =   ELPP_LITERAL("INFO");
 static const base::type::char_t* kDebugLevelLogValue    =   ELPP_LITERAL("DEBUG");
-static const base::type::char_t* kWarningLevelLogValue  =   ELPP_LITERAL("WARN ");
+static const base::type::char_t* kWarningLevelLogValue  =   ELPP_LITERAL("WARNING");
 static const base::type::char_t* kErrorLevelLogValue    =   ELPP_LITERAL("ERROR");
 static const base::type::char_t* kFatalLevelLogValue    =   ELPP_LITERAL("FATAL");
-static const base::type::char_t* kVerboseLevelLogValue  =   ELPP_LITERAL("VER");
+static const base::type::char_t* kVerboseLevelLogValue  =
+  ELPP_LITERAL("VERBOSE"); // will become VERBOSE-x where x = verbose level
 static const base::type::char_t* kTraceLevelLogValue    =   ELPP_LITERAL("TRACE");
 static const base::type::char_t* kInfoLevelShortLogValue     =   ELPP_LITERAL("I");
 static const base::type::char_t* kDebugLevelShortLogValue    =   ELPP_LITERAL("D");
@@ -767,12 +782,12 @@ static const char* kDefaultLogFile                         =      ELPP_DEFAULT_L
 #else
 #  if ELPP_OS_UNIX
 #      if ELPP_OS_ANDROID
-static const char* kDefaultLogFile                         =      "logs/ApolloClient.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
+static const char* kDefaultLogFile                         =      "logs/tac_dll.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
 #      else
-static const char* kDefaultLogFile                         =      "logs/ApolloClient.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
+static const char* kDefaultLogFile                         =      "logs/tac_dll.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
 #      endif  // ELPP_OS_ANDROID
 #  elif ELPP_OS_WINDOWS
-static const char* kDefaultLogFile                         =      "logs\\ApolloClient.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
+static const char* kDefaultLogFile                         =      "logs\\tac_dll.log"; // @modified by TAC (prevent default log file creation - ELPP_NO_DEFAULT_LOG_FILE bug)
 #  endif  // ELPP_OS_UNIX
 #endif  // defined(ELPP_DEFAULT_LOG_FILE)
 #if !defined(ELPP_DISABLE_LOG_FILE_FROM_ARG)
@@ -1944,7 +1959,7 @@ class TypedConfigurations : public base::threading::ThreadSafe {
 
   TypedConfigurations(const TypedConfigurations& other);
 
-  ~TypedConfigurations(void) {
+  virtual ~TypedConfigurations(void) {
   }
 
   const Configurations* configurations(void) const {
@@ -2055,11 +2070,11 @@ class TypedConfigurations : public base::threading::ThreadSafe {
   unsigned long getULong(std::string confVal);
   std::string resolveFilename(const std::string& filename);
   void insertFile(Level level, const std::string& fullFilename);
-  bool unsafeValidateFileRolling(Level level, const PreRollOutCallback& PreRollOutCallback);
+  bool unsafeValidateFileRolling(Level level, const PreRollOutCallback& preRollOutCallback);
 
-  inline bool validateFileRolling(Level level, const PreRollOutCallback& PreRollOutCallback) {
+  inline bool validateFileRolling(Level level, const PreRollOutCallback& preRollOutCallback) {
     base::threading::ScopedLock scopedLock(lock());
-    return unsafeValidateFileRolling(level, PreRollOutCallback);
+    return unsafeValidateFileRolling(level, preRollOutCallback);
   }
 };
 /// @brief Class that keeps record of current line hit for occasional logging

@@ -1,46 +1,51 @@
-//#include "stdafx.h"
-#include <windows.h>
-#include <string>
-
+#include "shared.hpp"
 //INITIALIZE_EASYLOGGINGPP
 
+#include <string>
+
+
 extern "C" {
-    __declspec(dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
-    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+    EXPORT void __stdcall RVExtensionVersion(char *output, int outputSize);
+    EXPORT void __stdcall RVExtension(char *output, int outputSize, const char *function);
 }
 void __stdcall RVExtensionVersion(char *output, int outputSize)
 {
-    strncpy_s(output, outputSize, /*TAC_FULL_VERSION_STR*/"1.3", _TRUNCATE);
+    ZERO_OUTPUT();
+    strncpy(output, TAC_VERSION, outputSize);
+    EXTENSION_RETURN();
 }
 
 void __stdcall RVExtension(char *output, int outputSize, const char *function) {
+    ZERO_OUTPUT();
     if (!strcmp(function, "version")) {
-        strncpy_s(output, outputSize, /*TAC_FULL_VERSION_STR*/"1.3", _TRUNCATE);
+        strncpy(output, TAC_VERSION, outputSize);
     } else {
-        strncpy_s(output, outputSize, "tac_test_return", _TRUNCATE);
+        strncpy(output,  "tac_test_return", outputSize);
     }
+    EXTENSION_RETURN();
 }
 
 void Init() {
-    /*el::Configurations conf;
-
-    conf.setGlobally(el::ConfigurationType::Filename, "logs/ApolloClient.log");
-    conf.setGlobally(el::ConfigurationType::MaxLogFileSize, "1048576"); // 1 MB - truncated on start if bigger than specified
-#ifdef _DEBUG
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "[%datetime] - %level - {%loc}t:%thread- %msg");
-    conf.setGlobally(el::ConfigurationType::PerformanceTracking, "true");
-#else
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime-{%level}- %msg");
-#endif
-    el::Loggers::setDefaultConfigurations(conf, true);
-
-    LOG(INFO) << "ApolloClient Loaded";*/
+//    el::Configurations conf;
+//
+//    conf.setGlobally(el::ConfigurationType::Filename, "logs/tac_dll.log");
+//    conf.setGlobally(el::ConfigurationType::MaxLogFileSize, "1048576"); // 1 MB - truncated on start if bigger than specified
+//#ifdef _DEBUG
+//    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "[%datetime] - %level - {%loc}t:%thread- %msg");
+//    conf.setGlobally(el::ConfigurationType::PerformanceTracking, "true");
+//#else
+//    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime-{%level}- %msg");
+//#endif
+//    el::Loggers::setDefaultConfigurations(conf, true);
+//
+//    LOG(INFO) << "Apollo Client Loaded";
 }
 
 void Cleanup() {
     //LOG(INFO) << "ApolloClient Unloaded";
 }
 
+#ifndef __linux__
 BOOL APIENTRY DllMain(HMODULE hModule,
     DWORD  ul_reason_for_call,
     LPVOID lpReserved
@@ -59,3 +64,4 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     }
     return TRUE;
 }
+#endif
