@@ -4,10 +4,10 @@ else()
     set(TAC_NAME "tac_apollo_client")
 endif()
 tac_set_linker_options()
-
 file(GLOB SOURCES *.h *.hpp *.c *.cpp)
+
 add_library(${TAC_NAME} SHARED ${SOURCES} ${GLOBAL_SOURCES})
-target_link_libraries(${TAC_NAME} tac_common)
+target_link_libraries(${TAC_NAME} tac_common ${Boost_LIBRARIES})
 set_target_properties(${TAC_NAME} PROPERTIES PREFIX "")
 set_target_properties(${TAC_NAME} PROPERTIES FOLDER Apollo)
 

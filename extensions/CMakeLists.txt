@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 project(TAC)
 
+if(WIN32)
+    add_definitions(/DWINVER=0x0600 /D_WIN32_WINNT=0x0600)
+endif()
+
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 include(${PROJECT_SOURCE_DIR}/CMakeModules/cxx_compiler_functions.cmake)
 
@@ -8,6 +12,15 @@ option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
 option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
 
 set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_STATIC_RUNTIME ON)
+find_package(Boost COMPONENTS system date_time regex)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "Boost NOT FOUND")
+endif()
 
 if(USE_STATIC_LINKING)
     message("WARNING: Linking statically")
@@ -33,6 +46,7 @@ else()
     message("WARNING: Building 32-bit projects")
     set(TAC_ARCH "x86")
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win32/")
+    string(REPLACE "/lib64" "/lib32" Boost_LIBRARIES ${Boost_LIBRARIES})
 endif()
 
 set(CMAKE_CXX_STANDARD 11)
