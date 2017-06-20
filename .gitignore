@@ -50,8 +50,6 @@ Temporary Items
 release/*
 symbols/*
 *.cache
-*.dll
-*.so
 
 # Swap
 *.swp
