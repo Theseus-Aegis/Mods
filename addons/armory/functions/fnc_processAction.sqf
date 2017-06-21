@@ -40,7 +40,7 @@ if (isNull _object) exitWith {
 };
 
 // Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
-if (_type == "stash" && {[_selectedItem] call FUNC(containsItems)}) exitWith {};
+if (_type == "stash" && {[_object, _selectedItem] call FUNC(containsItems)}) exitWith {};
 
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {

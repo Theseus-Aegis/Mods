@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.10.1-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.11.4-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/tac-a3-mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/tac-a3-mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -30,6 +30,20 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 ```
 make.py version increment_build <other-increment-args> force checkexternal release
 ```
+
+[Extensions Building](extensions):  
+32-bit:
+```
+cd extensions/vcproj
+cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
+```
+64-bit:
+```
+cd extensions/vcproj
+cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
+```
+
+Open `TAC.sln`, change configuration to `RelWithDebInfo`, compile.
 
 [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
 ```
