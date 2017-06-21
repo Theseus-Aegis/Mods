@@ -27,13 +27,14 @@ private _success = false;
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
+private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
+TRACE_1("Load Data Start",_loadData);
 
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     while {_updateInfo} do {
-        private _loadData = "ApolloClient" callExtension "get";
-        //TRACE_1("Load Data",_loadData);
+        private _loadData = "tac_apollo_client" callExtension "get";
+        TRACE_1("Load Data",_loadData);
 
         if (_loadData == "error") then {
             // Bad things happened, stop executing
@@ -45,7 +46,7 @@ if (_loadData == "loaded") then {
                 _success = true;
             } else {
                 private _codePacket = _loadData select [17, count _loadData];
-                //TRACE_1("Code Packet",_codePacket);
+                TRACE_1("Code Packet",_codePacket);
                 call (compile _codePacket);
             };
         };

@@ -30,7 +30,7 @@
 
 ###############################################################################
 
-__version__ = "0.8"
+__version__ = "0.9"
 
 import sys
 
@@ -66,14 +66,16 @@ make_root = ""
 release_dir = ""
 module_root_parent = ""
 optionals_root = ""
-key_name = "ace"
+key_name = "tac"
 key = ""
 dssignfile = ""
-prefix = "ace"
-pbo_name_prefix = "ace_"
+prefix = "tac"
+pbo_name_prefix = "tac_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.md", "AUTHORS.txt", "LICENSE", "logo_tac_ca.paa", "logo_tac_small_ca.paa"]
-versionFiles = ["README.md", "mod.cpp"]
+importantFiles = ["mod.cpp", "README.md", "AUTHORS.txt", "LICENSE", "logo_tac_ca.paa", "logo_tac_small_ca.paa", "tac_apollo_client.dll", "tac_apollo_client_x64.dll"]
+versionFiles = ["README.md", "mod.cpp", "extensions\\src\\common\\version.h"]
+extensions32 = ["Apollo\\tac_apollo_client"]
+extensions64 = ["Apollo\\tac_apollo_client_x64"]
 
 ciBuild = False # Used for CI builds
 
@@ -248,7 +250,7 @@ def find_depbo_tools(regKey):
             winreg.CloseKey(k)
             print("Found pboproject.")
         except:
-            print_error("ERROR: Could not find pboProject.")
+            print_error("Could not find pboProject.")
 
         try:
             k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
@@ -308,8 +310,10 @@ def color(color):
 
 def print_error(msg):
     color("red")
-    print ("ERROR: {}".format(msg))
+    print("ERROR: {}".format(msg))
     color("reset")
+    global printedErrors
+    printedErrors += 1
 
 def print_green(msg):
     color("green")
@@ -325,6 +329,67 @@ def print_yellow(msg):
     color("yellow")
     print(msg)
     color("reset")
+
+
+def compile_extensions(extensions_root, force_build):
+    originalDir = os.getcwd()
+
+    print_blue("\nCompiling extensions in {}".format(extensions_root))
+
+    if shutil.which("cmake") == None:
+        print_error("Failed to find CMake!")
+        return
+
+    generator = ""
+    msbuild_path = shutil.which("msbuild")
+    if msbuild_path == None:
+        print_error("Failed to find MSBuild!")
+        return
+    elif "15.0" in msbuild_path:
+        generator = "Visual Studio 15 2017"
+    elif "14.0" in msbuild_path:
+        generator = "Visual Studio 14 2015"
+    else:
+        print_error("Failed to find suitable generator!")
+        return
+
+    try:
+        joinstr = ":rebuild;" if force_build else ";"
+
+        # 32-bit
+        if extensions32:
+            # Prepare build dirs
+            vcproj32 = os.path.join(extensions_root,"vcproj")
+            if not os.path.exists(vcproj32):
+                os.mkdir(vcproj32)
+            # Build
+            os.chdir(vcproj32)
+            subprocess.call(["cmake", "..", "-G", generator])
+            print()
+            extensions32_cmd = joinstr.join(extensions32)
+            subprocess.call(["msbuild", "TAC.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 32-bit extensions found.")
+
+        # 64-bit
+        if extensions64:
+            # Prepare build dirs
+            vcproj64 = os.path.join(extensions_root,"vcproj64")
+            if not os.path.exists(vcproj64):
+                os.mkdir(vcproj64)
+            # Build
+            os.chdir(vcproj64)
+            subprocess.call(["cmake", "..", "-G", "{} Win64".format(generator)])
+            print()
+            extensions64_cmd = joinstr.join(extensions64)
+            subprocess.call(["msbuild", "TAC.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 64-bit extensions found.")
+    except:
+        print_error("COMPILING EXTENSIONS.")
+        raise
+    finally:
+        os.chdir(originalDir)
 
 
 def copy_important_files(source_dir,destination_dir):
@@ -347,33 +412,15 @@ def copy_important_files(source_dir,destination_dir):
     except:
         print_error("COPYING IMPORTANT FILES.")
         raise
-
-    # Copy all extension DLL's
-    try:
-        os.chdir(os.path.join(source_dir))
-        print_blue("\nSearching for DLLs in {}".format(os.getcwd()))
-        filenames = glob.glob("*.dll")
-
-        if not filenames:
-            print ("Empty SET")
-
-        for dll in filenames:
-            print_green("Copying dll => {}".format(os.path.join(source_dir,dll)))
-            if os.path.isfile(dll):
-                shutil.copyfile(os.path.join(source_dir,dll),os.path.join(destination_dir,dll))
-    except:
-        print_error("COPYING DLL FILES.")
-        raise
     finally:
         os.chdir(originalDir)
-
 
 
 def copy_optionals_for_building(mod,pbos):
     src_directories = os.listdir(optionals_root)
     current_dir = os.getcwd()
 
-    print_blue("\nChecking optionals folder...")
+    print_blue("\nChecking Optionals folder...")
     try:
         #special server.pbo processing
         files = glob.glob(os.path.join(release_dir, project, "optionals", "*.pbo"))
@@ -614,6 +661,18 @@ def set_version_in_files():
                 f.close()
 
                 if fileText:
+                    # Extension version file
+                    if "TAC_VERSION_" in fileText:
+                        print_green("Changing extension version => {} in {}".format(newVersion, filePath))
+                        with open(filePath, "w", newline="\n") as file:
+                            file.writelines([
+                                "#define TAC_VERSION_MAJOR {}\n".format(newVersionArr[0]),
+                                "#define TAC_VERSION_MINOR {}\n".format(newVersionArr[1]),
+                                "#define TAC_VERSION_PATCH {}\n".format(newVersionArr[2]),
+                                "#define TAC_VERSION_BUILD {}\n".format(newVersionArr[3])
+                            ])
+                        continue
+
                     # Version string files
                     # Search and save version stamp
                     versionsFound = re.findall(pattern, fileText) + re.findall(patternShort, fileText)
@@ -808,6 +867,10 @@ def main(argv):
     global pbo_name_prefix
     global ciBuild
     global missingFiles
+    global failedBuilds
+    global printedErrors
+
+    printedErrors = 0
 
     if sys.platform != "win32":
         print_error("Non-Windows platform (Cygwin?). Please re-run from cmd.")
@@ -921,6 +984,12 @@ See the make.cfg file for additional build options.
     if "increment_major" in argv:
         argv.remove("increment_major")
         version_increments.append("major")
+
+    if "compile" in argv:
+        argv.remove("compile")
+        compile_ext = True
+    else:
+        compile_ext = False
 
     if "ci" in argv:
         argv.remove("ci")
@@ -1223,7 +1292,7 @@ See the make.cfg file for additional build options.
 
                 except:
                     raise
-                    print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                    print_error("Could not copy module to work drive. Does the module exist?")
                     input("Press Enter to continue...")
                     print("Resuming build...")
                     continue
@@ -1244,7 +1313,7 @@ See the make.cfg file for additional build options.
                         os.remove(f)
             except:
                 raise
-                print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                print_error("Could not copy module to work drive. Does the module exist?")
                 input("Press Enter to continue...")
                 print("Resuming build...")
                 continue
@@ -1409,7 +1478,11 @@ See the make.cfg file for additional build options.
 
 
     finally:
+        if compile_ext:
+            compile_extensions(extensions_root, force_build)
+
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
+
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
         if not version_update:
@@ -1427,12 +1500,10 @@ See the make.cfg file for additional build options.
         try:
             shutil.rmtree(os.path.join(release_dir, project, "temp"), True)
         except:
-            print_error("ERROR: Could not delete pboProject temp files.")
+            print_error("Could not delete pboProject temp files.")
 
     # Make release
     if make_release_zip:
-        release_name = "{}_{}".format(zipPrefix, project_version)
-
         try:
             # Delete all log files
             for root, dirs, files in os.walk(os.path.join(release_dir, project, "addons")):
@@ -1446,6 +1517,7 @@ See the make.cfg file for additional build options.
                     os.remove(os.path.join(release_dir, file))
 
             # Create a zip with the contents of release folder in it
+            release_name = "{}_{}".format(zipPrefix, project_version)
             print_blue("\nMaking release: {}.zip ...".format(release_name))
             print("Packing...")
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
@@ -1453,6 +1525,17 @@ See the make.cfg file for additional build options.
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
             os.remove(release_zip)
+
+            # Create a zip with symbols if symbols folder exists
+            if os.path.isdir(os.path.join(module_root_parent, "symbols")):
+                release_name_symbols = "{}_symbols".format(release_name)
+                print_blue("\nArchiving symbols: {}.zip ...".format(release_name_symbols))
+                print("Packing...")
+                symbols_zip = shutil.make_archive("{}".format(release_name_symbols), "zip", os.path.join(module_root_parent, "symbols"))
+
+                # Move symbols zip to release folder
+                shutil.copy(symbols_zip, release_dir)
+                os.remove(symbols_zip)
         except:
             raise
             print_error("Could not make release.")
@@ -1484,23 +1567,22 @@ See the make.cfg file for additional build options.
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
 
-    if len(failedBuilds) > 0 or len(missingFiles) > 0:
+    tracedErrors = len(failedBuilds) + len(missingFiles)
+    if printedErrors > 0: # printedErrors includes tracedErrors
+        printedOnlyErrors = printedErrors - tracedErrors
+        print()
+        print_error("Failed with {} errors.".format(printedErrors))
         if len(failedBuilds) > 0:
-            print()
-            print_error("Build failed! {} PBOs failed!".format(len(failedBuilds)))
             for failedBuild in failedBuilds:
-                print("- {} failed.".format(failedBuild))
-
+                print("- {} build failed!".format(failedBuild))
         if len(missingFiles) > 0:
-            missingFiles = set(missingFiles)
-            print()
-            print_error("Missing files! {} files not found!".format(len(missingFiles)))
             for missingFile in missingFiles:
-                print("- {} failed.".format(missingFile))
-
-        sys.exit(1)
+                print("- {} not found!".format(missingFile))
+        if printedOnlyErrors > 0:
+            print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
     else:
         print_green("\nCompleted with 0 errors.")
+
 
 if __name__ == "__main__":
     start_time = timeit.default_timer()
