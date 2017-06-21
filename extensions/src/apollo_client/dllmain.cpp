@@ -169,7 +169,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     if (!strcmp(function, "version")) {
         strncpy(output, TAC_VERSION, outputSize);
         EXTENSION_RETURN();
-    } else if (!strcmp(function, "loadArmory")) {
+    } else if (message.find("loadArmory") != std::string::npos) {
         std::string playerRequest = message.substr(10, message.size() - 1);
         TCPRequest("/apollo/armory/" + playerRequest);
 
@@ -180,7 +180,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             strncpy(output, "error", outputSize);
         }
         EXTENSION_RETURN();
-    } else if (!strcmp(function, "loadPlayer")) {
+    } else if (message.find("loadPlayer") != std::string::npos) {
         std::string playerId = message.substr(10, message.size() - 1);
         TCPRequest("/apollo/loadInfantry/" + playerId);
 
@@ -223,10 +223,6 @@ void Init() {
     LOG(INFO) << "Apollo Client Loaded";
 }
 
-void Cleanup() {
-    LOG(INFO) << "Apollo Client Unloaded";
-}
-
 #ifndef __linux__
 BOOL APIENTRY DllMain(HMODULE hModule,
     DWORD  ul_reason_for_call,
@@ -241,7 +237,6 @@ BOOL APIENTRY DllMain(HMODULE hModule,
         case DLL_THREAD_ATTACH:
         case DLL_THREAD_DETACH:
         case DLL_PROCESS_DETACH:
-            Cleanup();
             break;
     }
     return TRUE;
