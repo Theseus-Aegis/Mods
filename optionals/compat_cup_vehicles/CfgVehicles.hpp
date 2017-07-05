@@ -1,18 +1,11 @@
 // Heavy Lifter - Generated using heavylifter_exportConfig function
 class CfgVehicles {
-    class Heli_Light_01_dynamicLoadout_base_F;
-    class Heli_Light_02_dynamicLoadout_base_F;
-    class Heli_Attack_01_dynamicLoadout_base_F;
-    class Heli_light_03_dynamicLoadout_base_F;
-    class Plane_CAS_01_dynamicLoadout_base_F;
     class Car_F;
     class CUP_Skoda_Base;
     class CUP_C_Golf4_Civ_Base;
     class CUP_C_Golf4_Civ_sport_Base;
     class CUP_MQ9_Base;
     class CUP_Pchela1T_Base;
-    class UAV_03_dynamicLoadout_base_F;
-    class Plane_Fighter_02_Base_F;
     class CUP_BMP3_Base;
     class CUP_M113_Base;
     class CUP_M113_Med_Base;
@@ -31,11 +24,10 @@ class CfgVehicles {
     class CUP_StrykerBase;
     class CUP_TowingTractor_Base;
     class CUP_A10_Base;
-    class CUP_AH1Z_Base;
+    class CUP_AH1Z_Dynamic_Base;
     class CUP_MH6_TRANSPORT;
     class CUP_AH6_BASE;
-    class CUP_AH6_ARMED_BASE;
-    class CUP_AH6_BASE_SINGLE_GAU;
+    class CUP_AH6_DYNLOAD;
     class CUP_CH53E_Base;
     class CUP_CH53E_VIV_Base;
     class CUP_DC3_Base;
@@ -55,6 +47,7 @@ class CfgVehicles {
     class CUP_UH1H_base;
     class CUP_UH1H_slick_base;
     class CUP_B_UH1Y_Base;
+    class CUP_B_UH1Y_GUNSHIP_USMC;
     class CUP_Uh60_Base;
     class CUP_MH60L_Dap_4x_AT_Base;
     class CUP_MH60L_Dap_4x_Escort_Base;
@@ -65,6 +58,7 @@ class CfgVehicles {
     class CUP_Uh60_FFV_Base;
     class CUP_UH60_Unarmed_Base;
     class CUP_Uh60_Unarmed_FFV_Base;
+    class CUP_Uh60S_Base;
     class CUP_Uh60L_Base;
     class CUP_Uh60L_FFV_Base;
     class CUP_Uh60L_Unarmed_Base;
@@ -99,6 +93,7 @@ class CfgVehicles {
     class CUP_AN2_Base;
     class CUP_AV8B_Base;
     class CUP_AW159_Unarmed_Base;
+    class CUP_AW159_Dynamic_Base;
     class CUP_C130J_Base;
     class CUP_C130J_VIV_Base;
     class CUP_Merlin_HC3_Base;
@@ -137,21 +132,6 @@ class CfgVehicles {
     class CUP_Ambient_B737_Base;
     class CUP_Ambient_Cessna172_Base;
 
-    class B_Heli_Light_01_dynamicLoadout_F: Heli_Light_01_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.41, 0.46};
-    };
-    class O_Heli_Light_02_dynamicLoadout_F: Heli_Light_02_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.05, 0.85};
-    };
-    class B_Heli_Attack_01_dynamicLoadout_F: Heli_Attack_01_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.25, 0.61};
-    };
-    class I_Heli_light_03_dynamicLoadout_F: Heli_light_03_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.17, 0.21};
-    };
-    class B_Plane_CAS_01_dynamicLoadout_F: Plane_CAS_01_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.67, 1.2};
-    };
     class CUP_C_Octavia_CIV: Car_F {
         EGVAR(heavylifter,attachPos)[] = {0, 0.63, 0.11};
     };
@@ -217,15 +197,6 @@ class CfgVehicles {
     };
     class CUP_B_Pchela1T_CDF: CUP_Pchela1T_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, -1.03};
-    };
-    class B_T_UAV_03_dynamicLoadout_F: UAV_03_dynamicLoadout_base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, 0.1, 0.22};
-    };
-    class O_Plane_Fighter_02_F: Plane_Fighter_02_Base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, 0.41, 1.15};
-    };
-    class O_Plane_Fighter_02_Stealth_F: Plane_Fighter_02_Base_F {
-        EGVAR(heavylifter,attachPos)[] = {0, 0.41, 1.15};
     };
     class CUP_O_BMP3_RU: CUP_BMP3_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0.11, 2.87};
@@ -350,65 +321,32 @@ class CfgVehicles {
     class CUP_B_A10_AT_USA: CUP_A10_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, -0.39};
     };
-    class CUP_B_AH1Z_USMC: CUP_AH1Z_Base {
+    class CUP_B_AH1Z_Dynamic_USMC: CUP_AH1Z_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
     };
-    class CUP_B_AH1Z_NoWeapons_USMC: CUP_AH1Z_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
-    };
-    class CUP_B_AH1Z_AT_USMC: CUP_AH1Z_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
-    };
-    class CUP_B_AH1Z_Escort_USMC: CUP_AH1Z_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
-    };
-    class CUP_B_AH1Z_7RndHydra_USMC: CUP_AH1Z_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
-    };
-    class CUP_B_AH1Z_14RndHydra_USMC: CUP_AH1Z_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
-    };
-    class CUP_B_AH1Z_NOAA_USMC: CUP_AH1Z_Base {
+    class CUP_I_AH1Z_Dynamic_AAF: CUP_AH1Z_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -1.41, 0.73};
     };
     class CUP_B_MH6M_USA: CUP_MH6_TRANSPORT {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.13, -1.32};
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
     };
     class CUP_B_MH6J_USA: CUP_AH6_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.13, -1.32};
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
     };
     class CUP_B_MH6M_OBS_USA: CUP_MH6_TRANSPORT {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.13, -1.32};
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
     };
     class CUP_B_MH6J_OBS_USA: CUP_MH6_TRANSPORT {
-        EGVAR(heavylifter,attachPos)[] = {0, -1.13, -1.32};
-    };
-    class CUP_B_AH6M_Escort_USA: CUP_AH6_ARMED_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_AT_USA: CUP_AH6_ARMED_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_MP_USA: CUP_AH6_ARMED_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_Escort19_USA: CUP_AH6_ARMED_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_Escort_GAU_USA: CUP_AH6_BASE_SINGLE_GAU {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_AT_GAU_USA: CUP_AH6_BASE_SINGLE_GAU {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
-    };
-    class CUP_B_AH6M_Cannons_USA: CUP_AH6_ARMED_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
     };
     class CUP_B_AH6X_USA: CUP_AH6_BASE {
         EGVAR(heavylifter,attachPos)[] = {0, -1.13, -1.32};
     };
+    class CUP_B_AH6M_USA: CUP_AH6_DYNLOAD {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
+    };
     class CUP_I_MH6J_RACS: CUP_AH6_BASE {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.98, -1.32};
+        EGVAR(heavylifter,attachPos)[] = {0, -0.71, -0.26};
     };
     class CUP_B_CH53E_USMC: CUP_CH53E_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -4.31, 3.52};
@@ -566,7 +504,7 @@ class CfgVehicles {
     class CUP_B_UH1Y_MEV_USMC: CUP_B_UH1Y_UNA_USMC {
         EGVAR(heavylifter,attachPos)[] = {0, -1.2, 0.87};
     };
-    class CUP_B_UH1Y_GUNSHIP_USMC: CUP_B_UH1Y_Base {
+    class CUP_B_UH1Y_Gunship_Dynamic_USMC: CUP_B_UH1Y_GUNSHIP_USMC {
         EGVAR(heavylifter,attachPos)[] = {0, -1.2, 0.76};
     };
     class CUP_B_UH60M_US: CUP_Uh60_Base {
@@ -619,6 +557,9 @@ class CfgVehicles {
     };
     class CUP_B_MH60L_DAP_2x_Multi_USN: CUP_MH60L_Dap_2x_Multi_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -1.73, 0.55};
+    };
+    class CUP_B_UH60S_USN: CUP_Uh60S_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.76, 0.55};
     };
     class CUP_I_UH60L_RACS: CUP_Uh60L_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -1.73, 0.55};
@@ -1079,40 +1020,22 @@ class CfgVehicles {
     class CUP_B_AW159_Unarmed_RN_Blackcat: CUP_AW159_Unarmed_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
-    class CUP_B_AW159_Hellfire_GB: CUP_AW159_Unarmed_Base {
+    class CUP_B_AW159_GB: CUP_AW159_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
-    class CUP_B_AW159_Hellfire_RN_Grey: CUP_AW159_Unarmed_Base {
+    class CUP_B_AW159_RN_Grey: CUP_AW159_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
-    class CUP_B_AW159_Hellfire_RN_Blackcat: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
-    class CUP_B_AW159_Cannon_GB: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
-    class CUP_B_AW159_Cannon_RN_Grey: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
-    class CUP_B_AW159_Cannon_RN_Blackcat: CUP_AW159_Unarmed_Base {
+    class CUP_B_AW159_RN_Blackcat: CUP_AW159_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
     class CUP_I_Wildcat_Unarmed_Green_AAF: CUP_AW159_Unarmed_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
-    class CUP_I_Wildcat_Hellfire_Armed_Green_AAF: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
-    class CUP_I_Wildcat_Cannon_Armed_Green_AAF: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
     class CUP_I_Wildcat_Unarmed_Digital_AAF: CUP_AW159_Unarmed_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
-    class CUP_I_Wildcat_Hellfire_Armed_Digital_AAF: CUP_AW159_Unarmed_Base {
-        EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
-    };
-    class CUP_I_Wildcat_Cannon_Armed_Digital_AAF: CUP_AW159_Unarmed_Base {
+    class CUP_I_Wildcat_Green_AAF: CUP_AW159_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
     class CUP_B_C130J_USMC: CUP_C130J_Base {
