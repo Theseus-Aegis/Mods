@@ -14,4 +14,5 @@ class CfgPatches {
     };
 };
 
+#include "CfgAILevelPresets.hpp"
 #include "CfgDifficultyPresets.hpp"
