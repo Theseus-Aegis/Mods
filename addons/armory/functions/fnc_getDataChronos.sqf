@@ -1,6 +1,6 @@
 /*
  * Author: DaC, Jonpas
- * Gets data from ApolloClient/Athena (Chronos).
+ * Gets data from Apollo Client / Athena (Chronos).
  *
  * Arguments:
  * 0: Category <STRING>
@@ -31,14 +31,14 @@ private _success = false;
 private _armoryData = [];
 
 // Call Chronos for Data - no further HTTP calls are needed after this one
-private _loadData = "ApolloClient" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
+private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
 if (_loadData == "loaded") then {
     private _updateInfo = true;
     private _entry = [];
 
     while {_updateInfo} do {
         // Retrieve the data which is stored in the client's heap
-        _loadData = "ApolloClient" callExtension "get";
+        _loadData = "tac_apollo_client" callExtension "get";
         TRACE_1("Get Chronos Data",_loadData);
 
         if (_loadData == "error") then {

@@ -36,7 +36,7 @@ if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
 private _replaceRadioAcre = {
     params ["_item"];
     // Replace only if string (array can be eg. weapon inside container) and an ACRE radio
-    if (!(_item isEqualTo []) && {[_item] call acre_api_fnc_isRadio}) then {
+    if (!(_item isEqualType []) && {[_item] call acre_api_fnc_isRadio}) then {
         _this set [0, [_item] call acre_api_fnc_getBaseRadio];
     };
 };
@@ -48,11 +48,6 @@ if !((_loadout select 4) isEqualTo []) then {
 };
 if !((_loadout select 5) isEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 5) select 1); // Backpack items
-};
-
-// Goggles bandaid - #283 (vanilla bug)
-if ((_loadout select 7) == "") then {
-    _loadout set [7, goggles _player];
 };
 
 // Other
