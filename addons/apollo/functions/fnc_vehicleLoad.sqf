@@ -47,7 +47,7 @@ if (_retrieveVehicles == "ready") then {
 
     // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
     _vehList params ["_vehFixPhysics"];
-    _vehFixPhysics setDamage (damage _vehFixPhysics);
+    _vehFixPhysics setDamage [damage _vehFixPhysics, false];
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
