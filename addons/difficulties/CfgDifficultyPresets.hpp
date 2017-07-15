@@ -4,7 +4,7 @@ class CfgDifficultyPresets {
         displayName = "Theseus";
         description = "Custom difficulty for Theseus gameplay.";
         optionDescription = "Custom difficulty for Theseus gameplay.";
-        levelAI = GVAR(Theseus);
+        levelAI = QGVAR(Theseus);
         class Options {
             autoReport = 0;
             cameraShake = 1;
