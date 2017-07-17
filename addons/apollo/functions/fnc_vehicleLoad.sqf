@@ -37,17 +37,16 @@ if (_retrieveVehicles == "ready") then {
 
     // Make sure all vehicles exist, save them into a global variable for API
     _vehList = (_vehList apply {missionNamespace getVariable [_x, objNull]}) select {!isNull _x};
-    GVAR(vehiclesList) = _vehList; // Don't use global variable directly in case of new vehicles during this time
+    GVAR(vehiclesList) = +_vehList; // Don't use global variable directly in case of new vehicles during this time
 
     // Allow damage and enable simulation on all vehicles
     {
         _x enableSimulationGlobal true;
         _x allowDamage true;
-    } forEach _vehList;
 
-    // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
-    _vehList params ["_vehFixPhysics"];
-    _vehFixPhysics setDamage (damage _vehFixPhysics);
+        // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
+        _x setDamage [damage _x, false];
+    } forEach _vehList;
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
