@@ -65,15 +65,15 @@ if (GVAR(system) == 0) then {
         _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
     } else {
         if (_isBackpack) exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargo;
+            [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
         };
         if (_itemType == "weapon") exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargo;
+            [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
         };
         if (_itemType == "magazine") exitWith {
             [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
         };
-        [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
+        [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeItemCargo; //default "item"
     };
 
     // Set Armory contents
