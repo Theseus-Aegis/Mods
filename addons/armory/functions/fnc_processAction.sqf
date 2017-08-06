@@ -18,7 +18,7 @@
 params ["_type"];
 
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
-private _typeChronos = if (_type == "stash") then {"put"} else {"remove"};
+private _typeChronos = ["remove", "put"] select (_type == "stash");
 
 private _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 private _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
@@ -96,6 +96,13 @@ if (GVAR(system) == 1) then {
 };
 
 // Update list
-[[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);
+private _newArmoryData = if (_type == "stash") then {
+    // Force get box contents if stashing due to usage of CBA functions which may modify box contents (eg. attachments next to weapon) due to limitations
+    call FUNC(getBoxContents)
+} else {
+    [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)
+};
+
+[_newArmoryData] call FUNC(dialogControl_populateList);
 call FUNC(dialogControl_amountSelection);
 call FUNC(dialogControl_takestash);
