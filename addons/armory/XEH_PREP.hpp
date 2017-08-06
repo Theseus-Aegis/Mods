@@ -2,7 +2,6 @@ PREP(addItems);
 PREP(canAddArmory);
 PREP(canOpenArmory);
 PREP(closeArmory);
-PREP(containsItems);
 PREP(dialogControl_amountSelection);
 PREP(dialogControl_back);
 PREP(dialogControl_list);
