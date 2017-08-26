@@ -92,7 +92,7 @@ if (GVAR(system) == 0) then {
 };
 
 if (GVAR(system) == 1) then {
-    ["tac_apollo_lockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
+    [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 };
 
 // Update list
