@@ -51,6 +51,7 @@ if (_success) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
+    private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
     private _ratingType = [LSTRING(Accuracy), LSTRING(TargetsHit)] select (_mode == 5);
     private _texts = [LSTRING(Range), _name, " ", LSTRING(Finished), "<br/><br/>", _ratingType, ": ", _scorePercentage, "% (", _score, "/", _maxScore, ")"];
     private _size = 4;
