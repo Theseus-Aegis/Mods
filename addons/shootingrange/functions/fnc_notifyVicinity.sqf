@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * ["Notification", 2.5] call tac_shootingrange_fnc_notifyVicinity;
+ * [["text", "STR_text"], 2.5] call tac_shootingrange_fnc_notifyVicinity;
  *
  * Public: No
  */

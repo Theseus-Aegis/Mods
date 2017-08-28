@@ -13,5 +13,5 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(notifyPlayer), {
     params ["_texts", "_size"];
-    [_texts call FUNC(textsIntoLocalizedString), _size] call ACEFUNC(common,displayTextStructured);
+    [[_texts] call FUNC(textsIntoLocalizedString), _size] call ACEFUNC(common,displayTextStructured);
 }] call CBA_fnc_addEventHandler;

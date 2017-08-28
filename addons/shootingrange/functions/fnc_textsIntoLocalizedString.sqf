@@ -9,19 +9,23 @@
  * Localized String <STRING>
  *
  * Example:
- * [["text1", "STR_text2"]] call tac_shootingrange_fnc_textsIntoLocalizedString;
+ * [["text", "STR_text"]] call tac_shootingrange_fnc_textsIntoLocalizedString;
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 params ["_texts"];
+TRACE_1("Texts",_texts);
 
 // Compile texts into one localized string
 private _text = "";
 {
-    private _str = [_x, localize _x] select (_x select [0, 4] == "STR_");
-    [_text, _str] joinString "";
+    if (_x select [0, 4] == "STR_") then {
+        _x = localize _x;
+    };
+    _text = [_text, _x] joinString "";
 } forEach _texts;
 
+TRACE_1("Localized String",_text);
 _text

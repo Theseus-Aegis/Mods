@@ -70,7 +70,7 @@ if (_mode != 4) then {
     };
 
     if (_mode in [1, 2]) then {
-        _texts = [LSTRING(Range), _name, " ", LSTRING(Started), "<br/><br/>", _textConfig, ": ", _textDurationOrTargetAmount, "<br/>", LSTRING(PauseDuration), ": ", _pauseDuration, "s"];
+        _texts = [LSTRING(Range), _name, " ", LSTRING(Started), "<br/><br/>", _textConfig, ": ", _textDurationOrTargetAmount, "<br/>", LSTRING(PauseDuration), ": ", str _pauseDuration, "s"];
         _size = 4.5;
     } else {
         _texts = [LSTRING(Range), _name, " ", LSTRING(Started), "<br/><br/>", _textConfig, ": ", _textDurationOrTargetAmount];
@@ -83,7 +83,7 @@ if (_mode != 4) then {
 
 _texts append ["<br/><br/>", LSTRING(By), ": ", _playerName];
 _size = [_size, _size - 0.5] select (_name isEqualTo "");
-[_texts, _size, true] call FUNC(notifyVicinity);
+[_texts, _size, false] call FUNC(notifyVicinity);
 
 
 // Prepare variables

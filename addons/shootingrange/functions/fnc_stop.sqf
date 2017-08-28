@@ -53,11 +53,11 @@ if (_success) then {
 
     private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
     private _ratingType = [LSTRING(Accuracy), LSTRING(TargetsHit)] select (_mode == 5);
-    private _texts = [LSTRING(Range), _name, " ", LSTRING(Finished), "<br/><br/>", _ratingType, ": ", _scorePercentage, "% (", _score, "/", _maxScore, ")"];
+    private _texts = [LSTRING(Range), _name, " ", LSTRING(Finished), "<br/><br/>", _ratingType, ": ", str _scorePercentage, "% (", str _score, "/", str _maxScore, ")"];
     private _size = 4;
 
     if (_timeElapsed > 0) then {
-        _texts append ["<br/>", LSTRING(TimeElapsed), ": ", _timeElapsed, "s"];
+        _texts append ["<br/>", LSTRING(TimeElapsed), ": ", str _timeElapsed, "s"];
         _size = _size + 0.5;
     };
 
@@ -66,19 +66,18 @@ if (_success) then {
     [_texts, _size, true] call FUNC(notifyVicinity);
 
     // Print result to server and client RPT
-    _texts = _texts apply {
-        [_x, "<br/><br/>", ". "] call CBA_fnc_replace; // Remove double newlines first
-        [_x, "<br/>", ". "] call CBA_fnc_replace;
-    };
-    [QGVAR(logResult), _texts] call CBA_fnc_serverEvent;
-    [QGVAR(logResult), _texts] call CBA_fnc_localEvent;
+    _texts = _texts apply { [_x, "<br/><br/>", ". "] call CBA_fnc_replace }; // Remove double newlines first
+    _texts = _texts apply { [_x, "<br/>", ". "] call CBA_fnc_replace };
+    [QGVAR(logResult), [_texts]] call CBA_fnc_serverEvent;
+    [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
 } else {
     private _texts = [LSTRING(Range), "<br/>", _name];
     if (GVAR(invalidTargetHit)) then {
         _texts append ["<br/><br/>", LSTRING(Failed), "<br/>", LSTRING(InvalidTargetHit)];
     } else {
-        _texts append ["<br/><br/>", LSTRING(Stopped), "<br/>", LSTRING(By), ": ", _playerName];
+        _texts append ["<br/><br/>", LSTRING(Stopped)];
     };
-    [QGVAR(notifyPlayer), [_texts, 3.5]] call CBA_fnc_localEvent;
+    _texts append ["<br/><br/>", LSTRING(By), ": ", _playerName];
+    [_texts, 4.5, true] call FUNC(notifyVicinity);
     GVAR(invalidTargetHit) = nil;
 };
