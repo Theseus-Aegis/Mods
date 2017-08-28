@@ -88,6 +88,6 @@ if (_mode in [2, 3] && {GVAR(firstRun)}) exitWith {
     GVAR(targetUp) = selectRandom _targets;
 
     // Animate new target
-    _target setDamage 0;
+    GVAR(targetUp) setDamage 0;
     [GVAR(targetUp), 0] call FUNC(animateTarget); // Up
 };

@@ -66,7 +66,7 @@ if (_mode != 4) then {
             _textConfig = localize LSTRING(Duration);
             _textDurationOrTargetAmount = [localize LSTRING(Infinite), format ["%1s", _duration]] select (_duration > 0);
         };
-        default {_textMode = "ERORR"};
+        default {_textConfig = "ERORR"};
     };
 
     if (_mode in [1, 2]) then {
