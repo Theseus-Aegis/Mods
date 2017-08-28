@@ -1,6 +1,6 @@
 /*
  * Author: Jonpas
- * Adds shooting range countdown times configuration child interactions to a controller.
+ * Converts array of strings into one partially localized string (localized where string starts with "STR_").
  *
  * Arguments:
  * 0: Texts <ARRAY>
@@ -9,7 +9,7 @@
  * Localized String <STRING>
  *
  * Example:
- * [["text1", "STR_text2"]] call tac_shootingrange_fnc_textsIntoLocalizedStrings;
+ * [["text1", "STR_text2"]] call tac_shootingrange_fnc_textsIntoLocalizedString;
  *
  * Public: No
  */

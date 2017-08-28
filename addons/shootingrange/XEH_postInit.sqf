@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 [QGVAR(logResult), {
-    INFO_1("%1",_this call FUNC(textsIntoLocalizedStrings));
+    INFO_1("%1",_this call FUNC(textsIntoLocalizedString));
 }] call CBA_fnc_addEventHandler;
 
 // Exit on Server and Headless Client
@@ -13,5 +13,5 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(notifyPlayer), {
     params ["_texts", "_size"];
-    [_texts call FUNC(textsIntoLocalizedStrings), _size] call ACEFUNC(common,displayTextStructured);
+    [_texts call FUNC(textsIntoLocalizedString), _size] call ACEFUNC(common,displayTextStructured);
 }] call CBA_fnc_addEventHandler;
