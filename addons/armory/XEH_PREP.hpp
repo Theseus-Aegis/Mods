@@ -20,3 +20,4 @@ PREP(moduleInit);
 PREP(openArmory);
 PREP(processAction);
 PREP(subtractData);
+PREP(updateData);

@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [player, "rifle", box, "weapon", "5"] call tac_apollo_fnc_lockerAction
+ * [player, "remove", box, "class", "5"] call tac_apollo_fnc_lockerAction
  *
  * Public: No
  */
@@ -37,6 +37,11 @@ if (_serverReply == "ready") then {
             {
                 call _x;
             } forEach _responsePacket;
+
+            // Notify Armory about finalization to force refresh box contents when stashing
+            if (_type == "put") then {
+                [QGVAR(lockerActionDone), [_player], _player] call CBA_fnc_targetEvent;
+            };
 
             _responsePacket = [];
             _updateInfo = false;
