@@ -53,27 +53,42 @@ if (GVAR(system) == 0) then {
     private _itemType = ([_selectedItem] call ACEFUNC(common,getItemType)) select 0;
 
     if (_type == "take") then {
-        if (_isBackpack) exitWith {
-            _object addBackpackCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+        switch (true) do {
+            case (_isBackpack): {
+                _object addBackpackCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            case (_itemType == "weapon"): {
+                _object addWeaponCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            case (_itemType == "magazine"): {
+                _object addMagazineCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            default {
+                _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
+            };
         };
-        if (_itemType == "weapon") exitWith {
-            _object addWeaponCargoGlobal [_selectedItem, parseNumber _selectedAmount];
-        };
-        if (_itemType == "magazine") exitWith {
-            _object addMagazineCargoGlobal [_selectedItem, parseNumber _selectedAmount];
-        };
-        _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
+
+        // Update list
+        private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
+        [_newArmoryData] call FUNC(updateData);
     } else {
-        if (_isBackpack) exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargo;
+        switch (true) do {
+            case (_isBackpack): {
+                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargo;
+            };
+            case (_itemType == "weapon"): {
+                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargo;
+            };
+            case (_itemType == "magazine"): {
+                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
+            };
+            default {
+                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
+            };
         };
-        if (_itemType == "weapon") exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargo;
-        };
-        if (_itemType == "magazine") exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
-        };
-        [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
+
+        // Update list
+        [call FUNC(getBoxContents)] call FUNC(updateData);
     };
 
     // Set Armory contents
@@ -87,22 +102,12 @@ if (GVAR(system) == 0) then {
             _x
         };
     };
-
-    _object setVariable [QGVAR(armoryData), _armoryDataVar];
 };
 
 if (GVAR(system) == 1) then {
-    ["tac_apollo_lockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
-};
+    [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 
-// Update list
-private _newArmoryData = if (_type == "stash") then {
-    // Force get box contents if stashing due to usage of CBA functions which may modify box contents (eg. attachments next to weapon) due to limitations
-    call FUNC(getBoxContents)
-} else {
-    [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)
+    // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
+    private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
+    [_newArmoryData] call FUNC(updateData);
 };
-
-[_newArmoryData] call FUNC(dialogControl_populateList);
-call FUNC(dialogControl_amountSelection);
-call FUNC(dialogControl_takestash);
