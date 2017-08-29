@@ -71,13 +71,15 @@ if (_success) then {
     [QGVAR(logResult), [_texts]] call CBA_fnc_serverEvent;
     [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
 } else {
-    private _texts = [LSTRING(Range), "<br/>", _name];
+    private _texts = [LSTRING(Range), "<br/>", _name, "<br/><br/>"];
+    private _size = 4;
     if (GVAR(invalidTargetHit)) then {
-        _texts append ["<br/><br/>", LSTRING(Failed), "<br/>", LSTRING(InvalidTargetHit)];
+        _texts append [LSTRING(Failed), "<br/>", LSTRING(InvalidTargetHit)];
+        _size = _size + 0.5;
     } else {
-        _texts append ["<br/><br/>", LSTRING(Stopped)];
+        _texts append [LSTRING(Stopped)];
     };
     _texts append ["<br/><br/>", LSTRING(By), ": ", _playerName];
-    [_texts, 4.5, true] call FUNC(notifyVicinity);
+    [_texts, _size, true] call FUNC(notifyVicinity);
     GVAR(invalidTargetHit) = nil;
 };
