@@ -12,6 +12,7 @@ if (!hasInterface) exitWith {};
     params ["_player"];
     // Only update if still open
     if (!isNull (_player getVariable [QGVAR(object), objNull])) then {
+        TRACE_1("Stash force update",_player);
         [call FUNC(getBoxContents)] call FUNC(updateData);
     };
 }] call CBA_fnc_addEventHandler;

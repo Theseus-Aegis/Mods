@@ -17,6 +17,8 @@
 
 params ["_newArmoryData"];
 
+TRACE_1("Armory data update",_newArmoryData);
+
 [_newArmoryData] call FUNC(dialogControl_populateList);
 call FUNC(dialogControl_amountSelection);
 call FUNC(dialogControl_takestash);
