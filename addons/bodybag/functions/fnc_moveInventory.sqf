@@ -28,10 +28,17 @@ _items append (uniformItems _unit);
 _items pushBack (vest _unit);
 _items append (vestItems _unit);
 _items append (backpackItems _unit);
-_weapons append (_unit getVariable [QGVAR(droppedWeapons), []]);
+_weapons pushBack (primaryWeapon _unit);
+_items append (primaryWeaponItems _unit);
+_items append (primaryWeaponMagazine _unit);
+_weapons pushBack (secondaryWeapon _unit);
+_items append (secondaryWeaponItems _unit);
+_items append (secondaryWeaponMagazine _unit);
 _weapons pushBack (handgunWeapon _unit);
 _items append (handgunItems _unit);
 _items append (handgunMagazine _unit);
+_weapons append (_unit getVariable [QGVAR(droppedWeapons), []]);
+_items append (_unit getVariable [QGVAR(droppedItems), []]);
 _items append (assignedItems _unit);
 //_weapons pushBack (binocular _unit); // dropped into inventory on death
 _items pushBack (_unit call CBA_fnc_binocularMagazine);
@@ -45,14 +52,24 @@ TRACE_2("Body Inventory",_items,_weapons);
 {
     _bodybag addItemCargoGlobal [_x, 1];
 } forEach _items;
+
+// Weapons with preset attachments and no non-preset parent will get attachments duplicated
 {
-    _bodybag addWeaponCargoGlobal [_x, 1];
+    private _weaponNonPreset = [_x] call CBA_fnc_getNonPresetClass;
+    if (_weaponNonPreset == "") then {
+        _weaponNonPreset = _x;
+    };
+    _bodybag addWeaponCargoGlobal [_weaponNonPreset, 1];
 } forEach _weapons;
 
-// Backpacks with items already in them (special classes) will get those copied over as well, resulting in duplicated items)
+// Backpacks with items already in them and no non-preset parent (special classes) will get those copied over as well, resulting in duplicated items)
 private _backpack = backpack _unit;
 if (_backpack != "" && {random 100 > GVAR(destroyChance)}) then {
-    _bodybag addBackpackCargoGlobal [_backpack, 1];
+    private _backpackNonPreset = [_backpack, "CfgVehicles"] call CBA_fnc_getNonPresetClass;
+    if (_backpackNonPreset == "") then {
+        _backpackNonPreset = _backpack;
+    };
+    _bodybag addBackpackCargoGlobal [_backpackNonPreset, 1];
 };
 
 // Remove possible left-over ground weapon holder
