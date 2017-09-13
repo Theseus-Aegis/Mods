@@ -51,35 +51,35 @@ if (_success) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _ratingType = [localize LSTRING(Accuracy), localize LSTRING(TargetsHit)] select (_mode == 5);
-    private _text = format ["%1%2 %3<br/><br/>%4: %5%6 (%7/%8)", localize LSTRING(Range), _name, localize LSTRING(Finished), _ratingType, _scorePercentage, "%", _score, _maxScore];
-    private _size = 3;
+    private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
+    private _ratingType = [LSTRING(Accuracy), LSTRING(TargetsHit)] select (_mode == 5);
+    private _texts = [LSTRING(Range), _name, " ", LSTRING(Finished), "<br/><br/>", _ratingType, ": ", str _scorePercentage, "% (", str _score, "/", str _maxScore, ")"];
+    private _size = 4;
 
     if (_timeElapsed > 0) then {
-        _text = format ["%1<br/>%2: %3s", _text, localize LSTRING(TimeElapsed), _timeElapsed];
+        _texts append ["<br/>", LSTRING(TimeElapsed), ": ", str _timeElapsed, "s"];
         _size = _size + 0.5;
     };
 
-    private _size = [_size, _size - 0.5] select (_name isEqualTo "");
-    [_text, _size] call ACEFUNC(common,displayTextStructured);
-
-    _text = format ["%1<br/><br/>%2: %3", _text, localize LSTRING(By), _playerName];
-    [_text, _size + 1, false] call FUNC(notifyVicinity);
+    _texts append ["<br/><br/>", LSTRING(By), ": ", _playerName];
+    _size = [_size, _size - 0.5] select (_name isEqualTo "");
+    [_texts, _size, true] call FUNC(notifyVicinity);
 
     // Print result to server and client RPT
-    _text = [_text, "<br/><br/>", ". "] call CBA_fnc_replace; // Remove double newlines first
-    _text = [_text, "<br/>", ". "] call CBA_fnc_replace;
-    [QGVAR(logResult), _text] call CBA_fnc_serverEvent;
-    if (!isServer) then {
-        INFO_1("%1",_text);
-    };
+    _texts = _texts apply { [_x, "<br/><br/>", ". "] call CBA_fnc_replace }; // Remove double newlines first
+    _texts = _texts apply { [_x, "<br/>", ". "] call CBA_fnc_replace };
+    [QGVAR(logResult), [_texts]] call CBA_fnc_serverEvent;
+    [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
 } else {
-    private _text = format ["%1<br/>%2", localize LSTRING(Range), _name];
+    private _texts = [LSTRING(Range), "<br/>", _name, "<br/><br/>"];
+    private _size = 4;
     if (GVAR(invalidTargetHit)) then {
-        _text = format ["%1<br/><br/>%2<br/>%3", _text, localize LSTRING(Failed), localize LSTRING(InvalidTargetHit)];
+        _texts append [LSTRING(Failed), "<br/>", LSTRING(InvalidTargetHit)];
+        _size = _size + 0.5;
     } else {
-        _text = format ["%1<br/><br/>%2<br/>%3: %4", _text, localize LSTRING(Stopped), localize LSTRING(By), _playerName];
+        _texts append [LSTRING(Stopped)];
     };
-    [_text, 3.5] call ACEFUNC(common,displayTextStructured);
+    _texts append ["<br/><br/>", LSTRING(By), ": ", _playerName];
+    [_texts, _size, true] call FUNC(notifyVicinity);
     GVAR(invalidTargetHit) = nil;
 };

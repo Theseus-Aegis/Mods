@@ -20,7 +20,7 @@ params ["_object"];
 // Prevent others using the same Armory object
 _object setVariable [QGVAR(inUse), true, true];
 
-// Set varaible for later reference
+// Set variable for later reference
 ACE_player setVariable [QGVAR(object), _object, true];
 
 // Create display and load main menu

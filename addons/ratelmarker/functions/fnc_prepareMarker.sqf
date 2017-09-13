@@ -33,7 +33,7 @@ TRACE_2("Grid to Position",_grid,_pos);
 private _heli = vehicle ACE_player;
 
 // Feed only occupied turrets
-_seeMarkerUnits = [];
+private _seeMarkerUnits = [];
 {
     if (!isNull (_heli turretUnit _x) && !local (_heli turretUnit _x)) then {
         _seeMarkerUnits pushBack (_heli turretUnit _x);
