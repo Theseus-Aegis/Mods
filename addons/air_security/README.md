@@ -10,7 +10,6 @@ Enables pilots to secure the passengers inside helicopters and planes.
 ### Features
 
 - Ability to Secure and Unsecure Crew in helicopters
-- Plays an open/close door animation for helicopters that support it
 - When Pilot or Copilot is present, Cargo can't Secure themselves
 - Anyone can always Secure or Unsecure from outside
 - When Pilot and Copilot die, anyone can Unsecure

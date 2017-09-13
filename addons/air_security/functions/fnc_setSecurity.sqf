@@ -1,6 +1,6 @@
 /*
  * Author: DaC, Jonpas
- * Closes or opens the vehicle doors and calls lock function on all connected.
+ * Toggles vehicle crew security.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
