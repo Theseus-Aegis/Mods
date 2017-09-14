@@ -10,7 +10,7 @@
  * Can Secure <BOOL>
  *
  * Example:
- * [vehicle, player] call tac_air_security_fnc_canSecure;
+ * [vehicle, player] call tac_air_security_fnc_canSecure
  *
  * Public: No
  */

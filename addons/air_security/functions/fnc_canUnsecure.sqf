@@ -10,7 +10,7 @@
  * Can Unsecure <BOOL>
  *
  * Example:
- * [vehicle, player] call tac_air_security_fnc_canUnsecure;
+ * [vehicle, player] call tac_air_security_fnc_canUnsecure
  *
  * Public: No
  */
@@ -19,7 +19,7 @@
 params ["_vehicle", "_unit"];
 
 (locked _vehicle > 1) && // Vehicle locked
-{!(_vehicle getVariable [QGVAR(preventUnlock), false])} && // Special variable to prevent unlocking is not set
+{!(_vehicle getVariable [QGVAR(lockedByUs), false])} && // Not locked by us (other script source)
 {getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 0} && // Not UAV
 {vehicle _unit == _unit || // Outside (ACE_Actions) or Inside (ACE_SelfActions)
     {vehicle _unit == _vehicle &&
