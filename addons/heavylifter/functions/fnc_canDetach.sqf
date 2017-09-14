@@ -9,7 +9,7 @@
  * Can Detach Hooks <BOOL>
  *
  * Example:
- * [heli, player] call tac_heavylifter_fnc_canDetach;
+ * [heli, player] call tac_heavylifter_fnc_canDetach
  *
  * Public: No
  */
@@ -17,7 +17,4 @@
 
 params ["_vehicle"];
 
-(!isNil {_vehicle getVariable QGVAR(prepared)}) &&
-{!isEngineOn _vehicle} &&
-{locked _vehicle < 2} &&
-{count (crew _vehicle) == 0}
+(!isNil {_vehicle getVariable QGVAR(prepared)})

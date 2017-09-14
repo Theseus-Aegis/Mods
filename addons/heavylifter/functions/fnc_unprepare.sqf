@@ -7,6 +7,11 @@
  *
  * Return Value:
  * None
+ *
+* Example:
+ * [heli] call tac_heavylifter_fnc_unprepare
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
@@ -16,14 +21,15 @@ params ["_targetVehicle"];
 (_targetVehicle getVariable QGVAR(prepared)) params ["_vehicle", "_helper"];
 
 // Prevent damage on vehicle
-[_vehicle, "blockDamage", "tac_heavylifter_unprepare", true] call ACEFUNC(common,statusEffect_set);
+[_vehicle, "blockDamage", QUOTE(ADDON), true] call ACEFUNC(common,statusEffect_set);
 _vehicle enableSimulationGlobal false;
 
 // Remove the helper object
 deleteVehicle _helper;
 
 // Enable damage on vehicle
-[_vehicle, "blockDamage", "tac_heavylifter", false] call ACEFUNC(common,statusEffect_set);
+[_vehicle, "blockEngine", QUOTE(ADDON), false] call ACEFUNC(common,statusEffect_set);
+[_vehicle, "blockDamage", QUOTE(ADDON), false] call ACEFUNC(common,statusEffect_set);
 _vehicle enableSimulationGlobal true;
 
 // Fix floating
