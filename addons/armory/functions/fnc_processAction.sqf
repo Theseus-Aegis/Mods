@@ -39,9 +39,6 @@ if (isNull _object) exitWith {
     ERROR("Object is nil");
 };
 
-// Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
-if (_type == "stash" && {[_object, _selectedItem] call FUNC(containsItems)}) exitWith {};
-
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
@@ -74,16 +71,16 @@ if (GVAR(system) == 0) then {
     } else {
         switch (true) do {
             case (_isBackpack): {
-                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargo;
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
             };
             case (_itemType == "weapon"): {
-                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargo;
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
             };
             case (_itemType == "magazine"): {
                 [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
             };
             default {
-                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeItemCargo; //default "item"
             };
         };
 
