@@ -19,7 +19,7 @@
 params ["_vehicle", "_unit"];
 
 (locked _vehicle > 1) && // Vehicle locked
-{!(_vehicle getVariable [QGVAR(lockedByUs), false])} && // Not locked by us (other script source)
+{_vehicle getVariable [QGVAR(lockedByUs), false]} && // Not locked by us (other script source)
 {getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") == 0} && // Not UAV
 {vehicle _unit == _unit || // Outside (ACE_Actions) or Inside (ACE_SelfActions)
     {vehicle _unit == _vehicle &&
