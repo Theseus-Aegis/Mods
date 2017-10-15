@@ -8,6 +8,7 @@ class CfgPatches {
         requiredAddons[] = {
             "tac_main",
             "CUP_Creatures_People_Civil_Chernarus",
+            "CUP_Creatures_People_Civil_Takistan",
             "CUP_Creatures_Military_ACR",
             "CUP_Creatures_Military_BAF",
             "CUP_Creatures_Military_CDF",

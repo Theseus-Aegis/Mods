@@ -43,6 +43,9 @@ class CfgVehicles {
     class CUP_Creatures_Civil_Chernarus_Base: SoldierWB {
         modelSides[] = {6};
     };
+    class CUP_Creatures_Civil_Takistan_Base: SoldierWB {
+        modelSides[] = {6};
+    };
     class CUP_Creatures_Military_ACR_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
