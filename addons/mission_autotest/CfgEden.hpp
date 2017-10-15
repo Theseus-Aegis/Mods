@@ -157,6 +157,14 @@ class Cfg3DEN {
                             defaultValue = "true";
                             condition = "true";
                         };
+                        class targetDebug {
+                            property = "targetDebug";
+                            displayName = CSTRING(TargetDebug);
+                            tooltip = CSTRING(TargetDebugDesc);
+                            control = QGVAR(targetDebug);
+                            defaultValue = "true";
+                            condition = "true";
+                        };
                         class apollo {
                             property = "apollo";
                             displayName = CSTRING(Apollo);
@@ -252,6 +260,11 @@ class Cfg3DEN {
         };
         class GVAR(debugConsole): Title {
             attributeLoad = QUOTE(_this call FUNC(testDebugConsole));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(targetDebug): Title {
+            attributeLoad = QUOTE(_this call FUNC(testTargetDebug));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

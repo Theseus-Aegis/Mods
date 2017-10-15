@@ -139,6 +139,12 @@
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledSpecific">
             <English>Enabled for specific users and admin</English>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TargetDebug">
+            <English>Target Debug:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TargetDebugDesc">
+            <English>Checks if Target Debug is enabled.</English>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_Apollo">
             <English>Apollo:</English>
             <German>Apollo:</German>
