@@ -141,6 +141,15 @@ class CfgVehicles {
     class Plane_Civil_01_base_F;
     class UAV_03_dynamicLoadout_base_F;
     class Plane_Fighter_02_Base_F;
+    class Truck_02_water_base_F;
+    class Van_02_transport_base_F;
+    class Van_02_vehicle_base_F;
+    class Van_02_medevac_base_F;
+    class Van_02_service_base_F;
+    class UAV_06_base_F;
+    class UAV_06_antimine_base_F;
+    class UAV_06_medical_base_F;
+    class C_Offroad_02_unarmed_F;
 
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
         GVAR(attachPos)[] = {0, -0.41, 0.46};
@@ -300,5 +309,101 @@ class CfgVehicles {
     };
     class O_Plane_Fighter_02_Stealth_F: Plane_Fighter_02_Base_F {
         GVAR(attachPos)[] = {0, 1.64, 1.15};
+    };
+    class C_IDAP_Truck_02_water_F: Truck_02_water_base_F {
+        GVAR(attachPos)[] = {0, 0.02, 1.06};
+    };
+    class C_IDAP_Van_02_transport_F: Van_02_transport_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.41};
+    };
+    class I_G_Van_02_transport_F: Van_02_transport_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.41};
+    };
+    class B_G_Van_02_transport_F: Van_02_transport_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.41};
+    };
+    class O_G_Van_02_transport_F: Van_02_transport_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.41};
+    };
+    class I_C_Van_02_transport_F: Van_02_transport_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.41};
+    };
+    class C_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class C_IDAP_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class I_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class B_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class O_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class I_C_Van_02_vehicle_F: Van_02_vehicle_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class C_Van_02_medevac_F: Van_02_medevac_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.47};
+    };
+    class C_IDAP_Van_02_medevac_F: Van_02_medevac_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.47};
+    };
+    class C_Van_02_service_F: Van_02_service_base_F {
+        GVAR(attachPos)[] = {0, -0.84, 0.34};
+    };
+    class C_IDAP_Heli_Transport_02_F: Heli_Transport_02_base_F {
+        GVAR(attachPos)[] = {0, -1.88, 2.27};
+    };
+    class C_IDAP_UAV_01_F: UAV_01_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.17};
+    };
+    class B_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class O_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_antimine_F: UAV_06_antimine_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class B_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class O_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_Offroad_02_unarmed_F_black: C_Offroad_02_unarmed_F {
+        GVAR(attachPos)[] = {0, -0.23, 0.25};
+    };
+    class C_Offroad_02_unarmed_F_blue: C_Offroad_02_unarmed_F {
+        GVAR(attachPos)[] = {0, -0.23, 0.25};
+    };
+    class C_Offroad_02_unarmed_F_green: C_Offroad_02_unarmed_F {
+        GVAR(attachPos)[] = {0, -0.23, 0.25};
+    };
+    class C_Offroad_02_unarmed_F_orange: C_Offroad_02_unarmed_F {
+        GVAR(attachPos)[] = {0, -0.23, 0.25};
     };
 };
