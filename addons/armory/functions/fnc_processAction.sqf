@@ -107,4 +107,11 @@ if (GVAR(system) == 1) then {
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
     private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
     [_newArmoryData] call FUNC(updateData);
+
+    if (_type == "stash") then {
+        private _subtractOnFullRefresh = ACE_player getVariable [QGVAR(subtractOnFullRefresh), []];
+        _subtractOnFullRefresh pushBack [_selectedItem, _selectedAmount];
+        ACE_player setVariable [QGVAR(lastStashTime), CBA_missionTime];
+        TRACE_1("Setting subtract on full refresh",_subtractOnFullRefresh);
+    };
 };
