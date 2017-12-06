@@ -21,10 +21,14 @@ TRACE_1("Texts",_texts);
 // Compile texts into one localized string
 private _text = "";
 {
-    _x = str _x;
-    if (_x select [0, 4] == "STR_") then {
-        _x = localize _x;
+    if (_x isEqualType 0) then {
+        _x = str _x;
+    } else {
+        if (_x select [0, 4] == "STR_") then {
+            _x = localize _x;
+        };
     };
+
     _text = [_text, _x] joinString "";
 } forEach _texts;
 
