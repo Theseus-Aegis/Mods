@@ -1,39 +1,4 @@
 class CfgVehicles {
-    class ACE_Module;
-    class GVAR(module): ACE_Module {
-        author = ECSTRING(main,Author);
-        category = "TAC";
-        displayName = CSTRING(Module);
-        function = QFUNC(moduleInit);
-        scope = 2;
-        isGlobal = 1; // Global
-        isTriggerActivated = 0;
-        isDisposable = 0;
-        icon = QPATHTOF(UI\Icon_Module_Armory_ca.paa);
-        class Arguments {
-            class System {
-                displayName = CSTRING(System);
-                description = CSTRING(SystemDesc);
-                typeName = "NUMBER";
-                class values {
-                    class Vanilla {
-                        name = CSTRING(System_Vanilla);
-                        value = 0;
-                        default = 1;
-                    };
-                    class Chronos {
-                        name = CSTRING(System_Chronos);
-                        value = 1;
-                    };
-                };
-            };
-        };
-        class ModuleDescription {
-            description = CSTRING(ModuleDesc);
-        };
-    };
-
-
     class ThingX;
     class ReammoBox_F: ThingX {
         class ACE_Actions {
