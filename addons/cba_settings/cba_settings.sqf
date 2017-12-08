@@ -40,9 +40,10 @@ ace_respawn_removeDeadBodiesDisconnected = false;
 ace_zeus_autoAddObjects = true;
 
 // ACEX
-acex_sitting_enable = true;
 acex_headless_enabled = true;
 acex_headless_log = true;
+
+acex_sitting_enable = true;
 
 // TAC
 tac_armory_system = 1;

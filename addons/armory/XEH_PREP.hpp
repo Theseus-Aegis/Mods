@@ -15,7 +15,6 @@ PREP(getDataVanilla);
 PREP(getDataChronos);
 PREP(init);
 PREP(isCompatible);
-PREP(moduleInit);
 PREP(openArmory);
 PREP(processAction);
 PREP(subtractData);
