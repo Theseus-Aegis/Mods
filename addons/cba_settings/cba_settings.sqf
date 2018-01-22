@@ -26,7 +26,7 @@ ace_medical_preventInstaDeath = true;
 ace_medical_useLocation_SurgicalKit = 0;
 ace_medical_useCondition_SurgicalKit = 1;
 
-ace_medical_ai_enabledFor = true;
+ace_medical_ai_enabledFor = 1;
 
 ace_mk6mortar_airResistanceEnabled = true;
 ace_mk6mortar_allowComputerRangefinder = false;
