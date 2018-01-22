@@ -24,7 +24,7 @@ TRANSLATIONBODY = """**[ACE3 Translation Guide](http://ace3mod.com/wiki/developm
 """
 
 REPOUSER = "Theseus-Aegis"
-REPONAME = "tac-a3-mods"
+REPONAME = "Mods"
 REPOPATH = "{}/{}".format(REPOUSER,REPONAME)
 
 
