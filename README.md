@@ -39,7 +39,7 @@ cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
 ```
 64-bit:
 ```
-cd extensions/vcproj
+cd extensions/vcproj64
 cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
 ```
 
