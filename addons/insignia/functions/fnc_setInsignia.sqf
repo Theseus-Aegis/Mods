@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [unit] call tac_insignia_fnc_setInsignia;
+ * [unit] call tac_insignia_fnc_setInsignia
  *
  * Public: No
  */
@@ -22,6 +22,9 @@ TRACE_2("Trying to add insignia",_unit,GVAR(enabled));
 if (!GVAR(enabled) || {!local _unit} || {_unit != player}) exitWith {};
 
 private _insignia = _unit getVariable [QGVAR(activeInsignia), QGVAR(logoStitch)];
+
+// Setting insignia fails even if not actually visible (uniform dropped and picked up), so reset manually
+[_unit, ""] call BIS_fnc_setUnitInsignia;
 [_unit, _insignia] call BIS_fnc_setUnitInsignia;
 
 TRACE_2("Insignia added",_unit,_insignia);
