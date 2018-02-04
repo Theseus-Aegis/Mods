@@ -74,7 +74,7 @@ extensions-win64: $(wildcard extensions/*/*)
 version:
 	@echo "  VER  $(VERSION)"
 	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+\.?[0-9]?+/$(VERSION)/g' $(VERSION_FILES))
-	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)\n" > "extensions/src/common/version.h"
+	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)" > "extensions/src/common/version.h"
 
 commit:
 	@echo "  GIT  Prepare release $(VERSION)"

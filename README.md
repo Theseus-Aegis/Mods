@@ -58,7 +58,7 @@ Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 $ make                  # Quick build
 $ make <component>.pbo  # Quick build of specified component
 $ make filepatching     # Development build (file patching)
-$ make release          # Release build, update version in files and create archive
+$ make release          # Release build (update versions, sign and archive)
 $ make clean            # Clean build files
 ```
 
