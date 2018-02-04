@@ -10,26 +10,8 @@ class Extended_PreInit_EventHandlers {
     };
 };
 
-class Extended_InitPost_EventHandlers {
-    class CAManBase {
-        class ADDON {
-            clientInit = QUOTE(_this call FUNC(setInsignia));
-        };
-    };
-};
-
-class Extended_Take_EventHandlers {
-    class CAManBase {
-        class ADDON {
-            clientTake = QUOTE(_this call FUNC(setInsignia));
-        };
-    };
-};
-
-class Extended_InventoryOpened_EventHandlers {
-    class CAManBase {
-        class ADDON {
-            clientInventoryOpened = QUOTE(_this call FUNC(getInsignia));
-        };
+class Extended_PostInit_EventHandlers {
+    class ADDON {
+        clientInit = QUOTE(call COMPILE_FILE(XEH_clientInit));
     };
 };

@@ -70,13 +70,14 @@ def main():
         print("# Making {} ...".format(p))
 
         try:
-            subprocess.check_output([
-                "makepbo",
-                "-NUP",
-                "-@={}\\{}\\addons\\{}".format(MAINPREFIX,PREFIX.rstrip("_"),p),
-                p,
-                "{}{}.pbo".format(PREFIX,p)
-            ], stderr=subprocess.STDOUT)
+            with open(os.path.join(p, "$PBOPREFIX$")) as pboprefix:
+                subprocess.check_output([
+                    "makepbo",
+                    "-NUP",
+                    "-@={}".format(pboprefix.read().strip("\n")),
+                    p,
+                    "{}{}.pbo".format(PREFIX,p)
+                ], stderr=subprocess.STDOUT)
         except:
             failed += 1
             print("  Failed to make {}.".format(p))
