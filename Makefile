@@ -78,14 +78,16 @@ version:
 
 commit:
 	@echo "  GIT  Prepare release $(VERSION)"
-	@git commit -am "Prepare release $(VERSION)" -q
+	@git add -A
+	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION)" -q
 
 release:
 	@"$(MAKE)" clean version commit
 	@"$(MAKE)" $(MAKEFLAGS) signatures
 	@echo "  ZIP  $(ZIP)_$(VERSION_FULL).zip"
 	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
-	@zip -r $(ZIP)_$(VERSION).zip $(BIN) &> /dev/null
+	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
+	@echo "Release preparation commit may be local only!"
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
