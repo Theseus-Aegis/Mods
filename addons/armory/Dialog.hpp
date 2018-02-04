@@ -95,7 +95,7 @@ class GVAR(RscCombo) {
     sizeEx = "0.04";
     shadow = 0;
     colorText[] = {0, 0, 0, 1};
-	colorDisabled[] = {0, 0, 0, 0.25};
+    colorDisabled[] = {0, 0, 0, 0.25};
     colorBackground[] = {0.5, 0.5, 0.4, 1};
     colorSelect[] = {0, 0, 0, 1};
     colorSelectBackground[] = {0.8, 0.8, 0.8, 0.75};

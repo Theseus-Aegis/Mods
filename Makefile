@@ -1,7 +1,7 @@
 PREFIX = tac
 BIN = @tac_mods
 ZIP = tac_mods
-FLAGS = -i include -w unquoted-string -w excessive-concatenation
+FLAGS = -i include -w redefinition-wo-undef -w unquoted-string -w excessive-concatenation
 
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
