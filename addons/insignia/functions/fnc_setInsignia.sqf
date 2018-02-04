@@ -16,6 +16,7 @@
 #include "script_component.hpp"
 
 params ["_unit"];
+TRACE_2("Trying to add insignia",_unit,GVAR(enabled));
 
 // Don't exit if insignia already set, BIS_fnc_getUnitInsignia will return the last set insignia even if it's currently not visible
 if (!GVAR(enabled) || {!local _unit} || {_unit != player}) exitWith {};
