@@ -9,6 +9,7 @@ PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_version.
 BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 VERSION = $(MAJOR).$(MINOR).$(PATCH)
 VERSION_FULL = $(VERSION).$(BUILD)
+GIT_HASH = $(shell git log -1 --pretty=format:"%H" | head -c 8)
 
 ifeq ($(OS), Windows_NT)
 	ifeq ($(PROCESSOR_ARCHITEW6432), AMD64)
@@ -49,16 +50,18 @@ $(BIN)/keys/%.biprivatekey:
 	@echo "  KEY  $@"
 	@${ARMAKE} keygen -f $(patsubst $(BIN)/keys/%.biprivatekey, $(BIN)/keys/%, $@)
 
-$(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL).bisign: $(BIN)/addons/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey
+$(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL)-$(GIT_HASH).bisign: $(BIN)/addons/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey
 	@echo "  SIG  $@"
 	@${ARMAKE} sign -f $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey $<
+	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
 
-$(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL).bisign: $(BIN)/optionals/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey
+$(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL)-$(GIT_HASH).bisign: $(BIN)/optionals/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey
 	@echo "  SIG  $@"
 	@${ARMAKE} sign -f $(BIN)/keys/$(PREFIX)_$(VERSION_FULL).biprivatekey $<
+	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
 
-signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL).bisign, $(wildcard addons/*)) \
-		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL).bisign, $(wildcard optionals/*))
+signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL)-$(GIT_HASH).bisign, $(wildcard addons/*)) \
+		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION_FULL)-$(GIT_HASH).bisign, $(wildcard optionals/*))
 
 extensions: $(wildcard extensions/*/*)
 	cd extensions/build && cmake .. && make
