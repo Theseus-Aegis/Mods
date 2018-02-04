@@ -32,6 +32,8 @@ ace_mk6mortar_airResistanceEnabled = true;
 ace_mk6mortar_allowComputerRangefinder = false;
 ace_mk6mortar_useAmmoHandling = true;
 
+ace_nametags_showPlayerRanks = false;
+
 ace_overheating_unJamOnreload = true;
 
 ace_rearm_level = 1;
