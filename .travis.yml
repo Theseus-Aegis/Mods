@@ -10,6 +10,8 @@ before_install:
 - sudo add-apt-repository ppa:koffeinflummi/armake -y
 - sudo apt-get update -qq
 - sudo apt-get install armake -y
+- make --version
+- armake --version
 before_script:
 - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
     pip install pygithub;
@@ -18,6 +20,7 @@ before_script:
 script:
 - make
 - python3 tools/sqf_validator.py
+- python3 tools/config_style_checker.py
 - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
     python3 tools/deploy.py;
   fi
