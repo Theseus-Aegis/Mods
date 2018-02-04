@@ -77,19 +77,21 @@ version:
 	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)" > "extensions/src/common/version.h"
 
 commit:
-	@echo "  GIT  Prepare release $(VERSION)"
+	@echo "  GIT  commit release preparation"
 	@git add -A
 	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION)" -q
 
-release:
-	@"$(MAKE)" clean version commit
+push: commit
+	@echo "  GIT  push release preparation"
+	@git push -q
+
+release: clean version commit
 	@"$(MAKE)" $(MAKEFLAGS) signatures
 	@echo "  ZIP  $(ZIP)_$(VERSION_FULL).zip"
 	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
 	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
-	@echo "Release preparation commit may be local only!"
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-.PHONY: all filepatching signatures extensions extensions-win64 version commit release clean
+.PHONY: all filepatching signatures extensions extensions-win64 version commit push release clean
