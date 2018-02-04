@@ -2,6 +2,7 @@ PREFIX = tac
 BIN = @tac_mods
 ZIP = tac_mods
 FLAGS = -i include -w redefinition-wo-undef -w unquoted-string -w excessive-concatenation
+VERSION_FILES = "README.md" "mod.cpp"
 
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
 MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_version.hpp | egrep -m 1 -o '[[:digit:]]+')
@@ -70,14 +71,23 @@ extensions: $(wildcard extensions/*/*)
 extensions-win64: $(wildcard extensions/*/*)
 	cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make
 
-clean:
-	rm -rf $(BIN) $(ZIP)_*.zip
+version:
+	@echo "  VER  $(VERSION)"
+	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+\.?[0-9]?+/$(VERSION)/g' $(VERSION_FILES))
+	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)\n" > "extensions/src/common/version.h"
+
+commit:
+	@echo "  GIT  Prepare release $(VERSION)"
+	@git commit -am "Prepare release $(VERSION)" -q
 
 release:
-	@"$(MAKE)" clean
+	@"$(MAKE)" clean version commit
 	@"$(MAKE)" $(MAKEFLAGS) signatures
 	@echo "  ZIP  $(ZIP)_$(VERSION_FULL).zip"
 	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
 	@zip -r $(ZIP)_$(VERSION).zip $(BIN) &> /dev/null
 
-.PHONY: release
+clean:
+	rm -rf $(BIN) $(ZIP)_*.zip
+
+.PHONY: all filepatching signatures extensions extensions-win64 version commit release clean
