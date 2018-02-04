@@ -24,28 +24,58 @@ The mod is on the same foundation as the ACE3 mod, using its framework, systems,
 Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for their open-source nature and permission to use their systems.
 
 
-### Development Notes
+### Setup
 
-[Release Build](tools/make.py) command line:
+#### Windows
+
+_Quick build only._
+
 ```
-make.py version increment_build <other-increment-args> force checkexternal release
+$ make.bat
 ```
 
-[Extensions Building](extensions):  
+##### Extensions
+
+_Requires Boost library!_
+
 32-bit:
 ```
-cd extensions/vcproj
-cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
+$ cd extensions/vcproj
+$ cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
 ```
+
 64-bit:
 ```
-cd extensions/vcproj64
-cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
+$ cd extensions/vcproj64
+$ cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
 ```
 
-Open `TAC.sln`, change configuration to `RelWithDebInfo`, compile.
+Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 
-[GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) command line:
+#### Linux
+
+```
+$ make                  # Quick build
+$ make <component>.pbo  # Quick build of specified component
+$ make filepatching     # Development build (file patching)
+$ make release          # Release build and archive
+$ make signatures       # Create key and sign all PBOs
+$ make clean            # Clean build files
+```
+
+##### Extensions
+
+_Requires Boost library!_  
+_Requires `g++-w64-mingw-i686` for 64-bit!_
+
+```
+$ make extensions       # Build 32-bit extensions
+$ make extensions-win64 # Build 64-bit extensions
+```
+
+
+#### [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) Usage:
+
 ```
 github_changelog_generator --user Theseus-Aegis --project Mods --token <insert_token> --no-issues --no-pr-wo-labels --unreleased-only --exclude-labels "can't reproduce",duplicate,question,invalid,wontfix --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request" --no-author --no-compare-link
 ```
