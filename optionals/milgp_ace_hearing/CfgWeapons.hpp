@@ -12,15 +12,16 @@ call {
 };
 */
 
-    #define HEARING(CLASSNAME) \
-    class CLASSNAME : itemCore { \
-        ace_hearing_protection = 0.75;\
-        ace_hearing_lowerVolume = 0;\
-    }
+#define HEARING(CLASSNAME)\
+class CLASSNAME: ItemCore {\
+\
+    ace_hearing_protection = 0.75;\
+    ace_hearing_lowerVolume = 0;\
+}
 
 class CfgWeapons {
 
-    class itemCore;
+    class ItemCore;
     HEARING(milgp_h_airframe_01_khk);
     HEARING(milgp_h_airframe_01_goggles_khk);
     HEARING(milgp_h_airframe_02_khk);
