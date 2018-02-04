@@ -23,4 +23,5 @@ PREP(setConfigTargetAmount);
 PREP(setTargetGroups);
 PREP(start);
 PREP(stop);
+PREP(textsIntoLocalizedString);
 PREP(triggerPopup);

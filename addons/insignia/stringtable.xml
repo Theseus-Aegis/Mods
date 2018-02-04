@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Insignia">
+        <Key ID="STR_TAC_Insignia_Enabled">
+            <English>Dynamic Insignia</English>
+        </Key>
+        <Key ID="STR_TAC_Insignia_EnabledDesc">
+            <English>Dynamic adding of Insignia to the uniform on change.</English>
+        </Key>
+    </Package>
+</Project>

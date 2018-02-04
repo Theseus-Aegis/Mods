@@ -17,11 +17,24 @@
 
 params ["_unit"];
 
-private _droppedPrimary = primaryWeapon _unit;
-private _droppedSecondary = secondaryWeapon _unit;
+private _droppedWeapons = [];
+private _droppedItems = [];
 
-private _weapons = [_droppedPrimary, _droppedSecondary] select {_x != ""};
+_droppedWeapons pushBack (primaryWeapon _unit);
+_droppedItems append (primaryWeaponItems _unit);
+_droppedItems append (primaryWeaponMagazine _unit);
+_droppedWeapons pushBack (secondaryWeapon _unit);
+_droppedItems append (secondaryWeaponItems _unit);
+_droppedItems append (secondaryWeaponMagazine _unit);
 
-_unit setVariable [QGVAR(droppedWeapons), _weapons, true];
+// Handgun only gets dropped if it's currently selected
+if (currentWeapon _unit == handgunWeapon _unit) then {
+    _droppedWeapons pushBack (handgunWeapon _unit);
+    _droppedItems append (handgunItems _unit);
+    _droppedItems append (handgunMagazine _unit);
+};
 
-TRACE_3("Dropped Weapons",_droppedPrimary,_droppedSecondary,_weapons);
+_unit setVariable [QGVAR(droppedWeapons), _droppedWeapons, true];
+_unit setVariable [QGVAR(droppedItems), _droppedItems, true];
+
+TRACE_2("Dropped Weapons",_droppedWeapons,_droppedItems);

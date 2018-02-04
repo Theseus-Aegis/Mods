@@ -4,34 +4,29 @@
  *
  * Arguments:
  * 0: Button <OBJECT>
- * 1: Speakers <OBJECT> or <ARRAY>
- * 2: (Optional) Sound Type from CfgVehicles <OBJECT>
+ * 1: Speakers <ARRAY>
+ * 2: (Optional) Sound Type from CfgVehicles <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [<arg0>, <arg1>] call TAC_Misc_fnc_toggleAlarm;
- * [<arg0>, [<arg1.0>, <arg1.1>, <arg1.2>]] call TAC_Misc_fnc_toggleAlarm;
- * [<arg0>, <arg1>, <arg2>] call TAC_Misc_fnc_toggleAlarm;
+ * [<arg0>, [<arg1>]] call TAC_Misc_fnc_toggleAlarm;
+ * [<arg0>, [<arg1.0>, <arg1.1>, <arg1.2>], "Sound_Alarm"] call TAC_Misc_fnc_toggleAlarm;
  */
 #include "script_component.hpp"
 
-_button = _this select 0;
-_speakers = [_this, 1, [_this select 1], [[]]] call BIS_fnc_param;
-_soundType = [_this, 2, "Sound_Alarm"] call BIS_fnc_param;
-
+params ["_button", "_speakers", ["_soundType", "Sound_Alarm"]];
 
 // Enable Alarm
 _button addAction ["<t color='#00FF00'>Enable Alarm</t>", {
-    _button = _this select 0; // Object addAction is assigned to
-    _speakers = (_this select 3) select 0; // Speaker Object (Argument)
-    _soundType = (_this select 3) select 1; // Sound Type (Argument)
+    params ["_button", "", "", "_args"];
+    _args params ["_speakers", "_soundType"];
 
     // Create sound source
-    _sources = [];
+    private _sources = [];
     {
-        _source = createSoundSource [_soundType, position _x, [], 0];
+        private _source = createSoundSource [_soundType, position _x, [], 0];
         _sources pushBack _source;
     } forEach _speakers;
 
@@ -41,13 +36,12 @@ _button addAction ["<t color='#00FF00'>Enable Alarm</t>", {
     hint "Alarm Enabled";//debug
 }, [_speakers, _soundType], 6, true, true, "", "isNil{_target getVariable 'TAC_Misc_alarmEnabled'}"];
 
-
 // Disable Alarm
 _button addAction ["<t color='#FF0000'>Disable Alarm</t>", {
-    _button = _this select 0; // Object addAction is assigned to
+    params ["_button"];
 
     // Remove sound source
-    _sources = _button getVariable "TAC_Misc_alarmEnabled";
+    private _sources = _button getVariable "TAC_Misc_alarmEnabled";
     {
         deleteVehicle _x;
     } forEach _sources;

@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [unit] call tac_insignia_fnc_getInsignia;
+ * [unit] call tac_insignia_fnc_getInsignia
  *
  * Public: No
  */

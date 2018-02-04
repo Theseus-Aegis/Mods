@@ -129,9 +129,21 @@
             <English>Checks if debug console is enabled.</English>
             <German>Überprüft, ob die Debug-Konsole aktiviert ist.</German>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledAdmin">
+            <English>Enabled for admin</English>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
             <English>Enabled for everyone</English>
             <German>Aktiviert für alle</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledSpecific">
+            <English>Enabled for specific users and admin</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TargetDebug">
+            <English>Target Debug:</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TargetDebugDesc">
+            <English>Checks if Target Debug is enabled.</English>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Apollo">
             <English>Apollo:</English>

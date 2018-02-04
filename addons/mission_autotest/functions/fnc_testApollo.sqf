@@ -20,9 +20,9 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText ERROR_PICTURE;
 };
 
-private _value = getNumber (missionConfigFile >> "ACE_Settings" >> QEGVAR(apollo,enabled) >> "value");
+private _value = [QEGVAR(apollo,enabled), "mission"] call CBA_settings_fnc_get;
 
-if (_value == 1) then {
+if (_value) then {
     (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (localize ACELSTRING(Common,Enabled));
     (_this controlsGroupCtrl CTRL_PICTURE) ctrlSetText PASS_PICTURE;
 } else {

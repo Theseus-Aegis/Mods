@@ -4,9 +4,11 @@
 **TAC Mods Version:** `x.y.z` (stable / dev + commit hash)
 
 **Mods:**
-- `@CBA_A3`
-- `@ace`
-- `@tac_mods`
+```
+- CBA_A3
+- ace
+- tac_mods
+```
 
 **Description:**
 - Add a detailed description of the error.

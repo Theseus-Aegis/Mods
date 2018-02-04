@@ -18,7 +18,7 @@
 params ["_type"];
 
 // Because David likes different variables (stash == put == stash/put into locker from box, remove == take == take/remove from locker to box)
-private _typeChronos = if (_type == "stash") then {"put"} else {"remove"};
+private _typeChronos = ["remove", "put"] select (_type == "stash");
 
 private _selectedItem = lnbData [NLIST, [lnbCurSelRow NLIST, 1]]; // ClassName
 private _selectedAmount = lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)]; // Quantity
@@ -39,9 +39,6 @@ if (isNull _object) exitWith {
     ERROR("Object is nil");
 };
 
-// Prevent stashing weapons with attachments or magazines and uniforms/vests/backpacks with contents
-if (_type == "stash" && {[_object, _selectedItem] call FUNC(containsItems)}) exitWith {};
-
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
@@ -53,27 +50,42 @@ if (GVAR(system) == 0) then {
     private _itemType = ([_selectedItem] call ACEFUNC(common,getItemType)) select 0;
 
     if (_type == "take") then {
-        if (_isBackpack) exitWith {
-            _object addBackpackCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+        switch (true) do {
+            case (_isBackpack): {
+                _object addBackpackCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            case (_itemType == "weapon"): {
+                _object addWeaponCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            case (_itemType == "magazine"): {
+                _object addMagazineCargoGlobal [_selectedItem, parseNumber _selectedAmount];
+            };
+            default {
+                _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
+            };
         };
-        if (_itemType == "weapon") exitWith {
-            _object addWeaponCargoGlobal [_selectedItem, parseNumber _selectedAmount];
-        };
-        if (_itemType == "magazine") exitWith {
-            _object addMagazineCargoGlobal [_selectedItem, parseNumber _selectedAmount];
-        };
-        _object addItemCargoGlobal [_selectedItem, parseNumber _selectedAmount]; //default "item"
+
+        // Update list
+        private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
+        [_newArmoryData] call FUNC(updateData);
     } else {
-        if (_isBackpack) exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeBackpackCargo;
+        switch (true) do {
+            case (_isBackpack): {
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
+            };
+            case (_itemType == "weapon"): {
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
+            };
+            case (_itemType == "magazine"): {
+                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
+            };
+            default {
+                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeItemCargo; //default "item"
+            };
         };
-        if (_itemType == "weapon") exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeWeaponCargo;
-        };
-        if (_itemType == "magazine") exitWith {
-            [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
-        };
-        [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeItemCargo; //default "item"
+
+        // Update list
+        [call FUNC(getBoxContents)] call FUNC(updateData);
     };
 
     // Set Armory contents
@@ -87,15 +99,19 @@ if (GVAR(system) == 0) then {
             _x
         };
     };
-
-    _object setVariable [QGVAR(armoryData), _armoryDataVar];
 };
 
 if (GVAR(system) == 1) then {
-    ["tac_apollo_lockerAction", [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
-};
+    [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 
-// Update list
-[[GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData)] call FUNC(dialogControl_populateList);
-call FUNC(dialogControl_amountSelection);
-call FUNC(dialogControl_takestash);
+    // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
+    private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
+    [_newArmoryData] call FUNC(updateData);
+
+    if (_type == "stash") then {
+        private _subtractOnFullRefresh = ACE_player getVariable [QGVAR(subtractOnFullRefresh), []];
+        _subtractOnFullRefresh pushBack [_selectedItem, _selectedAmount];
+        ACE_player setVariable [QGVAR(lastStashTime), CBA_missionTime];
+        TRACE_1("Setting subtract on full refresh",_subtractOnFullRefresh);
+    };
+};

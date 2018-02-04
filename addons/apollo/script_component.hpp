@@ -16,7 +16,8 @@
 
 #include "\x\tac\addons\main\script_macros.hpp"
 
-#define REQUIRED_APOLLOCLIENT_VERSION "1.3"
+#define REQUIRED_JNI_VERSION "1.0.0"
+#define REQUIRED_APOLLOCLIENT_VERSION "1.12.0.27"
 
 #define SAVE_DELAY_PERIODIC 30
 #define SAVE_DELAY_INV_CHANGE 10

@@ -1,6 +1,6 @@
 # About
 
-Changes custom difficulty preset.
+Adds custom difficulty presets.
 
 ### Authors
 
