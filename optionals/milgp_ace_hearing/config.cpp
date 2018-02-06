@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"ace_hearing"};
+        requiredAddons[] = {"tac_main", "ace_hearing", "milgp_headgear_cfg"};
         author = ECSTRING(main,Author);
         authors[] = {"Alganthe"};
         url = ECSTRING(main,URL);

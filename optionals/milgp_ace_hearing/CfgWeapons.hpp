@@ -1,4 +1,4 @@
-/*
+/* Helper script for generation of following config
 call {
     private _headgearArray = ("((configName _x) find 'milgp_h_cap_backwards_03') > -1" configClasses (configFile >> "CfgWeapons")) apply {configName _x};
     private _listLength = count _headgearArray;
@@ -12,16 +12,15 @@ call {
 };
 */
 
-#define HEARING(CLASSNAME)\
-class CLASSNAME: ItemCore {\
-\
-    ace_hearing_protection = 0.75;\
-    ace_hearing_lowerVolume = 0;\
-}
+#define HEARING(CLASSNAME) \
+    class CLASSNAME: ItemCore { \
+        ace_hearing_protection = 0.75; \
+        ace_hearing_lowerVolume = 0; \
+    }
 
 class CfgWeapons {
-
     class ItemCore;
+
     HEARING(milgp_h_airframe_01_khk);
     HEARING(milgp_h_airframe_01_goggles_khk);
     HEARING(milgp_h_airframe_02_khk);
