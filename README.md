@@ -26,6 +26,7 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 
 ### Setup
 
+
 #### Windows
 
 _Quick build only._
@@ -53,6 +54,8 @@ $ cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
 Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 
 #### Linux
+
+_Requires armake built from [`v1.14.0-jonpas1`](https://github.com/jonpas/armake/tree/v1.14.0-jonpas1) (until changes officially released)._
 
 ```
 $ make                  # Quick build
