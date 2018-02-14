@@ -71,9 +71,9 @@ extensions-win64: $(wildcard extensions/*/*)
 
 release: clean
 	@"$(MAKE)" $(MAKEFLAGS) signatures
-	@echo "  ZIP  $(ZIP)_$(VERSION_S).zip"
+	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
 	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
-	@zip -qr $(ZIP)_$(VERSION_S).zip $(BIN)
+	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
 
 version:
 	@echo "  VER  $(VERSION)"
