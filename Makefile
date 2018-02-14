@@ -69,6 +69,12 @@ extensions: $(wildcard extensions/*/*)
 extensions-win64: $(wildcard extensions/*/*)
 	cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make
 
+release: clean
+	@"$(MAKE)" $(MAKEFLAGS) signatures
+	@echo "  ZIP  $(ZIP)_$(VERSION_S).zip"
+	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
+	@zip -qr $(ZIP)_$(VERSION_S).zip $(BIN)
+
 version:
 	@echo "  VER  $(VERSION)"
 	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/$(VERSION)/g' $(VERSION_FILES))
@@ -81,17 +87,13 @@ commit:
 	@git add -A
 	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION_S)" -q
 
-push: commit
-	@echo "  GIT  push release preparation"
+publish: version commit release
+	@echo "  GIT  tag v$(VERSION_S)"
+	@git tag v$(VERSION_S)
+	@echo "  GIT  publish release"
 	@git push -q
-
-release: clean version commit
-	@"$(MAKE)" $(MAKEFLAGS) signatures
-	@echo "  ZIP  $(ZIP)_$(VERSION_S).zip"
-	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
-	@zip -qr $(ZIP)_$(VERSION_S).zip $(BIN)
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-.PHONY: all filepatching signatures extensions extensions-win64 version commit push release clean
+.PHONY: all filepatching signatures extensions extensions-win64 release version commit publish clean
