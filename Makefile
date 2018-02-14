@@ -83,15 +83,15 @@ version:
 	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)" > "extensions/src/common/version.h"
 
 commit:
-	@echo "  GIT  commit release preparation"
+	@echo "  GIT  prepare release v$(VERSION_S)"
 	@git add -A
 	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION_S)" -q
 
 publish: version commit release
-	@echo "  GIT  tag v$(VERSION_S)"
-	@git tag v$(VERSION_S)
-	@echo "  GIT  publish release"
+	@echo "  GIT  publish v$(VERSION_S)"
 	@git push -q
+	@git tag v$(VERSION_S)
+	@git push origin v$(VERSION_S) -q
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip

@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/Mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.14.0-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.14.1-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -55,7 +55,7 @@ Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 
 #### Linux
 
-_Requires armake built from [`v0.5.1-jonpas1`](https://github.com/jonpas/armake/tree/e3f15fd81dd4ee80ab9203601b77b0148c68e957) (until changes officially released)._
+_Requires armake built from [`jonpas/armake`](https://github.com/jonpas/armake/tree/e3f15fd81dd4ee80ab9203601b77b0148c68e957) (until changes officially released)._
 
 ```
 $ make                  # Quick build
