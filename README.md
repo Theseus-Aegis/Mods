@@ -26,6 +26,7 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 
 ### Setup
 
+
 #### Windows
 
 _Quick build only._
@@ -54,11 +55,14 @@ Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 
 #### Linux
 
+_Requires armake built from [`v0.5.1-jonpas1`](https://github.com/jonpas/armake/tree/e3f15fd81dd4ee80ab9203601b77b0148c68e957) (until changes officially released)._
+
 ```
 $ make                  # Quick build
 $ make <component>.pbo  # Quick build of specified component
 $ make filepatching     # Development build (file patching)
-$ make release          # Release build (update versions, sign and archive)
+$ make release          # Clean, build release, sign and archive
+$ make publish          # Update versions, [release], tag, publish tag
 $ make clean            # Clean build files
 ```
 

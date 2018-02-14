@@ -29,12 +29,12 @@ endif
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
 	@mkdir -p $(BIN)/addons
 	@echo "  PBO  $@"
-	@${ARMAKE} build ${FLAGS} -f $< $@
+	@${ARMAKE} build ${FLAGS} -f -e "version=$(GIT_HASH)" $< $@
 
 $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 	@mkdir -p $(BIN)/optionals
 	@echo "  PBO  $@"
-	@${ARMAKE} build ${FLAGS} -f $< $@
+	@${ARMAKE} build ${FLAGS} -f -e "version=$(GIT_HASH)" $< $@
 
 # Shortcut for building single addons (eg. "make <component>.pbo")
 %.pbo:
@@ -53,13 +53,11 @@ $(BIN)/keys/%.biprivatekey:
 
 $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign: $(BIN)/addons/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
 	@echo "  SIG  $@"
-	@${ARMAKE} sign -f $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
-	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
+	@${ARMAKE} sign -f -s $@ $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
 
 $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign: $(BIN)/optionals/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
 	@echo "  SIG  $@"
-	@${ARMAKE} sign -f $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
-	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
+	@${ARMAKE} sign -f -s $@ $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
 
 signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign, $(wildcard addons/*)) \
 		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign, $(wildcard optionals/*))
@@ -70,6 +68,12 @@ extensions: $(wildcard extensions/*/*)
 
 extensions-win64: $(wildcard extensions/*/*)
 	cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make
+
+release: clean
+	@"$(MAKE)" $(MAKEFLAGS) signatures
+	@echo "  ZIP  $(ZIP)_$(VERSION_S).zip"
+	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
+	@zip -qr $(ZIP)_$(VERSION_S).zip $(BIN)
 
 version:
 	@echo "  VER  $(VERSION)"
@@ -83,17 +87,13 @@ commit:
 	@git add -A
 	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION_S)" -q
 
-push: commit
-	@echo "  GIT  push release preparation"
+publish: version commit release
+	@echo "  GIT  tag v$(VERSION_S)"
+	@git tag v$(VERSION_S)
+	@echo "  GIT  publish release"
 	@git push -q
-
-release: clean version commit
-	@"$(MAKE)" $(MAKEFLAGS) signatures
-	@echo "  ZIP  $(ZIP)_$(VERSION_S).zip"
-	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
-	@zip -qr $(ZIP)_$(VERSION_S).zip $(BIN)
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-.PHONY: all filepatching signatures extensions extensions-win64 version commit push release clean
+.PHONY: all filepatching signatures extensions extensions-win64 release version commit publish clean
