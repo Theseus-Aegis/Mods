@@ -47,6 +47,8 @@ ace_respawn_removeDeadBodiesDisconnected = false;
 
 ace_zeus_autoAddObjects = true;
 
+ace_map_defaultChannel = 1;
+
 // ACEX
 acex_headless_enabled = true;
 acex_headless_log = true;
