@@ -284,6 +284,8 @@ Author:
 Macro: ERROR_MSG()
     Record a critical error in the RPT log and display on screen error message.
 
+    Newlines (\n) in the MESSAGE will be put on separate lines.
+
 Parameters:
     MESSAGE -  Message to record <STRING>
 
@@ -295,7 +297,7 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define ERROR_MSG(MESSAGE) ['PREFIX', 'COMPONENT', MESSAGE, nil, __FILE__, __LINE__ + 1] call CBA_fnc_error
+#define ERROR_MSG(MESSAGE) ['PREFIX', 'COMPONENT', nil, MESSAGE, __FILE__, __LINE__ + 1] call CBA_fnc_error
 #define ERROR_MSG_1(MESSAGE,ARG1) ERROR_MSG(FORMAT_1(MESSAGE,ARG1))
 #define ERROR_MSG_2(MESSAGE,ARG1,ARG2) ERROR_MSG(FORMAT_2(MESSAGE,ARG1,ARG2))
 #define ERROR_MSG_3(MESSAGE,ARG1,ARG2,ARG3) ERROR_MSG(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
@@ -353,6 +355,27 @@ Author:
 #define MESSAGE_WITH_TITLE(TITLE,MESSAGE) LOG_SYS_FILELINENUMBERS(TITLE,MESSAGE)
 
 /* -------------------------------------------
+Macro: RETDEF()
+    If a variable is undefined, return the default value. Otherwise, return the
+    variable itself.
+
+Parameters:
+    VARIABLE - the variable to check
+    DEFAULT_VALUE - the default value to use if variable is undefined
+
+Example:
+    (begin example)
+        // _var is undefined
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=5"
+        _var = 7;
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=7"
+    (end example)
+Author:
+    654wak654
+------------------------------------------- */
+#define RETDEF(VARIABLE,DEFAULT_VALUE) (if (isNil {VARIABLE}) then [{DEFAULT_VALUE}, {VARIABLE}])
+
+/* -------------------------------------------
 Macro: RETNIL()
     If a variable is undefined, return the value nil. Otherwise, return the
     variable itself.
@@ -363,13 +386,13 @@ Parameters:
 Example:
     (begin example)
         // _var is undefined
-        hintSilent format ["_var=%1", RETNIL(_var) ]; // "_var=any"
+        hintSilent format ["_var=%1", RETNIL(_var)]; // "_var=any"
     (end example)
 
 Author:
     Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) if (isNil{VARIABLE}) then {nil} else {VARIABLE}
+#define RETNIL(VARIABLE) RETDEF(VARIABLE,nil)
 
 /* -------------------------------------------
 Macros: TRACE_n()
@@ -1037,7 +1060,7 @@ Parameters:
 Author:
     Spooner
 ------------------------------------------- */
-#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then { false } else { (VAR) isEqualType TYPE })
+#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then {false} else {(VAR) isEqualType TYPE})
 #define IS_ARRAY(VAR)    IS_META_SYS(VAR,[])
 #define IS_BOOL(VAR)     IS_META_SYS(VAR,false)
 #define IS_CODE(VAR)     IS_META_SYS(VAR,{})
@@ -1055,7 +1078,7 @@ Author:
 
 #define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
 #define IS_FUNCTION(VAR) IS_CODE(VAR)
-#define IS_INTEGER(VAR)  if ( IS_SCALAR(VAR) ) then { (floor(VAR) == (VAR)) } else { false }
+#define IS_INTEGER(VAR)  (if (IS_SCALAR(VAR)) then {floor (VAR) == (VAR)} else {false})
 #define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
 #define FLOAT_TO_STRING(num)    (str parseNumber (str (_this%_this) + str floor abs _this) + "." + (str (abs _this-floor abs _this) select [2]) + "0")
