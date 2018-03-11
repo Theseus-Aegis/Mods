@@ -57,7 +57,6 @@ acex_volume_enabled = true;
 acex_volume_lowerInVehicles = true;
 
 // ACRE2
-acre_sys_core_ignoreAntennaDirection = true;
 acre_sys_core_terrainLoss = 0.5;
 
 // NIArms
