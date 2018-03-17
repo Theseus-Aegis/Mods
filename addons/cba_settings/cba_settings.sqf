@@ -36,6 +36,9 @@ ace_mk6mortar_useAmmoHandling = true;
 
 ace_nametags_showPlayerRanks = false;
 
+ace_nightvision_aimDownSightsBlur = 0.5;
+ace_nightvision_effectScaling = 0.5;
+
 ace_overheating_unJamOnreload = true;
 
 ace_rearm_level = 1;
