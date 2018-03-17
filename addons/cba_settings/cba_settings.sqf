@@ -17,6 +17,8 @@ ace_hearing_enabledForZeusUnits = false;
 
 ace_interaction_disableNegativeRating = true;
 
+ace_map_defaultChannel = 1;
+
 ace_medical_enableAdvancedWounds = true;
 ace_medical_healHitPointAfterAdvBandage = true;
 ace_medical_increaseTrainingInLocations = true;
