@@ -1,5 +1,5 @@
 class CfgSurfaces {
-	class Default {
-		AIAvoidStance = 2;
-	};
+    class Default {
+        AIAvoidStance = 2;
+    };
 };
