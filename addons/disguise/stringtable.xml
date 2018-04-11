@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="TAC_Clafghan">
+<Project name="TAC">
     <Package name="Disguise">
-        <Key ID="STR_TAC_Clafghan_Disguise_Name">
+        <Key ID="STR_TAC_Disguise_Name">
             <English>Disguise System</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_Description">
+        <Key ID="STR_TAC_Disguise_Description">
             <English>The Disguise System allows you to pass by enemies without being detected, given you match the criteria.</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_CheckDisguise">
+        <Key ID="STR_TAC_Disguise_CheckDisguise">
             <English>Check Disguise</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_FullyDisguised">
+        <Key ID="STR_TAC_Disguise_FullyDisguised">
             <English>YOU ARE FULLY DISGUISED</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_Disguised">
+        <Key ID="STR_TAC_Disguise_Disguised">
             <English>Disguised</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_NotFullyDisguised">
+        <Key ID="STR_TAC_Disguise_NotFullyDisguised">
             <English>YOU ARE NOT FULLY DISGUISED</English>
         </Key>
-        <Key ID="STR_TAC_Clafghan_Disguise_NotDisguised">
+        <Key ID="STR_TAC_Disguise_NotDisguised">
             <English>Not Disguised</English>
         </Key>
     </Package>
