@@ -1,0 +1,1 @@
+#include "\x\tac\addons\disguise\script_component.hpp"
