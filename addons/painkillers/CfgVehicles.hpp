@@ -3,7 +3,7 @@ class CfgVehicles {
     class TAC_painkillersItem: Item_Base_F {
         scope = 2;
         scopeCurator = 2;
-        displayName = "Painkillers";
+        displayName = CSTRING(displayName);
         author = "Alganthe";
         vehicleClass = "Items";
         class TransportItems {
@@ -19,7 +19,7 @@ class CfgVehicles {
                     class FieldDressing;
 
                     class PainKillers: FieldDressing {
-                        displayName = "painkillers";
+                        displayName = CSTRING(selfActionDisplayName);
                         condition = QUOTE([ARR_4(_player, _target, 'head', 'PainKillers')] call ace_medical_fnc_canTreatCached);
                         exceptions[] = {"isNotInside", "isNotSwimming"};
                         statement = QUOTE([ARR_4(_player, _target, 'head', 'PainKillers')] call ace_medical_fnc_treatment);
@@ -34,7 +34,7 @@ class CfgVehicles {
                 class FieldDressing;
 
                 class PainKillers: FieldDressing {
-                    displayName = "painkillers";
+                    displayName = CSTRING(actionDisplayName);
                     condition = QUOTE([ARR_4(_player, _target, 'head', 'PainKillers')] call ace_medical_fnc_canTreatCached);
                     exceptions[] = {"isNotInside", "isNotSwimming"};
                     statement = QUOTE([ARR_4(_player, _target, 'head', 'PainKillers')] call ace_medical_fnc_treatment);
