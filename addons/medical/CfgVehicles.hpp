@@ -7,7 +7,7 @@ class CfgVehicles {
         author = "Alganthe";
         vehicleClass = "Items";
         class TransportItems {
-            MACRO_ADDITEM(TAC_medical_painkillers,1);
+            MACRO_ADDITEM(GVAR(painkillers),1);
         };
     };
 
@@ -17,7 +17,7 @@ class CfgVehicles {
             class Medical {
                 class ACE_Head {
                     class FieldDressing;
-                    class GVAR(painKillers): FieldDressing {
+                    class GVAR(painkillers): FieldDressing {
                         displayName = CSTRING(selfActionDisplayName);
                         condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
                         exceptions[] = {"isNotInside", "isNotSwimming"};
@@ -31,7 +31,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_Head {
                 class FieldDressing;
-                class GVAR(painKillers): FieldDressing {
+                class GVAR(painkillers): FieldDressing {
                     displayName = CSTRING(actionDisplayName);
                     condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
                     exceptions[] = {"isNotInside", "isNotSwimming"};
