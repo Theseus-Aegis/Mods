@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
-    <Package name="Painkillers">
-        <Key ID="STR_TAC_Painkillers_DisplayName">
+    <Package name="Medical">
+        <Key ID="STR_TAC_Medical_DisplayName">
             <English>Painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Painkillers_selfActionDisplayName">
+        <Key ID="STR_TAC_Medical_selfActionDisplayName">
             <English>Take painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Painkillers_actionDisplayName">
+        <Key ID="STR_TAC_Medical_actionDisplayName">
             <English>Give painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Painkillers_painkillerProgress">
+        <Key ID="STR_TAC_Medical_painkillerProgress">
             <English>Administering painkillers...</English>
         </Key>
     </Package>

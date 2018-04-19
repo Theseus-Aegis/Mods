@@ -3,8 +3,8 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {"TAC_painkillersItem"};
-        weapons[] = {"TAC_painkillers"};
+        units[] = {QGVAR(painkillersItem)};
+        weapons[] = {QGVAR(painkillers)};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
