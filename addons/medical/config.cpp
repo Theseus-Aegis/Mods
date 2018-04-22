@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {QGVAR(painkillersItem)};
         weapons[] = {QGVAR(painkillers)};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main"};
+        requiredAddons[] = {"tac_main","ace_medical"};
         author = ECSTRING(main,Author);
         authors[] = {"Alganthe"};
         url = ECSTRING(main,URL);
