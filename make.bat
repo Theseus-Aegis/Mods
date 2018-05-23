@@ -11,14 +11,14 @@ for /d %%f in (addons\*) do (
     set folder=%%f
     set name=!folder:addons\=!
     echo   PBO  @tac_mods\addons\tac_!name!.pbo
-    !armake! build -i include -w redefinition-wo-undef -w unquoted-string -w excessive-concatenation -f !folder! @tac_mods\addons\tac_!name!.pbo
+    !armake! build -i include -w redefinition-wo-undef -w unquoted-string -f !folder! @tac_mods\addons\tac_!name!.pbo
 )
 
 for /d %%f in (optionals\*) do (
     set folder=%%f
     set name=!folder:optionals\=!
     echo   PBO  @tac_mods\optionals\tac_!name!.pbo
-    !armake! build -i include -w redefinition-wo-undef -w unquoted-string -w excessive-concatenation -f !folder! @tac_mods\optionals\tac_!name!.pbo
+    !armake! build -i include -w redefinition-wo-undef -w unquoted-string -f !folder! @tac_mods\optionals\tac_!name!.pbo
 )
 
 pause

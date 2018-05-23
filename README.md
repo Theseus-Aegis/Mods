@@ -55,14 +55,12 @@ Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
 
 #### Linux
 
-_Requires armake built from [`jonpas/armake`](https://github.com/jonpas/armake/tree/e3f15fd81dd4ee80ab9203601b77b0148c68e957) (until changes officially released)._
-
 ```
 $ make                  # Quick build
 $ make <component>.pbo  # Quick build of specified component
 $ make filepatching     # Development build (file patching)
-$ make release          # Clean, build release, sign and archive
-$ make publish          # Update versions, [release], tag, publish tag
+$ make release          # Clean, update versions, commit release preparation, build, sign and archive
+$ make push             # Commit and push release preparation
 $ make clean            # Clean build files
 ```
 

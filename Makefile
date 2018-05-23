@@ -2,7 +2,7 @@ VERSION = $(shell cat "VERSION")
 PREFIX = tac
 BIN = @tac_mods
 ZIP = tac_mods
-FLAGS = -i include -w redefinition-wo-undef -w unquoted-string -w excessive-concatenation
+FLAGS = -i include -w redefinition-wo-undef -w unquoted-string
 VERSION_FILES = README.md mod.cpp
 
 MAJOR = $(word 1, $(subst ., ,$(VERSION)))
@@ -69,12 +69,6 @@ extensions: $(wildcard extensions/*/*)
 extensions-win64: $(wildcard extensions/*/*)
 	cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make
 
-release: clean
-	@"$(MAKE)" $(MAKEFLAGS) signatures
-	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
-	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
-	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
-
 version:
 	@echo "  VER  $(VERSION)"
 	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/$(VERSION)/g' $(VERSION_FILES))
@@ -83,17 +77,21 @@ version:
 	@echo "#define TAC_VERSION_MAJOR $(MAJOR)\n#define TAC_VERSION_MINOR $(MINOR)\n#define TAC_VERSION_PATCH $(PATCH)\n#define TAC_VERSION_BUILD $(BUILD)" > "extensions/src/common/version.h"
 
 commit:
-	@echo "  GIT  prepare release v$(VERSION_S)"
+	@echo "  GIT  commit release preparation"
 	@git add -A
 	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION_S)" -q
 
-publish: version commit release
-	@echo "  GIT  publish v$(VERSION_S)"
+push: commit
+	@echo "  GIT  push release preparation"
 	@git push -q
-	@git tag v$(VERSION_S)
-	@git push origin v$(VERSION_S) -q
+
+release: clean version commit
+	@"$(MAKE)" $(MAKEFLAGS) signatures
+	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
+	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
+	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-.PHONY: all filepatching signatures extensions extensions-win64 release version commit publish clean
+.PHONY: all filepatching signatures extensions extensions-win64 version commit pushrelease clean
