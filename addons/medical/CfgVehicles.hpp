@@ -22,7 +22,7 @@ class CfgVehicles {
                         condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
                         exceptions[] = {"isNotInside", "isNotSwimming"};
                         statement = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_treatment);
-                        icon = "";
+                        icon = QPATHTOF(data\painkillers_icon.paa);
                     };
                 };
             };
@@ -36,7 +36,7 @@ class CfgVehicles {
                     condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
                     exceptions[] = {"isNotInside", "isNotSwimming"};
                     statement = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_treatment);
-                    icon = "";
+                    icon = QPATHTOF(data\painkillers_icon.paa);
                 };
             };
         };
