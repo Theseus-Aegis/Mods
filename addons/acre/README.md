@@ -1,6 +1,6 @@
 # About
 
-Adds ACRE radio racks to vehicles.
+Adds ACRE2 radio racks to vehicles.
 
 ### Authors
 

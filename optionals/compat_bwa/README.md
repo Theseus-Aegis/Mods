@@ -1,6 +1,6 @@
 # About
 
-Changes Radio Rack on BWA EagleIV's to VRC117F's
+Changes ACRE2 radio rack on BWA Eagle IVs to VRC-117Fs.
 
 ### Authors
 

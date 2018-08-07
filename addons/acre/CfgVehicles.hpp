@@ -1,4 +1,3 @@
-
 class CfgVehicles {
     class CUP_LR_Base;
     class CUP_LR_Transport_Base: CUP_LR_Base {
