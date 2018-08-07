@@ -1,5 +1,114 @@
 // Heavy Lifter - Generated using heavylifter_exportConfig function
 class CfgVehicles {
+    class CUP_LR_Base;
+    class CUP_LR_Transport_Base: CUP_LR_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"cargo", 2}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+    class CUP_LR_MG_Base: CUP_LR_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"turret", {0}}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+    class CUP_LR_Ambulance_Base: CUP_LR_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"cargo", 0}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+    class CUP_LR_Special_Base: CUP_LR_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", "commander"};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+    class CUP_LR_SPG9_Base: CUP_LR_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"turret", {1}}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+
+    class CUP_SUV_Base;
+    class CUP_SUV_Unarmed_Base: CUP_SUV_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"cargo", 1}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+    class CUP_SUV_Armored_Base: CUP_SUV_Base {
+        class AcreRacks {
+            class Rack_1 {
+                displayName = "$STR_ACRE_sys_rack_dash";
+                shortName = "$STR_ACRE_sys_rack_dashShort";
+                componentName = "ACRE_VRC103";
+                allowedPositions[] = {"driver", {"cargo", 0}};
+                disabledPositions[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+
     class CUP_Lada_Base;
     class CUP_LADA_LM_Base;
     class CUP_S1203_Base;
@@ -106,11 +215,6 @@ class CfgVehicles {
     class CUP_BAF_Jackal2_GMG_W;
     class CUP_BAF_Jackal2_L2A1_D;
     class CUP_BAF_Jackal2_L2A1_W;
-    class CUP_LR_Transport_Base;
-    class CUP_LR_MG_Base;
-    class CUP_LR_Ambulance_Base;
-    class CUP_LR_Special_Base;
-    class CUP_LR_SPG9_Base;
     class CUP_Mastiff_Base;
     class CUP_Ridgback_Base;
     class CUP_TT650_Base;
@@ -166,8 +270,6 @@ class CfgVehicles {
     class Plane_Base_F;
     class CUP_SA330_Base;
     class CUP_FV432_Bulldog_Base;
-    class CUP_SUV_Unarmed_Base;
-    class CUP_SUV_Armored_Base;
     class CUP_Ambient_A330_Base;
     class CUP_Ambient_B737_Base;
     class CUP_Ambient_Cessna172_Base;
