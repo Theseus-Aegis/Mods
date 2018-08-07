@@ -1,4 +1,3 @@
-// Heavy Lifter - Generated using heavylifter_exportConfig function
 class CfgVehicles {
     class CUP_LR_Base;
     class CUP_LR_Transport_Base: CUP_LR_Base {
@@ -274,6 +273,7 @@ class CfgVehicles {
     class CUP_Ambient_B737_Base;
     class CUP_Ambient_Cessna172_Base;
 
+// Heavy Lifter - Generated using heavylifter_exportConfig function
     class CUP_C_Lada_White_CIV: CUP_Lada_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, 0.18};
     };
