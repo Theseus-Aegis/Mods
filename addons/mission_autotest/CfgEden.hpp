@@ -80,7 +80,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(NameDesc);
                             control = QGVAR(name);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class description {
                             property = "missionDescription";
@@ -88,7 +87,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(DescriptionDesc);
                             control = QGVAR(description);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class gameType {
                             property = "gameType";
@@ -96,7 +94,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(GameTypeDesc);
                             control = QGVAR(gameType);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class author {
                             property = "author";
@@ -104,7 +101,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(AuthorDesc);
                             control = QGVAR(author);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class minPlayers {
                             property = "minPlayers";
@@ -112,7 +108,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(MinPlayersDesc);
                             control = QGVAR(minPlayers);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class maxPlayers {
                             property = "maxPlayers";
@@ -120,7 +115,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(MaxPlayersDesc);
                             control = QGVAR(maxPlayers);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class hcAmount {
                             property = "hcAmount";
@@ -128,7 +122,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(HCAmountDesc);
                             control = QGVAR(hcAmount);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class aiAmount {
                             property = "aiAmount";
@@ -136,7 +129,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(AIAmountDesc);
                             control = QGVAR(aiAmount);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class respawnMode {
                             property = "respawnMode";
@@ -172,7 +164,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(AIPosessionDesc);
                             control = QGVAR(aiPosession);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class debugConsole {
                             property = "debugConsole";
@@ -180,7 +171,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(DebugConsoleDesc);
                             control = QGVAR(debugConsole);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class targetDebug {
                             property = "targetDebug";
@@ -188,7 +178,6 @@ class Cfg3DEN {
                             tooltip = CSTRING(TargetDebugDesc);
                             control = QGVAR(targetDebug);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class apollo {
                             property = "apollo";
@@ -196,14 +185,12 @@ class Cfg3DEN {
                             tooltip = CSTRING(ApolloDesc);
                             control = QGVAR(apollo);
                             defaultValue = "true";
-                            condition = "true";
                         };
                         class findings {
                             property = "findings";
                             displayName = "";
                             control = QGVAR(findings);
                             defaultValue = "true";
-                            condition = "true";
                         };
                     };
                 };
