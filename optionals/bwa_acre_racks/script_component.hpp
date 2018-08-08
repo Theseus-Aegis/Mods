@@ -1,17 +1,17 @@
-#define COMPONENT acre
-#define COMPONENT_BEAUTIFIED ACRE
+#define COMPONENT bwa_acre_racks
+#define COMPONENT_BEAUTIFIED BWA ACRE2 Vehicle Racks
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
-#ifdef DEBUG_ENABLED_ACRE
+#ifdef DEBUG_ENABLED_BWA_ACRE_RACKS
     #define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUG_SETTINGS_ACRE
-    #define DEBUG_SETTINGS DEBUG_SETTINGS_ACRE
+#ifdef DEBUG_SETTINGS_BWA_ACRE_RACKS
+    #define DEBUG_SETTINGS DEBUG_SETTINGS_BWA_ACRE_RACKS
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
