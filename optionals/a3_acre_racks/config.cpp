@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "A3_Soft_F_Exp_LSV_01", "A3_Soft_F_Exp_LSV_02"};
+        requiredAddons[] = {"tac_main", "A3_Soft_F_Exp_LSV_01", "A3_Soft_F_Exp_LSV_02", "acre_sys_rack"};
         author = ECSTRING(main,Author);
         authors[] = {"JoramD"};
         url = ECSTRING(main,URL);
