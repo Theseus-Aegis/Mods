@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Close Armory and clean up.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // Allow others to use the object's Armory
 private _object = ACE_player getVariable [QGVAR(object), objNull];

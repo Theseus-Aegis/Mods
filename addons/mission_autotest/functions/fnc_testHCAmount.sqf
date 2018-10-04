@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Tests headless clients presence and their playability.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _hc = (all3DENEntities select 3) select {_x isKindOf "HeadlessClient_F"};
 private _hcAmount = count _hc;

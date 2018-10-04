@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Adds insignia to a player if it's actual player (and not remote controlled or AI).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit"];
 TRACE_2("Trying to add insignia",_unit,GVAR(enabled));

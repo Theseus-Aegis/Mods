@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Gets radio tracks classnames from config.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _tracks = ("true" configClasses (configFile >> "CfgSounds")) apply {toLower (configName _x)};
 _tracks = _tracks select {_x find QUOTE(ADDON) != -1 && {_x find "_quiet" == -1} && {_x find "_loud" == -1}};

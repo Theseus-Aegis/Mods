@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Toggles vehicle crew security.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle"];
 

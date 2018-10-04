@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Checks if RATEL Marker menu can be used.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!isNil {uiNamespace getVariable QGVAR(menuDisplay)}) exitWith {};
 

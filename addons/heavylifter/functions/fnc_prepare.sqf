@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Prepares the vehicle for heavy lifting.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private ["_attachPos", "_vehiclePosOffsetWorld", "_vehiclePosOffset", "_vehicleVectorDirAndUp", "_helper"];
 params ["_vehicle"];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Plays sound signal on all controllers and extra sound sources.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_controller", "_sound", ["_range", NOTIFY_DISTANCE]];
 

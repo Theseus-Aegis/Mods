@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Sets up amount selection dropdown.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
 TRACE_1("Amount of selected item",_quantity);

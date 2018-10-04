@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: [Name of Author(s)]
  * [Description]
@@ -14,6 +15,5 @@
  *
  * Public: [Yes/No]
  */
-#include "script_component.hpp"
 
 diag_log text format["This is here as an example!!!"];
