@@ -1,35 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Radios">
         <Key ID="STR_TAC_Radios_PlayRadio">
             <English>Play Radio</English>
             <Spanish>Escuchar Radio</Spanish>
             <German>Radio starten</German>
+            <French>Allumer la radio</French>
         </Key>
         <Key ID="STR_TAC_Radios_Tracks">
             <English>Tracks</English>
             <German>Titel</German>
+            <French>Pistes</French>
         </Key>
         <Key ID="STR_TAC_Radios_Volume">
             <English>Volume</English>
             <German>Lautstärke</German>
+            <French>Volume</French>
         </Key>
         <Key ID="STR_TAC_Radios_Quiet">
             <English>Quiet</English>
             <German>Leise</German>
+            <French>Faible</French>
         </Key>
         <Key ID="STR_TAC_Radios_Normal">
             <English>Normal</English>
             <German>Normal</German>
+            <French>Normal</French>
         </Key>
         <Key ID="STR_TAC_Radios_Loud">
             <English>Loud</English>
             <German>Laut</German>
+            <French>Élevé</French>
         </Key>
         <Key ID="STR_TAC_Radios_StopRadio">
             <English>Stop Radio</English>
             <Spanish>Detener Radio</Spanish>
             <German>Radio stoppen</German>
+            <French>Arrêter la radio</French>
         </Key>
     </Package>
 </Project>

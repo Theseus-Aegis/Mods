@@ -5,36 +5,43 @@
             <English>Heavy Duty Hooks</English>
             <Spanish>Ganchos</Spanish>
             <German>Schwerlasthaken</German>
+            <French>Crochets à haute résistance</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attach">
             <English>Attach Hooks</English>
             <Spanish>Fijar Ganchos</Spanish>
             <German>Schwerlasthaken befestigen</German>
+            <French>Attacher les crochets</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detach">
             <English>Detach Hooks</English>
             <Spanish>Soltar Ganchos</Spanish>
             <German>Schwerlasthaken lösen</German>
+            <French>Détacher les crochets</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attaching">
             <English>Attaching Hooks ...</English>
             <Spanish>Fijando Ganchos ...</Spanish>
             <German>Befestige Schwerlasthaken...</German>
+            <French>Attachage des crochets...</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detaching">
             <English>Detaching Hooks ...</English>
             <Spanish>Soltando Ganchos ...</Spanish>
             <German>Löse Schwerlasthaken...</German>
+            <French>Détachage des crochets...</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Attached">
             <English>Hooks Attached</English>
             <Spanish>Ganchos Fijados</Spanish>
             <German>Schwerlasthaken befestigt</German>
+            <French>Crochets attachés</French>
         </Key>
         <Key ID="STR_TAC_HeavyLifter_Detached">
             <English>Hooks Detached</English>
             <Spanish>Ganchos Sueltos</Spanish>
             <German>Schwerlasthaken gelöst</German>
+            <French>Crochets détachés</French>
         </Key>
     </Package>
 </Project>

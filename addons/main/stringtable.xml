@@ -5,6 +5,7 @@
             <English>TAC Mod Team</English>
             <Spanish>TAC Mod Team</Spanish>
             <German>TAC Mod Team</German>
+            <French>Équipe TAC Mod</French>
         </Key>
         <Key ID="STR_TAC_Main_URL">
             <English>http://www.theseus-aegis.com/</English>
@@ -20,6 +21,7 @@
         <Key ID="STR_TAC_Main_Attributes">
             <English>TAC Attributes</English>
             <German>TAC Attribute</German>
+            <French>Attributs TAC</French>
         </Key>
     </Package>
 </Project>
