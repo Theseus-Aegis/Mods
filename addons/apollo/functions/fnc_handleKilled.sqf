@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles killed event (mark in backend for fresh inventory).
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_player", "_killer"];
 TRACE_1("Handle Killed",_this);

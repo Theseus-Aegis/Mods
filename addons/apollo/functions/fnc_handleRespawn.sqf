@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles respawn event (mark in backend for fresh inventory).
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_player", "_corpse"];
 TRACE_1("Handle Respawn",_this);

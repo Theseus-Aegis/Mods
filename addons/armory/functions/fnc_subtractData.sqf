@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Subtracts quantity of an item or removes it completely (for in-list handling).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_armoryData", "_selectedItem", "_selectedAmount"];
 

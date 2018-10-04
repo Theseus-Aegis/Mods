@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles the Alarm switching.
@@ -14,7 +15,6 @@
  * [<arg0>, [<arg1>]] call TAC_Misc_fnc_toggleAlarm;
  * [<arg0>, [<arg1.0>, <arg1.1>, <arg1.2>], "Sound_Alarm"] call TAC_Misc_fnc_toggleAlarm;
  */
-#include "script_component.hpp"
 
 params ["_button", "_speakers", ["_soundType", "Sound_Alarm"]];
 

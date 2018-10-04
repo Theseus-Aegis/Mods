@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Opens coordinate input display.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // Has to be display to allow movement
 private _display = (findDisplay 46) createDisplay QGVAR(menu);

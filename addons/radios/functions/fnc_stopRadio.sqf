@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Stops playing music in the vehicle and removes the radio.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private ["_radio"];
 params ["_vehicle"];

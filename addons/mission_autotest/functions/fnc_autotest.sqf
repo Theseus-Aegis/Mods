@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Performs overall autotest and logs the results.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _ctrlListbox = _this controlsGroupCtrl CTRL_PICTURE;
 _ctrlListbox lnbSetColumnsPos [FINDINGS_COLUMN_SIZE]; // Fix entries positioning

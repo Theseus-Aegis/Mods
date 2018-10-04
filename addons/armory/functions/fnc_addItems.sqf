@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Adds items to vanilla Armory system.
@@ -19,7 +20,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params [
     ["_object", objNull, [objNull]],

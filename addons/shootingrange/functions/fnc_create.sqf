@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Creates a shooting range. Local effect, must be called on each client machine.
@@ -31,7 +32,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params [
     ["_name", "", [""] ],

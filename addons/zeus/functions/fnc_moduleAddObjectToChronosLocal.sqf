@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Adds an object to Chronos persistence (executed locally on client who placed the module).
@@ -12,7 +13,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_logic", "", "_activated"];
 

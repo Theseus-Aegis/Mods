@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Tests mission description value.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _value = getMissionConfigValue ["onLoadMission", ""];
 if (_value == "") then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Tests Apollo setting value.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     (_this controlsGroupCtrl CTRL_VALUE) ctrlSetText (localize LSTRING(NotLoaded));

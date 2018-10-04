@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: BaerMitUmlaut, 654wak654, Jonpas
  * Generates the CfgVehicles config for heavy lifter compatibility.
@@ -15,7 +16,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 #define HELPER_CENTER_HEIGHT 1.32
 
