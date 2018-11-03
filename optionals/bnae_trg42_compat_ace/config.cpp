@@ -36,7 +36,7 @@ class CfgWeapons
         initSpeed=-1.0;
 		ACE_barrelTwist=254.0; // 1:10"
 		ACE_barrelLength=690.0; // 27 1/8"
-		ACE_RailHeightAboveBore=1.8;
+		ACE_RailHeightAboveBore=1.41739;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class asdg_OpticRail_bnae: asdg_OpticRail1913
