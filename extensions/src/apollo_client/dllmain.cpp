@@ -191,6 +191,17 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             strncpy(output, "error", outputSize);
         }
         EXTENSION_RETURN();
+    } else if (message.find("getAvailableItems") != std::string::npos) {
+        std::string playerId = message.substr(17, message.size() - 1);
+        TCPRequest("/apollo/armory/allAvailableItems/" + playerId);
+
+        if (playerQueue.size() > 0) {
+            playerQueue.push("done");
+            strncpy(output, "loaded", outputSize);
+        } else {
+            strncpy(output, "error", outputSize);
+        }
+        EXTENSION_RETURN();
     } else if (!strcmp(function, "get")) {
         if (playerQueue.size() > 0) {
             std::string command = playerQueue.front();
