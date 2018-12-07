@@ -192,7 +192,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         }
         EXTENSION_RETURN();
     } else if (message.find("getAccessibleItemClasses") != std::string::npos) {
-        std::string playerId = message.substr(17, message.size() - 1);
+        std::string playerId = message.substr(24, message.size() - 1);
         TCPRequest("/apollo/getAccessibleItemClasses/" + playerId);
 
         if (playerQueue.size() > 0) {
