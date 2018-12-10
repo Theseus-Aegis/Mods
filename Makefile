@@ -14,16 +14,16 @@ GIT_HASH = $(shell git log -1 --pretty=format:"%H" | head -c 8)
 
 ifeq ($(OS), Windows_NT)
 	ifeq ($(PROCESSOR_ARCHITEW6432), AMD64)
-		ARMAKE = ./tools/armake_w64.exe
+		ARMAKE = ./tools/armake2_w64.exe
 	else
 		ifeq ($(PROCESSOR_ARCHITECTURE), AMD64)
-			ARMAKE = ./tools/armake_w64.exe
+			ARMAKE = ./tools/armake2_w64.exe
 		else
-			ARMAKE = ./tools/armake_w32.exe
+			ARMAKE = ./tools/armake2_w32.exe
 		endif
 	endif
 else
-	ARMAKE = armake
+	ARMAKE = armake2
 endif
 
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
