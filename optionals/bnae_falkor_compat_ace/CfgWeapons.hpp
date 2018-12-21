@@ -1,6 +1,5 @@
 class Mode_SemiAuto;
-class asdg_OpticRail;
-class asdg_OpticRail1913: asdg_OpticRail {};
+class asdg_OpticRail1913;
 
 class CfgWeapons {
     class Rifle_Base_F;
