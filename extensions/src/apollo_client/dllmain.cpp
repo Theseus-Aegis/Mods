@@ -191,6 +191,17 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             strncpy(output, "error", outputSize);
         }
         EXTENSION_RETURN();
+    } else if (message.find("getAccessibleItemClasses") != std::string::npos) {
+        std::string playerId = message.substr(24, message.size() - 1);
+        TCPRequest("/apollo/getAccessibleItemClasses/" + playerId);
+
+        if (playerQueue.size() > 0) {
+            playerQueue.push("done");
+            strncpy(output, "loaded", outputSize);
+        } else {
+            strncpy(output, "error", outputSize);
+        }
+        EXTENSION_RETURN();
     } else if (!strcmp(function, "get")) {
         if (playerQueue.size() > 0) {
             std::string command = playerQueue.front();
