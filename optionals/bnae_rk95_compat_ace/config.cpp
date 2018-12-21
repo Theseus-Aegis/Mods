@@ -1,9 +1,6 @@
-class CfgPatches
-{
-    class bnae_rk95_compat_ace
-    {
-        requiredaddons[]=
-        {
+class CfgPatches {
+    class bnae_rk95_compat_ace {
+        requiredaddons[]= {
             "bnae_RK95",
             "bnae_core",
             "bnae_suppressor",
@@ -11,8 +8,7 @@ class CfgPatches
             "cba_jr"
         };
         requiredversion=0.1;
-        magazines[]=
-        {
+        magazines[]= {
             "6Rnd_B_357_Mag",
             "8Rnd_9x19_B",
             "30Rnd_762x39_Magazine",
@@ -23,57 +19,49 @@ class CfgPatches
         };
     };
 };
+
 class Mode_SemiAuto;
 class Mode_FullAuto;
 class asdg_OpticRail;
-class asdg_OpticRail1913: asdg_OpticRail
-{
-};
-class CfgWeapons
-{
+class asdg_OpticRail1913: asdg_OpticRail {};
+
+class CfgWeapons {
     class Rifle;
-    class Rifle_Base_F: Rifle
-    {
+    class Rifle_Base_F: Rifle {
         class WeaponSlotsInfo;
     };
-    class bnae_rk95_base: Rifle_Base_F // http://guns.connect.fi/gow/M95.html
-    {
+
+    // http://guns.connect.fi/gow/M95.html
+    class bnae_rk95_base: Rifle_Base_F {
         ACE_barrelTwist=240.0;
         ACE_barrelLength=420.0;
-        class Single: Mode_SemiAuto
-        {
+        class Single: Mode_SemiAuto {
             dispersion=0.00044; // 1.5 MOA; default: 0.00058=2 MOA
         };
-        class FullAuto: Mode_FullAuto
-        {
+        class FullAuto: Mode_FullAuto {
             dispersion=0.00044; // 1.5 MOA; default: 0.00058=2 MOA
         };
     };
-    class bnae_rk95_virtual: bnae_rk95_base
-    {
-    };
-    class bnae_rk95r_virtual: bnae_rk95_virtual
-    {
+
+    class bnae_rk95_virtual: bnae_rk95_base {};
+
+    class bnae_rk95r_virtual: bnae_rk95_virtual {
         ACE_RailHeightAboveBore=14.0;
-        class WeaponSlotsInfo: WeaponSlotsInfo
-        {
-            class asdg_OpticRail_bnae: asdg_OpticRail1913
-            {
-            };
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class asdg_OpticRail_bnae: asdg_OpticRail1913 {};
         };
     };
+
     class ItemCore;
     class InventoryMuzzleItem_Base_F;
-    class bnae_suppressor_v2_base: ItemCore // ACE3 values: https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgWeapons.hpp#L643
-    {
-        class ItemInfo: InventoryMuzzleItem_Base_F
-        {
-            class MagazineCoef
-            {
+
+    // ACE3 values: https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgWeapons.hpp#L643
+    class bnae_suppressor_v2_base: ItemCore {
+        class ItemInfo: InventoryMuzzleItem_Base_F {
+            class MagazineCoef {
                 initSpeed=1.0;
             };
-            class AmmoCoef
-            {
+            class AmmoCoef {
                 hit=1;
                 typicalSpeed=1;
                 airFriction=1;
@@ -83,8 +71,7 @@ class CfgWeapons
                 audibleFireTime=0.5;
                 cost=1;
             };
-            class MuzzleCoef
-            {
+            class MuzzleCoef {
                 dispersionCoef="0.95f";
                 artilleryDispersionCoef="1.0f";
                 fireLightCoef="0.5f";
@@ -99,16 +86,14 @@ class CfgWeapons
             };
         };
     };
-    class bnae_suppressor_base: ItemCore // ACE3 values: https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgWeapons.hpp#L643
-    {
-        class ItemInfo: InventoryMuzzleItem_Base_F
-        {
-            class MagazineCoef
-            {
+
+    // ACE3 values: https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgWeapons.hpp#L643
+    class bnae_suppressor_base: ItemCore {
+        class ItemInfo: InventoryMuzzleItem_Base_F {
+            class MagazineCoef {
                 initSpeed=1.0;
             };
-            class AmmoCoef
-            {
+            class AmmoCoef {
                 hit=1;
                 typicalSpeed=1;
                 airFriction=1;
@@ -118,8 +103,7 @@ class CfgWeapons
                 audibleFireTime=0.5;
                 cost=1;
             };
-            class MuzzleCoef
-            {
+            class MuzzleCoef {
                 dispersionCoef="0.95f";
                 artilleryDispersionCoef="1.0f";
                 fireLightCoef="0.5f";
@@ -135,36 +119,33 @@ class CfgWeapons
         };
     };
 };
-class CfgMagazines
-{
+
+class CfgMagazines {
     class CA_Magazine;
-    class 30Rnd_762x39_Mag_F: CA_Magazine
-    {
+
+    class 30Rnd_762x39_Mag_F: CA_Magazine {
         initSpeed=719; // muzzle velocity according with the barrel length, default 730
     };
-    class 30Rnd_762x39_Magazine: 30Rnd_762x39_Mag_F
-    {
+    class 30Rnd_762x39_Magazine: 30Rnd_762x39_Mag_F {
         ammo="B_762x39_Ball_F"; // AtragMx GunList "7.62x39mm", default ammo "B_762x51_Ball"
         initSpeed=719; // muzzle velocity according with the barrel length, default 730
     };
-    class 30Rnd_762x39_Mag_Green_F: 30Rnd_762x39_Mag_F
-    {
+    class 30Rnd_762x39_Mag_Green_F: 30Rnd_762x39_Mag_F {
         initSpeed=719; // muzzle velocity according with the barrel length, default 730
     };
-    class 30Rnd_762x39_Mag_Tracer_F: 30Rnd_762x39_Mag_F
-    {
+    class 30Rnd_762x39_Mag_Tracer_F: 30Rnd_762x39_Mag_F {
         initSpeed=719; // muzzle velocity according with the barrel length, default 730
     };
-    class 30Rnd_762x39_Mag_Tracer_Green_F: 30Rnd_762x39_Mag_F
-    {
+    class 30Rnd_762x39_Mag_Tracer_Green_F: 30Rnd_762x39_Mag_F {
         initSpeed=719; // muzzle velocity according with the barrel length, default 730
     };
 };
-class CfgAmmo
-{
+
+class CfgAmmo {
     class BulletBase;
-    class B_762x39_Ball_F : BulletBase // https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgAmmo.hpp#L340
-    {
+
+    // https://github.com/acemod/ACE3/blob/master/addons/ballistics/CfgAmmo.hpp#L340
+    class B_762x39_Ball_F : BulletBase {
         airFriction=-0.00154815;
         typicalSpeed=719; // muzzle velocity according with the barrel length
         ACE_caliber=7.823;
