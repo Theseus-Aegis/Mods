@@ -1,13 +1,7 @@
 class CfgPatches {
     class ADDON {
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "bnae_RK95",
-            "bnae_core",
-            "bnae_suppressor",
-            "bnae_suppressor_v2",
-            "cba_jr"
-        };
+        units[] = {};
+        weapons[] = {};
         magazines[] = {
             "6Rnd_B_357_Mag",
             "8Rnd_9x19_B",
@@ -17,6 +11,15 @@ class CfgPatches {
             "7Rnd_B_338_lapua",
             "9Rnd_B_45ACP"
         };
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {
+            "bnae_RK95",
+            "bnae_core",
+            "bnae_suppressor",
+            "bnae_suppressor_v2"
+        };
+        author = ECSTRING(main,Author);
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
