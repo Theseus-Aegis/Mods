@@ -1,14 +1,14 @@
 class CfgPatches {
     class ADDON {
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[]= {
+        requiredAddons[] = {
             "bnae_RK95",
             "bnae_core",
             "bnae_suppressor",
             "bnae_suppressor_v2",
             "cba_jr"
         };
-        magazines[]= {
+        magazines[] = {
             "6Rnd_B_357_Mag",
             "8Rnd_9x19_B",
             "30Rnd_762x39_Magazine",

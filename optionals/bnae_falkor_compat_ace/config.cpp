@@ -1,13 +1,13 @@
 class CfgPatches {
     class ADDON {
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] {
+        requiredAddons[] = {
             "bnae_falkor",
             "bnae_core",
             "cba_jr"
         };
-        weapons[]= {};
-        units[]= {};
+        weapons[] = {};
+        units[] = {};
         VERSION_CONFIG;
     };
 };

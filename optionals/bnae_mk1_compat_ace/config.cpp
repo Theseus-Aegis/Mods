@@ -1,18 +1,18 @@
 class CfgPatches {
     class ADDON {
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[]= {
+        requiredAddons[] = {
             "A3_Weapons_F",
             "bnae_core",
             "bnae_mk1"
         };
-        weapons[]= {
+        weapons[] = {
             "bnae_mk1_virtual",
             "bnae_mk1_t_virtual",
             "bnae_mk1_t_camo1_virtual",
             "bnae_mk1_no4_t_virtual"
         };
-        units[]= {
+        units[] = {
             "bnae_mk1_editor"
         };
         VERSION_CONFIG;

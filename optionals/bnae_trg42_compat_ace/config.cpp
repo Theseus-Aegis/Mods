@@ -1,15 +1,15 @@
 class CfgPatches {
     class ADDON {
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[]= {
+        requiredAddons[] = {
             "bnae_trg42",
             "bnae_core",
             "bnae_silencer",
             "bnae_muzzle",
             "cba_jr"
         };
-        weapons[]= {};
-        units[]= {};
+        weapons[] = {};
+        units[] = {};
         VERSION_CONFIG;
     };
 };
