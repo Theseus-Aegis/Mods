@@ -14,13 +14,7 @@ class CfgPatches {
             "9Rnd_B_45ACP"
         };
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "tac_main",
-            "bnae_RK95",
-            "bnae_core",
-            "bnae_suppressor",
-            "bnae_suppressor_v2"
-        };
+        requiredAddons[] = {"A3_Weapons_F","bnae_core","bnae_attachments"};
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
