@@ -4,6 +4,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
+            "tac_main",
             "bnae_trg42",
             "bnae_core",
             "bnae_silencer",

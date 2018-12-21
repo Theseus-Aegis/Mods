@@ -13,6 +13,7 @@ class CfgPatches {
         };
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
+            "tac_main",
             "bnae_RK95",
             "bnae_core",
             "bnae_suppressor",

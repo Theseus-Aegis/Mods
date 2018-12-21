@@ -8,7 +8,7 @@ class CfgPatches {
             "bnae_mk1_no4_t_virtual"
         };
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"bnae_core", "bnae_mk1"};
+        requiredAddons[] = {"tac_main", "bnae_core", "bnae_mk1"};
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
