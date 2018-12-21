@@ -1,6 +1,5 @@
 class CfgMagazines {
     class CA_Magazine;
-
     class 30Rnd_762x39_Mag_F: CA_Magazine {
         initSpeed = 719; // muzzle velocity according with the barrel length, default 730
     };

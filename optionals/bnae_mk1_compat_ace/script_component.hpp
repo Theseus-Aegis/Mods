@@ -1,5 +1,5 @@
 #define COMPONENT bnae_mk1_compat_ace
-#define COMPONENT_BEAUTIFIED BNAE Mk1 ACE3 Compat
+#define COMPONENT_BEAUTIFIED Bnae MK1 ACE3 Compatibility
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

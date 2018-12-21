@@ -1,5 +1,5 @@
 #define COMPONENT bnae_trg42_compat_ace
-#define COMPONENT_BEAUTIFIED BNAE trg42 ACE3 Compat
+#define COMPONENT_BEAUTIFIED Bnae TRG42 ACE3 Compatibility
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

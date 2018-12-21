@@ -4,7 +4,6 @@ class asdg_OpticRail1913: asdg_OpticRail {};
 
 class CfgWeapons {
     class Rifle_Base_F;
-
     class Rifle_Long_Base_F: Rifle_Base_F {
         class WeaponSlotsInfo;
     };

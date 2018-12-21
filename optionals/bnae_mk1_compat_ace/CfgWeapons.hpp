@@ -2,7 +2,6 @@ class Mode_SemiAuto;
 
 class CfgWeapons {
     class Rifle_Long_Base_F;
-
     class bnae_mk1_base: Rifle_Long_Base_F {
         initSpeed = -1.0;
         ACE_barrelTwist = 254.0;
