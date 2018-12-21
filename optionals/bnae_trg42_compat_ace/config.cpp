@@ -7,8 +7,7 @@ class CfgPatches {
             "bnae_trg42",
             "bnae_core",
             "bnae_silencer",
-            "bnae_muzzle",
-            "cba_jr"
+            "bnae_muzzle"
         };
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
