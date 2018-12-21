@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Shows notifications to everyone in vicinity.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_texts", "_size", ["_includeCaller", false], ["_vicinityRange", NOTIFY_DISTANCE, [0]] ];
 

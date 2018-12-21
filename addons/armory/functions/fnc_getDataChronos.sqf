@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Gets data from Apollo Client / Athena (Chronos).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_selectedCategory"];
 

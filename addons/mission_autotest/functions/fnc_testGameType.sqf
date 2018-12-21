@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Tests mission game type value.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _value = getText (missionConfigFile >> "Header" >> "gameType");
 if (_value == "") then {

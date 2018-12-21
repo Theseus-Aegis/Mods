@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Saves vehicles.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // Make safe copy in case of new vehicles during this save round
 private _vehList = +GVAR(vehiclesList);

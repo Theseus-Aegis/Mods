@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Adds shooting range target amounts configuration child interactions to a controller.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_name", "_controller", "_controllers", "_targetAmounts", "_targets"];
 

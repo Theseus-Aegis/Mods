@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Tests group sizes of sides (288 groups per side limit).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _findings = [];
 {

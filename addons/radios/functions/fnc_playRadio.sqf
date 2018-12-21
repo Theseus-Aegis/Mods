@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Attaches a radio to a vehicle and starts playing the selected track on it.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_track"];
 

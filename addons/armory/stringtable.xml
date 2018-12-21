@@ -1,112 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Armory">
         <Key ID="STR_TAC_Armory_DisplayName">
             <English>Armory</English>
             <German>Waffenkammer</German>
+            <French>Armurerie</French>
         </Key>
         <Key ID="STR_TAC_Armory_Description">
             <English>Enable Armroy Locker on this object.</English>
+            <French>Active l'armurerie sur cet objet.</French>
         </Key>
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>
             <German>Waffenkammer-Spind öffnen</German>
+            <French>Ouvrir le casier d'armurerie</French>
         </Key>
         <Key ID="STR_TAC_Armory_Locker">
             <English>[TAC] Armory Locker</English>
             <German>[TAC] Waffenkammer-Spind</German>
+            <French>[TAC] Casier d'armurerie</French>
         </Key>
         <Key ID="STR_TAC_Armory_System">
             <English>System</English>
             <German>System</German>
+            <French>Système</French>
         </Key>
         <Key ID="STR_TAC_Armory_SystemDesc">
             <English>System used for compatibility assurance.</English>
             <German>System um die Kompatibilität zu garantieren.</German>
+            <French>Système utilisé pour assurer la compatibilité. </French>
         </Key>
         <Key ID="STR_TAC_Armory_System_Vanilla">
             <English>None (Vanilla)</English>
             <German>Keine (Vanilla)</German>
+            <French>Aucun (vanilla)</French>
         </Key>
         <Key ID="STR_TAC_Armory_System_Chronos">
             <English>Chronos</English>
             <German>Chronos</German>
+            <French>Chronos</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnBackTooltip">
             <English>Back to Main Menu</English>
             <German>Zurück zum Hauptmenü</German>
+            <French>Retour au menu principal</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnExitTooltip">
             <English>Exit Armory</English>
             <German>Waffenkammer verlassen</German>
+            <French>Quitter l'armurerie</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashItemTooltip">
             <English>Stash selected item</English>
             <German>Ausgewählten Gegenstand wegpacken</German>
+            <French>Ranger les objets sélectionnés</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnTakeItemTooltip">
             <English>Take selected item</English>
             <German>Ausgewählten Gegenstand nehmen</German>
+            <French>Prendre l'objet sélectionné</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnRiflesTooltip">
             <English>Access Rifles</English>
             <German>Auf Gewehre zugreifen</German>
+            <French>Accéder aux fusils</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnPistolsTooltip">
             <English>Access Pistols</English>
             <German>Auf Pistolen zugreifen</German>
+            <French>Accéder aux pistolets</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnLaunchersTooltip">
             <English>Access Launchers</English>
             <German>Auf Werfer zugreifen</German>
+            <French>Accéder aux lanceurs</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAmmoTooltip">
             <English>Access Ammo</English>
             <German>Auf Munition zugreifen</German>
+            <French>Accéder aux munitions</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnItemsTooltip">
             <English>Access Items</English>
             <German>Auf Gegenstände zugreifen</German>
+            <French>Accéder aux objets</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAttachmentsTooltip">
             <English>Access Attachments</English>
             <German>Auf Waffenaufsätze zugreifen</German>
+            <French>Accéder aux accessoires</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnBackpacksTooltip">
             <English>Access Backpacks</English>
             <German>Auf Rucksäcke zugreifen</German>
+            <French>Accéder aux sacs à dos</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnApparelTooltip">
             <English>Access Apparel</English>
             <German>Auf Bekleidung zugreifen</German>
+            <French>Accéder aux vêtements</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnInsigniasTooltip">
             <English>Access Insignias</English>
             <German>Auf Abzeichen zugreifen</German>
+            <French>Accéder aux insignes</French>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashTooltip">
             <English>Stash Container Contents</English>
             <German>Containerinhalt wegpacken</German>
+            <French>Ranger le contenu du conteneur</French>
         </Key>
         <Key ID="STR_TAC_Armory_ChronosError">
             <English>Athena server is down!&lt;br/&gt;(Contact server administrator)</English>
             <German>Athena Server ist offline!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
+            <French>Le serveur Athena est indisponible !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsWeapon">
             <English>All Weapons in the box must be without Attachments and Magazines for stashing!</English>
             <German>Alle Waffen in der Kiste müssen ohne Magazin und Aufsätze sein, um weggepackt werden zu können! </German>
+            <French>Toutes les armes dans le conteneur doivent être sans accessoires et munitions pour être rangés !</French>
         </Key>
         <Key ID="STR_TAC_Armory_ContainsItemsContainer">
             <English>All Uniforms/Vests/Backpacks in the box must be empty for stashing!</English>
             <German>Alle Uniformen/Westen/Rucksäcke müssen vor dem Wegpacken leer sein!</German>
+            <French>Tous les uniformes/vestes/sacs dans le conteneur doivent être vides pour être rangés !</French>
         </Key>
         <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
             <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
+            <French>Le conteneur est plein ! Faites de la place pour la récupération.</French>
         </Key>
         <Key ID="STR_TAC_Armory_ShowOnlyCompatible">
             <English>Show only items compatible with equipped weapons.</English>
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind.</German>
+            <French>Montrer seulement les objets compatibles avec les armes équipées.</French>
         </Key>
     </Package>
 </Project>

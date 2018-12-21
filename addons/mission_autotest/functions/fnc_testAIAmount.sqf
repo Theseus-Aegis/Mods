@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Tests AI amount.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _aiAmount = count (allUnits - playableUnits);
 

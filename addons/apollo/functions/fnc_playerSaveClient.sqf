@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles loadout change and periodic saves. Requests a save of the player after a delay.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_player", "", ["_periodic", false]];
 TRACE_2("Player Save Client",_player,_periodic);

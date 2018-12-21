@@ -1,7 +1,9 @@
+#include "script_component.hpp"
 /*
  * Author: BaerMitUmlaut, 654wak654, Jonpas
  * Generates the CfgVehicles config for heavy lifter compatibility.
- * Must be loaded into the game!
+ * Must be loaded into the game or Eden editor!
+ * Execute in scheduled (spawn) due to canSlingLoad issue!
  *
  * Arguments:
  * None
@@ -10,11 +12,10 @@
  * None
  *
  * Example:
- * [] call tac_heavylifter_fnc_exportConfig
+ * [] spawn tac_heavylifter_fnc_exportConfig
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 #define HELPER_CENTER_HEIGHT 1.32
 
@@ -54,7 +55,7 @@ private _sourcePatches = [];
                 -((_vehicle worldToModelVisual [_posWorldVehicle select 0, _posWorldVehicle select 1, HELPER_CENTER_HEIGHT]) select 2) // Must use correct X and Y as well for worldToModel
             ] apply {round (_x * 100) / 100}; // Round to 2 decimal places
 
-            // Backtrack base classes to see if any already has the same value applied, reapply if a different value is find instead of none
+            // Backtrack base classes to see if any already has the same value applied, reapply if a different value is found instead of none
             if !([_modifyClasses, _attachPos, _baseClass] call _fnc_checkBase) then {
                 // Save class and base class
                 _modifyClasses pushBackUnique [_x, _baseClass, _attachPos];

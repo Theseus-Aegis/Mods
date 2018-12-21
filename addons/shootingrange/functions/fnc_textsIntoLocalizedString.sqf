@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Converts array of strings into one partially localized string (localized where string starts with "STR_").
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_texts"];
 TRACE_1("Texts",_texts);

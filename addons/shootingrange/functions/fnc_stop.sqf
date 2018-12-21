@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Stops shooting range.
@@ -21,7 +22,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", ["_success", false], ["_score", 0], ["_maxScore", 0], ["_timeElapsed", 0]];
 

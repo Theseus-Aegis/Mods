@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Tests minimum players value.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _config = missionConfigFile >> "Header" >> "minPlayers";
 private _value = getNumber _config; // Returns 0 even if not set

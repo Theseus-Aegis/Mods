@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles target pop-ups.
@@ -25,7 +26,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_args", "_idPFH"];
 _args params ["_timeStart", "_duration", "_pauseDuration", "_targetAmount", "_targets", "_targetsInvalid", "_controller", "_controllers", "_name", "_mode", "_triggers"];

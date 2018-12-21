@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Loads vehicles.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(invokeJavaMethod);
 

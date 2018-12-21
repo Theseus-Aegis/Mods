@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Handles hit part event handler.
@@ -24,7 +25,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
 
