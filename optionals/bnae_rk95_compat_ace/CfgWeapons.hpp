@@ -13,9 +13,11 @@ class CfgWeapons {
     class bnae_rk95_base: Rifle_Base_F {
         ACE_barrelTwist = 240.0;
         ACE_barrelLength = 420.0;
+
         class Single: Mode_SemiAuto {
             dispersion = 0.00044; // 1.5 MOA; default: 0.00058 = 2 MOA
         };
+
         class FullAuto: Mode_FullAuto {
             dispersion = 0.00044; // 1.5 MOA; default: 0.00058 = 2 MOA
         };
@@ -24,6 +26,7 @@ class CfgWeapons {
     class bnae_rk95_virtual;
     class bnae_rk95r_virtual: bnae_rk95_virtual {
         ACE_RailHeightAboveBore = 14.0;
+
         class WeaponSlotsInfo: WeaponSlotsInfo {
             class asdg_OpticRail_bnae: asdg_OpticRail1913 {};
         };
