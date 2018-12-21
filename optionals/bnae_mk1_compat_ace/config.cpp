@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 class CfgPatches {
     class ADDON {
         units[] = {"bnae_mk1_editor"};
