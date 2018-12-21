@@ -4,6 +4,7 @@ BIN = @tac_mods
 ZIP = tac_mods
 FLAGS = -i include -w redefinition-wo-undef -w unquoted-string
 VERSION_FILES = README.md mod.cpp
+COPY_FILES = *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md
 
 MAJOR = $(word 1, $(subst ., ,$(VERSION)))
 MINOR = $(word 2, $(subst ., ,$(VERSION)))
@@ -42,6 +43,7 @@ $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 
 all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
 		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo, $(wildcard optionals/*))
+	@cp -ru $(COPY_FILES) $(BIN)
 
 filepatching:
 	"$(MAKE)" $(MAKEFLAGS) FLAGS="-w unquoted-string -p"
@@ -88,7 +90,7 @@ push: commit
 release: clean version commit
 	@"$(MAKE)" $(MAKEFLAGS) signatures
 	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
-	@cp *.dll AUTHORS.txt LICENSE logo_tac_ca.paa logo_tac_small_ca.paa mod.cpp README.md $(BIN)
+	@cp $(COPY_FILES) $(BIN)
 	@zip -qr $(ZIP)_$(VERSION).zip $(BIN)
 
 clean:
