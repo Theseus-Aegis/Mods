@@ -5,7 +5,7 @@ if not exist "@tac_mods" mkdir "@tac_mods"
 if not exist "@tac_mods\addons" mkdir "@tac_mods\addons"
 if not exist "@tac_mods\optionals" mkdir "@tac_mods\optionals"
 
-if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (set armake=tools\armake_w64.exe) else (set armake=tools\armake_w32.exe)
+if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (set armake=tools\armake2_w64.exe) else (set armake=tools\armake2_w32.exe)
 
 for /d %%f in (addons\*) do (
     set folder=%%f
