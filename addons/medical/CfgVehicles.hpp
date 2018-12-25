@@ -20,9 +20,9 @@ class CfgVehicles {
                     class FieldDressing;
                     class GVAR(painkillers): FieldDressing {
                         displayName = CSTRING(PainkillerSelfActionDisplayName);
-                        condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
+                        condition = "[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached";
                         exceptions[] = {"isNotInside", "isNotSwimming"};
-                        statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
+                        statement = "[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment";
                         icon = QPATHTOF(UI\painkillers_icon_ca.paa);
                     };
                 };
@@ -34,9 +34,9 @@ class CfgVehicles {
                 class FieldDressing;
                 class GVAR(painkillers): FieldDressing {
                     displayName = CSTRING(PainkillerActionDisplayName);
-                    condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
+                    condition = "[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached";
                     exceptions[] = {"isNotInside", "isNotSwimming"};
-                    statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
+                    statement = "[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment";
                     icon = QPATHTOF(UI\painkillers_icon_ca.paa);
                 };
             };
