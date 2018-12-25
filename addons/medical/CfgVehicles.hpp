@@ -19,7 +19,7 @@ class CfgVehicles {
                 class ACE_Head {
                     class FieldDressing;
                     class GVAR(painkillers): FieldDressing {
-                        displayName = CSTRING(PainkillerSelfActionDisplayName);
+                        displayName = CSTRING(PainkillersSelfActionDisplayName);
                         condition = "[_player, _target, 'head', 'tac_medical_painkillers'] call ace_medical_fnc_canTreatCached";
                         exceptions[] = {"isNotInside", "isNotSwimming"};
                         statement = "[_player, _target, 'head', 'tac_medical_painkillers'] call ace_medical_fnc_treatment";
@@ -33,7 +33,7 @@ class CfgVehicles {
             class ACE_Head {
                 class FieldDressing;
                 class GVAR(painkillers): FieldDressing {
-                    displayName = CSTRING(PainkillerActionDisplayName);
+                    displayName = CSTRING(PainkillersActionDisplayName);
                     condition = "[_player, _target, 'head', 'tac_medical_painkillers'] call ace_medical_fnc_canTreatCached";
                     exceptions[] = {"isNotInside", "isNotSwimming"};
                     statement = "[_player, _target, 'head', 'tac_medical_painkillers'] call ace_medical_fnc_treatment";
