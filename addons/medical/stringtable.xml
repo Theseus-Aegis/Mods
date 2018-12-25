@@ -4,13 +4,13 @@
         <Key ID="STR_TAC_Medical_DisplayName">
             <English>Painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Medical_selfActionDisplayName">
+        <Key ID="STR_TAC_Medical_PainkillersSelfActionDisplayName">
             <English>Take painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Medical_actionDisplayName">
+        <Key ID="STR_TAC_Medical_PainkillersActionDisplayName">
             <English>Give painkillers</English>
         </Key>
-        <Key ID="STR_TAC_Medical_painkillerProgress">
+        <Key ID="STR_TAC_Medical_PainkillerProgress">
             <English>Administering painkillers...</English>
         </Key>
     </Package>

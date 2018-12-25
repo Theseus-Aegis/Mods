@@ -18,10 +18,10 @@ class CfgVehicles {
                 class ACE_Head {
                     class FieldDressing;
                     class GVAR(painkillers): FieldDressing {
-                        displayName = CSTRING(selfActionDisplayName);
-                        condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
+                        displayName = CSTRING(PainkillerSelfActionDisplayName);
+                        condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
                         exceptions[] = {"isNotInside", "isNotSwimming"};
-                        statement = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_treatment);
+                        statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
                         icon = QPATHTOF(data\painkillers_icon.paa);
                     };
                 };
@@ -32,10 +32,10 @@ class CfgVehicles {
             class ACE_Head {
                 class FieldDressing;
                 class GVAR(painkillers): FieldDressing {
-                    displayName = CSTRING(actionDisplayName);
-                    condition = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_canTreatCached);
+                    displayName = CSTRING(PainkillerActionDisplayName);
+                    condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
                     exceptions[] = {"isNotInside", "isNotSwimming"};
-                    statement = QUOTE([ARR_4(_player, _target, 'head', QQGVAR(painkillers))] call ace_medical_fnc_treatment);
+                    statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
                     icon = QPATHTOF(data\painkillers_icon.paa);
                 };
             };

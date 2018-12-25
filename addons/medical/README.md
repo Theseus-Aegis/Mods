@@ -1,6 +1,6 @@
 # About
 
-Add painkillers, dependent on ACE Medical
+Adds painkillers to ACE3 Medical.
 
 ### Authors
 

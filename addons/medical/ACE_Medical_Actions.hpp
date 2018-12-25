@@ -3,7 +3,7 @@ class ACE_Medical_Actions {
         class Morphine;
         class GVAR(painkillers): Morphine {
             displayName = CSTRING(DisplayName);
-            displayNameProgress = CSTRING(painkillerProgress);
+            displayNameProgress = CSTRING(PainkillerProgress);
             allowedSelections[] = {"head"};
             items[] = {QGVAR(painkillers)};
         };
@@ -12,7 +12,7 @@ class ACE_Medical_Actions {
         class Morphine;
         class GVAR(painkillers): Morphine {
             displayName = CSTRING(DisplayName);
-            displayNameProgress = CSTRING(painkillerProgress);
+            displayNameProgress = CSTRING(PainkillerProgress);
             allowedSelections[] = {"head"};
             items[] = {QGVAR(painkillers)};
         };
