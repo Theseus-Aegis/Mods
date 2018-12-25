@@ -1,5 +1,6 @@
 class CfgVehicles {
     class Item_Base_F;
+
     class GVAR(painkillersItem): Item_Base_F {
         scope = 2;
         scopeCurator = 2;
@@ -22,7 +23,7 @@ class CfgVehicles {
                         condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
                         exceptions[] = {"isNotInside", "isNotSwimming"};
                         statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
-                        icon = QPATHTOF(data\painkillers_icon.paa);
+                        icon = QPATHTOF(UI\painkillers_icon_ca.paa);
                     };
                 };
             };
@@ -36,7 +37,7 @@ class CfgVehicles {
                     condition = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_canTreatCached';
                     exceptions[] = {"isNotInside", "isNotSwimming"};
                     statement = '[_player, _target, 'head', QGVAR(painkillers)] call ace_medical_fnc_treatment';
-                    icon = QPATHTOF(data\painkillers_icon.paa);
+                    icon = QPATHTOF(UI\painkillers_icon_ca.paa);
                 };
             };
         };
