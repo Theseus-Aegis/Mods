@@ -6,7 +6,7 @@ class CfgWeapons {
         scope = 2;
         author = "Alganthe";
         model = "\A3\Structures_F_EPA\Items\Medical\PainKillers_F.p3d";
-        picture = QPATHTOF(UI\painkillers_inventory_ca.paa);
+        picture = QPATHTOF(ui\painkillers_inventory_ca.paa);
         displayName = CSTRING(DisplayName);
         descriptionShort = ACECSTRING(Medical,Morphine_Desc_Short);
         descriptionUse = ACECSTRING(Medical,Morphine_Desc_Use);
