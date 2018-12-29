@@ -23,7 +23,7 @@ class CfgVehicles {
                         condition = '[_player, _target, "head", QGVAR(painkillers)] call ACEFUNC(medical,canTreatCached)';
                         exceptions[] = {"isNotInside", "isNotSwimming"};
                         statement = '[_player, _target, "head", QGVAR(painkillers)] call ACEFUNC(medical,treatment)';
-                        icon = QPATHTOF(UI\painkillers_icon_ca.paa);
+                        icon = QPATHTOF(ui\painkillers_icon_ca.paa);
                     };
                 };
             };
@@ -37,7 +37,7 @@ class CfgVehicles {
                     condition = '[_player, _target, "head", QGVAR(painkillers)] call ACEFUNC(medical,canTreatCached)';
                     exceptions[] = {"isNotInside", "isNotSwimming"};
                     statement = '[_player, _target, "head", QGVAR(painkillers)] call ACEFUNC(medical,treatment)';
-                    icon = QPATHTOF(UI\painkillers_icon_ca.paa);
+                    icon = QPATHTOF(ui\painkillers_icon_ca.paa);
                 };
             };
         };
