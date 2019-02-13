@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Jonpas
- * Checks current shooting range configuration
+ * Sets pop-up target groups from lists of targets, invalid targets and markers.
  *
  * Arguments:
  * 0: Targets <ARRAY>
@@ -55,7 +55,9 @@ TRACE_2("Target Groups",_targetGroups,_targetInvalidGroups);
     private _targetGroup = _x;
     private _targetInvalidGroup = _targetInvalidGroups select _forEachIndex;
     {
-        _x setVariable [QGVAR(targetGroup), _targetGroup];
-        _x setVariable [QGVAR(targetInvalidGroup), _targetInvalidGroup];
-    } forEach _x;
+        if (!isNil _x) then {
+            _x setVariable [QGVAR(targetGroup), _targetGroup];
+            _x setVariable [QGVAR(targetInvalidGroup), _targetInvalidGroup];
+        };
+    } forEach _targetGroup;
 } forEach _targetGroups;
