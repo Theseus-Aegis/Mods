@@ -135,6 +135,12 @@ _pauseDurations sort true;
 _countdownTimes sort true;
 
 
+// Filter null targets to have correct target count, keep them for target grouping (Trigger mode)
+private _targetsAll = _targets;
+_targets = _targets select { !isNull _x };
+TRACE_2("Targets All",_targetsAll,_targets);
+
+
 // Set up default configuration and interactions
 {
     _x setVariable [QGVAR(targets), _targets];
@@ -335,7 +341,7 @@ private _triggers = [];
 private _triggerMarkersSet = [];
 if (_mode == 4) then {
     // Prepare target groups
-    [_targets, _targetsInvalid, _triggerMarkers] call FUNC(setTargetGroups);
+    [_targetsAll, _targetsInvalid, _triggerMarkers] call FUNC(setTargetGroups);
 
     // Set up triggers
     {
@@ -355,7 +361,7 @@ if (_mode == 4) then {
 
             _trigger setTriggerActivation ["ANY", "PRESENT", true];
 
-            private _target = _targets select _forEachIndex;
+            private _target = _targetsAll select _forEachIndex;
             private _controller = _controllers select 0;
             _trigger setTriggerStatements [
                 format ["[%1, %2] call %3", _controller, _target, QFUNC(canActivateTrigger)],

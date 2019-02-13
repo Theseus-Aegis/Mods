@@ -27,6 +27,7 @@ private _name = _logic getVariable "Name";
 
 // Extract target objects and add synchronized objects
 private _targets = [_logic getVariable "Targets", true, false] call ACEFUNC(common,parseList);
+_targets = _targets apply { [missionNamespace getVariable _x, objNull] select (isNil _x) };
 _targets append (synchronizedObjects _logic);
 
 // Extract invalid target objects and manually check nil (use object if exists, otherwise objNull)

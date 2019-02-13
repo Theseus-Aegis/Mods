@@ -18,6 +18,7 @@
  */
 
 params ["_targets", "_targetsInvalid", "_markers"];
+TRACE_3("Set Target Groups",_targets,_targetsInvalid,_markers);
 
 // Parse target groups
 private _targetGroups = [];
@@ -35,9 +36,15 @@ private _numTargetsInvalid = count _targetsInvalid;
         _currentTargetInvalidGroup = [];
     };
 
-    _currentTargetGroup pushBack (_targets select _forEachIndex);
+    private _target = _targets select _forEachIndex;
+    if (!isNull _target) then {
+        _currentTargetGroup pushBack _target;
+    };
     if (_numTargetsInvalid > _forEachIndex) then {
-        _currentTargetInvalidGroup pushBack (_targetsInvalid select _forEachIndex);
+        private _targetInvalid = _targetsInvalid select _forEachIndex;
+        if (!isNull _targetsInvalid) then {
+            _currentTargetInvalidGroup pushBack _targetInvalid;
+        };
     };
 
     if (_forEachIndex + 1 == count _markers) then {
@@ -55,9 +62,7 @@ TRACE_2("Target Groups",_targetGroups,_targetInvalidGroups);
     private _targetGroup = _x;
     private _targetInvalidGroup = _targetInvalidGroups select _forEachIndex;
     {
-        if (!isNil _x) then {
-            _x setVariable [QGVAR(targetGroup), _targetGroup];
-            _x setVariable [QGVAR(targetInvalidGroup), _targetInvalidGroup];
-        };
+        _x setVariable [QGVAR(targetGroup), _targetGroup];
+        _x setVariable [QGVAR(targetInvalidGroup), _targetInvalidGroup];
     } forEach _targetGroup;
 } forEach _targetGroups;
