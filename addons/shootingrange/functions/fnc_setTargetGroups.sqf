@@ -42,7 +42,7 @@ private _numTargetsInvalid = count _targetsInvalid;
     };
     if (_numTargetsInvalid > _forEachIndex) then {
         private _targetInvalid = _targetsInvalid select _forEachIndex;
-        if (!isNull _targetsInvalid) then {
+        if (!isNull _targetInvalid) then {
             _currentTargetInvalidGroup pushBack _targetInvalid;
         };
     };
