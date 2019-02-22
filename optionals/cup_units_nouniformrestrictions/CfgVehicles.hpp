@@ -1,6 +1,16 @@
 class CfgVehicles {
     class SoldierWB;
+    class Civilian_F;
 
+    class CUP_BAF_Soldier_DPM_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_BAF_Soldier_DDPM_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_BAF_Soldier_MTP_Base: SoldierWB {
+        modelSides[] = {6};
+    };
     class CUP_Creatures_Military_GER_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
@@ -40,16 +50,13 @@ class CfgVehicles {
     class CUP_Creatures_Military_FR_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
-    class CUP_Creatures_Civil_Chernarus_Base: SoldierWB {
+    class CUP_Creatures_Civil_Chernarus_Base: Civilian_F {
         modelSides[] = {6};
     };
-    class CUP_Creatures_Civil_Takistan_Base: SoldierWB {
+    class CUP_Creatures_Civil_Takistan_Base: Civilian_F {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_ACR_Soldier_Base: SoldierWB {
-        modelSides[] = {6};
-    };
-    class CUP_Creatures_Military_BAF_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_CDF_Soldier_Base: SoldierWB {
