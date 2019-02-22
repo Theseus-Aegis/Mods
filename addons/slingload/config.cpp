@@ -2,15 +2,16 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        magazines[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main","bnae_rk95"};
+        requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
+        authors[] = {"ARK", "Jonpas"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
-#include "CfgWeapons.hpp"
+#include "CfgEventHandlers.hpp"

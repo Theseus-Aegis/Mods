@@ -5,6 +5,7 @@ class asdg_OpticRail1913;
 class CfgWeapons {
     class Rifle;
     class Rifle_Base_F: Rifle {
+        // This causes an Updating Base Class warning, this is normal and required for proper inheritance
         class WeaponSlotsInfo;
     };
 

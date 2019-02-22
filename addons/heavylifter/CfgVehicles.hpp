@@ -140,17 +140,9 @@ class CfgVehicles {
     class UAV_03_dynamicLoadout_base_F;
     class Plane_Fighter_02_Base_F;
     class Truck_02_water_base_F;
-    class Van_02_transport_base_F;
-    class Van_02_vehicle_base_F;
-    class Van_02_medevac_base_F;
-    class Van_02_service_base_F;
     class UAV_06_base_F;
     class UAV_06_antimine_base_F;
     class UAV_06_medical_base_F;
-    class LT_01_AT_base_F;
-    class LT_01_scout_base_F;
-    class LT_01_AA_base_F;
-    class LT_01_cannon_base_F;
 
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
         GVAR(attachPos)[] = {0, -0.41, 0.46};
@@ -174,7 +166,7 @@ class CfgVehicles {
         GVAR(attachPos)[] = {0, -1.76, 0.82};
     };
     class I_Heli_Transport_02_F: Heli_Transport_02_base_F {
-        GVAR(attachPos)[] = {0, -1.88, 2.27};
+        GVAR(attachPos)[] = {0, -1.88, 2.29};
     };
     class C_Boat_Civil_01_F: Boat_Civil_01_base_F {
         GVAR(attachPos)[] = {0, 0.62, 0.24};
@@ -296,56 +288,8 @@ class CfgVehicles {
     class C_IDAP_Truck_02_water_F: Truck_02_water_base_F {
         GVAR(attachPos)[] = {0, 0.16, 1.06};
     };
-    class C_IDAP_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class I_G_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class B_G_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class B_GEN_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class O_G_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class I_C_Van_02_transport_F: Van_02_transport_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.41};
-    };
-    class C_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class C_IDAP_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class I_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class B_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class B_GEN_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class O_G_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class I_C_Van_02_vehicle_F: Van_02_vehicle_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
-    class C_Van_02_medevac_F: Van_02_medevac_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.47};
-    };
-    class C_IDAP_Van_02_medevac_F: Van_02_medevac_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.47};
-    };
-    class C_Van_02_service_F: Van_02_service_base_F {
-        GVAR(attachPos)[] = {0, -0.85, 0.34};
-    };
     class C_IDAP_Heli_Transport_02_F: Heli_Transport_02_base_F {
-        GVAR(attachPos)[] = {0, -1.88, 2.27};
+        GVAR(attachPos)[] = {0, -1.88, 2.29};
     };
     class C_IDAP_UAV_01_F: UAV_01_base_F {
         GVAR(attachPos)[] = {0, -0.01, -1.17};
@@ -382,17 +326,5 @@ class CfgVehicles {
     };
     class C_UAV_06_medical_F: UAV_06_medical_base_F {
         GVAR(attachPos)[] = {0, -0.01, -1.07};
-    };
-    class I_LT_01_AT_F: LT_01_AT_base_F {
-        GVAR(attachPos)[] = {0, -0.29, 0.85};
-    };
-    class I_LT_01_scout_F: LT_01_scout_base_F {
-        GVAR(attachPos)[] = {0, -0.11, 0.8};
-    };
-    class I_LT_01_AA_F: LT_01_AA_base_F {
-        GVAR(attachPos)[] = {0, -0.27, 0.85};
-    };
-    class I_LT_01_cannon_F: LT_01_cannon_base_F {
-        GVAR(attachPos)[] = {0, -0.09, 0.8};
     };
 };
