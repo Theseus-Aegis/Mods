@@ -69,7 +69,9 @@ if (_success) then {
     _texts = _texts apply { [_x, "<br/><br/>", ". "] call CBA_fnc_replace }; // Remove double newlines first
     _texts = _texts apply { [_x, "<br/>", ". "] call CBA_fnc_replace };
     [QGVAR(logResult), [_texts]] call CBA_fnc_serverEvent;
-    [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
+    if (!isServer) {
+        [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
+    }
 } else {
     private _texts = [LSTRING(Range), "<br/>", _name, "<br/><br/>"];
     private _size = 4;
