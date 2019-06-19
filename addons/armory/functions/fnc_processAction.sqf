@@ -44,6 +44,11 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
 };
 
+// Switch scripted optics and accessories (CBA) to base variants
+if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
+    _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
+};
+
 if (GVAR(system) == 0) then {
     // Set box contents
     private _isBackpack = [_selectedItem] call ACEFUNC(backpacks,isBackpack);
