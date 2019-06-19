@@ -3,40 +3,24 @@ branches:
   - master
   - release
 
-matrix:
-  include:
-  - language: python
-    python:
-    - "3.6"
-    before_script:
-    - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
-        pip install pygithub;
-        pip install pygithub3;
-      fi
-    script:
-    - python3 tools/sqf_validator.py
-    - python3 tools/config_style_checker.py
-    - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
-        python3 tools/deploy.py;
-      fi
-    env:
-      global:
-      - secure: eK7XIeQ3F2dPCGML0EzKxQkR8o1ekf0GRyJjMmV0U7ZzLlHBqeJKb3cXiN9HtVau0ePxMqXV/zyyV2x02NDsUejqTZwSwOAxu+1+G9zmUNkEw4icRcB+ct9Z++A+QBnPnt5mZP/TKHCniI3e6Va/dHNvFuSkLXqC9eSYb5LYkd2Guj4Xy0lV5XumbONLRqjDvKZyo4J3fRr4yed+JIn5ZsyjekYE89Xf97Tk+SJJ4/afm2F37FxoVYPnFIGDE4vYTffOcBkssRBZCKBRYM0xRSC6rzCe8RiXgPnXjwM1PWjHyhyphWxYmnzK7bCi8Hl8jhSUZFKPT8VVdV3gk5q+Y6I5X1Cgnwy//nRrvXJqSTFpLqbeXmuIBW3M2iAqgpDVtwGgX/tOoeD0aNzPHKtW3xShyu/yYQ2faCReP9A5UT1sPDd9b2kMMsjqx3LIYp6SvN2h4Lrqlc7iVFgdcPVnMMV/KfJDsobXoSBEp9JAAPvxVOUxr+hfgLLfLDwlAeyEQ7LOVg5CoyF6DQX3MikKOXRugLDWO2TbHzrShiPu8z0niIgk7EaFHfeuuHR1z0oUX3vo/BPmcdNCS1ymm0PvynnKuI2I5Nmu4GwCwyRxG5xgDulgoHMMoRYv0K1J4w8swZgTkgiHcp/40a9IywkGQDyVFaKuoG6Z17zF8vMCLVE=
-    notifications:
-      email:
-        on_success: never
-        on_failure: change
-      slack:
-        secure: YlNSW4zvv1XTDrVBL8b5bWC97u6KBDDmOe81gIZNefmQ5A3y4eUSLKNUrzKWvqDwTSKzytmMfpsv/+urE/mFRAyhVb0t0/BlzdjbyA0z9Qn/mjkMQFomB5M+LPZNtq2sMorGBUiMCBQE2YtEZeLu6/sbfLYN6H4iyUxILefcAVReUi1s8VBBhsit0Wk67RoEGuaIdUnKsqynNoA4NctiVkXXx6MyP0+JCQphbGBBK+HtEkjPuWqKxBYfHbQMvIhhi6dbtCf023Up4j44fNpvASPeC+bsxg3XKUw9wSBGT8DF838gbwxL8jL62MlHIHFHi9rikq/f1j+V+ftWTGBnIJ0FElExYbl2Ck1voSkPzfrU7O654Kv7LXf4mWJe9l5IGP1stf+5m5vDfVlXh8VrAQwxNxJMHsL/dyzxiLHrvTXtblKBaquRjUQNAgbR3D2RJDjMUPb5yuR5yw5QrqKYdpJyUKN5b/uWi0TDATQZ4g3j9LEuY3FhHu42xfj74lFLb5KX1UKRUdFN3lyKi7LynuhtPE8ySBtNYjeUlq/mwMv5o1wwmMHTmrKvnLkXBvlJHOxCaKh/G08tkl3RncyPAuxf/7FK3Zf2PS5z9IWENxtanbBpI0CgcXmmfQkkDpRrbU02VqyLA4fehKWwVaiHYO9RltjWkUsPhd1a5sDerQg=
-        on_success: change
-        on_failure: always
-        on_start: never
-
-  - language: rust
-    before_script:
-    - cargo install --force armake2
-    - make --version
-    - armake2 --version
-    script:
-    - make -j 3
-    cache: cargo
+language: python
+python:
+- "3.6"
+before_script:
+- if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
+    pip install pygithub;
+    pip install pygithub3;
+  fi
+script:
+- python3 tools/sqf_validator.py
+- python3 tools/config_style_checker.py
+- if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
+    python3 tools/deploy.py;
+  fi
+env:
+  global:
+  - secure: eK7XIeQ3F2dPCGML0EzKxQkR8o1ekf0GRyJjMmV0U7ZzLlHBqeJKb3cXiN9HtVau0ePxMqXV/zyyV2x02NDsUejqTZwSwOAxu+1+G9zmUNkEw4icRcB+ct9Z++A+QBnPnt5mZP/TKHCniI3e6Va/dHNvFuSkLXqC9eSYb5LYkd2Guj4Xy0lV5XumbONLRqjDvKZyo4J3fRr4yed+JIn5ZsyjekYE89Xf97Tk+SJJ4/afm2F37FxoVYPnFIGDE4vYTffOcBkssRBZCKBRYM0xRSC6rzCe8RiXgPnXjwM1PWjHyhyphWxYmnzK7bCi8Hl8jhSUZFKPT8VVdV3gk5q+Y6I5X1Cgnwy//nRrvXJqSTFpLqbeXmuIBW3M2iAqgpDVtwGgX/tOoeD0aNzPHKtW3xShyu/yYQ2faCReP9A5UT1sPDd9b2kMMsjqx3LIYp6SvN2h4Lrqlc7iVFgdcPVnMMV/KfJDsobXoSBEp9JAAPvxVOUxr+hfgLLfLDwlAeyEQ7LOVg5CoyF6DQX3MikKOXRugLDWO2TbHzrShiPu8z0niIgk7EaFHfeuuHR1z0oUX3vo/BPmcdNCS1ymm0PvynnKuI2I5Nmu4GwCwyRxG5xgDulgoHMMoRYv0K1J4w8swZgTkgiHcp/40a9IywkGQDyVFaKuoG6Z17zF8vMCLVE=
+notifications:
+  email:
+    on_success: never
+    on_failure: change
