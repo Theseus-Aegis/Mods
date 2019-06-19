@@ -22,20 +22,13 @@ _itemClass = toLower _itemClass;
 {
     private _cfg = configFile >> "CfgWeapons" >> _x;
 
-    private _compatibleItems = ([_x] call CBA_fnc_compatibleItems) apply {toLower _x};
+    private _compatibles = [_x] call CBA_fnc_compatibleItems;
+    _compatibles append ([_x, true] call CBA_fnc_compatibleMagazines);
+    _compatibles = _compatibles apply {toLower _x};
 
-    // Weapon magazines
-    _compatibleItems append ((getArray (_cfg >> "magazines")) apply {toLower _x});
+    TRACE_2("Compatibles",_x,_compatibles);
 
-    // Grenade launcher magazines
-    private _muzzles = (getArray (_cfg >> "muzzles")) apply {toLower _x};
-    {
-        _compatibleItems append ((getArray (_x >> "magazines")) apply {toLower _x});
-    } forEach (configProperties [_cfg, "isClass _x && {(toLower (configName _x)) in _muzzles}", true]);
-
-    TRACE_2("Compatible Items",_x,_compatibleItems);
-
-    if (_itemClass in _compatibleItems) exitWith {
+    if (_itemClass in _compatibles) exitWith {
         true
     };
     false
