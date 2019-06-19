@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Unit <OBJECT>
+ * 1: Unit <OBJECT> (unused)
  *
  * Return Value:
  * Can Stop Radio <BOOL>
@@ -16,6 +16,6 @@
  * Public: No
  */
 
-params ["_vehicle", "_unit"];
+params ["_vehicle", ""];
 
 !isNil {_vehicle getVariable QGVAR(playingRadio)}

@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: The module logic <OBJECT>
- * 1: Synchronized units <ARRAY> (Unused)
+ * 1: Synchronized units <ARRAY> (unused)
  * 2: Activated <BOOL>
  *
  * Return Value:

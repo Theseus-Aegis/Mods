@@ -5,6 +5,11 @@
  *
  * Arguments:
  * 0: Armory Data <ARRAY>
+ *   Entry:
+ *   0: Classname <STRING>
+ *   1: Sub-Category <STRING>
+ *   2: Description <STRING> (unused)
+ *   3: Quantity <NUMBER>
  *
  * Return Value:
  * None
@@ -28,7 +33,7 @@ private _rowNum = 0; // Needed for proper row images and data
 // Fill List
 _armoryData sort true; // Errors when used in combination with forEach
 {
-    _x params ["_className", "_subCategory", "_description", "_quantity"];
+    _x params ["_className", "_subCategory", "", "_quantity"];
 
     // Skip listing this item if there are none of them
     if (parseNumber _quantity > 0) then {
