@@ -31,12 +31,3 @@ matrix:
         on_success: change
         on_failure: always
         on_start: never
-
-  - language: rust
-    before_script:
-    - cargo install --force armake2
-    - make --version
-    - armake2 --version
-    script:
-    - make -j 3
-    cache: cargo
