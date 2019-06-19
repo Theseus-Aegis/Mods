@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Controller <OBJECT>
  * 1: Name <STRING>
- * 2: Targets <ARRAY>
+ * 2: Targets <ARRAY> (unused)
  *
  * Return Value:
  * None
@@ -17,7 +17,7 @@
  * Public: No
  */
 
-params ["_controller", "_name", "_targets"];
+params ["_controller", "_name", ""];
 
 private _duration = _controller getVariable [QGVAR(duration), DURATION_DEFAULT];
 private _targetAmount = _controller getVariable [QGVAR(targetAmount), TARGETAMOUNT_DEFAULT];

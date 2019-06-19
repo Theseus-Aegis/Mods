@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: The module logic <LOGIC>
- * 1: Units <ARRAY>
+ * 1: Units <ARRAY> (unused)
  * 2: Activated <BOOL>
  *
  * Return Value:
@@ -17,7 +17,7 @@
 // Exit on Headless Client
 if (!hasInterface && !isDedicated) exitWith {};
 
-params ["_logic", "_units", "_activated"];
+params ["_logic", "", "_activated"];
 
 if (!_activated) exitWith {};
 if (isNull _logic) exitWith {};

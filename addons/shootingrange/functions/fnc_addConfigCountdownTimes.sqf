@@ -34,7 +34,7 @@ private _actions = [];
             [_name, _controllers, _x, _targets]
         ] call ACEFUNC(interact_menu,createAction),
         [],
-        _controller
+        _controller // IGNORE_PRIVATE_WARNING(_controller)
     ];
 } forEach _countdownTimes;
 

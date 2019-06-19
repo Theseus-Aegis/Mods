@@ -7,14 +7,14 @@
  * Arguments:
  * 0: Target <OBJECT>
  * 1: Shooter <OBJECT>
- * 2: Bullet <OBJECT> (Unused)
- * 3: Impact Position (Position, ASL) <ARRAY>
- * 4: Bullet Velocity (Vector) <ARRAY> (Unused)
+ * 2: Bullet <OBJECT> (unused)
+ * 3: Impact Position (Position, ASL) <ARRAY> (unused)
+ * 4: Bullet Velocity (Vector) <ARRAY> (unused)
  * 5: Impact Selections <ARRAY>
- * 6: Ammo Information <ARRAY> (Unused)
- * 7: Impact Direction (Vector) <ARRAY> (Unused)
- * 8: Impact Radius <NUMBER> (Unused)
- * 9: Impact Surface <STRING> (Unused)
+ * 6: Ammo Information <ARRAY> (unused)
+ * 7: Impact Direction (Vector) <ARRAY> (unused)
+ * 8: Impact Radius <NUMBER> (unused)
+ * 9: Impact Surface <STRING> (unused)
  * 10: Direct Hit <BOOL>
  *
  * Return Value:
@@ -26,7 +26,7 @@
  * Public: No
  */
 
-params ["_target", "_shooter", "", "_impactPosition", "", "_impactSelections", "", "", "", "", "_directHit"];
+params ["_target", "_shooter", "", "", "", "_impactSelections", "", "", "", "", "_directHit"];
 
 // Exit if target in "down" animation
 if (_target call FUNC(isTargetDown)) exitWith {};
