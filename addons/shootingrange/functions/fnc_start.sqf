@@ -118,6 +118,7 @@ if (_mode > 1) then {
     _x params ["_execTime", "_textCountdown"];
 
     [{
+        params ["_controller"];
         !(_controller getVariable [QGVAR(running), false]) // Wait for it to stop running
     }, {
         // Exit instantly if stopped during countdown - prevent double countdown on quick restart
@@ -138,6 +139,7 @@ if (_mode > 1) then {
 
 // Start pop-up handling and final countdown notification
 [{
+    params ["_controller"];
     !(_controller getVariable [QGVAR(running), false]) // Wait for it to stop running
 }, {
     // Exit instantly if stopped during countdown - prevent double countdown on quick restart
