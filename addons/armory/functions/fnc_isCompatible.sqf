@@ -19,17 +19,13 @@ params ["_itemClass"];
 
 _itemClass = toLower _itemClass;
 
+private _compatibles = [];
 {
-    private _cfg = configFile >> "CfgWeapons" >> _x;
-
-    private _compatibles = [_x] call CBA_fnc_compatibleItems;
+    _compatibles append ([_x] call CBA_fnc_compatibleItems);
     _compatibles append ([_x, true] call CBA_fnc_compatibleMagazines);
-    _compatibles = _compatibles apply {toLower _x};
-
-    TRACE_2("Compatibles",_x,_compatibles);
-
-    if (_itemClass in _compatibles) exitWith {
-        true
-    };
-    false
 } forEach (weapons ACE_player);
+
+_compatibles = _compatibles apply {toLower _x};
+TRACE_2("Compatibles",_x,_compatibles);
+
+_itemClass in _compatibles
