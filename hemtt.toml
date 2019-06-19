@@ -1,0 +1,35 @@
+name = "TAC Mods"
+prefix = "tac"
+author = "TAC Mod Team"
+files = [
+    "*.dll",
+    "*.so",
+    "mod.cpp",
+    "README.md",
+    "AUTHORS.txt",
+    "LICENSE",
+    "logo_tac_ca.paa",
+    "logo_tac_small_ca.paa"
+]
+headerexts = [
+    "version={{git \"id 8\"}}"
+]
+modname = "{{prefix}}_mods"
+keyname = "{{prefix}}_{{version}}"
+signame = "{{prefix}}_{{version}}"
+
+releasebuild = [
+    "@zip {{prefix}}_mods_{{version}}"
+]
+
+[scripts.extensions]
+show_output = true
+steps_windows = [
+    "cd extensions\\vcproj && cmake .. -A Win32 && msbuild TAC.sln /m /p:Configuration=RelWithDebInfo",
+    "cd extensions\\vcproj64 && cmake .. -A x64 && msbuild TAC.sln /m /p:Configuration=RelWithDebInfo"
+]
+steps_linux = [
+    "cd extensions/build && cmake .. && make",
+    "cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make",
+    "find ./extensions/build/ ( -name \"*.so\" -o -name \"*.dll\" ) -exec cp {} ./"
+]
