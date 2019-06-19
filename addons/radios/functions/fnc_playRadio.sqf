@@ -21,7 +21,7 @@ params ["_vehicle", "_track"];
 private _volume = _vehicle getVariable [QGVAR(Volume), 1];
 
 if (_volume != 1) then {
-    private _volumeText = ["_quiet", "_loud"] select (_volume == 2);
+    private _volumeText = ["_quiet", "_loud"] select (_volume == 2); // IGNORE_PRIVATE_WARNING(_quiet,_loud)
     _track = [_track, _volumeText] joinString "";
 };
 

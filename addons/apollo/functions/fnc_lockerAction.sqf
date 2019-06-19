@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Player <OBJECT>
  * 1: Type <STRING>
- * 2: Container <OBJECT>
+ * 2: Container <OBJECT> (unused)
  * 3: Item Class Name <STRING>
  * 4: Quantity <STRING>
  *
@@ -19,7 +19,7 @@
  * Public: No
  */
 
-params ["_player", "_type", "_container", "_itemClass", "_quantity"];
+params ["_player", "_type", "", "_itemClass", "_quantity"];
 
 private _playerID = getPlayerUID _player;
 
