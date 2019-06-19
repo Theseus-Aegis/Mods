@@ -24,59 +24,36 @@ The mod is on the same foundation as the ACE3 mod, using its framework, systems,
 Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for their open-source nature and permission to use their systems.
 
 
-### Setup
+## Setup
 
+### Requirements
 
-#### Windows
+- Arma 3
+- Arma 3 Tools (available on Steam)
+- Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
+- [HEMTT](https://github.com/synixebrett/HEMTT) (>=v0.7 - unreleased, use [this build](https://ci.appveyor.com/project/synixebrett/hemtt/builds/25392464/job/3ekpo3xk7x5g2isv/artifacts)) binary placed in project root or globally installed
+  - `hemtt` (Linux) or `hemtt.exe` (Windows) or `setup.exe` (Windows global install)
 
-_Quick build only._
+### Procedure
 
-```
-$ make.bat
-```
+_Replace `hemtt` with `hemtt.exe` on Windows._
 
-##### Extensions
+- Open terminal (Linux) or command line (Windows)
+- Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
+- Run `$ hemtt build --relase` to create a release build (add `-f` to overwrite already built release)
+- Run `$ hemtt clean` to clean build files (add `-f` to clean releases as well)
 
-_Requires Boost library!_
+**Windows Helpers:**
+- Double-click `build.bat` to create a development build
 
-32-bit:
-```
-$ cd extensions/vcproj
-$ cmake .. -G "Visual Studio 15 2017" // Or other 32-bit compiler
-```
+### Extensions
 
-64-bit:
-```
-$ cd extensions/vcproj64
-$ cmake .. -G "Visual Studio 15 2017 Win64" // Or other 64-bit compiler
-```
+_Only Windows extension builds are currently supported!_
 
-Open `TAC.sln`, change configuration to `RelWithDebInfo` and compile.
+**Requirements:**
+- Boost library
+- [Windows] [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (or higher)
+- [Linux] `g++-w64-mingw-i686` for 64-bit
 
-#### Linux
-
-```
-$ make                  # Quick build
-$ make <component>.pbo  # Quick build of specified component
-$ make filepatching     # Development build (file patching)
-$ make release          # Clean, update versions, commit release preparation, build, sign and archive
-$ make push             # Commit and push release preparation
-$ make clean            # Clean build files
-```
-
-##### Extensions
-
-_Requires Boost library!_  
-_Requires `g++-w64-mingw-i686` for 64-bit!_
-
-```
-$ make extensions       # Build 32-bit extensions
-$ make extensions-win64 # Build 64-bit extensions
-```
-
-
-#### [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator) Usage:
-
-```
-github_changelog_generator --user Theseus-Aegis --project Mods --token <insert_token> --no-issues --no-pr-wo-labels --unreleased-only --exclude-labels "can't reproduce",duplicate,question,invalid,wontfix --bug-labels bug,"critical bug" --enhancement-labels enhancement,"feature request" --no-author --no-compare-link
-```
+Extensions builds must be invoked manually, as they do not get rebuild with every release:
+- Run `$ hemtt run extensions`
