@@ -44,10 +44,16 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
     [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
 };
 
+// Switch scripted optics and accessories (CBA) to base variants
+private _selectedItemBox = _selectedItem;
+if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
+    _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
+};
+
 if (GVAR(system) == 0) then {
     // Set box contents
-    private _isBackpack = [_selectedItem] call ACEFUNC(backpacks,isBackpack);
-    private _itemType = ([_selectedItem] call ACEFUNC(common,getItemType)) select 0;
+    private _isBackpack = [_selectedItemBox] call ACEFUNC(backpacks,isBackpack);
+    private _itemType = ([_selectedItemBox] call ACEFUNC(common,getItemType)) select 0;
 
     if (_type == "take") then {
         switch (true) do {
@@ -71,16 +77,16 @@ if (GVAR(system) == 0) then {
     } else {
         switch (true) do {
             case (_isBackpack): {
-                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
+                [_object, _selectedItemBox, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
             };
             case (_itemType == "weapon"): {
-                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
+                [_object, _selectedItemBox, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
             };
             case (_itemType == "magazine"): {
-                [_object, _selectedItem, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
+                [_object, _selectedItemBox, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
             };
             default {
-                [_object, _selectedItem, parseNumber _selectedAmount, true] call CBA_fnc_removeItemCargo; //default "item"
+                [_object, _selectedItemBox, parseNumber _selectedAmount, true] call CBA_fnc_removeItemCargo; //default "item"
             };
         };
 
@@ -93,24 +99,29 @@ if (GVAR(system) == 0) then {
     private _amountChange = [_selectedAmount, format ["-%1", _selectedAmount]] select (_type == "take");
 
     _armoryDataVar = _armoryDataVar apply {
-        if (_x select 1 == _selectedItem) then {
+        if (_x select 1 == _selectedItemBox) then {
             [_x select 0, _x select 1, _x select 2, _x select 3, (_x select 4) + (parseNumber _amountChange)]
         } else {
             _x
         };
     };
+
+#ifdef ALLOW_VANILLA_STASH
+    _armoryDataVar pushBack ["item", _selectedItem, "LLM01", "", 1];
+    _object setVariable [QGVAR(armoryData), _armoryDataVar];
+#endif
 };
 
 if (GVAR(system) == 1) then {
     [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
-    private _newArmoryData = [GVAR(armoryData), _selectedItem, _selectedAmount] call FUNC(subtractData);
+    private _newArmoryData = [GVAR(armoryData), _selectedItemBox, _selectedAmount] call FUNC(subtractData);
     [_newArmoryData] call FUNC(updateData);
 
     if (_type == "stash") then {
         private _subtractOnFullRefresh = ACE_player getVariable [QGVAR(subtractOnFullRefresh), []];
-        _subtractOnFullRefresh pushBack [_selectedItem, _selectedAmount];
+        _subtractOnFullRefresh pushBack [_selectedItemBox, _selectedAmount];
         ACE_player setVariable [QGVAR(lastStashTime), CBA_missionTime];
         TRACE_1("Setting subtract on full refresh",_subtractOnFullRefresh);
     };
