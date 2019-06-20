@@ -5,4 +5,4 @@
     format ["TAC %1", localize LSTRING(DisplayName)],
     [[0, 1], [LSTRING(System_Vanilla), LSTRING(System_Chronos)], 0],
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
