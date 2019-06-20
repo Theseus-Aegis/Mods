@@ -20,17 +20,27 @@ params ["_itemClass"];
 private _cfg = configFile >> "CfgWeapons" >> _itemClass;
 
 // Scripted optic
-if (toLower (getText (_cfg >> "weaponInfoType")) find "cba_scriptedoptic" > -1) exitWith {
-    private _baseClasses = "configName _x == _itemClass" configClasses (configFile >> "CBA_PIPItems");
-    if !(_baseClasses isEqualTo []) then {
+private _isScriptedOpticClass = isClass (_cfg >> "CBA_ScriptedOptic");
+private _isScriptedOpticType = (toLower (getText (_cfg >> "weaponInfoType"))) find "cba_scriptedoptic" > -1;
+if (_isScriptedOpticClass || {_isScriptedOpticType}) exitWith {
+    // PIP
+    private _baseClasses = configProperties [configFile >> "CBA_PIPItems", "getText _x == _itemClass"];
+
+    // Carry Handle
+    {
+        _baseClasses append (configProperties [_x, "getText _x == _itemClass"]);
+    } forEach configProperties [configFile >> "CBA_CarryHandleTypes"];
+
+    TRACE_2("Base classes",_itemClass,_baseClasses);
+    if !(_baseClasses isEqualTo []) exitWith {
         configName (_baseClasses select 0)
     };
     _itemClass
 };
 
 // Accessory
-private _hasNextClass = isText (_cfg > "MRT_SwitchItemNextClass");
-private _hasPrevClass = isText (_cfg > "MRT_SwitchItemPrevClass");
+private _hasNextClass = isText (_cfg >> "MRT_SwitchItemNextClass");
+private _hasPrevClass = isText (_cfg >> "MRT_SwitchItemPrevClass");
 if (_hasNextClass || {_hasPrevClass}) exitWith {
     private _nextClass = _itemClass;
     private _nextCfg = _cfg;
@@ -38,14 +48,15 @@ if (_hasNextClass || {_hasPrevClass}) exitWith {
 
     while {getNumber (_nextCfg >> "scope") < 2} do {
         _nextClass = getText (_nextCfg >> _switchEntry);
-        _nextCfg = configFile >> "CfgWeapons" >> _baseClass;
+        _nextCfg = configFile >> "CfgWeapons" >> _nextClass;
 
-        _hasNextClass = isText (_nextCfg > "MRT_SwitchItemNextClass");
-        _hasPrevClass = isText (_nextCfg > "MRT_SwitchItemPrevClass");
+        _hasNextClass = isText (_nextCfg >> "MRT_SwitchItemNextClass");
+        _hasPrevClass = isText (_nextCfg >> "MRT_SwitchItemPrevClass");
         _switchEntry = ["MRT_SwitchItemPrevClass", "MRT_SwitchItemNextClass"] select _hasNextClass;
     };
 
-    if (getNumber (_nextCfg >> "scope") == 2) then {
+    TRACE_3("Found class",_itemClass,_nextClass,_nextCfg);
+    if (getNumber (_nextCfg >> "scope") == 2) exitWIth {
         _nextClass
     };
     _itemClass
