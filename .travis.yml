@@ -1,7 +1,6 @@
 branches:
   only:
   - master
-  - release
 
 language: python
 python:
