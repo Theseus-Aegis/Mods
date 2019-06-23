@@ -65,5 +65,8 @@ acex_volume_lowerInVehicles = true;
 // ACRE2
 acre_sys_core_terrainLoss = 0.5;
 
+// Achilles
+Achilles_var_moduleTreeSearchPatch = true;
+
 // NIArms
 niarms_magSwitch = false;
