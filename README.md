@@ -40,7 +40,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 
 - Open terminal (Linux) or command line (Windows)
 - Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
-- Run `$ hemtt build --relase` to create a release build (add `-f` to overwrite already built release)
+- Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
 - Run `$ hemtt clean` to clean build files (add `-f` to clean releases as well)
 
 **Windows Helpers:**
