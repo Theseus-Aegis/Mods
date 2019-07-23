@@ -62,9 +62,6 @@ acex_sitting_enable = true;
 acex_volume_enabled = true;
 acex_volume_lowerInVehicles = true;
 
-// ACRE2
-acre_sys_core_terrainLoss = 0.5;
-
 // ZEN
 zen_editor_disableLiveSearch = true;
 
