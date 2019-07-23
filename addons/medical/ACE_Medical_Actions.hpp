@@ -7,7 +7,7 @@ class ace_medical_treatment_actions {
         items[] = {QGVAR(painkillers)};
         icon = QPATHTOF(ui\painkillers_icon_ca.paa);
         condition = "";
-        callbackSuccess = 'call ace_medical_treatment_fnc_medication';
+        callbackSuccess = QUOTE(call ACEFUNC(medical_treatment,medication));
     };
 };
 
