@@ -63,8 +63,9 @@ acex_volume_enabled = true;
 acex_volume_lowerInVehicles = true;
 
 // ZEN
-zen_editor_disableLiveSearch = true;
 zen_common_disableGearAnim = true;
+
+zen_editor_disableLiveSearch = true;
 
 // NIArms
 niarms_magSwitch = false;
