@@ -4,6 +4,8 @@ tac_armory_system = 1;
 tac_insignia_enabled = false;
 
 // ACE3
+ace_advanced_ballistics_enabled = true;
+
 ace_captives_requireSurrender = 0;
 
 ace_common_checkPBOsAction = 2;
