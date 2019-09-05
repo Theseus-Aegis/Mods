@@ -9,12 +9,21 @@ on:
 jobs:
   build:
 
-    runs-on: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - name: Checkout the source code
       uses: actions/checkout@master
 
-    - name: Build
+    - name: Build using HEMTT
       uses: arma-actions/hemtt@master
-      run: hemtt build --release
+      with:
+        command: build --release
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: tac_mods_*.zip
+        path: releases
