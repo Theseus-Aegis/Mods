@@ -20,7 +20,7 @@ jobs:
       with:
         command: build --release
 
-    - uses: actions/upload-artifact@master
-      with:
-        name: tac_mods_*.zip
-        path: releases
+    #- uses: actions/upload-artifact@master
+    #  with:
+    #    name: tac_mods_VERSION.zip
+    #    path: releases/tac_mods_*.zip
