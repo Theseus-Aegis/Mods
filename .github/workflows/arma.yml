@@ -7,20 +7,24 @@ on:
   pull_request:
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the source code
+        uses: actions/checkout@master
+      - name: Validate with SQFLint
+        uses: arma-actions/sqflint@master
 
+  build:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
       uses: actions/checkout@master
-
     - name: Build using HEMTT
       uses: arma-actions/hemtt@master
       with:
         command: build --release
-
     #- uses: actions/upload-artifact@master
     #  with:
-    #    name: tac_mods_VERSION.zip
+    #    name: tac_mods_VERSION
     #    path: releases/tac_mods_*.zip
