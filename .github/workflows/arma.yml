@@ -1,4 +1,4 @@
-name: CI
+name: Arma
 
 on:
   push:
@@ -7,13 +7,26 @@ on:
   pull_request:
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Validate SQF
+      run: python3 tools/sqf_validator.py
+    - name: Validate Config
+      run: python3 tools/config_style_checker.py
+    - name: Check for BOM
+      uses: arma-actions/bom-check@master
+
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the source code
-        uses: actions/checkout@master
-      - name: Validate with SQFLint
-        uses: arma-actions/sqflint@master
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Lint (sqflint)
+      uses: arma-actions/sqflint@master
+      continue-on-error: true # No failure due to many false-positives
 
   build:
     runs-on: ubuntu-latest
@@ -24,7 +37,8 @@ jobs:
       uses: arma-actions/hemtt@master
       with:
         command: build --release
+    # https://github.com/actions/upload-artifact/issues/3#issuecomment-524442814
     #- uses: actions/upload-artifact@master
     #  with:
     #    name: tac_mods_VERSION
-    #    path: releases/tac_mods_*.zip
+    #    path: releases/VERSION
