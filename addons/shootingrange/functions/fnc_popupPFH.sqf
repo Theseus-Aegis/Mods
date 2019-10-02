@@ -39,7 +39,7 @@ private _currentTime = CBA_missionTime;
 
 // Remove when time limit (duration) reached - success
 if (_mode in [1, 2, 5] && {_currentTime >= _timeStart + _duration}) exitWith {
-    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(score), GVAR(maxScore)] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(currentScore), GVAR(maxScore)] call FUNC(popupPFHexit);
 };
 
 // Remove when all targets hit - success
@@ -50,7 +50,7 @@ if ((_mode == 3 && {GVAR(targetNumber) >= _targetAmount}) || {_mode > 3 && {GVAR
     _timeElapsed = format ["%1.%2", _timeElapsed select 0, (_timeElapsed select 1) select [0, TIME_ROUND_CHARS]];
     _timeElapsed = parseNumber _timeElapsed;
 
-    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(score), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
+    [_idPFH, _controller, _controllers, _name, _targets, _targetsInvalid, _mode, true, GVAR(currentScore), GVAR(maxScore), _timeElapsed, _triggers] call FUNC(popupPFHexit);
 };
 
 // Handle automatic target pop-ups in time-based mode
