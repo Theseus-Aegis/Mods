@@ -1,8 +1,8 @@
-#define NO_ACTION_CLASS(NAME, DEFAULT)\
-class NAME: None {\
-    show = QUOTE(call compile getText (configFile >> 'CfgActions' >> 'NAME' >> 'GVAR(setting)'));\
-    GVAR(setting) = QUOTE(profileNamespace getVariable [ARR_2('GVAR(NAME)', DEFAULT)]);\
-}\
+#define NO_ACTION_CLASS(NAME, DEFAULT) \
+class NAME: None { \
+    show = QUOTE(call compile getText (configFile >> 'CfgActions' >> 'NAME' >> 'GVAR(setting)')); \
+    GVAR(setting) = QUOTE(profileNamespace getVariable [ARR_2('GVAR(NAME)', DEFAULT)]); \
+} \
 
 class CfgActions {
     class None;

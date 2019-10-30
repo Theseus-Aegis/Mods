@@ -1,15 +1,15 @@
-#define NO_ACTION_SETTING(NAME, DEFAULT) [\
-    QGVAR(NAME),\
-    "CHECKBOX",\
-    [LSTRING(NAME), LSTRING(NAME##_desc)],\
-    ["TAC %1", localize LSTRING(DisplayName)],\
-    DEFAULT,\
-    2,\
-    {\
-        profileNamespace setVariable [QGVAR(NAME), parseNumber !_this];\
-        saveProfileNamespace;\
-    },\
-    true\
+#define NO_ACTION_SETTING(NAME, DEFAULT) [ \
+    QGVAR(NAME), \
+    "CHECKBOX", \
+    [LSTRING(NAME), LSTRING(NAME##_desc)], \
+    ["TAC %1", localize LSTRING(DisplayName)], \
+    DEFAULT, \
+    2, \
+    { \
+        profileNamespace setVariable [QGVAR(NAME), parseNumber !_this]; \
+        saveProfileNamespace; \
+    }, \
+    true \
 ] call CBA_fnc_addSetting
 
 // Eject
