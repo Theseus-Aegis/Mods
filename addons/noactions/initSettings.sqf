@@ -1,4 +1,5 @@
-#define NO_ACTION_SETTING(NAME, DEFAULT) [ \
+#define NO_ACTION_SETTING(NAME, DEFAULT) \
+[ \
     QGVAR(NAME), \
     "CHECKBOX", \
     [LSTRING(NAME), LSTRING(NAME##_desc)], \
