@@ -2,60 +2,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="No Actions">
-        <Key ID="STR_tac_noactions_settings">
-            <English>TAC NoActions</English>
+        <Key ID="STR_TAC_NoActions_DisplayName">
+            <English>No Actions</English>
         </Key>
         <!-- Eject  -->
-        <Key ID="STR_tac_noactions_eject">
+        <Key ID="STR_TAC_NoActions_Eject">
             <English>Hide Eject action</English>
             <German>Abspringen-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_eject_desc">
+        <Key ID="STR_TAC_NoActions_Eject_Desc">
             <English>Hides the Eject entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Abspringen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>
         <!-- Rearm  -->
-        <Key ID="STR_tac_noactions_rearm">
+        <Key ID="STR_TAC_NoActions_Rearm">
             <English>Hide Rearm action</English>
             <German>Neu bewaffnen-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_rearm_desc">
+        <Key ID="STR_TAC_NoActions_Rearm_Desc">
             <English>Hides the Rearm entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Neu bewaffnen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>
         <!-- Turn In  -->
-        <Key ID="STR_tac_noactions_turnin">
+        <Key ID="STR_TAC_NoActions_TurnIn">
             <English>Hide Turn In action</English>
             <German>Luke schließen-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_turnin_desc">
+        <Key ID="STR_TAC_NoActions_TurnIn_Desc">
             <English>Hides the Turn In entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Luke schließen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>
         <!-- Turn Out  -->
-        <Key ID="STR_tac_noactions_turnout">
+        <Key ID="STR_TAC_NoActions_Turnout">
             <English>Hide Turn Out action</English>
             <German>Luke öffnen-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_turnout_desc">
+        <Key ID="STR_TAC_NoActions_Turnout_Desc">
             <English>Hides the Turn Out entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Luke öffnen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>
         <!-- Lights on  -->
-        <Key ID="STR_tac_noactions_lighton">
+        <Key ID="STR_TAC_NoActions_LightOn">
             <English>Hide Lights on action</English>
             <German>Lichter anschalten-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_lighton_desc">
+        <Key ID="STR_TAC_NoActions_LightOn_Desc">
             <English>Hides the Lights on entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Lichter anschalten-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>
         <!-- Lights off  -->
-        <Key ID="STR_tac_noactions_lightoff">
+        <Key ID="STR_TAC_NoActions_LightOff">
             <English>Hide Lights off action</English>
             <German>Lichter ausschalten-Aktion entfernen</German>
         </Key>
-        <Key ID="STR_tac_noactions_lightoff_desc">
+        <Key ID="STR_TAC_NoActions_LightOff_Desc">
             <English>Hides the Lights off entry from the action menu. Requires a game restart.</English>
             <German>Entfernt die Lichter ausschalten-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
         </Key>

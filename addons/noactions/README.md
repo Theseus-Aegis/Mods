@@ -5,7 +5,6 @@ Allows to declutter scroll menu by disabling actions via CBA settings.
 ### Authors
 
 - [veteran29](https://github.com/veteran29)
-- German translation by [R3vo](https://github.com/R3voA3)
 
 ### Features
 

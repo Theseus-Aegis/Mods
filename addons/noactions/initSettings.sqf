@@ -1,13 +1,8 @@
-
-#define NO_ACTION_SETTING(NAME, DEFAULT)\
-[\
+#define NO_ACTION_SETTING(NAME, DEFAULT) [\
     QGVAR(NAME),\
     "CHECKBOX",\
-    [\
-        LSTRING(NAME),\
-        LSTRING(NAME)\
-    ],\
-    LSTRING(settings),\
+    [LSTRING(NAME), LSTRING(NAME##_desc)],\
+    ["TAC %1", localize LSTRING(DisplayName)],\
     DEFAULT,\
     2,\
     {\
@@ -15,17 +10,17 @@
         saveProfileNamespace;\
     },\
     true\
-] call CBA_settings_fnc_init
+] call CBA_fnc_addSetting
 
 // Eject
-NO_ACTION_SETTING(eject, false);
+NO_ACTION_SETTING(Eject,false);
 // Rearm at containers
-NO_ACTION_SETTING(rearm, false);
+NO_ACTION_SETTING(Rearm,false);
 // Vehicle turn in
-NO_ACTION_SETTING(turnin, false);
+NO_ACTION_SETTING(Turnin,false);
 // Vehicle turn out
-NO_ACTION_SETTING(turnout, false);
+NO_ACTION_SETTING(TurnOut,false);
 // Lighs on
-NO_ACTION_SETTING(lighton, false);
+NO_ACTION_SETTING(LightOn,false);
 // Lights off
-NO_ACTION_SETTING(lightoff, false);
+NO_ACTION_SETTING(LightOff,false);
