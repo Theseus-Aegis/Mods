@@ -1,4 +1,3 @@
-
 #define NO_ACTION_CONIG_ENTRY(NAME, DEFAULT)\
 class NAME: None \
 {\

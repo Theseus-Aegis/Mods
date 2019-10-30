@@ -9,10 +9,10 @@ Allows to declutter scroll menu by disabling actions via CBA settings.
 
 ### Features
 
-- Allows to disable following actions:
+- Allows to disable following vanilla action menu actions:
     - Eject
     - Rearm
-    - TurnIn
-    - TurnOut
-    - LightOn
-    - LightOff
+    - Turn In
+    - Turn Out
+    - Light On
+    - Light Off
