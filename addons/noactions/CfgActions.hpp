@@ -7,7 +7,6 @@ class NAME: None { \
 class CfgActions {
     class None;
 
-    NO_ACTION_CLASS(Eject,1);
     NO_ACTION_CLASS(Rearm,1);
     NO_ACTION_CLASS(TurnIn,1);
     NO_ACTION_CLASS(TurnOut,1);

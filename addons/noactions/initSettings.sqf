@@ -12,8 +12,6 @@
     true \
 ] call CBA_fnc_addSetting
 
-// Eject
-NO_ACTION_SETTING(Eject,false);
 // Rearm at containers
 NO_ACTION_SETTING(Rearm,false);
 // Vehicle turn in
