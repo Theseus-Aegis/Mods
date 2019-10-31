@@ -143,6 +143,9 @@ class CfgVehicles {
     class UAV_06_base_F;
     class UAV_06_antimine_base_F;
     class UAV_06_medical_base_F;
+    class Tractor_01_base_F;
+    class Truck_01_flatbed_base_F;
+    class Truck_01_cargo_base_F;
 
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
         GVAR(attachPos)[] = {0, -0.41, 0.46};
@@ -193,7 +196,7 @@ class CfgVehicles {
         GVAR(attachPos)[] = {0, 0.67, 0.6};
     };
     class B_Truck_01_medical_F: B_Truck_01_transport_F {
-        GVAR(attachPos)[] = {0, -0.22, 0.89};
+        GVAR(attachPos)[] = {0, -0.15, 0.89};
     };
     class O_Truck_02_fuel_F: Truck_02_fuel_base_F {
         GVAR(attachPos)[] = {0, 0.16, 1.06};
@@ -254,6 +257,9 @@ class CfgVehicles {
     };
     class B_Heli_Transport_03_unarmed_F: Heli_Transport_03_unarmed_base_F {
         GVAR(attachPos)[] = {0, 0.06, 2.02};
+    };
+    class O_T_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        GVAR(attachPos)[] = {0, 0.16, 1.06};
     };
     class I_C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
         GVAR(attachPos)[] = {0, -0.41, 0.46};
@@ -327,4 +333,41 @@ class CfgVehicles {
     class C_UAV_06_medical_F: UAV_06_medical_base_F {
         GVAR(attachPos)[] = {0, -0.01, -1.07};
     };
+    class C_Tractor_01_F: Tractor_01_base_F {
+        GVAR(attachPos)[] = {0, -0.16, 0.43};
+    };
+    class B_Truck_01_flatbed_F: Truck_01_flatbed_base_F {
+        GVAR(attachPos)[] = {0, -0.81, 1.38};
+    };
+    class B_T_Truck_01_flatbed_F: Truck_01_flatbed_base_F {
+        GVAR(attachPos)[] = {0, -0.81, 1.38};
+    };
+    class B_Truck_01_cargo_F: Truck_01_cargo_base_F {
+        GVAR(attachPos)[] = {0, -0.8, 0.99};
+    };
+    class B_T_Truck_01_cargo_F: Truck_01_cargo_base_F {
+        GVAR(attachPos)[] = {0, -0.8, 0.99};
+    };
+    class I_E_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        GVAR(attachPos)[] = {0, 0.16, 1.06};
+    };
+    class I_E_Truck_02_MRL_F: Truck_02_MRL_base_F {
+        GVAR(attachPos)[] = {0, -0.03, 1.33};
+    };
+    class I_E_Heli_light_03_dynamicLoadout_F: Heli_light_03_dynamicLoadout_base_F {
+        GVAR(attachPos)[] = {0, -1.17, 0.21};
+    };
+    class I_E_Heli_light_03_unarmed_F: Heli_light_03_unarmed_base_F {
+        GVAR(attachPos)[] = {0, -1.18, 0.54};
+    };
+    class I_E_UAV_01_F: UAV_01_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.17};
+    };
+    class I_E_UAV_06_F: UAV_06_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_E_UAV_06_medical_F: UAV_06_medical_base_F {
+        GVAR(attachPos)[] = {0, -0.01, -1.07};
+    };
 };
+

@@ -90,6 +90,7 @@ class CfgVehicles {
     class CUP_BMP2_Ambul_Base;
     class CUP_BMP2_ZU_base;
     class CUP_FV432_Bulldog_Base;
+    class CUP_B_FV432;
     class CUP_Fishing_Boat_Base;
     class CUP_Ikarus_Base;
     class CUP_TT650_Base;
@@ -551,6 +552,9 @@ class CfgVehicles {
     class CUP_C_DC3_TanoAir_CIV: CUP_DC3_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 1.5};
     };
+    class CUP_C_DC3_ChernAvia_CIV: CUP_DC3_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, 1.5};
+    };
     class CUP_C_C47_CIV: CUP_C47_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 1.5};
     };
@@ -629,7 +633,7 @@ class CfgVehicles {
     class CUP_O_UH1H_armed_TKA: CUP_UH1H_armed_base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
     };
-    class CUP_O_UH1H_gunship_SLA_TKA: CUP_UH1H_gunship_base {
+    class CUP_O_UH1H_gunship_TKA: CUP_UH1H_gunship_base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
     };
     class CUP_O_UH1H_SLA: CUP_UH1H_base {
@@ -678,6 +682,18 @@ class CfgVehicles {
         EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
     };
     class CUP_B_UH1D_gunship_GER_KSK_Des: CUP_UH1H_gunship_base {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
+    };
+    class CUP_I_UH1H_RACS: CUP_UH1H_base {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
+    };
+    class CUP_I_UH1H_Slick_RACS: CUP_UH1H_slick_base {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
+    };
+    class CUP_I_UH1H_Armed_RACS: CUP_UH1H_armed_base {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
+    };
+    class CUP_I_UH1H_gunship_RACS: CUP_UH1H_gunship_base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.91, 1};
     };
     class CUP_B_UH1Y_UNA_USMC: CUP_B_UH1Y_Base {
@@ -835,6 +851,12 @@ class CfgVehicles {
     };
     class CUP_B_FV432_Bulldog_GB_D: CUP_FV432_Bulldog_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.01, -0.38};
+    };
+    class CUP_B_FV432_GB_GPMG: CUP_B_FV432 {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, -0.38};
+    };
+    class CUP_B_FV432_GB_Ambulance: CUP_B_FV432 {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, -0.38};
     };
     class CUP_C_Fishing_Boat_Chernarus: CUP_Fishing_Boat_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 1.78, 3.71};
@@ -1010,6 +1032,9 @@ class CfgVehicles {
     class CUP_O_Mi8_RU: CUP_Mi8_MTV3_base {
         EGVAR(heavylifter,attachPos)[] = {0, -3.4, 2};
     };
+    class CUP_O_Mi8AMT_RU: CUP_Mi8_base {
+        EGVAR(heavylifter,attachPos)[] = {0, -3.39, 2};
+    };
     class CUP_C_Mi17_Civilian_RU: CUP_Mi8_medevac_base {
         EGVAR(heavylifter,attachPos)[] = {0, -2.78, 0.61};
     };
@@ -1035,6 +1060,12 @@ class CfgVehicles {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 6.79};
     };
     class CUP_C_B737_CIV: CUP_Ambient_B737_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, 5.9};
+    };
+    class CUP_B_P8Poseidon_USN: CUP_Ambient_B737_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, 5.9};
+    };
+    class CUP_B_P8Poseidon_RAAF: CUP_Ambient_B737_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 5.9};
     };
     class CUP_C_Cessna_172_CIV: CUP_Ambient_Cessna172_Base {
