@@ -12,9 +12,6 @@ files = [
     "logo_tac_small_ca.paa"
 ]
 
-[header_exts]
-version = "{{git \"id 8\"}}"
-
 modname = "{{prefix}}_mods"
 key_name = "{{prefix}}_{{version}}"
 sig_name = "{{prefix}}_{{version}}"
@@ -22,6 +19,9 @@ sig_name = "{{prefix}}_{{version}}"
 releasebuild = [
     "@zip {{prefix}}_mods_{{version}}"
 ]
+
+[header_exts]
+version = "{{git \"id 8\"}}"
 
 [scripts.extensions]
 show_output = true
