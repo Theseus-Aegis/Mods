@@ -16,15 +16,16 @@
  */
 
 private _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
+_quantity = parseNumber _quantity;
 TRACE_1("Amount of selected item",_quantity);
 
 lbClear DROPDOWNAMOUNT;
 
-for "_x" from 1 to (parseNumber _quantity) do {
+for "_x" from 1 to _quantity do {
     lbAdd [DROPDOWNAMOUNT, str _x];
 };
 
-// Set initial value to 1 (will not fire onLBSelChanged)
-lbSetCurSel [DROPDOWNAMOUNT, 0];
+// Set initial value to max/all (will not fire onLBSelChanged)
+lbSetCurSel [DROPDOWNAMOUNT, _quantity];
 
 ctrlShow [DROPDOWNAMOUNT, true];
