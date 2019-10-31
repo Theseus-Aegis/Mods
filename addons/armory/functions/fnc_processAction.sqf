@@ -45,11 +45,21 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 };
 
 // Switch scripted optics and accessories (CBA) to base variants
+// `_selectedItemBox` is physical item in the box
+// `_selectedItem` is virtual item in Armory database
 private _selectedItemBox = _selectedItem;
+private _keepMagazines = true;
 if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
     _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
+
+    // Clear disposable launcher magazine (passed to CBA_fnc_removeWeaponCargo)
+    private _isDisposableBox = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItemBox);
+    private _isDisposable = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItem);
+    if (_isDisposableBox || {_isDisposable}) then {
+        _keepMagazines = false;
+    };
 };
-TRACE_2("Switch",_selectedItem,_selectedItemBox);
+TRACE_3("Switch",_selectedItem,_selectedItemBox,_keepMagazines);
 
 if (GVAR(system) == 0) then {
     // Set box contents
@@ -81,7 +91,7 @@ if (GVAR(system) == 0) then {
                 [_object, _selectedItemBox, parseNumber _selectedAmount, true] call CBA_fnc_removeBackpackCargo;
             };
             case (_itemType == "weapon"): {
-                [_object, _selectedItemBox, parseNumber _selectedAmount, true] call CBA_fnc_removeWeaponCargo;
+                [_object, _selectedItemBox, parseNumber _selectedAmount, _keepMagazines] call CBA_fnc_removeWeaponCargo;
             };
             case (_itemType == "magazine"): {
                 [_object, _selectedItemBox, parseNumber _selectedAmount] call CBA_fnc_removeMagazineCargo;
@@ -114,8 +124,8 @@ if (GVAR(system) == 0) then {
 };
 
 if (GVAR(system) == 1) then {
-    TRACE_6("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox);
-    [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
+    TRACE_6("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox,_keepMagazines);
+    [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedItemBox, _selectedAmount, _keepMagazines]] call CBA_fnc_serverEvent;
 
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
     private _newArmoryData = [GVAR(armoryData), _selectedItemBox, _selectedAmount] call FUNC(subtractData);

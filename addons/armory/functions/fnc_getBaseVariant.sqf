@@ -62,4 +62,7 @@ if (_hasNextClass || {_hasPrevClass}) exitWith {
     _itemClass
 };
 
+// Disposable launcher
+_itemClass = cba_disposable_LoadedLaunchers getVariable [_itemClass, _itemClass];
+
 _itemClass
