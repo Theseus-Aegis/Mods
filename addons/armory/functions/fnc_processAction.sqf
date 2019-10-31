@@ -49,6 +49,7 @@ private _selectedItemBox = _selectedItem;
 if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
     _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
 };
+TRACE_2("Switch",_selectedItem,_selectedItemBox);
 
 if (GVAR(system) == 0) then {
     // Set box contents
@@ -113,6 +114,7 @@ if (GVAR(system) == 0) then {
 };
 
 if (GVAR(system) == 1) then {
+    TRACE_6("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox);
     [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedAmount]] call CBA_fnc_serverEvent;
 
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)

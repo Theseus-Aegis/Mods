@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Player <OBJECT>
  * 1: Type <STRING>
- * 2: Container <OBJECT> (unused)
+ * 2: Container <OBJECT> (used by Apollo backend for item addition/removal - DO NOT REMOVE)
  * 3: Item Class Name <STRING>
  * 4: Quantity <STRING>
  *
@@ -19,7 +19,8 @@
  * Public: No
  */
 
-params ["_player", "_type", "", "_itemClass", "_quantity"];
+// IGNORE_PRIVATE_WARNING(_container) - DO NOT REMOVE - Used by Apollo backend for item addition/removal
+params ["_player", "_type", "_container", "_itemClass", "_quantity"];
 
 private _playerID = getPlayerUID _player;
 

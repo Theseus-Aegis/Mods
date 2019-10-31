@@ -4,6 +4,8 @@ tac_armory_system = 1;
 tac_insignia_enabled = false;
 
 // ACE3
+ace_advanced_ballistics_enabled = true;
+
 ace_captives_requireSurrender = 0;
 
 ace_common_checkPBOsAction = 2;
@@ -62,8 +64,10 @@ acex_sitting_enable = true;
 acex_volume_enabled = true;
 acex_volume_lowerInVehicles = true;
 
-// ACRE2
-acre_sys_core_terrainLoss = 0.5;
+// ZEN
+zen_common_disableGearAnim = true;
+
+zen_editor_disableLiveSearch = true;
 
 // NIArms
 niarms_magSwitch = false;

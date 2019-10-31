@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/Mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.16.0-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.16.1-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -31,7 +31,7 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 - Arma 3
 - Arma 3 Tools (available on Steam)
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
-- [HEMTT](https://github.com/synixebrett/HEMTT) (>=v0.7 - unreleased, use [this build](https://ci.appveyor.com/project/synixebrett/hemtt/builds/25392464/job/3ekpo3xk7x5g2isv/artifacts)) binary placed in project root or globally installed
+- [HEMTT](https://github.com/synixebrett/HEMTT) (>=v0.7 - unreleased, use [this build](https://github.com/synixebrett/HEMTT/suites/266523430/artifacts/129305)) binary placed in project root or globally installed
   - `hemtt` (Linux) or `hemtt.exe` (Windows) or `setup.exe` (Windows global install)
 
 ### Procedure
@@ -40,8 +40,8 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 
 - Open terminal (Linux) or command line (Windows)
 - Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
-- Run `$ hemtt build --relase` to create a release build (add `-f` to overwrite already built release)
-- Run `$ hemtt clean` to clean build files (add `-f` to clean releases as well)
+- Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
+- Run `$ hemtt clean` to clean build files
 
 **Windows Helpers:**
 - Double-click `build.bat` to create a development build
