@@ -88,7 +88,7 @@ _size = [_size, _size - 0.5] select (_name isEqualTo "");
 
 // Prepare variables
 GVAR(targetNumber) = 0;
-GVAR(score) = 0;
+GVAR(correntScore) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 GVAR(invalidTargetHit) = false;
 
