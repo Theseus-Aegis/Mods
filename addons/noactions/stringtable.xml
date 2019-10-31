@@ -4,15 +4,6 @@
         <Key ID="STR_TAC_NoActions_DisplayName">
             <English>No Actions</English>
         </Key>
-        <!-- Eject  -->
-        <Key ID="STR_TAC_NoActions_Eject">
-            <English>Hide Eject action</English>
-            <German>Abspringen-Aktion entfernen</German>
-        </Key>
-        <Key ID="STR_TAC_NoActions_Eject_Desc">
-            <English>Hides the Eject entry from the action menu. Requires a game restart.</English>
-            <German>Entfernt die Abspringen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
-        </Key>
         <!-- Rearm  -->
         <Key ID="STR_TAC_NoActions_Rearm">
             <English>Hide Rearm action</English>
