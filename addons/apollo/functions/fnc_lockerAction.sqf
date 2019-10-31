@@ -8,7 +8,9 @@
  * 1: Type <STRING>
  * 2: Container <OBJECT> (used by Apollo backend for item addition/removal - DO NOT REMOVE)
  * 3: Item Class Name <STRING>
- * 4: Quantity <STRING>
+ * 4: Box Item ClassName <STRING>
+ * 5: Quantity <STRING>
+ * 6: Keep Magazines <BOOL>
  *
  * Return Value:
  * None
@@ -20,11 +22,11 @@
  */
 
 // IGNORE_PRIVATE_WARNING(_container) - DO NOT REMOVE - Used by Apollo backend for item addition/removal
-params ["_player", "_type", "_container", "_itemClass", "_quantity"];
+params ["_player", "_type", "_container", "_itemClass", "_itemClassBox", "_quantity", "_keepMagazines"];
 
 private _playerID = getPlayerUID _player;
 
-private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _quantity] call FUNC(invokeJavaMethod);
+private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines] call FUNC(invokeJavaMethod);
 
 if (_serverReply == "ready") then {
     // Load packages for execution of commands
