@@ -76,7 +76,7 @@ if (_shooter != _starter) exitWith {
 // Mark target as hit
 _target setVariable [QGVAR(hit), true]; // For trigger popup
 [_controller, "Beep_Target"] call FUNC(playSoundSignal);
-GVAR(score) = GVAR(score) + 1;
+GVAR(currentScore) = GVAR(currentScore) + 1;
 [_target, 1] call FUNC(animateTarget); // Down
 
 // Set next target

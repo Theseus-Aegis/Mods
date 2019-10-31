@@ -62,3 +62,4 @@ symbols/*
 *.pbo
 texHeaders.bin
 *.biprivatekey
+keys/*
