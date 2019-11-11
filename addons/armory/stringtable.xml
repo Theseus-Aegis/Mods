@@ -9,6 +9,7 @@
         <Key ID="STR_TAC_Armory_Description">
             <English>Enable Armroy Locker on this object.</English>
             <French>Active l'armurerie sur cet objet.</French>
+            <German>Waffenkammer-Spind auf diesem Objekt aktivieren</German>
         </Key>
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>

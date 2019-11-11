@@ -161,6 +161,7 @@
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledAdmin">
             <English>Enabled for admin</English>
             <French>Activer pour les administrateurs</French>
+            <German>Aktiviert für Admin</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
             <English>Enabled for everyone</English>
@@ -170,14 +171,17 @@
         <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledSpecific">
             <English>Enabled for specific users and admin</English>
             <French>Activer pour certains utilisateurs et l'administrateur</French>
+            <German>Aktiviert für bestimme Nutzer und Admin</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_TargetDebug">
             <English>Target Debug:</English>
             <French>Cible de debogage:</French>
+            <German>Ziel Debug:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_TargetDebugDesc">
             <English>Checks if Target Debug is enabled.</English>
             <French>Vérifie si la cible de debogage est activée.</French>
+            <German>Anzeigen, ob Zeil Debug aktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Apollo">
             <English>Apollo:</English>
