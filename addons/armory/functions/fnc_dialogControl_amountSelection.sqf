@@ -26,6 +26,6 @@ for "_x" from 1 to _quantity do {
 };
 
 // Set initial value to max/all (will not fire onLBSelChanged)
-lbSetCurSel [DROPDOWNAMOUNT, _quantity];
+lbSetCurSel [DROPDOWNAMOUNT, [1, _quantity] select (GVAR(selectedCategory) == "stash")];
 
 ctrlShow [DROPDOWNAMOUNT, true];
