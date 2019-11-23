@@ -4,15 +4,6 @@
         <Key ID="STR_TAC_NoActions_DisplayName">
             <English>No Actions</English>
         </Key>
-        <!-- Rearm  -->
-        <Key ID="STR_TAC_NoActions_Rearm">
-            <English>Hide Rearm action</English>
-            <German>Neu bewaffnen-Aktion entfernen</German>
-        </Key>
-        <Key ID="STR_TAC_NoActions_Rearm_Desc">
-            <English>Hides the Rearm entry from the action menu. Requires a game restart.</English>
-            <German>Entfernt die Neu bewaffnen-Aktion aus dem Aktionsmenü. Benötigt einen Neustart des Spiels.</German>
-        </Key>
         <!-- Turn In  -->
         <Key ID="STR_TAC_NoActions_TurnIn">
             <English>Hide Turn In action</English>
