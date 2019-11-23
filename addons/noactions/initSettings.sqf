@@ -13,8 +13,6 @@
     true \
 ] call CBA_fnc_addSetting
 
-// Rearm at containers
-NO_ACTION_SETTING(Rearm,true);
 // Vehicle turn in
 NO_ACTION_SETTING(Turnin,false);
 // Vehicle turn out
