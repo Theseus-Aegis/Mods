@@ -2,7 +2,7 @@
 [ \
     QGVAR(NAME), \
     "CHECKBOX", \
-    [LSTRING(NAME), LSTRING(NAME_desc)], \
+    [LSTRING(NAME), LSTRING(DOUBLES(NAME,desc))], \
     format ["TAC %1", localize LSTRING(DisplayName)], \
     DEFAULT, \
     2, \
