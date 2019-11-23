@@ -23,6 +23,7 @@ ace_map_defaultChannel = 1;
 
 ace_medical_statemachine_fatalInjuryCondition = 1; // In Cardiac Arrest (default: 0 - Always)
 ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
+ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
 ace_medical_treatment_locationsBoostTraining = true; // Yes (default: false - No)
 ace_medical_treatment_locationSurgicalKit = 0; // Anywhere (default: 2 - Medical Facilities)
 ace_medical_treatment_woundReopening = true; // Yes (default: false - No)
