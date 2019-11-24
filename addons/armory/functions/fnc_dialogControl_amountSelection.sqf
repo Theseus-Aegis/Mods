@@ -25,7 +25,13 @@ for "_x" from 1 to _quantity do {
     lbAdd [DROPDOWNAMOUNT, str _x];
 };
 
-// Set initial value to max/all (will not fire onLBSelChanged)
-lbSetCurSel [DROPDOWNAMOUNT, [1, _quantity] select (GVAR(selectedCategory) == "stash")];
+// Set initial value to max/all on Stash and 1 on Take (will not fire onLBSelChanged)
+// Using lbAdd string indices (-1)
+if (GVAR(selectedCategory) == "stash") then {
+    lbSetCurSel [DROPDOWNAMOUNT, _quantity - 1];
+} else {
+
+    lbSetCurSel [DROPDOWNAMOUNT, 0];
+};
 
 ctrlShow [DROPDOWNAMOUNT, true];
