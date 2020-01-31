@@ -31,8 +31,8 @@ Huge appreciation and thanks to [ACE3 Team](http://ace3mod.com/team.html) for th
 - Arma 3
 - Arma 3 Tools (available on Steam)
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
-- [HEMTT](https://github.com/synixebrett/HEMTT) (>=v0.7 - unreleased, use [this build](https://github.com/synixebrett/HEMTT/suites/266523430/artifacts/129305)) binary placed in project root or globally installed
-  - `hemtt` (Linux) or `hemtt.exe` (Windows) or `setup.exe` (Windows global install)
+- [HEMTT (0.7.4)](https://github.com/synixebrett/HEMTT/releases/tag/v0.7.4) binary placed in project root ~~or globally installed~~
+  - `hemtt` (Linux) or `hemtt.exe` (Windows) ~~or `setup.exe` (Windows global install)~~
 
 ### Procedure
 
