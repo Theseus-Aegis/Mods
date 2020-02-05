@@ -9,6 +9,7 @@ PREP(dialogControl_main);
 PREP(dialogControl_populateList);
 PREP(dialogControl_takestash);
 PREP(dialogControl);
+PREP(exportLoadout);
 PREP(extractSubCategories);
 PREP(getBaseVariant);
 PREP(getBoxContents);

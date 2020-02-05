@@ -71,6 +71,10 @@
 #define TAKESTASHPIC 3330012
 #define TAKESTASHBTN TAKESTASHPIC + 1
 
+// Export
+#define EXPORTPIC 3330014
+#define EXPORTBTN EXPORTPIC + 1
+
 
 // MACROS
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)

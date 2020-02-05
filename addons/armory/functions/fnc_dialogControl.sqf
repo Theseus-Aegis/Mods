@@ -27,7 +27,11 @@ if (_requestedMenu == "main") exitWith {
     // Show Shared
     {
         ctrlShow [_x, true];
-    } forEach [TITLE, BACKPIC, BACKBTN];
+    } forEach [
+        TITLE,
+        BACKPIC, BACKBTN,
+        EXPORTPIC, EXPORTBTN
+    ];
 
     // Set Title
     ctrlSetText [TITLE, format[QPATHTOF(UI\title_%1.paa), _requestedMenu]];
