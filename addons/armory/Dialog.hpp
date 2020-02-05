@@ -381,5 +381,24 @@ class GVAR(Display) {
             x = BTN_X_C2;
             y = BTN_Y + OFFSET_Y_R6;
         };
+
+        // PHYSICAL
+        class Export_Pic: GVAR(RscPicture) {
+            idc = EXPORTPIC;
+            x = X_PART(30.5);
+            y = Y_PART(3);
+            w = W_PART(2);
+            h = H_PART(2);
+            text = QPATHTOF(UI\btnExport.paa);
+        };
+        class Export_Btn: GVAR(RscButton) {
+            idc = EXPORTBTN;
+            onMouseButtonClick = QUOTE(call FUNC(exportLoadout));
+            x = X_PART(30.5);
+            y = Y_PART(3);
+            w = W_PART(2);
+            h = H_PART(2);
+            tooltip = CSTRING(BtnExportTooltip);
+        };
     };
 };

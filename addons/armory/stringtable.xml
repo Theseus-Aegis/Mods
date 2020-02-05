@@ -136,5 +136,11 @@
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind.</German>
             <French>Montrer seulement les objets compatibles avec les armes équipées.</French>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnExportTooltip">
+            <English>Export loadout to clipboard</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_ExportComplete">
+            <English>Loadout exported to clipboard!</English>
+        </Key>
     </Package>
 </Project>
