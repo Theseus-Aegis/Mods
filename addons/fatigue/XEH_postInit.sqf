@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {};
+
 // Crouch-Walking made harder
 [QGVAR(kneel), {
     params ["_unit"];
