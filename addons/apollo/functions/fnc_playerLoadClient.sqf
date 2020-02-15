@@ -71,8 +71,11 @@ if (_success) then {
     _player setVariable [QGVAR(lastSavedTime), CBA_missionTime, true];
 
     // Save on each inventory change and periodically with a delay between each save
-    ["loadout", FUNC(playerSaveClient)] call CBA_fnc_addPlayerEventHandler;
-    [FUNC(playerSaveClient), [_player, [], true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
+    ["loadout", {
+        params ["_unit"];
+        [_unit] call FUNC(playerSaveClient);
+    }] call CBA_fnc_addPlayerEventHandler;
+    [FUNC(playerSaveClient), [_player, true], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 
     INFO_1("Client %1 successfully.",_loadType);
 } else {
