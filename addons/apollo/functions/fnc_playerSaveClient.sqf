@@ -5,8 +5,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Old Loadout <ARRAY> (unused)
- * 2: Periodic Save <BOOL> (default: false)
+ * 1: Periodic Save <BOOL> (default: false)
  *
  * Return Value:
  * None
