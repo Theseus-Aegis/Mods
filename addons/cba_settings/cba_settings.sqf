@@ -21,6 +21,7 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
+force ace_medical_feedback_bloodVolumeEffectType = 0; // Force default
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
 ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
 ace_medical_statemachine_cardiacArrestTime = 300; // 5 minutes (default: 30 seconds)
