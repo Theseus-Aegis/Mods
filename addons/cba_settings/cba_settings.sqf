@@ -21,7 +21,7 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
-force ace_medical_feedback_bloodVolumeEffectType = 0; // Force default
+ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
 ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
 ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
@@ -59,8 +59,8 @@ acex_headless_log = true;
 
 acex_sitting_enable = true;
 
-acex_volume_enabled = true;
-acex_volume_lowerInVehicles = true;
+acex_volume_enabled = true; // Force client setting
+acex_volume_lowerInVehicles = true; // Force client setting
 
 // ZEN
 zen_common_disableGearAnim = true;
