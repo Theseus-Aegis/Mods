@@ -14,9 +14,12 @@ class ace_medical_treatment_actions {
 class ace_medical_treatment {
     class Medication {
         class GVAR(painkillers) {
-            painReduce = 0.7;
-            timeInSystem = 400;
-            maxDose = 4;
+            painReduce = 0.35;
+            hrIncreaseLow[] = {-5, -10}; // Painkillers are a weaker opoid than Morphine, they also have an adverse effect on heart rate in larger doses.
+            hrIncreaseNormal[] = {-5, -15};
+            hrIncreaseHigh[] = {-5, -17};
+            timeInSystem = 420; // 7 Minutes
+            maxDose = 6;
             inCompatableMedication[] = {};
             viscosityChange = 5;
         };
