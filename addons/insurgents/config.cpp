@@ -13,7 +13,7 @@ class CfgPatches {
         requiredAddons[] = {
             "tac_main"
         };
-        author = "ArmaForces";
+        author = ECSTRING(main,Author);
         authors[] = {"veteran29"};
         VERSION_CONFIG;
     };
