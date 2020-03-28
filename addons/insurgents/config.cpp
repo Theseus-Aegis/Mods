@@ -11,7 +11,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "tac_common"
+            "tac_main"
         };
         author = "ArmaForces";
         authors[] = {"veteran29"};
