@@ -2,8 +2,8 @@
 <Project name="TAC">
     <Package name="Insurgents">
         <Key ID="STR_TAC_Insurgents_DisplayName">
-            <English>ArmaForces - Insurgents</English>
-            <Polish>ArmaForces - Partyzanci</Polish>
+            <English>TAC Insurgents</English>
+            <Polish>TAC Partyzanci</Polish>
         </Key>
         <Key ID="STR_TAC_Insurgents_Insurgent">
             <English>Insurgent (randomized)</English>
