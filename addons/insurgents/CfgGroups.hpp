@@ -10,13 +10,13 @@ class CfgGroups {
                     side = 2;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "CORPORAL";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
@@ -29,25 +29,25 @@ class CfgGroups {
                     side = 2;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
@@ -60,49 +60,49 @@ class CfgGroups {
                     side = 2;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "CORPORAL";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit4 {
-                        position[] = {-10,-10,0};
+                        position[] = {-10, -10, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit5 {
-                        position[] = {15,-15,0};
+                        position[] = {15, -15, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit6 {
-                        position[] = {-15,-15,0};
+                        position[] = {-15, -15, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
                     };
                     class Unit7 {
-                        position[] = {20,-20,0};
+                        position[] = {20, -20, 0};
                         rank = "PRIVATE";
                         side = 2;
                         vehicle = QGVAR(soldier_i);
@@ -122,13 +122,13 @@ class CfgGroups {
                     side = 0;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "CORPORAL";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
@@ -141,25 +141,25 @@ class CfgGroups {
                     side = 0;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
@@ -172,49 +172,49 @@ class CfgGroups {
                     side = 0;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "CORPORAL";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit4 {
-                        position[] = {-10,-10,0};
+                        position[] = {-10, -10, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit5 {
-                        position[] = {15,-15,0};
+                        position[] = {15, -15, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit6 {
-                        position[] = {-15,-15,0};
+                        position[] = {-15, -15, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
                     };
                     class Unit7 {
-                        position[] = {20,-20,0};
+                        position[] = {20, -20, 0};
                         rank = "PRIVATE";
                         side = 0;
                         vehicle = QGVAR(soldier_o);
@@ -234,13 +234,13 @@ class CfgGroups {
                     side = 1;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "CORPORAL";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
@@ -253,25 +253,25 @@ class CfgGroups {
                     side = 1;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
@@ -284,49 +284,49 @@ class CfgGroups {
                     side = 1;
 
                     class Unit0 {
-                        position[] = {0,0,0};
+                        position[] = {0, 0, 0};
                         rank = "SERGEANT";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit1 {
-                        position[] = {5,-5,0};
+                        position[] = {5, -5, 0};
                         rank = "CORPORAL";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit2 {
-                        position[] = {-5,-5,0};
+                        position[] = {-5, -5, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit3 {
-                        position[] = {10,-10,0};
+                        position[] = {10, -10, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit4 {
-                        position[] = {-10,-10,0};
+                        position[] = {-10, -10, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit5 {
-                        position[] = {15,-15,0};
+                        position[] = {15, -15, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit6 {
-                        position[] = {-15,-15,0};
+                        position[] = {-15, -15, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
                     };
                     class Unit7 {
-                        position[] = {20,-20,0};
+                        position[] = {20, -20, 0};
                         rank = "PRIVATE";
                         side = 1;
                         vehicle = QGVAR(soldier_b);
