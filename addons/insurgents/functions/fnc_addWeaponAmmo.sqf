@@ -7,7 +7,7 @@
  * 0: Unit <OBJECT>
  * 1: Weapon <STRING>
  * 2: Primary muzzle ammo count <NUMBER> (default: 6)
- * 3: Additional muzzles ammo count, defaults to 3 <NUMBER>
+ * 3: Additional muzzles ammo count <NUMBER> (default: 3)
  *
  * Return Value:
  * None
