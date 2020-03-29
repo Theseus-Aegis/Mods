@@ -24,7 +24,7 @@ class CfgGroups {
                 };
                 class GVAR(IND_G_F_fireteam) {
                     faction = "IND_G_F";
-                    name = "Insrugent Fire Team";
+                    name = "Insurgent Fire Team";
                     icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
                     side = 2;
 
@@ -136,7 +136,7 @@ class CfgGroups {
                 };
                 class GVAR(OPF_G_F_fireteam) {
                     faction = "OPF_G_F";
-                    name = "Insrugent Fire Team";
+                    name = "Insurgent Fire Team";
                     icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
                     side = 0;
 
@@ -248,7 +248,7 @@ class CfgGroups {
                 };
                 class GVAR(BLU_G_F_fireteam) {
                     faction = "BLU_G_F";
-                    name = "Insrugent Fire Team";
+                    name = "Insurgent Fire Team";
                     icon = "\A3\ui_f\data\map\markers\nato\b_inf.paa";
                     side = 1;
 
