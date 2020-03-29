@@ -21,5 +21,17 @@
             <English>If disabled gear from this configFile class will be not used. Mission defined gear will be not disabled.</English>
             <Polish>Gdy wyłączone sprzęt z klasy z configFile nie będzie używany. Sprzęt zdefiniowany w misji nie zostanie wyłączony.</Polish>
         </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Sentry">
+            <English>Insurgent Sentry</English>
+            <Polish>Czujka Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_FireTeam">
+            <English>Insurgent Fire Team</English>
+            <Polish>Zespół Ogniowy Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Squad">
+            <English>Insurgent Squad</English>
+            <Polish>Drużyna Partyzantów</Polish>
+        </Key>
     </Package>
 </Project>

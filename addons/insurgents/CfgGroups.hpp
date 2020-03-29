@@ -5,7 +5,7 @@ class CfgGroups {
             class Infantry {
                 class GVAR(IND_G_F_sentry) {
                     faction = "IND_G_F";
-                    name = "Insurgent Sentry";
+                    name = CSTRING(Group_Sentry);
                     icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
                     side = 2;
 
@@ -24,7 +24,7 @@ class CfgGroups {
                 };
                 class GVAR(IND_G_F_fireteam) {
                     faction = "IND_G_F";
-                    name = "Insurgent Fire Team";
+                    name = CSTRING(Group_FireTeam);
                     icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
                     side = 2;
 
@@ -54,7 +54,7 @@ class CfgGroups {
                     };
                 };
                 class GVAR(IND_G_F_squad) {
-                    name = "Insurgent Squad";
+                    name = CSTRING(Group_Squad);
                     faction = "IND_G_F";
                     icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
                     side = 2;
@@ -117,7 +117,7 @@ class CfgGroups {
             class Infantry {
                 class GVAR(OPF_G_F_sentry) {
                     faction = "OPF_G_F";
-                    name = "Insurgent Sentry";
+                    name = CSTRING(Group_Sentry);
                     icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
                     side = 0;
 
@@ -136,7 +136,7 @@ class CfgGroups {
                 };
                 class GVAR(OPF_G_F_fireteam) {
                     faction = "OPF_G_F";
-                    name = "Insurgent Fire Team";
+                    name = CSTRING(Group_FireTeam);
                     icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
                     side = 0;
 
@@ -166,7 +166,7 @@ class CfgGroups {
                     };
                 };
                 class GVAR(OPF_G_F_squad) {
-                    name = "Insurgent Squad";
+                    name = CSTRING(Group_Squad);
                     faction = "OPF_G_F";
                     icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
                     side = 0;
@@ -229,7 +229,7 @@ class CfgGroups {
             class Infantry {
                 class GVAR(BLU_G_F_sentry) {
                     faction = "BLU_G_F";
-                    name = "Insurgent Sentry";
+                    name = CSTRING(Group_Sentry);
                     icon = "\A3\ui_f\data\map\markers\nato\b_inf.paa";
                     side = 1;
 
@@ -248,7 +248,7 @@ class CfgGroups {
                 };
                 class GVAR(BLU_G_F_fireteam) {
                     faction = "BLU_G_F";
-                    name = "Insurgent Fire Team";
+                    name = CSTRING(Group_FireTeam);
                     icon = "\A3\ui_f\data\map\markers\nato\b_inf.paa";
                     side = 1;
 
@@ -278,7 +278,7 @@ class CfgGroups {
                     };
                 };
                 class GVAR(BLU_G_F_squad) {
-                    name = "Insurgent Squad";
+                    name = CSTRING(Group_Squad);
                     faction = "BLU_G_F";
                     icon = "\A3\ui_f\data\map\markers\nato\b_inf.paa";
                     side = 1;
