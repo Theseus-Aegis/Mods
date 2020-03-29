@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Insurgents">
+        <Key ID="STR_TAC_Insurgents_DisplayName">
+            <English>TAC Insurgents</English>
+            <Polish>TAC Partyzanci</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Insurgent">
+            <English>Insurgent (randomized)</English>
+            <Polish>Partyzant (losowy)</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Gear">
+            <English>Insurgents Gear</English>
+            <Polish>Sprzęt Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_GearEnabled">
+            <English>Use gear from "%1"</English>
+            <Polish>Używaj sprzętu z "%1"</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_GearEnabled_Description">
+            <English>If disabled gear from this configFile class will be not used. Mission defined gear will be not disabled.</English>
+            <Polish>Gdy wyłączone sprzęt z klasy z configFile nie będzie używany. Sprzęt zdefiniowany w misji nie zostanie wyłączony.</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Sentry">
+            <English>Insurgent Sentry</English>
+            <Polish>Czujka Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_FireTeam">
+            <English>Insurgent Fire Team</English>
+            <Polish>Zespół Ogniowy Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Squad">
+            <English>Insurgent Squad</English>
+            <Polish>Drużyna Partyzantów</Polish>
+        </Key>
+    </Package>
+</Project>
