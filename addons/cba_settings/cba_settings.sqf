@@ -10,7 +10,7 @@ ace_captives_requireSurrender = 0;
 
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
-ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'blastcore_maincore', 'blastcore_smokecs', 'blastcore_sun', 'blastcore_vep', 'blastcoretracers', 'warfxpe']";
+ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'ArmaZeusCache', 'blastcore_maincore', 'blastcore_smokecs', 'blastcore_sun', 'blastcore_vep', 'blastcoretracers', 'warfxpe']";
 
 ace_finger_enabled = true;
 
@@ -21,6 +21,7 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
+ace_medical_damage_fatalDamageSource = 2; // Either Vital Shots or Sum of Trauma (default: 0 - Vital Shots Only)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
 ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
