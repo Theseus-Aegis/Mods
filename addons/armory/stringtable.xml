@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Armory">
         <Key ID="STR_TAC_Armory_DisplayName">
@@ -9,6 +9,7 @@
         <Key ID="STR_TAC_Armory_Description">
             <English>Enable Armroy Locker on this object.</English>
             <French>Active l'armurerie sur cet objet.</French>
+            <German>Waffenkammer-Spind auf diesem Objekt aktivieren</German>
         </Key>
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>
@@ -134,6 +135,12 @@
             <English>Show only items compatible with equipped weapons.</English>
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind.</German>
             <French>Montrer seulement les objets compatibles avec les armes équipées.</French>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnExportTooltip">
+            <English>Export loadout to clipboard</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_ExportComplete">
+            <English>Loadout exported to clipboard!</English>
         </Key>
     </Package>
 </Project>

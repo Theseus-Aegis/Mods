@@ -3,6 +3,7 @@
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define ADD_DEBUG_ITEMS
+// #define ALLOW_VANILLA_STASH // Not nicely handled, for testing purposes only
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
@@ -69,6 +70,10 @@
 // Take/Stash
 #define TAKESTASHPIC 3330012
 #define TAKESTASHBTN TAKESTASHPIC + 1
+
+// Export
+#define EXPORTPIC 3330014
+#define EXPORTBTN EXPORTPIC + 1
 
 
 // MACROS

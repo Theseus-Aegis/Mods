@@ -4,11 +4,13 @@ tac_armory_system = 1;
 tac_insignia_enabled = false;
 
 // ACE3
+ace_advanced_ballistics_enabled = true;
+
 ace_captives_requireSurrender = 0;
 
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
-ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'blastcore_maincore', 'blastcore_smokecs', 'blastcore_sun', 'blastcore_vep', 'blastcoretracers', 'warfxpe']";
+ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'ArmaZeusCache', 'blastcore_maincore', 'blastcore_smokecs', 'blastcore_sun', 'blastcore_vep', 'blastcoretracers', 'warfxpe']";
 
 ace_finger_enabled = true;
 
@@ -19,16 +21,16 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
-ace_medical_enableAdvancedWounds = true;
-ace_medical_healHitPointAfterAdvBandage = true;
-ace_medical_increaseTrainingInLocations = true;
-ace_medical_level = 2;
-ace_medical_medicSetting = 2;
-ace_medical_preventInstaDeath = true;
-ace_medical_useLocation_SurgicalKit = 0;
-ace_medical_useCondition_SurgicalKit = 1;
-
-ace_medical_ai_enabledFor = 1;
+ace_medical_damage_fatalDamageSource = 2; // Either Vital Shots or Sum of Trauma (default: 0 - Vital Shots Only)
+ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
+ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
+ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
+ace_medical_treatment_advancedBandages = 2; // Enabled & Can Reopen (default: 1 - Enabled)
+ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
+ace_medical_treatment_medicIV = 0; // Anyone (default: 1 - Medics)
+ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
+ace_medical_treatment_locationsBoostTraining = true; // Yes (default: false - No)
+ace_medical_treatment_locationSurgicalKit = 0; // Anywhere (default: 2 - Medical Facilities)
 
 ace_mk6mortar_airResistanceEnabled = true;
 ace_mk6mortar_allowComputerRangefinder = false;
@@ -59,11 +61,13 @@ acex_headless_log = true;
 
 acex_sitting_enable = true;
 
-acex_volume_enabled = true;
-acex_volume_lowerInVehicles = true;
+acex_volume_enabled = true; // Force client setting
+acex_volume_lowerInVehicles = true; // Force client setting
 
-// ACRE2
-acre_sys_core_terrainLoss = 0.5;
+// ZEN
+zen_common_disableGearAnim = true;
+
+zen_editor_disableLiveSearch = true;
 
 // NIArms
 niarms_magSwitch = false;

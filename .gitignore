@@ -46,9 +46,11 @@ Temporary Items
 # Project Files
 # =========================
 
-# Release
-@*
-*.zip
+# Releases
+releases/*
+hemtt
+hemtt.exe
+symbols/*
 
 # Swap
 *.swp
@@ -60,3 +62,4 @@ Temporary Items
 *.pbo
 texHeaders.bin
 *.biprivatekey
+keys/*

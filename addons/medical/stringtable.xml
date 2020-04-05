@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Medical">
+        <Key ID="STR_TAC_Medical_DisplayName">
+            <English>Painkillers</English>
+            <German>Schmerzmittel</German>
+        </Key>
+        <Key ID="STR_TAC_Medical_PainkillersSelfActionDisplayName">
+            <English>Take painkillers</English>
+            <German>Schmerzmittel nehmen</German>
+        </Key>
+        <Key ID="STR_TAC_Medical_PainkillersActionDisplayName">
+            <English>Give painkillers</English>
+            <German>Schmerzmittel geben</German>
+        </Key>
+        <Key ID="STR_TAC_Medical_PainkillerProgress">
+            <English>Administering painkillers...</English>
+            <German>Schmerzmittel verwalten</German>
+        </Key>
+    </Package>
+</Project>

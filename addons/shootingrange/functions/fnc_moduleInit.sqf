@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: The module logic <LOGIC>
- * 1: Units <ARRAY>
+ * 1: Units <ARRAY> (unused)
  * 2: Activated <BOOL>
  *
  * Return Value:
@@ -17,7 +17,7 @@
 // Exit on Headless Client
 if (!hasInterface && !isDedicated) exitWith {};
 
-params ["_logic", "_units", "_activated"];
+params ["_logic", "", "_activated"];
 
 if (!_activated) exitWith {};
 if (isNull _logic) exitWith {};
@@ -26,7 +26,8 @@ if (isNull _logic) exitWith {};
 private _name = _logic getVariable "Name";
 
 // Extract target objects and add synchronized objects
-private _targets = [_logic getVariable "Targets", true, true] call ACEFUNC(common,parseList);
+private _targets = [_logic getVariable "Targets", true, false] call ACEFUNC(common,parseList);
+_targets = _targets apply { [missionNamespace getVariable _x, objNull] select (isNil _x) };
 _targets append (synchronizedObjects _logic);
 
 // Extract invalid target objects and manually check nil (use object if exists, otherwise objNull)

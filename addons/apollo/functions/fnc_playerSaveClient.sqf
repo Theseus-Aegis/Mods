@@ -5,8 +5,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Old Loadout <ARRAY> (unused)
- * 2: Periodic Save <BOOL> (default: false)
+ * 1: Periodic Save <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -17,12 +16,12 @@
  * Public: No
  */
 
-params ["_player", "", ["_periodic", false]];
+params ["_player", ["_periodic", false]];
 TRACE_2("Player Save Client",_player,_periodic);
 
 // Call next periodic save
 if (_periodic) then {
-    [FUNC(playerSaveClient), [_player, [], _periodic], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
+    [FUNC(playerSaveClient), [_player, _periodic], SAVE_DELAY_PERIODIC] call CBA_fnc_waitAndExecute;
 };
 
 // Exit if saving has not started yet or delay has not passed yet

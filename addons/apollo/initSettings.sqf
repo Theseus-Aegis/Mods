@@ -4,8 +4,10 @@
     [ACELSTRING(Common,Enabled), LSTRING(EnabledDesc)],
     format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
     false,
+    true,
+    {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enabledPlayers),
@@ -13,8 +15,10 @@
     [LSTRING(EnabledPlayers), LSTRING(EnabledPlayersDesc)],
     format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
     true,
+    true,
+    {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enabledVehicles),
@@ -22,5 +26,7 @@
     [LSTRING(EnabledVehicles), LSTRING(EnabledVehiclesDesc)],
     format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
     true,
+    true,
+    {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;

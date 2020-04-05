@@ -44,14 +44,15 @@ params ["_controller", "_controllers", "_name", "_targets", "_targetsInvalid", [
 private _playerName = [ACE_player, true] call ACEFUNC(common,getName);
 [_controller, "FD_Finish_F"] call FUNC(playSoundSignal);
 
+private _scorePercentage = 0;
+private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
+
 if (_success) then {
     // Check for zero divisor
-    private _scorePercentage = 0;
     if (_maxScore > 0) then {
         _scorePercentage = round (_score / _maxScore * 100);
     };
 
-    private _mode = _controller getVariable [QGVAR(mode), MODE_DEFAULT];
     private _ratingType = [LSTRING(Accuracy), LSTRING(TargetsHit)] select (_mode == 5);
     private _texts = [LSTRING(Range), _name, " ", LSTRING(Finished), "<br/><br/>", _ratingType, ": ", str _scorePercentage, "% (", str _score, "/", str _maxScore, ")"];
     private _size = 4;
@@ -69,7 +70,9 @@ if (_success) then {
     _texts = _texts apply { [_x, "<br/><br/>", ". "] call CBA_fnc_replace }; // Remove double newlines first
     _texts = _texts apply { [_x, "<br/>", ". "] call CBA_fnc_replace };
     [QGVAR(logResult), [_texts]] call CBA_fnc_serverEvent;
-    [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
+    if (!isServer) then {
+        [QGVAR(logResult), [_texts]] call CBA_fnc_localEvent;
+    };
 } else {
     private _texts = [LSTRING(Range), "<br/>", _name, "<br/><br/>"];
     private _size = 4;
@@ -83,3 +86,6 @@ if (_success) then {
     [_texts, _size, true] call FUNC(notifyVicinity);
     GVAR(invalidTargetHit) = nil;
 };
+
+// Public API event
+[QGVAR(stopped), [_controller, _name, _mode, _success, _scorePercentage, _timeElapsed]] call CBA_fnc_localEvent;

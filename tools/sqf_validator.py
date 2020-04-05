@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import fnmatch
 import os
@@ -7,8 +7,12 @@ import ntpath
 import sys
 import argparse
 
+if sys.version_info.major == 2:
+    import codecs
+    open = codecs.open
+
 def validKeyWordAfterCode(content, index):
-    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch"];
+    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch", "param", "select", "apply"];
     for word in keyWords:
         try:
             subWord = content.index(word, index, index+len(word))
@@ -47,19 +51,21 @@ def check_sqf_syntax(filepath):
         inStringType = '';
 
         lastIsCurlyBrace = False
-        checkForSemiColumn = False
+        checkForSemiColon = False
+        onlyWhitespace = True
 
         # Extra information so we know what line we find errors at
-        lineNumber = 0
+        lineNumber = 1
 
         indexOfCharacter = 0
         # Parse all characters in the content of this file to search for potential errors
         for c in content:
             if (lastIsCurlyBrace):
                 lastIsCurlyBrace = False
-                checkForSemiColumn = True
+                checkForSemiColon = True
 
             if c == '\n': # Keeping track of our line numbers
+                onlyWhitespace = True # reset so we can see if # is for a preprocessor command
                 lineNumber += 1 # so we can print accurate line number information when we detect a possible error
             if (isInString): # while we are in a string, we can ignore everything else, except the end of the string
                 if (c == inStringType):
@@ -83,7 +89,7 @@ def check_sqf_syntax(filepath):
                         if (c == '"' or c == "'"):
                             isInString = True
                             inStringType = c
-                        elif (c == '#'):
+                        elif (c == '#' and onlyWhitespace):
                             ignoreTillEndOfLine = True
                         elif (c == '/'):
                             checkIfInComment = True
@@ -109,12 +115,18 @@ def check_sqf_syntax(filepath):
                                 print("ERROR: Possible missing curly brace '}}' detected at {0} Line number: {1}".format(filepath,lineNumber))
                                 bad_count_file += 1
                             brackets_list.append('}')
+                        elif (c== '\t'):
+                            print("ERROR: Tab detected at {0} Line number: {1}".format(filepath,lineNumber))
+                            bad_count_file += 1
 
-                        if (checkForSemiColumn):
+                        if (c not in [' ', '\t', '\n']):
+                            onlyWhitespace = False
+
+                        if (checkForSemiColon):
                             if (c not in [' ', '\t', '\n', '/']): # keep reading until no white space or comments
-                                checkForSemiColumn = False
+                                checkForSemiColon = False
                                 if (c not in [']', ')', '}', ';', ',', '&', '!', '|', '='] and not validKeyWordAfterCode(content, indexOfCharacter)): # , 'f', 'd', 'c', 'e', 'a', 'n', 'i']):
-                                    print("ERROR: Possible missing semi-column ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
+                                    print("ERROR: Possible missing semicolon ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
                                     bad_count_file += 1
 
             else: # Look for the end of our comment block
@@ -140,7 +152,7 @@ def check_sqf_syntax(filepath):
 
 def main():
 
-    print("Validating SQF (~ ACE3 3e4906f)")
+    print("Validating SQF")
 
     sqf_list = []
     bad_count = 0

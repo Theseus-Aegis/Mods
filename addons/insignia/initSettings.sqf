@@ -6,4 +6,4 @@
     true,
     true,
     {[ACE_player] call FUNC(setInsignia)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;

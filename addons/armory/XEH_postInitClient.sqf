@@ -17,8 +17,8 @@ if (!hasInterface) exitWith {};
         CBA_missionTime > (_player getVariable [QGVAR(lastStashTime), 0]) + 1
     }, {
         params ["_player"];
-        // Only update if still open
-        if (!isNull (_player getVariable [QGVAR(object), objNull])) then {
+        // Only update if still open and in "Stash" screen
+        if (!isNull (_player getVariable [QGVAR(object), objNull]) && {GVAR(selectedCategory) == "stash"}) then {
             TRACE_1("Stash force update",_player);
             private _boxContents = call FUNC(getBoxContents);
 

@@ -88,7 +88,7 @@ _size = [_size, _size - 0.5] select (_name isEqualTo "");
 
 // Prepare variables
 GVAR(targetNumber) = 0;
-GVAR(score) = 0;
+GVAR(correntScore) = 0;
 GVAR(maxScore) = [0, count _targets] select (_mode == 5);
 GVAR(invalidTargetHit) = false;
 
@@ -118,25 +118,34 @@ if (_mode > 1) then {
     _x params ["_execTime", "_textCountdown"];
 
     [{
+        params ["_controller"];
+        !(_controller getVariable [QGVAR(running), false]) // Wait for it to stop running
+    }, {
+        // Exit instantly if stopped during countdown - prevent double countdown on quick restart
+    }, [_controller, _textCountdown], _execTime, {
+        // Run on timeout
         params ["_controller", "_textCountdown"];
-
-        // Exit if not running (eg. stopped)
-        if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
         // Countdown timer notification
         [_textCountdown] call ACEFUNC(common,displayTextStructured);
         [_controller, "FD_Timer_F"] call FUNC(playSoundSignal);
-
-    }, [_controller, _textCountdown], _execTime] call CBA_fnc_waitAndExecute;
-
-} forEach [ [_countdownTime - 5, localize LSTRING(GetReady)], [_countDownTime - 3, "3"], [_countdownTime - 2, "2"], [_countdownTime - 1, "1"] ];
+    }] call CBA_fnc_waitUntilAndExecute;
+} forEach [
+    [_countdownTime - 5, localize LSTRING(GetReady)],
+    [_countDownTime - 3, "3"],
+    [_countdownTime - 2, "2"],
+    [_countdownTime - 1, "1"]
+];
 
 // Start pop-up handling and final countdown notification
 [{
+    params ["_controller"];
+    !(_controller getVariable [QGVAR(running), false]) // Wait for it to stop running
+}, {
+    // Exit instantly if stopped during countdown - prevent double countdown on quick restart
+}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime, {
+    // Run on timeout
     params ["_controller", "_pauseDuration", "_duration", "_targetAmount", "_targets", "_targetsInvalid", "_controller", "_controllers", "_name", "_mode", "_triggers"];
-
-    // Exit if not running (eg. stopped)
-    if !(_controller getVariable [QGVAR(running), false]) exitWith {};
 
     // Use targets set by API on runtime if they exist
     private _targetsRuntime = (_targets select 0) getVariable [QGVAR(targetsRuntime), []];
@@ -167,5 +176,4 @@ if (_mode > 1) then {
 
     // Start PFH
     [FUNC(popupPFH), 0, [CBA_missionTime, _duration, _pauseDuration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers]] call CBA_fnc_addPerFrameHandler;
-
-}, [_controller, _pauseDuration, _duration, _targetAmount, _targets, _targetsInvalid, _controller, _controllers, _name, _mode, _triggers], _countdownTime] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_waitUntilAndExecute;
