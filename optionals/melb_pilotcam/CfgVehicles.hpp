@@ -6,8 +6,17 @@
 };*/
 
 class CfgVehicles {
-    class Helicopter_Base_H;
+    class Helicopter_Base_F;
+    class Helicopter_Base_H: Helicopter_Base_F {
+        class Turrets;
+    };
     class MELB_base: Helicopter_Base_H {
+        class Turrets: Turrets {
+            class CopilotTurret;
+        };
+
+        memoryPointDriverOptics = "commanderview";
+
         class pilotCamera {
             class OpticsIn {
                 class Wide {
@@ -68,10 +77,33 @@ class CfgVehicles {
             pilotOpticsShowCursor = 1;
             controllable = 1;
         };
-        memoryPointDriverOptics = "commanderview";
     };
 
     class MELB_AH6M: MELB_base {
         weapons[] += {"Laserdesignator_MELB"};
+        magazines[] += {"Laserbatteries"};
+
+        class Turrets: Turrets {
+            class CopilotTurret: CopilotTurret {
+                weapons[] = {"LWIRCM_MELB"};
+                magazines[] = {
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB",
+                    "LWIRCM_Magazine_MELB"
+                };
+            };
+        };
     };
 };
