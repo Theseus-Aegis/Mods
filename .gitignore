@@ -51,6 +51,7 @@ releases/*
 hemtt
 hemtt.exe
 symbols/*
+.hemtt/local
 
 # Swap
 *.swp
