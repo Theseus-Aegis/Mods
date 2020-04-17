@@ -1,4 +1,4 @@
 #define MAJOR 1
-#define MINOR 18
-#define PATCHLVL 3
-#define BUILD 47
+#define MINOR 19
+#define PATCHLVL 0
+#define BUILD 48
