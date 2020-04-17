@@ -14,7 +14,7 @@ files = [
 
 modname = "{{prefix}}_mods"
 key_name = "{{prefix}}_{{version}}"
-sig_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}"
 
 releasebuild = [
     "@zip {{prefix}}_mods_{{version}}"
