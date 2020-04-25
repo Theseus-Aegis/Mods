@@ -42,6 +42,10 @@ private _replaceRadioAcre = {
 };
 if !((_loadout select 3) isEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 3) select 1); // Uniform items
+    // Add earplugs to uniform if has them plugged in
+    if (_player call ACEFUNC(hearing,hasEarPlugsIn)) then {
+        ((_loadout select 3) select 1) append ["ACE_EarPlugs", 1];
+    };
 };
 if !((_loadout select 4) isEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 4) select 1); // Vest items
