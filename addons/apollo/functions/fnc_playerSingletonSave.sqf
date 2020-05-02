@@ -6,21 +6,21 @@
  * Arguments:
  * 0: Player <OBJECT>
  * 1: Player UID <STRING>
- * 2: Type ("save" or "validate") <STRING>
+ * 2: Player Name <STRING>
+ * 3: Type ("save" or "validate") <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [player, "36182159512951925", "save", "loaded"] call tac_apollo_fnc_playerSingletonSave
+ * [player, "36182159512951925", "Banana", "save"] call tac_apollo_fnc_playerSingletonSave
  *
  * Public: No
  */
 
-params ["_player", "_uid", "_type"];
+params ["_player", "_uid", "_name", "_type"];
 
 // Base
-private _name = name _player;
 private _playerPos = getPosASL _player;
 private _playerDir = getDir _player;
 
