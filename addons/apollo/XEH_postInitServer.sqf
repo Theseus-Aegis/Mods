@@ -21,7 +21,7 @@ if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
         params ["_player", "_type"];
-        [_player, getPlayerUID _player, _type] call FUNC(playerSingletonSave);
+        [_player, getPlayerUID _player, profileName, _type] call FUNC(playerSingletonSave);
     }] call CBA_fnc_addEventHandler;
 
     // Player died
