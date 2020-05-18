@@ -52,9 +52,6 @@ class CfgWeapons {
     HEARING(CUP_H_OpsCore_Spray_US_SF);
     HEARING(CUP_H_OpsCore_Tan);
     HEARING(CUP_H_OpsCore_Tan_SF);
-    HEARING(CUP_H_PMC_Beanie_Headphones_Black);
-    HEARING(CUP_H_PMC_Beanie_Headphones_Khaki);
-    HEARING(CUP_H_PMC_Beanie_Headphones_Winter);
     HEARING(CUP_H_PMC_Cap_Back_EP_Grey);
     HEARING(CUP_H_PMC_Cap_Back_EP_Tan);
     HEARING(CUP_H_PMC_Cap_EP_Grey);
