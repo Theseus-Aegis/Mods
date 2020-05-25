@@ -36,7 +36,7 @@ if (_player != player || {isNull _player} || {!alive _player}) exitWith {
     TRACE_1("Save - Not Saving",CBA_missionTime);
 };
 
-[QGVAR(savePlayer), [_player, "save"]] call CBA_fnc_serverEvent;
+[QGVAR(savePlayer), [_player, profileName, "save"]] call CBA_fnc_serverEvent;
 TRACE_1("Save - Saving Done",_player);
 
 // Mark last saved time
