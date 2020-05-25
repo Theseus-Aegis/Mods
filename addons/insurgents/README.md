@@ -17,7 +17,7 @@ Additional gear pools can be added in mission `description.ext`, mission provide
 Example:
 ```cpp
 // description.ext
-class tac_insurgents_gear 
+class tac_insurgents_gear {
     class Tyrones_Cool_Config {
         headgear[] = {
             "CUP_H_TKI_Lungee_Open_01",
