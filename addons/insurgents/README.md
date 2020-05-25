@@ -32,7 +32,7 @@ class tac_insurgents_gear {
             "CUP_O_TKI_Khet_Partug_04",
             "CUP_O_TKI_Khet_Partug_02",
             "CUP_O_TKI_Khet_Partug_01",
-            "CUP_O_TKI_Khet_Partug_07",
+            "CUP_O_TKI_Khet_Partug_07"
         };
         vests[] = {
             "CUP_V_OI_TKI_Jacket1_04",
