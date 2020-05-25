@@ -62,7 +62,7 @@ if (_success) then {
     };
 
     // Validate
-    [QGVAR(savePlayer), [_player, "validate"]] call CBA_fnc_serverEvent;
+    [QGVAR(savePlayer), [_player, profileName, "validate"]] call CBA_fnc_serverEvent;
 
     // Has to be executed where unit is local
     _player allowDamage true;

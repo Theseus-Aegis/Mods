@@ -20,7 +20,7 @@ if (GVAR(enabledVehicles)) then {
 if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
-        params ["_player", "_type", "_name"];
+        params ["_player", "_name", "_type"];
         [_player, getPlayerUID _player, _name, _type] call FUNC(playerSingletonSave);
     }] call CBA_fnc_addEventHandler;
 
