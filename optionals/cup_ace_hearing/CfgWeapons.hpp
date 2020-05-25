@@ -13,7 +13,6 @@
 class CfgWeapons {
     class ItemCore;
     class CUP_H_PMC_Beanie_Khaki;
-    class CUP_H_PMC_Beanie_Headphones_Khaki;
 
     HEARING(CUP_H_BAF_DDPM_Mk6_CREW_PRR);
     HEARING(CUP_H_BAF_DPM_Mk6_CREW_PRR);
@@ -60,8 +59,8 @@ class CfgWeapons {
     HEARING(CUP_H_OpsCore_Spray_US_SF);
     HEARING(CUP_H_OpsCore_Tan);
     HEARING(CUP_H_OpsCore_Tan_SF);
-    HEARING_PARENT(CUP_H_PMC_Beanie_Headphones_Black,CUP_H_PMC_Beanie_Headphones_Khaki);
     HEARING_PARENT(CUP_H_PMC_Beanie_Headphones_Khaki,CUP_H_PMC_Beanie_Khaki);
+    HEARING_PARENT(CUP_H_PMC_Beanie_Headphones_Black,CUP_H_PMC_Beanie_Headphones_Khaki);
     HEARING_PARENT(CUP_H_PMC_Beanie_Headphones_Winter,CUP_H_PMC_Beanie_Headphones_Khaki);
     HEARING(CUP_H_PMC_Cap_Back_EP_Grey);
     HEARING(CUP_H_PMC_Cap_Back_EP_Tan);
