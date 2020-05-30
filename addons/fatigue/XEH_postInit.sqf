@@ -11,7 +11,7 @@ if (!hasInterface) exitWith {};
     private _animPos = _animName select [5, 3];
 
     // Increase anim duty if crouch-walking
-    if (_animType in ["idl", "mov", "adj"] && _animPos == "knl") then {
+    if (_animType in ["idl", "mov", "adj"] && _animPos == "knl") exitWith {
         2 // default crouch-walking is 1.5 -> 1.5 * 2 = 3 (final duty)
     };
 
