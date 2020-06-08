@@ -15,6 +15,7 @@ PREP(getBaseVariant);
 PREP(getBoxContents);
 PREP(getDataVanilla);
 PREP(getDataChronos);
+PREP(importLoadout);
 PREP(init);
 PREP(isCompatible);
 PREP(openArmory);
