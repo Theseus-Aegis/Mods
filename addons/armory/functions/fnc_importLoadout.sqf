@@ -185,10 +185,10 @@ private _allItemsAvailable = true;
 } forEach _sortedLoadoutItems;
 
 if (_allItemsAvailable isEqualTo true) then {
-	{
-		_x params ["_item", "_amount"];
+    {
+        _x params ["_item", "_amount"];
 
-		[player, "remove", _object, _item, _item, _amount] call tac_apollo_fnc_lockerAction;
-	} forEach _itemsToExport;
+        [player, "remove", _object, _item, _item, _amount] call tac_apollo_fnc_lockerAction;
+    } forEach _itemsToExport;
     ["Successfully put loadout in box!"] call CBA_fnc_notify;
 };
