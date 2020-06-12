@@ -386,7 +386,7 @@ class GVAR(Display) {
         class Export_Pic: GVAR(RscPicture) {
             idc = EXPORTPIC;
             x = X_PART(30.5);
-            y = Y_PART(3);
+            y = Y_PART(2);
             w = W_PART(2);
             h = H_PART(2);
             text = QPATHTOF(UI\btnExport.paa);
@@ -395,7 +395,7 @@ class GVAR(Display) {
             idc = EXPORTBTN;
             onMouseButtonClick = QUOTE(call FUNC(exportLoadout));
             x = X_PART(30.5);
-            y = Y_PART(3);
+            y = Y_PART(2);
             w = W_PART(2);
             h = H_PART(2);
             tooltip = CSTRING(BtnExportTooltip);
@@ -403,7 +403,7 @@ class GVAR(Display) {
         class Import_Pic: GVAR(RscPicture) {
             idc = IMPORTPIC;
             x = X_PART(30.5);
-            y = Y_PART(6);
+            y = Y_PART(4);
             w = W_PART(2);
             h = H_PART(2);
             text = QPATHTOF(UI\btnImport.paa);
@@ -412,7 +412,7 @@ class GVAR(Display) {
             idc = IMPORTBTN;
             onMouseButtonClick = QUOTE(call FUNC(importLoadout));
             x = X_PART(30.5);
-            y = Y_PART(6);
+            y = Y_PART(4);
             w = W_PART(2);
             h = H_PART(2);
             tooltip = CSTRING(BtnImportTooltip);

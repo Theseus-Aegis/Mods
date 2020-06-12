@@ -136,6 +136,8 @@ if (count _data == 10) then {
             };
         };
     };
+} else {
+    ["Failed to get loadout, invalid input"] call CBA_fnc_notify;
 };
 
 // Final array of items in the unitLoadout provided (["item","item"])
@@ -188,7 +190,7 @@ if (_allItemsAvailable isEqualTo true) then {
     {
         _x params ["_item", "_amount"];
 
-        [player, "remove", _object, _item, _item, _amount] call tac_apollo_fnc_lockerAction;
+        // [player, "remove", _object, _item, _item, _amount] call tac_apollo_fnc_lockerAction;
     } forEach _itemsToExport;
     ["Successfully put loadout in box!"] call CBA_fnc_notify;
 };
