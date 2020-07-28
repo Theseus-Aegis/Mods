@@ -65,15 +65,15 @@ acex_volume_enabled = true; // Force client setting
 acex_volume_lowerInVehicles = true; // Force client setting
 
 // GRAD Trenches
-force grad_trenches_functions_allowLongEnvelope = false;
-force grad_trenches_functions_allowSmallEnvelope = false;
-force grad_trenches_functions_allowVehicleEnvelope = false;
-force grad_trenches_functions_allowCamouflage = false;
+grad_trenches_functions_allowLongEnvelope = false;
+grad_trenches_functions_allowSmallEnvelope = false;
+grad_trenches_functions_allowVehicleEnvelope = false;
+grad_trenches_functions_allowCamouflage = false;
 
-force grad_trenches_functions_buildFatigueFactor = 0.2;
-force grad_trenches_functions_shortEnvelopeDigTime = 60;
-force grad_trenches_functions_bigEnvelopeDigTime = 180;
-force grad_trenches_functions_giantEnvelopeDigTime = 300;
+grad_trenches_functions_buildFatigueFactor = 0.2;
+grad_trenches_functions_shortEnvelopeDigTime = 60;
+grad_trenches_functions_bigEnvelopeDigTime = 180;
+grad_trenches_functions_giantEnvelopeDigTime = 300;
 
 // ZEN
 zen_common_disableGearAnim = true;
