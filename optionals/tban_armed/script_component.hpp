@@ -18,13 +18,13 @@
 
 
 // += doesn't work correctly with inheritance
+#define ITEMS_2(var) QUOTE(var), QUOTE(var)
+#define ITEMS_3(var) QUOTE(var), QUOTE(var), QUOTE(var)
+#define ITEMS_4(var) QUOTE(var), QUOTE(var), QUOTE(var), QUOTE(var)
+#define ITEMS_5(var) QUOTE(var), QUOTE(var), QUOTE(var), QUOTE(var), QUOTE(var)
+
 #define MOD_WEAPONS "Throw", "Put"
 #define MOD_MAGAZINES ITEMS_2(HandGrenade)
-
-#define ITEMS_2(item) item, item
-#define ITEMS_3(item) item, item, item
-#define ITEMS_4(item) item, item, item, item
-#define ITEMS_5(item) item, item, item, item, item
 
 #define MACRO_VEHICLE_TBAN_ARMED \
     scope = 2; \
