@@ -16,7 +16,7 @@ class CfgVehicles {
         author = ECSTRING(main,Author);
         hiddenSelections[] = {"Camo"};
         hiddenSelectionsTextures[] = {
-            QPATHTOF(data\tacs_locker_co.paa)
+            QPATHTOF(data\tac_locker_co.paa)
         };
         displayName = CSTRING(Locker);
         ACEGVAR(cargo,canLoad) = 0;
