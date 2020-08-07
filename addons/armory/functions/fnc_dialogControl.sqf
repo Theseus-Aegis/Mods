@@ -30,7 +30,8 @@ if (_requestedMenu == "main") exitWith {
     } forEach [
         TITLE,
         BACKPIC, BACKBTN,
-        EXPORTPIC, EXPORTBTN
+        EXPORTPIC, EXPORTBTN,
+        IMPORTPIC, IMPORTBTN
     ];
 
     // Set Title

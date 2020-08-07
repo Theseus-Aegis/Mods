@@ -75,6 +75,9 @@
 #define EXPORTPIC 3330014
 #define EXPORTBTN EXPORTPIC + 1
 
+// Import
+#define IMPORTPIC 3330016
+#define IMPORTBTN IMPORTPIC + 1
 
 // MACROS
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)

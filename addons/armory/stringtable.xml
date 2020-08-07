@@ -142,5 +142,8 @@
         <Key ID="STR_TAC_Armory_ExportComplete">
             <English>Loadout exported to clipboard!</English>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnImportTooltip">
+            <English>Import loadout from clipboard</English>
+        </Key>
     </Package>
 </Project>
