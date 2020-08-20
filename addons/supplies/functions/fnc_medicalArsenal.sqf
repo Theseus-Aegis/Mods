@@ -17,6 +17,8 @@
 
 params ["_object"];
 
+if (local _object) exitWith {};
+
 private _medicalItems = [
     "ACE_packingBandage",
     "ACE_elasticBandage",
@@ -41,6 +43,4 @@ private _medicalItems = [
     "ACE_quikclot"
 ];
 
-if (local _object) then {
-    [_object, _medicalItems, true] call ace_arsenal_fnc_initBox;
-};
+[_object, _medicalItems, true] call ace_arsenal_fnc_initBox;
