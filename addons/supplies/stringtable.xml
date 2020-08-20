@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
-    <Package name="Crates">
+    <Package name="Supplies">
         <Key ID="STR_TAC_Crates_Supply_Launchers_Name">
             <English>[TAC] Launcher Supplies</English>
         </Key>

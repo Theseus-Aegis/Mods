@@ -1,6 +1,6 @@
 class CfgVehicles {
     class Box_NATO_WpsLaunch_F;
-    class Land_PlasticCase_01_large_gray_F;
+    class Box_AAF_Uniforms_F;
 
     class tac_Supply_Launchers: Box_NATO_WpsLaunch_F {
         author = "Tyrone";
@@ -37,7 +37,7 @@ class CfgVehicles {
         class TransportBackpacks {};
     };
 
-    class tac_Supply_Engineer: Land_PlasticCase_01_large_gray_F {
+    class tac_Supply_Engineer: Box_AAF_Uniforms_F {
         author = "Tyrone";
         displayName = CSTRING(Supply_Engineer_Name);
         EDITOR_CATEGORY
@@ -45,8 +45,13 @@ class CfgVehicles {
         scopeCurator = 2;
         maximumLoad = 3000;
 //        editorPreview = QPATHTOF(ui\supply_engineer_ca.jpg); Waiting for texture
-        hiddenSelectionsTextures[] = {
-            "a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa" // Placeholder for testing.
+        hiddenSelections[] = {
+            "camo",
+            "camo_signs"
+        };
+        hiddenSelectionsTextures[] = { // Placeholder for Textures
+            "\A3\Supplies_F_Exp\Ammoboxes\Data\uniforms_box_indep_co.paa",
+            "\A3\Supplies_F_Exp\Ammoboxes\Data\equipment_box_indep_ca.paa"
         };
 
         class TransportMagazines {
@@ -66,8 +71,13 @@ class CfgVehicles {
         displayName = CSTRING(Supply_Medic_Name);
         EDITOR_CATEGORY
 //        editorPreview = QPATHTOF(ui\supply_medic_ca.jpg); Waiting for texture
-        hiddenSelectionsTextures[] = {
-            "a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa" // Placeholder for testing.
+        hiddenSelections[] = {
+            "camo",
+            "camo_signs"
+        };
+        hiddenSelectionsTextures[] = { // Placeholder for Textures
+            "\A3\Supplies_F_Exp\Ammoboxes\Data\uniforms_box_indep_co.paa",
+            "\A3\Supplies_F_Exp\Ammoboxes\Data\equipment_box_indep_ca.paa"
         };
         class TransportBackpacks {};
         class TransportItems {};
