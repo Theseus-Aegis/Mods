@@ -86,7 +86,7 @@ class CfgVehicles {
 
         class EventHandlers: EventHandlers {
             class tac_events {
-                init = "if (local (_this select 0)) then { [_this select 0, ['ACE_packingBandage','ACE_elasticBandage','ACE_fieldDressing','ACE_bloodIV','ACE_bloodIV_250','ACE_bloodIV_500','ACE_bodyBag','ACE_epinephrine','ACE_morphine','tac_medical_painkillers','ACE_plasmaIV','ACE_plasmaIV_250','ACE_plasmaIV_500','ACE_salineIV','ACE_salineIV_250','ACE_salineIV_500','ACE_splint','ACE_surgicalKit','ACE_tourniquet','ACE_adenosine','ACE_quikclot'], true] call ace_arsenal_fnc_initBox; };";
+                init = QUOTE(_this call FUNC(medicalArsenal));
             };
         };
     };
