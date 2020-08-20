@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Crates">
+        <Key ID="STR_TAC_Crates_Supply_Launchers_Name">
+            <English>[TAC] Launcher Supplies</English>
+        </Key>
+        <Key ID="STR_TAC_Crates_Supply_Engineer_Name">
+            <English>[TAC] Engineer Supplies</English>
+        </Key>
+        <Key ID="STR_TAC_Crates_Supply_Medic_Name">
+            <English>[TAC] Medic Supplies</English>
+        </Key>
+    </Package>
+</Project>
