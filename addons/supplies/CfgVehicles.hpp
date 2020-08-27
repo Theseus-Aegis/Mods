@@ -83,11 +83,5 @@ class CfgVehicles {
         class TransportItems {};
         class TransportMagazines {};
         class TransportWeapons {};
-
-        class EventHandlers: EventHandlers {
-            class tac_events {
-                init = QUOTE(_this call FUNC(medicalArsenal));
-            };
-        };
     };
 };

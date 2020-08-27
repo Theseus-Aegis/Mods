@@ -17,8 +17,6 @@
 
 params ["_object"];
 
-if (local _object) exitWith {};
-
 private _medicalItems = [
     "ACE_packingBandage",
     "ACE_elasticBandage",
@@ -43,4 +41,18 @@ private _medicalItems = [
     "ACE_quikclot"
 ];
 
-[_object, _medicalItems, true] call ace_arsenal_fnc_initBox;
+[_object, _medicalItems, true] call ACEFUNC(arsenal,addVirtualItems);
+
+private _action = [
+    QGVAR(medicalArsenal),
+    "Medical Arsenal",
+    "",
+    {
+        [_target, _player, false] call ACEFUNC(arsenal,openBox);
+    },
+    {
+        ace_player getUnitTrait "Medic"
+    }
+] call ACEFUNC(interact_menu,createAction);
+
+[_object, 0, ["ACE_MainActions"], _action] call ACEFUNC(interact_menu,addActionToObject);
