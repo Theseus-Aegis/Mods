@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Supplies">
-        <Key ID="STR_TAC_Crates_Supply_Launchers_Name">
+        <Key ID="STR_TAC_Supplies_Supply_Launchers_Name">
             <English>[TAC] Launcher Supplies</English>
         </Key>
-        <Key ID="STR_TAC_Crates_Supply_Engineer_Name">
+        <Key ID="STR_TAC_Supplies_Supply_Engineer_Name">
             <English>[TAC] Engineer Supplies</English>
         </Key>
-        <Key ID="STR_TAC_Crates_Supply_Medic_Name">
+        <Key ID="STR_TAC_Supplies_Supply_Medic_Name">
             <English>[TAC] Medic Supplies</English>
+        </Key>
+        <Key ID="STR_TAC_Supplies_Supply_Recruit_Name">
+            <English>[TAC] Recruit Supplies</English>
         </Key>
     </Package>
 </Project>
