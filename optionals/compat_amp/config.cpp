@@ -4,7 +4,7 @@ class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
         units[] = {
-            "tac_supplies_Engineer"
+            QEGVAR(supplies,Engineer)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
