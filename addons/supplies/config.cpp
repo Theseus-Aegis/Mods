@@ -11,7 +11,7 @@ class CfgPatches {
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "cba_main", "ace_medical_treatment"};
+        requiredAddons[] = {"tac_main", "ace_medical_treatment"};
         author = ECSTRING(main,Author);
         authors[] = {"GilleeDoo", "JoramD", "TyroneMF"};
         url = ECSTRING(main,URL);

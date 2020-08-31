@@ -8,7 +8,7 @@ class CfgPatches {
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "cba_main", "tac_supplies", "AMP_Breaching_Charge"};
+        requiredAddons[] = {"tac_supplies", "AMP_Breaching_Charge"};
         author = ECSTRING(main,Author);
         authors[] = {"TyroneMF"};
         url = ECSTRING(main,URL);
