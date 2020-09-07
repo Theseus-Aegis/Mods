@@ -17,6 +17,7 @@ class CfgVehicles {
     class CUP_BAF_Jackal2_L2A1_D;
     class CUP_BAF_Jackal2_L2A1_W;
     class CUP_Mastiff_Base;
+    class Car_F;
     class CUP_Ridgback_Base;
     class CUP_Skoda_Base;
     class CUP_C_Golf4_Civ_Base;
@@ -63,6 +64,7 @@ class CfgVehicles {
     class CUP_Ka52_Dynamic_Base;
     class CUP_MH60S_Base;
     class CUP_MH60S_FFV_Base;
+    class Plane_Base_F;
     class CUP_SA330_Base;
     class CUP_Su25_Dyn_Base;
     class CUP_SU34_Dynamic_Base;
