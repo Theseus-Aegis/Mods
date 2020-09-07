@@ -29,6 +29,8 @@ class CfgVehicles {
     class CUP_Merlin_HC3_Armed_Base;
     class CUP_Merlin_HC3A_Armed_Base;
     class CUP_Merlin_HM2_Base;
+    class CUP_BTR80A_Base;
+    class CUP_BTR80_Base;
     class CUP_AW159_Unarmed_Base;
     class CUP_AW159_Dynamic_Base;
     class CUP_BMP3_Base;
@@ -234,6 +236,12 @@ class CfgVehicles {
     class CUP_B_Jackal2_L2A1_GB_W: CUP_BAF_Jackal2_L2A1_W {
         EGVAR(heavylifter,attachPos)[] = {0, -0.15, 1.11};
     };
+    class CUP_B_Jackal2_GMG_FIA: CUP_BAF_Jackal2_GMG_W {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.07, 1.1};
+    };
+    class CUP_B_Jackal2_L2A1_FIA: CUP_BAF_Jackal2_L2A1_W {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.15, 1.11};
+    };
     class CUP_B_Mastiff_HMG_GB_D: CUP_Mastiff_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0.81, -1.23};
     };
@@ -363,6 +371,66 @@ class CfgVehicles {
     class CUP_B_Merlin_HC4_GB: CUP_Merlin_HM2_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.6, -1.3};
     };
+    class CUP_B_BTR80A_CDF: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_B_BTR80A_FIA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_GREEN_RU: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CHDKZ: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT_T: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_SLA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_TK: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_I_BTR80A_ION: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_I_BTR80A_UN: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_B_BTR80_CDF: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_B_BTR80_FIA: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_GREEN_RU: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CHDKZ: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CSAT: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CSAT_T: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_SLA: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_TK: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_I_BTR80_ION: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_I_BTR80_UN: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
     class CUP_B_AW159_Unarmed_GB: CUP_AW159_Unarmed_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
@@ -442,6 +510,9 @@ class CfgVehicles {
         EGVAR(heavylifter,attachPos)[] = {0, -1.19, 0.34};
     };
     class CUP_B_M1030_USMC: CUP_M1030_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, 0.26};
+    };
+    class CUP_B_M1030_USA: CUP_M1030_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 0.26};
     };
     class CUP_B_M1126_ICV_M2_Desert: CUP_M1126_ICV_BASE {
