@@ -24,6 +24,7 @@ class CfgPatches {
             "CUP_Wheeledvehicles_VWGolf",
             "CUP_WheeledVehicles_Wolfhound",
             "CUP_AirVehicles_HC3",
+            "CUP_WheeledVehicles_BTR80",
             "CUP_AirVehciles_AW159",
             "CUP_TrackedVehicles_BMP3",
             "CUP_WheeledVehicles_Kamaz",

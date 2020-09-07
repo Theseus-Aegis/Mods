@@ -1,5 +1,17 @@
 // Heavy Lifter - Generated using heavylifter_exportConfig function
 class CfgVehicles {
+    class Heli_Light_01_unarmed_base_F;
+    class Heli_Light_01_dynamicLoadout_base_F;
+    class Heli_Light_01_civil_base_F;
+    class Heli_Light_02_dynamicLoadout_base_F;
+    class Heli_Light_02_unarmed_base_F;
+    class Heli_Attack_01_dynamicLoadout_base_F;
+    class Heli_Transport_01_base_F;
+    class Heli_Transport_02_base_F;
+    class Boat_Civil_01_base_F;
+    class B_Truck_01_transport_F;
+    class Truck_02_fuel_base_F;
+    class Truck_02_MRL_base_F;
     class CUP_LCVP_Base;
     class CUP_LCVP_VIV_Base;
     class CUP_Lada_Base;
@@ -8,9 +20,24 @@ class CfgVehicles {
     class CUP_S1203_Ambulance_Base;
     class CUP_S1203_LM_Base;
     class CUP_Volha_Base;
+    class Heli_light_03_dynamicLoadout_base_F;
+    class Heli_light_03_unarmed_base_F;
+    class Plane_CAS_01_dynamicLoadout_base_F;
+    class APC_Wheeled_02_base_v2_F;
+    class UAV_01_base_F;
+    class Truck_03_base_F;
+    class Heli_Transport_03_base_F;
+    class Heli_Transport_03_unarmed_base_F;
     class CUP_MQ9_Dyn_Base;
     class CUP_Pchela1T_Base;
     class CUP_MTLB_Base;
+    class Plane_Civil_01_base_F;
+    class UAV_03_dynamicLoadout_base_F;
+    class Plane_Fighter_02_Base_F;
+    class Truck_02_water_base_F;
+    class UAV_06_base_F;
+    class UAV_06_antimine_base_F;
+    class UAV_06_medical_base_F;
     class CUP_BAF_Coyote_BASE_D;
     class CUP_BAF_Jackal2_GMG_D;
     class CUP_BAF_Jackal2_GMG_W;
@@ -29,8 +56,13 @@ class CfgVehicles {
     class CUP_Merlin_HC3_Armed_Base;
     class CUP_Merlin_HC3A_Armed_Base;
     class CUP_Merlin_HM2_Base;
+    class CUP_BTR80A_Base;
+    class CUP_BTR80_Base;
     class CUP_AW159_Unarmed_Base;
     class CUP_AW159_Dynamic_Base;
+    class Tractor_01_base_F;
+    class Truck_01_flatbed_base_F;
+    class Truck_01_cargo_base_F;
     class CUP_BMP3_Base;
     class CUP_Kamaz_5350_Open_Base;
     class CUP_Kamaz_5350_Repair_Base;
@@ -114,6 +146,69 @@ class CfgVehicles {
     class CUP_Ambient_B737_Base;
     class CUP_Ambient_Cessna172_Base;
 
+    class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.41, 0.46};
+    };
+    class B_Heli_Light_01_dynamicLoadout_F: Heli_Light_01_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.41, 0.46};
+    };
+    class C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.28, -0.72};
+    };
+    class O_Heli_Light_02_dynamicLoadout_F: Heli_Light_02_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.05, 0.85};
+    };
+    class O_Heli_Light_02_unarmed_F: Heli_Light_02_unarmed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.05, 0.85};
+    };
+    class B_Heli_Attack_01_dynamicLoadout_F: Heli_Attack_01_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.25, 0.6};
+    };
+    class B_Heli_Transport_01_F: Heli_Transport_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.76, 0.82};
+    };
+    class I_Heli_Transport_02_F: Heli_Transport_02_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.88, 2.29};
+    };
+    class C_Boat_Civil_01_F: Boat_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.62, 0.24};
+    };
+    class C_Boat_Civil_01_rescue_F: Boat_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.62, 0.24};
+    };
+    class C_Boat_Civil_01_police_F: Boat_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.62, 0.24};
+    };
+    class B_Truck_01_mover_F: B_Truck_01_transport_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.62, 0.59};
+    };
+    class B_Truck_01_box_F: B_Truck_01_mover_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.1, 0.99};
+    };
+    class B_Truck_01_Repair_F: B_Truck_01_mover_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.1, 0.99};
+    };
+    class B_Truck_01_ammo_F: B_Truck_01_mover_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.23, 0.61};
+    };
+    class B_Truck_01_fuel_F: B_Truck_01_mover_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.67, 0.6};
+    };
+    class B_Truck_01_medical_F: B_Truck_01_transport_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.15, 0.89};
+    };
+    class O_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
+    class I_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
+    class I_Truck_02_MRL_F: Truck_02_MRL_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.03, 1.33};
+    };
+    class C_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
     class CUP_I_LCVP_RACS: CUP_LCVP_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0.32, 1.78};
     };
@@ -165,6 +260,54 @@ class CfgVehicles {
     class CUP_O_Volha_SLA: CUP_Volha_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.05, 0.14};
     };
+    class I_Heli_light_03_dynamicLoadout_F: Heli_light_03_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.17, 0.21};
+    };
+    class I_Heli_light_03_unarmed_F: Heli_light_03_unarmed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.18, 0.54};
+    };
+    class B_Plane_CAS_01_dynamicLoadout_F: Plane_CAS_01_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.42, 1.06};
+    };
+    class O_APC_Wheeled_02_rcws_v2_F: APC_Wheeled_02_base_v2_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1.36, 1.09};
+    };
+    class B_UAV_01_F: UAV_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.17};
+    };
+    class O_UAV_01_F: UAV_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.17};
+    };
+    class I_UAV_01_F: UAV_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.17};
+    };
+    class O_Truck_03_transport_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.59, 1.1};
+    };
+    class O_Truck_03_covered_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.57, 1.1};
+    };
+    class O_Truck_03_repair_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.98, 0.83};
+    };
+    class O_Truck_03_ammo_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.86, 0.83};
+    };
+    class O_Truck_03_fuel_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1.07, 0.83};
+    };
+    class O_Truck_03_medical_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.57, 1.1};
+    };
+    class O_Truck_03_device_F: Truck_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1, 0.83};
+    };
+    class B_Heli_Transport_03_F: Heli_Transport_03_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.06, 2.02};
+    };
+    class B_Heli_Transport_03_unarmed_F: Heli_Transport_03_unarmed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.06, 2.02};
+    };
     class CUP_B_USMC_DYN_MQ9: CUP_MQ9_Dyn_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 0.58};
     };
@@ -210,6 +353,81 @@ class CfgVehicles {
     class CUP_I_MTLB_pk_NAPA: CUP_MTLB_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.13, 0.63};
     };
+    class O_T_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
+    class I_C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.41, 0.46};
+    };
+    class B_CTRG_Heli_Transport_01_sand_F: Heli_Transport_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.76, 0.82};
+    };
+    class B_CTRG_Heli_Transport_01_tropic_F: Heli_Transport_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.76, 0.82};
+    };
+    class C_Plane_Civil_01_F: Plane_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.79, 0.29};
+    };
+    class C_Plane_Civil_01_racing_F: Plane_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.79, 0.29};
+    };
+    class I_C_Plane_Civil_01_F: Plane_Civil_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.79, 0.29};
+    };
+    class B_T_UAV_03_dynamicLoadout_F: UAV_03_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.1, 0.22};
+    };
+    class O_T_APC_Wheeled_02_rcws_v2_ghex_F: APC_Wheeled_02_base_v2_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1.36, 1.09};
+    };
+    class O_Plane_Fighter_02_F: Plane_Fighter_02_Base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1.64, 1.15};
+    };
+    class O_Plane_Fighter_02_Stealth_F: Plane_Fighter_02_Base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 1.64, 1.15};
+    };
+    class C_IDAP_Truck_02_water_F: Truck_02_water_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
+    class C_IDAP_Heli_Transport_02_F: Heli_Transport_02_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.88, 2.29};
+    };
+    class C_IDAP_UAV_01_F: UAV_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.17};
+    };
+    class B_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class O_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_antimine_F: UAV_06_antimine_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class B_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class O_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_IDAP_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class C_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
     class CUP_B_BAF_Coyote_L2A1_D: CUP_BAF_Coyote_BASE_D {
         EGVAR(heavylifter,attachPos)[] = {0, 0.56, -1.1};
     };
@@ -232,6 +450,12 @@ class CfgVehicles {
         EGVAR(heavylifter,attachPos)[] = {0, -0.19, 1.11};
     };
     class CUP_B_Jackal2_L2A1_GB_W: CUP_BAF_Jackal2_L2A1_W {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.15, 1.11};
+    };
+    class CUP_B_Jackal2_GMG_FIA: CUP_BAF_Jackal2_GMG_W {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.07, 1.1};
+    };
+    class CUP_B_Jackal2_L2A1_FIA: CUP_BAF_Jackal2_L2A1_W {
         EGVAR(heavylifter,attachPos)[] = {0, -0.15, 1.11};
     };
     class CUP_B_Mastiff_HMG_GB_D: CUP_Mastiff_Base {
@@ -363,6 +587,66 @@ class CfgVehicles {
     class CUP_B_Merlin_HC4_GB: CUP_Merlin_HM2_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.6, -1.3};
     };
+    class CUP_B_BTR80A_CDF: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_B_BTR80A_FIA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_GREEN_RU: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CHDKZ: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT_T: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_SLA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_O_BTR80A_TK: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_I_BTR80A_ION: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_I_BTR80A_UN: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.47, 0.95};
+    };
+    class CUP_B_BTR80_CDF: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_B_BTR80_FIA: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_GREEN_RU: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CHDKZ: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CSAT: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_CSAT_T: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_SLA: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_O_BTR80_TK: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_I_BTR80_ION: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
+    class CUP_I_BTR80_UN: CUP_BTR80_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.48, 0.95};
+    };
     class CUP_B_AW159_Unarmed_GB: CUP_AW159_Unarmed_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
     };
@@ -389,6 +673,42 @@ class CfgVehicles {
     };
     class CUP_I_Wildcat_Green_AAF: CUP_AW159_Dynamic_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.21, -1.26};
+    };
+    class C_Tractor_01_F: Tractor_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.16, 0.43};
+    };
+    class B_Truck_01_flatbed_F: Truck_01_flatbed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.81, 1.38};
+    };
+    class B_T_Truck_01_flatbed_F: Truck_01_flatbed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.81, 1.38};
+    };
+    class B_Truck_01_cargo_F: Truck_01_cargo_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.8, 0.99};
+    };
+    class B_T_Truck_01_cargo_F: Truck_01_cargo_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.8, 0.99};
+    };
+    class I_E_Truck_02_fuel_F: Truck_02_fuel_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.16, 1.06};
+    };
+    class I_E_Truck_02_MRL_F: Truck_02_MRL_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.03, 1.33};
+    };
+    class I_E_Heli_light_03_dynamicLoadout_F: Heli_light_03_dynamicLoadout_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.17, 0.21};
+    };
+    class I_E_Heli_light_03_unarmed_F: Heli_light_03_unarmed_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -1.18, 0.54};
+    };
+    class I_E_UAV_01_F: UAV_01_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.17};
+    };
+    class I_E_UAV_06_F: UAV_06_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
+    };
+    class I_E_UAV_06_medical_F: UAV_06_medical_base_F {
+        EGVAR(heavylifter,attachPos)[] = {0, -0.01, -1.07};
     };
     class CUP_O_BMP3_RU: CUP_BMP3_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0.11, 1.12};
@@ -442,6 +762,9 @@ class CfgVehicles {
         EGVAR(heavylifter,attachPos)[] = {0, -1.19, 0.34};
     };
     class CUP_B_M1030_USMC: CUP_M1030_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0, 0.26};
+    };
+    class CUP_B_M1030_USA: CUP_M1030_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, 0.26};
     };
     class CUP_B_M1126_ICV_M2_Desert: CUP_M1126_ICV_BASE {
