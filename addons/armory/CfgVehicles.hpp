@@ -14,6 +14,9 @@ class CfgVehicles {
         scope = 2;
         scopeCurator = 2;
         author = ECSTRING(main,Author);
+        editorCategory = "tac_Mission_Items";
+        editorSubCategory = "tac_Mission_Items_Supplies";
+        editorPreview = QPATHTOF(ui\tac_locker_ca.jpg);
         hiddenSelections[] = {"Camo"};
         hiddenSelectionsTextures[] = {
             QPATHTOF(data\tac_locker_co.paa)

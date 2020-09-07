@@ -23,5 +23,17 @@
             <German>TAC Attribute</German>
             <French>Attributs TAC</French>
         </Key>
+        <Key ID="STR_TAC_Main_Mission_Items_Name">
+            <English>TAC - Mission Items</English>
+        </Key>
+        <Key ID="STR_TAC_Main_Mission_Items_Supplies_Name">
+            <English>Supplies</English>
+        </Key>
+        <Key ID="STR_TAC_Main_Mission_Items_Contraband_Name">
+            <English>Contraband</English>
+        </Key>
+        <Key ID="STR_TAC_Main_Mission_Items_Electronics_Name">
+            <English>Electronics</English>
+        </Key>
     </Package>
 </Project>
