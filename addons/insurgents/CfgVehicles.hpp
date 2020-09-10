@@ -28,9 +28,21 @@ class CfgVehicles {
         };
     };
 
+    class GVAR(soldier_i_african): GVAR(soldier_i) {
+        displayName = CSTRING(Insurgent_African);
+        identityTypes[] = {"LanguageFRE_F", "Head_Tanoan"};
+        genericNames = "TanoanMen";
+    };
+
     class GVAR(soldier_o): GVAR(soldier_i) {
         side = 0;
         faction = "OPF_G_F";
+    };
+
+    class GVAR(soldier_o_eastern): GVAR(soldier_o) {
+        displayName = CSTRING(Insurgent_Eastern);
+        identityTypes[] = {"LanguagePER_F", "Head_TK"};
+        genericNames = "TakistaniMen";
     };
 
     class GVAR(soldier_b): GVAR(soldier_i) {

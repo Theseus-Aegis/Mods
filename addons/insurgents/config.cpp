@@ -5,7 +5,9 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {
             QGVAR(soldier_i),
+            QGVAR(soldier_i_african),
             QGVAR(soldier_o),
+            QGVAR(soldier_o_eastern),
             QGVAR(soldier_b)
         };
         weapons[] = {};

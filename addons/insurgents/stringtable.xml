@@ -9,6 +9,12 @@
             <English>Insurgent (randomized)</English>
             <Polish>Partyzant (losowy)</Polish>
         </Key>
+        <Key ID="STR_TAC_Insurgents_Insurgent_African">
+            <English>African Insurgent (randomized)</English>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Insurgent_Eastern">
+            <English>Eastern Insurgent (randomized)</English>
+        </Key>
         <Key ID="STR_TAC_Insurgents_Gear">
             <English>Insurgents Gear</English>
             <Polish>Sprzęt Partyzantów</Polish>
