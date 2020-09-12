@@ -7,4 +7,10 @@ class CfgVehicles {
             MACRO_ADDITEM(CUP_NVG_PVS14,5);
         };
     };
+
+    class EGVAR(supplies,Launchers): Box_NATO_WpsLaunch_F {
+        class TransportWeapons {
+            MACRO_ADDWEAPON(CUP_launch_M136,3);
+        };
+    };
 };

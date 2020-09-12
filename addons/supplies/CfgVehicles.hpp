@@ -8,7 +8,7 @@ class CfgVehicles {
         EDITOR_CATEGORY
         scope = 2;
         scopeCurator = 2;
-        maximumLoad = 3000;
+        maximumLoad = 12000; // Abnormally high number for redundancy
         transportMaxWeapons = 15;
         ace_dragging_canDrag = 0;
         ace_dragging_canCarry = 0;
@@ -23,9 +23,9 @@ class CfgVehicles {
         };
 
         class TransportMagazines {
-            MACRO_ADDMAGAZINE(RPG7_F,6);
-            MACRO_ADDMAGAZINE(MRAWS_HEAT_F,6);
-            MACRO_ADDMAGAZINE(RPG32_F,6);
+            MACRO_ADDMAGAZINE(RPG7_F,12);
+            MACRO_ADDMAGAZINE(MRAWS_HEAT_F,12);
+            MACRO_ADDMAGAZINE(RPG32_F,12);
         };
         class TransportWeapons {
             MACRO_ADDWEAPON(launch_RPG7_F,3);
