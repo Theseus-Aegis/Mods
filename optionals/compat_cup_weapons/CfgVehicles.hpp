@@ -1,5 +1,6 @@
 class CfgVehicles {
     class EGVAR(supplies,Engineer);
+    class Box_NATO_WpsLaunch_F;
 
     class EGVAR(supplies,Recruit): EGVAR(supplies,Engineer) {
         class TransportItems {
