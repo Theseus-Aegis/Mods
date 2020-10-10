@@ -21,8 +21,8 @@ private _hcAmount = count _hc;
 private _hcPlayable = _hc select {(_x get3DENAttribute "ControlMP") select 0};
 private _hcPlayableAmount = count _hcPlayable;
 
-if (_hcPlayableAmount != HC_AMOUNT_RECOMMENDED) then {
-    private _text = format ["%1 (%2: %3)", _hcPlayableAmount, localize LSTRING(ShouldBe), HC_AMOUNT_RECOMMENDED];
+if (_hcPlayableAmount < HC_AMOUNT_RECOMMENDED_MIN || {_hcPlayableAmount > HC_AMOUNT_RECOMMENDED_MAX}) then {
+    private _text = format ["%1 (%2: %3-%4)", _hcPlayableAmount, localize LSTRING(ShouldBe), HC_AMOUNT_RECOMMENDED_MIN, HC_AMOUNT_RECOMMENDED_MAX];
 
     if (_hcPlayableAmount < _hcAmount) then {
         _text = format ["%1 - %2: %3 (%4: %5)", _text, localize LSTRING(Unplayable), _hcAmount - _hcPlayableAmount, localize LSTRING(ShouldBe), 0];
