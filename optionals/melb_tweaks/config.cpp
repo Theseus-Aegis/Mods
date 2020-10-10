@@ -13,4 +13,8 @@ class CfgPatches {
     };
 };
 
+class Mode_FullAuto;
+
+#include "CfgAmmo.hpp"
 #include "CfgMagazines.hpp"
+#include "CfgWeapons.hpp"
