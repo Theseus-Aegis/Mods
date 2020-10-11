@@ -22,7 +22,7 @@ private _cfg = configFile >> "CfgWeapons" >> _itemClass;
 // Scripted optic
 private _isScriptedOpticClass = isClass (_cfg >> "CBA_ScriptedOptic");
 private _isScriptedOpticType = (toLower (getText (_cfg >> "weaponInfoType"))) find "cba_scriptedoptic" > -1;
-if (_isScriptedOpticClass || {_isScriptedOpticType}) exitWith {
+if (_isScriptedOpticClass || {_isScriptedOpticType}) then {
     // PIP
     private _baseClasses = configProperties [configFile >> "CBA_PIPItems", "getText _x == _itemClass"];
 
@@ -33,7 +33,7 @@ if (_isScriptedOpticClass || {_isScriptedOpticType}) exitWith {
 
     TRACE_2("Base classes",_itemClass,_baseClasses);
     if !(_baseClasses isEqualTo []) exitWith {
-        configName (_baseClasses select 0)
+        _itemClass = configName (_baseClasses select 0)
     };
     _itemClass
 };
@@ -41,7 +41,7 @@ if (_isScriptedOpticClass || {_isScriptedOpticType}) exitWith {
 // Accessory
 private _hasNextClass = isText (_cfg >> "MRT_SwitchItemNextClass");
 private _hasPrevClass = isText (_cfg >> "MRT_SwitchItemPrevClass");
-if (_hasNextClass || {_hasPrevClass}) exitWith {
+if (_hasNextClass || {_hasPrevClass}) then {
     private _nextClass = _itemClass;
     private _nextCfg = _cfg;
     private _switchEntry = ["MRT_SwitchItemPrevClass", "MRT_SwitchItemNextClass"] select _hasNextClass;
@@ -56,8 +56,8 @@ if (_hasNextClass || {_hasPrevClass}) exitWith {
     };
 
     TRACE_3("Found class",_itemClass,_nextClass,_nextCfg);
-    if (getNumber (_nextCfg >> "scope") == 2) exitWIth {
-        _nextClass
+    if (getNumber (_nextCfg >> "scope") == 2) exitWith {
+        _itemClass = _nextClass
     };
     _itemClass
 };
