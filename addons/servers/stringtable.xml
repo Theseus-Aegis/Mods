@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Servers">
+        <Key ID="STR_TAC_Servers_contractsText">
+            <English>Contracts Server</English>
+        </Key>
+        <Key ID="STR_TAC_Servers_contractsActionText">
+            <English>Join the Contracts Server</English>
+        </Key>
+        <Key ID="STR_TAC_Servers_trainingText">
+            <English>Training Server</English>
+        </Key>
+        <Key ID="STR_TAC_Servers_trainingActionText">
+            <English>Join the Training Server</English>
+        </Key>
+    </Package>
+</Project>
