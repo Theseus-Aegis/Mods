@@ -8,12 +8,10 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
-        authors[] = {""};
+        authors[] = {"JoramD"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
-
-#include "CfgEventHandlers.hpp"
 
 #include "CfgMainMenuSpotlight.hpp"
