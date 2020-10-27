@@ -4,6 +4,6 @@ ADDON = false;
 
 #include "XEH_PREP.hpp"
 
-[QGVAR(Medic_NCO), "init", LINKFUNC(medicalArsenal)] call CBA_fnc_addClassEventHandler;
+[QGVAR(Medic), "init", LINKFUNC(medicalArsenal)] call CBA_fnc_addClassEventHandler;
 
 ADDON = true;

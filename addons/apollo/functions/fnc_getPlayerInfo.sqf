@@ -20,12 +20,14 @@ params ["_type", "_player"];
 
 if !(_type in ["getTrainingIdentifiers", "getAccessibleItemClasses"]) exitWith {
     ERROR_1("Type %1 is not supported",_type);
+    []
 };
 
 private _playerUID = getPlayerUID _player;
 
 if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exitWith {
-    ERROR("getPlayerInfo only works in (locally hosted) MP")
+    ERROR("getPlayerInfo only works in (locally hosted) MP");
+    []
 };
 
 private _requestedInfo = [];
@@ -61,6 +63,7 @@ if (_loadData == "loaded") then {
 if !(_success) exitWith {
     ERROR_2("Failed to load info (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Could not load info"] call CBA_fnc_notify;
+    []
 };
 
 _requestedInfo
