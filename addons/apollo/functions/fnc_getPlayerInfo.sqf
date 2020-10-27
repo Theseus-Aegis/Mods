@@ -6,6 +6,7 @@
  * Arguments:
  * 0: Requested Data <STRING>
  * 1: Player <OBJECT>
+ * 2: Custom Error Message <STRING> (optional)
  *
  * Return Value:
  * Requested Info <ARRAY>
@@ -16,7 +17,7 @@
  * Public: No
  */
 
-params ["_type", "_player"];
+params ["_type", "_player", ["_errorMessage", "Could not load info"]];
 
 if !(_type in ["getTrainingIdentifiers", "getAccessibleItemClasses"]) exitWith {
     ERROR_1("Type %1 is not supported",_type);
@@ -62,7 +63,7 @@ if (_loadData == "loaded") then {
 
 if !(_success) exitWith {
     ERROR_2("Failed to load info (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
-    ["Could not load info"] call CBA_fnc_notify;
+    [_errorMessage] call CBA_fnc_notify;
     []
 };
 
