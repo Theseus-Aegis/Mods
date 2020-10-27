@@ -52,6 +52,7 @@ _Only Windows extension builds are currently supported!_
 
 **Requirements:**
 - Boost library (>= 1.74)
+    - _Precompiled for Windows available [here](https://sourceforge.net/projects/boost/files/boost-binaries/) (last tested: 1.74.0 MSVC 14.2)_
     - `BOOST_ROOT` environment variable set to `<path>\boost_1_74_0` (or other version)
 - [Windows] [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (or higher)
 - [Linux] `g++-w64-mingw-i686` for 64-bit
