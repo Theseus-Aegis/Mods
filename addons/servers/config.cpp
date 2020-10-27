@@ -14,4 +14,6 @@ class CfgPatches {
     };
 };
 
+#include "CfgEventHandlers.hpp"
+
 #include "CfgMainMenuSpotlight.hpp"
