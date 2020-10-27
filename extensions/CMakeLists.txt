@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project(TAC)
+cmake_policy(SET CMP0074 NEW) # BOOST_ROOT use
 
 if(WIN32)
     add_definitions(/DWINVER=0x0600 /D_WIN32_WINNT=0x0600)
 endif()
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
-include(${PROJECT_SOURCE_DIR}/CMakeModules/cxx_compiler_functions.cmake)
+include(${CMAKE_MODULE_PATH}/cxx_compiler_functions.cmake)
 
 option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
 option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
