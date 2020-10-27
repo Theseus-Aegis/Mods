@@ -90,6 +90,10 @@ class CfgVehicles {
         class TransportWeapons {};
     };
 
+    class GVAR(Medic_NCO): GVAR(Medic) {
+        displayName = CSTRING(Supply_Medic_NCO_Name);
+    };
+
     class GVAR(Recruit): GVAR(Engineer) {
         displayName = CSTRING(Supply_Recruit_Name);
         EDITOR_CATEGORY

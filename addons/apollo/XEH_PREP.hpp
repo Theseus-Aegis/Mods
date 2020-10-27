@@ -1,4 +1,5 @@
 PREP(endMissionError);
+PREP(getPlayerInfo);
 PREP(handleDisconnect);
 PREP(handleKilled);
 PREP(handleRespawn);
