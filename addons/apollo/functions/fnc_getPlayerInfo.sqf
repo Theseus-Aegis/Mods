@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Requested Data <STRING>
  * 1: Player <OBJECT>
- * 2: Custom Error Message <STRING> (optional)
+ * 2: Custom Error Message <STRING> (default: "Could not load info")
  *
  * Return Value:
  * Requested Info <ARRAY>
