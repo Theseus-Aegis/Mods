@@ -51,7 +51,8 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 _Only Windows extension builds are currently supported!_
 
 **Requirements:**
-- Boost library
+- Boost library (>= 1.74)
+    - `BOOST_ROOT` environment variable set to `<path>\boost_1_74_0` (or other version)
 - [Windows] [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (or higher)
 - [Linux] `g++-w64-mingw-i686` for 64-bit
 
