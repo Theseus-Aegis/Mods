@@ -19,7 +19,7 @@
 params ["_type", "_player"];
 
 if !(_type in ["getTrainingIdentifiers", "getAccessibleItemClasses"]) exitWith {
-    ERROR_1("Type %1 is not supported", _type);
+    ERROR_1("Type %1 is not supported",_type);
 };
 
 private _playerUID = getPlayerUID _player;
@@ -30,7 +30,7 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
 
 private _requestedInfo = [];
 
-TRACE_1("Loading Client",_player);
+TRACE_1("Loading Data",_player);
 private _success = false;
 
 private _loadData = "tac_apollo_client" callExtension format ["%1%2", _type, _playerUID];
