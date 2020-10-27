@@ -10,6 +10,9 @@
         <Key ID="STR_TAC_Supplies_Supply_Medic_Name">
             <English>[TAC] Medic Supplies</English>
         </Key>
+        <Key ID="STR_TAC_Supplies_Supply_Medic_NCO_Name">
+            <English>[TAC] Medic Supplies (NCO)</English>
+        </Key>
         <Key ID="STR_TAC_Supplies_Supply_Recruit_Name">
             <English>[TAC] Recruit Supplies</English>
         </Key>
