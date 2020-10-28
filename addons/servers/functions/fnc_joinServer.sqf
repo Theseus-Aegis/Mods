@@ -19,11 +19,9 @@
 params ["_ip", "_port"];
 
 private _passwordCache = profileNamespace getVariable ["cba_ui_ServerPasswords", [[], []]];
-
 _passwordCache params ["_addresses", "_passwords"];
 
 private _index = _addresses find (format ["%1:%2", _ip, _port]);
-
 private _password = _passwords param [_index, ""];
 
 connectToServer [_ip, _port, _password];

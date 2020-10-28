@@ -1,5 +1,4 @@
-class CfgMainMenuSpotlight
-{
+class CfgMainMenuSpotlight {
     class JoinContractServer {
         text = CSTRING(contractsText);
         picture = QPATHTOF(ui\spotlight_theseus.paa);
