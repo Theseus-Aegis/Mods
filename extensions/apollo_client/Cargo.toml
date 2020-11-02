@@ -9,4 +9,4 @@ edition = "2018"
 [dependencies]
 arma-rs = { git = "https://github.com/synixebrett/arma-rs", rev = "4f0be98" }
 common = { path = "../common" }
-reqwest = { version = "0.10.8", features = ["blocking"] }
+reqwest = { version = "0.10", features = ["blocking"] }
