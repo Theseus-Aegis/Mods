@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "common",
+    "apollo_client",
+]
