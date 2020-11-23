@@ -30,6 +30,7 @@ ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
 ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
 ace_medical_treatment_locationsBoostTraining = true; // Yes (default: false - No)
 ace_medical_treatment_locationSurgicalKit = 0; // Anywhere (default: 2 - Medical Facilities)
+ace_medical_treatment_allowBodyBagUnconscious = true; // Yes (default: false)
 
 ace_mk6mortar_airResistanceEnabled = true;
 ace_mk6mortar_allowComputerRangefinder = false;
@@ -39,7 +40,7 @@ ace_nametags_showPlayerRanks = false;
 
 ace_nightvision_aimDownSightsBlur = 0.4;
 ace_nightvision_effectScaling = 0.5;
-ace_nightvision_noiseScaling = 0.5;
+ace_nightvision_noiseScaling = 0.3;
 
 ace_overheating_unJamOnreload = true;
 
