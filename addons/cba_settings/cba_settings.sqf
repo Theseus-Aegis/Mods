@@ -39,7 +39,7 @@ ace_nametags_showPlayerRanks = false;
 
 ace_nightvision_aimDownSightsBlur = 0.4;
 ace_nightvision_effectScaling = 0.5;
-ace_nightvision_noiseScaling = 0.5;
+ace_nightvision_noiseScaling = 0.3;
 
 ace_overheating_unJamOnreload = true;
 
