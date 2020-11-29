@@ -26,7 +26,6 @@ ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
 ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
 ace_medical_treatment_advancedBandages = 2; // Enabled & Can Reopen (default: 1 - Enabled)
-ace_medical_treatment_allowBodyBagUnconscious = true; // Yes (default: false)
 ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
 ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
 ace_medical_treatment_locationsBoostTraining = true; // Yes (default: false - No)
