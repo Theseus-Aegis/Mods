@@ -142,5 +142,11 @@
         <Key ID="STR_TAC_Armory_ExportComplete">
             <English>Loadout exported to clipboard!</English>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnCamera">
+            <English>Open Camera</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_CameraHint">
+            <English>Press 'ESC' to exit camera</English>
+        </Key>
     </Package>
 </Project>

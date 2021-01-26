@@ -45,6 +45,7 @@
 #define ST_LEFT 0x00
 #define LB_TEXTURES 0x10
 
+class ctrlStatic;
 
 class GVAR(RscPicture) {
     idc = -1;
@@ -152,8 +153,23 @@ class GVAR(Display) {
     idd = DISPLAYID;
     movingEnable = 1;
     onUnload = QUOTE(call FUNC(closeArmory));
+    onKeyDown = QUOTE(_this call FUNC(onKeyDown));
+    onMouseButtonDown = QUOTE([ARR_3('onMouseButtonDown',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonDown));
+    onMouseButtonUp = QUOTE([ARR_3('onMouseButtonUp',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonUp));
     class controlsBackground {
+        class CameraArea: ctrlStatic {
+            idc = CAMERAAREA;
+            style = 16;
+            onMouseMoving = QUOTE([ARR_3('onMouseMoving',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseHolding = QUOTE([ARR_3('onMouseHolding',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseZChanged = QUOTE([ARR_3('onMouseZChanged',_this,GVAR(Display))] call ACEFUNC(arsenal,handleScrollWheel));
+            x = QUOTE(safezoneX);
+            y = QUOTE(safezoneY);
+            w = QUOTE(safezoneW);
+            h = QUOTE(safezoneH);
+        };
         class BackgroundPic: GVAR(RscPicture) {
+            idc = BACKGROUND;
             moving = 1;
             x = X_PART(3);
             y = Y_PART(-4.5);

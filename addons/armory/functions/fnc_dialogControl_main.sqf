@@ -29,7 +29,7 @@ params ["_show"];
     MAINPIC6, MAINBTN6,
     MAINPIC7, MAINBTN7,
     MAINPIC8, MAINBTN8,
-    //MAINPIC9, MAINBTN9,
+    MAINPIC9, MAINBTN9,
     MAINPIC10, MAINBTN10,
     //MAINPIC11, MAINBTN11,
     MAINPIC12, MAINBTN12
@@ -72,9 +72,10 @@ ctrlSetText [MAINPIC8, QPATHTOF(UI\btnCategory_wearable.paa)];
 buttonSetAction [MAINBTN8, QUOTE(['wearable'] call FUNC(dialogControl))];
 CTRL(MAINBTN8) ctrlSetTooltip localize LSTRING(BtnApparelTooltip);
 
-/*ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_.paa)];
-buttonSetAction [MAINBTN9, QUOTE([''] call FUNC(dialogControl))];
-CTRL(MAINBTN9) ctrlSetTooltip "Access ";*/
+// TODO Button somewhere (revert this)
+ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_insignia.paa)];
+buttonSetAction [MAINBTN9, QUOTE(call FUNC(openCamera))];
+CTRL(MAINBTN9) ctrlSetTooltip localize LSTRING(BtnCamera);
 
 ctrlSetText [MAINPIC10, QPATHTOF(UI\btnCategory_insignia.paa)];
 buttonSetAction [MAINBTN10, QUOTE(['insignia'] call FUNC(dialogControl))];

@@ -18,6 +18,8 @@
 
 #include "\x\tac\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 /*
  * JNS Tag 3-ID = 333
  * Project 2-ID = 00
@@ -34,6 +36,8 @@
 #define AMOUNT 3330003
 #define NLIST 3330004
 #define DROPDOWNAMOUNT 3330005
+#define CAMERAAREA 3330006
+#define BACKGROUND 3330008
 
 // MAIN
 // Row 1
