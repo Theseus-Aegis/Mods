@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {QGVAR(Locker)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main"};
+        requiredAddons[] = {"tac_main", "ace_arsenal"};
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
