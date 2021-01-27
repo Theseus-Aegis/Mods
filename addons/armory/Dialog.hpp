@@ -157,17 +157,6 @@ class GVAR(Display) {
     onMouseButtonDown = QUOTE([ARR_3('onMouseButtonDown',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonDown));
     onMouseButtonUp = QUOTE([ARR_3('onMouseButtonUp',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonUp));
     class controlsBackground {
-        class CameraArea: ctrlStatic {
-            idc = CAMERAAREA;
-            style = 16;
-            onMouseMoving = QUOTE([ARR_3('onMouseMoving',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
-            onMouseHolding = QUOTE([ARR_3('onMouseHolding',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
-            onMouseZChanged = QUOTE([ARR_3('onMouseZChanged',_this,GVAR(Display))] call ACEFUNC(arsenal,handleScrollWheel));
-            x = QUOTE(safezoneX);
-            y = QUOTE(safezoneY);
-            w = QUOTE(safezoneW);
-            h = QUOTE(safezoneH);
-        };
         class BackgroundPic: GVAR(RscPicture) {
             idc = BACKGROUND;
             moving = 1;
@@ -176,6 +165,17 @@ class GVAR(Display) {
             w = W_PART(34);
             h = H_PART(34);
             text = QPATHTOF(UI\background.paa);
+        };
+        class CameraArea: ctrlStatic {
+            idc = CAMERAAREA;
+            style = 16;
+            onMouseMoving = QUOTE([ARR_3('onMouseMoving',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseHolding = QUOTE([ARR_3('onMouseHolding',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseZChanged = QUOTE([ARR_3('onMouseZChanged',_this,GVAR(Display))] call ACEFUNC(arsenal,handleScrollWheel));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            w = QUOTE(safeZoneW);
+            h = QUOTE(safeZoneH);
         };
     };
     class controls {
@@ -415,6 +415,21 @@ class GVAR(Display) {
             w = W_PART(2);
             h = H_PART(2);
             tooltip = CSTRING(BtnExportTooltip);
+        };
+
+        // CAMERA
+        class CameraHint: GVAR(RscPicture) {
+            idc = CAMERAHINT;
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            text = QPATHTOF(UI\btnCamera.paa);
+        };
+        class CameraExit: GVAR(RscButton) {
+            idc = CAMERAEXIT;
+            onMouseButtonClick = QUOTE(call FUNC(closeCamera));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            tooltip = CSTRING(BtnCloseCameraTooltip);
         };
     };
 };

@@ -22,8 +22,10 @@ for "_x" from STARTPROJECTID to ENDPROJECTID do {
     ctrlShow [_x, false];
 };
 
-// Show control with camera keys and focus on it
-ctrlShow [CAMERAAREA, true];
+// Show camera controls
+{
+    ctrlShow [_x, true];
+} forEach [CAMERAAREA, CAMERAHINT, CAMERAEXIT];
 
 // Prepare
 ACEGVAR(arsenal,center) = ACE_player;
@@ -51,6 +53,3 @@ showCinemaBorder false;
 // Reset position
 [nil, [controlNull, 0, 0]] call ACEFUNC(arsenal,handleMouse);
 GVAR(camPosUpdateHandle) = addMissionEventHandler ["Draw3D", ACEFUNC(arsenal,updateCamPos)];
-
-// Show hint on how to exit
-(localize LSTRING(CameraHint)) call CBA_fnc_notify;

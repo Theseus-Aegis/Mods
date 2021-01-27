@@ -17,7 +17,7 @@
 
 ACE_player setVariable [QGVAR(inCamera), false];
 
-// Reset main menu and focus on it
+// Reset to main menu
 ["main"] call FUNC(dialogControl);
 
 removeMissionEventHandler ["Draw3D", GVAR(camPosUpdateHandle)];

@@ -32,7 +32,8 @@ params ["_show"];
     MAINPIC9, MAINBTN9,
     MAINPIC10, MAINBTN10,
     //MAINPIC11, MAINBTN11,
-    MAINPIC12, MAINBTN12
+    MAINPIC12, MAINBTN12,
+    TAKESTASHPIC, TAKESTASHBTN // Doubles as Camera
 ];
 
 
@@ -72,10 +73,9 @@ ctrlSetText [MAINPIC8, QPATHTOF(UI\btnCategory_wearable.paa)];
 buttonSetAction [MAINBTN8, QUOTE(['wearable'] call FUNC(dialogControl))];
 CTRL(MAINBTN8) ctrlSetTooltip localize LSTRING(BtnApparelTooltip);
 
-// TODO Button somewhere (revert this)
-ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_insignia.paa)];
-buttonSetAction [MAINBTN9, QUOTE(call FUNC(openCamera))];
-CTRL(MAINBTN9) ctrlSetTooltip localize LSTRING(BtnCamera);
+/*ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_.paa)];
+buttonSetAction [MAINBTN9, QUOTE([''] call FUNC(dialogControl))];
+CTRL(MAINBTN9) ctrlSetTooltip "Access ";*/
 
 ctrlSetText [MAINPIC10, QPATHTOF(UI\btnCategory_insignia.paa)];
 buttonSetAction [MAINBTN10, QUOTE(['insignia'] call FUNC(dialogControl))];
@@ -88,3 +88,8 @@ CTRL(MAINBTN11) ctrlSetTooltip "Access ";*/
 ctrlSetText [MAINPIC12, QPATHTOF(UI\btnStash.paa)];
 buttonSetAction [MAINBTN12, QUOTE(['stash'] call FUNC(dialogControl))];
 CTRL(MAINBTN12) ctrlSetTooltip localize LSTRING(BtnStashTooltip);
+
+// Camera
+ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnCamera.paa)];
+buttonSetAction [TAKESTASHBTN, QUOTE(call FUNC(openCamera))];
+CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnOpenCameraTooltip);
