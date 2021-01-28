@@ -45,6 +45,7 @@
 #define ST_LEFT 0x00
 #define LB_TEXTURES 0x10
 
+class ctrlStatic;
 
 class GVAR(RscPicture) {
     idc = -1;
@@ -152,14 +153,29 @@ class GVAR(Display) {
     idd = DISPLAYID;
     movingEnable = 1;
     onUnload = QUOTE(call FUNC(closeArmory));
+    onKeyDown = QUOTE(_this call FUNC(onKeyDown));
+    onMouseButtonDown = QUOTE([ARR_3('onMouseButtonDown',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonDown));
+    onMouseButtonUp = QUOTE([ARR_3('onMouseButtonUp',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonUp));
     class controlsBackground {
         class BackgroundPic: GVAR(RscPicture) {
+            idc = BACKGROUND;
             moving = 1;
             x = X_PART(3);
             y = Y_PART(-4.5);
             w = W_PART(34);
             h = H_PART(34);
             text = QPATHTOF(UI\background.paa);
+        };
+        class CameraArea: ctrlStatic {
+            idc = CAMERAAREA;
+            style = 16;
+            onMouseMoving = QUOTE([ARR_3('onMouseMoving',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseHolding = QUOTE([ARR_3('onMouseHolding',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseZChanged = QUOTE([ARR_3('onMouseZChanged',_this,GVAR(Display))] call ACEFUNC(arsenal,handleScrollWheel));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            w = QUOTE(safeZoneW);
+            h = QUOTE(safeZoneH);
         };
     };
     class controls {
@@ -399,6 +415,21 @@ class GVAR(Display) {
             w = W_PART(2);
             h = H_PART(2);
             tooltip = CSTRING(BtnExportTooltip);
+        };
+
+        // CAMERA
+        class CameraHint: GVAR(RscPicture) {
+            idc = CAMERAHINT;
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            text = QPATHTOF(UI\btnCamera.paa);
+        };
+        class CameraExit: GVAR(RscButton) {
+            idc = CAMERAEXIT;
+            onMouseButtonClick = QUOTE(call FUNC(closeCamera));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            tooltip = CSTRING(BtnCloseCameraTooltip);
         };
     };
 };

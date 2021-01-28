@@ -29,10 +29,11 @@ params ["_show"];
     MAINPIC6, MAINBTN6,
     MAINPIC7, MAINBTN7,
     MAINPIC8, MAINBTN8,
-    //MAINPIC9, MAINBTN9,
+    MAINPIC9, MAINBTN9,
     MAINPIC10, MAINBTN10,
     //MAINPIC11, MAINBTN11,
-    MAINPIC12, MAINBTN12
+    MAINPIC12, MAINBTN12,
+    TAKESTASHPIC, TAKESTASHBTN // Doubles as Camera
 ];
 
 
@@ -87,3 +88,8 @@ CTRL(MAINBTN11) ctrlSetTooltip "Access ";*/
 ctrlSetText [MAINPIC12, QPATHTOF(UI\btnStash.paa)];
 buttonSetAction [MAINBTN12, QUOTE(['stash'] call FUNC(dialogControl))];
 CTRL(MAINBTN12) ctrlSetTooltip localize LSTRING(BtnStashTooltip);
+
+// Camera
+ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnCamera.paa)];
+buttonSetAction [TAKESTASHBTN, QUOTE(call FUNC(openCamera))];
+CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnOpenCameraTooltip);
