@@ -53,3 +53,5 @@ showCinemaBorder false;
 // Reset position
 [nil, [controlNull, 0, 0]] call ACEFUNC(arsenal,handleMouse);
 GVAR(camPosUpdateHandle) = addMissionEventHandler ["Draw3D", ACEFUNC(arsenal,updateCamPos)];
+
+nil

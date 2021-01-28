@@ -11,7 +11,7 @@
  * 4: Alt <BOOL> (unused)
  *
  * Return Value:
- * None
+ * Key was handled <BOOL>
  *
  * Example:
  * call tac_armory_fnc_onKeyDown
