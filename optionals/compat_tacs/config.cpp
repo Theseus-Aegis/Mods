@@ -8,10 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "tac_supplies",
-            "tacs_vests",
-            "CUP_Weapons_NVG",
-            "CUP_Weapons_East_Attachments",
-            "CUP_Weapons_M136"
+            "tacs_vests"
         };
         author = ECSTRING(main,Author);
         authors[] = {"TyroneMF"};
