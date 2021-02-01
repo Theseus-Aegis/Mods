@@ -16,5 +16,8 @@
         <Key ID="STR_TAC_Supplies_Supply_Recruit_Name">
             <English>[TAC] Recruit Supplies</English>
         </Key>
+        <Key ID="STR_TAC_Supplies_Supply_VIP_Name">
+            <English>[TAC] VIP Protective Gear</English>
+        </Key>
     </Package>
 </Project>
