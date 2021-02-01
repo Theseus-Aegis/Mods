@@ -7,7 +7,8 @@ class CfgPatches {
             QGVAR(Launchers),
             QGVAR(Engineer),
             QGVAR(Medic),
-            QGVAR(Recruit)
+            QGVAR(Recruit),
+            QGVAR(VIP)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;

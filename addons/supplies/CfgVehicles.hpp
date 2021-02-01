@@ -113,4 +113,24 @@ class CfgVehicles {
         };
         class TransportBackpacks {};
     };
+
+    class GVAR(VIP): GVAR(Recruit) {
+        displayName = CSTRING(Supply_VIP_Name);
+        EDITOR_CATEGORY
+        editorPreview = QPATHTOF(ui\supplies_VIP.jpg);
+        hiddenSelections[] = {
+            "camo",
+            "camo_signs"
+        };
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\supply_base_texture_co.paa),
+            QPATHTOF(data\supply_vip_ca.paa)
+        };
+
+        class TransportMagazines {};
+        class TransportItems {
+            MACRO_ADDITEM(H_PASGT_basic_black_F,5);
+        };
+        class TransportBackpacks {};
+    };
 };
