@@ -46,7 +46,7 @@ ace_rearm_level = 1;
 
 ace_repair_addSpareParts = false;
 ace_repair_engineerSetting_fullRepair = 0;
-ace_repair_engineerSetting_Repair = 0;
+ace_repair_engineerSetting_Repair = 1;
 ace_repair_fullRepairLocation = 3;
 
 ace_respawn_removeDeadBodiesDisconnected = false;
