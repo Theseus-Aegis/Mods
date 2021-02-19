@@ -3,22 +3,15 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {
-            QGVAR(Launchers),
-            QGVAR(Engineer),
-            QGVAR(Medic),
-            QGVAR(Recruit),
-            QGVAR(VIP)
-        };
+        units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_medical_treatment"};
+        requiredAddons[] = {"tac_main", "ace_arsenal"};
         author = ECSTRING(main,Author);
-        authors[] = {"GilleeDoo", "JoramD", "TyroneMF"};
+        authors[] = {"JoramD"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
