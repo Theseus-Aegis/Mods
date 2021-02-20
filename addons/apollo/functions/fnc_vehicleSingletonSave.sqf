@@ -56,6 +56,7 @@ switch (true) do {
 
 private _vehicleFuel = fuel _vehicleObject;
 private _vehicleLock = locked _vehicleObject;
+private _vehicleCustomization = [_vehicleObject, ""] call BIS_fnc_exportVehicle;
 
 private _vehicleAmmo = [];
 private _vehicleMagazineCargo = [];
@@ -85,4 +86,4 @@ if (_vehicleAlive) then {
 
 private _vehicleNamePretty = getText (configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
 
-["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock] call FUNC(invokeJavaMethod);
+["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization] call FUNC(invokeJavaMethod);
