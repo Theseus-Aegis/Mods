@@ -45,7 +45,7 @@ private _medicalItems = [
 
 private _action = [
     QGVAR(medicalArsenal),
-    LLSTRING(MedicalArsenal)
+    LLSTRING(MedicalArsenal),
     "",
     {
         params ["_target", "_player"];
