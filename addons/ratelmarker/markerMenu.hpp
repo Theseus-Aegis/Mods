@@ -14,38 +14,38 @@ class GVAR(menu) {
     onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(menuDisplay),nil)]);
     class controlsBackground {
         class Background: RscBackground {
-            x = COORDINATE_X;
-            y = COORDINATE_Y - 0.01;
-            h = 0.11;
-            w = COORDINATE_W * 2 + 0.07;
+            x = QUOTE(COORDINATE_X);
+            y = QUOTE(COORDINATE_Y - 0.01);
+            h = QUOTE(0.11);
+            w = QUOTE(COORDINATE_W * 2 + 0.07);
             colorBackground[] = {0, 0, 0, 0.3};
         };
     };
     class controls {
         class X_Label: RscText {
             text = "X:";
-            x = COORDINATE_X;
-            y = COORDINATE_Y;
+            x = QUOTE(COORDINATE_X);
+            y = QUOTE(COORDINATE_Y);
         };
         class X_Input: RscEdit {
             idc = GUI_ID_INPUT_X;
-            x = COORDINATE_X + 0.03;
-            y = COORDINATE_Y;
-            w = COORDINATE_W;
+            x = QUOTE(COORDINATE_X + 0.03);
+            y = QUOTE(COORDINATE_Y);
+            w = QUOTE(COORDINATE_W);
             colorBackground[] = {0, 0, 0, 0.5};
             tooltip = "Enter X Coordinate";
             tooltipColorBox[] = {0, 0, 0, 0.65};
         };
         class Y_Label: RscText {
             text = "Y:";
-            x = COORDINATE_X + 0.11;
-            y = COORDINATE_Y;
+            x = QUOTE(COORDINATE_X + 0.11);
+            y = QUOTE(COORDINATE_Y);
         };
         class Y_Input: RscEdit {
             idc = GUI_ID_INPUT_Y;
-            x = COORDINATE_X + 0.14;
-            y = COORDINATE_Y;
-            w = COORDINATE_W;
+            x = QUOTE(COORDINATE_X + 0.14);
+            y = QUOTE(COORDINATE_Y);
+            w = QUOTE(COORDINATE_W);
             colorBackground[] = {0, 0, 0, 0.5};
             tooltip = "Enter Y Coordinate";
             tooltipColorBox[] = {0, 0, 0, 0.65};
@@ -54,9 +54,9 @@ class GVAR(menu) {
             idc = -1;
             text = "Create Marker";
             onButtonClick = QUOTE(_this call FUNC(prepareMarker));
-            x = COORDINATE_X + 0.03;
-            y = COORDINATE_Y + 0.05;
-            w = COORDINATE_W + 0.09;
+            x = QUOTE(COORDINATE_X + 0.03);
+            y = QUOTE(COORDINATE_Y + 0.05);
+            w = QUOTE(COORDINATE_W + 0.09);
         };
     };
 };

@@ -12,7 +12,7 @@
 #define COLOR_TEXT_RGB 1, 1, 1
 #define COLOR_TEXT_RGBA COLOR_TEXT_RGB, 1
 
-#define COLOR_OVERLAY_RGB 0,  0,  0
+#define COLOR_OVERLAY_RGB 0, 0, 0
 #define COLOR_OVERLAY_RGBA COLOR_OVERLAY_RGB, 0.5
 
 #define COLOR_ACTIVE_RGB_R "(profilenamespace getvariable ['GUI_BCG_RGB_R', 0.77])"
@@ -50,18 +50,18 @@ class RscPicture;
             colorSelection[] = {COLOR_ACTIVE_RGBA}; \
             canModify = 0; \
             autocomplete = ""; \
-            x = ATTRIBUTE_TITLE_W * GRID_W; \
-            y = 0 * SIZE_M * GRID_H; \
-            w = (ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
-            h = SIZE_M * GRID_H; \
+            x = QUOTE(ATTRIBUTE_TITLE_W * GRID_W); \
+            y = QUOTE(0 * SIZE_M * GRID_H); \
+            w = QUOTE((ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W); \
+            h = QUOTE(SIZE_M * GRID_H); \
         }; \
         class Picture: RscPicture { \
             text = QPATHTOF(UI\pass.paa); \
             idc = CTRL_PICTURE; \
-            x = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W; \
-            y = 0; \
-            w = SIZE_M * GRID_W; \
-            h = SIZE_M * GRID_H; \
+            x = QUOTE((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W - (1.5 * SIZE_M)) * GRID_W); \
+            y = QUOTE(0); \
+            w = QUOTE(SIZE_M * GRID_W); \
+            h = QUOTE(SIZE_M * GRID_H); \
         }; \
     };
 
@@ -291,32 +291,32 @@ class Cfg3DEN {
             attributeLoad = QUOTE(_this call FUNC(autotest));
             attributeSave = "true";
 
-            w = (ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) * GRID_W;
-            h = 24 * SIZE_M * GRID_H;
+            w = QUOTE((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) * GRID_W);
+            h = QUOTE(24 * SIZE_M * GRID_H);
             class Controls {
                 class ActionTitle: ctrlStatic {
                     text = CSTRING(Findings);
                     tooltip = "";
-                    x = SIZE_M * GRID_H;
-                    y = 0;
-                    w = ATTRIBUTE_TITLE_W * GRID_W;
-                    h = 1 * SIZE_M * GRID_H;
+                    x = QUOTE(SIZE_M * GRID_H);
+                    y = QUOTE(0);
+                    w = QUOTE(ATTRIBUTE_TITLE_W * GRID_W);
+                    h = QUOTE(1 * SIZE_M * GRID_H);
                     colorBackground[] = {0, 0, 0, 0};
                 };
                 class ActionListBackground: ctrlStatic {
                     idc = -1;
-                    x = SIZE_M * GRID_H;
-                    y = 1 * SIZE_M * GRID_H;
-                    h = 23 * SIZE_M * GRID_H;
-                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M)) * GRID_W;
+                    x = QUOTE(SIZE_M * GRID_H);
+                    y = QUOTE(1 * SIZE_M * GRID_H);
+                    h = QUOTE(23 * SIZE_M * GRID_H);
+                    w = QUOTE(((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M)) * GRID_W);
                     colorBackground[] = {0.33, 0.33, 0.33, 1};
                 };
                 class ActionList: ctrlListNBox {
                     idc = CTRL_PICTURE;
-                    x = SIZE_M * GRID_H;
-                    y = 1 * SIZE_M * GRID_H;
-                    h = 23 * SIZE_M * GRID_H;
-                    w = ((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M) ) * GRID_W;
+                    x = QUOTE(SIZE_M * GRID_H);
+                    y = QUOTE(1 * SIZE_M * GRID_H);
+                    h = QUOTE(23 * SIZE_M * GRID_H);
+                    w = QUOTE(((ATTRIBUTE_TITLE_W + ATTRIBUTE_CONTENT_W) - (2 * SIZE_M) ) * GRID_W);
                     drawSideArrows = 0;
                     idcLeft = -1;
                     idcRight = -1;
