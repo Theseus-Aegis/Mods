@@ -45,6 +45,8 @@ ace_overheating_unJamOnreload = true;
 
 ace_rearm_level = 1;
 
+ace_refuel_hoseLength = 20; // Default: 12
+
 ace_repair_addSpareParts = false;
 ace_repair_engineerSetting_fullRepair = 0;
 ace_repair_engineerSetting_Repair = 1;
