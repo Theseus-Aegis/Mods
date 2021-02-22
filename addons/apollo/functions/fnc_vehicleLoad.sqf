@@ -39,7 +39,7 @@ if (_retrieveVehicles == "ready") then {
     _vehList = (_vehList apply {missionNamespace getVariable [_x, objNull]}) select {!isNull _x};
     GVAR(vehiclesList) = +_vehList; // Don't use global variable directly in case of new vehicles during this time
 
-    // Allow damage and enable simulation on all vehicles
+    // Enable simulation on all vehicles and attempt to fix physics
     {
         _x enableSimulationGlobal true;
 
