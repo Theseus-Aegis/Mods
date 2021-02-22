@@ -42,10 +42,16 @@ if (_retrieveVehicles == "ready") then {
     // Allow damage and enable simulation on all vehicles
     {
         _x enableSimulationGlobal true;
-        _x allowDamage true;
 
         // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
+        private _vehDamage = getAllHitPointsDamage _x;
         _x setDamage [damage _x, false];
+
+        private _vehicle = _x;
+        _vehDamage params ["_hitPoints", "", "_hitPointsDamage"];
+        {
+            _vehicle setHitPointDamage [_x, _hitPointsDamage select _forEachIndex, false];
+        } forEach _hitPoints;
     } forEach _vehList;
 
     // Set vehicles loaded flag
