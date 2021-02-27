@@ -8,7 +8,7 @@ class CfgDifficultyPresets {
         class Options {
             autoReport = 0;
             cameraShake = 1;
-            commands = 1;
+            commands = 0;
             deathMessages = 0;
             detectedMines = 0;
             enemyTags= 0;
