@@ -58,6 +58,9 @@ private _vehicleFuel = fuel _vehicleObject;
 private _vehicleLock = locked _vehicleObject;
 private _vehicleCustomization = [_vehicleObject, ""] call BIS_fnc_exportVehicle;
 
+private _cargo = _vehicleObject getVariable ["ace_cargo_loaded", []];
+private _cargoSpace = [_vehicleObject] call ACEFUNC(cargo,getCargoSpaceLeft);
+
 private _vehicleAmmo = [];
 private _vehicleMagazineCargo = [];
 private _vehicleItemCargo = [];
@@ -67,7 +70,6 @@ private _vehicleBackPacks = [];
 private _vehicleBackpackItems = [];
 private _vehicleBackpackMagazines = [];
 private _vehicleBackpackWeapons = [];
-
 
 if (_vehicleAlive) then {
     _vehicleAmmo = magazinesAmmo _vehicleObject;
@@ -86,4 +88,4 @@ if (_vehicleAlive) then {
 
 private _vehicleNamePretty = getText (configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
 
-["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization] call FUNC(invokeJavaMethod);
+["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization, _cargo, _cargoSpace] call FUNC(invokeJavaMethod);
