@@ -17,7 +17,9 @@
 
 params ["_bodybagContents"];
 
-if (_bodybagContents isEqualTo [] || {count _bodybagContents isNotEqualTo 4}) exitWith {ERROR("Failed to create bodybag check inputted array");};
+if (_bodybagContents isEqualTo [] || {(count _bodybagContents) isNotEqualTo 4}) exitWith {
+    ERROR("Failed to create bodybag! Invalid input.");
+};
 
 private _bodyBag = createVehicle ["ACE_bodyBagObject", ace_player];
 
