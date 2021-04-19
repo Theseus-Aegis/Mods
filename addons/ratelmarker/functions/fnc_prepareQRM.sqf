@@ -7,10 +7,10 @@
  * None
  *
  * Return Value:
- * Can Use RATEL Marker menu <BOOL>
+ * None
  *
  * Example:
- * [vehicle, player] call tac_ratelmarker_fnc_canUseMarkerMenu;
+ * call tac_ratelmarker_fnc_prepareQRM
  *
  * Public: No
  */
@@ -31,9 +31,9 @@ if (GVAR(QuickReferenceMarkerMode) == 2) then {
 
     private _markerPos = terrainIntersectAtASL [_traceBegin, _traceEnd];
 
-    if !(_markerPos isEqualTo [0,0,0]) then {
+    if !(_markerPos isEqualTo [0, 0, 0]) then {
         [_markerPos] call FUNC(createQRM);
     } else {
-        "Could not create Quick Reference Marker" call CBA_fnc_notify;
+        LLSTRING(QRM_Create) call CBA_fnc_notify;
     };
 };

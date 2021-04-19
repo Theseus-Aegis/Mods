@@ -25,12 +25,6 @@
             <German>RATEL Markierung erstellt (Karte öffnen um zu zentrieren)</German>
             <French>Balise RATEL crée (Ouvrir la carte pour focaliser)</French>
         </Key>
-        <Key ID="STR_TAC_RatelMarker_QRM_settingsCategory">
-            <English>TAC Quick Reference Marker</English>
-        </Key>
-        <Key ID="STR_TAC_RatelMarker_QRM_Disabled">
-            <English>Disabled</English>
-        </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Create">
             <English>Create Quick Reference Marker</English>
         </Key>
@@ -41,6 +35,9 @@
             <English>Vehicle Position</English>
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_ViewPos">
+            <English>View Position</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_Error">
             <English>View Position</English>
         </Key>
     </Package>

@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [_markerPos] call tac_ratelmarker_fnc_createQRM;
+ * [_markerPos] call tac_ratelmarker_fnc_createQRM
  *
  * Public: No
  */
@@ -18,6 +18,6 @@
 params ["_markerPos"];
 
 [
-    format ["QRM [%1] (%2)", (mapGridPosition _markerPos), [daytime, "HH:MM"] call BIS_fnc_timeToString],
+    format ["QRM [%1] (%2)", mapGridPosition _markerPos, [daytime, "HH:MM"] call BIS_fnc_timeToString],
     _markerPos
-] call ace_microdagr_fnc_deviceAddWaypoint;
+] call ACEFUNC(microdagr,deviceAddWaypoint);
