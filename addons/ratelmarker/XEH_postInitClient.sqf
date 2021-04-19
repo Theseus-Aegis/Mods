@@ -16,7 +16,7 @@ if (!hasInterface) exitWith {};
         call FUNC(prepareQRM);
     };
     false
-}, "", [20, [true, true, true]], false] call CBA_fnc_addKeybind; // Ctrl+Alt+Shift+R
+}, ""] call CBA_fnc_addKeybind;
 
 // Client EH
 [QGVAR(created), FUNC(createMarker)] call CBA_fnc_addEventHandler;
