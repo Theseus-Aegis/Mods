@@ -38,7 +38,7 @@
             <English>View Position</English>
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Error">
-            <English>View Position</English>
+            <English>Could not create Quick Reference Marker</English>
         </Key>
     </Package>
 </Project>
