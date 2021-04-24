@@ -25,5 +25,20 @@
             <German>RATEL Markierung erstellt (Karte öffnen um zu zentrieren)</German>
             <French>Balise RATEL crée (Ouvrir la carte pour focaliser)</French>
         </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_Create">
+            <English>Create Quick Reference Marker</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_Mode">
+            <English>Quick Reference Marker Mode</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_VehiclePos">
+            <English>Vehicle Position</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_ViewPos">
+            <English>View Position</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_Error">
+            <English>Could not create Quick Reference Marker</English>
+        </Key>
     </Package>
 </Project>
