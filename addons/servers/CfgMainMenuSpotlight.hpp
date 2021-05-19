@@ -39,6 +39,6 @@ class CfgMainMenuSpotlight {
 
     delete SP_FD14;
 
-    delete AoW_Showcase_Future;
     delete AoW_Showcase_AoW;
+    delete AoW_Showcase_Future;
 };
