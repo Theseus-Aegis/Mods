@@ -4,5 +4,8 @@
         <Key ID="STR_TAC_Supplies_MedicalArsenal">
             <English>Medical Arsenal</English>
         </Key>
+        <Key ID="STR_TAC_Supplies_TraitInteraction">
+            <English>Get %1 trait</English>
+        </Key>
     </Package>
 </Project>
