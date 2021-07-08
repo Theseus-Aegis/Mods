@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [object] call tac_supplies_fnc_traitActions
+ * [object, "type"] call tac_supplies_fnc_traitActions
  *
  * Public: No
  */
@@ -27,6 +27,7 @@ private _removeTraitsAction = [
 
         {
             _player setUnitTrait [_x, false];
+            [QGVAR(storeTraits), [getPlayerUID _player, nil]] call CBA_fnc_serverEvent;
         } forEach ["Medic", "Engineer", "ExplosiveSpecialist", "UavHacker"];
     },
     {
@@ -43,15 +44,19 @@ private _traitAction = [
     format [LLSTRING(TraitInteraction), _x],
     "",
     {
+        params ["", "_player"];
         (_this select 2) params ["_type"];
 
-        [QGVAR(storeTraits), [getPlayerUID _player, [_type]]] call CBA_fnc_serverEvent;
+        [QGVAR(storeTraits), [getPlayerUID _player, _type]] call CBA_fnc_serverEvent;
 
         private _traits = [_type];
-        if (_type isEqualTo "engineer") then {traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]};
+        if (_type isEqualTo "engineer") then {
+            traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
+        };
         {_player setUnitTrait _x} forEach _traits;
     },
     {
+        params ["", "_player"];
         (_this select 2) params ["_type"];
 
         private _trainings = [
@@ -62,10 +67,13 @@ private _traitAction = [
             60
         ] call ACEFUNC(common,cachedCall);
 
-        typeOf _player =! "tacs_Unit_B_TeamLeader" && !EGVAR(apollo,enabled) && (if (_type isEqualTo "engineer") then "demolitions" else {_type}) in _trainings;
+        if (_type isEqualTo "engineer") then {
+            _type = "demolitions";
+        };
+        typeOf _player != "tacs_Unit_B_TeamLeader" && {!EGVAR(apollo,enabled)} && {_type in _trainings};
     },
     {},
-    [_type]
+    _type
 ] call ACEFUNC(interact_menu,createAction);
 
 [_object, 0, ["ACE_MainActions"], _traitAction] call ACEFUNC(interact_menu,addActionToObject);
