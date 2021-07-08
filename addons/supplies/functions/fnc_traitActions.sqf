@@ -2,6 +2,7 @@
 /*
  * Author: JoramD
  * Add interactions for traits.
+ * Currently supports types "medic" and "engineer".
  *
  * Arguments:
  * 0: Object <OBJECT>
@@ -70,7 +71,7 @@ private _traitAction = [
         if (_type isEqualTo "engineer") then {
             _type = "demolitions";
         };
-        typeOf _player != "tacs_Unit_B_TeamLeader" && {!EGVAR(apollo,enabled)} && {_type in _trainings};
+        toLower (typeOf _this) in GVAR(traitsBlacklist) && {!EGVAR(apollo,enabled)} && {_type in _trainings};
     },
     {},
     _type

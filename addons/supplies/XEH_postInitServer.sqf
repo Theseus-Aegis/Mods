@@ -8,7 +8,7 @@ GVAR(playerTraits) = createHashMap;
 
 [QGVAR(loadTraits), {
     private _type = GVAR(playerTraits) getOrDefault [getPlayerUID _this, ""];
-    if (toLower (typeOf _this) in GVAR(traitsBlacklist)) exitWith {};
+    if (_type isEqualTo "" || {toLower (typeOf _this) in GVAR(traitsBlacklist)}) exitWith {};
 
     private _traits = [_type];
     if (_type isEqualTo "engineer") then {
