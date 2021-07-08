@@ -71,7 +71,7 @@ private _traitAction = [
         if (_type isEqualTo "engineer") then {
             _type = "demolitions";
         };
-        toLower (typeOf _this) in GVAR(traitsBlacklist) && {!EGVAR(apollo,enabled)} && {_type in _trainings};
+        toLower (typeOf _player) in GVAR(traitsBlacklist) && {!EGVAR(apollo,enabled)} && {_type in _trainings};
     },
     {},
     _type
