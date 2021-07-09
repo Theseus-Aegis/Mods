@@ -4,7 +4,9 @@
 if (!hasInterface) exitWith {};
 
 [QGVAR(setTraits), {
-    ace_player setUnitTrait [_this, true];
+    _this params ["_player", "_trait"];
+
+    _player setUnitTrait [_trait, true];
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(loadTraits), ace_player] call CBA_fnc_serverEvent;
