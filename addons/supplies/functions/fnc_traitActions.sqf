@@ -72,7 +72,7 @@ private _traitAction = [
         if (_type isEqualTo "Engineer") then {
             _type = "demolitions";
         };
-        EGVAR(apollo,enabled) && {!(_player getUnitTrait "Medic" || {_player getUnitTrait "Engineer"})} && {toLower _type in _trainings} && {!(toLower (typeOf _player) in GVAR(traitsBlacklist))};
+        EGVAR(apollo,enabled) && {!(_player getUnitTrait "Medic" || {_player getUnitTrait "Engineer"})} && {toLower _type in _trainings} && {!(typeOf _player in GVAR(traitsBlacklist))};
     },
     {},
     _type
