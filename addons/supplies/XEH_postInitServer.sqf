@@ -10,7 +10,7 @@ GVAR(playerTraits) = createHashMap;
     private _type = GVAR(playerTraits) getOrDefault [getPlayerUID _this, ""];
     if (_type isEqualTo "" || {typeOf _this in GVAR(traitsBlacklist)}) exitWith {};
 
-    INFO_1("Restoring trait: %1 for: %2", _type, name _this);
+    INFO_2("Restoring trait: %1 for: %2", _type, name _this);
     private _traits = [_type];
     if (_type isEqualTo "engineer") then {
         traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
