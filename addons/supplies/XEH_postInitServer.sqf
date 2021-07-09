@@ -12,7 +12,7 @@ GVAR(playerTraits) = createHashMap;
 
     INFO_2("Restoring trait %1 for %2",_type,name _this);
     private _traits = [_type];
-    if (_type isEqualTo "engineer") then {
+    if (_type isEqualTo "Engineer") then {
         traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
     };
     {[QGVAR(setTraits), [_this, _x], _this] call CBA_fnc_targetEvent;} forEach _traits;
