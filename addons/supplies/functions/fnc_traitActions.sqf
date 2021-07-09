@@ -2,7 +2,7 @@
 /*
  * Author: JoramD
  * Add interactions for traits.
- * Currently supports types "medic" and "engineer".
+ * Currently supports types "Medic" and "Engineer".
  *
  * Arguments:
  * 0: Object <OBJECT>
@@ -41,8 +41,8 @@ private _removeTraitsAction = [
 [_object, 0, ["ACE_MainActions"], _removeTraitsAction] call ACEFUNC(interact_menu,addActionToObject);
 
 private _traitAction = [
-    format [QGVAR(%1_Trait), _x],
-    format [LLSTRING(TraitInteraction), _x],
+    format [QGVAR(%1_Trait), _type],
+    format [LLSTRING(TraitInteraction), _type],
     "",
     {
         params ["", "_player"];
@@ -51,10 +51,11 @@ private _traitAction = [
         [QGVAR(storeTraits), [getPlayerUID _player, _type]] call CBA_fnc_serverEvent;
 
         private _traits = [_type];
-        if (_type isEqualTo "engineer") then {
-            traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
+        if (_type isEqualTo "Engineer") then {
+            _traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
         };
-        {_player setUnitTrait _x} forEach _traits;
+        {_player setUnitTrait [_x, true]} forEach _traits;
+        [QGVAR(storeTraits), [getPlayerUID _player, _type]] call CBA_fnc_serverEvent;
     },
     {
         params ["", "_player"];
@@ -64,14 +65,14 @@ private _traitAction = [
             ["getTrainingIdentifiers", _player],
             EFUNC(apollo,getPlayerInfo),
             _player,
-            "tac_trainingIdentifiers",
+            QGVAR(tac_trainingIdentifiers),
             60
         ] call ACEFUNC(common,cachedCall);
 
-        if (_type isEqualTo "engineer") then {
+        if (_type isEqualTo "Engineer") then {
             _type = "demolitions";
         };
-        toLower (typeOf _player) in GVAR(traitsBlacklist) && {!EGVAR(apollo,enabled)} && {_type in _trainings};
+        EGVAR(apollo,enabled) && {!(_player getUnitTrait "Medic" || {_player getUnitTrait "Engineer"})} && {toLower _type in _trainings} && {!(toLower (typeOf _player) in GVAR(traitsBlacklist))};
     },
     {},
     _type

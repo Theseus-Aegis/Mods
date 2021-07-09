@@ -55,20 +55,7 @@ private _action = [
     {
         params ["_target", "_player"];
 
-        if ("NCO" in (typeOf _target)) then {
-            _player getUnitTrait "Medic"
-        } else {
-            private _trainings = [
-                ["getTrainingIdentifiers", _player],
-                EFUNC(apollo,getPlayerInfo),
-                _player,
-                "tac_trainingIdentifiers",
-                60
-            ] call ACEFUNC(common,cachedCall);
-
-            // Has required training
-            "medic" in _trainings
-        };
+        _player getUnitTrait "Medic"
     }
 ] call ACEFUNC(interact_menu,createAction);
 
