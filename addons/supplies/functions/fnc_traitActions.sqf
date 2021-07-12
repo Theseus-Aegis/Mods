@@ -28,7 +28,7 @@ private _removeTraitsAction = [
 
         {
             _player setUnitTrait [_x, false];
-            [QGVAR(storeTraits), [getPlayerUID _player, nil]] call CBA_fnc_serverEvent;
+            [QGVAR(storeTraits), [getPlayerUID _player, []]]] call CBA_fnc_serverEvent;
         } forEach ["Medic", "Engineer", "ExplosiveSpecialist", "UavHacker"];
     },
     {
@@ -45,8 +45,7 @@ private _traitAction = [
     format [LLSTRING(TraitInteraction), _type],
     "",
     {
-        params ["", "_player"];
-        (_this select 2) params ["_type"];
+        params ["", "_player", "_type"];
 
         [QGVAR(storeTraits), [getPlayerUID _player, _type]] call CBA_fnc_serverEvent;
 
@@ -54,12 +53,14 @@ private _traitAction = [
         if (_type isEqualTo "Engineer") then {
             _traits = ["Engineer", "ExplosiveSpecialist", "UavHacker"]
         };
-        {_player setUnitTrait [_x, true]} forEach _traits;
+
+        {
+            _player setUnitTrait [_x, true]
+        } forEach _traits;
         [QGVAR(storeTraits), [getPlayerUID _player, _type]] call CBA_fnc_serverEvent;
     },
     {
-        params ["", "_player"];
-        (_this select 2) params ["_type"];
+        params ["", "_player", "_type"];
 
         private _trainings = [
             ["getTrainingIdentifiers", _player],
@@ -69,10 +70,10 @@ private _traitAction = [
             60
         ] call ACEFUNC(common,cachedCall);
 
-        if (_type isEqualTo "Engineer") then {
-            _type = "demolitions";
-        };
-        EGVAR(apollo,enabled) && {!(_player getUnitTrait "Medic" || {_player getUnitTrait "Engineer"})} && {toLower _type in _trainings} && {!(typeOf _player in GVAR(traitsBlacklist))};
+        EGVAR(apollo,enabled) &&
+        {!(_player getUnitTrait "Medic" || {_player getUnitTrait "Engineer"})} &&
+        {toLower _type in _trainings} &&
+        {!(toLower (typeOf _player) in (GVAR(traitsBlacklist) apply {toLower _x}))}
     },
     {},
     _type
