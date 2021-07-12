@@ -28,7 +28,7 @@ private _removeTraitsAction = [
 
         {
             _player setUnitTrait [_x, false];
-            [QGVAR(storeTraits), [getPlayerUID _player, []]]] call CBA_fnc_serverEvent;
+            [QGVAR(storeTraits), [getPlayerUID _player, []]] call CBA_fnc_serverEvent;
         } forEach ["Medic", "Engineer", "ExplosiveSpecialist", "UavHacker"];
     },
     {
