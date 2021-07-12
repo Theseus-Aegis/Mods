@@ -1,1 +1,2 @@
 PREP(medicalArsenal);
+PREP(traitActions);

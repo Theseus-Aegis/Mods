@@ -4,5 +4,11 @@
         <Key ID="STR_TAC_Supplies_MedicalArsenal">
             <English>Medical Arsenal</English>
         </Key>
+        <Key ID="STR_TAC_Supplies_TraitInteraction">
+            <English>Assign %1</English>
+        </Key>
+        <Key ID="STR_TAC_Supplies_RemoveTraits">
+            <English>Unassign Trait</English>
+        </Key>
     </Package>
 </Project>
