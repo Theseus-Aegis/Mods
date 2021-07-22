@@ -31,7 +31,7 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
     []
 };
 
-private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3", "loadPlayer", getPlayerUID _player, GVAR(isDebug)];
+private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3", "loadPlayer", _playerUID, GVAR(isDebug)];
 
 if (_loadData isEqualTo "error") exitWith {
     ERROR_2("Failed to load info (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);

@@ -29,9 +29,8 @@ TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 
 private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
 
-private _armoryData = parseSimpleArray _loadData;
-
 if (_loadData isNotEqualTo "error") then {
+    private _armoryData = parseSimpleArray _loadData;
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
