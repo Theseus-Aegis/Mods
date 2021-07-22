@@ -6,17 +6,13 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "tac_supplies",
-            "CUP_Weapons_NVG",
-            "CUP_Weapons_East_Attachments",
-            "CUP_Weapons_M136"
-        };
+        requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
-        authors[] = {"TyroneMF"};
+        authors[] = {"JoramD"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
-#include "CfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgMainMenuSpotlight.hpp"

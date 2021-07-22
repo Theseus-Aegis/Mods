@@ -28,7 +28,7 @@ if (_requestedMenu == "main") exitWith {
     {
         ctrlShow [_x, true];
     } forEach [
-        TITLE,
+        BACKGROUND, TITLE,
         BACKPIC, BACKBTN,
         EXPORTPIC, EXPORTBTN
     ];

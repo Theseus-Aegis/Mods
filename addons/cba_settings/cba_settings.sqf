@@ -12,6 +12,8 @@ ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
 ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'ArmaZeusCache', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE']";
 
+ace_dragging_dragAndFire = true;
+
 ace_finger_enabled = true;
 
 ace_hearing_autoAddEarplugsToUnits = false;
@@ -21,10 +23,11 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
+ace_medical_deathChance = 0.15; // 15% (default: 100%)
 ace_medical_fatalDamageSource = 2; // Either Vital Shots or Sum of Trauma (default: 0 - Vital Shots Only)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
+ace_medical_painUnconsciousChance = 0.20; // 20% (default: 10%)
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
-ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always)
 ace_medical_treatment_advancedBandages = 2; // Enabled & Can Reopen (default: 1 - Enabled)
 ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
 ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
@@ -39,15 +42,17 @@ ace_nametags_showPlayerRanks = false;
 
 ace_nightvision_aimDownSightsBlur = 0.4;
 ace_nightvision_effectScaling = 0.5;
-ace_nightvision_noiseScaling = 0.5;
+ace_nightvision_noiseScaling = 0.3;
 
 ace_overheating_unJamOnreload = true;
 
 ace_rearm_level = 1;
 
+ace_refuel_hoseLength = 30; // Default: 12
+
 ace_repair_addSpareParts = false;
 ace_repair_engineerSetting_fullRepair = 0;
-ace_repair_engineerSetting_Repair = 0;
+ace_repair_engineerSetting_Repair = 1;
 ace_repair_fullRepairLocation = 3;
 
 ace_respawn_removeDeadBodiesDisconnected = false;

@@ -17,8 +17,6 @@
 
 params ["_object"];
 
-GVAR(trainings) = false;
-
 private _medicalItems = [
     "ACE_packingBandage",
     "ACE_elasticBandage",
@@ -47,28 +45,17 @@ private _medicalItems = [
 
 private _action = [
     QGVAR(medicalArsenal),
-    "Medical Arsenal",
+    LLSTRING(MedicalArsenal),
     "",
     {
         params ["_target", "_player"];
 
-        GVAR(trainings) = false;
         [_target, _player, false] call ACEFUNC(arsenal,openBox);
     },
     {
         params ["_target", "_player"];
 
-        if ("NCO" in (typeOf _target)) then {
-            _player getUnitTrait "Medic"
-        } else {
-            if (GVAR(trainings) isEqualTo false) then {
-                GVAR(trainings) = ["getTrainingIdentifiers", _player] call EFUNC(apollo,getPlayerInfo);
-            };
-
-            if !(GVAR(trainings) isEqualTo false) then {
-                "medic" in GVAR(trainings)
-            };
-        };
+        _player getUnitTrait "Medic"
     }
 ] call ACEFUNC(interact_menu,createAction);
 

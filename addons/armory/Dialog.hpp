@@ -1,10 +1,10 @@
 // Size definitions
-#define SIZEX ((safezoneW / safezoneH) min 1.2) // Grid width (from aspect ratio, 1.2 clamp for the largest possible size)
+#define SIZEX ((safeZoneW / safeZoneH) min 1.2) // Grid width (from aspect ratio, 1.2 clamp for the largest possible size)
 #define SIZEY (SIZEX / 1.2) // Grid height (from width)
 #define W_PART(num) (num * (SIZEX / 40)) // Split grid into 40 columns
 #define H_PART(num) (num * (SIZEY / 25)) // Split grid into 25 rows
-#define X_PART(num) (W_PART(num) + (safezoneX + (safezoneW - SIZEX)/2)) // Translate by columns and find left of grid
-#define Y_PART(num) (H_PART(num) + (safezoneY + (safezoneH - SIZEY)/2)) // Translate by rows and find top of grid
+#define X_PART(num) (W_PART(num) + (safeZoneX + (safeZoneW - SIZEX) / 2)) // Translate by columns and find left of grid
+#define Y_PART(num) (H_PART(num) + (safeZoneY + (safeZoneH - SIZEY) / 2)) // Translate by rows and find top of grid
 
 #define PIC_X X_PART(11.15)
 #define PIC_Y Y_PART(2.8)
@@ -45,6 +45,7 @@
 #define ST_LEFT 0x00
 #define LB_TEXTURES 0x10
 
+class ctrlStatic;
 
 class GVAR(RscPicture) {
     idc = -1;
@@ -55,8 +56,8 @@ class GVAR(RscPicture) {
     colorBackground[] = {1, 1, 1, 0};
     font = "RobotoCondensed";
     sizeEx = 0.02;
-    w = PIC_W;
-    h = PIC_H;
+    w = QUOTE(PIC_W);
+    h = QUOTE(PIC_H);
 };
 
 class GVAR(RscButton) {
@@ -83,16 +84,16 @@ class GVAR(RscButton) {
     font = "RobotoCondensed";
     sizeEx = 0.02;
     text = "";
-    w = BTN_W;
-    h = BTN_H;
+    w = QUOTE(BTN_W);
+    h = QUOTE(BTN_H);
 };
 
 class GVAR(RscCombo) {
     idc = -1;
     type = CT_COMBO;
-    style = ST_LEFT + LB_TEXTURES;
+    style = QUOTE(ST_LEFT + LB_TEXTURES);
     font = "RobotoCondensed";
-    sizeEx = "0.04";
+    sizeEx = 0.04;
     shadow = 0;
     colorText[] = {0, 0, 0, 1};
     colorDisabled[] = {0, 0, 0, 0.25};
@@ -104,7 +105,7 @@ class GVAR(RscCombo) {
     soundSelect[] = {"\a3\ui_f\data\Sound\RscListbox\soundSelect", 0.09, 1};
     arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
     arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
-    wholeHeight = safezoneH * 0.3;
+    wholeHeight = QUOTE(safeZoneH * 0.3);
     maxHistoryDelay = 1;
     class ComboScrollBar {
         color[] = {1, 1, 1, 0.6};
@@ -120,7 +121,7 @@ class GVAR(RscListNBox) {
     type = CT_LISTNBOX;
     style = ST_MULTI;
     font = "RobotoCondensed";
-    sizeEx = "0.04";
+    sizeEx = 0.04;
     colorText[] = {0, 0, 0, 1};
     colorDisabled[] = {0, 0, 0, 0.25};
     colorSelect[] = {0, 0, 0, 1};
@@ -152,87 +153,102 @@ class GVAR(Display) {
     idd = DISPLAYID;
     movingEnable = 1;
     onUnload = QUOTE(call FUNC(closeArmory));
+    onKeyDown = QUOTE(_this call FUNC(onKeyDown));
+    onMouseButtonDown = QUOTE([ARR_3('onMouseButtonDown',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonDown));
+    onMouseButtonUp = QUOTE([ARR_3('onMouseButtonUp',_this,QQGVAR(Display))] call ACEFUNC(arsenal,onMouseButtonUp));
     class controlsBackground {
         class BackgroundPic: GVAR(RscPicture) {
+            idc = BACKGROUND;
             moving = 1;
-            x = X_PART(3);
-            y = Y_PART(-4.5);
-            w = W_PART(34);
-            h = H_PART(34);
+            x = QUOTE(X_PART(3));
+            y = QUOTE(Y_PART(-4.5));
+            w = QUOTE(W_PART(34));
+            h = QUOTE(H_PART(34));
             text = QPATHTOF(UI\background.paa);
+        };
+        class CameraArea: ctrlStatic {
+            idc = CAMERAAREA;
+            style = 16;
+            onMouseMoving = QUOTE([ARR_3('onMouseMoving',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseHolding = QUOTE([ARR_3('onMouseHolding',_this,GVAR(Display))] call ACEFUNC(arsenal,handleMouse));
+            onMouseZChanged = QUOTE([ARR_3('onMouseZChanged',_this,GVAR(Display))] call ACEFUNC(arsenal,handleScrollWheel));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            w = QUOTE(safeZoneW);
+            h = QUOTE(safeZoneH);
         };
     };
     class controls {
         // Title
         class Title: GVAR(RscPicture) {
             idc = TITLE;
-            x = X_PART(11.4);
-            y = Y_PART(0.4);
-            w = W_PART(16);
-            h = H_PART(1.1);
+            x = QUOTE(X_PART(11.4));
+            y = QUOTE(Y_PART(0.4));
+            w = QUOTE(W_PART(16));
+            h = QUOTE(H_PART(1.1));
         };
 
         // Dropdown Menu
         class Dropdown: GVAR(RscCombo) {
             idc = DROPDOWN;
             onLBSelChanged = QUOTE([GVAR(armoryData)] call FUNC(dialogControl_populateList));
-            x = X_PART(10.3);
-            y = Y_PART(2.3);
-            w = W_PART(19.3);
-            h = H_PART(1.3);
+            x = QUOTE(X_PART(10.3));
+            y = QUOTE(Y_PART(2.3));
+            w = QUOTE(W_PART(19.3));
+            h = QUOTE(H_PART(1.3));
         };
 
         // Amount
         class Amount: GVAR(RscPicture) {
             idc = AMOUNT;
-            x = X_PART(25);
-            y = Y_PART(3.9);
-            w = W_PART(4);
-            h = H_PART(1.1);
+            x = QUOTE(X_PART(25));
+            y = QUOTE(Y_PART(3.9));
+            w = QUOTE(W_PART(4));
+            h = QUOTE(H_PART(1.1));
         };
 
         // List
         class List: GVAR(RscListNBox) {
             idc = NLIST;
             onLBSelChanged  = QUOTE(call FUNC(dialogControl_amountSelection); call FUNC(dialogControl_takestash));
-            x = X_PART(10);
-            y = Y_PART(5);
-            w = W_PART(20);
-            h = H_PART(14);
+            x = QUOTE(X_PART(10));
+            y = QUOTE(Y_PART(5));
+            w = QUOTE(W_PART(20));
+            h = QUOTE(H_PART(14));
         };
 
         // Dropdown Amount Selection
         class DropdownAmount: GVAR(RscCombo) {
             idc = DROPDOWNAMOUNT;
             onLBSelChanged = QUOTE(call FUNC(dialogControl_takestash));
-            x = X_PART(24.6);
-            y = Y_PART(20.2);
-            w = W_PART(3.9);
-            h = H_PART(1.3);
+            x = QUOTE(X_PART(24.6));
+            y = QUOTE(Y_PART(20.2));
+            w = QUOTE(W_PART(3.9));
+            h = QUOTE(H_PART(1.3));
         };
 
         // Exit-Back
         class Main_Pic_C1_RE: GVAR(RscPicture) {
             idc = BACKPIC;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_RE;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_RE);
         };
         class Main_Btn_C1_RE: GVAR(RscButton) {
             idc = BACKBTN;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_RE;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_RE);
         };
 
         // Take-Stash
         class TakeStash_Pic_C1_R1: GVAR(RscPicture) {
             idc = TAKESTASHPIC;
-            x = PIC_X_C3;
-            y = PIC_Y + OFFSET_Y_RE;
+            x = QUOTE(PIC_X_C3);
+            y = QUOTE(PIC_Y + OFFSET_Y_RE);
         };
         class TakeStash_Btn_C1_R1: GVAR(RscButton) {
             idc = TAKESTASHBTN;
-            x = BTN_X_C3;
-            y = BTN_Y + OFFSET_Y_RE;
+            x = QUOTE(BTN_X_C3);
+            y = QUOTE(BTN_Y + OFFSET_Y_RE);
         };
 
         // MAIN MENU ONLY
@@ -240,165 +256,180 @@ class GVAR(Display) {
         // Row 1
         class Main_Pic_C1_R1: GVAR(RscPicture) {
             idc = MAINPIC1;
-            x = PIC_X_C1;
-            y = PIC_Y;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y);
         };
         class Main_Btn_C1_R1: GVAR(RscButton) {
             idc = MAINBTN1;
-            x = BTN_X_C1;
-            y = BTN_Y;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y);
         };
 
         // Row 2
         class Main_Pic_C1_R2: GVAR(RscPicture) {
             idc = MAINPIC2;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_R2;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_R2);
         };
         class Main_Btn_C1_R2: GVAR(RscButton) {
             idc = MAINBTN2;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_R2;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_R2);
         };
 
         // Row 3
         class Main_Pic_C1_R3: GVAR(RscPicture) {
             idc = MAINPIC3;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_R3;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_R3);
         };
         class Main_Btn_C1_R3: GVAR(RscButton) {
             idc = MAINBTN3;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_R3;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_R3);
         };
 
         // Row 4
         class Main_Pic_C1_R4: GVAR(RscPicture) {
             idc = MAINPIC4;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_R4;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_R4);
         };
         class Main_Btn_C1_R4: GVAR(RscButton) {
             idc = MAINBTN4;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_R4;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_R4);
         };
 
         // Row 5
         class Main_Pic_C1_R5: GVAR(RscPicture) {
             idc = MAINPIC5;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_R5;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_R5);
         };
         class Main_Btn_C1_R5: GVAR(RscButton) {
             idc = MAINBTN5;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_R5;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_R5);
         };
 
         // Row 6
         class Main_Pic_C1_R6: GVAR(RscPicture) {
             idc = MAINPIC6;
-            x = PIC_X_C1;
-            y = PIC_Y + OFFSET_Y_R6;
+            x = QUOTE(PIC_X_C1);
+            y = QUOTE(PIC_Y + OFFSET_Y_R6);
         };
         class Main_Btn_C1_R6: GVAR(RscButton) {
             idc = MAINBTN6;
-            x = BTN_X_C1;
-            y = BTN_Y + OFFSET_Y_R6;
+            x = QUOTE(BTN_X_C1);
+            y = QUOTE(BTN_Y + OFFSET_Y_R6);
         };
 
         /* Column 2 */
         // Row 1
         class Main_Pic_C2_R1: GVAR(RscPicture) {
             idc = MAINPIC7;
-            x = PIC_X_C2;
-            y = PIC_Y;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y);
         };
         class Main_Btn_C2_R1: GVAR(RscButton) {
             idc = MAINBTN7;
-            x = BTN_X_C2;
-            y = BTN_Y;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y);
         };
 
         // Row 2
         class Main_Pic_C2_R2: GVAR(RscPicture) {
             idc = MAINPIC8;
-            x = PIC_X_C2;
-            y = PIC_Y + OFFSET_Y_R2;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_R2);
         };
         class Main_Btn_C2_R2: GVAR(RscButton) {
             idc = MAINBTN8;
-            x = BTN_X_C2;
-            y = BTN_Y + OFFSET_Y_R2;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_R2);
         };
 
         // Row 3
         class Main_Pic_C2_R3: GVAR(RscPicture) {
             idc = MAINPIC9;
-            x = PIC_X_C2;
-            y = PIC_Y + OFFSET_Y_R3;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_R3);
         };
         class Main_Btn_C2_R3: GVAR(RscButton) {
             idc = MAINBTN9;
-            x = BTN_X_C2;
-            y = BTN_Y + OFFSET_Y_R3;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_R3);
         };
 
         // Row 4
         class Main_Pic_C2_R4: GVAR(RscPicture) {
             idc = MAINPIC10;
-            x = PIC_X_C2;
-            y = PIC_Y + OFFSET_Y_R4;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_R4);
         };
         class Main_Btn_C2_R4: GVAR(RscButton) {
             idc = MAINBTN10;
-            x = BTN_X_C2;
-            y = BTN_Y + OFFSET_Y_R4;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_R4);
         };
 
         // Row 5
         class Main_Pic_C2_R5: GVAR(RscPicture) {
             idc = MAINPIC11;
-            x = PIC_X_C2;
-            y = PIC_Y + OFFSET_Y_R5;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_R5);
         };
         class Main_Btn_C2_R5: GVAR(RscButton) {
             idc = MAINBTN11;
-            x = BTN_X_C2;
-            y = BTN_Y + OFFSET_Y_R5;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_R5);
         };
 
         // Row 6
         class Main_Pic_C2_R6: GVAR(RscPicture) {
             idc = MAINPIC12;
-            x = PIC_X_C2;
-            y = PIC_Y + OFFSET_Y_R6;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_R6);
         };
         class Main_Btn_C2_R6: GVAR(RscButton) {
             idc = MAINBTN12;
-            x = BTN_X_C2;
-            y = BTN_Y + OFFSET_Y_R6;
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_R6);
         };
 
         // PHYSICAL
         class Export_Pic: GVAR(RscPicture) {
             idc = EXPORTPIC;
-            x = X_PART(30.5);
-            y = Y_PART(3);
-            w = W_PART(2);
-            h = H_PART(2);
+            x = QUOTE(X_PART(30.5));
+            y = QUOTE(Y_PART(3));
+            w = QUOTE(W_PART(2));
+            h = QUOTE(H_PART(2));
             text = QPATHTOF(UI\btnExport.paa);
         };
         class Export_Btn: GVAR(RscButton) {
             idc = EXPORTBTN;
             onMouseButtonClick = QUOTE(call FUNC(exportLoadout));
-            x = X_PART(30.5);
-            y = Y_PART(3);
-            w = W_PART(2);
-            h = H_PART(2);
+            x = QUOTE(X_PART(30.5));
+            y = QUOTE(Y_PART(3));
+            w = QUOTE(W_PART(2));
+            h = QUOTE(H_PART(2));
             tooltip = CSTRING(BtnExportTooltip);
+        };
+
+        // CAMERA
+        class CameraHint: GVAR(RscPicture) {
+            idc = CAMERAHINT;
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            text = QPATHTOF(UI\btnCamera.paa);
+        };
+        class CameraExit: GVAR(RscButton) {
+            idc = CAMERAEXIT;
+            onMouseButtonClick = QUOTE(call FUNC(closeCamera));
+            x = QUOTE(safeZoneX);
+            y = QUOTE(safeZoneY);
+            tooltip = CSTRING(BtnCloseCameraTooltip);
         };
     };
 };
