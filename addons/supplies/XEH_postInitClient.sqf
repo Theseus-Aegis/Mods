@@ -13,7 +13,7 @@ if (!hasInterface) exitWith {};
 
 // Lootbox functionality
 [
-    QGVAR(replacementBox),
+    QGVAR(randomizedBox),
     "CONTAINER",
     LLSTRING(OpenLootbox),
     [],
