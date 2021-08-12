@@ -34,3 +34,7 @@ if (!hasInterface) exitWith {};
     },
     true
 ] call CBA_fnc_addItemContextMenuOption;
+
+// Replacement Items functionality
+private _itemList = getArray (configFile >> "CfgWeapons" >> QGVAR(replacementBase) >> QGVAR(replacementList));
+[QGVAR(replacementBase), _itemList, true] call ACEFUNC(common,registerItemReplacement);
