@@ -15,7 +15,7 @@ if (!hasInterface) exitWith {};
 [
     QGVAR(randomizedBox),
     "CONTAINER",
-    LLSTRING(OpenLootbox),
+    LLSTRING(OpenRandomBox),
     [],
     "",
     {true},
