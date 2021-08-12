@@ -10,5 +10,8 @@
         <Key ID="STR_TAC_Supplies_RemoveTraits">
             <English>Unassign Trait</English>
         </Key>
+        <Key ID="STR_TAC_Supplies_OpenRandomBox">
+            <English>Open Randomized Box</English>
+        </Key>
     </Package>
 </Project>
