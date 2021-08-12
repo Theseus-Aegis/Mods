@@ -34,3 +34,12 @@ if (!hasInterface) exitWith {};
     },
     true
 ] call CBA_fnc_addItemContextMenuOption;
+
+// Replacement Items functionality
+private _replacementBaseClass = configFile >> "CfgWeapons" >> QGVAR(replacementBase);
+private _replacementClasses = "inheritsFrom _x == _replacementBaseClass" configClasses (configFile >> "CfgWeapons");
+{
+    private _class = configName _x;
+    private _itemList = getArray (configFile >> "CfgWeapons" >> _class >> QGVAR(replacementList));
+    [_class, _itemList] call ACEFUNC(common,registerItemReplacement);
+} forEach _replacementClasses;
