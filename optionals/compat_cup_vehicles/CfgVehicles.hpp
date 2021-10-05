@@ -92,7 +92,7 @@ class CfgVehicles {
     class CUP_BMP2_Ambul_Base;
     class CUP_BMP2_ZU_base;
     class CUP_FV432_Bulldog_Base;
-    class CUP_B_FV432;
+    class CUP_B_FV432_Base;
     class CUP_Fishing_Boat_Base;
     class CUP_Ikarus_Base;
     class CUP_TT650_Base;
@@ -923,10 +923,10 @@ class CfgVehicles {
     class CUP_B_FV432_Bulldog_GB_D: CUP_FV432_Bulldog_Base {
         EGVAR(heavylifter,attachPos)[] = {0, -0.01, -0.38};
     };
-    class CUP_B_FV432_GB_GPMG: CUP_B_FV432 {
+    class CUP_B_FV432_GB_GPMG: CUP_B_FV432_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, -0.38};
     };
-    class CUP_B_FV432_GB_Ambulance: CUP_B_FV432 {
+    class CUP_B_FV432_GB_Ambulance: CUP_B_FV432_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0, -0.38};
     };
     class CUP_C_Fishing_Boat_Chernarus: CUP_Fishing_Boat_Base {
