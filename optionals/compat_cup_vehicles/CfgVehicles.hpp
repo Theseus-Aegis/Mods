@@ -1,5 +1,4 @@
 // Heavy Lifter - Generated using heavylifter_exportConfig function
-
 class CfgVehicles {
     class CUP_412_Medic_Base_F;
     class CUP_412_Police_Base_F;
