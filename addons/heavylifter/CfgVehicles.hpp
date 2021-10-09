@@ -375,4 +375,3 @@ class CfgVehicles {
         GVAR(attachPos)[] = {0, -0.01, -1.07};
     };
 };
-

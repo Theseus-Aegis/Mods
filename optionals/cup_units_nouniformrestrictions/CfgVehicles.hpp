@@ -23,13 +23,7 @@ class CfgVehicles {
     class CUP_Creatures_Military_PMC_Soldier_Winter_Base: SoldierWB {
         modelSides[] = {6};
     };
-    class CUP_Creatures_Military_RACS_Soldier_Base: SoldierWB {
-        modelSides[] = {6};
-    };
     class CUP_Creatures_Military_RUS_Soldier_Base: SoldierWB {
-        modelSides[] = {6};
-    };
-    class CUP_Creatures_Military_SLA_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_TK_Soldier_Base: SoldierWB {
@@ -39,9 +33,6 @@ class CfgVehicles {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_TKG_Guerrilla_Base: SoldierWB {
-        modelSides[] = {6};
-    };
-    class CUP_Creatures_Military_USA_Soldier_Base: SoldierWB {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_USMC_Soldier_Base: SoldierWB {
@@ -66,6 +57,30 @@ class CfgVehicles {
         modelSides[] = {6};
     };
     class CUP_Creatures_Military_OPFINS_Soldier_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_RACS_Soldier_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_SLA_Soldier_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_USA_Soldier_ACU_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_USA_Soldier_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_HIL_Reservist_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_HIL_Recon_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_HIL_Man_Base: SoldierWB {
+        modelSides[] = {6};
+    };
+    class CUP_Creatures_Military_HIL_SF_Base: SoldierWB {
         modelSides[] = {6};
     };
 };

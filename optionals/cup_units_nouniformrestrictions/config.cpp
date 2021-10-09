@@ -14,6 +14,7 @@ class CfgPatches {
             "CUP_Creatures_Military_CDF",
             "CUP_Creatures_Military_Chedaki",
             "CUP_Creatures_Military_Germany",
+            "CUP_Creatures_Military_HIL",
             "CUP_Creatures_Military_NAPA",
             "CUP_Creatures_Military_PMC",
             "CUP_Creatures_Military_RACS",
