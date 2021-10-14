@@ -10,7 +10,7 @@ ace_captives_requireSurrender = 0;
 
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
-ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'ArmaZeusCache', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE']";
+ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE']";
 
 ace_dragging_dragAndFire = true;
 
