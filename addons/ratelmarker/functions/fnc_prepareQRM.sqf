@@ -18,7 +18,6 @@
 if (GVAR(QuickReferenceMarkerMode) == 0) exitwith {};
 
 private _playerVehicle = vehicle ace_player;
-private _vehicleRole = assignedVehicleRole ace_player;
 
 if (GVAR(QuickReferenceMarkerMode) == 1) then {
     private _markerPos = getPosASL _playerVehicle;
