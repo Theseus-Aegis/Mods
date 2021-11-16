@@ -31,8 +31,11 @@ Huge appreciation and thanks to [ACE3 Team](https://ace3mod.com/team.html) for t
 - Arma 3
 - Arma 3 Tools (available on Steam)
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
-- [HEMTT (0.7.6)](https://github.com/synixebrett/HEMTT/releases/tag/v0.7.6) binary placed in project root ~~or globally installed~~
+- [HEMTT (0.7.6)](https://github.com/BrettMayson/HEMTT/releases/tag/v0.7.6) binary placed in project root ~~or globally installed~~
   - `hemtt` (Linux) or `hemtt.exe` (Windows) ~~or `setup.exe` (Windows global install)~~
+- [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler/suites/4018405090/artifacts/101530082) binary placed in project root
+  - `ArmaScriptCompiler.exe` (Windows)
+  - Optional but recommended for optimized and preprocessed SQF
 
 ### Procedure
 
@@ -41,6 +44,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 - Open terminal (Linux) or command line (Windows)
 - Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
 - Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
+  - _Only Windows release builds are currently supported!_
 - Run `$ hemtt clean` to clean build files
 
 **Windows Helpers:**
