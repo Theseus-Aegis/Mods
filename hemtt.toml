@@ -16,6 +16,7 @@ modname = "{{prefix}}_mods"
 key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}"
 
+check = ["!check_release_os"]
 prebuild = ["!compile_sqf"]
 postbuild = ["!compile_sqf_cleanup"]
 releasebuild = [
@@ -24,6 +25,14 @@ releasebuild = [
 
 [header_exts]
 version = "{{git \"id 8\"}}"
+
+[scripts.check_release_os]
+steps_linux = [
+    "echo Linux release builds are unavailable due to broken keys and missing ArmaScriptCompiler!",
+    "exit 1"
+]
+only_release = true
+show_output = true
 
 # SQF Compilation
 [scripts.compile_sqf]
