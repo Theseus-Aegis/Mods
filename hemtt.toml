@@ -28,8 +28,7 @@ version = "{{git \"id 8\"}}"
 
 [scripts.check_release_os]
 steps_linux = [
-    "echo Linux release builds are unavailable due to broken keys and missing ArmaScriptCompiler!",
-    "exit 1"
+    'echo -e "\033[0;33m[WARN]\033[0m Linux release builds have broken keys and are not SQFC-optimized! Use only for local testing!"'
 ]
 only_release = true
 show_output = true
