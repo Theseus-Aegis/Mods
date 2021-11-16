@@ -52,6 +52,7 @@ hemtt
 hemtt.exe
 symbols/*
 .hemtt/local
+*.sqfc
 
 # Swap
 *.swp
