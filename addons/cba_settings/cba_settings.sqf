@@ -44,6 +44,7 @@ ace_nightvision_aimDownSightsBlur = 0.4;
 ace_nightvision_effectScaling = 0.5;
 ace_nightvision_noiseScaling = 0.3;
 
+ace_overheating_cookoffCoef = 0; // Disabled (default: 1)
 ace_overheating_unJamOnreload = true;
 
 ace_rearm_level = 1;
