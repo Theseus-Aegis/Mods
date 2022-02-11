@@ -46,7 +46,12 @@ class CfgVehicles {
         displayName = CSTRING(Helper);
         transportFuel = 0;
         hiddenSelectionsTextures[] = {""};
-        class ACE_Actions {};
+        ace_refuel_fuelCargo = 0;
+        class ACE_Actions {
+            class ACE_MainActions {
+                condition = "false";
+            };
+        };
     };
 
 // ACE Interaction
@@ -370,4 +375,3 @@ class CfgVehicles {
         GVAR(attachPos)[] = {0, -0.01, -1.07};
     };
 };
-

@@ -52,6 +52,8 @@ hemtt
 hemtt.exe
 symbols/*
 .hemtt/local
+*.sqfc
+ArmaScriptCompiler.exe
 
 # Swap
 *.swp
