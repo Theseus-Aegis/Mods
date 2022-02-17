@@ -36,5 +36,7 @@ if (!hasInterface) exitWith {};
     }] call CBA_fnc_addEventHandler;
 
     // Load player
-    [player, "loaded"] call FUNC(playerLoadClient);
+    [{
+        [player, "loaded"] call FUNC(playerLoadClient);
+    }, [], 5] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;
