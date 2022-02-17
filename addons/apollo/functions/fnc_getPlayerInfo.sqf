@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Jonpas, JoramD
- * Get player based info from Athena. Currently supports: "get_training_identifiers" & "get_accessible_item_classes".
+ * Get player based info from Athena. Currently supports: "getTrainingIdentifiers" & "getAccessibleItemClasses".
  *
  * Arguments:
  * 0: Requested Data <STRING>
@@ -19,7 +19,7 @@
 
 params ["_type", "_player", ["_errorMessage", "Could not load info"]];
 
-if !(_type in ["get_training_identifiers", "get_accessible_item_classes"]) exitWith {
+if !(_type in ["getTrainingIdentifiers", "getAccessibleItemClasses"]) exitWith {
     ERROR_1("Type %1 is not supported",_type);
     []
 };
@@ -33,12 +33,13 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
 
 private _loadData = "tac_apollo_client" callExtension format ["%1%2", _type, _playerUID];
 
-if (_loadData isEqualTo "error") exitWith {
-    ERROR_2("Failed to load info (Name: %1 - UID: %2)!",profileName,_playerUID);
+_loadData params ["_result", "_returnCode", "_errorCode"];
+if (_returnCode == 0 && {_errorCode == 0}) then {
+    private _requestedInfo = parseSimpleArray _loadData;
+    TRACE_1("Player Info",_requestedInfo);
+    _requestedInfo
+} else {
+    ERROR_4("Failed to load info (Name: %1 - UID: %2) [return: %3, error: %4]!",profileName,_playerUID,_returnCode,_errorCode);
     [_errorMessage] call CBA_fnc_notify;
     []
 };
-
-private _requestedInfo = parseSimpleArray _loadData;
-
-_requestedInfo

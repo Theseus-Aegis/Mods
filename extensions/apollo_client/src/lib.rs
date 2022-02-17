@@ -22,10 +22,10 @@ fn request(api: String) -> String {
 #[arma]
 fn init() -> Extension {
     Extension::build()
-        .command("load_armory", load_armory)
-        .command("load_player", load_player)
-        .command("get_accessible_item_classes", get_accessible_item_classes)
-        .command("get_training_identifiers", get_training_identifiers)
+        .command("loadArmory", load_armory)
+        .command("loadPlayer", load_player)
+        .command("getAccessibleItemClasses", get_accessible_item_classes)
+        .command("getTrainingIdentifiers", get_training_identifiers)
         .command("version", version)
         .finish()
 }

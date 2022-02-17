@@ -27,14 +27,15 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
 private _debug = [false, true] select EGVAR(apollo,isDebug);
 TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 
-private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
+private _loadData = "tac_apollo_client" callExtension ["loadArmory", [_selectedCategory, getPlayerUID player, _debug]];
 
-if (_loadData isNotEqualTo "error") then {
+_loadData params ["_result", "_returnCode", "_errorCode"];
+if (_returnCode == 0 && {_errorCode == 0}) then {
     private _armoryData = parseSimpleArray _loadData;
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
-    ERROR("Armory data failed to load!");
+    ERROR_2("Armory data failed to load [return: %1, error: %2]!",_returnCode,_errorCode);
     [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
     false
 };
