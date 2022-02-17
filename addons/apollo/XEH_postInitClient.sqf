@@ -36,7 +36,9 @@ if (!hasInterface) exitWith {};
     }] call CBA_fnc_addEventHandler;
 
     // Load player
+    // Delay load as Arma sync will reset/break position if set too early
+    // Possibly avoids breaking inventory with setUnitLoadout as well
     [{
         [player, "loaded"] call FUNC(playerLoadClient);
-    }, [], 5] call CBA_fnc_waitAndExecute;
+    }, [], 1] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;

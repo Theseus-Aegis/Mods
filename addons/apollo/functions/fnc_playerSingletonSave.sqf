@@ -52,8 +52,10 @@ TRACE_2("Singleton Save",_type,_serverReply);
 if (_type == "validate" && {_serverReply == "success"}) exitWith {
     // No simulation toggling due to possible lag breaking correct position and direction setting
     ["infantryLoaded", _uid] call FUNC(invokeJavaMethod);
+    INFO_2("Player '%1' (%2) validated successfully (Position: %3 - Loadout: %4)",_name,_uid,_playerPos,_loadout);
 };
 
 if (_serverReply == "terminated") then {
     [QGVAR(terminatePlayer), [_player], _player] call CBA_fnc_targetEvent;
+    INFO_2("Player '%1' (%2) terminated - failed to load!",_name,_uid);
 };
