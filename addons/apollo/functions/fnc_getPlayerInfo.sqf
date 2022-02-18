@@ -31,7 +31,7 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
     []
 };
 
-private _loadData = "tac_apollo_client" callExtension format ["%1%2", _type, _playerUID];
+private _loadData = "tac_apollo_client" callExtension [_type, [_playerUID]];
 
 _loadData params ["_result", "_returnCode", "_errorCode"];
 if (_returnCode == 0 && {_errorCode == 0}) then {
