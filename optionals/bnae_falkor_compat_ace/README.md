@@ -6,3 +6,4 @@ Adds [ACE3](https://github.com/acemod/ACE3) Compatibility for [Bnae's Falkor Pet
 
 - [Alganthe](http://github.com/alganthe)
 - [Jonpas](http://github.com/jonpas)
+- [Laid3ack](https://github.com/Laid3acK)
