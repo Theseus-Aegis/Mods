@@ -1,9 +1,10 @@
 [workspace]
 members = [
-    "apollo_client",
+    "apollo-client",
 ]
 
 [profile.release]
 opt-level = "z"
 lto = true
 codegen-units = 1
+strip = true

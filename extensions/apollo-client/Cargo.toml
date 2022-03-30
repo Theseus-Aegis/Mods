@@ -1,13 +1,13 @@
 [package]
-name = "apollo_client_cli"
+name = "apollo-client"
 version = "0.1.0"
 authors = ["TAC Mod Team <info@theseus-aegis.com>"]
 edition = "2021"
+rust-version = "1.59"
 
 [lib]
-name = "apollo_client"
 crate-type = ["cdylib"]
 
 [dependencies]
-arma-rs = "1.5"
+arma-rs = "1.7"
 reqwest = { version = "0.11", features = ["blocking"] }
