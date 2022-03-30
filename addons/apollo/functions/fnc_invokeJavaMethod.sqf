@@ -30,4 +30,4 @@ _this deleteAt 0; // Errors when combined with forEach
 } count _this;
 
 // Return Java Extension answer
-"jni" callExtension ("<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>")
+"jni" callExtension ["invokeJavaMethod", ["<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>"]]

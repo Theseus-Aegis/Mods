@@ -3,7 +3,7 @@
 if (!GVAR(enabled)) exitWith { TRACE_1("Apollo Disabled",GVAR(enabled)) };
 
 // Check JNI presence
-private _jniVersion = "jni" callExtension "version";
+private _jniVersion = "jni" callExtension ["version", []];
 if (_jniVersion != REQUIRED_JNI_VERSION) exitWith {
     ERROR_2("Failed to initialize - Wrong JNI extension version (active: %1 - required: %2)!",_jniVersion,REQUIRED_JNI_VERSION);
 };
