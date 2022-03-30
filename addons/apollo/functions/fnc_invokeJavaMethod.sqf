@@ -30,4 +30,11 @@ _this deleteAt 0; // Errors when combined with forEach
 } count _this;
 
 // Return Java Extension answer
-"jni" callExtension ["invokeJavaMethod", ["<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>"]]
+private _return = "jni" callExtension ["invokeJavaMethod", ["<MI><M>" + _method + "</M><AL>" + _argument_str + "</AL></MI>"]];
+
+_return params ["_result", "_returnCode", "_errorCode"];
+if (_returnCode != 0 || {_errorCode != 0}) then {
+    ERROR_3("JNI failed! [result: %1, return: %2, error: %3]",_result,_returnCode,_errorCode);
+};
+
+_result
