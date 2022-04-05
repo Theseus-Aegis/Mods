@@ -1,6 +1,12 @@
+use std::fs::{File, create_dir_all};
+use std::path::Path;
+
 use arma_rs::{arma, Extension};
+use log::{LevelFilter, info};
+use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
 const REST_ENDPOINT: &str = "https://theseus-aegis.com:8443/apollo";
+const LOG_PATH: &str = "./logs/tac_apollo.log";
 
 macro_rules! url {
     ($($args:expr),*) => {{
@@ -13,14 +19,23 @@ macro_rules! url {
 }
 
 fn request(api: String) -> String {
-    println!("Request: {}", api);
+    info!("Request: {}", api);
     let response = reqwest::blocking::get(&api).unwrap().text().unwrap();
-    println!("Response: {}", response);
+    info!("Response: {}", response);
     response
 }
 
 #[arma]
-fn init() -> Extension {
+pub fn init() -> Extension {
+    let log_path = Path::new(LOG_PATH);
+    create_dir_all(log_path.parent().unwrap()).unwrap();
+    CombinedLogger::init(
+        vec![
+            TermLogger::new(LevelFilter::Info, Config::default(), TerminalMode::Mixed, ColorChoice::Auto),
+            WriteLogger::new(LevelFilter::Info, Config::default(), File::create(log_path).unwrap()),
+        ]
+    ).unwrap();
+
     Extension::build()
         .command("loadArmory", load_armory)
         .command("loadPlayer", load_player)
