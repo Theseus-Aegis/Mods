@@ -3,14 +3,6 @@
 // Exit on Headless
 if (!hasInterface) exitWith {};
 
-[QGVAR(setTraits), {
-    params ["_player", "_trait"];
-
-    _player setUnitTrait [_trait, true];
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(loadTraits), ace_player] call CBA_fnc_serverEvent;
-
 // Lootbox functionality
 [
     QGVAR(randomizedBox),
@@ -43,3 +35,6 @@ private _replacementClasses = "inheritsFrom _x == _replacementBaseClass" configC
     private _itemList = getArray (configFile >> "CfgWeapons" >> _class >> QGVAR(replacementList));
     [_class, _itemList] call ACEFUNC(common,registerItemReplacement);
 } forEach _replacementClasses;
+
+// Load traits
+[player] call FUNC(loadTraits);

@@ -1,2 +1,2 @@
+PREP(loadTraits);
 PREP(medicalArsenal);
-PREP(traitActions);
