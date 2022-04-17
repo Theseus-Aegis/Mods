@@ -17,7 +17,6 @@
 
 params ["_player"];
 
-// TODO: Add check if appollo is enabled
 if EGVAR(apollo,enabled) then {
     private _trainings = ["getTrainingIdentifiers", _player] call EFUNC(apollo,getPlayerInfo);
 

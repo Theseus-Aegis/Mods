@@ -37,4 +37,4 @@ private _replacementClasses = "inheritsFrom _x == _replacementBaseClass" configC
 } forEach _replacementClasses;
 
 // Load traits
-[player] call FUNC(loadTraits);
+[ace_player] call FUNC(loadTraits);
