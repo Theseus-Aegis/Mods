@@ -46,6 +46,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 - Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
 - Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
   - _Only Windows release builds are currently supported!_
+  - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
 - Run `$ hemtt clean` to clean build files
 
 **Windows Helpers:**
@@ -56,5 +57,5 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 **Requirements:**
 - Rust (>= 1.59)
 
-Extensions builds must be invoked manually, as they do not get rebuild with every release:
+Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
