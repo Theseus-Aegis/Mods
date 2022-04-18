@@ -27,25 +27,25 @@ private _backpackCargo = getBackpackCargo _object;
 _itemCargo params ["_itemClassNames", "_itemQuantity"];
 {
     private _quantity = str (_itemQuantity select _forEachIndex);
-    _contents pushBack [_x, "Items", "", _quantity];
+    _contents pushBack [_x, "Items", "", parseNumber _quantity];
 } forEach _itemClassNames;
 
 _weaponCargo params ["_weaponClassNames", "_weaponQuantity"];
 {
     private _quantity = str (_weaponQuantity select _forEachIndex);
-    _contents pushBack [_x, "Weapons", "", _quantity];
+    _contents pushBack [_x, "Weapons", "", parseNumber _quantity];
 } forEach _weaponClassNames;
 
 _magazineCargo params ["_magazineClassNames", "_magazineQuantity"];
 {
     private _quantity = str (_magazineQuantity select _forEachIndex);
-    _contents pushBack [_x, "Ammo", "", _quantity];
+    _contents pushBack [_x, "Ammo", "", parseNumber _quantity];
 } forEach _magazineClassNames;
 
 _backpackCargo params ["_backpackClassNames", "_backpackQuantity"];
 {
     private _quantity = str (_backpackQuantity select _forEachIndex);
-    _contents pushBack [_x, "Backpacks", "", _quantity];
+    _contents pushBack [_x, "Backpacks", "", parseNumber _quantity];
 } forEach _backpackClassNames;
 
 _contents
