@@ -12,4 +12,7 @@ GVAR(vehiclesLoaded) = false;
 GVAR(isDebug) = false;
 GVAR(vehiclesList) = [];
 
+// Preload extension
+"tac_apollo_client" callExtension "";
+
 ADDON = true;
