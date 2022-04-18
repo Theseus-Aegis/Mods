@@ -53,10 +53,8 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 
 ### Extensions
 
-_Only Windows extension builds are currently supported!_
-
 **Requirements:**
-- Rust
+- Rust (>= 1.59)
 
 Extensions builds must be invoked manually, as they do not get rebuild with every release:
 - Run `$ cargo build [--release]` in `extensions` directory

@@ -1,6 +1,7 @@
 PREP(endMissionError);
 PREP(getPlayerInfo);
 PREP(handleDisconnect);
+PREP(handleExtMultipartReturn);
 PREP(handleKilled);
 PREP(handleRespawn);
 PREP(invokeJavaMethod);

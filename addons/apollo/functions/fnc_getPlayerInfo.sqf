@@ -34,8 +34,12 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
 private _loadData = "tac_apollo_client" callExtension [_type, [_playerUID]];
 
 _loadData params ["_result", "_returnCode", "_errorCode"];
-if (_returnCode == 0 && {_errorCode == 0}) then {
-    private _requestedInfo = parseSimpleArray _loadData;
+if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
+    _result = [] call FUNC(handleExtMultipartReturn);
+};
+
+if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
+    private _requestedInfo = parseSimpleArray _result;
     TRACE_1("Player Info",_requestedInfo);
     _requestedInfo
 } else {

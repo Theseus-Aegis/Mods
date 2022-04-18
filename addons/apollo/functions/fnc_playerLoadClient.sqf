@@ -30,7 +30,11 @@ private _loadData = "tac_apollo_client" callExtension ["loadPlayer", [getPlayerU
 TRACE_1("Load Data Start",_loadData);
 
 _loadData params ["_result", "_returnCode", "_errorCode"];
-if (_returnCode == 0 && {_errorCode == 0}) then {
+if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
+    _result = [] call FUNC(handleExtMultipartReturn);
+};
+
+if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
     private _playerData = parseSimpleArray _result;
 
     _playerData params [["_dir", -1], ["_posASL", []], ["_loadout", []]];

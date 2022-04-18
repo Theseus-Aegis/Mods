@@ -30,8 +30,12 @@ TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 private _loadData = "tac_apollo_client" callExtension ["loadArmory", [_selectedCategory, getPlayerUID player, _debug]];
 
 _loadData params ["_result", "_returnCode", "_errorCode"];
-if (_returnCode == 0 && {_errorCode == 0}) then {
-    private _armoryData = parseSimpleArray _loadData;
+if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
+    _result = [] call EFUNC(apollo,handleExtMultipartReturn);
+};
+
+if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
+    private _armoryData = parseSimpleArray _result;
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {

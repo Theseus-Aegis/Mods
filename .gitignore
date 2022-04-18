@@ -66,3 +66,6 @@ ArmaScriptCompiler.exe
 texHeaders.bin
 *.biprivatekey
 keys/*
+
+# Extensions
+*.dll
