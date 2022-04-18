@@ -56,7 +56,11 @@ if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
     };
 
     // Validate
-    [QGVAR(savePlayer), [_player, profileName, "validate"]] call CBA_fnc_serverEvent;
+    // Delay to allow Arma server to get the new loadout before attempting to validate
+    // Validation does nothing at this moment as it was never properly implemented in the backend
+    [{
+        [QGVAR(savePlayer), [_this, profileName, "validate"]] call CBA_fnc_serverEvent;
+    }, _player, 1] call CBA_fnc_waitAndExecute;
 
     // Has to be executed where unit is local
     _player allowDamage true;

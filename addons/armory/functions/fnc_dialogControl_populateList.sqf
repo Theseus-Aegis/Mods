@@ -36,7 +36,7 @@ _armoryData sort true; // Errors when used in combination with forEach
     _x params ["_className", "_subCategory", "", "_quantity"];
 
     // Skip listing this item if there are none of them
-    if (parseNumber _quantity > 0) then {
+    if (_quantity > 0) then {
         // Get correct config
         private _configCfg = configName (configHierarchy (_className call CBA_fnc_getItemConfig) param [1, configNull]);
         if (_configCfg == "") then {
@@ -59,13 +59,13 @@ _armoryData sort true; // Errors when used in combination with forEach
                 _displayName = [_displayName, "..."] joinString "";
             };
 
-            private _quantityList = [_quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
+            private _quantityList = [str _quantity, "∞"] select (_configCfg == "CfgUnitInsignia");
             lnbAddRow [NLIST, ["", _displayName, _quantityList]];
             lbSetTooltip [NLIST, _rowNum * 3, _tooltip]; // Requires multiplication by 3 to be set on proper index (no idea why)
 
             // Set hidden data with classname to displayName column and quantity to quantity column
             lnbSetData [NLIST, [_rowNum, 1], _className];
-            lnbSetData [NLIST, [_rowNum, 2], _quantity];
+            lnbSetData [NLIST, [_rowNum, 2], str _quantity];
 
             // Set picture
             private _pictureType = ["picture", "texture"] select (_configCfg == "CfgUnitInsignia");
