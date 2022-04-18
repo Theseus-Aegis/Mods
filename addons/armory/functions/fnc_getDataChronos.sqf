@@ -27,45 +27,19 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
 private _debug = [false, true] select EGVAR(apollo,isDebug);
 TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
 
-private _success = false;
-private _armoryData = [];
+private _loadData = "tac_apollo_client" callExtension ["loadArmory", [_selectedCategory, getPlayerUID player, _debug]];
 
-// Call Chronos for Data - no further HTTP calls are needed after this one
-private _loadData = "tac_apollo_client" callExtension format ["%1%2/%3/%4", "loadArmory", _selectedCategory, getPlayerUID player, _debug];
-if (_loadData == "loaded") then {
-    private _updateInfo = true;
-    private _entry = [];
-
-    while {_updateInfo} do {
-        // Retrieve the data which is stored in the client's heap
-        _loadData = "tac_apollo_client" callExtension "get";
-        TRACE_1("Get Chronos Data",_loadData);
-
-        if (_loadData == "error") then {
-            // Bad things happened, stop executing
-            _updateInfo = false;
-        } else {
-            if (_loadData == "done") then {
-                _updateInfo = false;
-                _success = true;
-            } else {
-                _entry pushBack _loadData;
-
-                // Reset
-                if (_loadData == "next") then {
-                    _armoryData pushBack _entry;
-                    _entry = [];
-                };
-            };
-        };
-    };
+_loadData params ["_result", "_returnCode", "_errorCode"];
+if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
+    _result = [] call EFUNC(apollo,handleExtMultipartReturn);
 };
 
-if (_success) then {
+if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
+    private _armoryData = parseSimpleArray _result;
     TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
     _armoryData
 } else {
-    ERROR("Armory data failed to load!");
+    ERROR_2("Armory data failed to load [return: %1, error: %2]!",_returnCode,_errorCode);
     [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
     false
 };

@@ -31,40 +31,19 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exit
     []
 };
 
-private _requestedInfo = [];
+private _loadData = "tac_apollo_client" callExtension [_type, [_playerUID]];
 
-TRACE_1("Loading Data",_player);
-private _success = false;
-
-private _loadData = "tac_apollo_client" callExtension format ["%1%2", _type, _playerUID];
-TRACE_1("Load Data Start",_loadData);
-
-if (_loadData == "loaded") then {
-    private _updateInfo = true;
-    while {_updateInfo} do {
-        private _loadData = "tac_apollo_client" callExtension "get";
-        TRACE_1("Load Data",_loadData);
-
-        if (_loadData == "error") then {
-            // Bad things happened, stop executing
-            _updateInfo = false;
-        } else {
-            if (_loadData == "done") then {
-                // Initialization complete
-                _updateInfo = false;
-                _success = true;
-            } else {
-                // Add data to array
-                _requestedInfo pushBack _loadData;
-            };
-        };
-    };
+_loadData params ["_result", "_returnCode", "_errorCode"];
+if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
+    _result = [] call FUNC(handleExtMultipartReturn);
 };
 
-if !(_success) exitWith {
-    ERROR_2("Failed to load info (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
+if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
+    private _requestedInfo = parseSimpleArray _result;
+    TRACE_1("Player Info",_requestedInfo);
+    _requestedInfo
+} else {
+    ERROR_4("Failed to load info (Name: %1 - UID: %2) [return: %3, error: %4]!",profileName,_playerUID,_returnCode,_errorCode);
     [_errorMessage] call CBA_fnc_notify;
     []
 };
-
-_requestedInfo

@@ -18,7 +18,7 @@ authority = "{{prefix}}_{{version}}"
 
 check = ["!check_release_os"]
 prebuild = ["!compile_sqf"]
-postbuild = ["!compile_sqf_cleanup"]
+postbuild = ["!compile_sqf_cleanup", "!extensions"]
 releasebuild = [
     "@zip {{prefix}}_mods_{{version}}"
 ]
@@ -51,13 +51,8 @@ only_release = true
 show_output = true
 
 [scripts.extensions]
-show_output = true
 steps_windows = [
-    "cd extensions\\vcproj && cmake .. -A Win32 && msbuild TAC.sln /m /p:Configuration=RelWithDebInfo",
-    "cd extensions\\vcproj64 && cmake .. -A x64 && msbuild TAC.sln /m /p:Configuration=RelWithDebInfo"
+    "echo Download extensions from GitHub Actions and add them to the release!"
 ]
-steps_linux = [
-    "cd extensions/build && cmake .. && make",
-    "cd extensions/build && CXX=$(eval $(which g++-w64-mingw-i686)) cmake .. && make",
-    "find ./extensions/build/ ( -name \"*.so\" -o -name \"*.dll\" ) -exec cp {} ./"
-]
+only_release = true
+show_output = true
