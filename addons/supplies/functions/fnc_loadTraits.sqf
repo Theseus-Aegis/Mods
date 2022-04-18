@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: JoramD
- * Load traits based on trainings on the website.
+ * Load traits based on trainings on the website via Chronos.
  *
  * Arguments:
  * 0: Player <OBJECT>
@@ -17,16 +17,16 @@
 
 params ["_player"];
 
-if EGVAR(apollo,enabled) then {
-    private _trainings = ["getTrainingIdentifiers", _player] call EFUNC(apollo,getPlayerInfo);
+if (!EGVAR(apollo,enabled)) exitWith {};
 
-    if ("medic" in _trainings) then {
-        _player setUnitTrait ["Medic", true];
-    };
+private _trainings = ["getTrainingIdentifiers", _player] call EFUNC(apollo,getPlayerInfo);
 
-    if ("engineer" in _trainings) then {
-        {
-            _player setUnitTrait [_x, true];
-        } forEach ["Engineer", "ExplosiveSpecialist", "UavHacker"];
-    };
+if ("medic" in _trainings) then {
+    _player setUnitTrait ["Medic", true];
+};
+
+if ("engineer" in _trainings) then {
+    {
+        _player setUnitTrait [_x, true];
+    } forEach ["Engineer", "ExplosiveSpecialist", "UavHacker"];
 };
