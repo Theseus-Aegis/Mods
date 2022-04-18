@@ -5,7 +5,8 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(initialized), {
     // Check ApolloClient presenece and version
-    private _apolloClientVersion = "tac_apollo_client" callExtension "version";
+    private _apolloClientReturn = "tac_apollo_client" callExtension ["version", []]; // ["1.0.0", 0, 0]
+    _apolloClientReturn params ["_apolloClientVersion"];
     if (_apolloClientVersion != REQUIRED_APOLLOCLIENT_VERSION) exitWith {
         ERROR_2("Failed to initialize - Wrong Apollo Client extension version (active: %1 - required: %2)!",_apolloClientVersion,REQUIRED_APOLLOCLIENT_VERSION);
         [format ["Your connection has been terminated - Wrong Apollo Client extension version (active: %1 - required: %2)!", _apolloClientVersion, REQUIRED_APOLLOCLIENT_VERSION]] call FUNC(endMissionError);
