@@ -34,7 +34,7 @@ Huge appreciation and thanks to [ACE3 Team](https://ace3mod.com/team.html) for t
 - [Tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) _(package from ACRE2, contains HEMTT and ArmaScriptCompiler)_
   - [HEMTT](https://github.com/BrettMayson/HEMTT) binary placed in project root ~~or globally installed~~
     - `hemtt` (Linux) or `hemtt.exe` (Windows) ~~or `setup.exe` (Windows global install)~~
-  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler/suites/4018405090/artifacts/101530082) binary placed in project root
+  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) binary placed in project root
     - `ArmaScriptCompiler.exe` (Windows)
     - **Verify SQFC files are included in PBOs!**
 
