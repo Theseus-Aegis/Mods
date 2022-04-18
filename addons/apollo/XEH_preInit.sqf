@@ -12,7 +12,11 @@ GVAR(vehiclesLoaded) = false;
 GVAR(isDebug) = false;
 GVAR(vehiclesList) = [];
 
-// Preload extension
+// Preload extensions
 "tac_apollo_client" callExtension "";
+
+if (isServer) then {
+    "jni" callExtension "";
+};
 
 ADDON = true;
