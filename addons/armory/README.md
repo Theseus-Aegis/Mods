@@ -1,6 +1,6 @@
 # About
 
-Adds Armory with support Chronos support.
+Adds Armory with Chronos support.
 
 ### Authors
 
