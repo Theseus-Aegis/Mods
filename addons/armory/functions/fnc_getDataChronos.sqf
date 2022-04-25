@@ -23,7 +23,7 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     false
 };
 
-private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,isDebug)]] call FUNC(callExt);
+private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,isDebug)]] call EFUNC(apollo,callExt);
 
 if (!isNil "_result") then {
     TRACE_2("Athena Armory Data",_selectedCategory,_result);
