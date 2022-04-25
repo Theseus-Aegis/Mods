@@ -26,18 +26,10 @@ TRACE_1("Loading Client",_player);
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _loadData = "tac_apollo_client" callExtension ["loadPlayer", [getPlayerUID _player, GVAR(isDebug)]];
-TRACE_1("Load Data Start",_loadData);
+private _result = ["loadPlayer", [getPlayerUID _player, GVAR(isDebug)]] call FUNC(callExt);
 
-_loadData params ["_result", "_returnCode", "_errorCode"];
-if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
-    _result = [] call FUNC(handleExtMultipartReturn);
-};
-
-if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
-    private _playerData = parseSimpleArray _result;
-
-    _playerData params [["_dir", -1], ["_posASL", []], ["_loadout", []]];
+if (!isNil "_result") then {
+    _result params [["_dir", -1], ["_posASL", []], ["_loadout", []]];
 
     if (_dir != -1) then {
         _player setDir _dir;
@@ -77,6 +69,6 @@ if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
 
     INFO_1("Client %1 successfully.",_loadType);
 } else {
-    ERROR_4("Player load failed (Name: %1 - UID: %2) [return: %3, error: %4]!",profileName,getPlayerUID _player,_returnCode,_errorCode);
+    ERROR_2("Player load failed (Name: %1 - UID: %2)!",profileName,getPlayerUID _player);
     ["Your connection has been terminated - Error during Chronos loading!"] call FUNC(endMissionError);
 };
