@@ -24,9 +24,12 @@ macro_rules! url {
 
 fn request(api: String) -> String {
     info!("Request: {}", api);
-    let response = reqwest::blocking::get(&api).unwrap().text().unwrap();
-    info!("Response ({} bytes): {}", response.len(), response);
+    let mut response = reqwest::blocking::get(&api).unwrap().text().unwrap();
 
+    // Replace non-ASCII characters with a warning
+    response = response.replace(|c: char| !c.is_ascii(), "[INVALID-CHAR]");
+
+    info!("Response ({} bytes): {}", response.len(), response);
     if response.len() <= EXT_RET_BYTES {
         info!("Direct response");
         response
