@@ -26,7 +26,7 @@ private _fnc_checkBase = {
 
     if (_baseIndex != -1) exitWith {
         // False if different value defined (reapply), true if same value found (don't apply at all)
-        [false, true] select (((_modifyClasses select _baseIndex) select 2) isEqualTo _attachPos);
+        ((_modifyClasses select _baseIndex) select 2) isEqualTo _attachPos;
     };
 
     // Backtrack to base class of this base class until no base
