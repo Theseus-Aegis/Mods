@@ -23,23 +23,13 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     false
 };
 
-// Set Chronos to debug if flag set
-private _debug = [false, true] select EGVAR(apollo,isDebug);
-TRACE_2("Chronos Debug",EGVAR(apollo,isDebug),_debug);
+private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,isDebug)]] call FUNC(callExt);
 
-private _loadData = "tac_apollo_client" callExtension ["loadArmory", [_selectedCategory, getPlayerUID player, _debug]];
-
-_loadData params ["_result", "_returnCode", "_errorCode"];
-if (_result == "queued" && {_returnCode == 0} && {_errorCode == 0}) then {
-    _result = [] call EFUNC(apollo,handleExtMultipartReturn);
-};
-
-if (_returnCode == 0 && {_errorCode == 0} && {_result != "error"}) then {
-    private _armoryData = parseSimpleArray _result;
-    TRACE_2("Athena Armory Data",_selectedCategory,_armoryData);
-    _armoryData
+if (!isNil "_result") then {
+    TRACE_2("Athena Armory Data",_selectedCategory,_result);
+    _result
 } else {
-    ERROR_2("Armory data failed to load [return: %1, error: %2]!",_returnCode,_errorCode);
+    ERROR("Armory data failed to load!");
     [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
     false
 };
