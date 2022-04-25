@@ -17,15 +17,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - target: x86_64-unknown-linux-gnu
+          - toolchain: stable-x86_64-unknown-linux-gnu
             os: ubuntu-latest
             from: libapollo_client.so
             to: _x64.so
-          - target: x86_64-pc-windows-msvc
+          - toolchain: stable-x86_64-pc-windows-msvc
             os: windows-latest
             from: apollo_client.dll
             to: _x64.dll
-          - target: i686-pc-windows-msvc
+          - toolchain: stable-i686-pc-windows-msvc
             os: windows-latest
             from: apollo_client.dll
             to: .dll
@@ -33,13 +33,12 @@ jobs:
     steps:
     - name: Checkout the source code
       uses: actions/checkout@v3
-    - name: Install Rust Target
-      run: |
-        rustup target add ${{ matrix.target }}
+    - name: Install Rust Toolchain
+      run: rustup toolchain install ${{ matrix.toolchain }}
     - name: Build
-      run: cd extensions && cargo build --target ${{ matrix.target }} --lib --release --verbose
+      run: cd extensions && cargo ${{ matrix.toolchain }} build --release
     - name: Move
-      run: mkdir release && cp extensions/target/${{ matrix.target }}/release/${{ matrix.from }} release/tac_apollo_client${{ matrix.to }}
+      run: mkdir release && cp extensions/target/release/${{ matrix.from }} release/tac_apollo_client${{ matrix.to }}
     - uses: actions/upload-artifact@v3
       with:
         name: extensions-${{ github.sha }}
