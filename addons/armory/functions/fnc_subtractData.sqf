@@ -24,7 +24,7 @@ private _armoryDataSubtracted = [];
     if (_selectedItem == _className) then {
         _quantity = _quantity - (parseNumber _selectedAmount);
         if (_quantity > 0) then {
-            _armoryDataSubtracted pushBack [_className, _subCategory, _description, str _quantity];
+            _armoryDataSubtracted pushBack [_className, _subCategory, _description, _quantity];
         };
     } else {
         _armoryDataSubtracted pushBack _x;
