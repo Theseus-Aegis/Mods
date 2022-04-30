@@ -19,15 +19,13 @@
  * Public: No
  */
 
-#define VALID_ERROR_CODES [0, 301]
-
 params ["_fnc", ["_args", []]];
 
 TRACE_2("Call extension"_fnc,_args);
 private _loadData = "tac_apollo_client" callExtension [_fnc, _args];
 _loadData params ["_result", "_returnCode", "_errorCode"];
 
-if (_returnCode != 0 || {!(_errorCode in VALID_ERROR_CODES)} || {_result == "error"}) exitWith {
+if (_returnCode != 0 || {!(_errorCode in EXT_VALID_ERROR_CODES)} || {_result == "error"}) exitWith {
     ERROR_4("Apollo Client error (%1)! [result: %2, return: %3, error: %4]",_this,_result,_returnCode,_errorCode);
     nil
 };
@@ -41,7 +39,7 @@ if (_result == "queued") then {
         _loadData = "tac_apollo_client" callExtension ["get", []];
         _loadData params ["_result", "_returnCode", "_errorCode"];
 
-        if (_returnCode == 0 && {_errorCode in VALID_ERROR_CODES} && {_result != "error"}) then {
+        if (_returnCode == 0 && {_errorCode in EXT_VALID_ERROR_CODES} && {_result != "error"}) then {
             if (_result == "done") then {
                 _loading = false;
             } else {
