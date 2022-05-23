@@ -5,7 +5,7 @@ use arma_rs::{arma, Extension};
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
-const REST_ENDPOINT: &str = "https://theseus-aegis.com:8443/apollo";
+const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/apollo";
 const LOG_PATH: &str = "./logs/tac_apollo.log";
 const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-04-18
 
