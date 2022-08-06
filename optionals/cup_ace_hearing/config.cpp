@@ -17,7 +17,7 @@ class CfgPatches {
             "CUP_Creatures_Military_USMC",
         };
         author = ECSTRING(main,Author);
-        authors[] = {"TyroneMF"};
+        authors[] = {"Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };

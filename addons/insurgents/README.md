@@ -18,7 +18,7 @@ Example:
 ```cpp
 // description.ext
 class tac_insurgents_gear {
-    class Tyrones_Cool_Config {
+    class Mikes_Cool_Config {
         headgear[] = {
             "CUP_H_TKI_Lungee_Open_01",
             "CUP_H_TKI_Lungee_Open_02",

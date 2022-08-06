@@ -4,4 +4,4 @@ Adds [ACE3 Hearing](http://ace3mod.com/wiki/feature/hearing.html) support to hea
 
 ### Authors
 
-- [TyroneMF](https://github.com/tyronemf)
+- [MikeMF](https://github.com/MikeMF)

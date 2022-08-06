@@ -2,7 +2,7 @@ class CfgWeapons {
     class CBA_MiscItem;
     class CBA_MiscItem_ItemInfo;
     class GVAR(randomizedBox): CBA_MiscItem {
-        author = "Tyrone";
+        author = "Mike";
         scope = 0;
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
@@ -10,7 +10,7 @@ class CfgWeapons {
         };
     };
     class GVAR(replacementBase): CBA_MiscItem {
-        author = "Tyrone";
+        author = "Mike";
         scope = 0;
 
         class ItemInfo: CBA_MiscItem_ItemInfo {

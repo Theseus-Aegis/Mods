@@ -7,7 +7,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "CUP_Kunduz_Configs"};
         author = ECSTRING(main,Author);
-        authors[] = {"TyroneMF"};
+        authors[] = {"Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
