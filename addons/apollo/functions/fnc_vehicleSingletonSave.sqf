@@ -44,13 +44,14 @@ if (_vehicleObject isKindOf "AllVehicles") then {
     } forEach (crew _vehicleObject);
 };
 
-private _vehicleClass = "";
-switch (true) do {
+// Unknown class does not get height added on spawn, all other defined classes do
+private _vehicleClass = switch (true) do {
     case (_vehicleObject isKindOf "Car"): {_vehicleClass = "Car"};
     case (_vehicleObject isKindOf "Plane"): {_vehicleClass = "Plane"};
     case (_vehicleObject isKindOf "Helicopter"): {_vehicleClass = "Helicopter"};
     case (_vehicleObject isKindOf "Tank"): {_vehicleClass = "Tank"};
     case (_vehicleObject isKindOf "Ship"): {_vehicleClass = "Ship"};
+    case (_vehicleObject isKindOf "ThingX"): {_vehicleClass = "ObjectPhysX"};
     default {_vehicleClass = "Unknown"};
 };
 
