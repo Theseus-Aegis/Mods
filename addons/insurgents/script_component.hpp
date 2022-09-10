@@ -23,7 +23,7 @@
 #define GEAR_SETTING(var) (format [QGVAR(enabled_%1), var])
 #define GEAR_ENABLED(var) (missionNamespace getVariable [GEAR_SETTING(var), true])
 
-#define CHANCE_HEADGEAR 0.5
+#define CHANCE_HEADGEAR 0.95
 #define CHANCE_FACEWEAR 0.3
 #define CHANCE_PISTOL 0.3
 #define CHANCE_LAUNCHER 0.1
