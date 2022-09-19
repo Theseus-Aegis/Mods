@@ -26,11 +26,11 @@ if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) ex
 LOG_1("Randomizing gear - %1",_unit);
 
 // check if there is a chance for the unit to have headgear and facewear
-if (random 1 <= CHANCE_HEADGEAR) then {
+if (random 1 <= GVAR(Chance_Headgear)) then {
     _unit addHeadgear selectRandom RANDOM_GEAR(headgear);
 };
 
-if (random 1 <= CHANCE_FACEWEAR) then {
+if (random 1 <= GVAR(Chance_Facewear)) then {
     removeGoggles _unit;
     _unit addGoggles selectRandom RANDOM_GEAR(facewear);
 };
@@ -49,14 +49,14 @@ _unit addWeapon _weapon;
 [_unit, _weapon, 8, 4] call FUNC(addWeaponAmmo);
 
 // add pistol
-if (random 1 <= CHANCE_PISTOL) then {
+if (random 1 <= GVAR(Chance_Pistol)) then {
     private _pistol = selectRandom RANDOM_GEAR(pistols);
     _unit addWeapon _pistol;
     [_unit, _pistol, 3, 1] call FUNC(addWeaponAmmo);
 };
 
 // add launcher
-if (random 1 <= CHANCE_LAUNCHER) then {
+if (random 1 <= GVAR(Chance_Launcher)) then {
     private _launcher = selectRandom RANDOM_GEAR(launchers);
     _unit addWeapon _launcher;
 
