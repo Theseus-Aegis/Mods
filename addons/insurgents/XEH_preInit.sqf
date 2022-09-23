@@ -37,4 +37,10 @@ private _configFile = configFile >> QGVAR(gear);
     } forEach ("true" configClasses _x);
 } forEach [_configFile, missionConfigFile >> QGVAR(gear)];
 
+// Class EH for randomised gear
+["CBA_settingsInitialized", {
+    [QGVAR(soldier_i), "init", FUNC(randomizeGear), true, [], true] call CBA_fnc_addClassEventHandler;
+    diag_log "[TAC]: Event Fired";
+}] call CBA_fnc_addEventHandler;
+
 ADDON = true;
