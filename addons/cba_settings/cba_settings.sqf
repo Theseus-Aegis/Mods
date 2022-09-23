@@ -8,6 +8,8 @@ ace_advanced_ballistics_enabled = true;
 
 ace_captives_requireSurrender = 0;
 
+ace_cookoff_destroyVehicleAfterCookoff = true;
+
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
 ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap']";
@@ -43,6 +45,8 @@ ace_nametags_showPlayerRanks = false;
 ace_nightvision_aimDownSightsBlur = 0.4;
 ace_nightvision_effectScaling = 0.5;
 ace_nightvision_noiseScaling = 0.3;
+
+ace_novehicleclanlogo_enabled = true;
 
 ace_overheating_cookoffCoef = 0; // Disabled (default: 1)
 ace_overheating_unJamOnreload = true;
