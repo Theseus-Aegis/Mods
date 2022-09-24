@@ -22,9 +22,6 @@ class CfgVehicles {
 
         class EventHandlers: EventHandlers {
             init = "";
-            class ADDON {
-                init = QUOTE(call FUNC(randomizeGear));
-            };
         };
     };
 
