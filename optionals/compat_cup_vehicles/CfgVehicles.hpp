@@ -49,6 +49,7 @@ class CfgVehicles {
     class CUP_BMP2_Ambul_Base;
     class CUP_BMP2_ZU_base;
     class CUP_Fishing_Boat_Base;
+    class CUP_BTR80A_Base;
     class CUP_BTR80_Base;
     class CUP_Ikarus_Base;
     class CUP_LR_Ambulance_Base;
@@ -543,6 +544,36 @@ class CfgVehicles {
     };
     class CUP_C_Fishing_Boat_Chernarus: CUP_Fishing_Boat_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 1.78, 3.71};
+    };
+    class CUP_B_BTR80A_CDF: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_B_BTR80A_FIA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_GREEN_RU: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_CHDKZ: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_CSAT_T: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_SLA: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_O_BTR80A_TK: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_I_BTR80A_ION: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
+    };
+    class CUP_I_BTR80A_UN: CUP_BTR80A_Base {
+        EGVAR(heavylifter,attachPos)[] = {0, 0.53, 0.95};
     };
     class CUP_B_BTR80_CDF: CUP_BTR80_Base {
         EGVAR(heavylifter,attachPos)[] = {0, 0.55, 0.95};
