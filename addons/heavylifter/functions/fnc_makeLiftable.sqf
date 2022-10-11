@@ -13,7 +13,7 @@
  * Arguments:
  * 0: Target Object <OBJECT>
  * 1: Attach Position (relative to object) <ARRAY> (default: [0, 0, 0])
- * 2: Attach Orientation (relative to object) <NUMBER> (default: 0)
+ * 2: Attach Direction (relative to object) <NUMBER> (default: 0)
  * 3: Custom Helper Class <STRING> (default: "tac_heavylifter_Helper")
  *
  * Return Value:

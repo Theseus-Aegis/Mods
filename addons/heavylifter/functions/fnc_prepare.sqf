@@ -23,7 +23,9 @@ params ["_target", ["_actionCall", true], ["_attachPos", [0, 0, 0]], ["_attachDi
 
 // No need to read config as every object that has attach position in config will already have an action and position cached
 if (_actionCall) then {
-    _attachPos = GVAR(attachPositions) get (typeOf _target);
+    _attachPos = GVAR(attachPositions) getOrDefault [typeOf _target, _attachPos];
+    _attachDir = GVAR(attachDirections) getOrDefault [typeOf _target, _attachDir];
+    _helperClass = GVAR(attachHelpers) getOrDefault [typeOf _target, _helperClass];
 };
 
 // Create helper object on original vehicle location, prevent damage
