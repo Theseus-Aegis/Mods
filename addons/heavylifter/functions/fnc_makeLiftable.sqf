@@ -5,7 +5,10 @@
  *
  * Attach Position defines offset in X, Y, Z of the helper object attachment.
  * Some objects (eg. IDAP cargo containers) require helper object to be higher
- * up for slingloading to work, eg. [0, 0, 1.4].
+ * up for slingloading to work, eg. [0, 0, 1.35].
+ *
+ * To verify Attach Position is setup appropriately, check it visually and walk up to it to check for collision issues,
+ * then spawn a heavy-duty helicopter and run: `HELI canSlingLoad (attachedObjects OBJECT select 0)`.
  *
  * Arguments:
  * 0: Target Object <OBJECT>
