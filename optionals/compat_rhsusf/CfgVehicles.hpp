@@ -1,22 +1,22 @@
 class CfgVehicles {
 /* Air */
-    // UH60M
+    // UH-60M
     class Heli_Transport_01_base_F;
     class RHS_UH60_Base: Heli_Transport_01_base_F {
         EGVAR(heavyLifter,attachPos[]) = {0.1, 1, -1.3};
     };
-    // CH47F
+    // CH-47F
     class Heli_Transport_02_base_F;
     class RHS_CH_47F_base: Heli_Transport_02_base_F {
         EGVAR(heavyLifter,attachPos[]) = {0, 0.5, -2.25};
     };
-    // AH64D
+    // AH-64D
     class Heli_Attack_01_base_F;
     class RHS_AH64_base: Heli_Attack_01_base_F {
         EGVAR(heavyLifter,attachPos[]) = {0.1, 0, -0.9};
     };
 
-    // A10A
+    // A-10A
     class Plane_CAS_01_base_F;
     class RHS_A10: Plane_CAS_01_base_F {
         EGVAR(heavyLifter,attachPos[]) = {0, -0.5, 0.45};
@@ -24,12 +24,12 @@ class CfgVehicles {
 
 
 /* Cars */
-    // RG33
+    // RG-33
     class MRAP_01_base_F;
     class rhsusf_rg33_base: MRAP_01_base_F {
         EGVAR(heavyLifter,attachPos[]) = {0.1, -1, -0.95};
     };
-    // RG33 (M2)
+    // RG-33 (M2)
     class rhsusf_rg33_m2_d: rhsusf_rg33_base {
         EGVAR(heavyLifter,attachPos[]) = {0.1, -1, -1.2};
     };
