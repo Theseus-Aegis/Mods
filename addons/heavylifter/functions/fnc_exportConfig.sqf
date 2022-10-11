@@ -51,8 +51,8 @@ private _sourcePatches = [];
             private _posWorldVehicle = ASLToAGL (getPosWorld _vehicle);
             private _attachPos = [
                 0,
-                -((getCenterOfMass _vehicle) select 1),
-                -((_vehicle worldToModelVisual [_posWorldVehicle select 0, _posWorldVehicle select 1, HELPER_CENTER_HEIGHT]) select 2) // Must use correct X and Y as well for worldToModel
+                ((getCenterOfMass _vehicle) select 1),
+                ((_vehicle worldToModelVisual [_posWorldVehicle select 0, _posWorldVehicle select 1, HELPER_CENTER_HEIGHT]) select 2) // Must use correct X and Y as well for worldToModel
             ] apply {round (_x * 100) / 100}; // Round to 2 decimal places
 
             // Backtrack base classes to see if any already has the same value applied, reapply if a different value is found instead of none

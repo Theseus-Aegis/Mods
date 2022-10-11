@@ -1,54 +1,47 @@
 #include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
- * Prepares the vehicle for heavy lifting.
+ * Prepares the object for heavy lifting.
  *
  * Arguments:
- * 0: Target Vehicle <OBJECT>
+ * 0: Target Object <OBJECT>
+ * 1: Called from Interaction Menu <BOOL> (default: true)
+ * 2: Attach Position (relative to object) <ARRAY> (default: [0, 0, 0])
+ * 3: Attach Direction (relative to object) <NUMBER> (default: 0)
+ * 4: Custom Helper Class <STRING> (default: "tac_heavylifter_Helper")
  *
  * Return Value:
  * None
  *
  * Example:
- * [heli] call tac_heavylifter_fnc_prepare
+ * [object] call tac_heavylifter_fnc_prepare
  *
  * Public: No
  */
 
-private ["_attachPos", "_vehiclePosOffsetWorld", "_vehiclePosOffset", "_vehicleVectorDirAndUp", "_helper"];
-params ["_vehicle"];
+params ["_target", ["_actionCall", true], ["_attachPos", [0, 0, 0]], ["_attachDir", 0], ["_helperClass", QGVAR(Helper)]];
 
-// Get vehicle's attachTo position
-_attachPos = getArray (configFile >> "CfgVehicles" >> typeOf _vehicle >> QGVAR(AttachPos));
+// No need to read config as every object that has attach position in config will already have an action and position cached
+if (_actionCall) then {
+    _attachPos = GVAR(attachPositions) get (typeOf _target);
+};
 
-// Get position and direction to place the helper object at (negate attachTo offset so the vehicle doesn't move by that offset)
-_vehiclePosOffsetWorld = _vehicle modelToWorld [-(_attachPos select 0), -(_attachPos select 1), 0];
-_vehiclePosOffset = [_vehiclePosOffsetWorld select 0, _vehiclePosOffsetWorld select 1, getPosATL _vehicle select 2];
-_vehicleVectorDirAndUp = [vectorDir _vehicle, vectorUp _vehicle];
-
-// Prepare vehicle to be attached to helper object
-[_vehicle, "blockEngine", QUOTE(ADDON), true] call ACEFUNC(common,statusEffect_set);
-[_vehicle, "blockDamage", QUOTE(ADDON), true] call ACEFUNC(common,statusEffect_set);
-_vehicle enableSimulationGlobal false;
-_vehicle setPosASL [0, 0, 0];
-
-// Create helper object on original vehicle location, prevent damage and set orientation
-_helper = createVehicle [QGVAR(Helper), _vehiclePosOffset, [], 0, "CAN_COLLIDE"];
+// Create helper object on original vehicle location, prevent damage
+private _helper = createVehicle [_helperClass, [0, 0, 0]];
 [_helper, "blockDamage", QUOTE(ADDON), true] call ACEFUNC(common,statusEffect_set);
 _helper enableSimulationGlobal false;
-_helper setVectorDirAndUp _vehicleVectorDirAndUp;
 
-// Attach vehicle to helper object with offset
-_vehicle attachTo [_helper, _attachPos];
+#ifndef DEBUG_MODE_FULL
+_helper setObjectTextureGlobal [0, ""];
+#endif
 
-// Enable damage on vehicle and helper object
-[_vehicle, "blockDamage", QUOTE(ADDON), false] call ACEFUNC(common,statusEffect_set);
-_vehicle enableSimulationGlobal true;
-[_helper, "blockDamage", QUOTE(ADDON), false] call ACEFUNC(common,statusEffect_set);
-_helper enableSimulationGlobal true;
+// Attach helper object to vehicle with offset and set relative orientation
+_helper attachTo [_target, _attachPos];
+_helper setVectorDirAndUp [[sin _attachDir, cos _attachDir, 0], [0, 0, 1]];
 
 // Set variable with helper object
-_vehicle setVariable [QGVAR(prepared), [_vehicle, _helper], true];
+_target setVariable [QGVAR(prepared), [_target, _helper], true];
 
-// Show ACE Hint
-[localize LSTRING(Attached), QPATHTOF(UI\attach_ca.paa)] call ACEFUNC(common,displayTextPicture);
+if (_actionCall) then {
+    [localize LSTRING(Attached), QPATHTOF(UI\attach_ca.paa)] call ACEFUNC(common,displayTextPicture);
+};

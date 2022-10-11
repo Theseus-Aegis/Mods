@@ -4,21 +4,33 @@
  * Starts Attach or Detach process.
  *
  * Arguments:
- * 0: Helicopter <OBJECT>
+ * 0: Target Object <OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * [heli] call tac_heavylifter_fnc_progress
+ * [object] call tac_heavylifter_fnc_progress
  *
  * Public: No
  */
 
-params ["_vehicle"];
+params ["_target"];
 
-if (isNil {_vehicle getVariable QGVAR(prepared)}) then {
-    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(prepare)}, {}, localize LSTRING(Attaching)] call ACEFUNC(common,progressBar);
+if (isNil {_target getVariable QGVAR(prepared)}) then {
+    [
+        HEAVYLIFTER_PREP_TIME,
+        _target,
+        {[_this select 0, true] call FUNC(prepare)},
+        {},
+        localize LSTRING(Attaching)
+    ] call ACEFUNC(common,progressBar);
 } else {
-    [HEAVYLIFTER_PREP_TIME, [_vehicle], {(_this select 0) call FUNC(unprepare)}, {}, localize LSTRING(Detaching)] call ACEFUNC(common,progressBar);
+    [
+        HEAVYLIFTER_PREP_TIME,
+        _target,
+        {[_this select 0, true] call FUNC(unprepare)},
+        {},
+        localize LSTRING(Detaching)
+    ] call ACEFUNC(common,progressBar);
 };
