@@ -2,6 +2,7 @@
 /*
  * Author: DaC, Jonpas
  * Toggles the ability to lift this object.
+ * Call on server or only one client
  *
  * Attach Position defines offset in X, Y, Z of the helper object attachment.
  * Some objects (eg. IDAP cargo containers) require helper object to be higher

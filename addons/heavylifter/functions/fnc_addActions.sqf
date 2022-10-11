@@ -2,6 +2,7 @@
 /*
  * Author: Jonpas
  * Adds Heavy Lifter actions.
+ * Call on every client.
  *
  * Arguments:
  * 0: Target <OBJECT/STRING>
