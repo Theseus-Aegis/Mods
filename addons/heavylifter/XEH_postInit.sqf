@@ -11,6 +11,8 @@ if (!hasInterface) exitWith {};
 
 #ifdef DRAW_ATTACHPOS_INFO
 GVAR(testHelper) = createVehicle ["Land_Pod_Heli_Transport_04_fuel_F", [-1000, -1000, -1000], [], 0, "NONE"];
+GVAR(testHelper) enableSimulationGlobal false;
+
 addMissionEventHandler ["Draw3D", {
     if (isNull cursorObject) exitWith {};
     private _attachPos = getArray (configFile >> "CfgVehicles" >> typeOf cursorObject >> QGVAR(attachPos));

@@ -9,7 +9,6 @@ PREP_RECOMPILE_END;
 if (hasInterface) then {
     GVAR(initializedClasses) = [];
     GVAR(attachPositions) = createHashMap;
-    GVAR(attachDirections) = createHashMap;
     GVAR(attachHelpers) = createHashMap;
 };
 
