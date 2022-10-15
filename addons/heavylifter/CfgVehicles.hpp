@@ -1,12 +1,21 @@
 class CfgVehicles {
 // Custom Helper object
-    class Land_Pod_Heli_Transport_04_fuel_F;
+    class Pod_Heli_Transport_04_base_F;
+    class Land_Pod_Heli_Transport_04_fuel_F: Pod_Heli_Transport_04_base_F {
+        class EventHandlers;
+    };
     class GVAR(Helper): Land_Pod_Heli_Transport_04_fuel_F {
         scope = 1;
         displayName = CSTRING(Helper);
         transportFuel = 0;
         hiddenSelectionsTextures[] = {""};
+
+        class EventHandlers: EventHandlers {
+            init = "";
+        };
+
         ace_refuel_fuelCargo = 0;
+
         class ACE_Actions {
             class ACE_MainActions {
                 condition = "false";

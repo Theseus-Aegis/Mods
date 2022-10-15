@@ -45,8 +45,6 @@ _helper setVectorDirAndUp _targetVectorDirAndUp;
 
 #ifdef DEBUG_MODE_FULL
 _helper setObjectTextureGlobal [0, "#(rgb,8,8,3)color(1,0.8,0.9,1)"];
-#else
-_helper setObjectTextureGlobal [0, ""];
 #endif
 
 // Attach helper object to vehicle with offset and set relative orientation
