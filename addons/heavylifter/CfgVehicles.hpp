@@ -1,121 +1,25 @@
-#define MACRO_ATTACH \
-    class GVAR(Attach) { \
-        displayName = CSTRING(Attach); \
-        condition = QUOTE(alive _target && {_this call FUNC(canAttach)}); \
-        statement = QUOTE(_this call FUNC(progress)); \
-        showDisabled = 0; \
-        priority = -5.0; \
-        icon = QPATHTOF(UI\attach_ca.paa); \
-    };
-
-#define MACRO_DETACH \
-    class GVAR(Detach) { \
-        displayName = CSTRING(Detach); \
-        condition = QUOTE(alive _target && {_this call FUNC(canDetach)}); \
-        statement = QUOTE(_this call FUNC(progress)); \
-        showDisabled = 0; \
-        priority = -5.0; \
-        icon = QPATHTOF(UI\detach_ca.paa); \
-    };
-
-#define MACRO_ATTACH_WRECK \
-    class GVAR(AttachWreck) { \
-        displayName = CSTRING(Attach); \
-        condition = QUOTE(!alive _target && {_this call FUNC(canAttach)}); \
-        statement = QUOTE(_this call FUNC(progress)); \
-        showDisabled = 0; \
-        priority = -5.0; \
-        icon = QPATHTOF(UI\attach_ca.paa); \
-    };
-
-#define MACRO_DETACH_WRECK \
-    class GVAR(DetachWreck) { \
-        displayName = CSTRING(Detach); \
-        condition = QUOTE(!alive _target && {_this call FUNC(canDetach)}); \
-        statement = QUOTE(_this call FUNC(progress)); \
-        showDisabled = 0; \
-        priority = -5.0; \
-        icon = QPATHTOF(UI\detach_ca.paa); \
-    };
-
 class CfgVehicles {
 // Custom Helper object
-    class Land_Pod_Heli_Transport_04_fuel_F;
+    class Pod_Heli_Transport_04_base_F;
+    class Land_Pod_Heli_Transport_04_fuel_F: Pod_Heli_Transport_04_base_F {
+        class EventHandlers;
+    };
     class GVAR(Helper): Land_Pod_Heli_Transport_04_fuel_F {
         scope = 1;
         displayName = CSTRING(Helper);
         transportFuel = 0;
         hiddenSelectionsTextures[] = {""};
+
+        class EventHandlers: EventHandlers {
+            init = "";
+            postInit = "";
+        };
+
         ace_refuel_fuelCargo = 0;
+
         class ACE_Actions {
             class ACE_MainActions {
                 condition = "false";
-            };
-        };
-    };
-
-// ACE Interaction
-    class Air;
-    class Helicopter: Air {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
-            };
-        };
-    };
-    class Plane: Air {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
-            };
-        };
-    };
-
-    class LandVehicle;
-    class Car: LandVehicle {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
-            };
-        };
-    };
-    class Tank: LandVehicle {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
-            };
-        };
-    };
-    class Motorcycle: LandVehicle {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
-            };
-        };
-    };
-    class Ship;
-    class Ship_F: Ship {
-        class ACE_Actions {
-            class ACE_MainActions {
-                MACRO_ATTACH
-                MACRO_DETACH
-                MACRO_ATTACH_WRECK
-                MACRO_DETACH_WRECK
             };
         };
     };

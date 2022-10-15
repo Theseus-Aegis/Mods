@@ -1,7 +1,18 @@
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {};
+
+["Helicopter", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Plane", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Car", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Tank", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Motorcycle", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Ship_F", "init", FUNC(addActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 #ifdef DRAW_ATTACHPOS_INFO
 GVAR(testHelper) = createVehicle ["Land_Pod_Heli_Transport_04_fuel_F", [-1000, -1000, -1000], [], 0, "NONE"];
+GVAR(testHelper) enableSimulationGlobal false;
+
 addMissionEventHandler ["Draw3D", {
     if (isNull cursorObject) exitWith {};
     private _attachPos = getArray (configFile >> "CfgVehicles" >> typeOf cursorObject >> QGVAR(attachPos));
