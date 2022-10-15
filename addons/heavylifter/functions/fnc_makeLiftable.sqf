@@ -9,7 +9,7 @@
  *
  * Arguments:
  * 0: Target Object <OBJECT>
- * 1: Attach Position (relative to object) <ARRAY> (default: [0, 0, 0])
+ * 1: Attach Position (relative to object) <ARRAY> (default: [], use config)
  * 2: Custom Helper Class <STRING> (default: "tac_heavylifter_Helper")
  *
  * Return Value:
@@ -22,9 +22,12 @@
  * Public: Yes
  */
 
-params ["_target", ["_attachPos", [0, 0, 0]], ["_helperClass", QGVAR(Helper)]];
+params ["_target", ["_attachPos", []], ["_helperClass", QGVAR(Helper)]];
 
 if (_target call FUNC(canAttach)) exitWith {
+    if (_attachPos isEqualTo []) then {
+        _attachPos = GVAR(attachPositions) getOrDefault [typeOf _target, [0, 0, 0]];
+    };
     [_target, false, _attachPos, _helperClass] call FUNC(prepare)
 };
 

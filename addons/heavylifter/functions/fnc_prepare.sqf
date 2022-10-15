@@ -43,7 +43,9 @@ private _helper = createVehicle [_helperClass, _targetPosOffset, [], 0, "CAN_COL
 _helper enableSimulationGlobal false;
 _helper setVectorDirAndUp _targetVectorDirAndUp;
 
-#ifndef DEBUG_MODE_FULL
+#ifdef DEBUG_MODE_FULL
+_helper setObjectTextureGlobal [0, "#(rgb,8,8,3)color(1,0.8,0.9,1)"];
+#else
 _helper setObjectTextureGlobal [0, ""];
 #endif
 
