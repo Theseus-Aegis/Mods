@@ -12,6 +12,7 @@ class CfgVehicles {
 
         class EventHandlers: EventHandlers {
             init = "";
+            postInit = "";
         };
 
         ace_refuel_fuelCargo = 0;
