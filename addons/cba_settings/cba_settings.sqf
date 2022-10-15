@@ -25,6 +25,7 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
+ace_medical_AIDamageThreshold = 0.6; // (default: 1)
 ace_medical_deathChance = 0.15; // 15% (default: 100%)
 ace_medical_fatalDamageSource = 2; // Either Vital Shots or Sum of Trauma (default: 0 - Vital Shots Only)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
