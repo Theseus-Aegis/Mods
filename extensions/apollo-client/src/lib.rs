@@ -64,6 +64,17 @@ pub fn init() -> Extension {
         .finish()
 }
 
+pub fn init_debug() {
+    let log_path = Path::new(LOG_PATH);
+    create_dir_all(log_path.parent().unwrap()).unwrap();
+    CombinedLogger::init(
+        vec![
+            TermLogger::new(LevelFilter::Trace, Config::default(), TerminalMode::Mixed, ColorChoice::Auto),
+            WriteLogger::new(LevelFilter::Trace, Config::default(), File::create(log_path).unwrap()),
+        ]
+    ).unwrap();
+}
+
 pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
     request(url!("armory", category, player_id, debug))
 }
