@@ -2,6 +2,7 @@ use std::fs::{File, create_dir_all};
 use std::path::Path;
 
 use arma_rs::{arma, Extension};
+use reqwest::blocking::Client;
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
@@ -11,6 +12,10 @@ const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-
 
 static mut QUEUE: String = String::new();
 static mut QUEUE_JUST_EMPTIED: bool = false;
+
+lazy_static::lazy_static! {
+    static ref CLIENT: Client = Client::new();
+}
 
 macro_rules! url {
     ($($args:expr),*) => {{
@@ -24,22 +29,30 @@ macro_rules! url {
 
 fn request(api: String) -> String {
     info!("Request: {}", api);
-    let mut response = reqwest::blocking::get(&api).unwrap().text().unwrap();
+    match CLIENT.get(&api).send() {
+        Ok(v) => {
+            let mut response = v.text().unwrap();
 
-    // Replace non-ASCII characters with a warning
-    response = response.replace(|c: char| !c.is_ascii(), "[INVALID-CHAR]");
+            // Replace non-ASCII characters with a warning
+            response = response.replace(|c: char| !c.is_ascii(), "[INVALID-CHAR]");
 
-    info!("Response ({} bytes): {}", response.len(), response);
-    if response.len() <= EXT_RET_BYTES {
-        info!("Direct response");
-        response
-    } else {
-        unsafe {
-            QUEUE.clear();
-            QUEUE = response;
-        }
-        info!("Queued response (max {} bytes at once)", EXT_RET_BYTES);
-        String::from("queued")
+            info!("Response ({} bytes): {}", response.len(), response);
+            if response.len() <= EXT_RET_BYTES {
+                info!("Direct response");
+                response
+            } else {
+                unsafe {
+                    QUEUE.clear();
+                    QUEUE = response;
+                }
+                info!("Queued response (max {} bytes at once)", EXT_RET_BYTES);
+                String::from("queued")
+            }
+        },
+        Err(e) => {
+            info!("Request error: {e:?}");
+            String::from("error")
+        },
     }
 }
 
@@ -62,6 +75,17 @@ pub fn init() -> Extension {
         .command("get", get)
         .command("version", version)
         .finish()
+}
+
+pub fn init_debug() {
+    let log_path = Path::new(LOG_PATH);
+    create_dir_all(log_path.parent().unwrap()).unwrap();
+    CombinedLogger::init(
+        vec![
+            TermLogger::new(LevelFilter::Trace, Config::default(), TerminalMode::Mixed, ColorChoice::Auto),
+            WriteLogger::new(LevelFilter::Trace, Config::default(), File::create(log_path).unwrap()),
+        ]
+    ).unwrap();
 }
 
 pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
