@@ -11,6 +11,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 arma-rs = "1.8"
-reqwest = { version = "0.11", features = ["blocking"] }
+lazy_static = "1.4"
 log = "0.4"
+reqwest = { version = "0.11", features = ["blocking"] }
 simplelog = "0.12"
