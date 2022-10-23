@@ -11,7 +11,7 @@ class CfgDifficultyPresets {
             commands = 0;
             deathMessages = 0;
             detectedMines = 0;
-            enemyTags= 0;
+            enemyTags = 0;
             friendlyTags = 0;
             groupIndicators = 0;
             mapContent = 0;
