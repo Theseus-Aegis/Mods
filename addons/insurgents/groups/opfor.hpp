@@ -49,7 +49,7 @@ class East {
                 class Unit2: Unit1 {
                     position[] = {-5, -5, 0};
                 };
-                class Unit3: Unit2 {
+                class Unit3: Unit1 {
                     position[] = {10, -10, 0};
                 };
             };
@@ -69,7 +69,7 @@ class East {
                 class Unit2: Unit1 {
                     position[] = {-5, -5, 0};
                 };
-                class Unit3: Unit2 {
+                class Unit3: Unit1 {
                     position[] = {10, -10, 0};
                 };
             };
@@ -94,16 +94,16 @@ class East {
                 class Unit3: Unit2 {
                     position[] = {10, -10, 0};
                 };
-                class Unit4: Unit3 {
+                class Unit4: Unit2 {
                     position[] = {-10, -10, 0};
                 };
-                class Unit5: Unit4 {
+                class Unit5: Unit2 {
                     position[] = {15, -15, 0};
                 };
-                class Unit6: Unit5 {
+                class Unit6: Unit2 {
                     position[] = {-15, -15, 0};
                 };
-                class Unit7: Unit6 {
+                class Unit7: Unit2 {
                     position[] = {20, -20, 0};
                 };
             };
@@ -127,16 +127,16 @@ class East {
                 class Unit3: Unit2 {
                     position[] = {10, -10, 0};
                 };
-                class Unit4: Unit3 {
+                class Unit4: Unit2 {
                     position[] = {-10, -10, 0};
                 };
-                class Unit5: Unit4 {
+                class Unit5: Unit2 {
                     position[] = {15, -15, 0};
                 };
-                class Unit6: Unit5 {
+                class Unit6: Unit2 {
                     position[] = {-15, -15, 0};
                 };
-                class Unit7: Unit6 {
+                class Unit7: Unit2 {
                     position[] = {20, -20, 0};
                 };
             };
