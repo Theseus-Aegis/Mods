@@ -3,6 +3,6 @@ class CfgAILevelPresets {
     class GVAR(Theseus): Custom {
         displayName = "Theseus";
         precisionAI = 0.4;
-        skillAI = 0.8;
+        skillAI = 1.0;
     };
 };

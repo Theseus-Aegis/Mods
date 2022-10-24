@@ -16,6 +16,6 @@ class CfgAISkill {
     endurance[] = {0, 0, 1, 0.7};
     general[] = {0, 0, 1, 0.9};
     //reloadSpeed[] changes break rapid firing in single fire mode for players
-    spotDistance[] = {0, 0, 1, 0.9};
-    spotTime[] = {0, 0, 1, 0.7};
+    spotDistance[] = {0, 0, 1, 1};
+    spotTime[] = {0, 0, 1, 1};
 };
