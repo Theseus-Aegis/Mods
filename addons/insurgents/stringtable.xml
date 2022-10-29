@@ -19,13 +19,31 @@
             <English>Insurgent Sentry</English>
             <Polish>Czujka Partyzantów</Polish>
         </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Sentry_African">
+            <English>Insurgent Sentry (African)</English>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Sentry_Eastern">
+            <English>Insurgent Sentry (Eastern)</English>
+        </Key>
         <Key ID="STR_TAC_Insurgents_Group_FireTeam">
             <English>Insurgent Fire Team</English>
             <Polish>Zespół Ogniowy Partyzantów</Polish>
         </Key>
+        <Key ID="STR_TAC_Insurgents_Group_FireTeam_African">
+            <English>Insurgent Fire Team (African)</English>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_FireTeam_Eastern">
+            <English>Insurgent Fire Team (Eastern)</English>
+        </Key>
         <Key ID="STR_TAC_Insurgents_Group_Squad">
             <English>Insurgent Squad</English>
             <Polish>Drużyna Partyzantów</Polish>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Squad_African">
+            <English>Insurgent Squad (African)</English>
+        </Key>
+        <Key ID="STR_TAC_Insurgents_Group_Squad_Eastern">
+            <English>Insurgent Squad (Eastern)</English>
         </Key>
         <Key ID="STR_TAC_Insurgents_Gear">
             <English>Insurgents Gear</English>
