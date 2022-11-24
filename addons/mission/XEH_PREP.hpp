@@ -16,6 +16,7 @@ PREP(forceShooting);
 PREP(mortarStrike);
 PREP(reaction);
 PREP(respiratorEffects);
+PREP(surrender);
 PREP(switchAction);
 PREP(teleport);
 PREP(toggleLights);
