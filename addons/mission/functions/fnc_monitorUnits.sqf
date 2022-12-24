@@ -5,7 +5,7 @@
  * Call from Debug watch field
  *
  * Use 0 for general unit counting
- * Use 1 for Active/Inactive unit counting
+ * Use 1 for Active, Inactive & Agents unit counting
  *
  * Arguments:
  * 0: Count Type (default: 0)
@@ -24,6 +24,6 @@ switch (_type) do {
         format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", west countSide allUnits, east countSide allUnits, resistance countside allUnits, civilian countSide allUnits, count playableUnits]
     };
     case 1: {
-        format ["Active: %1|Inactive: %2", count (allUnits select {simulationEnabled _x}), count (allUnits select {!simulationEnabled _x})]
+        format ["Active: %1|Inactive: %2|Agents: %3", count (allUnits select {simulationEnabled _x}), count (allUnits select {!simulationEnabled _x}), count agents]
     };
 };
