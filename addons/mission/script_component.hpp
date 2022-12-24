@@ -2,7 +2,6 @@
 #include "\x\tac\addons\main\script_mod.hpp"
 
 #define DEBUG_SYNCHRONOUS
-
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 
