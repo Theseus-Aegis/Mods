@@ -20,3 +20,6 @@ PREP(surrender);
 PREP(switchAction);
 PREP(teleport);
 PREP(toggleLights);
+
+// Debug
+PREP(monitorUnits);
