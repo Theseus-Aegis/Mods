@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Jonpas
  * Adds dynamic spectator availability through CBA Chat Commands and ACE3 Interaction Menu.

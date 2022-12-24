@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Rory, Jonpas, Mike
  * Teleports the player from base (this) to teleport locations (objects).

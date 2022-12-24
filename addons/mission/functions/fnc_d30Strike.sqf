@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Mike, Jonpas
  * Modified version of mortarStrike for use with CUP D30 Artillery.

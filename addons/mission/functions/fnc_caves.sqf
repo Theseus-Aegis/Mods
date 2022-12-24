@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Mike
  * Handles night-time cycle in caves, removes Map & MicroDAGR if player has one.

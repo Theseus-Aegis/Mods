@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Kresky, Jonpas
  * Adds the ability to "pick up" objects, and add an intel entry in the briefing tab.

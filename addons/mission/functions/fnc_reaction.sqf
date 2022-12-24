@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Mike
  * Adds reaction EventHandlers to AI for Patrols or Static Units

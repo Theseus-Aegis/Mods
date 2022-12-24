@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /*
  * Author: Muta, Mike
  * Switches Lights on or off in a defined radius.
