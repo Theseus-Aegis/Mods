@@ -16,8 +16,8 @@
 
 params ["_player"];
 
-if ((getPlayerUID _player) in ADMINS) then {
+if ((getPlayerUID _player) in GVAR(admins)) then {
     [true, true] call acre_api_fnc_godModeConfigureAccess;
-    [ADMINS, 0] call acre_api_fnc_godModeModifyGroup;
+    [GVAR(admins), 0] call acre_api_fnc_godModeModifyGroup;
     ["Admins", 0] call acre_api_fnc_godModeNameGroup;
 };

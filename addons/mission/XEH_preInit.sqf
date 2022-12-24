@@ -2,8 +2,22 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 
-// Collect Intel PreInit
 if (isServer) then {
+    // Broadcast staff userconfig to clients
+    GVAR(admins) = [];
+    #ifdef ADMINS
+        GVAR(admins) = [ADMINS];
+    #endif
+
+    GVAR(debug_admins) = [];
+    #ifdef DEBUG_ADMINS
+        GVAR(debug_admins) = [DEBUG_ADMINS];
+    #endif
+
+    publicVariable QGVAR(admins);
+    publicVariable QGVAR(debug_admins);
+
+    // Collect Intel PreInit
     // Track picked up records on server
     GVAR(collectIntel_records) = [];
 
