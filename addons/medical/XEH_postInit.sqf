@@ -6,7 +6,7 @@
     if (GVAR(fatalInjuriesCardiacArrestTimeCoefficient) == 1) exitWith {LOG("FatalInjury - skipping as coefficient of 1 does not cause any change")};
 
     if (!isPlayer _unit && {ACEGVAR(medical_statemachine,fatalInjuriesAI) == 0}) exitWith {LOG("FatalInjury - skipping AI with fatalInjuriesAI=0")};
-    if (ACEGVAR(medical_statemachine,fatalInjuriesPlayer) == 0) exitWith {LOG("FatalInjury - skipping Player with fatalInjuriesPlayer=0")};
+    if (isPlayer _unit && {ACEGVAR(medical_statemachine,fatalInjuriesPlayer) == 0}) exitWith {LOG("FatalInjury - skipping Player with fatalInjuriesPlayer=0")};
 
     LOG("FatalInjury - waiting 1 second");
     // Give some time to allow state machine to handle it first
