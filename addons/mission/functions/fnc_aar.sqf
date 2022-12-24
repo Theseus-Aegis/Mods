@@ -22,19 +22,21 @@ if !(["OCAP"] call ACEFUNC(common,isModLoaded)) exitWith {
 
 // Functions
 FUNC(canStartAAR) = {
-    isNil "ocap_capture" || {!ocap_capture}
+    isNil "ocap_recorder_recording" || {!ocap_recorder_recording}
 };
 FUNC(canStopAAR) = {
-    !isNil "ocap_capture" && {ocap_capture}
+    !isNil "ocap_recorder_recording" && {ocap_recorder_recording}
 };
 FUNC(startAAR) = {
-    [] call ocap_fnc_init;
+    // localEvent instead of serverEvent as this function always runs on server already
+    ["ocap2_record"] call CBA_fnc_localEvent;
     [QACEGVAR(common,systemChatGlobal), "AAR Started"] call CBA_fnc_globalEvent;
 };
 FUNC(stopAAR) = {
     private _missionType = getMissionConfigValue ["tac_type", -1];
     private _missionTypePretty = MISSION_TYPES select _missionType;
-    [sideAmbientLife, "", _missionTypePretty] call ocap_fnc_exportData; // side must be given
+    // localEvent instead of serverEvent as this function always runs on server already
+    ["ocap2_exportData", [sideAmbientLife, "", _missionTypePretty]] call CBA_fnc_localEvent; // side must be given
     INFO_2("AAR stopped with type %1 '%2'",_missionType,_missionTypePretty);
     [QACEGVAR(common,systemChatGlobal), "AAR Stopped"] call CBA_fnc_globalEvent;
 };

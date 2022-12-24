@@ -86,6 +86,10 @@ grad_trenches_functions_shortEnvelopeDigTime = 60;
 grad_trenches_functions_bigEnvelopeDigTime = 180;
 grad_trenches_functions_giantEnvelopeDigTime = 300;
 
+// OCAP
+ocap2_settings_autoStart = false;
+ocap2_settings_saveOnEmpty = false;
+
 // ZEN
 zen_common_disableGearAnim = true;
 
