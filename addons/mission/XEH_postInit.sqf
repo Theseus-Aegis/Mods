@@ -7,7 +7,7 @@ if (_missionType == -1 || {_missionType >= count MISSION_TYPES}) exitWith {
 };
 
 // Verify staff userconfig was loaded
-if (!is3DENPreview && {ADMINS == "" || {DEBUG_ADMINS == ""}}) then {
+if (!is3DENPreview && {GVAR(admins) == "" || {GVAR(debug_admins) == ""}}) then {
     ERROR("Empty ADMINS or DEBUG_ADMINS! Userconfig missing or failed to load!");
 };
 
