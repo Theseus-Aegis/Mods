@@ -15,8 +15,8 @@
  * None
  *
  * Example:
- * [tpObj, tpPos, "Teleport"] call MFUNC(teleport);
- * [tpObj, tpPos, "Teleport", {TAC_Example}] call MFUNC(teleport);
+ * [tpObj, tpPos, "Teleport"] call MFUNC(teleport)
+ * [tpObj, tpPos, "Teleport", {TAC_Example}] call MFUNC(teleport)
  */
 
 params ["_controller", "_teleportObject", "_text", ["_condition", {true}]];

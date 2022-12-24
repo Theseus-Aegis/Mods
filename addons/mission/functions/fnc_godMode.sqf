@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player] call MFUNC(godMode);
+ * [player] call MFUNC(godMode)
  */
 
 params ["_player"];

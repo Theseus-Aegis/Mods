@@ -16,8 +16,8 @@
  * None
  *
  * Example:
- * [_player, ["Marker_1"]] call MFUNC(caves);
- * [_player, ["Marker_1", "Marker_2"]] call MFUNC(caves);
+ * [_player, ["Marker_1"]] call MFUNC(caves)
+ * [_player, ["Marker_1", "Marker_2"]] call MFUNC(caves)
  */
 
 params ["_player", "_markers", ["_time", 23], ["_customSignal", [0.05, -70]]];

@@ -18,7 +18,7 @@
  *
  * Example:
  * if (!isNil "intel01") then {
- * 	[intel01, "Collect Document", "Document picked up", "Intel", "Documents describing some stuff", true] call MFUNC(collectIntel);
+ *     [intel01, "Collect Document", "Document picked up", "Intel", "Documents describing some stuff", true] call MFUNC(collectIntel);
  * };
  */
 

@@ -23,8 +23,8 @@
  * None
  *
  * Examples:
- * [Mortar1, ["Marker1", "Marker2"], 0, 0, 2] call TAC_Mission_fnc_mortarStrike;
- * [Mortar1, tac_MarkerArray, 0, 0, 1] call TAC_Mission_fnc_mortarStrike;
+ * [Mortar1, ["Marker1", "Marker2"], 0, 0, 2] call MFUNC(mortarStrike)
+ * [Mortar1, tac_MarkerArray, 0, 0, 1] call MFUNC(mortarStrike)
  */
 
 #define AMMO_TYPES ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"]

@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [3600] call MFUNC(aar);
+ * [3600] call MFUNC(aar)
  */
 
 params [["_timeUntilStart", 0]];

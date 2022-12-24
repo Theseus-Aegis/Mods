@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [Battery, IED] call MFUNC(connectBatteryToDefusable);
+ * [Battery, IED] call MFUNC(connectBatteryToDefusable)
  */
 
 params ["_battery", "_explosive"];

@@ -17,9 +17,9 @@
  * None
  *
  * Example:
- * ["Static", [My_Group_One, My_Group_Two]] call MFUNC(reaction);
- * ["Patrol", [My_Group_One]] call MFUNC(reaction);
- * ["All", [My_Group_One]] call MFUNC(reaction);
+ * ["Static", [My_Group_One, My_Group_Two]] call MFUNC(reaction)
+ * ["Patrol", [My_Group_One]] call MFUNC(reaction)
+ * ["All", [My_Group_One]] call MFUNC(reaction)
  */
 
 params ["_type", "_groups"];

@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [My_Group, 50] call MFUNC(surrender);
+ * [My_Group, 50] call MFUNC(surrender)
  */
 
 params ["_group", ["_chance", 10]];

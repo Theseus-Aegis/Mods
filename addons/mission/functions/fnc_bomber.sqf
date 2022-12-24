@@ -16,8 +16,8 @@
  * None
  *
  * Example:
- * [bomber] call MFUNC(bomber);
- * [bomber, 15, 50, 50] call MFUNC(bomber);
+ * [bomber] call MFUNC(bomber)
+ * [bomber, 15, 50, 50] call MFUNC(bomber)
  */
 
 params ["_unit", ["_radius", 10], ["_activateDistance", 100], ["_screamingDistance", 100], ["_nearest", objNull]];

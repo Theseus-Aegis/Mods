@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player] call MFUNC(unconscious);
+ * [player] call MFUNC(unconscious)
  */
 
 params ["_player"];
