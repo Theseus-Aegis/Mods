@@ -11,10 +11,10 @@
  * 0: Count Type (default: 0)
  *
  * Return Value:
- * None
+ * Report <STRING>
  *
  * Example:
- * [0] call TAC_Mission_fnc_monitorUnits;
+ * [0] call TAC_Mission_fnc_monitorUnits
  */
 
 params [["_type", 0]];

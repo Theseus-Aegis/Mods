@@ -12,8 +12,8 @@
  * None
  *
  * Example:
- * [player, spectatorObject] call MFUNC(baseSpectator);
- * [player, spectatorObject2] call MFUNC(baseSpectator);
+ * [player, spectatorObject] call MFUNC(baseSpectator)
+ * [player, spectatorObject2] call MFUNC(baseSpectator)
  */
 
 #define NOTIFY_RANGE 50

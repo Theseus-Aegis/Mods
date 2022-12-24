@@ -17,9 +17,9 @@
  * None
  *
  * Example:
- * [shooter, target] call TAC_Mission_fnc_forceShooting;
- * [shooter, target, 20] call TAC_Mission_fnc_forceShooting;
- * [shooter, target, 30, 0.5] call TAC_Mission_fnc_forceShooting;
+ * [shooter, target] call MFUNC(forceShooting)
+ * [shooter, target, 20] call MFUNC(forceShooting)
+ * [shooter, target, 30, 0.5] call MFUNC(forceShooting)
 */
 
 #define FIREMODE_TYPES ["Single", "FullAuto"]

@@ -13,8 +13,8 @@
  * None
  *
  * Example:
- * ["LightsOut", 500, true] call MFUNC(toggleLights);
- * ["LightsOut2", 250, false] call TAC_Mission_fnc_toggleLights;
+ * ["LightsOut", 500, true] call MFUNC(toggleLights)
+ * ["LightsOut2", 250, false] call MFUNC(toggleLights)
  */
 
 params ["_marker", "_radius", "_on"];

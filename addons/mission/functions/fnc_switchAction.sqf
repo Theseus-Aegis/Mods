@@ -20,9 +20,9 @@
  * None
  *
  * Example:
- * [My_Switch] call MFUNC(switchAction);
- * [My_Switch, 0.5, 0.7] call MFUNC(switchAction);
- * [My_Switch, 0.5, 0.7, 1] call MFUNC(switchAction);
+ * [My_Switch] call MFUNC(switchAction)
+ * [My_Switch, 0.5, 0.7] call MFUNC(switchAction)
+ * [My_Switch, 0.5, 0.7, 1] call MFUNC(switchAction)
  */
 
 params ["_object", ["_powerOne", 1], ["_powerTwo", 1], ["_defaultState", 0]];

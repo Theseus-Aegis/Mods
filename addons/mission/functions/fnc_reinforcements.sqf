@@ -15,10 +15,10 @@
  * None
  *
  * Example:
- * [Test_Group_1, true] call MFUNC(reinforcements);
- * [Test_Group_1, false] call TAC_Mission_fnc_reinforcements;
- * [Test_Group_1, false, 50] call TAC_Mission_fnc_reinforcements;
- * [Test_Group_1, false, 0, true, 2000] call TAC_Mission_fnc_reinforcements;
+ * [Test_Group_1, true] call MFUNC(reinforcements)
+ * [Test_Group_1, false] call MFUNC(reinforcements)
+ * [Test_Group_1, false, 50] call MFUNC(reinforcements)
+ * [Test_Group_1, false, 0, true, 2000] call MFUNC(reinforcements)
  */
 
 params ["_group", "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];

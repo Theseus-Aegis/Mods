@@ -16,10 +16,10 @@
  * None
  *
  * Example:
- * [Enemy_Group] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, 10] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, nil, Player_Group] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, nil, nil, 2000] call TAC_Mission_fnc_hunt;
+ * [Enemy_Group] call MFUNC(hunt)
+ * [Enemy_Group, 10] call MFUNC(hunt)
+ * [Enemy_Group, nil, Player_Group] call MFUNC(hunt)
+ * [Enemy_Group, nil, nil, 2000] call MFUNC(hunt)
  */
 
 params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1000]];

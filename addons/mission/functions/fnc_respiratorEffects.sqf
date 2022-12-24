@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [_player] call MFUNC(respiratorEffects);
+ * [_player] call MFUNC(respiratorEffects)
  */
 
 params ["_player"];
