@@ -1,8 +1,5 @@
 #include "script_component.hpp"
 
-// Exit on Headless
-if (!hasInterface) exitWith {};
-
 ["ace_medical_FatalInjury", {
     params ["_unit"];
 
