@@ -13,6 +13,7 @@ PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(d30Strike);
 PREP(forceShooting);
+PREP(jam);
 PREP(mortarStrike);
 PREP(reaction);
 PREP(respiratorEffects);
