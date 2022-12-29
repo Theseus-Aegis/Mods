@@ -22,7 +22,7 @@
  * [[jammer1, jammer2], [[0.1, 0.5], [20, 60]]] call MFUNC(jam)
  */
 
-if !(["acre_main"] call ACEFUNC(isModLoaded)) exitWith {
+if !(["acre_main"] call ACEFUNC(common,isModLoaded)) exitWith {
     ERROR_1("ACRE2 is required for %1!",QFUNC(jam));
 };
 
