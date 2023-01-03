@@ -1,4 +1,4 @@
-name = "Theseus Inc. Mods 1.35.1";
+name = "Theseus Inc. Mods 1.35.2";
 picture = "logo_tac_ca.paa";
 actionName = "Website";
 action = "http://www.theseus-aegis.com/";
