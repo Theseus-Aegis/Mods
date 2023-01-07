@@ -41,7 +41,7 @@ FUNC(stopAAR) = {
 
 // Auto-AAR (only non-Gimmick)
 GVAR(disableAutoAAR) = false;
-if (_missionType in AUTOAAR_TYPES) then {
+if ((getMissionConfigValue ["tac_type", -1]) in AUTOAAR_TYPES) then {
     INFO_1("Auto-AAR waiting for start [type: %1]",_missionType);
     [{
         [{
