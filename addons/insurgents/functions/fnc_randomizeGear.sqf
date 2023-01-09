@@ -24,6 +24,13 @@ if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) ex
     LOG_1("Unit modified, no randomization - %1",_unit);
 };
 
+private _simEnabled = simulationEnabled _unit;
+
+// Reinforcements compatibility. Enable simulation temporarily.
+if (!_simEnabled) then {
+    _unit enableSimulation true;
+};
+
 LOG_1("Randomizing gear - %1",_unit);
 
 // check if there is a chance for the unit to have headgear and facewear
@@ -67,6 +74,11 @@ if (random 1 <= GVAR(Chance_Launcher)) then {
 
         [_unit, _launcher, 3, 1] call FUNC(addWeaponAmmo);
     };
+};
+
+// Reinforcements compatibility. Disable simulation again
+if (!_simEnabled) then {
+    _unit enableSimulation false;
 };
 
 nil
