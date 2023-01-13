@@ -26,7 +26,7 @@ if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) ex
 
 private _simEnabled = simulationEnabled _unit;
 
-// Reinforcements compatibility. Enable simulation temporarily.
+// Reinforcements compatibility - enable simulation temporarily
 if (!_simEnabled) then {
     _unit enableSimulation true;
 };
@@ -76,7 +76,7 @@ if (random 1 <= GVAR(Chance_Launcher)) then {
     };
 };
 
-// Reinforcements compatibility. Disable simulation again
+// Reinforcements compatibility - disable simulation again
 if (!_simEnabled) then {
     _unit enableSimulation false;
 };
