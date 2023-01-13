@@ -1,6 +1,4 @@
-mod lib;
-
-use crate::lib::*;
+use apollo_client::*;
 
 fn main() {
     init_debug();

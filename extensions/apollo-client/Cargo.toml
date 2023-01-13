@@ -7,7 +7,7 @@ rust-version = "1.59"
 
 [lib]
 name = "apollo_client"
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 arma-rs = "1.8"
