@@ -46,13 +46,13 @@ if (_vehicleObject isKindOf "AllVehicles") then {
 
 // Unknown class does not get height added on spawn, all other defined classes do
 private _vehicleClass = switch (true) do {
-    case (_vehicleObject isKindOf "Car"): {_vehicleClass = "Car"};
-    case (_vehicleObject isKindOf "Plane"): {_vehicleClass = "Plane"};
-    case (_vehicleObject isKindOf "Helicopter"): {_vehicleClass = "Helicopter"};
-    case (_vehicleObject isKindOf "Tank"): {_vehicleClass = "Tank"};
-    case (_vehicleObject isKindOf "Ship"): {_vehicleClass = "Ship"};
-    case (_vehicleObject isKindOf "ThingX"): {_vehicleClass = "ObjectPhysX"};
-    default {_vehicleClass = "Unknown"};
+    case (_vehicleObject isKindOf "Car"): {"Car"};
+    case (_vehicleObject isKindOf "Plane"): {"Plane"};
+    case (_vehicleObject isKindOf "Helicopter"): {"Helicopter"};
+    case (_vehicleObject isKindOf "Tank"): {"Tank"};
+    case (_vehicleObject isKindOf "Ship"): {"Ship"};
+    case (_vehicleObject isKindOf "ThingX"): {"ObjectPhysX"};
+    default {"Unknown"};
 };
 
 private _vehicleFuel = fuel _vehicleObject;
