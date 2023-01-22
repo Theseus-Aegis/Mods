@@ -46,7 +46,6 @@ _group setVariable [QGVAR(surrenderParams), [_chance, _distance, _rally], true];
                     [{
                         params ["_unit"];
                         ["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
-                        private _unitGroup = group unit;
                     }, [_unit, _chance, _distance, _rally], (round random 120) max 10] call CBA_fnc_waitAndExecute;
                 };
             };
