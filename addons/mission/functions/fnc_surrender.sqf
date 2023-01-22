@@ -42,7 +42,7 @@ _group setVariable [QGVAR(surrenderParams), [_chance, _distance, _rally], true];
                     _unit removeEventHandler [_thisEvent, _thisEventHandler];
                 };
 
-                if (_randomChance >= _rally) && {_unit getVariable ["ACE_Captives_isSurrendering", false]}) then {
+                if (_randomChance >= _rally && {_unit getVariable ["ACE_Captives_isSurrendering", false]}) then {
                     [{
                         params ["_unit"];
                         ["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
