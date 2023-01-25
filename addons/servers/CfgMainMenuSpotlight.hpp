@@ -2,14 +2,14 @@ class CfgMainMenuSpotlight {
     class GVAR(joinContracts) {
         text = CSTRING(contractsText);
         picture = QPATHTOF(ui\spotlight_contracts.paa);
-        action = '["138.201.56.116", 2302] call (uiNamespace getVariable QFUNC(joinServer))';
+        action = QUOTE([ARR_2('138.201.56.116', 2302)] call (uiNamespace getVariable QQFUNC(joinServer)));
         actionText = CSTRING(contractsActionText);
         condition = "true";
     };
     class GVAR(joinTraining) {
         text = CSTRING(trainingText);
         picture = QPATHTOF(ui\spotlight_olympus.paa);
-        action = '["138.201.56.116", 2502] call (uiNamespace getVariable QFUNC(joinServer))';
+        action = QUOTE([ARR_2('138.201.56.116', 2502)] call (uiNamespace getVariable QQFUNC(joinServer)));
         actionText = CSTRING(trainingActionText);
         condition = "true";
     };
