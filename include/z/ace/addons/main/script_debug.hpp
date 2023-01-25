@@ -10,8 +10,8 @@ Fast Recompiling via function
     #define PREP_RECOMPILE_END      }; call _recomp; ACE_RECOMPILES pushBack _recomp;
 #else
     #define LINKFUNC(x) FUNC(x)
-    #define PREP_RECOMPILE_START /* */
-    #define PREP_RECOMPILE_END /* */
+    #define PREP_RECOMPILE_START ; /* Modified for HEMTT v0.10 */
+    #define PREP_RECOMPILE_END ; /* Modified for HEMTT v0.10 */
 #endif
 
 
