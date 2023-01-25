@@ -21,7 +21,7 @@ private _currentLoadout = getUnitLoadout _unit;
 _currentLoadout set [7, ""]; // ignore facewear
 
 if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) exitWith {
-    LOG_1("Unit modified, no randomization - %1",_unit);
+    LOG_1("Unit modified no randomization - %1",_unit); // HEMTT v0.10 bug: https://github.com/BrettMayson/HEMTT/issues/457
 };
 
 private _simEnabled = simulationEnabled _unit;

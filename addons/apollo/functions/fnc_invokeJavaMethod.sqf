@@ -34,7 +34,7 @@ private _return = "jni" callExtension ["invokeJavaMethod", ["<MI><M>" + _method 
 
 _return params ["_result", "_returnCode", "_errorCode"];
 if (_returnCode != 0 || {!(_errorCode in EXT_VALID_ERROR_CODES)} || {_result == "error"}) then {
-    ERROR_3("JNI failed! [result: %1, return: %2, error: %3]",_result,_returnCode,_errorCode);
+    ERROR_3("JNI failed! [result: %1 return: %2 error: %3]",_result,_returnCode,_errorCode); // HEMTT v0.10 bug: https://github.com/BrettMayson/HEMTT/issues/457
 };
 
 _result
