@@ -124,7 +124,7 @@ if (GVAR(system) == 0) then {
 };
 
 if (GVAR(system) == 1) then {
-    TRACE_6("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox,_keepMagazines);
+    TRACE_7("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox,_keepMagazines);
     [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedItemBox, _selectedAmount, _keepMagazines]] call CBA_fnc_serverEvent;
 
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
