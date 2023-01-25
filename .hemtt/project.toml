@@ -1,0 +1,36 @@
+name = "tac_mods"
+prefix = "tac"
+author = "TAC Mod Team"
+
+#modname = "{{prefix}}_mods"
+#key_name = "{{prefix}}_{{version}}"
+#authority = "{{prefix}}_{{version}}"
+
+[files]
+include = [
+    #"*.dll",
+    #"*.so",
+    "mod.cpp",
+    "README.md",
+    "AUTHORS.txt",
+    "LICENSE",
+    "logo_tac_ca.paa",
+    "logo_tac_small_ca.paa"
+]
+
+[version]
+git_hash = 0
+
+#[properties]
+#version = "{{git \"id 8\"}}"
+
+[asc]
+enabled = false
+exclude = [
+    "/initsettings.sqf",
+    "/initkeybinds.sqf",
+    "/xeh_prep.sqf",
+]
+
+[hemtt.config]
+preset = "Hemtt"
