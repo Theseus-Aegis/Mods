@@ -12,6 +12,7 @@
  *
  * Public: No
  */
+
 params [
     ["_unit", objNull, [objNull]]
 ];
@@ -21,6 +22,13 @@ _currentLoadout set [7, ""]; // ignore facewear
 
 if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) exitWith {
     LOG_1("Unit modified, no randomization - %1",_unit);
+};
+
+private _simEnabled = simulationEnabled _unit;
+
+// Reinforcements compatibility - enable simulation temporarily
+if (!_simEnabled) then {
+    _unit enableSimulation true;
 };
 
 LOG_1("Randomizing gear - %1",_unit);
@@ -66,6 +74,11 @@ if (random 1 <= GVAR(Chance_Launcher)) then {
 
         [_unit, _launcher, 3, 1] call FUNC(addWeaponAmmo);
     };
+};
+
+// Reinforcements compatibility - disable simulation again
+if (!_simEnabled) then {
+    _unit enableSimulation false;
 };
 
 nil
