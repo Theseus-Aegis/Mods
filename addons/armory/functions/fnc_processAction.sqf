@@ -33,7 +33,7 @@ TRACE_3("Send data",_type,_selectedItem,_selectedAmount);
 
 // Exit if any variable is not set
 if (_selectedItem == "" || _selectedAmount == "") exitWith {
-    ERROR_2("Send data called with empty variables! Item: %1 Amount: %2",_selectedItem,_selectedAmount); // HEMTT v0.10 bug: https://github.com/BrettMayson/HEMTT/issues/457
+    ERROR_2("Send data called with empty variables! Item: %1, Amount: %2",_selectedItem,_selectedAmount);
 };
 if (isNull _object) exitWith {
     ERROR("Object is nil");

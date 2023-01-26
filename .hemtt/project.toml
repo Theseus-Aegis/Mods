@@ -8,8 +8,8 @@ author = "TAC Mod Team"
 
 [files]
 include = [
-    #"*.dll",
-    #"*.so",
+    "*.dll",
+    "*.so",
     "mod.cpp",
     "README.md",
     "AUTHORS.txt",
@@ -25,7 +25,7 @@ git_hash = 0
 #version = "{{git \"id 8\"}}"
 
 [asc]
-enabled = false
+enabled = true
 exclude = [
     "/initsettings.sqf",
     "/initkeybinds.sqf",

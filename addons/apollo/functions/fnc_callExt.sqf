@@ -26,7 +26,7 @@ private _loadData = "tac_apollo_client" callExtension [_fnc, _args];
 _loadData params ["_result", "_returnCode", "_errorCode"];
 
 if (_returnCode != 0 || {!(_errorCode in EXT_VALID_ERROR_CODES)} || {_result == "error"}) exitWith {
-    ERROR_4("Apollo Client error (%1)! [result: %2 return: %3 error: %4]",_this,_result,_returnCode,_errorCode); // HEMTT v0.10 bug: https://github.com/BrettMayson/HEMTT/issues/457
+    ERROR_4("Apollo Client error (%1)! [result: %2, return: %3, error: %4]",_this,_result,_returnCode,_errorCode);
     nil
 };
 
@@ -46,7 +46,7 @@ if (_result == "queued") then {
                 _results pushBack _result;
             };
         } else {
-            ERROR_2("Failure on multipart return! [return: %1 error: %2]",_returnCode,_errorCode); // HEMTT v0.10 bug: https://github.com/BrettMayson/HEMTT/issues/457
+            ERROR_2("Failure on multipart return! [return: %1, error: %2]",_returnCode,_errorCode);
             _results = ["error"];
             _loading = false;
         };
