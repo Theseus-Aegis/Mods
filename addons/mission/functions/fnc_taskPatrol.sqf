@@ -52,5 +52,5 @@ if (disableHC) then {
 } else {
     [{
         [_this] call CBA_fnc_taskPatrol;
-    }, [_this select [1, 11], 10] call CBA_fnc_waitAndExecute;
+    }, [_this select [1, 11]], 10] call CBA_fnc_waitAndExecute;
 };
