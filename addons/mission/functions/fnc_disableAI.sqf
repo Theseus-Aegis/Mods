@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Faster method of using disableAI command.
+ * Faster method of using disableAI command with groups.
  *
  * Types are on the wiki https://community.bistudio.com/wiki/disableAI
  *

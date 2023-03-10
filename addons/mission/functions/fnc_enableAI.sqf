@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Faster method of using enableAI command.
+ * Faster method of using enableAI command with groups.
  *
  * Types are on the wiki https://community.bistudio.com/wiki/disableAI
  *

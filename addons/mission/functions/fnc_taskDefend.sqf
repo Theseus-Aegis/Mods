@@ -27,12 +27,7 @@
 
 params [
     "_disableHC",
-    "_group",
-    ["_position", nil],
-    ["_radius", 150],
-    ["_threshold", 1],
-    ["_patrolChance", 0.5],
-    ["_holdGarrison", 0.5]
+    "_taskArgs"
 ];
 
 if (disableHC) then {
