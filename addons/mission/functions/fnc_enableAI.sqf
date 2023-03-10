@@ -21,7 +21,7 @@
 
 params ["_groups", "_type"];
 
-private _type = toLower _type;
+private _type = toUpper _type;
 
 {
     {
