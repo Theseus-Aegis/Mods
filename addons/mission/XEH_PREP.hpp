@@ -12,6 +12,7 @@ PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(d30Strike);
+PREP(dialogue);
 PREP(disableAI);
 PREP(enableAI);
 PREP(forceShooting);
