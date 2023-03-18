@@ -19,6 +19,7 @@ PREP(forceShooting);
 PREP(jam);
 PREP(mortarStrike);
 PREP(reaction);
+PREP(reinforcementWaves);
 PREP(respiratorEffects);
 PREP(surrender);
 PREP(switchAction);

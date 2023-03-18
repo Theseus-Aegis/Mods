@@ -26,7 +26,7 @@
  * ["John James", "I hate all of you.", 0, 3] call MFUNC(dialogue)
  */
 
-params ["_speaker", "_message", ["_colour", 0], ["_time", 2];
+params ["_speaker", "_message", ["_colour", 0], ["_time", 2]];
 
 if (!isServer) exitWith {};
 
