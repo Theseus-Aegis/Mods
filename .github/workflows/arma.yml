@@ -33,10 +33,10 @@ jobs:
     steps:
     - name: Checkout the source code
       uses: actions/checkout@master
-    - name: Build using HEMTT
-      uses: arma-actions/hemtt@master
-      with:
-        command: build --release --ci
+    - name: Setup HEMTT
+      uses: arma-actions/hemtt@v1
+    - name: Run HEMTT build
+      run: hemtt build
     # https://github.com/actions/upload-artifact/issues/3#issuecomment-524442814
     #- uses: actions/upload-artifact@master
     #  with:
