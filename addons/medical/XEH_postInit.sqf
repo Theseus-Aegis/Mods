@@ -19,9 +19,12 @@
         private _lastUpdate = _unit getVariable ["tac_medical_cardiacArrestLastUpdate", -1];
 
         if (_timeLeft > 0 && {_lastUpdate + 1 < CBA_missionTime}) then {
-            LOG("FatalInjury - apply");
+            private _reducedTimeLeft = _timeLeft * GVAR(fatalInjuriesCardiacArrestTimeCoefficient); // 5min -> 1min (example)
             _unit setVariable ["tac_medical_cardiacArrestLastUpdate", CBA_missionTime];
-            _unit setVariable ["ace_medical_statemachine_cardiacArrestTimeLeft", _timeLeft * GVAR(fatalInjuriesCardiacArrestTimeCoefficient)]; // 5min -> 1min (example)
+            _unit setVariable ["ace_medical_statemachine_cardiacArrestTimeLeft", _reducedTimeLeft];
+
+            private _medicalState = [_unit] call ACEFUNC(medical,serializeState);
+            INFO_3("FatalInjury intercepted (cardiac arrest time reduced from %1 to %2). Serialized medical state: %3",_timeLeft,_reducedTimeLeft,_medicalState);
         } else {
             TRACE_2("FatalInjury - skipping",_timeLeft,_lastUpdate);
         };
