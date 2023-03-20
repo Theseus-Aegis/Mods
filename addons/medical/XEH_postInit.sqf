@@ -23,8 +23,26 @@
             _unit setVariable ["tac_medical_cardiacArrestLastUpdate", CBA_missionTime];
             _unit setVariable ["ace_medical_statemachine_cardiacArrestTimeLeft", _reducedTimeLeft];
 
+            // Log state
+            INFO_2("FatalInjury intercepted (cardiac arrest time reduced from %1 to %2).",_timeLeft,_reducedTimeLeft);
             private _medicalState = [_unit] call ACEFUNC(medical,serializeState);
-            INFO_3("FatalInjury intercepted (cardiac arrest time reduced from %1 to %2). Serialized medical state: %3",_timeLeft,_reducedTimeLeft,_medicalState);
+            _medicalState = _medicalState call CBA_fnc_removeWhitespace;
+
+            if (count _medicalState < 1000) then {
+                INFO_1("FatalInjury State: %1",_medicalState);
+            } else {
+                // Split if necessary (diag_log is limited to 1044 characters)
+                // Parts from https://github.com/CBATeam/CBA_A3/blob/d64453d4ec032fc07c9e615fa41f7990010f1918/addons/diagnostic/fnc_debug.sqf
+                private _medicalStateSplit = [];
+                while {count _medicalState > 0} do {
+                    _medicalStateSplit pushBack (_medicalState select [0, 1000]);
+                    _medicalState = _medicalState select [1000];
+                };
+
+                {
+                    INFO_3("FatalInjury State (%1/%2): %3",_forEachIndex + 1,count _medicalStateSplit,_x);
+                } forEach _medicalStateSplit;
+            };
         } else {
             TRACE_2("FatalInjury - skipping",_timeLeft,_lastUpdate);
         };
