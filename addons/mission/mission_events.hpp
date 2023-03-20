@@ -1,8 +1,5 @@
 #include "script_component.hpp"
 
-// Events included in mission template init.sqf.
-
-
 // dialogue event.
 [QGVAR(dialogue), {
     params ["_speaker", "_message", "_colour", "_time"];
