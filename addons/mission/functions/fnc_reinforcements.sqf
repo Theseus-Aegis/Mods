@@ -2,7 +2,7 @@
 /*
  * Author: Jonpas, Mike
  * Sets visibility of units, simulation and AI behaviour of a group along with any vehicles manned by the group.
- * Call from init.sqf
+ * Call from initServer.sqf
  *
  * Arguments:
  * 0: Group <GROUP>
