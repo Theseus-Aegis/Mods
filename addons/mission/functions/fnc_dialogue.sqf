@@ -12,7 +12,7 @@
  * 3: On screen time <NUMBER> (optional - default: 2)
  *
  * Colours are:
- * White - #FFFFFF
+ * White - #fffffff
  * Black - #000000
  * Blue - #0000ff
  * Red - #ff0000
@@ -26,6 +26,6 @@
  * ["John James", "I hate all of you.", 0, 3] call MFUNC(dialogue)
  */
 
-params ["_speaker", "_message", ["_colour", "#FFFFFF"], ["_time", 2]];
+params ["_speaker", "_message", ["_colour", "#ffffff"], ["_time", 2]];
 
 [QGVAR(dialogue), [_speaker, _message, _colour, _time]] call CBA_fnc_globalEvent;

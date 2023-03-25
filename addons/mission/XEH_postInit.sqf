@@ -7,6 +7,4 @@ if (!hasInterface) exitWith {};
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
 
 // dialogue event.
-[QGVAR(dialogue), {
-    _this call FUNC(dialogueLocal);
-}] call CBA_fnc_addEventHandler;
+[QGVAR(dialogue), LINKFUNC(dialogueLocal)] call CBA_fnc_addEventHandler;
