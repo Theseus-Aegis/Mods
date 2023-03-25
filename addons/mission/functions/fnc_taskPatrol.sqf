@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Enables CBA_fnc_taskPatrol while supporting HCs.
+ * Wrapper for CBA_fnc_taskPatrol with Headless Client support.
  *
  * Calls CBA_fnc_taskPatrol, optional decision on removing AI from HC or letting them switch then applying the patrol.
  * Optional argument defaults can be found on the CBA Wiki.
@@ -32,10 +32,7 @@
  * [true, [MyGroup, nil, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]]] call MFUNC(taskPatrol)
  */
 
-params [
-    "_disableHC",
-    "_taskArgs"
-];
+params ["_disableHC", "_taskArgs"];
 
 if (disableHC) then {
     _group setVariable ["acex_headless_blacklist", true];

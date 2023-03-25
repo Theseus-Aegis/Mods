@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Enables CBA_fnc_taskDefend while supporting HCs.
+ * Wrapper for CBA_fnc_taskDefend with Headless Client support.
  *
  * Calls CBA_fnc_taskDefend, optional decision on removing AI from HC or letting them switch then applying the defend.
  * Optional argument defaults can be found on the CBA Wiki.
@@ -27,10 +27,7 @@
  * [true, [MyGroup, MyGroup, 50, 3, false, true]] call MFUNC(taskDefend)
  */
 
-params [
-    "_disableHC",
-    "_taskArgs"
-];
+params ["_disableHC", "_taskArgs"];
 
 if (disableHC) then {
     _group setVariable ["acex_headless_blacklist", true];

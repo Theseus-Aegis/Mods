@@ -3,7 +3,7 @@
  * Author: Mike
  * On-screen text mimicking speech.
  *
- * Call only on the server, initServer or wrapped in if (isServer) then
+ * Call only on locally on one machine.
  *
  * Arguments:
  * 0: Person Speaking <STRING>
@@ -28,10 +28,8 @@
 
 params ["_speaker", "_message", ["_colour", 0], ["_time", 2]];
 
-if (!isServer) exitWith {};
-
 // Selectable colours.
 #define COLOUR_TYPES ["#FFFFFF", "#000000", "#0000ff", "#ff0000", "#ffff00", "#00e600"];
 private _textColour = COLOUR_TYPES select _colour;
 
-[QGVAR(dialogue), ["_speaker", "_message", "_textColour", "_time"]] call CBA_fnc_globalEvent;
+[QGVAR(dialogue), [_speaker, _message, _textColour, _time]] call CBA_fnc_globalEvent;
