@@ -8,5 +8,5 @@ if (!hasInterface) exitWith {};
 
 // dialogue event.
 [QGVAR(dialogue), {
-    [_this] call FUNC(dialogueLocal);
+    _this call FUNC(dialogueLocal);
 }] call CBA_fnc_addEventHandler;
