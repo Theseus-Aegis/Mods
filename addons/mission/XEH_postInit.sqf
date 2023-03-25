@@ -6,5 +6,7 @@ if (!hasInterface) exitWith {};
 // Collect Intel: Request intel collected so far
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
 
-// Mission Events
-#include "mission_events.hpp"
+// dialogue event.
+[QGVAR(dialogue), {
+    [_this] call FUNC(dialogueLocal);
+}] call CBA_fnc_addEventHandler;
