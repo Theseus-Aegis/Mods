@@ -31,23 +31,18 @@ Huge appreciation and thanks to [ACE3 Team](https://ace3mod.com/team.html) for t
 - Arma 3
 - Arma 3 Tools (available on Steam)
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
-- [Tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) _(package from ACRE2, contains HEMTT and ArmaScriptCompiler)_
-  - [HEMTT](https://github.com/BrettMayson/HEMTT) binary placed in project root ~~or globally installed~~
-    - `hemtt` (Linux) or `hemtt.exe` (Windows) ~~or `setup.exe` (Windows global install)~~
-  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) binary placed in project root
-    - `ArmaScriptCompiler.exe` (Windows)
-    - **Verify SQFC files are included in PBOs!**
+- [HEMTT](https://github.com/BrettMayson/HEMTT/releases/latest) binary placed in project root
+  - `hemtt` (Linux) or `hemtt.exe` (Windows)
 
 ### Procedure
 
 _Replace `hemtt` with `hemtt.exe` on Windows._
 
 - Open terminal (Linux) or command line (Windows)
-- Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
-- Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
-  - _Only Windows release builds are currently supported!_
+- Run `$ hemtt build` to create a development build
+- Run `$ hemtt release` to create a release build
+  - _Only Windows release builds are currently supported due to binarization!_
   - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
-- Run `$ hemtt clean` to clean build files
 
 **Windows Helpers:**
 - Double-click `build.bat` to create a development build
