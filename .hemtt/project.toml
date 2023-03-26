@@ -1,28 +1,21 @@
-name = "tac_mods"
+name = "TAC Mods"
 prefix = "tac"
 author = "TAC Mod Team"
 
-#modname = "{{prefix}}_mods"
-#key_name = "{{prefix}}_{{version}}"
-#authority = "{{prefix}}_{{version}}"
-
 [files]
 include = [
+    "mod.cpp",
+    "LICENSE",
     "*.dll",
     "*.so",
-    "mod.cpp",
     "README.md",
     "AUTHORS.txt",
-    "LICENSE",
     "logo_tac_ca.paa",
     "logo_tac_small_ca.paa"
 ]
 
 [version]
 git_hash = 0
-
-#[properties]
-#version = "{{git \"id 8\"}}"
 
 [asc]
 enabled = true
@@ -34,3 +27,6 @@ exclude = [
 
 [hemtt.config]
 preset = "Hemtt"
+
+[hemtt.release]
+folder = "tac_mods"
