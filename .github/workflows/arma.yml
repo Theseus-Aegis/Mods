@@ -37,7 +37,9 @@ jobs:
       uses: arma-actions/hemtt@v1
     - name: Run HEMTT build
       run: hemtt build
+    - name: Rename build folder
+      run: mv .hemttout/build .hemttout/@tac_mods
     - uses: actions/upload-artifact@v3
       with:
         name: tac_mods_${{ github.sha }}-nobin
-        path: .hemttout/build
+        path: .hemttout/@*
