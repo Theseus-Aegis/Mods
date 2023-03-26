@@ -24,6 +24,6 @@ switch (_type) do {
         format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", west countSide allUnits, east countSide allUnits, resistance countside allUnits, civilian countSide allUnits, count playableUnits]
     };
     case 1: {
-        format ["Active: %1|Inactive: %2|Agents: %3", count (allUnits select {simulationEnabled _x}), count (allUnits select {!simulationEnabled _x}), count agents]
+        format ["Active: %1|Inactive: %2|Agents: %3|FPS: %4", count (allUnits select {simulationEnabled _x}), count (allUnits select {!simulationEnabled _x}), count agents, diag_fps]
     };
 };
