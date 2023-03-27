@@ -10,4 +10,4 @@ HEMTT_VFS
     .create_file()
     .write(version_short);
 
-print("Set mod.cpp version to " + version_short);
+print("mod.cpp version set to " + version_short);
