@@ -50,6 +50,7 @@ Temporary Items
 releases/*
 hemtt
 hemtt.exe
+.hemttout
 symbols/*
 .hemtt/local
 *.sqfc
