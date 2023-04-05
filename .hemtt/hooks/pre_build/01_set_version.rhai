@@ -8,6 +8,6 @@ version.replace("0.0.0", version_short);
 HEMTT_VFS
     .join("mod.cpp")
     .create_file()
-    .write(version_short);
+    .write(version);
 
 print("mod.cpp version set to " + version_short);
