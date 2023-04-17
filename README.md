@@ -43,6 +43,9 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 - Run `$ hemtt release` to create a release build
   - _Only Windows release builds are currently supported due to binarization!_
   - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
+- Run `$ hemtt dev` to create a development build with file patching
+  - `mklink /J <Arma 3>\x\tac <TAC_Mods>/.hemttout/dev` _(`/D` instead of `/J` for network paths)_
+  - _`$ hemtt launch` is not supported. Use [ArmaQDL](https://github.com/jonpas/ArmaQDL)._
 
 ### Extensions
 
