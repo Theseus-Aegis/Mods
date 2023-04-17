@@ -55,6 +55,7 @@ symbols/*
 .hemtt/local
 *.sqfc
 ArmaScriptCompiler.exe
+*.zip
 
 # Swap
 *.swp
