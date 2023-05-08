@@ -43,8 +43,7 @@ private _time = CBA_missionTime;
         };
 
         if (_players isNotEqualTo []) then {
-            private _nearest = selectRandom _players;
-            _args set [5, _nearest];
+            _args set [5,  selectRandom _players]; //_nearest
         };
     };
 
