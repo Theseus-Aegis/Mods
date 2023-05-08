@@ -48,11 +48,12 @@ _hunters setCombatMode "RED";
     // Select closest player group
     if (isNull _hunted) then {
         private _hunterLeader = leader _hunters;
-        private _players = (call CBA_fnc_players) select {isTouchingGround _x};
-        private _playerWithinDistance = _players findIf {(_hunterLeader distance _x) < _searchDistance};
+        private _players = (call CBA_fnc_players) select {
+            isTouchingGround _x && {(_hunterLeader distance _x) < _searchDistance}
+        };
 
-        if (_playerWithinDistance != -1) then {
-            private _hunted = group (_players select _playerWithinDistance);
+        if (_players isNotEqualTo []) then {
+            private _hunted = group (selectRandom _players);
             _args set [2, _hunted];
         };
     } else {
