@@ -48,11 +48,13 @@ _hunters setCombatMode "RED";
     // Select closest player group
     if (isNull _hunted) then {
         private _hunterLeader = leader _hunters;
-        private _nearest = nearestObjects [_hunterLeader, ["CAManBase"], _searchDistance, true];
-        _nearest = _nearest select {isPlayer _x};
-        _nearest = _nearest param [0, objNull];
-        _hunted = group _nearest;
-        _args set [2, _hunted];
+        private _players = (call CBA_fnc_players) select {isTouchingGround _x};
+        private _playerWithinDistance = _players findIf {(_hunterLeader distance _x) < _searchDistance};
+
+        if (_playerWithinDistance != -1) then {
+            private _hunted = group (_players select _playerWithinDistance);
+            _args set [2, _hunted];
+        };
     } else {
         // Get hunted Leader
         private _huntedLeader = leader _hunted;
