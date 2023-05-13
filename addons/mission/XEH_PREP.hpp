@@ -22,6 +22,7 @@ PREP(mortarStrike);
 PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
+PREP(sideRelations);
 PREP(surrender);
 PREP(switchAction);
 PREP(taskDefend);
