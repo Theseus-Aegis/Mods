@@ -2,21 +2,24 @@
 /*
  * Author: Alganthe, Mike
  * Specified masks protect from a contamination zone while providing HUD/Sound effects.
- * Requires a marker covering an area named "Contamination" for damage to take effect.
+ * Requires a marker covering an area named for damage to take effect. Can be used for multiple marker zones.
+ * Provides Burn damage on Head/Torso if inside a zone without a mask.
  *
  * Call from initPlayerLocal.sqf
  *
  * Arguments:
  * 0: Player <OBJECT>
+ * 1: Markers <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [_player] call MFUNC(respiratorEffects)
+ * [_player, ["MyMarker"]] call MFUNC(respiratorEffects)
+ * [_player, ["MyMarker", "MyMarkerTwo"]] call MFUNC(respiratorEffects)
  */
 
-params ["_player"];
+params ["_player", "_markers"];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
@@ -26,10 +29,10 @@ GVAR(oldGlasses) = "";
 #define MASKS ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"]
 
 [{
-    private _goggles = toLower (goggles ACE_player);
+    private _goggles = toLower (goggles _player);
 
     if (_goggles in MASKS) then {
-        // Breathing effect, adjust to fit sound length.
+        // Breathing effect
         if (GVAR(lastSoundRan) + 3 < CBA_missionTime) then {
             GVAR(lastSoundRan) = CBA_missionTime;
             playSound "tacr_gasmask_breath";
@@ -46,11 +49,11 @@ GVAR(oldGlasses) = "";
             "tacr_gasmask_overlay" cutFadeOut 0;
         };
         // Damage
-        if (ACE_player inArea "Contamination" && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
+        if (_markers findIf {_player inArea _x} && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
-            // Adjust damage / remove body parts to fit your needs.
-            private _bodypart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
-            [ACE_player, 0.15, _bodyPart, "stab"] call ACEFUNC(medical,addDamageToUnit);
+
+            private _bodypart = selectRandom ["Head", "Body"];
+            [_player, 0.15, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
         };
     };
 
