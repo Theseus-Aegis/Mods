@@ -46,7 +46,7 @@ if (_player getVariable ["tac_groundFogLastChange", -1] < CBA_missionTime) then 
             {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
 
             if (_condition) then {
-                [FUNC(groundFog), [_player, _colour], 5] call CBA_fnc_waitAndExecute;
+                [FUNC(groundFog), [_player, _colour, _condition], 5] call CBA_fnc_waitAndExecute;
             };
         }, [_fog1, _fog2, _fog3, _player, _colour, _condition], 5] call CBA_fnc_waitAndExecute;
     } else {
@@ -55,8 +55,8 @@ if (_player getVariable ["tac_groundFogLastChange", -1] < CBA_missionTime) then 
             {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
 
             if (_condition) then {
-                [FUNC(groundFog), [_player, _colour], 60] call CBA_fnc_waitAndExecute;
+                [FUNC(groundFog), [_player, _colour, _condition], 30] call CBA_fnc_waitAndExecute;
             };
-        }, [_fog1, _fog2, _fog3, _player, _colour, _condition], 60] call CBA_fnc_waitAndExecute;
+        }, [_fog1, _fog2, _fog3, _player, _colour, _condition], 30] call CBA_fnc_waitAndExecute;
     };
 };
