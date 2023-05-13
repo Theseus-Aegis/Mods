@@ -48,8 +48,9 @@ GVAR(oldGlasses) = "";
             playSound "tacr_gasmask_off";
             "tacr_gasmask_overlay" cutFadeOut 0;
         };
+
         // Damage
-        if (_markers findIf {_player inArea _x} && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
+        if (_markers findIf {_player inArea _x} == 0 && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
 
             private _bodypart = selectRandom ["Head", "Body"];
