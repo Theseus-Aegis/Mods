@@ -17,6 +17,7 @@ PREP(dialogueLocal);
 PREP(disableAI);
 PREP(enableAI);
 PREP(forceShooting);
+PREP(groundFog);
 PREP(jam);
 PREP(mortarStrike);
 PREP(reaction);
