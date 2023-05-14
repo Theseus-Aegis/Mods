@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Adds contamination gas within a marker radius
+ * Adds contamination gas within a marker radius.
  *
  * Call from initServer.sqf.
  *
  * Arguments:
  * 0: Marker <STRING>
- * 1: Colour <RGBA ARRAY> (default: [1, 1, 0, 0.06])
+ * 1: Colour RGBA <ARRAY> (default: [1, 1, 0, 0.06])
  *
  * Return Value:
  * None
@@ -17,7 +17,7 @@
  * ["MyMarker", [1, 1, 1, 0.04]] call MFUNC(contaminationGas)
  */
 
-params ["_Marker", ["_colour", [1, 1, 0, 0.06]]];
+params ["_marker", ["_colour", [1, 1, 0, 0.06]]];
 
 private _markerSize = (getMarkerSize _marker) select 0;
 private _position = getMarkerPos _marker;
@@ -36,8 +36,7 @@ private _fog3 = "#particlesource" createVehicle _position;
     _x setDropInterval 0.035;
 } forEach [_fog1, _fog2, _fog3];
 
-if (is3DENPreview) then {
-    if (_markerSize >= 60) then {
+if (is3DENPreview && {_markerSize >= 60}) then {
         hint format ["[Contamination Gas]: Marker size (%1) larger than recommended size (60x60).", _markerSize];
     };
 };
