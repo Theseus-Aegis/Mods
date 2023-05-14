@@ -38,10 +38,13 @@ private _time = CBA_missionTime;
     _args params ["_unit", "_radius", "_activateDistance", "_screamingDistance", "_time", "_nearest"];
 
     if (isNull _nearest) then {
-        private _nearest = nearestObjects [_unit, ["CAManBase"], _activateDistance, true];
-        _nearest = _nearest select {isPlayer _x};
-        _nearest = _nearest param [0, objNull];
-        _args set [5, _nearest];
+        private _players = (call CBA_fnc_players) select {
+            isTouchingGround _x && {(_hunterLeader distance _x) < _activateDistance}
+        };
+
+        if (_players isNotEqualTo []) then {
+            _args set [5,  selectRandom _players]; //_nearest
+        };
     };
 
     if (CBA_missionTime >= _time + 5 && !isNull _nearest) then {
