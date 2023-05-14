@@ -11,8 +11,8 @@
     <a href="https://github.com/Theseus-Aegis/Mods/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/License-GPLv2-red.svg" alt="TAC Mods License">
     </a>
-    <a href="https://travis-ci.org/Theseus-Aegis/Mods">
-        <img src="https://img.shields.io/travis/Theseus-Aegis/Mods.svg" alt="TAC Mods Build Status">
+    <a href="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml">
+        <img src="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml/badge.svg?branch=master" alt="TAC Mods Build Status">
     </a>
 </p>
 <p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases/latest">CBA</a> and <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
