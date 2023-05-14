@@ -11,6 +11,7 @@ PREP(unconscious);
 PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
+PREP(contaminationGas);
 PREP(d30Strike);
 PREP(dialogue);
 PREP(dialogueLocal);
