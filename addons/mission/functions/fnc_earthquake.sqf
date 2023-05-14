@@ -2,7 +2,7 @@
 /*
  * Author: Zozo (BI), Mike
  * Rewrite of BIS_fnc_earthquake to run unscheduled and remove excess fatigue code.
- * Uses magnitude between 1-5
+ * Uses magnitude between 1-5.
  *
  * Call from init.sqf
  *
