@@ -29,6 +29,8 @@ GVAR(oldGlasses) = "";
 #define MASKS ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"]
 
 [{
+    params ["_player", "_markers"];
+
     private _goggles = toLower (goggles _player);
 
     if (_goggles in MASKS) then {
@@ -50,7 +52,7 @@ GVAR(oldGlasses) = "";
         };
 
         // Damage
-        if (_markers findIf {_player inArea _x} > -1 && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
+        if (_markers findIf {_player inArea _x} >= 0 && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
 
             private _bodypart = selectRandom ["Head", "Body"];
@@ -59,4 +61,4 @@ GVAR(oldGlasses) = "";
     };
 
     GVAR(oldGlasses) = _goggles;
-} , 1, []] call CBA_fnc_addPerFrameHandler;
+} , 1, [_player, _markers]] call CBA_fnc_addPerFrameHandler;
