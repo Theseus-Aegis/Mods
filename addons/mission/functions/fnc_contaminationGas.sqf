@@ -3,7 +3,7 @@
  * Author: Mike
  * Adds contamination gas within a marker radius.
  *
- * Call from initServer.sqf.
+ * Call from initPlayerLocal.sqf.
  *
  * Arguments:
  * 0: Marker <STRING>
@@ -21,9 +21,9 @@ params ["_marker", ["_colour", [1, 1, 0, 0.06]]];
 
 private _markerSize = (getMarkerSize _marker) select 0;
 private _position = getMarkerPos _marker;
-private _fog1 = "#particlesource" createVehicle _position;
-private _fog2 = "#particlesource" createVehicle _position;
-private _fog3 = "#particlesource" createVehicle _position;
+private _fog1 = "#particlesource" createVehicleLocal _position;
+private _fog2 = "#particlesource" createVehicleLocal _position;
+private _fog3 = "#particlesource" createVehicleLocal _position;
 
 {
     _x setParticleParams [
