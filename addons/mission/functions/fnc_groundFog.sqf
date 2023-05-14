@@ -43,7 +43,7 @@ if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then
 
     private _refresh = [5, 30] select _vehicleCheck;
     [{
-        params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition", "_refresh"];
+        params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition"];
         {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
 
         if (_condition) then {
