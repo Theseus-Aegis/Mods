@@ -46,7 +46,7 @@ if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
         [{
             params ["_group", "_searchDistance"];
             [_group, nil, nil, _searchDistance] call FUNC(hunt);
-        }, [_group, _searchDistance], 10] call CBA_fnc_waitAndExecute;
+        }, [_group, _searchDistance], (random 1) + 10] call CBA_fnc_waitAndExecute;
     };
 } else {
     if (is3DENPreview) then {
