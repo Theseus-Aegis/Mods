@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
- * Author: TorturedChunk, Kaysi, mmmyum, CNSU, Kresky, Jonpas, Mike
+ * Author: Kaysi, Kresky, Jonpas, Mike
  * Adds ground fog.
  *
  * Call from initPlayerLocal.sqf.
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Colour <RGBA ARRAY>
+ * 1: Colour RGBA <ARRAY>
  * 2: Condition <CODE> (default: true)
  *
  * Return Value:
@@ -23,7 +23,8 @@ params ["_player", ["_colour", [1, 1, 1, 0.04]], ["_condition", {true}]];
 if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then {
     _player setVariable [QGVAR(groundFogLastChange), CBA_missionTime + 5];
 
-    private _obj = [_player, vehicle _player] select (vehicle _player == _player);
+    private _vehicleCheck = vehicle _player == _player;
+    private _obj = [_player, vehicle _player] select (_vehicleCheck);
     private _pos = position _obj;
     private _fog1 = "#particlesource" createVehicleLocal _pos;
     private _fog2 = "#particlesource" createVehicleLocal _pos;
@@ -40,7 +41,7 @@ if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then
         _x setDropInterval 0.035;
     } forEach [_fog1, _fog2, _fog3];
 
-    if (_obj) then {
+    if (!_vehicleCheck) then {
         [{
             params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition"];
             {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
