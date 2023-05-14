@@ -29,7 +29,7 @@ switch (_type) do {
     };
     case 1: {
         private _active = count (allUnits select {simulationEnabled _x}) - count playableUnits;
-        private _inactive = count allUnits select {!simulationEnabled _x});
+        private _inactive = count (allUnits select {!simulationEnabled _x});
         format ["Active: %1|Inactive: %2|Agents: %3|FPS: %4", _active, _inactive, count agents, diag_fps]
     };
 };
