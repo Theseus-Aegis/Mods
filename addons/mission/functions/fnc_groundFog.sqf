@@ -49,5 +49,5 @@ if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then
         if (_condition) then {
             [_player, _colour, _condition] call FUNC(groundFog);
         };
-    }, [_fog1, _fog2, _fog3, _player, _colour, _condition, _refresh], _refresh] call CBA_fnc_waitAndExecute;
+    }, [_fog1, _fog2, _fog3, _player, _colour, _condition], _refresh] call CBA_fnc_waitAndExecute;
 };
