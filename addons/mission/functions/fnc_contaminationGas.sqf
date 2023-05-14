@@ -37,6 +37,5 @@ private _fog3 = "#particlesource" createVehicle _position;
 } forEach [_fog1, _fog2, _fog3];
 
 if (is3DENPreview && {_markerSize >= 60}) then {
-        hint format ["[Contamination Gas]: Marker size (%1) larger than recommended size (60x60).", _markerSize];
-    };
+    hint format ["[Contamination Gas]: Marker size (%1) larger than recommended size (60x60).", _markerSize];
 };
