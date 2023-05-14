@@ -47,7 +47,7 @@ if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then
         {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
 
         if (_condition) then {
-            [FUNC(groundFog), [_player, _colour, _condition, _refresh], _refresh] call CBA_fnc_waitAndExecute;
+            [_player, _colour, _condition] call FUNC(groundFog);
         };
     }, [_fog1, _fog2, _fog3, _player, _colour, _condition, _refresh], _refresh] call CBA_fnc_waitAndExecute;
 };
