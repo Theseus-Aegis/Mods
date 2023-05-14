@@ -41,23 +41,13 @@ if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then
         _x setDropInterval 0.035;
     } forEach [_fog1, _fog2, _fog3];
 
-    if (!_vehicleCheck) then {
-        [{
-            params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition"];
-            {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
+    private _refresh = [5, 30] select _vehicleCheck;
+    [{
+        params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition", "_refresh"];
+        {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
 
-            if (_condition) then {
-                [FUNC(groundFog), [_player, _colour, _condition], 5] call CBA_fnc_waitAndExecute;
-            };
-        }, [_fog1, _fog2, _fog3, _player, _colour, _condition], 5] call CBA_fnc_waitAndExecute;
-    } else {
-        [{
-            params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition"];
-            {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
-
-            if (_condition) then {
-                [FUNC(groundFog), [_player, _colour, _condition], 30] call CBA_fnc_waitAndExecute;
-            };
-        }, [_fog1, _fog2, _fog3, _player, _colour, _condition], 30] call CBA_fnc_waitAndExecute;
-    };
+        if (_condition) then {
+            [FUNC(groundFog), [_player, _colour, _condition, _refresh], _refresh] call CBA_fnc_waitAndExecute;
+        };
+    }, [_fog1, _fog2, _fog3, _player, _colour, _condition, _refresh], _refresh] call CBA_fnc_waitAndExecute;
 };
