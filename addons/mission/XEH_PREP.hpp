@@ -15,7 +15,6 @@ PREP(d30Strike);
 PREP(dialogue);
 PREP(dialogueLocal);
 PREP(disableAI);
-PREP(earthquake);
 PREP(enableAI);
 PREP(forceShooting);
 PREP(jam);
