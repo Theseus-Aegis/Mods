@@ -14,16 +14,22 @@
  * Report <STRING>
  *
  * Example:
- * [0] call TAC_Mission_fnc_monitorUnits
+ * [0] call MFUNC(monitorUnits)
  */
 
 params [["_type", 0]];
 
 switch (_type) do {
     case 0: {
-        format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", west countSide allUnits, east countSide allUnits, resistance countside allUnits, civilian countSide allUnits, count playableUnits]
+        private _west = (west countSide allUnits) - (count playableUnits);
+        private _east = (east countSide allUnits) - (count playableUnits);
+        private _resistance = (resistance countSide allUnits) - (count playableUnits);
+        private _civilian = (civilian countside allUnits) - (count playableUnits);
+        format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", _west, _east, _resistance , _civilian, count playableUnits]
     };
     case 1: {
-        format ["Active: %1|Inactive: %2|Agents: %3|FPS: %4", count (allUnits select {simulationEnabled _x}), count (allUnits select {!simulationEnabled _x}), count agents, diag_fps]
+        private _active = count (allUnits select {simulationEnabled _x}) - count playableUnits;
+        private _inactive = count (allUnits select {!simulationEnabled _x});
+        format ["Active: %1|Inactive: %2|Agents: %3|FPS: %4", _active, _inactive, count agents, diag_fps]
     };
 };
