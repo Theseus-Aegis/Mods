@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [1] call TAC_Mission_fnc_earthquake;
+ * [1] call MFUNC(earthquake);
  */
 
 params [
