@@ -20,8 +20,8 @@
 
 params ["_player", ["_colour", [1, 1, 1, 0.04]], ["_condition", {true}]];
 
-if (_player getVariable ["tac_groundFogLastChange", -1] < CBA_missionTime) then {
-    _player setVariable ["tac_groundFogLastChange", CBA_missionTime + 5];
+if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then {
+    _player setVariable [QGVAR(groundFogLastChange), CBA_missionTime + 5];
 
     private _obj = [_player, vehicle _player] select (vehicle _player == _player);
     private _pos = position _obj;
@@ -40,7 +40,7 @@ if (_player getVariable ["tac_groundFogLastChange", -1] < CBA_missionTime) then 
         _x setDropInterval 0.035;
     } forEach [_fog1, _fog2, _fog3];
 
-    if (vehicle _player != _player) then {
+    if (_obj) then {
         [{
             params ["_fog1", "_fog2", "_fog3", "_player", "_colour", "_condition"];
             {deleteVehicle _x} forEach [_fog1, _fog2, _fog3];
