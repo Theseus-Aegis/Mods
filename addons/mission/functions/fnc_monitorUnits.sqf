@@ -21,10 +21,15 @@ params [["_type", 0]];
 
 switch (_type) do {
     case 0: {
-        private _west = (west countSide allUnits) - (count playableUnits);
-        private _east = (east countSide allUnits) - (count playableUnits);
-        private _resistance = (resistance countSide allUnits) - (count playableUnits);
-        private _civilian = (civilian countside allUnits) - (count playableUnits);
+        private _playersWest = count (playableUnits select {(side _x) == west});
+        private _playersEast = count (playableUnits select {(side _x) == east});
+        private _playersResistance = count (playableUnits select {(side _x) == resistance});
+        private _playersCivilian = count (playableUnits select {(side _x) == civilian});
+
+        private _west = (west countSide allUnits) - _playersWest;
+        private _east = (east countSide allUnits) - _playersEast;
+        private _resistance = (resistance countSide allUnits) - _playersResistance;
+        private _civilian = (civilian countside allUnits) - _playersCivilian;
         format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", _west, _east, _resistance , _civilian, count playableUnits]
     };
     case 1: {
