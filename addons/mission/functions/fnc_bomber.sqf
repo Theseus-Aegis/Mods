@@ -39,7 +39,7 @@ private _time = CBA_missionTime;
 
     if (isNull _nearest) then {
         private _players = (call CBA_fnc_players) select {
-            isTouchingGround _x && {(_hunterLeader distance _x) < _activateDistance}
+            isTouchingGround _x && {(_unit distance _x) < _activateDistance}
         };
 
         if (_players isNotEqualTo []) then {
