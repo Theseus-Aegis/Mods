@@ -21,6 +21,7 @@ PREP(enableAI);
 PREP(forceShooting);
 PREP(groundFog);
 PREP(jam);
+PREP(log);
 PREP(mortarStrike);
 PREP(reaction);
 PREP(reinforcementWaves);

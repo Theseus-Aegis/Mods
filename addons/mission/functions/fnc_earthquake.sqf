@@ -3,8 +3,9 @@
  * Author: Zozo (BI), Mike
  * Rewrite of BIS_fnc_earthquake to run unscheduled and remove excess fatigue code.
  * Uses magnitude between 1-5.
+ * Runs local to each player
  *
- * Call from init.sqf
+ * Called globally from Trigger or init.sqf
  *
  * Arguments:
  * 0: Magnitude <NUMBER> (default: 1)
@@ -26,10 +27,10 @@ params [
     ["_eqSound", "Earthquake_01"]
 ];
 
+if (isServer) exitWith {};
+
 if (GVAR(earthquakeInProgress)) exitWith {
-    if (is3DENPreview) then {
-        hint "[Earthquake]: Only one instance of Earthquake will happen locally.";
-    };
+    ["[TAC Earthquake]:", "Only one instance of Earthquake will happen locally."] call FUNC(log);
 };
 
 switch (_magnitude) do {
@@ -64,9 +65,7 @@ switch (_magnitude) do {
         _eqSound = "Earthquake_04";
     };
     default {
-        if (is3DENPreview) then {
-            hint format ["[Earthquake]: Magnitude (%1) not between 1-5, using default values.", _magnitude];
-        };
+        ["[TAC Earthquake]:", format ["Magnitude (%1) not between 1-5, using default values.", _magnitude]] call FUNC(log);
     };
 };
 

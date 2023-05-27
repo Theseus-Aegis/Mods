@@ -36,6 +36,6 @@ private _fog3 = "#particlesource" createVehicleLocal _position;
     _x setDropInterval 0.035;
 } forEach [_fog1, _fog2, _fog3];
 
-if (is3DENPreview && {_markerSize >= 60}) then {
-    hint format ["[Contamination Gas]: Marker size (%1) larger than recommended size (60x60).", _markerSize];
+if (_markerSize >= 60) then {
+    ["[TAC Contamination Gas]:", format ["Marker size (%1) larger than recommended size (60x60).", _markerSize], true] call FUNC(log);
 };
