@@ -8,6 +8,7 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(aliveInGroups);
 PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
