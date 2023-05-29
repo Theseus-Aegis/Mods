@@ -9,7 +9,7 @@
  * Arguments:
  * 0: Function Name <STRING>
  * 1: Error Message <STRING>
- * 2: Log to Server <BOOL> (default: false)
+ * 2: Log to RPT <BOOL> (default: false)
  *
  * Return Value:
  * None
