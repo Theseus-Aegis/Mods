@@ -8,11 +8,11 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
-PREP(aliveInGroups);
 PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
+PREP(countAlive);
 PREP(d30Strike);
 PREP(dialogue);
 PREP(dialogueLocal);

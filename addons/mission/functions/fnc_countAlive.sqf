@@ -7,22 +7,19 @@
  * 0: Groups <ARRAY>
  *
  * Return Value:
- * Number
+ * Count of alive units <NUMBER>
  *
  * Example:
- * [[My_Group_One, My_Group_Two]] call MFUNC(aliveInGroups);
+ * [[My_Group_One, My_Group_Two]] call MFUNC(countAlive);
  *
  */
 
 params ["_groups"];
 
-private _array = [];
+private _count = 0;
 
 {
-    _array pushBack (units _x);
+    _count = _count + ({alive _x} count units _x);
 } forEach _groups;
 
-_array = flatten _array;
-private _arrayCount = {alive _x} count _array;
-
-_arrayCount;
+_count
