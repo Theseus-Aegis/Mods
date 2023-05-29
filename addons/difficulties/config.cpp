@@ -18,3 +18,4 @@ class CfgPatches {
 #include "CfgAISkill.hpp"
 #include "CfgDifficultyPresets.hpp"
 #include "CfgSurfaces.hpp"
+#include "CfgEventHandlers.hpp"

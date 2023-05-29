@@ -2,8 +2,8 @@
 /*
  * Author: Mike
  * Automatically lowers APC / Tank based aiming accuracy.
+ *
  * Call on mission start.
- * Call from initServer.sqf.
  *
  * Arguments:
  * None
@@ -12,8 +12,10 @@
  * None
  *
  * Example:
- * [] call MFUNC(apcSkill)
+ * [] call FUNC(apcSkill)
  */
+
+if (!GVAR(lowerAPCSkill)) exitWith {};
 
 private _allVehicles = vehicles select {(_x isKindOf "Wheeled_APC_F" || _x isKindOf "Tank" && {!isNull gunner _x})};
 

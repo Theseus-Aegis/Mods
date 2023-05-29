@@ -1,6 +1,5 @@
 // Base
 PREP(aar);
-PREP(apcSkill);
 PREP(baseSpectator);
 PREP(collectIntel);
 PREP(godMode);

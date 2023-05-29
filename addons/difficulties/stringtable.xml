@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Difficulties">
+        <Key ID="STR_TAC_Difficulties_LowerSkill">
+            <English>Lower APC Skill</English>
+            <German>Untere APC-Fähigkeit</German>
+            <French>Compétences inférieures en matière de APC</French>
+        </Key>
+        <Key ID="STR_TAC_Difficulties_LowerSkillDesc">
+            <English>Lowers the aiming accuracy of APCs and Tanks by half</English>
+            <German>Verringert die Zielgenauigkeit von APCs und Panzern um die Hälfte</German>
+            <French>Réduit de moitié la précision de visée des APC et des chars.</French>
+        </Key>
+    </Package>
+</Project>
