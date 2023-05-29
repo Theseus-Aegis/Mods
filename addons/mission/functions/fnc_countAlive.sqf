@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Returns count of alive units in given groups
+ * Returns count of alive units in given groups.
  *
  * Arguments:
  * 0: Groups <ARRAY>
