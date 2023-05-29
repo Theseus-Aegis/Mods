@@ -28,7 +28,7 @@ private _type = toLower _type;
 
 // Debug for typos
 if !(_type in ["static", "patrol", "all"]) then {
-    ["[TAC Reaction]:", format ["Unknown type value: %1", _type], true] call FUNC(log);
+    ["[TAC Reaction]:", format ["Unknown type value: %1", _type]] call FUNC(log);
 };
 
 if (_type in ["static", "all"]) then {
