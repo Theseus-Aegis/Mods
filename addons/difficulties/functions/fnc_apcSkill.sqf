@@ -22,5 +22,5 @@ private _allVehicles = vehicles select {(_x isKindOf "Wheeled_APC_F" || _x isKin
 {
     private _gunner = gunner _x;
     private _gunnerSkill = _gunner skill "aimingAccuracy";
-    _gunner setSkill ["aimingAccuracy", (_gunnerSkill / 2)];
+    _gunner setSkill ["aimingAccuracy", (_gunnerSkill * GVAR(skillFactor))];
 } forEach _allVehicles;
