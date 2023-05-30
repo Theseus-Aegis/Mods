@@ -26,7 +26,7 @@ private _name = ((_file splitString "\.") select -2) select [4];
 private _messageRPT = format ["[%1] (%2: %3) %4: %5", toUpper 'PREFIX', 'COMPONENT', _name, _type, _message];
 private _messageOSD = format ["[%1 %2] %3: %4", toUpper 'PREFIX', _name, _type, _message];
 
-diag_log _messageRPT;
+diag_log text _messageRPT;
 if (is3DENPreview) then {
     _messageOSD call CBA_fnc_notify;
 };
