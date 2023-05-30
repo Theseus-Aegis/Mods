@@ -1,29 +1,34 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Function based logging for 3DEN / Server
- * Call from Functions
- *
- * Shows in-game warning and logs to RPT.
+ * Logs a message to the RPT log and displays it on-screen in Eden Editor.
+ * Call from any function in this component.
+ * Should not be used directly, but rather via overwritten CBA macro (<WARNING()>).
  *
  * Arguments:
- * 0: Function Name <STRING>
- * 1: Error Message <STRING>
+ * 0: Type <STRING>
+ * 1: Message <STRING>
+ * 2: Function File Path <STRING> (default: "unknown")
  *
  * Return Value:
  * None
  *
  * Examples:
- * ["[TAC Mission X]:", format ["Undefined value %1", _value]] call FUNC(log)
+ * WARNING("Undefined value");
+ * WARNING_2("Undefined value %1, expected %2",_value,_expected);
  */
 
-params ["_functionName", "_message"];
+params ["_type", "_message", ["_file", "unknown"]];
 
-private _message = [_functionName, _message] joinString " ";
+if (_file != "unknown") then {
+    // File path to function name
+    _file = ((_file splitString "\.") select -2) select [4];
+};
 
+private _messageRPT = format ["[%1] (%2: %3) %4: %5", toUpper 'PREFIX', 'COMPONENT', _file, _type, _message];
+private _messageOSD = format ["[%1 %2] %3: %4", toUpper 'PREFIX', _file, _type, _message];
+
+diag_log _messageRPT;
 if (is3DENPreview) then {
-    _message call CBA_fnc_notify;
-    diag_log _message;
-} else {
-    diag_log _message;
+    _messageOSD call CBA_fnc_notify;
 };

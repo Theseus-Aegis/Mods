@@ -51,5 +51,5 @@ if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
 } else {
     private _groupName = groupID _group;
     private _groupSide = side _group;
-    ["[TAC Reinforcements]:", format ["Too close to group: %1, on: %2", _groupName, _groupSide]] call FUNC(log);
+    WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
 };

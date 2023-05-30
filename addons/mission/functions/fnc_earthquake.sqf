@@ -30,7 +30,7 @@ params [
 if (isServer) exitWith {};
 
 if (GVAR(earthquakeInProgress)) exitWith {
-    ["[TAC Earthquake]:", "Only one instance of Earthquake will happen locally."] call FUNC(log);
+    ERROR_MSG("Only one instance of Earthquake is supported at a time!");
 };
 
 switch (_magnitude) do {
@@ -65,7 +65,7 @@ switch (_magnitude) do {
         _eqSound = "Earthquake_04";
     };
     default {
-        ["[TAC Earthquake]:", format ["Magnitude (%1) not between 1-5, using default values.", _magnitude]] call FUNC(log);
+        WARNING_1("Magnitude (%1) not between 1-5, using default values!",_magnitude);
     };
 };
 

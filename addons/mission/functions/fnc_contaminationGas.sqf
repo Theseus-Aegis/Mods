@@ -37,5 +37,5 @@ private _fog3 = "#particlesource" createVehicleLocal _position;
 } forEach [_fog1, _fog2, _fog3];
 
 if (_markerSize > 60) then {
-    ["[TAC Contamination Gas]:", format ["Marker size (%1) larger than recommended size (60x60).", _markerSize], true] call FUNC(log);
+    WARNING_1("Marker size (%1) larger than recommended size (60x60)!",_markerSize);
 };

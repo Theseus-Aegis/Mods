@@ -23,13 +23,13 @@
  */
 
 if !(["acre_main"] call ACEFUNC(common,isModLoaded)) exitWith {
-    ERROR_1("ACRE2 is required for %1!",QFUNC(jam));
+    ERROR_MSG_1("ACRE2 is required for %1!",QFUNC(jam));
 };
 
 params [["_jammers", [], [[]]], ["_degradation", [], [[]]]];
 
 if (count _jammers != count _degradation) exitWith {
-    ERROR_WITH_TITLE_1("Invalid signal jamming parameters!", "Expected 0 or %1 degradation parameters for %1 jammers",count _jammers);
+    ERROR_MSG_1("Invalid signal jamming parameters! Expected 0 or %1 degradation parameters for %1 jammers",count _jammers);
 };
 
 // Make global for EH and signal function use
