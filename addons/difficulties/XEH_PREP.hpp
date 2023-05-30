@@ -1,1 +1,1 @@
-PREP(apcSkill);
+PREP(setAccuracySkill);
