@@ -18,12 +18,11 @@ params ["_vehicle"];
 if (GVAR(gunnerAccuracyFactor) == 1) exitWith {};
 
 private _gunner = gunner _vehicle;
-private _skillSet = _gunner getVariable [QGVAR(skillFactorSet), false];
+private _skillSet = _gunner getVariable [QGVAR(skillFactorSet), nil];
 
-if (_skillSet || isNull _gunner || isPlayer _gunner) exitWith {};
+if (!isNil _skillSet || isNull _gunner || isPlayer _gunner) exitWith {};
 
 private _gunnerSkill = _gunner skill "aimingAccuracy";
-_gunner setVariable [QGVAR(originalAccuracy), _gunnerSkill];
 _gunner setSkill ["aimingAccuracy", (_gunnerSkill * GVAR(gunnerAccuracyFactor))];
 
-_gunner setVariable [QGVAR(skillFactorSet), true];
+_gunner setVariable [QGVAR(skillFactorSet), _gunnerSkill];

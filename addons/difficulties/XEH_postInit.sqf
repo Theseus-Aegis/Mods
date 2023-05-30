@@ -9,9 +9,10 @@
 ["Tank", "getOut", {
     params ["", "_role", "_unit"];
     if (_role != "gunner") exitWith {};
-    if (_unit getVariable [QGVAR(skillFactorSet), false]) then {
-        _unit setSkill ["aimingAccuracy", (_unit getVariable QGVAR(originalAccuracy))];
-        _unit setVariable [QGVAR(skillFactorSet), false];
+    private _skillSet = _unit getVariable [QGVAR(skillFactorSet), nil];
+    if (!isNil _skillSet) then {
+        _unit setSkill ["aimingAccuracy", _skillSet];
+        _unit setVariable [QGVAR(skillFactorSet), nil];
     };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
@@ -37,9 +38,10 @@
 ["Wheeled_APC_F", "getOut", {
     params ["", "_role", "_unit"];
     if (_role != "gunner") exitWith {};
-    if (_unit getVariable [QGVAR(skillFactorSet), false]) then {
-        _unit setSkill ["aimingAccuracy", (_unit getVariable QGVAR(originalAccuracy))];
-        _unit setVariable [QGVAR(skillFactorSet), false];
+    private _skillSet = _unit getVariable [QGVAR(skillFactorSet), nil];
+    if (!isNil _skillSet) then {
+        _unit setSkill ["aimingAccuracy", _skillSet];
+        _unit setVariable [QGVAR(skillFactorSet), nil];
     };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
