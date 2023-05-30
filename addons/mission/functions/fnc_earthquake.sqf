@@ -27,7 +27,7 @@ params [
     ["_eqSound", "Earthquake_01"]
 ];
 
-if (isServer) exitWith {};
+if (!is3DENPreview && {isServer}) exitWith {};
 
 if (GVAR(earthquakeInProgress)) exitWith {
     ERROR_MSG("Only one instance of Earthquake is supported at a time!");
