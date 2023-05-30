@@ -1,9 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Sets aiming accuracy skill for APCs and Tanks by factor.
- *
- * Call on mission start.
+ * Modifies aiming accuracy skill.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -12,12 +10,12 @@
  * None
  *
  * Example:
- * [] call FUNC(setSkill)
+ * [] call FUNC(setAccuracySkill)
  */
 
 params ["_vehicle"];
 
-if (GVAR(skillFactor) == 1) exitWith {};
+if (GVAR(gunnerAccuracyFactor) == 1) exitWith {};
 
 private _gunner = gunner _vehicle;
 private _skillSet = _gunner getVariable [QGVAR(skillFactorSet), false];
@@ -25,6 +23,7 @@ private _skillSet = _gunner getVariable [QGVAR(skillFactorSet), false];
 if (_skillSet || isNull _gunner || isPlayer _gunner) exitWith {};
 
 private _gunnerSkill = _gunner skill "aimingAccuracy";
-_gunner setSkill ["aimingAccuracy", (_gunnerSkill * GVAR(skillFactor))];
+_gunner setVariable [QGVAR(originalAccuracy), _gunnerSkill];
+_gunner setSkill ["aimingAccuracy", (_gunnerSkill * GVAR(gunnerAccuracyFactor))];
 
 _gunner setVariable [QGVAR(skillFactorSet), true];

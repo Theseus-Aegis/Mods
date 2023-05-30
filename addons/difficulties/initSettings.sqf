@@ -1,7 +1,7 @@
 [
-    QGVAR(accuracySkillFactor),
+    QGVAR(gunnerAccuracyFactor),
     "SLIDER",
-    [LSTRING(accuracySkillFactorDisplayName), LSTRING(accuracySkillFactorDesc)],
+    [LSTRING(gunnerAccuracyFactorDisplayName), LSTRING(gunnerAccuracyFactorDesc)],
     format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
     [0, 1, 1, 2],
     true
