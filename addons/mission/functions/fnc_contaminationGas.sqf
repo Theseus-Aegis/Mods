@@ -19,7 +19,7 @@
 
 params ["_marker", ["_colour", [1, 1, 0, 0.06]]];
 
-private _markerSize = (getMarkerSize _marker) select 0;
+private _markerSize = selectMax (getMarkerSize _marker);
 private _position = getMarkerPos _marker;
 private _fog1 = "#particlesource" createVehicleLocal _position;
 private _fog2 = "#particlesource" createVehicleLocal _position;
@@ -36,6 +36,6 @@ private _fog3 = "#particlesource" createVehicleLocal _position;
     _x setDropInterval 0.035;
 } forEach [_fog1, _fog2, _fog3];
 
-if (is3DENPreview && {_markerSize >= 60}) then {
-    hint format ["[Contamination Gas]: Marker size (%1) larger than recommended size (60x60).", _markerSize];
+if (_markerSize > 60) then {
+    WARNING_1("Marker size (%1) larger than recommended size (60x60)!",_markerSize);
 };
