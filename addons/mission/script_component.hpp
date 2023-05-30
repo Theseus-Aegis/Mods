@@ -17,7 +17,7 @@
 
 
 // Logging
-#define MLOG_SYS(MESSAGE) [__FILE__, MESSAGE, "WARNING"] call FUNC(log)
+#define MLOG_SYS(MESSAGE) [__FILE__, "WARNING", MESSAGE] call FUNC(log)
 
 #undef WARNING
 #undef WARNING_1
