@@ -1,1 +1,1 @@
-PREP(setAccuracySkill);
+PREP(setGunnerAccuracy);

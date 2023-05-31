@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Difficulties">
-        <Key ID="STR_TAC_Difficulties_gunnerAccuracyFactorDisplayName">
-            <English>Skill Factor</English>
-            <German>Skill-Faktor</German>
-            <French>Facteur de compétence</French>
+        <Key ID="STR_TAC_Difficulties_armorAccuracyFactor_DisplayName">
+            <English>Armor Accuracy Factor</English>
         </Key>
-        <Key ID="STR_TAC_Difficulties_gunnerAccuracyFactorDesc">
-            <English>Factor skill will be lowered by</English>
-            <German>Der Faktor Fertigkeit wird gesenkt um</German>
-            <French>La compétence de facteur sera réduite de</French>
+        <Key ID="STR_TAC_Difficulties_armorAccuracyFactor_Description">
+            <English>Influences the accuracy of gunners in armored vehicles such as APCs and Tanks.</English>
         </Key>
     </Package>
 </Project>

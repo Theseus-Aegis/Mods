@@ -1,7 +1,7 @@
 // TAC
 tac_armory_system = 1;
 
-tac_difficulties_accuracySkillFactor = 0.5;
+tac_difficulties_armorAccuracyFactor = 0.5;
 
 tac_insignia_enabled = false;
 

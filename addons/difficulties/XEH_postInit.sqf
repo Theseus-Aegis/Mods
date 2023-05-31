@@ -1,59 +1,45 @@
 #include "script_component.hpp"
 
-["Tank", "getIn", {
-    params ["_vehicle", "_role"];
-    if (_role != "gunner") exitWith {};
-    [_vehicle] call FUNC(setAccuracySkill);
+["CAManBase", "Init", {
+    params ["_unit"];
+    if (vehicle _unit != _unit && {gunner (vehicle _unit) == _unit}) then {
+        [_unit] call FUNC(setUnitAccuracy);
+    };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
-["Tank", "getOut", {
+private _getInHandler = {
     params ["", "_role", "_unit"];
-    if (_role != "gunner") exitWith {};
-    private _skillSet = _unit getVariable [QGVAR(skillFactorSet), nil];
-    if (!isNil _skillSet) then {
-        _unit setSkill ["aimingAccuracy", _skillSet];
-        _unit setVariable [QGVAR(skillFactorSet), nil];
+    if (_role == "gunner") then {
+        [_unit] call FUNC(setUnitAccuracy);
     };
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Tank", "init", {
-    [_this select 0] call FUNC(setAccuracySkill)
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Tank", "seatSwitched", {
-    params ["_vehicle", "_unit1", "_unit2"];
-    private _roleOne = assignedVehicleRole _unit1 select 0;
-    private _roleTwo = assignedVehicleRole _unit2 select 0;
-    if (_roleOne == "turret" || _roleTwo == "turret") then {
-        [_vehicle] call FUNC(setAccuracySkill);
-    };
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Wheeled_APC_F", "getIn", {
-    params ["_vehicle", "_role"];
-    if (_role != "gunner") exitWith {};
-    [_vehicle] call FUNC(setAccuracySkill);
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Wheeled_APC_F", "getOut", {
+};
+private _getOutHandler = {
     params ["", "_role", "_unit"];
-    if (_role != "gunner") exitWith {};
-    private _skillSet = _unit getVariable [QGVAR(skillFactorSet), nil];
-    if (!isNil _skillSet) then {
-        _unit setSkill ["aimingAccuracy", _skillSet];
-        _unit setVariable [QGVAR(skillFactorSet), nil];
+    if (_role == "gunner") then {A
+        [_unit, true] call FUNC(setUnitAccuracy);
     };
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Wheeled_APC_F", "init", {
-    [_this select 0] call FUNC(setAccuracySkill)
-}, true, [], true] call CBA_fnc_addClassEventHandler;
-
-["Wheeled_APC_F", "seatSwitched", {
+};
+private _seatSwitchedHandler = {
     params ["_vehicle", "_unit1", "_unit2"];
-    private _roleOne = assignedVehicleRole _unit1 select 0;
-    private _roleTwo = assignedVehicleRole _unit2 select 0;
-    if (_roleOne == "turret" || _roleTwo == "turret") then {
-        [_vehicle] call FUNC(setAccuracySkill);
+
+    private _currentGunner = objNull; // find current gunner if any
+    {
+        if (gunner (vehicle _x) == _x) then {
+            _currentGunner = _x;
+        };
+    } forEach [_unit1, _unit2];
+
+    if (!isNull _currentGunner) then { // did gunner switch the seat even?
+        private _previousGunner = [_unit1, _unit2] select (_unit2 == _currentGunner); // previous gunner must be the other unit
+
+        [_currentGunner] call FUNC(setUnitAccuracy);
+        [_previousGunner, true] call FUNC(setUnitAccuracy);
     };
-}, true, [], true] call CBA_fnc_addClassEventHandler;
+};
+
+["Tank", "GetIn", _getInHandler, true, []] call CBA_fnc_addClassEventHandler;
+["Tank", "GetOut", _getOutHandler, true, []] call CBA_fnc_addClassEventHandler;
+["Tank", "SeatSwitched", _seatSwitchedHandler, true, []] call CBA_fnc_addClassEventHandler;
+["Wheeled_APC_F", "GetIn", _getInHandler, true, []] call CBA_fnc_addClassEventHandler;
+["Wheeled_APC_F", "GetOut", _getOutHandler, true, []] call CBA_fnc_addClassEventHandler;
+["Wheeled_APC_F", "SeatSwitched", _seatSwitchedHandler, true, []] call CBA_fnc_addClassEventHandler;
