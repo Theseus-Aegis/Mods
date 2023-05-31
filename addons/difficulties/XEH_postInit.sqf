@@ -22,17 +22,12 @@ private _getOutHandler = {
 private _seatSwitchedHandler = {
     params ["_vehicle", "_unit1", "_unit2"];
 
-    private _currentGunner = objNull; // find current gunner if any
-    {
-        if (gunner (vehicle _x) == _x) then {
-            _currentGunner = _x;
-        };
-    } forEach [_unit1, _unit2];
+    private _gunners = [unit1, _unit2] select {gunner _vehicle == _x}; // find current gunner if any
+    if (_gunners isNotEqualTo []) then {
+        private _gunner = _gunners select 0;
+        private _previousGunner = [_unit1, _unit2] select (_unit2 == _gunner); // previous gunner must be the other unit
 
-    if (!isNull _currentGunner) then { // did gunner switch the seat even?
-        private _previousGunner = [_unit1, _unit2] select (_unit2 == _currentGunner); // previous gunner must be the other unit
-
-        [_currentGunner] call FUNC(setUnitAccuracy);
+        [_gunner] call FUNC(setUnitAccuracy);
         [_previousGunner, true] call FUNC(setUnitAccuracy);
     };
 };
