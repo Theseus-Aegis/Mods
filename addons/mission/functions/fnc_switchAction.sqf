@@ -6,7 +6,7 @@
  * Default state is 0 or 1
  *
  * Switch state can be checked by getVariable
- * My_Switch getVariable ["TAC_Switched", false];
+ * My_Switch getVariable ["TAC_switchState", false];
  *
  * Call from init.sqf
  *
@@ -34,12 +34,14 @@ if (isServer) then {
         _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(0,1,0,0.05,ca)"];
         _object animateSource ["Power_1", (_voltages select 0), true];
         _object animateSource ["Power_2", (_voltages select 1), true];
+        _object setVariable ["TAC_switchState", true, true];
     } else {
         _object animateSource ["SwitchLight", 1, 1];
         _object animateSource ["SwitchPosition", -1, true];
         _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(1,0,0,0.05,ca)"];
         _object animateSource ["Power_1", 0, true];
         _object animateSource ["Power_2", 0, true];
+        _object setVariable ["TAC_switchState", false, true];
     };
 };
 
@@ -56,13 +58,13 @@ if (hasInterface) then {
                 _object animateSource ["Power_1", 0, 0.25];
                 _object animateSource ["Power_2", 0, 0.25];
                 _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(1,0,0,0.05,ca)"];
-                _object setVariable ["TAC_Switched", false, true];
+                _object setVariable ["TAC_switchState", false, true];
             } else {
                 _object animateSource ["SwitchPosition", 1, 0.5];
                 _object animateSource ["Power_1", (_voltages select 0), 0.25];
                 _object animateSource ["Power_2", (_voltages select 1), 0.25];
                 _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(0,1,0,0.05,ca)"];
-                _object setVariable ["TAC_Switched", true, true];
+                _object setVariable ["TAC_switchState", true, true];
             };
         },
         _condition,
