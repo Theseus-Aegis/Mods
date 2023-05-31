@@ -28,7 +28,7 @@ private _type = toLower _type;
 
 // Debug for typos
 if !(_type in ["static", "patrol", "all"]) then {
-    hint parseText format ["[TAC Mission: Reaction]<br/>Unknown type value: %1", _type];
+    ERROR_MSG_1("Unknown reaction type value: %1",_type);
 };
 
 if (_type in ["static", "all"]) then {

@@ -12,6 +12,7 @@ PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
+PREP(countAlive);
 PREP(d30Strike);
 PREP(dialogue);
 PREP(dialogueLocal);
@@ -33,4 +34,5 @@ PREP(teleport);
 PREP(toggleLights);
 
 // Debug
+PREP(log);
 PREP(monitorUnits);
