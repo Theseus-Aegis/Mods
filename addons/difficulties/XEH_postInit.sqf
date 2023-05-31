@@ -2,34 +2,30 @@
 
 ["CAManBase", "Init", {
     params ["_unit"];
-    if (vehicle _unit != _unit && {gunner (vehicle _unit) == _unit}) then {
+    private _vehicle = vehicle _unit;
+    if (_vehicle != _unit && {gunner _vehicle == _unit || commander _vehicle == _unit}) then {
         [_unit] call FUNC(setUnitAccuracy);
     };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
 private _getInHandler = {
     params ["", "_role", "_unit"];
-    if (_role == "gunner") then {
+    if (_role in ["gunner", "commander"]) then {
         [_unit] call FUNC(setUnitAccuracy);
     };
 };
 private _getOutHandler = {
     params ["", "_role", "_unit"];
-    if (_role == "gunner") then {A
+    if (_role in ["gunner", "commander"]) then {A
         [_unit, true] call FUNC(setUnitAccuracy);
     };
 };
 private _seatSwitchedHandler = {
     params ["_vehicle", "_unit1", "_unit2"];
-
-    private _gunners = [unit1, _unit2] select {gunner _vehicle == _x}; // find current gunner if any
-    if (_gunners isNotEqualTo []) then {
-        private _gunner = _gunners select 0;
-        private _previousGunner = [_unit1, _unit2] select (_unit2 == _gunner); // previous gunner must be the other unit
-
-        [_gunner] call FUNC(setUnitAccuracy);
-        [_previousGunner, true] call FUNC(setUnitAccuracy);
-    };
+    {
+        private _reset = gunner _vehicle != _x && commander _vehicle != _x;
+        [_x, _reset] call FUNC(setUnitAccuracy);
+    } forEach [_unit1, _unit2];
 };
 
 ["Tank", "GetIn", _getInHandler, true, []] call CBA_fnc_addClassEventHandler;

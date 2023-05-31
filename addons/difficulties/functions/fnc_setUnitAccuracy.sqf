@@ -20,15 +20,15 @@ if (!local _unit || {isNull _unit} || {isPlayer _unit} || {!_reset && {GVAR(armo
 
 private _originalAccuracy = _unit getVariable [QGVAR(originalAccuracy), nil];
 
-if (_reset) then {
+if (_reset) exitWIth {
     if (!isNil "_originalAccuracy") then {
         _unit setVariable [QGVAR(originalAccuracy), nil, true];
         _unit setSkill ["aimingAccuracy", _originalAccuracy];
     };
-} else {
-    if (isNil "_originalAccuracy") then {
-        _originalAccuracy = _unit skill "aimingAccuracy";
-        _unit setVariable [QGVAR(originalAccuracy), _originalAccuracy, true];
-        _unit setSkill ["aimingAccuracy", _originalAccuracy * GVAR(armorAccuracyFactor)];
-    };
+};
+
+if (isNil "_originalAccuracy") then {
+    _originalAccuracy = _unit skill "aimingAccuracy";
+    _unit setVariable [QGVAR(originalAccuracy), _originalAccuracy, true];
+    _unit setSkill ["aimingAccuracy", _originalAccuracy * GVAR(armorAccuracyFactor)];
 };
