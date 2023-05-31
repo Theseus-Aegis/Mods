@@ -15,7 +15,7 @@ private _getInHandler = {
 };
 private _getOutHandler = {
     params ["", "_role", "_unit"];
-    if (_role == "gunner") then {A
+    if (_role == "gunner") then {
         [_unit, true] call FUNC(setUnitAccuracy);
     };
 };
