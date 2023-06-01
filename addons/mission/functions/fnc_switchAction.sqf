@@ -8,7 +8,7 @@
  * Voltages control the power level indicators on the switch itself. Values range from 0-1.
  *
  * Switch state can be checked by getVariable
- * My_Switch getVariable ["tac_mission_switchState", false];
+ * My_Switch getVariable [QMGVAR(switchState), false];
  *
  * Call from init.sqf
  *
