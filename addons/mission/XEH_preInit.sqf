@@ -22,6 +22,14 @@ if (isServer) then {
         GVAR(collectIntel_records) pushBack _this;
         [QGVAR(collectIntel_update), [_this]] call CBA_fnc_globalEvent;
     }] call CBA_fnc_addEventHandler;
+
+    // Detonation, creates an explosive on an object position and deletes the object.
+    [QGVAR(detonation), {
+        params ["_object", "_explosive", "_objectPos"];
+        private _explosive = _explosive createVehicle _objectPos;
+        deleteVehicle _object;
+        _explosive setDamage 1;
+    }] call CBA_fnc_addEventHandler;
 };
 
 if (hasInterface) then {
