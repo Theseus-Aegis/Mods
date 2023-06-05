@@ -87,6 +87,6 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [{
             params ["_unit", "_randomExplosive", "_unitPos"];
             [QGVAR(detonation), [_unit, _randomExplosive, _unitPos]] call CBA_fnc_serverEvent;
-        }, [_unit, _randomExplosive, _unitPos, _handle], 1] call CBA_fnc_waitAndExecute;
+        }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
 }, 1, [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _nearest, _randomExplosive]] call CBA_fnc_addPerFrameHandler;
