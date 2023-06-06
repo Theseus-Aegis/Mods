@@ -69,7 +69,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [_handle] call CBA_fnc_removePerFrameHandler;
         _unit setDamage 1;
         [{
-            [QGVAR(detonation), [_this]] call CBA_fnc_serverEvent;
+            [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
         }, [_unit, _randomExplosive, _unitPos], random 300] call CBA_fnc_waitAndExecute;
     };
 
@@ -84,7 +84,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [_handle] call CBA_fnc_removePerFrameHandler;
 
         [{
-            [QGVAR(detonation), [_this]] call CBA_fnc_serverEvent;
+            [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
         }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
 }, 1, [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _nearest, _randomExplosive]] call CBA_fnc_addPerFrameHandler;
