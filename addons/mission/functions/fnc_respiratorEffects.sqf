@@ -25,8 +25,11 @@ GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
 GVAR(oldGlasses) = "";
 
-// Lower-case!
-GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
+// If not player defined use default
+if (isNil QGVAR(respiratorMasks) then {
+    // Lower-case!
+    GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
+};
 
 [{
     params ["_args", "_handle"];
@@ -34,7 +37,7 @@ GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespira
 
     private _goggles = toLower (goggles _player);
 
-    if (_goggles in MASKS) then {
+    if (_goggles in GVAR(respiratorMasks)) then {
         // Breathing effect
         if (GVAR(lastSoundRan) + 3 < CBA_missionTime) then {
             GVAR(lastSoundRan) = CBA_missionTime;
@@ -47,7 +50,7 @@ GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespira
         };
     } else {
         // Mask Removal
-        if (GVAR(oldGlasses) in MASKS) then {
+        if (GVAR(oldGlasses) in GVAR(respiratorMasks)) then {
             playSound "tacr_gasmask_off";
             "tacr_gasmask_overlay" cutFadeOut 0;
         };
