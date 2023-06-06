@@ -26,7 +26,7 @@ GVAR(lastSoundRan) = CBA_missionTime;
 GVAR(oldGlasses) = "";
 
 // If not player defined use default
-if (isNil QGVAR(respiratorMasks) then {
+if (isNil QGVAR(respiratorMasks)) then {
     // Lower-case!
     GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
 };
