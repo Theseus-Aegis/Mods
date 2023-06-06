@@ -26,7 +26,7 @@ GVAR(lastSoundRan) = CBA_missionTime;
 GVAR(oldGlasses) = "";
 
 // Lower-case!
-#define MASKS ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"]
+GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
 
 [{
     params ["_args", "_handle"];
