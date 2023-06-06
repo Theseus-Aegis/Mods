@@ -11,7 +11,7 @@
  * 1: Colour RGBA <ARRAY> (default: [1, 1, 0, 0.06])
  *
  * Return Value:
- * Array of particle emitters
+ * Particle Emitters <ARRAY>
  *
  * Example:
  * ["MyMarker"] call MFUNC(contaminationGas)
@@ -25,7 +25,6 @@ private _position = getMarkerPos _marker;
 private _fog1 = "#particlesource" createVehicleLocal _position;
 private _fog2 = "#particlesource" createVehicleLocal _position;
 private _fog3 = "#particlesource" createVehicleLocal _position;
-private _particleReturn = [_fog1, _fog2, _fog3];
 
 {
     _x setParticleParams [
@@ -42,4 +41,4 @@ if (_markerSize > 60) then {
     WARNING_1("Marker size (%1) larger than recommended size (60x60)!",_markerSize);
 };
 
-_particleReturn
+[_fog1, _fog2, _fog3]
