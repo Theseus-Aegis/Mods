@@ -20,6 +20,10 @@
 
 params ["_marker", ["_colour", [1, 1, 0, 0.06]]];
 
+if (markerType _marker == "") exitWith {
+    WARNING_1("Marker (%1) does not exist",_marker);
+};
+
 private _markerSize = selectMax (getMarkerSize _marker);
 private _position = getMarkerPos _marker;
 private _fog1 = "#particlesource" createVehicleLocal _position;
