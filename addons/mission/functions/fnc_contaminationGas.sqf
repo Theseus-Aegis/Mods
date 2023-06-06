@@ -32,7 +32,7 @@ private _fog3 = "#particlesource" createVehicleLocal _position;
         [0, 0, -6], [0, 0, 0], 1, 1.275, 1, 0,
         [7,6], [[1, 1, 1, 0], _colour, [1, 1, 1, 0]], [1000], 1, 0, "", "", _x
     ];
-    _x setParticleRandom [3, [55, 55, 0.2], [0, 0, -0.1], 2, 0.45, [0, 0, 0, 0.1], 0, 0];
+    _x setParticleRandom [4, [55, 55, 0.2], [0, 0, -0.1], 2, 0.7, [0, 0, 0, 0.1], 0, 0];
     _x setParticleCircle [_markerSize, [0, 0, -0.12]];
     _x setDropInterval 0.035;
 } forEach [_fog1, _fog2, _fog3];
