@@ -55,7 +55,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         };
     };
 
-    if (!isNull _nearest && {CBA_missionTime >= _time + 5}) then {
+    if (CBA_missionTime >= _time + 5) then {
         _unit doMove (position _nearest);
         _args set [4, CBA_missionTime];
     };
@@ -69,9 +69,8 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [_handle] call CBA_fnc_removePerFrameHandler;
         _unit setDamage 1;
         [{
-            params ["_unit", "_randomExplosive", "_unitPos"];
-            [QGVAR(detonation), [_unit, _randomExplosive, _unitPos]] call CBA_fnc_serverEvent;
-        }, [_unit, _randomExplosive, _unitPos], (random 300)] call CBA_fnc_waitAndExecute;
+            [QGVAR(detonation), [_this]] call CBA_fnc_serverEvent;
+        }, [_unit, _randomExplosive, _unitPos], random 300] call CBA_fnc_waitAndExecute;
     };
 
     // Screaming
@@ -85,8 +84,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [_handle] call CBA_fnc_removePerFrameHandler;
 
         [{
-            params ["_unit", "_randomExplosive", "_unitPos"];
-            [QGVAR(detonation), [_unit, _randomExplosive, _unitPos]] call CBA_fnc_serverEvent;
+            [QGVAR(detonation), [_this]] call CBA_fnc_serverEvent;
         }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
 }, 1, [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _nearest, _randomExplosive]] call CBA_fnc_addPerFrameHandler;
