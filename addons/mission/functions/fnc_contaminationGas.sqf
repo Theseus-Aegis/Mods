@@ -3,12 +3,14 @@
  * Author: Mike
  * Adds contamination gas within a marker radius.
  * Array returned can be used to clear the gas.
+ * Cloud Size cannot be greater than 3.
  *
  * Call from initPlayerLocal.sqf.
  *
  * Arguments:
  * 0: Marker <STRING>
  * 1: Colour RGBA <ARRAY> (default: [1, 1, 0, 0.06])
+ * 2: Gas cloud size <NUMBER> (default: 1)
  *
  * Return Value:
  * Particle Emitters <ARRAY>
@@ -18,10 +20,16 @@
  * GVAR(gasOne) = ["MyMarker", [1, 1, 1, 0.04]] call MFUNC(contaminationGas)
  */
 
-params ["_marker", ["_colour", [1, 1, 0, 0.06]]];
+params ["_marker", ["_colour", [1, 1, 0, 0.06]], ["_cloudSize", 1]];
 
-if (markerType _marker == "") exitWith {
+// Marker shape should always be either "RECTANGLE" or "ELLIPSE"
+if (markerShape _marker == "") exitWith {
     WARNING_1("Marker (%1) does not exist",_marker);
+};
+
+// Limit cloud size to 3 or less.
+if (_cloudSize > 3) exitWith {
+    WARNING_1("Cloud Size (%1) should be 3 or less.",_cloudSize);
 };
 
 private _markerSize = selectMax (getMarkerSize _marker);
@@ -36,7 +44,7 @@ private _fog3 = "#particlesource" createVehicleLocal _position;
         [0, 0, -6], [0, 0, 0], 1, 1.275, 1, 0,
         [7,6], [[1, 1, 1, 0], _colour, [1, 1, 1, 0]], [1000], 1, 0, "", "", _x
     ];
-    _x setParticleRandom [4, [55, 55, 0.2], [0, 0, -0.1], 2, 0.7, [0, 0, 0, 0.1], 0, 0];
+    _x setParticleRandom [4, [55, 55, 0.2], [0, 0, -0.1], 2, _cloudSize, [0, 0, 0, 0.1], 0, 0];
     _x setParticleCircle [_markerSize, [0, 0, -0.12]];
     _x setDropInterval 0.035;
 } forEach [_fog1, _fog2, _fog3];
