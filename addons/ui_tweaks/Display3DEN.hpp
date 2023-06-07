@@ -9,35 +9,35 @@ class Display3DEN {
                         class Create: ctrlControlsGroupNoScrollbars {
                             class Controls {
                                 class CreateObjectWEST: ctrlTree {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateObjectEAST: CreateObjectWEST {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateObjectGUER: CreateObjectWEST {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateObjectCIV: CreateObjectWEST {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateObjectEMPTY;
                                 class CreateGroupWEST: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateGroupEAST: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateGroupGUER: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateGroupCIV: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateObjectLogic: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                                 class CreateMarkerIcon: CreateObjectEMPTY {
-                                    defaultItem[]={};
+                                    defaultItem[] = {};
                                 };
                             };
                         };
