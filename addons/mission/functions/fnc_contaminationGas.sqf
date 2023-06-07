@@ -29,7 +29,7 @@ if (markerShape _marker == "") exitWith {
 
 // Limit cloud size to 3 or less.
 if (_cloudSize > 3) then {
-    WARNING_1("Cloud Size (%1) too large, reverting to 3",_cloudSize);
+    WARNING_1("Cloud Size (%1) too large, reverting to maximum value (3)",_cloudSize);
     _cloudSize = 3;
 };
 
