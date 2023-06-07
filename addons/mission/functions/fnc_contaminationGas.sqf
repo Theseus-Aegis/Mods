@@ -24,7 +24,7 @@ params ["_marker", ["_colour", [1, 1, 0, 0.06]], ["_cloudSize", 1]];
 
 // Marker shape should always be either "RECTANGLE" or "ELLIPSE"
 if (markerShape _marker == "") exitWith {
-    WARNING_1("Marker (%1) does not exist",_marker);
+    WARNING_1("Marker (%1) does not exist!",_marker);
 };
 
 // Limit cloud size to 3 or less.
