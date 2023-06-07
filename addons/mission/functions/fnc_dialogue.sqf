@@ -3,7 +3,7 @@
  * Author: Mike
  * On-screen text mimicking speech.
  *
- * Call only on locally on one machine.
+ * Call only locally on one machine.
  *
  * Arguments:
  * 0: Person Speaking <STRING>

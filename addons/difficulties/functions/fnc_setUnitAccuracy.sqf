@@ -20,7 +20,7 @@ if (!local _unit || {isNull _unit} || {isPlayer _unit} || {!_reset && {GVAR(armo
 
 private _originalAccuracy = _unit getVariable [QGVAR(originalAccuracy), nil];
 
-if (_reset) exitWIth {
+if (_reset) exitWith {
     if (!isNil "_originalAccuracy") then {
         _unit setVariable [QGVAR(originalAccuracy), nil, true];
         _unit setSkill ["aimingAccuracy", _originalAccuracy];
