@@ -10,20 +10,28 @@
  * Arguments:
  * 0: Player <OBJECT>
  * 1: Markers <ARRAY>
+ * 2: Damage Per Tick <NUMBER> (default: 0.15)
+ * 3: Damage Tick Rate <NUMBER> (default: 10)
  *
  * Return Value:
  * None
  *
  * Example:
  * [_player, ["MyMarker"]] call MFUNC(respiratorEffects)
- * [_player, ["MyMarker", "MyMarkerTwo"]] call MFUNC(respiratorEffects)
+ * [_player, ["MyMarker", "MyMarkerTwo"], 0.6, 5] call MFUNC(respiratorEffects)
  */
 
-params ["_player", "_markers"];
+params ["_player", "_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
 GVAR(oldGlasses) = "";
+
+// Damage capped at 1, basically an instant knock out or kill.
+if (_damagePerTick > 1) then {
+    _damagePerTick = 0.15;
+    WARNING_1("Damage Per Tick (%1) higher than maximum of 1, setting to default.",_damagePerTick);
+};
 
 // If not player defined use default
 if (isNil QGVAR(respiratorMasks)) then {
@@ -33,7 +41,7 @@ if (isNil QGVAR(respiratorMasks)) then {
 
 [{
     params ["_args", "_handle"];
-    _args params ["_player", "_markers"];
+    _args params ["_player", "_markers", "_damagePerTick", "_damageTickRate"];
 
     private _goggles = toLower (goggles _player);
 
@@ -56,13 +64,13 @@ if (isNil QGVAR(respiratorMasks)) then {
         };
 
         // Damage
-        if ((_markers findIf {_player inArea _x}) >= 0 && {GVAR(maskCounter) + 10 < CBA_missionTime}) then {
+        if ((_markers findIf {_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
 
             private _bodypart = selectRandom ["Head", "Body"];
-            [_player, 0.15, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
+            [_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
         };
     };
 
     GVAR(oldGlasses) = _goggles;
-} , 1, [_player, _markers]] call CBA_fnc_addPerFrameHandler;
+} , 1, [_player, _markers, _damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
