@@ -29,8 +29,8 @@ GVAR(oldGlasses) = "";
 
 // Damage capped at 1, basically an instant knock out or kill.
 if (_damagePerTick > 1) then {
-    _damagePerTick = 0.15;
-    WARNING_1("Damage Per Tick (%1) higher than maximum of 1, setting to default.",_damagePerTick);
+    _damagePerTick = 1;
+    WARNING_1("Damage Per Tick (%1) higher than 1, setting to maximum (1)!",_damagePerTick);
 };
 
 // If not player defined use default
