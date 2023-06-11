@@ -20,26 +20,24 @@ Example:
 class tac_insurgents_gear {
     class Mikes_Cool_Config {
         headgear[] = {
-            "CUP_H_TKI_Lungee_Open_01",
-            "CUP_H_TKI_Lungee_Open_02",
-            "CUP_H_TKI_Lungee_01",
-            "CUP_H_TKI_Lungee_02",
-            "CUP_H_TKI_Pakol_1_01",
-            "CUP_H_TKI_Pakol_2_04",
-            "CUP_H_TKI_SkullCap_01"
+            "H_Bandanna_gry",
+            "H_Bandanna_blu",
+            "H_Bandanna_cbr",
+            "H_Bandanna_khk_hs",
+            "H_Bandanna_khk",
+            "H_Bandanna_mcamo"
         };
         uniforms[] = {
-            "CUP_O_TKI_Khet_Partug_04",
-            "CUP_O_TKI_Khet_Partug_02",
-            "CUP_O_TKI_Khet_Partug_01",
-            "CUP_O_TKI_Khet_Partug_07"
+            "U_I_C_Soldier_Bandit_2_F",
+            "U_I_C_Soldier_Bandit_3_F",
+            "U_C_Man_casual_3_F",
+            "U_C_Man_casual_1_F"
         };
         vests[] = {
-            "CUP_V_OI_TKI_Jacket1_04",
-            "CUP_V_OI_TKI_Jacket1_06",
-            "CUP_V_OI_TKI_Jacket1_01",
-            "CUP_V_OI_TKI_Jacket1_05",
-            "CUP_V_OI_TKI_Jacket1_03"
+            "V_Chestrig_blk",
+            "V_Chestrig_rgr",
+            "V_Chestrig_khk",
+            "V_Chestrig_oli"
         };
         backpacks[] = {};
         facewear[] = {};
