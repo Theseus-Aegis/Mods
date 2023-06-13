@@ -26,9 +26,11 @@ if (_player == driver _vehicle) then {
     if (_vehicle animationPhase "MFD_Pilot" > 0) then {
         _vehicle animate ["pilotpip", 0];
         _vehicle animate ["MFD_Pilot", 0];
+        GVAR(camera) cameraEffect ["Terminate", "BACK"];
     } else {
         _vehicle animate ["MFD_Pilot", 1];
         _vehicle animate ["pilotpip", 1];
+        [_vehicle] call FUNC(setupMFD);
     };
 } else {
     // Copilot
@@ -36,9 +38,11 @@ if (_player == driver _vehicle) then {
         if (_vehicle animationPhase "MFD_CoPilot" > 0) then {
             _vehicle animate ["copilotpip", 0];
             _vehicle animate ["MFD_CoPilot", 0];
+            GVAR(camera) cameraEffect ["Terminate", "BACK"];
         } else {
             _vehicle animate ["MFD_CoPilot", 1];
             _vehicle animate ["copilotpip", 1];
+            [_vehicle] call FUNC(setupMFD);
         };
     };
 };

@@ -4,7 +4,7 @@
  * Loads and initializes MFD.
  *
  * Arguments:
- * 0: RscInGameUI Display <DISPLAY>
+ * 0: RscInGameUI Display <DISPLAY> (unused)
  *
  * Return Value:
  * None
@@ -15,16 +15,20 @@
  * Public: No
  */
 
-params ["_display"];
-LOG_1("load MFD: %1",_display);
-
 private _vehicle = vehicle (call CBA_fnc_currentUnit);
+LOG_1("load MFD: %1",_vehicle);
 
-// core r2t handling
+// Sometimes (eg. spawning into a unit) this runs twice, but if second camera is created, old one will get stuck and no MFD updates will happen
+if (!isNil QGVAR(camera)) then {
+    LOG("unloading duplicate MFD");
+    [_vehicle] call FUNC(unloadMFD);
+};
+
+// Setup Render2Texture with Render Target (camera)
 GVAR(camera) = "camera" camCreate [0, 0, 0];
 GVAR(camera) attachTo [_vehicle, [0, 0, 0], "commanderview"];
-GVAR(camera) cameraEffect ["Internal", "Back", "rendertarget0"];
 
+// Keep pointing the local camera to camera's target
 private _drawID = addMissionEventHandler ["Draw3D", {
     _thisArgs params ["_vehicle"];
     private _dir = (_vehicle selectionPosition "laserstart") vectorFromTo (_vehicle selectionPosition "commanderview");
@@ -32,11 +36,4 @@ private _drawID = addMissionEventHandler ["Draw3D", {
 }, [_vehicle]];
 _vehicle setVariable [QGVAR(drawID), _drawID];
 
-// initialize vision mode and zoom
-private _mode = _vehicle getVariable [QGVAR(visionMode), 0];
-LOG_1("MFD mode init: %1",_mode);
-[_mode] call FUNC(setMFDVisionMode);
-
-private _zoom = _vehicle getVariable [QGVAR(zoom), ZOOM_DEFAULT];
-LOG_1("MFD zoom init: %1",_zoom);
-[_zoom] call FUNC(setMFDZoom);
+[_vehicle] call FUNC(setupMFD);

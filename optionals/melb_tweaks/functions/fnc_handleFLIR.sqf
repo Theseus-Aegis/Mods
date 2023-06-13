@@ -20,47 +20,59 @@ params ["_display"];
 private _player = call CBA_fnc_currentUnit;
 private _vehicle = vehicle _player;
 
+if (_player != gunner _vehicle) exitWith {};
+LOG_1("handleFLIR: %1",_vehicle);
+
 private _zoomCtrl = _display displayCtrl 180;
-private _distanceCtrl = _display displayCtrl 151;
 
 private _oldMode = (_vehicle currentVisionMode []) select 0; // use turret's vision mode (since 2.08)
 private _oldZoom = _vehicle getVariable [QGVAR(zoom), ZOOM_PREOPEN];
 
+// Wait a frame for display controls to be fully initialized
 [{
-    params ["_args", "_handlePFH"];
-    _args params ["_player", "_vehicle", "_zoomCtrl", "_distanceCtrl", "_oldMode", "_oldZoom"];
+    // Sync properties every second to conserve on network, camera direction (more important for fluidity) is synced by the game
+    [{
+        params ["_args", "_handlePFH"];
+        _args params ["_zoomCtrl", "_player", "_vehicle", "_oldMode", "_oldZoom"];
 
-    // open MFD if going into gunner mode
-    if (cameraView == "GUNNER" && {_vehicle animationPhase "MFD_CoPilot" == 0}) then {
-        _vehicle animate ["copilotpip", 1];
-        _vehicle animate ["MFD_CoPilot", 1];
-    };
+        if (isNull _zoomCtrl) then {
+            [_handlePFH] call CBA_fnc_removePerFrameHandler;
+            LOG_1("remove FLIR loop: %1",_vehicle);
+        };
 
-    // instantly sync to these targets
-    // global sync will happen on GetOut or SeatSwitched (see postInit) using the setVariable
-    private _syncTargets = [driver _vehicle, gunner _vehicle];
+        private _syncTargets = [driver _vehicle, gunner _vehicle];
 
-    // camera vision mode
-    private _mode = (_vehicle currentVisionMode []) select 0;
-    if (_oldMode != _mode) then {
-        LOG_2("FLIR mode change: %1 -> %2",_oldMode,_mode);
-        [QGVAR(visionModeChanged), _mode, _syncTargets] call CBA_fnc_targetEvent;
-        _vehicle setVariable [QGVAR(visionMode), _mode];
-        _args set [4, _mode]; // set _oldMode
-    };
+        // Camera vision mode (can change without being in camera view)
+        private _mode = (_vehicle currentVisionMode []) select 0;
+        if (_oldMode != _mode) then {
+            LOG_2("FLIR mode change: %1 -> %2",_oldMode,_mode);
+            _vehicle setVariable [QGVAR(mode), _mode, true];
+            [QGVAR(syncMode), _mode, _syncTargets] call CBA_fnc_targetEvent;
+            _args set [3, _mode]; // set _oldMode
+        };
 
-    // camera zoom
-    private _zoom = (parseNumber (ctrlText _zoomCtrl));
-    if (_oldZoom != _zoom) then {
-        LOG_2("FLIR zoom change: %1 -> %2",_oldZoom,_zoom);
-        [QGVAR(zoomChanged), _zoom, _syncTargets] call CBA_fnc_targetEvent;
-        _vehicle setVariable [QGVAR(zoom), _zoom];
-        _args set [5, _zoom]; // set _oldZoom
-    };
+        private _inFlirCamera = cameraView == "GUNNER";
+        if (_inFlirCamera) then {
+            // Camera zoom
+            private _zoom = parseNumber (ctrlText _zoomCtrl);
+            if (_oldZoom != _zoom) then {
+                LOG_2("FLIR zoom change: %1 -> %2",_oldZoom,_zoom);
+                _vehicle setVariable [QGVAR(zoom), _zoom, true];
+                [QGVAR(syncZoom), _zoom, _syncTargets] call CBA_fnc_targetEvent;
+                _args set [4, _zoom]; // set _oldZoom
+            };
 
-    // cleanup
-    if (isNull _distanceCtrl) then {
-        [_handlePFH] call CBA_fnc_removePerFrameHandler;
-        LOG("remove FLIR loop");
-    };
-}, 0.1, [_player, _vehicle, _zoomCtrl, _distanceCtrl, _oldMode, _oldZoom, _syncEvery]] call CBA_fnc_addPerFrameHandler;
+            // Open MFD if going into gunner mode
+            if (_vehicle animationPhase "MFD_CoPilot" == 0) then {
+                _vehicle animate ["MFD_CoPilot", 1];
+                _vehicle animate ["copilotpip", 1];
+            };
+
+            // Stabilization
+            private _geolock = inputAction "vehLockTurretView";
+            if (_geolock > 0) then {
+                diag_log "geolock!";
+            };
+        };
+    }, 0.1, _this] call CBA_fnc_addPerFrameHandler;
+}, [_zoomCtrl, _player, _vehicle, _oldMode, _oldZoom]] call CBA_fnc_execNextFrame;

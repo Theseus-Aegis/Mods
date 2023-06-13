@@ -20,7 +20,8 @@ LOG_1("unload MFD: %1",_vehicle);
 
 private _drawID = _vehicle getVariable [QGVAR(drawID), -1];
 removeMissionEventHandler ["Draw3D", _drawID];
+_vehicle setVariable [QGVAR(drawID), -1];
 
-GVAR(camera) cameraEffect ["terminate", "back"];
+GVAR(camera) cameraEffect ["Terminate", "BACK"];
 camDestroy GVAR(camera);
 GVAR(camera) = nil;

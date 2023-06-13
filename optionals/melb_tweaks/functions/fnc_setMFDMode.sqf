@@ -10,14 +10,14 @@
  * None
  *
  * Example:
- * [0] call tac_melb_tweaks_fnc_setMFDVisionMode
+ * [0] call tac_melb_tweaks_fnc_setMFDMode
  *
  * Public: No
  */
 
-params ["_visionMode"];
+params ["_mode"];
 
-switch (_visionMode) do {
+switch (_mode) do {
     case 0: {
         "rendertarget0" setPiPEffect [3, 1, 1, 0.8, -0.05, [0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 0]];
     };
@@ -28,6 +28,6 @@ switch (_visionMode) do {
         "rendertarget0" setPiPEffect [2];
     };
     default {
-        ERROR_1("Unknown vision mode (%1)!",_visionMode);
+        ERROR_1("Unknown vision mode (%1)!",_mode);
     };
 };

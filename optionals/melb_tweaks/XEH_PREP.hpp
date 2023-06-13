@@ -1,7 +1,8 @@
 PREP(canToggleMFD);
 PREP(handleFLIR);
 PREP(loadMFD);
-PREP(setMFDVisionMode);
+PREP(setMFDMode);
 PREP(setMFDZoom);
+PREP(setupMFD);
 PREP(toggleMFD);
 PREP(unloadMFD);

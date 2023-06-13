@@ -1,29 +1,33 @@
 #include "script_component.hpp"
 
-// Exit on Server and Headless Clients
+// Exit on Headless Clients
 if (!hasInterface) exitWith {};
 
-[QGVAR(visionModeChanged), {
+[QGVAR(syncMode), {
     params ["_mode"];
-    LOG_1("MFD mode update: %1",_mode);
-    [_mode] call FUNC(setMFDVisionMode);
+    LOG_1("MFD mode sync: %1",_mode);
+    [_mode] call FUNC(setMFDMode);
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(zoomChanged), {
+[QGVAR(syncZoom), {
     params ["_zoom"];
-    LOG_1("MFD zoom update: %1",_zoom);
+    LOG_1("MFD zoom sync: %1",_zoom);
     [_zoom] call FUNC(setMFDZoom);
 }] call CBA_fnc_addEventHandler;
 
-private _syncFLIR = {
-    params ["_vehicle"];
+["MELB_base", "GetOut", {
+    params ["_vehicle", "_role", "_unit"];
 
-    private _mode = _vehicle getVariable [QGVAR(visionMode), 0];
-    _vehicle setVariable [QGVAR(visionMode), _mode, true];
-    private _mode = _vehicle getVariable [QGVAR(zoom), ZOOM_DEFAULT];
-    _vehicle setVariable [QGVAR(zoom), _zoom, true];
+    if (local _unit && {_role == "gunner"}) then {
+        [_vehicle] call FUNC(unloadMFD);
+    };
+}] call CBA_fnc_addClassEventHandler;
 
-    [_vehicle] call FUNC(unloadMFD);
-};
-["MELB_base", "GetOut", _syncFLIR] call CBA_fnc_addClassEventHandler;
-["MELB_base", "SeatSwitched", _syncFLIR] call CBA_fnc_addClassEventHandler;
+["MELB_base", "SeatSwitched", {
+    params ["_vehicle", "_unit1", "_unit2"];
+
+    private _units = [driver _vehicle, gunner _vehicle] arrayIntersect [_unit1, _unit2];
+    if (local (_units select 0)) then {
+        [_vehicle] call FUNC(unloadMFD);
+    };
+}] call CBA_fnc_addClassEventHandler;
