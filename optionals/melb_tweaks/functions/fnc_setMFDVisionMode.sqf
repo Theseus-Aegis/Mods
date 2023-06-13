@@ -1,23 +1,23 @@
 #include "script_component.hpp"
 /*
  * Author: reyhard (original MELB script), Jonpas
- * Set MFD Mode (0 = Normal, 1 = Night, 2 = Thermal).
+ * Set MFD Vision Mode (0 = Normal, 1 = Night, 2 = Thermal).
  *
  * Arguments:
- * 0: Mode <NUMBER>
+ * 0: Vision Mode <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [0] call tac_melb_tweaks_fnc_setModeMFD
+ * [0] call tac_melb_tweaks_fnc_setMFDVisionMode
  *
  * Public: No
  */
 
-params ["_mode"];
+params ["_visionMode"];
 
-switch (_mode) do {
+switch (_visionMode) do {
     case 0: {
         "rendertarget0" setPiPEffect [3, 1, 1, 0.8, -0.05, [0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 0]];
     };
@@ -28,6 +28,6 @@ switch (_mode) do {
         "rendertarget0" setPiPEffect [2];
     };
     default {
-        ERROR_1("Unknown vision mode (%1)!",_mode);
+        ERROR_1("Unknown vision mode (%1)!",_visionMode);
     };
 };

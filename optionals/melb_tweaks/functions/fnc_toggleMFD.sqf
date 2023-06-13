@@ -42,15 +42,3 @@ if (_player == driver _vehicle) then {
         };
     };
 };
-
-// camera restart
-GVAR(camera) cameraEffect ["terminate", "back"];
-GVAR(camera) cameraEffect ["internal", "Back", "rendertarget0"];
-
-// mode reset
-private _mode = _vehicle getVariable ["MELB_mode", 0];
-[_mode] call FUNC(setModeMFD);
-
-// zoom reset
-private _zoom = (_vehicle getVariable ["MELB_zoom", 42]) / 40;
-GVAR(camera) camSetFov (0.3 / _zoom);
