@@ -1,4 +1,5 @@
 PREP(canToggleMFD);
+PREP(geolock);
 PREP(handleFLIR);
 PREP(loadMFD);
 PREP(setMFDMode);
