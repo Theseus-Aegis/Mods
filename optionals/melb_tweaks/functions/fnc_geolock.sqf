@@ -38,5 +38,3 @@ if (_vehicle directionStabilizationEnabled [0]) then {
         _geolockCtrl ctrlSetText "GEOLOCK";
     };
 };
-
-// TODO Sync geolock ?

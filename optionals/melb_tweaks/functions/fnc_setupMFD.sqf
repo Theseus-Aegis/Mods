@@ -20,7 +20,7 @@ LOG_1("setup MFD: %1",_vehicle);
 
 GVAR(camera) cameraEffect ["Internal", "BACK", "rendertarget0"];
 
-private _mode = _vehicle getVariable [QGVAR(mode), 0];
+private _mode = _vehicle getVariable [QGVAR(mode), MODE_DEFAULT];
 LOG_1("MFD mode init: %1",_mode);
 [_mode] call FUNC(setMFDMode);
 

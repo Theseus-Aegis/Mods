@@ -48,12 +48,12 @@ private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activat
         private _syncTargets = [driver _vehicle, gunner _vehicle];
 
         // Camera vision mode (can change without being in camera view)
-        private _oldMode = _vehicle getVariable [QGVAR(mode), 0];
-        private _mode = (_vehicle currentVisionMode []) select 0; // use turret's vision mode (since 2.08)
-        if (_oldMode != _mode) then {
+        private _oldMode = _vehicle getVariable [QGVAR(mode), MODE_DEFAULT];
+        private _mode = _vehicle currentVisionMode []; // use turret's vision mode (since 2.08)
+        if (_oldMode isNotEqualTo _mode) then {
             LOG_2("FLIR mode change: %1 -> %2",_oldMode,_mode);
             _vehicle setVariable [QGVAR(mode), _mode, true];
-            [QGVAR(syncMode), _mode, _syncTargets] call CBA_fnc_targetEvent;
+            [QGVAR(syncMode), [_mode], _syncTargets] call CBA_fnc_targetEvent;
         };
 
         private _inFlirCamera = cameraView == "GUNNER";
@@ -64,7 +64,7 @@ private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activat
             if (_oldZoom != _zoom) then {
                 LOG_2("FLIR zoom change: %1 -> %2",_oldZoom,_zoom);
                 _vehicle setVariable [QGVAR(zoom), _zoom, true];
-                [QGVAR(syncZoom), _zoom, _syncTargets] call CBA_fnc_targetEvent;
+                [QGVAR(syncZoom), [_zoom], _syncTargets] call CBA_fnc_targetEvent;
             };
 
             // Open MFD if going into gunner mode
