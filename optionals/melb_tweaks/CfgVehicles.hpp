@@ -14,7 +14,8 @@ class CfgVehicles {
             class CopilotTurret: CopilotTurret {
                 class OpticsIn {
                     class Wide {
-                        directionStabilized = 1;
+                        directionStabilized = 1; // allow stabilization (required for GEOLOCK)
+                        thermalMode[] = {0, 1}; // allow BHOT in addition to WHOT
                     };
                 };
             };
@@ -22,8 +23,8 @@ class CfgVehicles {
 
         class UserActions {
             class MFD_Toggle {
-                condition = QUOTE(this call FUNC(canToggleMFD));
-                statement = QUOTE(this call FUNC(toggleMFD));
+                condition = QUOTE(this call FUNC(canToggleMFD)); // use custom function
+                statement = QUOTE(this call FUNC(toggleMFD)); // use custom function
             };
         };
     };

@@ -27,6 +27,7 @@ private _zoomCtrl = _display displayCtrl 180;
 
 // Geolock
 _vehicle enableDirectionStabilization [false, [0]]; // disable by default (config enables it and is required to use at all)
+(_display displayCtrl 333) ctrlSetText "----";
 private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activate", {
     [vehicle (call CBA_fnc_currentUnit)] call FUNC(geolock);
 }];

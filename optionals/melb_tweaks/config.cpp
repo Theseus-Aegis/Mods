@@ -15,6 +15,7 @@ class CfgPatches {
 
 class Mode_FullAuto;
 class RscControlsGroup;
+class RangeText;
 
 #include "CfgAmmo.hpp"
 #include "CfgEventHandlers.hpp"

@@ -17,13 +17,13 @@
 
 params ["_vehicle"];
 
+private _geolockCtrl = (uiNamespace getVariable "RscUnitInfo") displayCtrl 333;
 
 if (_vehicle directionStabilizationEnabled [0]) then {
     LOG("geolock disable");
     _vehicle lockCameraTo [objNull, [0]];
     _vehicle enableDirectionStabilization [false, [0]];
-
-    //systemChat "GEOLOCK ----";
+    _geolockCtrl ctrlSetText "----";
 } else {
     LOG("geolock enable");
     private _cameraBegin = _vehicle modelToWorldVisualWorld (_vehicle selectionPosition "laserstart");
@@ -35,10 +35,8 @@ if (_vehicle directionStabilizationEnabled [0]) then {
     if (_geolockPos isNotEqualTo [0, 0, 0]) then {
         _vehicle enableDirectionStabilization [true, [0]];
         _vehicle lockCameraTo [_geolockPos, [0]];
-
-        //systemChat "GEOLOCK TRK COR";
+        _geolockCtrl ctrlSetText "GEOLOCK";
     };
 };
 
 // TODO Sync geolock ?
-// TODO Indicator
