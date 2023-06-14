@@ -39,7 +39,7 @@ private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activat
         params ["_args", "_handlePFH"];
         _args params ["_zoomCtrl", "_player", "_vehicle", "_lockActionID"];
 
-        if (isNull _zoomCtrl) then {
+        if (isNull _zoomCtrl) exitWith {
             [_handlePFH] call CBA_fnc_removePerFrameHandler;
             removeUserActionEventHandler ["vehLockTurretView", "Activate", _lockActionID];
             LOG_1("remove FLIR loop: %1",_vehicle);
