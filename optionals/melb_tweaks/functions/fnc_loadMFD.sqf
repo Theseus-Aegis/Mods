@@ -15,7 +15,7 @@
  * Public: No
  */
 
-private _vehicle = vehicle (call CBA_fnc_currentUnit);
+private _vehicle = vehicle ACE_player;
 LOG_1("load MFD: %1",_vehicle);
 
 // Sometimes (eg. spawning into a unit) this runs twice, but if second camera is created, old one will get stuck and no MFD updates will happen

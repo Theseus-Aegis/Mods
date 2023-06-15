@@ -18,7 +18,7 @@ if (!hasInterface) exitWith {};
 ["MELB_base", "GetOut", {
     params ["_vehicle", "_role", "_unit"];
 
-    if (local _unit && {_role == "gunner"}) then {
+    if (_unit == ACE_player && {_role == "gunner"}) then {
         [_vehicle] call FUNC(unloadMFD);
     };
 }] call CBA_fnc_addClassEventHandler;
@@ -27,7 +27,7 @@ if (!hasInterface) exitWith {};
     params ["_vehicle", "_unit1", "_unit2"];
 
     private _units = [driver _vehicle, gunner _vehicle] arrayIntersect [_unit1, _unit2];
-    if (local (_units select 0)) then {
+    if ((_units select 0) == ACE_player) then {
         [_vehicle] call FUNC(unloadMFD);
     };
 }] call CBA_fnc_addClassEventHandler;

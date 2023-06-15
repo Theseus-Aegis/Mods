@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Jonpas
- * Checks if MFD can be toggled (plaer in pilot or copilot seat).
+ * Checks if MFD can be toggled (player in pilot or copilot seat).
  *
  * Arguments:
  * Vehicle <OBJECT>
@@ -18,7 +18,5 @@
 
 params ["_vehicle"];
 
-private _player = call CBA_fnc_currentUnit;
-
-_player == driver _vehicle ||
-_player == gunner _vehicle
+ACE_player == driver _vehicle ||
+ACE_player == gunner _vehicle

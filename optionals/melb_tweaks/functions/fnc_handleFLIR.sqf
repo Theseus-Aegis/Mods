@@ -17,10 +17,9 @@
 
 params ["_display"];
 
-private _player = call CBA_fnc_currentUnit;
-private _vehicle = vehicle _player;
+private _vehicle = vehicle ACE_player;
 
-if (_player != gunner _vehicle) exitWith {};
+if (ACE_player != gunner _vehicle) exitWith {};
 LOG_1("handleFLIR: %1",_vehicle);
 
 private _zoomCtrl = _display displayCtrl 180;
@@ -29,7 +28,7 @@ private _zoomCtrl = _display displayCtrl 180;
 _vehicle enableDirectionStabilization [false, [0]]; // disable by default (config enables it and is required to use at all)
 (_display displayCtrl 333) ctrlSetText "----";
 private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activate", {
-    [vehicle (call CBA_fnc_currentUnit)] call FUNC(geolock);
+    [vehicle ACE_player] call FUNC(geolock);
 }];
 
 // Wait a frame for display controls to be fully initialized
@@ -37,7 +36,7 @@ private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activat
     // Sync properties every second to conserve on network, camera direction (more important for fluidity) is synced by the game
     [{
         params ["_args", "_handlePFH"];
-        _args params ["_zoomCtrl", "_player", "_vehicle", "_lockActionID"];
+        _args params ["_zoomCtrl", "_vehicle", "_lockActionID"];
 
         if (isNull _zoomCtrl) exitWith {
             [_handlePFH] call CBA_fnc_removePerFrameHandler;
@@ -73,4 +72,4 @@ private _lockActionID = addUserActionEventHandler ["vehLockTurretView", "Activat
             };
         };
     }, 0.1, _this] call CBA_fnc_addPerFrameHandler;
-}, [_zoomCtrl, _player, _vehicle, _lockActionID]] call CBA_fnc_execNextFrame;
+}, [_zoomCtrl, _vehicle, _lockActionID]] call CBA_fnc_execNextFrame;
