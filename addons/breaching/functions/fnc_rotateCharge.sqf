@@ -25,17 +25,25 @@ private _chargePos = getPosASL _charge;
 createVehicle ["Sign_Sphere25cm_F", _chargePos, [], 0, "CAN_COLLIDE"];
 #endif
 
-private _ammo = objNull;
 [{
+    params ["_chargePos"];
+
     private _nearAmmos = _chargePos nearObjects [QGVAR(BreachingCharge_Ammo), 0.5];
     LOG_1("near ammos: %1",_nearAmmos);
+
     if (_nearAmmos isEqualTo []) exitWith {
         false
     };
-    _this = _nearAmmos select 0;
-    !isNull _this
+
+    private _ammo = _nearAmmos select 0;
+    _this set [1, _ammo];
+
+    !isNull _ammo
 }, {
-    if (!local _this) exitWith {};
-    LOG_1("rotate charge: %1",_this);
-    _this setVectorUp [0, -1, 0];
-}, _ammo, 1] call CBA_fnc_waitUntilAndExecute;
+    params ["", "_ammo"];
+
+    if (!local _ammo) exitWith {};
+
+    _ammo setVectorUp [0, -1, 0];
+    LOG_1("rotate charge ammo: %1",_ammo);
+}, [_chargePos, objNull], 1] call CBA_fnc_waitUntilAndExecute;

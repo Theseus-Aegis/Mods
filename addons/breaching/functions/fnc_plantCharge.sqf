@@ -18,7 +18,7 @@
 params ["_charge"];
 
 private _chargePos = getPosASL _charge;
-private _intersections = lineIntersectsSurfaces [_chargePos, _chargePos vectorDiff (vectorDir _charge), _charge, objNull, true, 1, "GEOM"] select 0;
+private _intersections = lineIntersectsSurfaces [_chargePos, _chargePos vectorDiff (vectorDir _charge), _charge, objNull, true, 1, "GEOM"];
 
 if (_intersections isEqualTo []) exitWith { LOG("no intersections"); };
 
