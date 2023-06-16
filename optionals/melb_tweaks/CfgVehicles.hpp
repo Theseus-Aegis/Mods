@@ -28,4 +28,9 @@ class CfgVehicles {
             };
         };
     };
+
+    class MELB_MH6M: MELB_base {
+        ACEGVAR(fastroping,enabled) = 1;
+        ACEGVAR(fastroping,ropeOrigins)[] = {{1.166, 0.79, -0.01}, {-1.166, 0.79, -0.01}};
+    };
 };
