@@ -22,7 +22,7 @@ private _actions = [];
     _actions pushBack
     [
         [
-            format ["RadioTrack%1", _forEachIndex],
+            format [QGVAR(RadioTrack%1), _forEachIndex],
             getText (configFile >> "CfgSounds" >> _x >> "name") splitString "_" joinString " ",
             "",
             {(_this select 2) call FUNC(playRadio)},

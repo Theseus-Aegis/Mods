@@ -17,15 +17,7 @@
  */
 
 params ["_vehicle", "_track"];
-
-private _volume = _vehicle getVariable [QGVAR(Volume), 1];
-
-if (_volume != 1) then {
-    private _volumeText = ["_quiet", "_loud"] select (_volume == 2); // IGNORE_PRIVATE_WARNING(_quiet,_loud)
-    _track = [_track, _volumeText] joinString "";
-};
-
-TRACE_2("Play",_volume,_track);
+TRACE_2("Play",_vehicle,_track);
 
 // Create and Attach the radio object to the helicopter
 private _radio = "Sign_Sphere10cm_F" createVehicle position _vehicle; // Non-collidable

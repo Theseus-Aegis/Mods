@@ -9,37 +9,8 @@
         displayName = CSTRING(PlayRadio); \
         condition = QUOTE(_this call FUNC(canPlayRadio)); \
         statement = "true"; \
+        insertChildren = QUOTE(_this call FUNC(addRadioTrackActions)); \
         icon = QPATHTOF(ui\musicStart_ca.paa); \
-        class GVAR(Volume) { \
-            displayName = CSTRING(Volume); \
-            condition = "true"; \
-            statement = "true"; \
-            icon = ""; \
-            class GVAR(Volume_Quiet) { \
-                displayName = CSTRING(Quiet); \
-                condition = "true"; \
-                statement = QUOTE([ARR_2(0, _target)] call FUNC(changeVolume)); \
-                icon = ""; \
-            }; \
-            class GVAR(Volume_Normal) { \
-                displayName = CSTRING(Normal); \
-                condition = "true"; \
-                statement = QUOTE([ARR_2(1, _target)] call FUNC(changeVolume)); \
-                icon = ""; \
-            }; \
-            class GVAR(Volume_Loud) { \
-                displayName = CSTRING(Loud); \
-                condition = "true"; \
-                statement = QUOTE([ARR_2(2, _target)] call FUNC(changeVolume)); \
-                icon = ""; \
-            }; \
-        }; \
-        class GVAR(Tracks) { \
-            displayName = CSTRING(Tracks); \
-            condition = "true"; \
-            insertChildren = QUOTE(_this call FUNC(addRadioTrackActions)); \
-            icon = QPATHTOF(ui\musicStart_ca.paa); \
-        }; \
     };
 
 class CBA_Extended_EventHandlers;
