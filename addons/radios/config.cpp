@@ -9,7 +9,6 @@ class CfgPatches {
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
         authors[] = {"DaC", "Jonpas"};
-        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };

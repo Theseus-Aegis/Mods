@@ -1,6 +1,6 @@
 # About
 
-Enables pilots to secure the passengers and play radio inside the helicopters.
+Enables pilots to play radio inside the helicopters.
 
 ### Authors
 
