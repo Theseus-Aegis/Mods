@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [_charge] call tac_breaching_fnc_setupBreachingCharge
+ * [_charge] call tac_breaching_fnc_setupBreach
  *
  * Public: No
  */
@@ -35,27 +35,6 @@ _wire setVectorDirAndUp [[0, 0, -1], [0, 0, 0] vectorDiff _intersectNormal];
 _charge attachTo [_wire, [0, 0, 0]];
 _charge setVectorDirAndUp [vectorDir _wire, [0, -1, 0]];
 
-[_wire, "Explosion", {
-    params ["_wire"];
-    _thisArgs params ["_obstacle"];
-
-    [_wire, _obstacle] call FUNC(breach);
-    deleteVehicle _wire;
-}, [_obstacle]] call CBA_fnc_addBISEventHandler;
-
-[_charge, "Deleted", {
-    params ["_charge"];
-    _thisArgs params ["_wire"];
-    TRACE_1("charge deleted",_charge);
-
-    // Wait a frame for possible ammo to be created (arming the explosive), then check if deletion is valid
-    [{
-        params ["_charge", "_wire"];
-
-        private _nearAmmo = _charge nearObjects [QGVAR(BreachingCharge_Ammo), 0.5];
-        if (_nearAmmo isEqualTo []) then {
-            TRACE_1("wire deleted",_wire);
-            deleteVehicle _wire;
-        };
-    }, [_charge, _wire]] call CBA_fnc_execNextFrame;
-}, [_wire]] call CBA_fnc_addBISEventHandler;
+// Publish data to wire in case locality changes and Explosion/Delete are handled on another machine
+_wire setVariable [QGVAR(obstacle), _obstacle, true];
+_charge setVariable [QGVAR(wire), _wire, true];

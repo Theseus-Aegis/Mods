@@ -2,7 +2,6 @@
 /*
  * Author: commy2, Ampers, Jonpas
  * Destroys an obstacle or opens a door.
- * Modified version of ACEFUNC(interaction,getDoor)
  *
  * Arguments:
  * 0: Wire <OBJECT>
