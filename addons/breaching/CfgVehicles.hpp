@@ -6,12 +6,15 @@ class CfgVehicles {
         displayName = CSTRING(BreachingCharge);
     };
 
-    class ACE_Explosives_Place_SLAM;
+    class ACE_Explosives_Place;
+    class ACE_Explosives_Place_SLAM: ACE_Explosives_Place {
+        class EventHandlers;
+    };
     class GVAR(BreachingCharge_Place): ACE_Explosives_Place_SLAM {
         author = "Mike";
         displayName = CSTRING(BreachingCharge);
 
-        class EventHandlers {
+        class EventHandlers: EventHandlers {
             init = QUOTE(_this call FUNC(plantCharge));
             deleted = QUOTE(_this call FUNC(rotateCharge));
         };
