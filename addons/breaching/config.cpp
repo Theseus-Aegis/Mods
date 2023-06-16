@@ -3,15 +3,10 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {
-            QGVAR(BreachingCharge),
-            QGVAR(BreachingCharge_Place)
-        };
-        weapons[] = {
-            QGVAR(BreachingCharge_Muzzle)
-        };
+        units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_explosives"};
+        requiredAddons[] = {"tac_main", "ace_explosives", "ace_interaction"};
         author = ECSTRING(main,Author);
         authors[] = {"Ampersand", "Mike", "Jonpas"};
         VERSION_CONFIG;

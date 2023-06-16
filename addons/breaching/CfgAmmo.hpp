@@ -7,10 +7,9 @@ class CfgAmmo {
         hit = 5;
         indirectHit = 5;
         indirectHitRange = 2;
-        defaultMagazine = QGVAR(BreachingCharge_Magazine);
+        defaultMagazine = QGVAR(BreachingCharge_Mag);
 
-        ACEGVAR(explosives,magazine) = QGVAR(BreachingCharge_Magazine);
-        ACEGVAR(explosives,explosive) = QGVAR(BreachingCharge_Ammo_Scripted);
+        ACEGVAR(explosives,magazine) = QGVAR(BreachingCharge_Mag);
+        ACEGVAR(explosives,Explosive) = QGVAR(BreachingCharge_Ammo);
     };
-    class GVAR(BreachingCharge_Ammo_Scripted): GVAR(BreachingCharge_Ammo) {};
 };

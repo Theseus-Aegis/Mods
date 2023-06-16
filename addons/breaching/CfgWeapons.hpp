@@ -5,7 +5,7 @@ class CfgWeapons {
 
         class PutMuzzle: Default {};
         class GVAR(BreachingCharge_Muzzle): PutMuzzle {
-            magazines[] = {QGVAR(BreachingCharge_Magazine)};
+            magazines[] = {QGVAR(BreachingCharge_Mag)};
             displayName = CSTRING(BreachingCharge);
         };
     };
