@@ -1,12 +1,12 @@
 class CfgMagazines {
     class SLAMDirectionalMine_Wire_Mag;
-    class CLASS(Breaching_Charge_Magazine): SLAMDirectionalMine_Wire_Mag {
+    class GVAR(BreachingCharge_Magazine): SLAMDirectionalMine_Wire_Mag {
         scopeArsenal = 2;
         author = "Mike";
         mass = 5;
-        displayName = "Breaching Charge";
-        descriptionShort = ""; // fill this out later when we decide what it can / cannot do
-        ace_explosives_SetupObject = QCLASS(Breaching_Charge_Place);
+        displayName = CSTRING(BreachingCharge);
+        descriptionShort = CSTRING(BreachingCharge_Description);
+        ACEGVAR(explosives,SetupObject) = QGVAR(BreachingCharge_Place);
 
         class ACE_Triggers {
             SupportedTriggers[] = {"Command", "MK16_Transmitter"};

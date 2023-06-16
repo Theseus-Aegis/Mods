@@ -1,19 +1,19 @@
 class CfgVehicles {
     class SLAMDirectionalMine;
-    class CLASS(Breaching_Charge): SLAMDirectionalMine {
+    class GVAR(BreachingCharge): SLAMDirectionalMine {
         author = "Mike";
-        ammo = QCLASS(Breaching_Charge_Ammo);
-        displayName = "Breaching Charge";
+        ammo = QGVAR(BreachingCharge_Ammo);
+        displayName = CSTRING(BreachingCharge);
     };
 
     class ACE_Explosives_Place_SLAM;
-    class CLASS(Breaching_Charge_Place): ACE_Explosives_Place_SLAM {
+    class GVAR(BreachingCharge_Place): ACE_Explosives_Place_SLAM {
         author = "Mike";
-        displayName = "Breaching Charge";
+        displayName = CSTRING(BreachingCharge);
 
         class EventHandlers {
-            init = "";
-            deleted = "";
+            init = QUOTE(_this call FUNC(plantCharge));
+            deleted = QUOTE(_this call FUNC(rotateCharge));
         };
     };
 };

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Breaching">
+        <Key ID="STR_TAC_Breaching_BreachingCharge">
+            <English>Breaching Charge</English>
+        </Key>
+        <Key ID="STR_TAC_Breaching_BreachingCharge_Description">
+            <English>Explosive designed to destroy doors and walls with minimal colalteral damage.</English>
+        </Key>
+    </Package>
+</Project>
