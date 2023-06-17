@@ -51,7 +51,7 @@ if (isNil QGVAR(respiratorMasks)) then {
             GVAR(lastSoundRan) = CBA_missionTime;
 
             // Optional disabling of mask sounds via: player setVariable ["TAC_Mission_enableMaskSounds", false];
-            if (_player getVariable [QGVAR(enableMaskSounds), true]) then {
+            if (_player getVariable [QGVAR(enableMaskSounds), true] && {alive _player}) then {
                 playSound "tacr_gasmask_breath";
             };
         };
@@ -77,9 +77,9 @@ if (isNil QGVAR(respiratorMasks)) then {
     };
 
     // failsafe if player dies and mask overlay doesn't get removed.
-    if (!alive _player) then {
-        playSound "tacr_gasmask_off";
+    if (!alive _player) exitWith {
         "tacr_gasmask_overlay" cutFadeOut 0;
+        _handle call CBA_fnc_removePerFrameHandler;
     };
 
     GVAR(oldGlasses) = _goggles;
