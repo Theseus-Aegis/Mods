@@ -49,7 +49,11 @@ if (isNil QGVAR(respiratorMasks)) then {
         // Breathing effect
         if (GVAR(lastSoundRan) + 3 < CBA_missionTime) then {
             GVAR(lastSoundRan) = CBA_missionTime;
-            playSound "tacr_gasmask_breath";
+
+            // Optional disabling of mask sounds via: player setVariable ["TAC_Mission_enableMaskSounds", false];
+            if (_player getVariable [QGVAR(enableMaskSounds), true]) then {
+                playSound "tacr_gasmask_breath";
+            };
         };
         // Add Mask
         if (GVAR(oldGlasses) != _goggles) then {
@@ -70,6 +74,12 @@ if (isNil QGVAR(respiratorMasks)) then {
             private _bodypart = selectRandom ["Head", "Body"];
             [_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
         };
+    };
+
+    // failsafe if player dies and mask overlay doesn't get removed.
+    if (!alive _player) then {
+        playSound "tacr_gasmask_off";
+        "tacr_gasmask_overlay" cutFadeOut 0;
     };
 
     GVAR(oldGlasses) = _goggles;
