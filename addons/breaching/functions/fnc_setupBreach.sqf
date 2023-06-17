@@ -29,10 +29,10 @@ if (_intersections isEqualTo []) exitWith { LOG("no intersections"); };
 if (isNull _obstacle) exitWith { LOG("nothing to stick to") }; // terrain intersection returns objNull object
 TRACE_3("plant intersection",_obstacle,_intersectPos,_intersectNormal);
 
-private _wire = createVehicle [WIRE_CLASS, ASLToAGL _intersectPos vectorAdd (_intersectNormal vectorMultiply 0.08), [], 0, "CAN_COLLIDE"];
+private _wire = createVehicle [WIRE_CLASS, ASLToAGL _intersectPos vectorAdd (_intersectNormal vectorMultiply 0.02), [], 0, "CAN_COLLIDE"];
 _wire setVectorDirAndUp [[0, 0, -1], [0, 0, 0] vectorDiff _intersectNormal];
 
-_charge attachTo [_wire, [0, 0, 0]];
+_charge attachTo [_wire, [0, 0, -0.06]];
 _charge setVectorDirAndUp [vectorDir _wire, [0, -1, 0]];
 
 // Publish data to wire in case locality changes and Explosion/Delete are handled on another machine
