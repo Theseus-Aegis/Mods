@@ -21,8 +21,12 @@ if (!local _charge) exitWith {};
 
 private _chargePos = getPosASL _charge;
 
-// Best positioning is achieved with "VIEW" LOD
-private _intersections = lineIntersectsSurfaces [_chargePos, _chargePos vectorDiff (vectorDir _charge), _charge];
+// Best positioning is achieved with VIEW LOD
+private _intersections = lineIntersectsSurfaces [_chargePos, _chargePos vectorDiff (vectorDir _charge), _charge, objNull, true, 1, "VIEW"];
+if (_intersections isEqualTo []) then {
+    // Glass doors are supported only in GEOM LOD
+    _intersections = lineIntersectsSurfaces [_chargePos, _chargePos vectorDiff (vectorDir _charge), _charge, objNull, true, 1, "GEOM"];
+};
 if (_intersections isEqualTo []) exitWith { LOG("no intersections"); };
 
 (_intersections select 0) params ["_intersectPos", "_intersectNormal", "", "_obstacle"];
