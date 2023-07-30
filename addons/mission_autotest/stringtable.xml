@@ -103,6 +103,16 @@
             <German>Überprüft, ob die empfohlene KI-Anzahl anwesend ist.</German>
             <French>Vérifie si le nombre recommandé d'IA est présent.</French>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmount">
+            <English>AP Units:</English>
+            <German>AP-Betrag:</German>
+            <French>Montant du PA:</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmountDesc">
+            <English>Checks if recommend amount of AP units are present.</English>
+            <German>Prüft, ob die empfohlene Anzahl von AP-Einheiten vorhanden ist.</German>
+            <French>Vérifie si la quantité recommandée d'unités AP est présente.</French>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
             <German>Respawn-Modus:</German>

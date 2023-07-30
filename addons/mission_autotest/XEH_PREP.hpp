@@ -1,6 +1,7 @@
 PREP(autotest);
 PREP(testAIAmount);
 PREP(testAIPosession);
+PREP(testAPAmount);
 PREP(testAPollo);
 PREP(testAuthor);
 PREP(testDebugConsole);
