@@ -137,6 +137,20 @@ class Cfg3DEN {
                             control = QGVAR(apAmount);
                             defaultValue = "true";
                         };
+                        class apcAmount {
+                            property = "apcAmount";
+                            displayName = CSTRING(APCAmount);
+                            tooltip = CSTRING(APCAmountDesc);
+                            control = QGVAR(apcAmount);
+                            defaultValue = "true";
+                        };
+                        class tankAmount {
+                            property = "tankAmount";
+                            displayName = CSTRING(TankAmount);
+                            tooltip = CSTRING(TankAmountDesc);
+                            control = QGVAR(tankAmount);
+                            defaultValue = "true";
+                        };
                         class respawnMode {
                             property = "respawnMode";
                             displayName = CSTRING(RespawnMode);
@@ -254,6 +268,16 @@ class Cfg3DEN {
         };
         class GVAR(apAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testAPAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(apcAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAPCAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(tankAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testTankAmount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
