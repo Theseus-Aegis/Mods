@@ -4,13 +4,14 @@ class CfgPatches {
     class ADDON {
         units[] = {};
         weapons[] = {};
+        magazines[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main","bnae_falkor"};
+        requiredAddons[] = {"tac_main","bnae_rk95"};
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
-#include "CfgAmmo.hpp"
 #include "CfgWeapons.hpp"
