@@ -27,8 +27,6 @@ PREP(reinforcementWaves);
 PREP(respiratorEffects);
 PREP(surrender);
 PREP(switchAction);
-PREP(taskDefend);
-PREP(taskPatrol);
 PREP(teleport);
 PREP(toggleLights);
 
