@@ -8,18 +8,13 @@ class CfgPatches {
         requiredAddons[] = {
             "tac_main",
             "ace_hearing",
-            "CUP_Creatures_Extra_OpsCore",
-            "CUP_Creatures_Military_ACR",
-            "CUP_Creatures_Military_BAF",
-            "CUP_Creatures_Military_Germany",
-            "CUP_Creatures_Military_PMC",
-            "CUP_Creatures_Military_USArmy",
-            "CUP_Creatures_Military_USMC",
+            "CUP_Creatures_People_LoadOrder"
         };
         author = ECSTRING(main,Author);
         authors[] = {"Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
