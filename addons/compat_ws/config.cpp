@@ -6,13 +6,17 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "tac_main",
-            "data_f_lxWS_Loadorder"
+            "tac_heavylifter",
+            // Heavy Lifter - Generated using heavylifter_exportConfig function
+            "Air_F_lxWS",
+            "Air_1_F_lxWS",
+            "vehicles_1_F_lxWS_APC_Wheeled_02"
         };
         author = ECSTRING(main,Author);
-        authors[] = {"Mike"};
+        authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
