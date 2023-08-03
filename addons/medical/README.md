@@ -4,4 +4,4 @@ Adds painkillers to ACE3 Medical.
 
 ### Authors
 
-- [Alganthe](http://github.com/alganthe)
+- [Alganthe](https://github.com/alganthe)

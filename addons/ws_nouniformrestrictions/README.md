@@ -4,7 +4,7 @@ Allows universal usage (no side restrictions) of uniforms from [Western Sahara](
 
 ### Authors
 
-- [Mike](http://github.com/mike-mf)
+- [Mike](https://github.com/mike-mf)
 
 ### Notes
 

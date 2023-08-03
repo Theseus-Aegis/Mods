@@ -9,8 +9,8 @@ Tweaks helicopters from [[MELB] Mission Enhanced Little Bird](https://forums.bis
 - Add camera ground lock (GEOLOCK) capability.
 - Add BHOT Thermal Imaging capability.
 - Remove top HUD Radar _(replaced with new Sensor panels)_.
-- Add [ACE3 Fastroping](http://ace3mod.com/wiki/feature/fastroping.html) support.
+- Add [ACE3 Fastroping](https://ace3mod.com/wiki/feature/fastroping.html) support.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

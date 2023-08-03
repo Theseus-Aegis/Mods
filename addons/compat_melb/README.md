@@ -4,4 +4,4 @@ Compatibility for [[MELB] Mission Enhanced Little Bird](https://forums.bistudio.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

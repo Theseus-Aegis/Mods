@@ -4,8 +4,8 @@ Enables pilots to create RATEL markers on the map without sacrificing the contro
 
 ### Authors
 
-- [DaC](http://github.com/DavidCamre)
-- [Jonpas](http://github.com/jonpas)
+- [DaC](https://github.com/DavidCamre)
+- [Jonpas](https://github.com/jonpas)
 
 ### Features
 

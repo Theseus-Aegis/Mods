@@ -4,4 +4,4 @@ Adds Armory with Chronos support.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

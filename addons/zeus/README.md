@@ -4,4 +4,4 @@ Adds Zeus modules.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

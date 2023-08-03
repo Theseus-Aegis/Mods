@@ -4,5 +4,5 @@ Ability to Attach and Detach Hooks on heavier vehicles. Vehicles with Attached H
 
 ### Authors
 
-- [DaC](http://github.com/DavidCamre)
-- [Jonpas](http://github.com/jonpas)
+- [DaC](https://github.com/DavidCamre)
+- [Jonpas](https://github.com/jonpas)

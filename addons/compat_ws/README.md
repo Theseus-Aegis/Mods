@@ -4,4 +4,4 @@ Compatibility for [Western Sahara](https://store.steampowered.com/app/1681170/Ar
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)
