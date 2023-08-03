@@ -5,7 +5,11 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "CUP_Creatures_People_LoadOrder"};
+        requiredAddons[] = {
+            "tac_main",
+            "ace_hearing",
+            "CUP_Creatures_People_LoadOrder"
+        };
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
@@ -15,3 +19,4 @@ class CfgPatches {
 };
 
 #include "CfgVehicles.hpp"
+#include "CfgWeapons.hpp"
