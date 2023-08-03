@@ -10,7 +10,7 @@
  * Barrage will have mortars select a new target for every round fired.
  * 1 Barrage will fire all shells at 1 target.
  * Using this script requires "force ace_mk6mortar_useAmmoHandling = false;" in cba_settings.sqf
- * This function also covers the use of D30 Artillery.
+ * This function also covers the use of CUP D30 Artillery.
  *
  * Arguments:
  * 0: Mortar <OBJECT>
