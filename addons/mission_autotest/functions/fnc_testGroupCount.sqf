@@ -15,7 +15,7 @@
  * Public: No
  */
 
-private _groupUnitCount = count (allGroups select {count units _x > 8});
+private _groupUnitCount = count (allGroups select {count units _x > 10});
 
 if (_groupUnitCount > GROUP_LIMIT_WARNING) then {
     if (_groupUnitCount > GROUP_LIMIT_ERROR) then {
