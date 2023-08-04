@@ -8,6 +8,7 @@ PREP(testAuthor);
 PREP(testDebugConsole);
 PREP(testDescription);
 PREP(testGameType);
+PREP(testGroupCount);
 PREP(testGroupSizes);
 PREP(testHCAmount);
 PREP(testInit);

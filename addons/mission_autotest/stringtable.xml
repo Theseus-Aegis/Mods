@@ -133,6 +133,16 @@
             <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
             <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupCount">
+            <English>Group AI Limit:</English>
+            <German>Gruppe AI Limit:</German>
+            <French>Limite AI du groupe:</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupCountDesc">
+            <English>Checks for groups with more than 8 units.</English>
+            <German>Überprüfungen für Gruppen mit mehr als 8 Einheiten.</German>
+            <French>Vérifie les groupes de plus de 8 unités.</French>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
             <German>Respawn-Modus:</German>

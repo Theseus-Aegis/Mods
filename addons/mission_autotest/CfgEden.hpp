@@ -151,6 +151,13 @@ class Cfg3DEN {
                             control = QGVAR(tankAmount);
                             defaultValue = "true";
                         };
+                        class groupCount {
+                            property = "groupCount";
+                            displayName = CSTRING(GroupCount);
+                            tooltip = CSTRING(GroupCountDesc);
+                            control = QGVAR(groupCount);
+                            defaultValue = "true";
+                        };
                         class respawnMode {
                             property = "respawnMode";
                             displayName = CSTRING(RespawnMode);
@@ -278,6 +285,11 @@ class Cfg3DEN {
         };
         class GVAR(tankAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testTankAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(groupCount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testGroupCount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
