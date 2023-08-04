@@ -139,9 +139,9 @@
             <French>Limite AI du groupe:</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_GroupCountDesc">
-            <English>Checks for groups with more than 8 units.</English>
-            <German>Überprüfungen für Gruppen mit mehr als 8 Einheiten.</German>
-            <French>Vérifie les groupes de plus de 8 unités.</French>
+            <English>Checks for groups with more than 10 units.</English>
+            <German>Überprüfungen für Gruppen mit mehr als 10 Einheiten.</German>
+            <French>Vérifie les groupes de plus de 10 unités.</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
