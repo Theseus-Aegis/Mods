@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [_vehicle] call tac_melb_tweaks_fnc_geolock
+ * [_vehicle] call tac_compat_melb_fnc_geolock
  *
  * Public: No
  */

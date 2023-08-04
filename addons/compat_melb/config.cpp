@@ -14,4 +14,13 @@ class CfgPatches {
     };
 };
 
+class Mode_FullAuto;
+class RscControlsGroup;
+class RangeText;
+
+#include "CfgAmmo.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgMagazines.hpp"
 #include "CfgVehicles.hpp"
+#include "CfgWeapons.hpp"
+#include "RscInGameUI.hpp"

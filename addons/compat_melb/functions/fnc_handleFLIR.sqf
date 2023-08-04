@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * _this call tac_melb_tweaks_fnc_handleFLIR
+ * _this call tac_compat_melb_fnc_handleFLIR
  *
  * Public: No
  */

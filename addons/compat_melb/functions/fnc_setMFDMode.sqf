@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [0] call tac_melb_tweaks_fnc_setMFDMode
+ * [0] call tac_compat_melb_fnc_setMFDMode
  *
  * Public: No
  */

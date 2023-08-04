@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [_vehicle] call tac_melb_tweaks_fnc_unloadMFD
+ * [_vehicle] call tac_compat_melb_fnc_unloadMFD
  *
  * Public: No
  */

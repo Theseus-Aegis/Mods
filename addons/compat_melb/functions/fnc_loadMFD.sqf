@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * _this call tac_melb_tweaks_fnc_loadMFD
+ * _this call tac_compat_melb_fnc_loadMFD
  *
  * Public: No
  */

@@ -10,8 +10,8 @@
  * Can Toggle MFD <BOOL>
  *
  * Example:
- * _canToggleMFD = [_vehicle] call tac_melb_tweaks_fnc_canToggleMFD
- * condition = this call tac_melb_tweaks_fnc_canToggleMFD // UserActions
+ * _canToggleMFD = [_vehicle] call tac_compat_melb_fnc_canToggleMFD
+ * condition = this call tac_compat_melb_fnc_canToggleMFD // UserActions
  *
  * Public: No
  */
