@@ -1,1 +1,1 @@
-#include "\x\tac\addons\compat_melb\script_component.hpp"
+#include "\x\tac\addons\melb\script_component.hpp"
