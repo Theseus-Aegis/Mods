@@ -133,16 +133,6 @@
             <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
             <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GroupCount">
-            <English>Group AI Limit:</English>
-            <German>Gruppe AI Limit:</German>
-            <French>Limite AI du groupe:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GroupCountDesc">
-            <English>Checks for groups with more than 10 units.</English>
-            <German>Überprüfungen für Gruppen mit mehr als 10 Einheiten.</German>
-            <French>Vérifie les groupes de plus de 10 unités.</French>
-        </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
             <German>Respawn-Modus:</German>
@@ -262,6 +252,11 @@
             <English>Side %1 has %2 groups. Note that Arma has a 288 group limit per side.</English>
             <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 288 pro Seite hat.</German>
             <French>Le côté %1 à %2 groupes, notez que Arma a une limite de 288 groupes par côté.</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupSizeLimit">
+            <English>Group %1 on %2 has more than 10 units.</English>
+            <German>Gruppe %1 auf %2 hat mehr als 10 Einheiten.</German>
+            <French>Le groupe %1 sur %2 compte plus de 10 unités.</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
             <English>Should be</English>
