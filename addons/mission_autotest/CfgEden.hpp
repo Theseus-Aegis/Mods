@@ -145,10 +145,10 @@ class Cfg3DEN {
                             defaultValue = "true";
                         };
                         class tankAmount {
-                            property = "tankAmount";
-                            displayName = CSTRING(TankAmount);
-                            tooltip = CSTRING(TankAmountDesc);
-                            control = QGVAR(tankAmount);
+                            property = "trackedAmount";
+                            displayName = CSTRING(TrackedAmount);
+                            tooltip = CSTRING(TrackedAmountDesc);
+                            control = QGVAR(trackedAmount);
                             defaultValue = "true";
                         };
                         class groupCount {
@@ -283,8 +283,8 @@ class Cfg3DEN {
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
-        class GVAR(tankAmount): Title {
-            attributeLoad = QUOTE(_this call FUNC(testTankAmount));
+        class GVAR(trackedAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testTrackedAmount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };
