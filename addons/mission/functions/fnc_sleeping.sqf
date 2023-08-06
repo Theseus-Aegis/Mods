@@ -31,7 +31,7 @@ if (_asleep) then {
     } forEach (units _group);
 } else {
     {
-        if (alive _x) && {animationState _x == "acts_lyingwounded_loop3"}) then {
+        if (alive _x && {animationState _x == "acts_lyingwounded_loop3"}) then {
             [{
                 _this enableAI "ANIM";
                 _this switchMove "AmovPpneMstpSrasWrflDnon_healed";
