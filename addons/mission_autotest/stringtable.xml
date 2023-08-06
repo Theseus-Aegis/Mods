@@ -119,7 +119,7 @@
             <French>Véhicules de transport de troupes à roues:</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_APCAmountDesc">
-            <English>Checks if the recommended amount of Wheeled APC vehicles are present.</English>
+            <English>Checks if the recommended amount of Wheeled APCs are present.</English>
             <German>Überprüft, ob die empfohlene Anzahl an Wheeled APC Fahrzeugen vorhanden ist.</German>
             <French>Vérifie si le nombre recommandé de véhicules APC à roues est présent.</French>
         </Key>
@@ -129,7 +129,7 @@
             <French>Véhicules à chenilles</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_TankAmountDesc">
-            <English>Checks if the recommended amount of Tracked vehicles are present.</English>
+            <English>Checks if the recommended amount of Tracked Vehicles are present.</English>
             <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
             <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
         </Key>

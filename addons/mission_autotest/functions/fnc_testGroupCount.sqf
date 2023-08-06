@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: TMF Team, Jonpas, Mike
+ * Author: Mike
  * Tests recommended AI amounts for Groups
  *
  * Arguments:
