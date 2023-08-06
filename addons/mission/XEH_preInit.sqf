@@ -34,6 +34,10 @@ if (hasInterface) then {
             };
         } forEach _this;
     }] call CBA_fnc_addEventHandler;
+
+    [QGVAR(aar_hideAdmin), {
+        player removeDiarySubject "ocap_diary_adminControls_subject";
+    }] call CBA_fnc_addEventHandler;
 };
 
 ADDON = true;
