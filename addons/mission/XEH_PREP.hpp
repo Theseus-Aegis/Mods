@@ -25,6 +25,7 @@ PREP(mortarStrike);
 PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
+PREP(sleeping);
 PREP(surrender);
 PREP(switchAction);
 PREP(teleport);
