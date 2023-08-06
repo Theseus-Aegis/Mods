@@ -103,6 +103,36 @@
             <German>Überprüft, ob die empfohlene KI-Anzahl anwesend ist.</German>
             <French>Vérifie si le nombre recommandé d'IA est présent.</French>
         </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmount">
+            <English>AP Units:</English>
+            <German>AP-Betrag:</German>
+            <French>Montant du PA:</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmountDesc">
+            <English>Checks if recommend amount of AP units are present.</English>
+            <German>Prüft, ob die empfohlene Anzahl von AP-Einheiten vorhanden ist.</German>
+            <French>Vérifie si la quantité recommandée d'unités AP est présente.</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APCAmount">
+            <English>Wheeled APCs:</English>
+            <German>APC mit Rädern:</German>
+            <French>Véhicules de transport de troupes à roues:</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APCAmountDesc">
+            <English>Checks if the recommended amount of Wheeled APCs are present.</English>
+            <German>Überprüft, ob die empfohlene Anzahl an Wheeled APC Fahrzeugen vorhanden ist.</German>
+            <French>Vérifie si le nombre recommandé de véhicules APC à roues est présent.</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TrackedAmount">
+            <English>Tracked Vehicles:</English>
+            <German>Raupenfahrzeuge:</German>
+            <French>Véhicules à chenilles</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_TrackedAmountDesc">
+            <English>Checks if the recommended amount of Tracked Vehicles are present.</English>
+            <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
+            <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
+        </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
             <English>Respawn Mode:</English>
             <German>Respawn-Modus:</German>
@@ -222,6 +252,11 @@
             <English>Side %1 has %2 groups. Note that Arma has a 288 group limit per side.</English>
             <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 288 pro Seite hat.</German>
             <French>Le côté %1 à %2 groupes, notez que Arma a une limite de 288 groupes par côté.</French>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupSizeLimit">
+            <English>Group %1 on %2 has more than 10 units.</English>
+            <German>Gruppe %1 auf %2 hat mehr als 10 Einheiten.</German>
+            <French>Le groupe %1 sur %2 compte plus de 10 unités.</French>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
             <English>Should be</English>
