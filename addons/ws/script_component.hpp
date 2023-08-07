@@ -1,5 +1,5 @@
 #define COMPONENT ws
-#define COMPONENT_BEAUTIFIED Western Sahara No Uniform Restrictions
+#define COMPONENT_BEAUTIFIED Western Sahara
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

@@ -1,5 +1,5 @@
 #define COMPONENT cup
-#define COMPONENT_BEAUTIFIED CUP ACE3 Compatiblity
+#define COMPONENT_BEAUTIFIED CUP
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

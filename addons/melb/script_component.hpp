@@ -1,5 +1,5 @@
 #define COMPONENT melb
-#define COMPONENT_BEAUTIFIED MELB Compatibility
+#define COMPONENT_BEAUTIFIED MELB
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

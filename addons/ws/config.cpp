@@ -7,6 +7,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "tac_main",
+            "ace_nouniformrestrictions",
             "data_f_lxWS_Loadorder"
         };
         author = ECSTRING(main,Author);

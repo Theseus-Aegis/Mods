@@ -1,5 +1,5 @@
 #define COMPONENT milgp
-#define COMPONENT_BEAUTIFIED Military Gear Pack ACE3 Hearing
+#define COMPONENT_BEAUTIFIED Military Gear Pack
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

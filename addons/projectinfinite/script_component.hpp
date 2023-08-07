@@ -1,5 +1,5 @@
 #define COMPONENT projectinfinite
-#define COMPONENT_BEAUTIFIED Project Infinite ACE3 Compatibility
+#define COMPONENT_BEAUTIFIED Project Infinite
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

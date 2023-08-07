@@ -1,5 +1,5 @@
 #define COMPONENT acre
-#define COMPONENT_BEAUTIFIED Vanilla ACRE2 Vehicle Racks
+#define COMPONENT_BEAUTIFIED ACRE
 #include "\x\tac\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

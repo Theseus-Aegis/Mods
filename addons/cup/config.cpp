@@ -8,6 +8,7 @@ class CfgPatches {
         requiredAddons[] = {
             "tac_main",
             "ace_hearing",
+            "ace_nouniformrestrictions",
             "CUP_Creatures_People_LoadOrder"
         };
         author = ECSTRING(main,Author);
