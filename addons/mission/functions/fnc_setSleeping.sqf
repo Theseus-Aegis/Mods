@@ -2,6 +2,8 @@
 /*
  * Author: Josh, Mike
  * Sets units in a sleeping animation, alternative call to wake them up.
+ * Only the first argument is required to put units asleep.
+ * The other arguments are used for waking up units, if you want an immediate transition set time to -1
  *
  * Call from init.sqf or globally from a trigger.
  *
@@ -14,8 +16,8 @@
  * None
  *
  * Example:
- * [MyGroup] call TAC_Mission_fnc_sleeping
- * [MyGroup, false, 5] call TAC_Mission_fnc_sleeping
+ * [MyGroup] call MFUNC(setSleeping)
+ * [MyGroup, false, 5] call MFUNC(setSleeping)
  */
 
 params ["_group", ["_asleep", true], ["_time", 0]];
