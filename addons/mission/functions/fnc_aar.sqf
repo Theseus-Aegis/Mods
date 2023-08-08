@@ -104,9 +104,7 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
     if (_loggedIn && !_votedIn) then {
         private _unit = (getUserInfo _networkId) select 10;
         [{
-            diag_log "logged in";
             if (_this getVariable ["ocap_hasAdminControls", false]) then {
-                diag_log "frame delay - admin controls found";
                 [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
                 _this setVariable ["ocap_hasAdminControls", false];
             };

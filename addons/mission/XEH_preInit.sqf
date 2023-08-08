@@ -36,12 +36,10 @@ if (hasInterface) then {
     }] call CBA_fnc_addEventHandler;
 
     [QGVAR(aar_hideAdmin), {
-        diag_log "waiting for admin controls to be created";
         [{
             ((allDiarySubjects player) findIf {_x select 0 == "ocap_diary_adminControls_subject"}) > -1
         }, {
             player removeDiarySubject "ocap_diary_adminControls_subject";
-            diag_log "removed admin controls";
         }] call CBA_fnc_waitUntilAndExecute;
     }] call CBA_fnc_addEventHandler;
 };
