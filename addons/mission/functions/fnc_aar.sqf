@@ -104,8 +104,12 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
     if (_loggedIn && !_votedIn) then {
         private _unit = (getUserInfo _networkId) select 10;
         [{
-            [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
-            _this setVariable ["ocap_hasAdminControls", false];
+            diag_log "logged in";
+            if (_this getVariable ["ocap_hadAdminControls", false]) then {
+                diag_log "1s delay - admin controls found";
+                [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
+                _this setVariable ["ocap_hasAdminControls", false];
+            };
         }, _unit, 1] call CBA_fnc_waitAndExecute; // give OCAP time to add the diary subject
     };
 }];
