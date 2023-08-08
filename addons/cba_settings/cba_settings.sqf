@@ -1,6 +1,8 @@
 // TAC
 tac_armory_system = 1;
 
+tac_difficulties_armorAccuracyFactor = 0.5;
+
 tac_insignia_enabled = false;
 
 // ACE3
@@ -57,10 +59,10 @@ ace_rearm_level = 1;
 
 ace_refuel_hoseLength = 30; // Default: 12
 
-ace_repair_addSpareParts = false;
-ace_repair_engineerSetting_fullRepair = 0;
-ace_repair_engineerSetting_Repair = 1;
-ace_repair_fullRepairLocation = 3;
+ace_repair_addSpareParts = false; // No (default: true - Yes)
+ace_repair_engineerSetting_fullRepair = 0; // Anyone (default: 2 - Advanced Engineer only)
+ace_repair_engineerSetting_Repair = 0; // Anyone (default: 1 - Engineer only)
+ace_repair_fullRepairLocation = 3; // Repair Facility or Vehicle (default: 2 - Repair Facility only)
 
 ace_respawn_removeDeadBodiesDisconnected = false;
 

@@ -10,7 +10,7 @@
  * Barrage will have mortars select a new target for every round fired.
  * 1 Barrage will fire all shells at 1 target.
  * Using this script requires "force ace_mk6mortar_useAmmoHandling = false;" in cba_settings.sqf
- *
+ * This function also covers the use of CUP D30 Artillery.
  *
  * Arguments:
  * 0: Mortar <OBJECT>
@@ -23,16 +23,23 @@
  * None
  *
  * Examples:
- * [Mortar1, ["Marker1", "Marker2"], 0, 0, 2] call TAC_Mission_fnc_mortarStrike;
- * [Mortar1, tac_MarkerArray, 0, 0, 1] call TAC_Mission_fnc_mortarStrike;
+ * [Mortar1, ["Marker1", "Marker2"], 0, 0, 2] call MFUNC(mortarStrike)
+ * [Mortar1, tac_MarkerArray, 0, 0, 1] call MFUNC(mortarStrike)
  */
-
-#define AMMO_TYPES ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"]
-#define FIREMISSION_DELAY 2
 
 params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0], ["_barrages", 1]];
 
-private _ammo = AMMO_TYPES select _ammoType;
+// Default types and delay are designed for the MK6 Mortar.
+private _ammoTypes = ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"];
+private _delay = 2;
+
+// D30 Artillery types
+if (_mortar isKindOf "CUP_D30_base") then {
+    _ammoTypes = ["CUP_30Rnd_122mmHE_D30_M", "CUP_30Rnd_122mmSMOKE_D30_M", "CUP_30Rnd_122mmILLUM_D30_M"];
+    _delay = 5;
+};
+
+private _ammo = _ammoTypes select _ammoType;
 
 // Debug
 //diag_log [_mortar, _randomPosition, _ammo, _amount];
@@ -49,5 +56,5 @@ for "_i" from 0 to _barrages - 1 do {
         params ["_mortar", "_randomPosition", "_ammo", "_amount"];
         _mortar doArtilleryFire [_randomPosition, _ammo, _amount];
         _mortar setVehicleAmmo 1;
-    }, [_mortar, _randomPosition, _ammo, _amount], _i * FIREMISSION_DELAY] call CBA_fnc_waitAndExecute;
+    }, [_mortar, _randomPosition, _ammo, _amount], _i * _delay] call CBA_fnc_waitAndExecute;
 };

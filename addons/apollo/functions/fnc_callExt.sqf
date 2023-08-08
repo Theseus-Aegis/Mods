@@ -21,7 +21,7 @@
 
 params ["_fnc", ["_args", []]];
 
-TRACE_2("Call extension"_fnc,_args);
+TRACE_2("Call extension",_fnc,_args);
 private _loadData = "tac_apollo_client" callExtension [_fnc, _args];
 _loadData params ["_result", "_returnCode", "_errorCode"];
 

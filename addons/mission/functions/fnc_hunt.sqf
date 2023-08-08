@@ -16,10 +16,10 @@
  * None
  *
  * Example:
- * [Enemy_Group] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, 10] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, nil, Player_Group] call TAC_Mission_fnc_hunt;
- * [Enemy_Group, nil, nil, 2000] call TAC_Mission_fnc_hunt;
+ * [Enemy_Group] call MFUNC(hunt)
+ * [Enemy_Group, 10] call MFUNC(hunt)
+ * [Enemy_Group, nil, Player_Group] call MFUNC(hunt)
+ * [Enemy_Group, nil, nil, 2000] call MFUNC(hunt)
  */
 
 params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1000]];
@@ -48,11 +48,14 @@ _hunters setCombatMode "RED";
     // Select closest player group
     if (isNull _hunted) then {
         private _hunterLeader = leader _hunters;
-        private _nearest = nearestObjects [_hunterLeader, ["CAManBase"], _searchDistance, true];
-        _nearest = _nearest select {isPlayer _x};
-        _nearest = _nearest param [0, objNull];
-        _hunted = group _nearest;
-        _args set [2, _hunted];
+        private _players = (call CBA_fnc_players) select {
+            isTouchingGround _x && {(_hunterLeader distance _x) < _searchDistance}
+        };
+
+        if (_players isNotEqualTo []) then {
+            private _hunted = group (selectRandom _players);
+            _args set [2, _hunted];
+        };
     } else {
         // Get hunted Leader
         private _huntedLeader = leader _hunted;

@@ -1,6 +1,8 @@
 PREP(autotest);
 PREP(testAIAmount);
 PREP(testAIPosession);
+PREP(testAPAmount);
+PREP(testAPCAmount);
 PREP(testAPollo);
 PREP(testAuthor);
 PREP(testDebugConsole);
@@ -16,4 +18,5 @@ PREP(testRespawnButton);
 PREP(testRespawnDelay);
 PREP(testRespawnDialog);
 PREP(testRespawnMode);
+PREP(testTrackedAmount);
 PREP(testTargetDebug);

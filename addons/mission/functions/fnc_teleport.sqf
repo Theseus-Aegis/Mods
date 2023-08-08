@@ -10,21 +10,22 @@
  * 1: Teleport target object <OBJECT>
  * 2: Teleport target display name <STRING>
  * 3: Condition <CODE> (default: {true})
+ * 4: Icon Path <STRING> (default: "")
  *
  * Return Value:
  * None
  *
  * Example:
- * [tpObj, tpPos, "Teleport"] call MFUNC(teleport);
- * [tpObj, tpPos, "Teleport", {TAC_Example}] call MFUNC(teleport);
+ * [tpObj, tpPos, "Teleport"] call MFUNC(teleport)
+ * [tpObj, tpPos, "Teleport", {TAC_Example}] call MFUNC(teleport)
  */
 
-params ["_controller", "_teleportObject", "_text", ["_condition", {true}]];
+params ["_controller", "_teleportObject", "_text", ["_condition", {true}], ["_iconPath", ""]];
 
 private _action = [
     format ["TAC_Scripts_teleport_%1", _teleportObject],
     _text,
-    "",
+    _iconPath,
     {
         (_this select 2) params ["_teleportObject", "_text"];
         titleText [format ["%1", _text], "BLACK IN", 2];

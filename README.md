@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/Mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.34.0-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.39.0-blue.svg" alt="TAC Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="TAC Mods Issues">
@@ -11,8 +11,8 @@
     <a href="https://github.com/Theseus-Aegis/Mods/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/License-GPLv2-red.svg" alt="TAC Mods License">
     </a>
-    <a href="https://travis-ci.org/Theseus-Aegis/Mods">
-        <img src="https://img.shields.io/travis/Theseus-Aegis/Mods.svg" alt="TAC Mods Build Status">
+    <a href="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml">
+        <img src="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml/badge.svg?branch=master" alt="TAC Mods Build Status">
     </a>
 </p>
 <p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases/latest">CBA</a> and <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
@@ -31,26 +31,21 @@ Huge appreciation and thanks to [ACE3 Team](https://ace3mod.com/team.html) for t
 - Arma 3
 - Arma 3 Tools (available on Steam)
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
-- [Tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) _(package from ACRE2, contains HEMTT and ArmaScriptCompiler)_
-  - [HEMTT](https://github.com/BrettMayson/HEMTT) binary placed in project root ~~or globally installed~~
-    - `hemtt` (Linux) or `hemtt.exe` (Windows) ~~or `setup.exe` (Windows global install)~~
-  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) binary placed in project root
-    - `ArmaScriptCompiler.exe` (Windows)
-    - **Verify SQFC files are included in PBOs!**
+- [HEMTT](https://github.com/BrettMayson/HEMTT/releases) (>=v1.5.1) in project root _(Windows users can double-click `tools/setup.bat`)_
+  - `hemtt` (Linux) or `hemtt.exe` (Windows)
 
 ### Procedure
 
 _Replace `hemtt` with `hemtt.exe` on Windows._
 
 - Open terminal (Linux) or command line (Windows)
-- Run `$ hemtt build` to create a development build (add `-f` to overwrite already built addons)
-- Run `$ hemtt build --release` to create a release build (add `-f` to overwrite already built release)
-  - _Only Windows release builds are currently supported!_
+- Run `$ hemtt build` to create a development build _(Windows users can double-click `build.bat`)_
+- Run `$ hemtt release` to create a release build
+  - _Only Windows release builds are currently supported due to binarization!_
   - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
-- Run `$ hemtt clean` to clean build files
-
-**Windows Helpers:**
-- Double-click `build.bat` to create a development build
+- Run `$ hemtt dev` to create a development build with file patching
+  - `mklink /J <Arma 3>\x\tac <TAC_Mods>/.hemttout/dev` _(`/D` instead of `/J` for network paths)_
+  - _`$ hemtt launch` is not supported. Use [ArmaQDL](https://github.com/jonpas/ArmaQDL)._
 
 ### Extensions
 

@@ -12,8 +12,8 @@
  * None
  *
  * Example:
- * [player, spectatorObject] call MFUNC(baseSpectator);
- * [player, spectatorObject2] call MFUNC(baseSpectator);
+ * [player, spectatorObject] call MFUNC(baseSpectator)
+ * [player, spectatorObject2] call MFUNC(baseSpectator)
  */
 
 #define NOTIFY_RANGE 50
@@ -22,7 +22,7 @@ params ["_player", "_object"];
 
 // Verify object exists (getVariable work-around as we get object, which likes to return <any>)
 if (isNull (missionNamespace getVariable [str _object, objNull])) exitWith {
-    ERROR_WITH_TITLE_1("Spectator screen not found!","Expected '%1' object",str _object);
+    ERROR_MSG_1("Spectator screen not found! Expected '%1' object",str _object);
 };
 
 // Event for closing spectator from other machines

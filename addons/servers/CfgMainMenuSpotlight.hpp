@@ -2,14 +2,14 @@ class CfgMainMenuSpotlight {
     class GVAR(joinContracts) {
         text = CSTRING(contractsText);
         picture = QPATHTOF(ui\spotlight_contracts.paa);
-        action = '["138.201.56.116", 2302] call (uiNamespace getVariable QFUNC(joinServer))';
+        action = QUOTE([ARR_2('138.201.56.116', 2302)] call (uiNamespace getVariable QQFUNC(joinServer)));
         actionText = CSTRING(contractsActionText);
         condition = "true";
     };
     class GVAR(joinTraining) {
         text = CSTRING(trainingText);
         picture = QPATHTOF(ui\spotlight_olympus.paa);
-        action = '["138.201.56.116", 2502] call (uiNamespace getVariable QFUNC(joinServer))';
+        action = QUOTE([ARR_2('138.201.56.116', 2502)] call (uiNamespace getVariable QQFUNC(joinServer)));
         actionText = CSTRING(trainingActionText);
         condition = "true";
     };
@@ -46,4 +46,18 @@ class CfgMainMenuSpotlight {
     delete Extraction_lxWS;
     delete Showcase_Alchemist_lxWS;
     delete Showcase_VR_lxWS;
+
+    // S.O.G. Prairie Fire
+    delete vn_showcase_macv;
+    delete vn_showcase_macv_13;
+    delete vn_showcase_pavn;
+    delete vn_showcase_pavn_13;
+    delete vn_sogba;
+
+    // Spearhead 1944
+    delete SPE_Arsenal;
+    delete SPE_Campagin_OperationCobra_04;
+    delete SPE_Coop_DerZahnarzt;
+    delete SPE_Faction_Showcase_GER;
+    delete SPE_Faction_Showcase_US;
 };

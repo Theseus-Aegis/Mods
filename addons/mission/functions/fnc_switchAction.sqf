@@ -1,86 +1,79 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Functionality for toggling switches, When "OFF" switch is red and power levels are 0, when "ON" switch is Green and power levels are either 1 or player defined.
+ * Functionality for toggling switches, when switch is "OFF" the light is red and power levels are 0, when switch is "ON" the light is green and power levels are 1 or player defined.
+ * Designed for use with the "Transfer Switch" object.
+ * Default state is 0 or 1
  *
- * Default state is 0 (OFF) or 1 (ON)
+ * Voltages control the power level indicators on the switch itself. Values range from 0-1.
  *
- * Can be checked by using getVariable on the object for switch state.
- * My_Switch getVariable ["TAC_Switched", false];
+ * Switch state can be checked by getVariable
+ * My_Switch getVariable [QMGVAR(switchState), false];
  *
  * Call from init.sqf
  *
  * Arguments:
  * 0: Switch <OBJECT>
- * 1: Left Voltage On <NUMBER> (default: 1)
- * 2: Right Voltage On <NUMBER> (default: 1)
- * 3: Default state <NUMBER> (default: 0)
+ * 1: Default State <NUMBER> (default: 0 (OFF))
+ * 2: Voltages when on <ARRAY> (default: [1, 1])
+ * 3: Action condition <CODE> (default: {true})
  *
  * Return Value:
  * None
  *
  * Example:
- * [My_Switch] call MFUNC(switchAction);
- * [My_Switch, 0.5, 0.7] call MFUNC(switchAction);
- * [My_Switch, 0.5, 0.7, 1] call MFUNC(switchAction);
+ * [My_Switch, 0, [0.3, 0.4]] call MFUNC(switchAction);
+ * [My_Switch, 1, [0.7, 0.2], {TAC_Example}] call MFUNC(switchAction);
  */
 
-params ["_object", ["_powerOne", 1], ["_powerTwo", 1], ["_defaultState", 0]];
+params ["_object", ["_state", 0], ["_voltages", [1, 1]], ["_condition", {true}]];
+
+// Initial switch setup
+if (isServer) then {
+    if (_state == 1) then {
+        _object animateSource ["SwitchLight", 1, 1];
+        _object animateSource ["SwitchPosition", 1, true];
+        _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(0,1,0,0.05,ca)"];
+        _object animateSource ["Power_1", (_voltages select 0), true];
+        _object animateSource ["Power_2", (_voltages select 1), true];
+        _object setVariable [QGVAR(switchState), true, true];
+    } else {
+        _object animateSource ["SwitchLight", 1, 1];
+        _object animateSource ["SwitchPosition", -1, true];
+        _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(1,0,0,0.05,ca)"];
+        _object animateSource ["Power_1", 0, true];
+        _object animateSource ["Power_2", 0, true];
+        _object setVariable [QGVAR(switchState), false, true];
+    };
+};
 
 if (hasInterface) then {
     private _switchAction = [
         QGVAR(switchAction),
-        "Flick Switch",
+        "Pull Switch",
         "",
         {
-            (_this select 2) params ["_object"];
-            private _sourcePhase = _object animationSourcePhase "SwitchPosition";
-            if (_sourcePhase == -1) then {
-                _object animateSource ["SwitchPosition", 1, 0.5];
-            } else {
+            (_this select 2) params ["_object", "_state", "_voltages"];
+            private _handleState = _object animationSourcePhase "SwitchPosition";
+            if (_handleState == 1) then {
                 _object animateSource ["SwitchPosition", -1, 0.5];
+                _object animateSource ["Power_1", 0, 0.25];
+                _object animateSource ["Power_2", 0, 0.25];
+                _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(1,0,0,0.05,ca)"];
+                _object setVariable [QGVAR(switchState), false, true];
+            } else {
+                _object animateSource ["SwitchPosition", 1, 0.5];
+                _object animateSource ["Power_1", (_voltages select 0), 0.25];
+                _object animateSource ["Power_2", (_voltages select 1), 0.25];
+                _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(0,1,0,0.05,ca)"];
+                _object setVariable [QGVAR(switchState), true, true];
             };
         },
-        {true},
+        _condition,
         {},
-        _object,
+        [_object, _state, _voltages],
         "controlling_handle"
     ] call ACEFUNC(interact_menu,createAction);
 
     [_object, 0, [], _switchAction] call ACEFUNC(interact_menu,addActionToObject);
-};
-
-if (isServer) then {
-    // Turn light on.
-    _object animateSource ["SwitchLight", 1, 1];
-
-    // Default switch state, OFF or ON
-    private _switchState = [-1, 1] select _defaultState; // translate default state to switch state (0 = -1, 1 = 1)
-    _object animateSource ["SwitchPosition", _switchState, 0.5];
-
-    [{
-        params ["_args", "_handle"];
-        _args params ["_object", "_powerOne", "_powerTwo", ["_switchLastState", -1]];
-
-        // Check all animation sources on objects to see if switched or not. (1: ON / -1: OFF)
-        private _switch = _object animationSourcePhase "SwitchPosition";
-
-        // Update last state
-        _args set [3, _switch];
-
-        if (_switch != _switchLastState) then {
-            if (_switch == 1) exitWith {
-                _object animateSource ["Power_1", _powerOne, 0.25];
-                _object animateSource ["Power_2", _powerTwo, 0.25];
-                _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(0,1,0,0.05,ca)"];
-                _object setVariable ["TAC_Switched", true, true];
-            };
-            if (_switch == -1) exitWith {
-                _object animateSource ["Power_1", 0, 0.25];
-                _object animateSource ["Power_2", 0, 0.25];
-                _object setObjectTextureGlobal [1, "#(argb,8,8,3)color(1,0,0,0.05,ca)"];
-                _object setVariable ["TAC_Switched", false, true];
-            };
-        };
-    }, 1, [_object, _powerOne, _powerTwo]] call CBA_fnc_addPerFrameHandler;
 };

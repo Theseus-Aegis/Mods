@@ -2,7 +2,7 @@
 /*
  * Author: Jonpas, Mike
  * Sets visibility of units, simulation and AI behaviour of a group along with any vehicles manned by the group.
- * Call from init.sqf
+ * Call from initServer.sqf
  *
  * Arguments:
  * 0: Group <GROUP>
@@ -15,10 +15,10 @@
  * None
  *
  * Example:
- * [Test_Group_1, true] call MFUNC(reinforcements);
- * [Test_Group_1, false] call TAC_Mission_fnc_reinforcements;
- * [Test_Group_1, false, 50] call TAC_Mission_fnc_reinforcements;
- * [Test_Group_1, false, 0, true, 2000] call TAC_Mission_fnc_reinforcements;
+ * [Test_Group_1, true] call MFUNC(reinforcements)
+ * [Test_Group_1, false] call MFUNC(reinforcements)
+ * [Test_Group_1, false, 50] call MFUNC(reinforcements)
+ * [Test_Group_1, false, 0, true, 2000] call MFUNC(reinforcements)
  */
 
 params ["_group", "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
@@ -46,12 +46,10 @@ if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
         [{
             params ["_group", "_searchDistance"];
             [_group, nil, nil, _searchDistance] call FUNC(hunt);
-        }, [_group, _searchDistance], 10] call CBA_fnc_waitAndExecute;
+        }, [_group, _searchDistance], (random 1) + 10] call CBA_fnc_waitAndExecute;
     };
 } else {
-    if (is3DENPreview) then {
-        private _groupName = groupID _group;
-        private _groupSide = side _group;
-        hint format ["[Reinforcements] Too close to group: %1, on: %2", _groupName, _groupSide];
-    };
+    private _groupName = groupID _group;
+    private _groupSide = side _group;
+    WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
 };
