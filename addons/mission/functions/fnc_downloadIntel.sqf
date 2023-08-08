@@ -82,6 +82,7 @@ if (isServer) then {
 
         if (_stage == 100) exitWith {
             _handle call CBA_fnc_removePerFrameHandler;
+            ["ocap_customEvent", ["generalEvent", "Intel was downloaded!"]] call CBA_fnc_serverEvent;
             private _string = format ['#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#1A1818","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X  \n GPU: AMD ATI Radeon RX 6800/6800 XT  \n Memory: %1MiB / 64224MiB \n\n  $ sudo mkdir -p /mnt/usb \n  $ sudo mount /dev/sdb1 /mnt/usb \n  /mnt/usb/steal.py /home/fraser/confidential --wipe \n\n  Downloaded:  %2/%3GB \n  %4 (%5%6)")', _memory, _downloaded, _fileSize, _progressBar, _stage, "%"];
             _object setObjectTextureGlobal [_textureSource, _string];
 
