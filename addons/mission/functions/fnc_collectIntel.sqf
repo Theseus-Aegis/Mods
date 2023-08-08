@@ -38,7 +38,7 @@ private _actionCollectIntel = [
         [_hintText] call ACEFUNC(common,displayTextStructured);
         [QGVAR(collectIntel_collect), [side group _player, ["Diary", [_intelEntry, _intelDescription]]]] call CBA_fnc_serverEvent;
 
-        ["ocap_customEvent", ["generalEvent", "Intel was collected"]] call CBA_fnc_serverEvent
+        ["ocap_customEvent", ["generalEvent", "Intel was collected"]] call CBA_fnc_serverEvent;
 
         if (_deleteOnCollect) then {
             deleteVehicle _target;
