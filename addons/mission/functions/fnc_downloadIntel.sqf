@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Mike
- * Laptop is hard limited to the "Rugged Laptop" items otherwise alignment is massively off.
+ * Only Laptop, Rugged Laptop & PC Set - Screen are actively supported.
  * Has a laptop generate an intel download after an ACE interaction.
  * Will update in increments of 10% until 100. Refresh rate of the download is worked out as downloadTime / 10
  * Texture source is shown on the object via Attributes > Object Specific > Texture #X
