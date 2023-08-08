@@ -3,7 +3,7 @@
  * Author: Josh, Mike
  * Sets units in a sleeping animation, alternative call to wake them up.
  * Only the first argument is required to put units asleep.
- * The other arguments are used for waking up units, if you want an immediate transition set time to -1
+ * The other arguments are used for waking up units, if you want an immediate transition set time to -1.
  *
  * Call from init.sqf or globally from a trigger.
  *
