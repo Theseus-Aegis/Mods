@@ -3,8 +3,7 @@
  * Author: Mike
  * Laptop is hard limited to the "Rugged Laptop" items otherwise alignment is massively off.
  * Has a laptop generate an intel download after an ACE interaction.
- * Will update in increments of 10% until 100. Refresh rate of the download is worked out as downloadTime / fileSize
- * fileSize should always be above 10.
+ * Will update in increments of 10% until 100. Refresh rate of the download is worked out as downloadTime / 10
  *
  * Call from init.sqf
  *
@@ -21,10 +20,6 @@
  */
 
 params ["_object", "_fileSize", "_downloadTime"];
-
-if (_fileSize < 10) then {
-    WARNING_1("Filesize (%1) too low, set to a value above 10",_fileSize);
-};
 
 // Initial setup - Players (ACE Action for download start.)
 if (hasInterface) then {
@@ -47,7 +42,7 @@ if (hasInterface) then {
 // Initial setup - Server
 if (isServer) then {
     // PFH refresh rate
-    private _updateTickTime = _downloadTime / _fileSize;
+    private _updateTickTime = _downloadTime / 10;
 
     _object setObjectTextureGlobal [1, '#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#000000","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Uptime: 44 hours, 12 mins \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X / RX 540X/550/550X \n GPU: AMD ATI Radeon RX 6800/6800 XT / 6900 XT \n Memory: 39995MiB / 64224MiB \n")'];
     _object setVariable [QGVAR(downloadActive), false, true];
