@@ -14,7 +14,7 @@ ace_cookoff_destroyVehicleAfterCookoff = true;
 
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
-ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap']";
+ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap_main', 'ocap_extension', 'ocap_recorder']";
 
 ace_dragging_dragAndFire = true;
 
