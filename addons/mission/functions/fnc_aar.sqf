@@ -108,6 +108,6 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
                 [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
                 _this setVariable ["ocap_hasAdminControls", false];
             };
-        }, _unit] call CBA_fnc_execNextFrame; // give OCAP time to add the diary subject
+        }, _unit] call CBA_fnc_execNextFrame; // give OCAP time to set hasAdminControls variable
     };
 }];
