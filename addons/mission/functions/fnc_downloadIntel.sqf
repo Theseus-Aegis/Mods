@@ -4,6 +4,7 @@
  * Laptop is hard limited to the "Rugged Laptop" items otherwise alignment is massively off.
  * Has a laptop generate an intel download after an ACE interaction.
  * Will update in increments of 10% until 100. Refresh rate of the download is worked out as downloadTime / fileSize
+ * fileSize should always be above 10.
  *
  * Call from init.sqf
  *
@@ -21,8 +22,9 @@
 
 params ["_object", "_fileSize", "_downloadTime"];
 
-// PFH refresh rate
-private _updateTickTime = _downloadTime / _fileSize;
+if (_fileSize < 10) then {
+    WARNING_1("Filesize (%1) too low, set to a value above 10",_fileSize);
+};
 
 // Initial setup - Players (ACE Action for download start.)
 if (hasInterface) then {
@@ -32,8 +34,7 @@ if (hasInterface) then {
         "",
         {
             _target setVariable [QGVAR(downloadActive), true, true];
-            // Placeholder for now. (Write files to external drive, wipe drive afterwards?)
-            _target setObjectTextureGlobal [1, '#(rgb,512,512,3)text(1,1,"RobotoCondensedBold",0.1,"#000000","#ff0000","CHANGE ME!")'];
+            _target setObjectTextureGlobal [1, '#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#000000","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Uptime: 44 hours, 12 mins \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X / RX 540X/550/550X \n GPU: AMD ATI Radeon RX 6800/6800 XT / 6900 XT \n Memory: 39995MiB / 64224MiB \n\n  $ sudo mkdir -p /mnt/usb \n  $ sudo mount /dev/sdb1 /mnt/usb \n  /mnt/usb/steal.py /home/fraser/confidential --wipe \n\n")'];
         },
         {
             !(_target getVariable [QGVAR(downloadActive), false]);
@@ -45,8 +46,10 @@ if (hasInterface) then {
 
 // Initial setup - Server
 if (isServer) then {
-    // Placeholder for now. (Something resembling Linux)
-    _object setObjectTextureGlobal [1, '#(rgb,512,512,3)text(1,1,"RobotoCondensedBold",0.1,"#000000","#ff0000","CHANGE ME!")'];
+    // PFH refresh rate
+    private _updateTickTime = _downloadTime / _fileSize;
+
+    _object setObjectTextureGlobal [1, '#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#000000","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Uptime: 44 hours, 12 mins \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X / RX 540X/550/550X \n GPU: AMD ATI Radeon RX 6800/6800 XT / 6900 XT \n Memory: 39995MiB / 64224MiB \n")'];
     _object setVariable [QGVAR(downloadActive), false, true];
     _object setVariable [QGVAR(downloadStage), 0];
 
@@ -60,12 +63,14 @@ if (isServer) then {
 
         private _stage = _object getVariable [QGVAR(downloadStage), 0];
         private _downloaded = _fileSize * (_stage / 100);
-        private _progressBar = "[]";
+        private _progressBar = "[          ]";
         for "_i" from 1 to (_stage / 10) do {
-            _progressBar = _progressBar insert [1, "="];
+            _progressBar = _progressBar splitString "";
+            _progressBar set [_i, "="];
+            _progressBar = _progressBar joinString "";
         };
 
-        private _string = format ['#(rgb,512,512,3)text(1,1,"RobotoCondensedBold",0.1,"#000000","#ff0000","Downloading\n %1/%2GB \n%3\n(%4%5)")', _downloaded, _fileSize, _progressBar, _stage, "%"];
+        private _string = format ['#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#000000","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Uptime: 44 hours, 12 mins \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X / RX 540X/550/550X \n GPU: AMD ATI Radeon RX 6800/6800 XT / 6900 XT \n Memory: 39995MiB / 64224MiB \n\n  $ sudo mkdir -p /mnt/usb \n  $ sudo mount /dev/sdb1 /mnt/usb \n  /mnt/usb/steal.py /home/fraser/confidential --wipe \n\n  Downloading: %1/%2GB \n  %3 (%4%5)")', _downloaded, _fileSize, _progressBar, _stage, "%"];
 
         _object setObjectTextureGlobal [1, _string];
 
@@ -73,12 +78,12 @@ if (isServer) then {
 
         if (_stage == 100) exitWith {
             _handle call CBA_fnc_removePerFrameHandler;
-            private _string = format ['#(rgb,512,512,3)text(1,1,"RobotoCondensedBold",0.1,"#000000","#ff0000","Downloaded\n %1/%2GB \n%3\n(%4%5)")', _downloaded, _fileSize, _progressBar, _stage, "%"];
+            private _string = format ['#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#000000","#00B200","\n login: loki \n Password: \n user@loki \n ----------- \n OS: Arch Linux x86_64 \n Host: X570 AORUS PRO -CF \n Kernel: 6.4.8-arch1-1 \n Uptime: 44 hours, 12 mins \n Packages: 1767 (pacman), 4 (flatpak) \n Shell: zsh 5.9 \n Resolution: 3440x1440, 2560x1080, 1920x1080 \n WM: i3 \n Theme: Equilux [GTK2/3] \n Icons: Papirus-Dark [GTK2/3] \n Terminal: kitty \n CPU: AMD Ryzen 7 5800X3D (16) @ 4.550GHz \n GPU: AMD ATI Radeon 540/540X/550/550X / RX 540X/550/550X \n GPU: AMD ATI Radeon RX 6800/6800 XT / 6900 XT \n Memory: 39995MiB / 64224MiB \n\n  $ sudo mkdir -p /mnt/usb \n  $ sudo mount /dev/sdb1 /mnt/usb \n  /mnt/usb/steal.py /home/fraser/confidential --wipe \n\n  Downloaded:  %1/%2GB \n  %3 (%4%5)")', _downloaded, _fileSize, _progressBar, _stage, "%"];
             _object setObjectTextureGlobal [1, _string];
 
             // Blank out screen
             [{
-                _this setObjectTextureGlobal [1, ""];
+                _this #1 setObjectTextureGlobal [1, ""];
             }, [_object], 10] call CBA_fnc_waitAndExecute;
         };
 
