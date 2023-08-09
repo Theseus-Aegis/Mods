@@ -22,14 +22,12 @@
 
 params ["_group", ["_asleep", true], ["_time", 0]];
 
-if (!local (leader _group)) exitWith {};
-
 private _units = units _group;
 
 if (_asleep) then {
     {
-        _x disableAI "ANIM";
         _x switchMove "Acts_LyingWounded_loop3";
+        _x disableAI "ANIM";
     } forEach (units _group);
 } else {
     {
@@ -37,7 +35,9 @@ if (_asleep) then {
             [{
                 _this enableAI "ANIM";
                 _this switchMove "AmovPpneMstpSrasWrflDnon_healed";
-                _this playMoveNow "AmovPpneMstpSrasWrflDnon_healed";
+                if (local _x) then {
+                    _this playMoveNow "AmovPpneMstpSrasWrflDnon_healed";
+                };
             }, _x, _forEachIndex * _time] call CBA_fnc_waitAndExecute;
         };
     } forEach (units _group);
