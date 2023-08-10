@@ -16,25 +16,25 @@
 
 params [["_timeUntilStart", 0]];
 
-if !(["OCAP"] call ACEFUNC(common,isModLoaded)) exitWith {
+if !(["ocap_recorder"] call ACEFUNC(common,isModLoaded)) exitWith {
     WARNING("AAR disabled - OCAP not loaded!");
 };
 
 // Functions
 FUNC(canStartAAR) = {
-    isNil "ocap_capture" || {!ocap_capture}
+    isNil "ocap_recorder_recording" || {!ocap_recorder_recording}
 };
 FUNC(canStopAAR) = {
-    !isNil "ocap_capture" && {ocap_capture}
+    !isNil "ocap_recorder_recording" && {ocap_recorder_recording}
 };
 FUNC(startAAR) = {
-    [] call ocap_fnc_init;
+    ["ocap_record"] call CBA_fnc_serverEvent;
     [QACEGVAR(common,systemChatGlobal), "AAR Started"] call CBA_fnc_globalEvent;
 };
 FUNC(stopAAR) = {
     private _missionType = getMissionConfigValue ["tac_type", -1];
     private _missionTypePretty = MISSION_TYPES select _missionType;
-    [sideAmbientLife, "", _missionTypePretty] call ocap_fnc_exportData; // side must be given
+    ["ocap_exportData", [sideAmbientLife, "", _missionTypePretty]] call CBA_fnc_serverEvent; // side must be given
     INFO_2("AAR stopped with type %1 '%2'",_missionType,_missionTypePretty);
     [QACEGVAR(common,systemChatGlobal), "AAR Stopped"] call CBA_fnc_globalEvent;
 };
@@ -94,5 +94,20 @@ if (_missionType in AUTOAAR_TYPES) then {
 addMissionEventHandler ["MPEnded", {
     if (call FUNC(canStopAAR)) then {
         call FUNC(stopAAR);
+    };
+}];
+
+// Hide Admin Diary controls - we use chat command for more control over recording metadata
+addMissionEventHandler ["OnUserAdminStateChanged", {
+    params ["_networkId", "_loggedIn", "_votedIn"];
+
+    if (_loggedIn && !_votedIn) then {
+        private _unit = (getUserInfo _networkId) select 10;
+        [{
+            if (_this getVariable ["ocap_hasAdminControls", false]) then {
+                [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
+                _this setVariable ["ocap_hasAdminControls", false];
+            };
+        }, _unit] call CBA_fnc_execNextFrame; // give OCAP time to set hasAdminControls variable
     };
 }];
