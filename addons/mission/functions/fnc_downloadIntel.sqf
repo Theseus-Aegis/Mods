@@ -5,7 +5,7 @@
  * Has a laptop generate an intel download after an ACE interaction.
  * Will update in increments of 10% until 100. Refresh rate of the download is worked out as downloadTime / 10
  * Texture source is shown on the object via Attributes > Object Specific > Texture #X
- * Can use getVariable on the laptop to check if download is complete with QGVAR(downloadIntel_Complete)
+ * Can use getVariable on the laptop to check if download is complete with QGVAR(downloadIntel_complete)
  *
  * Call from init.sqf
  *
@@ -170,7 +170,7 @@ if (isServer) then {
             _terminal append _terminalFinal;
             _texture = format ['#(rgb,512,512,3)text(0,0,"EtelkaMonospacePro",0.03,"#1A1818","#00B200","%1")', _terminal joinString "\n"];
             _object setObjectTextureGlobal [_textureSource, _texture];
-            _object setVariable [QGVAR(downloadIntel_Complete), true, true];
+            _object setVariable [QGVAR(downloadIntel_complete), true, true];
         };
 
     }, 0.1, [CBA_missionTime, [], _object, _fileSize, _textureSource, _downloadTime / 10, _terminalPrepare]] call CBA_fnc_addPerFrameHandler;
