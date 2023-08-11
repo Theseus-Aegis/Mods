@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call ace_ai_fnc_assignNVGpfh
+ * [] call tac_mission_fnc_assignNVGpfh
  *
  * Public: No
  */

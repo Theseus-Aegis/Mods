@@ -7,7 +7,7 @@ if (isServer) then {
         [FUNC(assignNVG), _this, 1] call CBA_fnc_waitAndExecute;
     }] call CBA_fnc_addClassEventHandler;
 
-    GVAR(assignNVGpfh) = [FUNC(assignNVGpfh), 300] call CBA_fnc_addPerFrameHandler;
+    [FUNC(assignNVGpfh), 300] call CBA_fnc_addPerFrameHandler;
 
     // Detonation, creates an explosive on an object position and deletes the object.
     [QGVAR(detonation), {

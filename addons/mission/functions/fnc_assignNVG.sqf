@@ -5,11 +5,12 @@
  *
  * Arguments:
  * 0: Unit <OBJECT>
+ *
  * Return Value:
  * None
  *
  * Example:
- * [cursorObject] call ace_ai_fnc_assignNVG
+ * [cursorObject] call tac_mission_fnc_assignNVG
  *
  * Public: No
  */
