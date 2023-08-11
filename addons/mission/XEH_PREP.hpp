@@ -16,6 +16,7 @@ PREP(countAlive);
 PREP(dialogue);
 PREP(dialogueLocal);
 PREP(disableAI);
+PREP(downloadIntel);
 PREP(earthquake);
 PREP(enableAI);
 PREP(forceShooting);
