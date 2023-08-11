@@ -7,7 +7,7 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.sqf"
 
-GVAR(randomGear) = true call CBA_fnc_createNamespace;
+GVAR(randomGear) = createHashMap;
 
 // init random gear from config
 private _configFile = configFile >> QGVAR(gear);
@@ -18,11 +18,11 @@ private _configFile = configFile >> QGVAR(gear);
             LOG_1("Parsing random gear - %1",_x);
             {
                 private _key = configName _x;
-                private _items = GVAR(randomGear) getVariable _key;
+                private _items = GVAR(randomGear) get _key;
                 if (isNil "_items") then {
                     LOG_1("Creating new gear category - %1",_key);
                     _items = [];
-                    GVAR(randomGear) setVariable [_key, _items];
+                    GVAR(randomGear) set [_key, _items];
                 };
 
                 // add and filter unavilable classes
