@@ -3,7 +3,7 @@
     "CHECKBOX",
     [LSTRING(EnabledRemoteSensors), LSTRING(EnabledRemoteSensorsDesc)],
     format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
-    true,
+    false,
     true,
     {
         if (isServer || {!hasInterface}) exitWith {};
