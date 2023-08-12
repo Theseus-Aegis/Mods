@@ -8,6 +8,8 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(assignNVG);
+PREP(assignNVGpfh);
 PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);

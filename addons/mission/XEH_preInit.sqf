@@ -7,6 +7,9 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (isServer) then {
+    // Assign NVG
+    GVAR(assignNVGstate) = false;
+
     // Collect Intel PreInit
     // Track picked up records on server
     GVAR(collectIntel_records) = [];
