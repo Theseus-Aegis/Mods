@@ -2,7 +2,7 @@
 #define SOUND(var1,var2) \
     class GVAR(var2) { \
         name = QUOTE(var2); \
-        sound[] = {QPATHTOF(sounds\var1.ogg), 1, 1, 10}; \
+        sound[] = {QPATHTOF(sounds\var1.ogg), 2, 1, 10}; \
         titles[] = {}; \
     }
 
