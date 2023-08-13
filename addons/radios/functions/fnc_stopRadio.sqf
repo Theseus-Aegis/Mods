@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: DaC, Jonpas
- * Stops playing music in the vehicle and removes the radio.
+ * Stops playing music in the vehicle and removes the radio sound source.
  *
  * Arguments:
  * 0: Vehicle (Object)
@@ -24,9 +24,8 @@ _radio = _vehicle getVariable QGVAR(playingRadio);
 // If radio is not playing already, then exit (for 'Killed' EH)
 if (isNil "_radio") exitWith {};
 
-// Delete then detach (vice-versa causes random explosion)
-deleteVehicle _radio;
-detach _radio;
+// Delete radio
+[QGVAR(stop), [_radio]] call CBA_fnc_globalEvent;
 
 // Remove Variable (must remove for ACE's Interaction Menu condition)
 _vehicle setVariable [QGVAR(playingRadio), nil, true];
