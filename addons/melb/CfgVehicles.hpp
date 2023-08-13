@@ -10,7 +10,6 @@ class CfgVehicles {
     };
 
     class MELB_base: Helicopter_Base_H {
-        EGVAR(heavyLifter,attachPos[]) = {0, 0, 0.6};
         class Turrets: Turrets {
             class CopilotTurret: CopilotTurret {
                 class OpticsIn {
