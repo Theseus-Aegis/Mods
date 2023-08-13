@@ -1,20 +1,21 @@
 // Reminder: maxDistance is also set in the say3D call
-#define SOUND(var1,var2) \
-    class GVAR(var2) { \
-        name = QUOTE(var2); \
-        sound[] = {QPATHTOF(sounds\var1.ogg), 1, 1, 10}; \
+#define SOUND(var) \
+    class GVAR(var) { \
+        name = QUOTE(var); \
+        sound[] = {QPATHTOF(sounds\var.ogg), 1, 1, 10}; \
         titles[] = {}; \
+        GVAR(isTrack) = 1; \
     }
 
 class CfgSounds {
-    SOUND(track1,90s_Boombap);
-    SOUND(track2,Midnight_Racer);
-    SOUND(track3,She_hopes_Im_hurting);
-    SOUND(track4,Smoke_Havana);
-    SOUND(track5,The_Slayer);
-    SOUND(track6,Eddie_the_Priest);
-    SOUND(track7,Saturday_Nights_Alright_for_Dying);
-    SOUND(track8,Bouquet_of_Coffee_Flavors);
-    SOUND(track9,Its_a_Lifestyle);
-    SOUND(track10,Icon_of_Sin);
+    SOUND(90s_Boombap);
+    SOUND(Midnight_Racer);
+    SOUND(She_hopes_Im_hurting);
+    SOUND(Smoke_Havana);
+    SOUND(The_Slayer);
+    SOUND(Eddie_the_Priest);
+    SOUND(Saturday_Nights_Alright_for_Dying);
+    SOUND(Bouquet_of_Coffee_Flavors);
+    SOUND(Its_a_Lifestyle);
+    SOUND(Icon_of_Sin);
 };
