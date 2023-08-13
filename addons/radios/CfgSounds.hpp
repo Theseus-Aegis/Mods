@@ -2,7 +2,7 @@
 #define SOUND(var) \
     class GVAR(var) { \
         name = QUOTE(var); \
-        sound[] = {QPATHTOF(sounds\var.ogg), 1, 1, 10}; \
+        sound[] = {QPATHTOF(sounds\var.ogg), 2, 1, 10}; \
         titles[] = {}; \
         GVAR(isTrack) = 1; \
     }
