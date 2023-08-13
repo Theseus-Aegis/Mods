@@ -32,7 +32,7 @@ if (hasInterface) then {
     private _action = [
         QGVAR(downloadIntel),
         "Download Intel",
-        "",
+        "a3\ui_f\data\igui\rsctitles\rscegprogress\downloadicon_ca.paa",
         {_target setVariable [QGVAR(downloadIntel_active), true, true]},
         {!(_target getVariable [QGVAR(downloadIntel_active), false])}
     ] call ACEFUNC(interact_menu,createAction);
