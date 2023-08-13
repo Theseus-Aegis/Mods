@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Radios">
+        <Key ID="STR_TAC_Radios_Play">
+            <English>Play Radio</English>
+            <Spanish>Escuchar Radio</Spanish>
+            <German>Radio starten</German>
+            <French>Allumer la radio</French>
+        </Key>
+        <Key ID="STR_TAC_Radios_Stop">
+            <English>Stop Radio</English>
+            <Spanish>Detener Radio</Spanish>
+            <German>Radio stoppen</German>
+            <French>Arrêter la radio</French>
+        </Key>
+        <Key ID="STR_TAC_Radios_EnabledDesc">
+            <English>Enable playing music on vehicle radios.</English>
+        </Key>
+    </Package>
+</Project>
