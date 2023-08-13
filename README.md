@@ -3,21 +3,21 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/Mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.39.0-blue.svg" alt="TAC Mods Version">
+        <img src="https://img.shields.io/badge/Version-1.39.0-blue.svg" alt="Theseus Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/issues">
-        <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="TAC Mods Issues">
+        <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="Theseus Mods Issues">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/License-GPLv2-red.svg" alt="TAC Mods License">
+        <img src="https://img.shields.io/badge/License-GPLv2-red.svg" alt="Theseus Mods License">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml">
-        <img src="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml/badge.svg?branch=master" alt="TAC Mods Build Status">
+        <img src="https://github.com/Theseus-Aegis/Mods/actions/workflows/arma.yml/badge.svg?branch=master" alt="Theseus Mods Build Status">
     </a>
 </p>
 <p align="center"><sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases/latest">CBA</a> and <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a>.</strong></sup></p>
 
-**Theseus Inc. Mods**, also known as **TAC Mods**, is a joint effort by the members of <a href="https://www.theseus-aegis.com/">Theseus Inc.</a> to bend the features and game-play of Arma 3 to the community's needs.
+**Theseus Mods** is a joint effort by the members of <a href="https://www.theseus-aegis.com/">Theseus Inc.</a> to bend the features and game-play of Arma 3 to the community's needs.
 
 The mod is on the same foundation as the ACE3 mod, using its framework, systems, tools and standards. It is entirely **open-source** and licensed under the GNU General Public License ([GPLv2](https://github.com/Theseus-Aegis/Mods/blob/master/LICENSE)).
 
@@ -44,7 +44,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
   - _Only Windows release builds are currently supported due to binarization!_
   - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
 - Run `$ hemtt dev` to create a development build with file patching
-  - `mklink /J <Arma 3>\x\tac <TAC_Mods>/.hemttout/dev` _(`/D` instead of `/J` for network paths)_
+  - `mklink /J <Arma 3>\x\tac <Mods>/.hemttout/dev` _(`/D` instead of `/J` for network paths)_
   - _`$ hemtt launch` is not supported. Use [ArmaQDL](https://github.com/jonpas/ArmaQDL)._
 
 ### Extensions

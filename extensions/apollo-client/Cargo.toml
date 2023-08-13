@@ -1,7 +1,7 @@
 [package]
 name = "apollo-client-rs"
 version = "1.0.0"
-authors = ["TAC Mod Team <info@theseus-aegis.com>"]
+authors = ["Thesesus Incorporated <info@theseus-aegis.com>"]
 edition = "2021"
 rust-version = "1.59"
 
