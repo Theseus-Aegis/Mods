@@ -33,7 +33,7 @@ private _play = [
                 [_target, _x]
             ] call ACEFUNC(interact_menu,createAction),
             _actions pushBack [_action, [], _target];
-        } forEach (uiNamespace getVariable [QGVAR(tracks), []]);
+        } forEach GVAR(tracks);
         _actions
     }
 ] call ACEFUNC(interact_menu,createAction);
