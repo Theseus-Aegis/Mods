@@ -2,15 +2,16 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "MELB", "ace_fastroping"};
+        requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
-        authors[] = {"Jonpas"};
+        authors[] = {"ArmaForces"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
-#include "CfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"

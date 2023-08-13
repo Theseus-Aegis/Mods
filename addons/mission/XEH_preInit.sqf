@@ -7,6 +7,9 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (isServer) then {
+    // Assign NVG
+    GVAR(assignNVGstate) = false;
+
     // Collect Intel PreInit
     // Track picked up records on server
     GVAR(collectIntel_records) = [];
@@ -33,6 +36,14 @@ if (hasInterface) then {
                 ACE_player createDiaryRecord _diaryRecord;
             };
         } forEach _this;
+    }] call CBA_fnc_addEventHandler;
+
+    [QGVAR(aar_hideAdmin), {
+        [{
+            ((allDiarySubjects player) findIf {_x select 0 == "ocap_diary_adminControls_subject"}) > -1
+        }, {
+            player removeDiarySubject "ocap_diary_adminControls_subject";
+        }] call CBA_fnc_waitUntilAndExecute;
     }] call CBA_fnc_addEventHandler;
 };
 

@@ -8,6 +8,8 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(assignNVG);
+PREP(assignNVGpfh);
 PREP(bomber);
 PREP(caves);
 PREP(connectBatteryToDefusable);
@@ -16,6 +18,7 @@ PREP(countAlive);
 PREP(dialogue);
 PREP(dialogueLocal);
 PREP(disableAI);
+PREP(downloadIntel);
 PREP(earthquake);
 PREP(enableAI);
 PREP(forceShooting);
@@ -25,10 +28,9 @@ PREP(mortarStrike);
 PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
+PREP(setSleeping);
 PREP(surrender);
 PREP(switchAction);
-PREP(taskDefend);
-PREP(taskPatrol);
 PREP(teleport);
 PREP(toggleLights);
 

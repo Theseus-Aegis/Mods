@@ -8,20 +8,19 @@
  * Call from initPlayerLocal.sqf
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Markers <ARRAY>
- * 2: Damage Per Tick <NUMBER> (default: 0.15)
- * 3: Damage Tick Rate <NUMBER> (default: 10)
+ * 0: Markers <ARRAY>
+ * 1: Damage Per Tick <NUMBER> (default: 0.15)
+ * 2: Damage Tick Rate <NUMBER> (default: 10)
  *
  * Return Value:
  * None
  *
  * Example:
- * [_player, ["MyMarker"]] call MFUNC(respiratorEffects)
- * [_player, ["MyMarker", "MyMarkerTwo"], 0.6, 5] call MFUNC(respiratorEffects)
+ * [["MyMarker"]] call MFUNC(respiratorEffects)
+ * [["MyMarker", "MyMarkerTwo"], 0.6, 5] call MFUNC(respiratorEffects)
  */
 
-params ["_player", "_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10]];
+params ["_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
@@ -41,15 +40,19 @@ if (isNil QGVAR(respiratorMasks)) then {
 
 [{
     params ["_args", "_handle"];
-    _args params ["_player", "_markers", "_damagePerTick", "_damageTickRate"];
+    _args params ["_markers", "_damagePerTick", "_damageTickRate"];
 
-    private _goggles = toLower (goggles _player);
+    private _goggles = toLower (goggles ace_player);
 
     if (_goggles in GVAR(respiratorMasks)) then {
         // Breathing effect
         if (GVAR(lastSoundRan) + 3 < CBA_missionTime) then {
             GVAR(lastSoundRan) = CBA_missionTime;
-            playSound "tacr_gasmask_breath";
+
+            // Optional disabling of mask sounds via: ace_player setVariable ["TAC_Mission_enableMaskSounds", false];
+            if (ace_player getVariable [QGVAR(enableMaskSounds), true] && {alive ace_player}) then {
+                playSound "tacr_gasmask_breath";
+            };
         };
         // Add Mask
         if (GVAR(oldGlasses) != _goggles) then {
@@ -64,13 +67,18 @@ if (isNil QGVAR(respiratorMasks)) then {
         };
 
         // Damage
-        if ((_markers findIf {_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
+        if ((_markers findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
 
             private _bodypart = selectRandom ["Head", "Body"];
-            [_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
+            [ace_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
         };
     };
 
+    // failsafe if player dies and mask overlay doesn't get removed.
+    if (!alive ace_player) exitWith {
+        "tacr_gasmask_overlay" cutFadeOut 0;
+    };
+
     GVAR(oldGlasses) = _goggles;
-} , 1, [_player, _markers, _damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
+} , 1, [_markers, _damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
