@@ -19,6 +19,7 @@ class CfgPatches {
 };
 
 class Mode_SemiAuto;
+class Mode_FullAuto;
 class asdg_OpticRail1913;
 
 #include "CfgAmmo.hpp"
