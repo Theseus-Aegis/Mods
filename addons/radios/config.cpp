@@ -8,11 +8,11 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
-        authors[] = {"DaC", "Jonpas"};
+        authors[] = {"DaC", "Jonpas", "JoramD"};
         VERSION_CONFIG;
     };
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
 #include "CfgSounds.hpp"
+#include "CfgVehicles.hpp"

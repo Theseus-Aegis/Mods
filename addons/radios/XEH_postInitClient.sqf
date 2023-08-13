@@ -1,8 +1,11 @@
 #include "script_component.hpp"
 
 [QGVAR(play), {
-    private _source = (_this select 0) say3D [(_this select 1), 10, 1, 2];
-    (_this select 0) setVariable [QGVAR(playingRadio), _source];
+    params ["_vehicle", "_track"];
+    private _source = _vehicle say3D [_track, 10, 1, 2];
+    _vehicle setVariable [QGVAR(source), _source];
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(stop), {deleteVehicle (_this select 0)}] call CBA_fnc_addEventHandler;
+{
+    _x call FUNC(init);
+} forEach ["Car", "Tank", "Helicopter", "Plane", "Ship_F", "Land_SurvivalRadio_F", "Land_FMradio_F"];

@@ -1,15 +1,9 @@
 # About
 
-Enables pilots to play radio inside the helicopters.
+Allows playing music in vehicles, similar to the music system in Arma 3 Creator DLC: [S.O.G. Prairie Fire](https://www.sogpf.com/).
 
 ### Authors
 
-- [DaC](http://github.com/DavidCamre)
-- [Jonpas](http://github.com/jonpas)
-
-### Features
-
-- Ability to Play Music in Pilot and Copilot seats
-- Can be heard outside and inside the helicopter
-- Shuts down upon helicopter destroyal
-- When Pilot and Copilot are dead or not present anyone can Stop Music
+- [DaC](https://github.com/DavidCamre)
+- [Jonpas](https://github.com/jonpas)
+- [JoramD0](https://github.com/JoramD0)
