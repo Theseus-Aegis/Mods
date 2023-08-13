@@ -1,8 +1,9 @@
 // Reminder: maxDistance is also set in the say3D call
+<<<<<<< HEAD
 #define SOUND(var) \
     class GVAR(var) { \
         name = QUOTE(var); \
-        sound[] = {QPATHTOF(sounds\var.ogg), 1, 1, 10}; \
+        sound[] = {QPATHTOF(sounds\var.ogg), 2, 1, 10}; \
         titles[] = {}; \
         GVAR(isTrack) = 1; \
     }
