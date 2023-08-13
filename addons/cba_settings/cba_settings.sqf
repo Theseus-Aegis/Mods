@@ -7,7 +7,7 @@ ace_cookoff_destroyVehicleAfterCookoff = true;
 
 ace_common_checkPBOsAction = 2;
 ace_common_checkPBOsCheckAll = true;
-ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap']";
+ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap_main', 'ocap_extension', 'ocap_recorder']";
 
 ace_dragging_dragAndFire = true;
 
@@ -80,6 +80,11 @@ grad_trenches_functions_buildFatigueFactor = 0.2;
 grad_trenches_functions_shortEnvelopeDigTime = 60;
 grad_trenches_functions_bigEnvelopeDigTime = 180;
 grad_trenches_functions_giantEnvelopeDigTime = 300;
+
+// OCAP
+ocap_settings_autoStart = false;
+ocap_settings_saveOnEmpty = false;
+ocap_settings_saveMissionEnded = false;
 
 // ZEN
 zen_common_disableGearAnim = true;

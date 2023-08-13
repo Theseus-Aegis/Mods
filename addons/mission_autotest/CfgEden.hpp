@@ -130,6 +130,27 @@ class Cfg3DEN {
                             control = QGVAR(aiAmount);
                             defaultValue = "true";
                         };
+                        class apAmount {
+                            property = "apAmount";
+                            displayName = CSTRING(APAmount);
+                            tooltip = CSTRING(APAmountDesc);
+                            control = QGVAR(apAmount);
+                            defaultValue = "true";
+                        };
+                        class apcAmount {
+                            property = "apcAmount";
+                            displayName = CSTRING(APCAmount);
+                            tooltip = CSTRING(APCAmountDesc);
+                            control = QGVAR(apcAmount);
+                            defaultValue = "true";
+                        };
+                        class tankAmount {
+                            property = "trackedAmount";
+                            displayName = CSTRING(TrackedAmount);
+                            tooltip = CSTRING(TrackedAmountDesc);
+                            control = QGVAR(trackedAmount);
+                            defaultValue = "true";
+                        };
                         class respawnMode {
                             property = "respawnMode";
                             displayName = CSTRING(RespawnMode);
@@ -242,6 +263,21 @@ class Cfg3DEN {
         };
         class GVAR(aiAmount): Title {
             attributeLoad = QUOTE(_this call FUNC(testAIAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(apAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAPAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(apcAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testAPCAmount));
+            attributeSave = "true";
+            ATTRIBUTE_CONTROLS
+        };
+        class GVAR(trackedAmount): Title {
+            attributeLoad = QUOTE(_this call FUNC(testTrackedAmount));
             attributeSave = "true";
             ATTRIBUTE_CONTROLS
         };

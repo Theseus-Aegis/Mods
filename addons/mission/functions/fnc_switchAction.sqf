@@ -55,6 +55,9 @@ if (hasInterface) then {
         {
             (_this select 2) params ["_object", "_state", "_voltages"];
             private _handleState = _object animationSourcePhase "SwitchPosition";
+
+            ["ocap_customEvent", ["generalEvent", "A switch was pulled!"]] call CBA_fnc_serverEvent;
+
             if (_handleState == 1) then {
                 _object animateSource ["SwitchPosition", -1, 0.5];
                 _object animateSource ["Power_1", 0, 0.25];

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: TMF Team, Jonpas
+ * Author: TMF Team, Jonpas, Mike
  * Tests group sizes of sides (288 groups per side limit).
  *
  * Arguments:
@@ -24,5 +24,10 @@ private _findings = [];
         _findings pushBack [WARNING_CODE, format [localize LSTRING(GroupLimit), _side, _groupCount]];
     }
 } forEach [west, east, civilian, resistance];
+
+private _largeGroups = allGroups select {count units _x > GROUP_UNIT_LIMIT};
+{
+    _findings pushBack [WARNING_CODE, format [localize LSTRING(GroupSizeLimit), groupId _x, side _x]];
+} forEach _largeGroups;
 
 _findings
