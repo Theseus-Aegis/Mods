@@ -16,6 +16,8 @@ Audio files should be normalized to 0.0 dB an converted to Ogg Vorbis. This comp
 RADIO_MUSIC(MyMusic);
 ```
 
+Radio can be blocked on a specific object (static radios or vehicles) using `OBJECT setVariable ["tac_radios_enabled", false]`.
+
 ### Authors
 
 - [DaC](https://github.com/DavidCamre)

@@ -19,7 +19,11 @@ private _play = [
     LLSTRING(Play),
     QPATHTOF(ui\musicStart_ca.paa),
     {true},
-    {GVAR(enabled) && isNull (_target getVariable [QGVAR(source), objNull])},
+    {
+        GVAR(enabled) &&
+        _target getVariable [QGVAR(enabled), true] &&
+        isNull (_target getVariable [QGVAR(source), objNull])
+    },
     {
         private _actions = [];
         {
