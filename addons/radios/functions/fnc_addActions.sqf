@@ -4,10 +4,11 @@
  * Adds base radio interactions.
  *
  * Arguments:
- * 0: Classes <ARRAY>
+ * 0: Internal Classes <ARRAY>
+ * 1: Extermal Classes <ARRAY>
  *
  * Example:
- * ["Car", "Tank"] call tac_radios_fnc_addActions;
+ * [["Car", "Tank"], ["Land_SurvivalRadio_F"]] call tac_radios_fnc_addActions;
  *
  * Public: No
  */
