@@ -1,3 +1,5 @@
+All audio was normalized to 0.0 dB if not already normalized, and converted to Ogg Vorbis.
+
 "[90's Boombap](https://www.youtube.com/watch?v=9vKcGeYCWAQ)" by [ELMBEATS](https://www.youtube.com/@ELMBEATS) is [Sync License](https://www.youtube.com/@ELMBEATS/about)
 
 "[Midnight Racer](https://www.youtube.com/watch?v=FVp8z_Eus4U)" by [Backing Track](https://www.youtube.com/@BackingTrackMusic) is [Sync License](https://drive.google.com/file/d/1KeWdhNrct93NbUeX6idVDzmV7xfgNOjw/view)
