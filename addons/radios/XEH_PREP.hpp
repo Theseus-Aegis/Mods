@@ -1,4 +1,3 @@
-PREP(addActions);
 PREP(addRadioTrackActions);
 PREP(canPlayRadio);
 PREP(canStopRadio);
