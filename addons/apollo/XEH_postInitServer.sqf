@@ -25,7 +25,7 @@ if (GVAR(enabledPlayers)) then {
         private _uid = getPlayerUID _player;
 
         if (_type == "validate") then {
-            [_player, _uid] call FUNC(playerSingletonLoad);
+            [_player, _uid, _name] call FUNC(playerSingletonLoad);
         };
 
         [_player, _uid, _name, _type] call FUNC(playerSingletonSave);

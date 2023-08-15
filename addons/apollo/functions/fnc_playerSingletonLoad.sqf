@@ -6,26 +6,33 @@
  * Arguments:
  * 0: Player <OBJECT>
  * 1: Player UID <STRING>
+ * 2: Player Name <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [player, "36182159512951925"] call tac_apollo_fnc_playerSingletonLoad
+ * [player, "36182159512951925", "Banana"] call tac_apollo_fnc_playerSingletonLoad
  *
  * Public: No
  */
 
-params ["_player", "_uid"];
+params ["_player", "_uid", "_name"];
 
 private _playerRuntimeData = GVAR(playerRuntimeData) get _uid;
 if (isNil "_playerRuntimeData") exitWith {}; // didn't actually disconnect
+INFO_2("Player '%1' (%2) reconnected",_name,_uid);
 
-_playerRuntimeData params ["_oldGroup", "_oldVehicle", "_oldMedical"];
+_playerRuntimeData params ["_oldGroup", "_oldTeam", "_oldVehicle", "_oldMedical"];
 
 // Group
 if ((group _player) isNotEqualTo _oldGroup && {!isNull _oldGroup}) then {
     [_player] join _oldGroup;
+};
+
+// Team
+if (assignedTeam _player != _oldTeam && {_oldTeam != ""}) then {
+    _player assignTeam _oldTeam;
 };
 
 // Vehicle

@@ -48,6 +48,7 @@ private _playerVariables = [];
 // Save additional data relevant only for the current mission run
 GVAR(playerRuntimeData) set [_uid, [
     group _player,
+    assignedTeam _player,
     vehicle _player,
     [_player] call ACEFUNC(medical,serializeState)
 ]];
