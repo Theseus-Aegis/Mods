@@ -30,7 +30,4 @@ if (isNull _unit || {_lastSavedTime == -1}) exitWith {
 
 [_unit, _uid, _name, "save"] call FUNC(playerSingletonSave);
 
-// Save additional data relevant only for the current mission run
-GVAR(playerRuntimeData) set [_uid, [group _unit, vehicle _unit]];
-
 deleteVehicle _unit;

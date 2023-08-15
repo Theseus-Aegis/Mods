@@ -22,7 +22,13 @@ if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
         params ["_player", "_name", "_type"];
-        [_player, getPlayerUID _player, _name, _type] call FUNC(playerSingletonSave);
+        private _uid = getPlayerUID _player;
+
+        if (_type == "validate") then {
+            [_player, _uid] call FUNC(playerSingletonLoad);
+        };
+
+        [_player, _uid, _name, _type] call FUNC(playerSingletonSave);
     }] call CBA_fnc_addEventHandler;
 
     // Player died

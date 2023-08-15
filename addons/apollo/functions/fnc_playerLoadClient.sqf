@@ -50,6 +50,7 @@ if (!isNil "_result") then {
     // Validate
     // Delay to allow Arma server to get the new loadout before attempting to validate
     // Validation does nothing at this moment as it was never properly implemented in the backend
+    // This is also used to load runtime (current mission run) data
     [{
         [QGVAR(savePlayer), [_this, profileName, "validate"]] call CBA_fnc_serverEvent;
     }, _player, 1] call CBA_fnc_waitAndExecute;
