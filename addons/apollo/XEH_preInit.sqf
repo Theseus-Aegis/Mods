@@ -12,4 +12,8 @@ GVAR(vehiclesLoaded) = false;
 GVAR(isDebug) = false;
 GVAR(vehiclesList) = [];
 
+if (isServer) then {
+    GVAR(playerRuntimeData) = createHashMap;
+};
+
 ADDON = true;
