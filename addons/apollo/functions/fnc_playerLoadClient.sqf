@@ -40,7 +40,11 @@ if (!isNil "_result") then {
     _player setUnitLoadout _loadout;
     _player setDamage 0;
 
-    _player selectWeapon _selectedWeapon;
+    if (_selectedWeapon != "") then {
+        _player selectWeapon _selectedWeapon;
+    } else {
+        [_player] call ACEFUNC(weaponselect,putWeaponAway);
+    };
 
     // Goggles bandaid (#283 - vanilla bug) - setUnitLoadout does not properly set goggles (like dragging in inventory would)
     private _goggles = goggles _player;
