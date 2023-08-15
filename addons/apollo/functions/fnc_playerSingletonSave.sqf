@@ -46,7 +46,11 @@ private _selectedWeapon = currentWeapon _player;
 private _playerVariables = [];
 
 // Save additional data relevant only for the current mission run
-GVAR(playerRuntimeData) set [_uid, [group _player, vehicle _player]];
+GVAR(playerRuntimeData) set [_uid, [
+    group _player,
+    vehicle _player,
+    [_player] call ACEFUNC(medical,serializeState)
+]];
 
 // Send to backend
 private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _inVehicle, _alive, _selectedWeapon, _playerVariables] call FUNC(invokeJavaMethod);

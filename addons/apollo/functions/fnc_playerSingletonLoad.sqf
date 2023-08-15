@@ -21,7 +21,7 @@ params ["_player", "_uid"];
 private _playerRuntimeData = GVAR(playerRuntimeData) get _uid;
 if (isNil "_playerRuntimeData") exitWith {}; // didn't actually disconnect
 
-_playerRuntimeData params ["_oldGroup", "_oldVehicle"];
+_playerRuntimeData params ["_oldGroup", "_oldVehicle", "_oldMedical"];
 
 // Group
 if ((group _player) isNotEqualTo _oldGroup && {!isNull _oldGroup}) then {
@@ -34,6 +34,9 @@ if (!isNull _oldVehicle) then {
         WARNING_2("Failed to move player '%1' back into vehicle!",_player,_oldVehicle);
     };
 };
+
+// Medical
+[_player, _oldMedical] call ACEFUNC(medical,deserializeState);
 
 // Clear for correct disconect check
 GVAR(playerRuntimeData) deleteAt _uid;
