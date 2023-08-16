@@ -30,3 +30,14 @@
     {},
     true
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(allowServerReset),
+    "CHECKBOX",
+    [LSTRING(AllowServerReset), LSTRING(AllowServerResetDesc)],
+    format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)],
+    true,
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;

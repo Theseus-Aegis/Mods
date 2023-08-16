@@ -38,8 +38,6 @@ if (_player call ACEFUNC(hearing,hasEarPlugsIn) && {!((_loadout select 3) isEqua
 };
 
 // Other
-private _inVehicle = (vehicle _player) != _player;
-private _alive = alive _player;
 private _selectedWeapon = currentWeapon _player;
 
 // Variables TODO
@@ -54,7 +52,7 @@ GVAR(playerRuntimeData) set [_uid, [
 ]];
 
 // Send to backend
-private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _inVehicle, _alive, _selectedWeapon, _playerVariables] call FUNC(invokeJavaMethod);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(invokeJavaMethod);
 
 TRACE_2("Singleton Save",_type,_serverReply);
 

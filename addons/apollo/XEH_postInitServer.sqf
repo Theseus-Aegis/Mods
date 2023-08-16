@@ -11,8 +11,21 @@ if (_jniVersion != REQUIRED_JNI_VERSION) exitWith {
 
 // Set server type (debug or live) globally
 private _serverType = ["getServerType"] call FUNC(invokeJavaMethod);
+if (_serverType == "error") exitWith {
+    ERROR_1("Failed to initialize - Invalid server type (%1)!",_serverType);
+};
 GVAR(isDebug) = [false, true] select (_serverType isEqualTo "debug");
 publicVariable QGVAR(isDebug);
+
+// Reset server if map/mission changed from last saved
+private _resetError = false;
+if (GVAR(allowServerReset)) then {
+    private _reset = ["resetServer", GVAR(enabledPlayers), GVAR(enabledVehicles), serverName, worldName, missionName] call FUNC(invokeJavaMethod);
+    if (_reset == "error") exitWith {_resetError = true; };
+    if (_reset == "none") exitWith { INFO_3("Server reset not performed (server: %1, map: %2, mission: %3)",serverName,worldName,missionName); };
+    INFO_3("Server reset successfully (server: %1, map: %2, mission: %3)",serverName,worldName,missionName);
+};
+if (_resetError) exitWith { ERROR_3("Server failed to reset after map change! (server: %1, map: %2, mission: %3)",serverName,worldName,missionName); };
 
 if (GVAR(enabledVehicles)) then {
     call FUNC(vehicleLoad);
