@@ -20,6 +20,10 @@
 
 params ["_player", "_uid", "_name", "_type"];
 
+if (_uid == "") exitWith {
+    ERROR_1("Player not saved - UID (%1) undefined!",getPlayerUID _player);
+};
+
 // Base
 private _playerPos = getPosASL _player;
 private _playerDir = getDir _player;
