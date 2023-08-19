@@ -99,4 +99,5 @@ zen_common_disableGearAnim = true;
 zen_editor_disableLiveSearch = true;
 
 // NIArms
+niarms_gripSwitch = false;
 niarms_magSwitch = false;
