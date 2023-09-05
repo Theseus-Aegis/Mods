@@ -1,14 +1,6 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-    // NVG Assignments
-    ["CAManBase", "init", {
-        // wait for HMD to be assigned so `hmd _unit` works
-        [FUNC(assignNVG), _this, 1] call CBA_fnc_waitAndExecute;
-    }] call CBA_fnc_addClassEventHandler;
-
-    [FUNC(assignNVGpfh), 300] call CBA_fnc_addPerFrameHandler;
-
     // Detonation, creates an explosive on an object position and deletes the object.
     [QGVAR(detonation), {
         params ["_object", "_explosive", "_objectPos"];
