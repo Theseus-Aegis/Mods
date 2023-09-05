@@ -29,7 +29,7 @@ if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 private _result = ["loadPlayer", [getPlayerUID _player, GVAR(isDebug)]] call FUNC(callExt);
 
 if (!isNil "_result") then {
-    _result params [["_dir", -1], ["_posASL", []], ["_loadout", []]];
+    _result params [["_dir", -1], ["_posASL", []], ["_loadout", []], ["_selectedWeapon", ""]];
 
     if (_dir != -1) then {
         _player setDir _dir;
@@ -39,6 +39,12 @@ if (!isNil "_result") then {
     };
     _player setUnitLoadout _loadout;
     _player setDamage 0;
+
+    if (_selectedWeapon != "") then {
+        _player selectWeapon _selectedWeapon;
+    } else {
+        [_player] call ACEFUNC(weaponselect,putWeaponAway);
+    };
 
     // Goggles bandaid (#283 - vanilla bug) - setUnitLoadout does not properly set goggles (like dragging in inventory would)
     private _goggles = goggles _player;

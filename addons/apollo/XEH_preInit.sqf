@@ -8,8 +8,11 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.sqf"
 
-GVAR(vehiclesLoaded) = false;
+if (isServer) then {
+    GVAR(vehiclesLoaded) = false;
+    GVAR(vehiclesList) = [];
+};
+
 GVAR(isDebug) = false;
-GVAR(vehiclesList) = [];
 
 ADDON = true;

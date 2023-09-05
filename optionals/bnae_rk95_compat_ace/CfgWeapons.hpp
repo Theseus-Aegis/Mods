@@ -3,13 +3,8 @@ class Mode_FullAuto;
 class asdg_OpticRail1913;
 
 class CfgWeapons {
-    class Rifle;
-    class Rifle_Base_F: Rifle {
-        // This causes an Updating Base Class warning, this is normal and required for proper inheritance
-        class WeaponSlotsInfo;
-    };
-
     // http://guns.connect.fi/gow/M95.html
+    class Rifle_Base_F;
     class bnae_rk95_base: Rifle_Base_F {
         ACE_barrelTwist = 240.0;
         ACE_barrelLength = 420.0;
@@ -22,8 +17,9 @@ class CfgWeapons {
             dispersion = 0.00044; // 1.5 MOA; default: 0.00058 = 2 MOA
         };
     };
-
-    class bnae_rk95_virtual;
+    class bnae_rk95_virtual: bnae_rk95_base {
+        class WeaponSlotsInfo;
+    };
     class bnae_rk95r_virtual: bnae_rk95_virtual {
         ACE_RailHeightAboveBore = 14.0;
 
