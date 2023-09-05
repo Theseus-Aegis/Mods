@@ -7,11 +7,11 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "winter_2035"};
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 

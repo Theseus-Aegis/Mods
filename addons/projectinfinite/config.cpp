@@ -11,10 +11,10 @@ class CfgPatches {
             "bnae_mk1",
             "bnae_trg42"
         };
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 

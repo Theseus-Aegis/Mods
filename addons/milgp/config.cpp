@@ -10,11 +10,11 @@ class CfgPatches {
             "ace_hearing",
             "milgp_headgear_cfg"
         };
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Alganthe"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 

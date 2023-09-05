@@ -12,11 +12,11 @@ class CfgPatches {
             "A3_Soft_F_Exp_LSV_02",
             "acre_sys_rack"
         };
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"JoramD"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 

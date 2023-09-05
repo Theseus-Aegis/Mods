@@ -10,11 +10,11 @@ class CfgPatches {
             "ace_nouniformrestrictions",
             "data_f_lxWS_Loadorder"
         };
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 

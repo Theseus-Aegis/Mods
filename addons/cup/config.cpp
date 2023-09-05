@@ -11,11 +11,11 @@ class CfgPatches {
             "ace_nouniformrestrictions",
             "CUP_Creatures_People_LoadOrder"
         };
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
-        skipWhenMissingDependencies = 1;
     };
 };
 
