@@ -1,6 +1,6 @@
-name = "TAC Mods"
+name = "Theseus Mods"
 prefix = "tac"
-author = "TAC Mod Team"
+author = "Thesesus Incorporated"
 
 [files]
 include = [
@@ -29,4 +29,4 @@ exclude = [
 preset = "Hemtt"
 
 [hemtt.release]
-folder = "tac_mods"
+folder = "theseus_mods"
