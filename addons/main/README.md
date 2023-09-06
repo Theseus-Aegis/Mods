@@ -4,4 +4,4 @@ Backbone of other components, defining CBA and ACE frameworks.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

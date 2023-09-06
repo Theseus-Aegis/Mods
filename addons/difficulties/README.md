@@ -4,4 +4,4 @@ Adds custom difficulty presets.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

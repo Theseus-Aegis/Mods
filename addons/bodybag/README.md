@@ -4,4 +4,4 @@ Adds inventory transferring from dead body to body bag object upon placing it in
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)
