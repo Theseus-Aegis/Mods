@@ -13,6 +13,8 @@ ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Bla
 
 ace_dragging_dragAndFire = true;
 
+ace_fastroping_autoAddFRIES = true;
+
 ace_finger_enabled = true;
 
 ace_hearing_autoAddEarplugsToUnits = false;
