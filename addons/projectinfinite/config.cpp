@@ -13,6 +13,7 @@ class CfgPatches {
         };
         skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
+        authors[] = {"Alganthe"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
