@@ -5,11 +5,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "tac_main",
-            "ace_hearing",
-            "milgp_headgear_cfg"
-        };
+        requiredAddons[] = {"tac_main", "milgp_headgear_cfg"};
         skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Alganthe"};
