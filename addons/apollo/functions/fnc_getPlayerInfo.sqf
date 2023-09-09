@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas, JoramD
  * Get player based info from Athena. Currently supports: "getTrainingIdentifiers" & "getAccessibleItemClasses".

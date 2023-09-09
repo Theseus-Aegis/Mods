@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Invokes Java code through JNI extension with XML marshalling and returns the return value from extension.

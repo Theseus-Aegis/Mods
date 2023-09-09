@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Mike, Jonpas
  * Sets up Auto-AAR (type and time based) and Manual-AAR (event for chat command) functionalities.

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Converts array of strings into one partially localized string (localized where string starts with "STR_").

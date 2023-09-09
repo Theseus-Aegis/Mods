@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: TMF Team, Jonpas, Mike
  * Tests group sizes of sides (288 groups per side limit).

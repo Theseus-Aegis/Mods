@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Stops playing music in the vehicle and removes the radio sound source.

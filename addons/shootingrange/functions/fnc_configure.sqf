@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Configures shooting range on run-time, to modify (eg. randomize targets) range dynamically. Should be called from started event locally.

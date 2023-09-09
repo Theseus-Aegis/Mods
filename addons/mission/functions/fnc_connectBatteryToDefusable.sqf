@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas, Mike
  * Requires a Battery to IED setup, handles disconnecting battery from IED and defusing it.

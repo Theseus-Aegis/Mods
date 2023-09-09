@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Gets data from Apollo Client / Athena (Chronos).

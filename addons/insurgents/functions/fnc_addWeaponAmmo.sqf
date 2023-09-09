@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: vetran29
  * Add random compatible ammo to unit weapon.
