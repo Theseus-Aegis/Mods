@@ -1,1 +1,1 @@
-#include "\x\tac\addons\difficulties\script_component.hpp"
+#include "..\script_component.hpp"

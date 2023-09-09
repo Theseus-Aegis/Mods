@@ -1,1 +1,1 @@
-#include "\x\tac\addons\supplies\script_component.hpp"
+#include "..\script_component.hpp"

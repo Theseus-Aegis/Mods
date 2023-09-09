@@ -1,1 +1,1 @@
-#include "\x\tac\addons\armory\script_component.hpp"
+#include "..\script_component.hpp"
