@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Saves dropped weapons to a variable on the unit. Workaround for restoring dropped weapons which get deleted with deleteVehicle.

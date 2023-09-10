@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: reyhard (original MELB script), Jonpas
  * Set MFD Vision Mode (0 = Normal, 1 = Night, 2 = Thermal).

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Calls Apollo Client extension and handles result, errors and possible multi-part return.

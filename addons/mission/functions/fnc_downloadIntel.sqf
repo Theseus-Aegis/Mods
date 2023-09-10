@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Mike, Jonpas
  * Only Laptop, Rugged Laptop & PC Set - Screen are actively supported.

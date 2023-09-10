@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: JoramD
  * Returns a bodybag's contents in an array for use with FUNC(createBodybagBackup).

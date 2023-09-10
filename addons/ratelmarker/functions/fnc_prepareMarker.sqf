@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Prepares a marker based on input and executes it on pilot and turrets.

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: reyhard (original MELB script), Jonpas
  * Handles gunner FLIR camera.

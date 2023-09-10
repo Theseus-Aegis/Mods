@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Creates a marker at coordiantes and adds animation on map open.

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Josh, Mike
  * Sets units in a sleeping animation, alternative call to wake them up.

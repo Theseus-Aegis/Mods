@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Zozo (BI), Mike
  * Rewrite of BIS_fnc_earthquake to run unscheduled and remove excess fatigue code.

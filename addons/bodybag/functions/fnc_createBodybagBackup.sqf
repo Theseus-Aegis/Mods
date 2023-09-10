@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: JoramD
  * Create a bodybag filled with items from an array returned by FUNC(getBodybagContents).

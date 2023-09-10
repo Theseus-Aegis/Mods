@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas, Rory, Mike
  * Orders a unit to target an object and begin firing until either the shooter or target is dead or the timer elapses.
