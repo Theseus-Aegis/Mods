@@ -42,7 +42,18 @@ if (_mortar isKindOf "CUP_D30_base") then {
 private _ammo = _ammoTypes select _ammoType;
 
 // Debug
-//diag_log [_mortar, _randomPosition, _ammo, _amount];
+if (is3DENPreview) then {
+    //diag_log [_mortar, _randomPosition, _ammo, _amount];
+
+    if (ace_mk6mortar_useAmmoHandling) exitWith {
+        ERROR_MSG("Mortar Ammo Handling is enabled.");
+    };
+
+    private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
+    if (_outOfRange != -1) exitWith {
+        ERROR_MSG_1("Marker Index: %1 is out of range of Artillery",_outOfRange);
+    };
+};
 
 for "_i" from 0 to _barrages - 1 do {
     private _randomMarker = selectRandom _markersArray;
