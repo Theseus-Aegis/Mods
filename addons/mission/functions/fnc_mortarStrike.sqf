@@ -45,13 +45,17 @@ private _ammo = _ammoTypes select _ammoType;
 if (is3DENPreview) then {
     //diag_log [_mortar, _randomPosition, _ammo, _amount];
 
+    if (_barrages < 1) exitWith {
+        ERROR_MSG_1("[Mortar Strike]: Barrages (%1) cannot be less than 1.",_barrages);
+    };
+
     if (ace_mk6mortar_useAmmoHandling) exitWith {
-        ERROR_MSG("Mortar Ammo Handling is enabled.");
+        ERROR_MSG("[Mortar Strike]: ACE Ammo Handling setting is enabled.");
     };
 
     private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
     if (_outOfRange != -1) exitWith {
-        ERROR_MSG_1("Marker Index: %1 is out of range of Artillery",_outOfRange);
+        ERROR_MSG_1("[Mortar Strike]: Marker Index: %1 is out of range of Artillery",_outOfRange);
     };
 };
 
