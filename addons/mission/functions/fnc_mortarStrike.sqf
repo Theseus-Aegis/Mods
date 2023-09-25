@@ -42,21 +42,18 @@ if (_mortar isKindOf "CUP_D30_base") then {
 private _ammo = _ammoTypes select _ammoType;
 
 // Debug
-if (is3DENPreview) then {
-    //diag_log [_mortar, _randomPosition, _ammo, _amount];
+//diag_log [_mortar, _randomPosition, _ammo, _amount];
+if (ace_mk6mortar_useAmmoHandling) exitWith {
+    WARNING("[Mortar Strike]: ACE Ammo Handling setting is enabled.");
+};
 
-    if (_barrages < 1) exitWith {
-        ERROR_MSG_1("[Mortar Strike]: Barrages (%1) cannot be less than 1.",_barrages);
-    };
+if (_barrages < 1) exitWith {
+    WARNING_1("[Mortar Strike]: Barrages (%1) cannot be less than 1.",_barrages);
+};
 
-    if (ace_mk6mortar_useAmmoHandling) exitWith {
-        ERROR_MSG("[Mortar Strike]: ACE Ammo Handling setting is enabled.");
-    };
-
-    private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
-    if (_outOfRange != -1) exitWith {
-        ERROR_MSG_1("[Mortar Strike]: Marker Index: %1 is out of range of Artillery",_outOfRange);
-    };
+private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
+if (_outOfRange != -1) exitWith {
+    WARNING_1("[Mortar Strike]: Marker Index: %1 is out of range of Artillery",_outOfRange);
 };
 
 for "_i" from 0 to _barrages - 1 do {
