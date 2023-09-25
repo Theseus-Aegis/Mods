@@ -48,6 +48,7 @@ _marker setMarkerColorLocal _colour;
 
     if (isNull _location) exitWith {
         WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
+        [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
     private _size = ((getMarkerSize _marker) select 0) + 1;
