@@ -22,7 +22,9 @@
 
 params ["_location", "_markerName", ["_maxSize", 60], ["_colour", "ColorRed"]];
 
-if (!isServer) exitWith {};
+if (!isServer) exitWith {
+    [QGVAR(ping), [_location, _markerName, _maxSize, _colour]] call CBA_fnc_serverEvent;
+};
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
 };
@@ -33,14 +35,14 @@ if (isNull _location) exitWith {
     WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
 };
 
+_location setVariable [QGVAR(pingInProgress), true, true];
+
 // Markers are synced globally with every global command. Only needs it done via PFH.
 private _marker = createMarkerLocal [_markerName, _location];
 _marker setMarkerShapeLocal "ELLIPSE";
 _marker setMarkerBrushLocal "Border";
 _marker setMarkerSizeLocal [0, 0];
 _marker setMarkerColorLocal _colour;
-
-_location setVariable [QGVAR(pingInProgress), true, true];
 
 [{
     params ["_args", "_handle"];

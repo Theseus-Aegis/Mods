@@ -31,3 +31,6 @@ if (!hasInterface) exitWith {};
 
 // dialogue event.
 [QGVAR(dialogue), LINKFUNC(dialogueLocal)] call CBA_fnc_addEventHandler;
+
+// ping event.
+[QGVAR(pingEvent), LINKFUNC(ping)] call CBA_fnc_addEventHandler;
