@@ -25,11 +25,12 @@ params ["_location", "_markerName", ["_maxSize", 60], ["_colour", "ColorRed"]];
 if (!isServer) exitWith {
     [QGVAR(ping), [_location, _markerName, _maxSize, _colour]] call CBA_fnc_serverEvent;
 };
+
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
 };
 if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
-    WARNING("Ping already in progress.");
+    WARNING("Ping already in progress");
 };
 
 _location setVariable [QGVAR(pingInProgress), true, true];
