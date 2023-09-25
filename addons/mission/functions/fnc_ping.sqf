@@ -31,9 +31,6 @@ if (_maxSize > 120) exitWith {
 if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
     WARNING("Ping already in progress.");
 };
-if (isNull _location) exitWith {
-    WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
-};
 
 _location setVariable [QGVAR(pingInProgress), true, true];
 
@@ -47,6 +44,10 @@ _marker setMarkerColorLocal _colour;
 [{
     params ["_args", "_handle"];
     _args params ["_location", "_marker"];
+
+    if (isNull _location) exitWith {
+        WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
+    };
 
     private _size = ((getMarkerSize _marker) select 0) + 1;
     if (_size > 60) exitWith {
