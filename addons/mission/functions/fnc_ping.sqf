@@ -2,15 +2,15 @@
 /*
  * Author: Mike
  * Creates a sonar-like marker ping on a specific location.
- * The ping will not move after it begins, only at the location it started on.
+ * The ping will remain at the location it started on.
  * List of available colours can be found at: https://community.bistudio.com/wiki/Arma_3:_CfgMarkerColors
  *
  * Only run on the server.
  *
  * Arguments:
  * 0: Location <OBJECT>
- * 1: Marker Name <STRING> (Must be unique unless tracking the same object.)
- * 2: Max size of ping <NUMBER> (Default: 60, capped at 120)
+ * 1: Marker Name (must be unique unless tracking the same object) <STRING> 
+ * 2: Max size of ping <NUMBER> (default: 60, max 120)
  * 3: Colour <STRING> (default: "ColorRed")
  *
  * Return Value:
@@ -38,11 +38,11 @@ _marker setMarkerColorLocal _colour;
     params ["_args", "_handle"];
     _args params ["_marker"];
 
-    private _size = getMarkerSize _marker select 0;
-    if (_size == 60) exitWith {
-        _handle call CBA_fnc_removePerFrameHandler;
+    private _size = ((getMarkerSize _marker) select 0) + 1;
+    if (_size > 60) exitWith {
+        [_handle] call CBA_fnc_removePerFrameHandler;
         deleteMarker _marker;
     };
 
-    _marker setMarkerSize [_size + 1, _size + 1];
+    _marker setMarkerSize [_size, _size];
 }, 0.1, [_marker]] call CBA_fnc_addPerFrameHandler;
