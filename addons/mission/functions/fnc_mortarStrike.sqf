@@ -44,6 +44,19 @@ private _ammo = _ammoTypes select _ammoType;
 // Debug
 //diag_log [_mortar, _randomPosition, _ammo, _amount];
 
+if (ace_mk6mortar_useAmmoHandling) exitWith {
+    WARNING("ACE Ammo Handling setting is enabled.");
+};
+
+if (_barrages < 1) exitWith {
+    WARNING_1("Barrages (%1) cannot be less than 1.",_barrages);
+};
+
+private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
+if (_outOfRange != -1) exitWith {
+    WARNING_1("Marker Index: %1 is out of range of Artillery",_outOfRange);
+};
+
 for "_i" from 0 to _barrages - 1 do {
     private _randomMarker = selectRandom _markersArray;
     private _randomPosition = [_randomMarker, true] call CBA_fnc_randPosArea;
