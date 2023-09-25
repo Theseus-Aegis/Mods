@@ -9,7 +9,7 @@
  *
  * Arguments:
  * 0: Location <OBJECT>
- * 1: Marker Name (must be unique unless tracking the same object) <STRING> 
+ * 1: Marker Name (must be unique unless tracking the same object) <STRING>
  * 2: Max size of ping <NUMBER> (default: 60, max 120)
  * 3: Colour <STRING> (default: "ColorRed")
  *
@@ -26,6 +26,12 @@ if (!isServer) exitWith {};
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
 };
+if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
+    WARNING("Ping already in progress.");
+};
+if (isNull _location) exitWith {
+    WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
+};
 
 // Markers are synced globally with every global command. Only needs it done via PFH.
 private _marker = createMarkerLocal [_markerName, _location];
@@ -34,15 +40,18 @@ _marker setMarkerBrushLocal "Border";
 _marker setMarkerSizeLocal [0, 0];
 _marker setMarkerColorLocal _colour;
 
+_location setVariable [QGVAR(pingInProgress), true, true];
+
 [{
     params ["_args", "_handle"];
-    _args params ["_marker"];
+    _args params ["_location", "_marker"];
 
     private _size = ((getMarkerSize _marker) select 0) + 1;
     if (_size > 60) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         deleteMarker _marker;
+        _location setVariable [QGVAR(pingInProgress), false, true];
     };
 
     _marker setMarkerSize [_size, _size];
-}, 0.1, [_marker]] call CBA_fnc_addPerFrameHandler;
+}, 0.1, [_location, _marker]] call CBA_fnc_addPerFrameHandler;
