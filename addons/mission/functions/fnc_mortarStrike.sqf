@@ -43,6 +43,7 @@ private _ammo = _ammoTypes select _ammoType;
 
 // Debug
 //diag_log [_mortar, _randomPosition, _ammo, _amount];
+
 if (ace_mk6mortar_useAmmoHandling) exitWith {
     WARNING("ACE Ammo Handling setting is enabled.");
 };
