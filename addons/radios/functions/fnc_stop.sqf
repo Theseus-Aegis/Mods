@@ -18,6 +18,5 @@
 params ["_vehicle"];
 
 private _source = _vehicle getVariable [QGVAR(source), objNull];
-if (isNull _source) exitWith {}; // Killed EH
 
 [QGVAR(stop), [_vehicle, _source]] call CBA_fnc_globalEvent;
