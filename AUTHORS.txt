@@ -8,6 +8,8 @@
 # CORE TEAM
 DaC
 Jonpas <jonpas33@gmail.com>
+Mike
+JoramD
 
 # CONTRIBUTORS
 Dimaslg
@@ -18,4 +20,3 @@ System98
 Takelmeifter
 Kresky
 veteran29
-JoramD

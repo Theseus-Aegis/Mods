@@ -12,9 +12,7 @@ class CfgPatches {
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "tac_main"
-        };
+        requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
         authors[] = {"veteran29"};
         VERSION_CONFIG;

@@ -6,4 +6,4 @@ Modifies ACE3 Advanced Fatigue.
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

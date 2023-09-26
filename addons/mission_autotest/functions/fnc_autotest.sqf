@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: TMF Team, Jonpas
  * Performs overall autotest and logs the results.

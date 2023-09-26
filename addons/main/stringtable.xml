@@ -2,21 +2,27 @@
 <Project name="TAC">
     <Package name="Main">
         <Key ID="STR_TAC_Main_Author">
-            <English>TAC Mod Team</English>
-            <Spanish>TAC Mod Team</Spanish>
-            <German>TAC Mod Team</German>
-            <French>Équipe TAC Mod</French>
+            <English>Theseus Incorporated</English>
+            <German>Theseus Incorporated</German>
+            <Polish>Theseus Incorporated</Polish>
+            <Portuguese>Theseus Incorporated</Portuguese>
+            <Russian>Theseus Incorporated</Russian>
+            <Czech>Theseus Incorporated</Czech>
+            <Spanish>Theseus Incorporated</Spanish>
+            <Italian>Theseus Incorporated</Italian>
+            <French>Theseus Incorporated</French>
         </Key>
         <Key ID="STR_TAC_Main_URL">
-            <English>https://www.theseus-aegis.com/</English>
-            <German>https://www.theseus-aegis.com/</German>
-            <Polish>https://www.theseus-aegis.com/</Polish>
-            <Portuguese>https://www.theseus-aegis.com/</Portuguese>
-            <Russian>https://www.theseus-aegis.com/</Russian>
-            <Czech>https://www.theseus-aegis.com/</Czech>
-            <Spanish>https://www.theseus-aegis.com/</Spanish>
-            <Italian>https://www.theseus-aegis.com/</Italian>
-            <French>https://www.theseus-aegis.com/</French>
+            <English>https://github.com/Theseus-Aegis/Mods</English>
+            <German>https://github.com/Theseus-Aegis/Mods</German>
+            <Polish>https://github.com/Theseus-Aegis/Mods</Polish>
+            <Portuguese>https://github.com/Theseus-Aegis/Mods</Portuguese>
+            <Russian>https://github.com/Theseus-Aegis/Mods</Russian>
+            <Czech>https://github.com/Theseus-Aegis/Mods</Czech>
+            <Spanish>https://github.com/Theseus-Aegis/Mods</Spanish>
+            <Italian>https://github.com/Theseus-Aegis/Mods</Italian>
+            <French>https://github.com/Theseus-Aegis/Mods</French>
+            <Japanese>https://github.com/Theseus-Aegis/Mods</Japanese>
         </Key>
         <Key ID="STR_TAC_Main_Attributes">
             <English>TAC Attributes</English>

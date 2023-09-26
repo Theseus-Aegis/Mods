@@ -4,7 +4,7 @@ Adds Shooting Range framework with a module to set it up. Supports different mod
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)
 
 ### Features
 

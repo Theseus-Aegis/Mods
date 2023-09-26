@@ -4,5 +4,5 @@ CBA Settings Static Addon Userconfig. Does not conform to TAC Mods naming, made 
 
 ### Authors
 
-- [CBA Team](http://github.com/CBATeam/CBA_A3)
-- [Jonpas](http://github.com/jonpas)
+- [CBA Team](https://github.com/CBATeam/CBA_A3)
+- [Jonpas](https://github.com/jonpas)

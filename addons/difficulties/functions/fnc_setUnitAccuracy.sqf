@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Mike
  * Modifies aiming accuracy skill of a unit with Armory Accuracy Factor.

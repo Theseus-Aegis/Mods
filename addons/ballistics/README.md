@@ -6,4 +6,4 @@ Changes various ballistics behaviour:
 ### Authors
 
 - [BaerMitUmlaut](https://github.com/BaerMitUmlaut)
-- [Jonpas](http://github.com/jonpas)
+- [Jonpas](https://github.com/jonpas)

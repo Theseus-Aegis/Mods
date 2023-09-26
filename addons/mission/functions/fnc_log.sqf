@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Mike
  * Logs a message to the RPT log and displays it on-screen in Eden Editor.

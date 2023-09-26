@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: Jonpas
  * Handles loadout change and periodic saves. Requests a save of the player after a delay.

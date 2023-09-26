@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_explosives", "ace_interaction"};
+        requiredAddons[] = {"tac_main", "ace_explosives"};
         author = ECSTRING(main,Author);
         authors[] = {"Ampersand", "Mike", "Jonpas"};
         VERSION_CONFIG;

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
  * Stops playing music in the vehicle and removes the radio sound source.
@@ -17,8 +17,4 @@
 
 params ["_vehicle"];
 
-private _source = _vehicle getVariable [QGVAR(source), objNull];
-if (isNull _source) exitWith {}; // Killed EH
-
-deleteVehicle _source;
-_vehicle setVariable [QGVAR(source), objNull, true];
+[QGVAR(stop), [_vehicle]] call CBA_fnc_globalEvent;

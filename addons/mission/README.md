@@ -4,5 +4,5 @@ Missions function library
 
 ### Authors
 
-- [Jonpas](http://github.com/jonpas)
-- [MikeMF](http://github.com/mike-mf)
+- [Jonpas](https://github.com/jonpas)
+- [MikeMF](https://github.com/mike-mf)

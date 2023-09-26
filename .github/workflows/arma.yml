@@ -38,8 +38,8 @@ jobs:
     - name: Run HEMTT build
       run: hemtt build
     - name: Rename build folder
-      run: mv .hemttout/build .hemttout/@tac_mods
+      run: mv .hemttout/build .hemttout/@theseus_mods
     - uses: actions/upload-artifact@v3
       with:
-        name: tac_mods_${{ github.sha }}-nobin
+        name: TheseusMods_${{ github.sha }}-nobin
         path: .hemttout/@*

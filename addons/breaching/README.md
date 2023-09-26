@@ -6,6 +6,6 @@ This is an alternate and smaller implementation of [Breaching Charge](https://gi
 
 ### Authors
 
-- [Ampersand](http://github.com/ampersand38) (original)
-- [MikeMF](http://github.com/mike-mf)
-- [Jonpas](http://github.com/jonpas)
+- [Ampersand](https://github.com/ampersand38) (original)
+- [MikeMF](https://github.com/mike-mf)
+- [Jonpas](https://github.com/jonpas)
