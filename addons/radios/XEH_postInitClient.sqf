@@ -6,6 +6,12 @@
     _vehicle setVariable [QGVAR(source), _source];
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(stop), {
+    params ["_vehicle", "_source"];
+    deleteVehicle _source;
+    _vehicle setVariable [QGVAR(source), objNull];
+}] call CBA_fnc_addEventHandler;
+
 {
     _x call FUNC(init);
 } forEach ["Car", "Tank", "Helicopter", "Plane", "Ship_F", "Land_SurvivalRadio_F", "Land_FMradio_F"];
