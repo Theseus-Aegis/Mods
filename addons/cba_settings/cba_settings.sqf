@@ -1,6 +1,8 @@
 // ACE3
 ace_advanced_ballistics_enabled = true;
 
+ace_ai_assignNVG = true;
+
 ace_captives_requireSurrender = 0;
 
 ace_cookoff_destroyVehicleAfterCookoff = true;
@@ -10,6 +12,8 @@ ace_common_checkPBOsCheckAll = true;
 ace_common_checkPBOsWhitelist = "['ace_noactionmenu', 'Blastcore_MainCore', 'Blastcore_VEP', 'WarFXPE', 'ocap_main', 'ocap_extension', 'ocap_recorder']";
 
 ace_dragging_dragAndFire = true;
+
+ace_fastroping_autoAddFRIES = true;
 
 ace_finger_enabled = true;
 
