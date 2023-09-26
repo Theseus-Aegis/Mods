@@ -17,6 +17,4 @@
 
 params ["_vehicle"];
 
-private _source = _vehicle getVariable [QGVAR(source), objNull];
-
-[QGVAR(stop), [_vehicle, _source]] call CBA_fnc_globalEvent;
+[QGVAR(stop), [_vehicle]] call CBA_fnc_globalEvent;

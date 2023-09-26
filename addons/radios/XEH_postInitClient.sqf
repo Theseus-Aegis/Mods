@@ -7,7 +7,8 @@
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(stop), {
-    params ["_vehicle", "_source"];
+    params ["_vehicle"];
+    private _source = _vehicle getVariable [QGVAR(source), objNull];
     if (isNull _source) exitWith {}; // Handles Killed & JIP
     deleteVehicle _source;
     _vehicle setVariable [QGVAR(source), objNull];
