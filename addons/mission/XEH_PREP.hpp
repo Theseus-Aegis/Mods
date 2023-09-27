@@ -23,6 +23,7 @@ PREP(forceShooting);
 PREP(groundFog);
 PREP(jam);
 PREP(mortarStrike);
+PREP(ping);
 PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
