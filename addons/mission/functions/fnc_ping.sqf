@@ -5,7 +5,7 @@
  * The ping will remain at the location it started on.
  * List of available colours can be found at: https://community.bistudio.com/wiki/Arma_3:_CfgMarkerColors
  *
- * Call directly from ACE Action or via server with global argument
+ * Call directly from ACE Action or via server with global argument.
  *
  * Arguments:
  * 0: Location <OBJECT>
@@ -56,7 +56,7 @@ _marker setMarkerColorLocal _colour;
         [_handle] call CBA_fnc_removePerFrameHandler;
         deleteMarker _marker;
 
-        _location setVariable [QGVAR(pingInProgress), true, _isGlobal];
+        _location setVariable [QGVAR(pingInProgress), false, _isGlobal];
     };
 
     if (_isGlobal) then {
