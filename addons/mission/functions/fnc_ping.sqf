@@ -19,7 +19,7 @@
  *
  * Examples:
  * [MyObject, "UniqueName"] call MFUNC(ping)
- * [MyObject, "UniqueName", 70, "ColorGrey", true] call MFUNC(ping)
+ * [MyObject, "UniqueName", true, 70, "ColorGrey"] call MFUNC(ping)
  */
 
 params ["_location", "_markerName", ["_isGlobal", false], ["_maxSize", 60], ["_colour", "ColorRed"]];
