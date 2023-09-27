@@ -32,7 +32,11 @@ if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
 };
 
 // Prevent spamming
-_location setVariable [QGVAR(pingInProgress), true, true];
+if (_isGlobal) then {
+    _location setVariable [QGVAR(pingInProgress), true, true];
+} else {
+    _location setVariable [QGVAR(pingInProgress), true];
+};
 
 // Markers are synced globally with every global command. Only needs it done via PFH.
 private _marker = createMarkerLocal [_markerName, _location];
@@ -55,7 +59,12 @@ _marker setMarkerColorLocal _colour;
     if (_size > 60) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         deleteMarker _marker;
-        _location setVariable [QGVAR(pingInProgress), false, true];
+
+        if (_isGlobal) then {
+            _location setVariable [QGVAR(pingInProgress), false, true];
+        } else {
+            _location setVariable [QGVAR(pingInProgress), false];
+        };
     };
 
     if (_isGlobal) then {
