@@ -5,26 +5,24 @@
  * The ping will remain at the location it started on.
  * List of available colours can be found at: https://community.bistudio.com/wiki/Arma_3:_CfgMarkerColors
  *
- * Only run on the server.
+ * Call directly from ACE Action or via server with global argument
  *
  * Arguments:
  * 0: Location <OBJECT>
  * 1: Marker Name (must be unique unless tracking the same object) <STRING>
  * 2: Max size of ping <NUMBER> (default: 60, max 120)
  * 3: Colour <STRING> (default: "ColorRed")
+ * 4: Global <BOOL> (default: false)
  *
  * Return Value:
  * None
  *
  * Examples:
  * [MyObject, "UniqueName"] call MFUNC(ping)
+ * [MyObject, "UniqueName", 70, "ColorGrey", true] call MFUNC(ping)
  */
 
-params ["_location", "_markerName", ["_maxSize", 60], ["_colour", "ColorRed"]];
-
-if (!isServer) exitWith {
-    [QGVAR(ping), [_location, _markerName, _maxSize, _colour]] call CBA_fnc_serverEvent;
-};
+params ["_location", "_markerName", ["_maxSize", 60], ["_colour", "ColorRed"], ["_isGlobal", false]];
 
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
@@ -33,6 +31,7 @@ if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
     WARNING("Ping already in progress");
 };
 
+// Prevent spamming
 _location setVariable [QGVAR(pingInProgress), true, true];
 
 // Markers are synced globally with every global command. Only needs it done via PFH.
@@ -44,7 +43,7 @@ _marker setMarkerColorLocal _colour;
 
 [{
     params ["_args", "_handle"];
-    _args params ["_location", "_marker"];
+    _args params ["_location", "_marker", "_isGlobal"];
 
     if (isNull _location) exitWith {
         WARNING_1("Ping Location for marker: %1 no longer exists",_markerName);
@@ -59,5 +58,9 @@ _marker setMarkerColorLocal _colour;
         _location setVariable [QGVAR(pingInProgress), false, true];
     };
 
-    _marker setMarkerSize [_size, _size];
-}, 0.1, [_location, _marker]] call CBA_fnc_addPerFrameHandler;
+    if (_isGlobal) then {
+        _marker setMarkerSize [_size, _size];
+    } else {
+        _marker setMarkerSizeLocal [_size, _size];
+    };
+}, 0.1, [_location, _marker, _isGlobal]] call CBA_fnc_addPerFrameHandler;

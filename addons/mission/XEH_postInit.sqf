@@ -30,4 +30,3 @@ if (!hasInterface) exitWith {};
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
 
 [QGVAR(dialogue), LINKFUNC(dialogueLocal)] call CBA_fnc_addEventHandler;
-[QGVAR(ping), LINKFUNC(ping)] call CBA_fnc_addEventHandler;
