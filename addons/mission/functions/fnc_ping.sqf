@@ -10,9 +10,9 @@
  * Arguments:
  * 0: Location <OBJECT>
  * 1: Marker Name (must be unique unless tracking the same object) <STRING>
- * 2: Max size of ping <NUMBER> (default: 60, max 120)
- * 3: Colour <STRING> (default: "ColorRed")
- * 4: Global <BOOL> (default: false)
+ * 2: Global <BOOL> (default: false)
+ * 3: Max size of ping <NUMBER> (default: 60, max 120)
+ * 4: Colour <STRING> (default: "ColorRed")
  *
  * Return Value:
  * None
@@ -22,7 +22,7 @@
  * [MyObject, "UniqueName", 70, "ColorGrey", true] call MFUNC(ping)
  */
 
-params ["_location", "_markerName", ["_maxSize", 60], ["_colour", "ColorRed"], ["_isGlobal", false]];
+params ["_location", "_markerName", ["_isGlobal", false], ["_maxSize", 60], ["_colour", "ColorRed"]];
 
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
