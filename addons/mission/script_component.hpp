@@ -1,14 +1,16 @@
 #define COMPONENT mission
+#define COMPONENT_BEAUTIFIED Mission
 #include "\x\tac\addons\main\script_mod.hpp"
 
-#define DEBUG_SYNCHRONOUS
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
+// #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_MISSION
     #define DEBUG_MODE_FULL
 #endif
-    #ifdef DEBUG_SETTINGS_MISSION
+
+#ifdef DEBUG_SETTINGS_MISSION
     #define DEBUG_SETTINGS DEBUG_SETTINGS_MISSION
 #endif
 
