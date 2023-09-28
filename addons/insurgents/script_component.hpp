@@ -1,15 +1,16 @@
 #define COMPONENT insurgents
+#define COMPONENT_BEAUTIFIED Insurgents
 #include "\x\tac\addons\main\script_mod.hpp"
-
-#define DEBUG_SYNCHRONOUS
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
+// #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_INSURGENTS
     #define DEBUG_MODE_FULL
 #endif
-    #ifdef DEBUG_SETTINGS_INSURGENTS
+
+#ifdef DEBUG_SETTINGS_INSURGENTS
     #define DEBUG_SETTINGS DEBUG_SETTINGS_INSURGENTS
 #endif
 
