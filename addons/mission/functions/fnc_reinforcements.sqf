@@ -5,7 +5,7 @@
  * Call from initServer.sqf
  *
  * Arguments:
- * 0: Group <GROUP>
+ * 0: Group <GROUP> (default: grpNull)
  * 1: Disable <BOOL>
  * 2: Distance <NUMBER> (default: 0)
  * 3: Move to Nearest Player <BOOL> (default: false)
@@ -21,13 +21,15 @@
  * [Test_Group_1, false, 0, true, 2000] call MFUNC(reinforcements)
  */
 
-params ["_group", "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
+params [["_group", grpNull], "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
 
 if (!isServer) exitWith {};
+if (isNull _group) exitWith {
+    WARNING("One of the groups provided does not exist.");
+};
 
-private _groupLeader = leader _group;
 private _playerList = [] call CBA_fnc_players;
-private _anyClose = _playerList select {_groupLeader distance _x < _distance};
+private _anyClose = _playerList select {leader _group distance _x < _distance};
 
 if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
     {
