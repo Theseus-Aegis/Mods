@@ -5,7 +5,7 @@
  * Call from initServer.sqf
  *
  * Arguments:
- * 0: Group <GROUP> (default: grpNull)
+ * 0: Group <GROUP>
  * 1: Disable <BOOL>
  * 2: Distance <NUMBER> (default: 0)
  * 3: Move to Nearest Player <BOOL> (default: false)
