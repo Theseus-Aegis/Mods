@@ -28,8 +28,9 @@ if (isNull _group) exitWith {
     WARNING("One of the groups provided does not exist.");
 };
 
+private _groupLeader = leader _group;
 private _playerList = [] call CBA_fnc_players;
-private _anyClose = _playerList select {leader _group distance _x < _distance};
+private _anyClose = _playerList select {_groupLeader distance _x < _distance};
 
 if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
     {
