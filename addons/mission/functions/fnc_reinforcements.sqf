@@ -25,7 +25,7 @@ params [["_group", grpNull], "_state", ["_distance", 0], ["_moveToPlayer", false
 
 if (!isServer) exitWith {};
 if (isNull _group) exitWith {
-    WARNING("One of the groups provided does not exist.");
+    WARNING("Group does not exist.");
 };
 
 private _groupLeader = leader _group;
