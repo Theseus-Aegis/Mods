@@ -21,9 +21,12 @@
  * [Test_Group_1, false, 0, true, 2000] call MFUNC(reinforcements)
  */
 
-params ["_group", "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
+params [["_group", grpNull], "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
 
 if (!isServer) exitWith {};
+if (isNull _group) exitWith {
+    WARNING("Group does not exist.");
+};
 
 private _groupLeader = leader _group;
 private _playerList = [] call CBA_fnc_players;
