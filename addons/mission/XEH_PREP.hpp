@@ -36,3 +36,4 @@ PREP(toggleLights);
 // Debug
 PREP(log);
 PREP(monitorUnits);
+PREP(triggerArea);
