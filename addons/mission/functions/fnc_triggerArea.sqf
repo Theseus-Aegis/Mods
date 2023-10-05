@@ -20,8 +20,10 @@ private _allTriggers = allMissionObjects "EmptyDetector";
 {
     private _markerName = format ["%1", _x];
     private _marker = createMarker [_markerName, _x];
+
     triggerArea _x params ["_sizeX", "_sizeY", "_angle", "_isRectangle", "_sizeZ"];
 
+    _marker setMarkerBrush "Border";
     _marker setMarkerColor "ColorRed";
     _marker setMarkerDir _angle;
     _marker setMarkerSize [_sizeX, _sizeY];
@@ -31,5 +33,4 @@ private _allTriggers = allMissionObjects "EmptyDetector";
     } else {
         _marker setMarkerShape "ELLIPSE";
     };
-    _marker setMarkerBrush "Border";
 } forEach _allTriggers;
