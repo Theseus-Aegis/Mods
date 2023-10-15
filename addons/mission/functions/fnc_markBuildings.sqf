@@ -37,7 +37,7 @@ if (_filter) then {
 
     // Marker name has to be unique.
     private _namePos = position _x params ["_xPos", "_yPos", "_zPos"];
-    private _markerName = format ["%1%2%3", _xPos, _yPos, _zPos];
+    private _markerName = format ["%1_%2%3%4", QUOTE(ADDON), _xPos, _yPos, _zPos];
     private _marker = createMarkerLocal [_markerName, getPos _x];
     _marker setMarkerBrushLocal "SolidFull";
     _marker setMarkerColorLocal "ColorGrey";
