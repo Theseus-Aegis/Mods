@@ -56,6 +56,7 @@ if (_retrieveVehicles == "ready") then {
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
+    publicVariable QGVAR(vehiclesLoaded);
 
     INFO_1("%1 vehicles loaded.",count _vehList);
     TRACE_1("Vehicles loaded",_vehList);
