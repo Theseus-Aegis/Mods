@@ -5,5 +5,7 @@ if (isServer) then {
     [QGVAR(addObjectToChronos), {_this call FUNC(moduleAddObjectToChronosServer)}] call CBA_fnc_addEventHandler;
 };
 
-// Failure notification
-[QGVAR(addObjectToChronosFailed), {[LSTRING(AddToChronosFailed)] call ACEFUNC(common,displayTextStructured)}] call CBA_fnc_addEventHandler;
+if (hasInterface) then {
+    // Failure notification
+    [QGVAR(addObjectToChronosFailed), {[LSTRING(EnableChronos)] call ACEFUNC(common,displayTextStructured)}] call CBA_fnc_addEventHandler;
+};

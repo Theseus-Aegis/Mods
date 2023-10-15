@@ -16,11 +16,6 @@
             <German>Chronos aktivieren</German>
             <French>Activer Chronos</French>
         </Key>
-        <Key ID="STR_TAC_Zeus_AddToChronosFailed">
-            <English>Object could not be added</English>
-            <German>Objekt konnte nicht hinzugefügt werden</German>
-            <French>L'objet n'a pas pu être ajouté</French>
-        </Key>
         <Key ID="STR_TAC_Zeus_AlreadyInChronos">
             <English>Already in Chronos</English>
             <German>Bereits in Chronos</German>
