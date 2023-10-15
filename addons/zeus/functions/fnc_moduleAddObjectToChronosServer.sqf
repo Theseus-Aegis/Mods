@@ -17,6 +17,8 @@
 
 params ["_object"];
 
+if (!EGVAR(apollo,vehiclesLoaded)) exitWith {};
+
 // Get suitable Chronos ID
 private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMethod);
 

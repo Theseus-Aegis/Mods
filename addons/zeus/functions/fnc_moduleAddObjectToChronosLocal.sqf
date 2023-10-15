@@ -20,7 +20,7 @@ if !(_activated && {local _logic}) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded)) || {!EGVAR(apollo,vehiclesLoaded)}) then {
+if (!["tac_apollo"] call ACEFUNC(common,isModLoaded)) then {
     [LSTRING(EnableChronos)] call ACEFUNC(common,displayTextStructured);
 } else {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
