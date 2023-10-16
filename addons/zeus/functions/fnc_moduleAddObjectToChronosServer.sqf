@@ -5,6 +5,7 @@
  *
  * Arguments:
  * 0: Object <OBJECT>
+ * 1: Player saving object <OBJECT>
  *
  * Return Value:
  * None
@@ -15,7 +16,11 @@
  * Public: No
  */
 
-params ["_object"];
+params ["_object", "_player"];
+
+if (!EGVAR(apollo,vehiclesLoaded)) exitWith {
+    [QGVAR(addObjectToChronosFailed), [], _player] call CBA_fnc_targetEvent;
+};
 
 // Get suitable Chronos ID
 private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMethod);

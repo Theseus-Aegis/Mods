@@ -20,7 +20,7 @@ if !(_activated && {local _logic}) exitWith {};
 
 (missionNamespace getVariable ["bis_fnc_curatorObjectPlaced_mouseOver", [""]]) params ["_mouseOverType", "_mouseOverUnit"];
 
-if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded)) || {!EGVAR(apollo,vehiclesLoaded)}) then {
+if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded))) then {
     [LSTRING(EnableChronos)] call ACEFUNC(common,displayTextStructured);
 } else {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
@@ -29,7 +29,7 @@ if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded)) || {!EGVAR(apollo,vehicle
         if !((_mouseOverUnit getVariable [QEGVAR(apollo,vehicleID), "None"]) isEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACEFUNC(common,displayTextStructured);
         } else {
-            [QGVAR(addObjectToChronos), _mouseOverUnit] call CBA_fnc_serverEvent;
+            [QGVAR(addObjectToChronos), [_mouseOverUnit, ace_player]] call CBA_fnc_serverEvent;
         };
     };
 };
