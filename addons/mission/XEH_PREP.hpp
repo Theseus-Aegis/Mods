@@ -34,5 +34,6 @@ PREP(teleport);
 PREP(toggleLights);
 
 // Debug
+PREP(debugTriggerArea);
 PREP(log);
 PREP(monitorUnits);
