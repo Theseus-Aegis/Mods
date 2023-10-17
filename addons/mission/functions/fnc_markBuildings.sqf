@@ -9,7 +9,7 @@
  *
  * Arguments:
  * 0: Objects <ARRAY>
- * 1: Filter <BOOL> (default: true)
+ * 1: Filter to only buildings <BOOL> (default: true)
  *
  * Return Value:
  * None
@@ -21,7 +21,7 @@
 
 params ["_objectArray", ["_filter", true]];
 
-if (count _objectArray == 0) exitWith {
+if (_objectArray isEqualTo []) exitWith {
     WARNING("Object Array is empty");
 };
 
@@ -31,12 +31,12 @@ if (_filter) then {
 };
 
 {
-    private _bb = boundingBoxReal _x params ["_posRelative1", "_posRelative2"];
+    (boundingBoxReal _x) params ["_posRelative1", "_posRelative2"];
     private _width = abs (_posRelative2 select 0) - (_posRelative1 select 0);
     private _height = abs (_posRelative2 select 1) - (_posRelative1 select 1);
 
-    // Marker name has to be unique.
-    private _namePos = position _x params ["_xPos", "_yPos", "_zPos"];
+    // Marker name has to be unique
+    (position _x) params ["_xPos", "_yPos", "_zPos"];
     private _markerName = format ["%1_%2%3%4", QUOTE(ADDON), _xPos, _yPos, _zPos];
     private _marker = createMarkerLocal [_markerName, getPos _x];
     _marker setMarkerBrushLocal "SolidFull";
