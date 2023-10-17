@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/Theseus-Aegis/Mods/releases/latest">
-        <img src="https://img.shields.io/badge/Version-2.0.0-blue.svg" alt="Theseus Mods Version">
+        <img src="https://img.shields.io/badge/Version-2.0.1-blue.svg" alt="Theseus Mods Version">
     </a>
     <a href="https://github.com/Theseus-Aegis/Mods/issues">
         <img src="https://img.shields.io/github/issues-raw/Theseus-Aegis/Mods.svg?label=Issues" alt="Theseus Mods Issues">
