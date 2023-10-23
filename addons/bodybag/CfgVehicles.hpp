@@ -1,6 +1,6 @@
 class CfgVehicles {
     class ACE_bodyBagObject;
-    class GVAR(Bodybag_Object_OrangeLogo): ACE_bodyBagObject {
+    class GVAR(Object_OrangeLogo): ACE_bodyBagObject {
         maximumLoad = 0;
         transportMaxWeapons = 1;
         transportMaxMagazines = 1;
