@@ -1,6 +1,6 @@
 class CfgWeapons {
-    class ACE_ItemCore;
-    class ACE_bodyBag: ACE_ItemCore {
-        picture = QPATHTOF(ui\bodybag_ca.paa);
+    class ACE_bodyBag;
+    class CLASS(Bodybag_OrangeLogo): ACE_bodyBag {
+        //picture = QPATHTOF(ui\bodybag_orange_ca.paa);
     };
 };

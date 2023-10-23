@@ -21,7 +21,7 @@ if (_bodybagContents isEqualTo [] || {(count _bodybagContents) isNotEqualTo 4}) 
     ERROR("Failed to create bodybag! Invalid input.");
 };
 
-private _bodyBag = createVehicle ["ACE_bodyBagObject", ace_player];
+private _bodyBag = createVehicle [QCLASS(Bodybag_Object_OrangeLogo), ace_player];
 
 (_bodybagContents select 0) params ["_itemCargo", "_itemCargoAmount"];
 {
