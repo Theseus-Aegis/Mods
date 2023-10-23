@@ -4,10 +4,10 @@ class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
         units[] = {
-            QCLASS(Bodybag_Object_OrangeLogo)
+            QGVAR(Bodybag_Object_OrangeLogo)
         };
         weapons[] = {
-            QCLASS(Bodybag_OrangeLogo)
+            QGVAR(Bodybag_OrangeLogo)
         };
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "ace_medical"};
