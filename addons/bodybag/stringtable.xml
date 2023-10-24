@@ -11,7 +11,7 @@
             <German>Wahrscheinlichkeit eines jeden Gegenstandes zerstört zu werden, wenn eine Einheit in einen Leichensack gepackt wird.</German>
             <French>La chance de destruction de chaque objet quand une unité est placée dans un sac mortuaire.</French>
         </Key>
-        <Key ID="STR_TAC_Bodybag_Item_Display">
+        <Key ID="STR_TAC_Bodybag_Orange_DisplayName">
             <English>Body Bag (Orange)</English>
             <German>Leichensack (Orange)</German>
             <French>Sac mortuaire (Orange)</French>
