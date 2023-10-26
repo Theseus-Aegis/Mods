@@ -1,7 +1,7 @@
 class CfgVehicles {
     class ACE_bodyBagObject_old;
     class GVAR(Object_OrangeLogo): ACE_bodyBagObject_old {
-        displayName = CSTRING(Orange_DisplayName);
+        displayName = CSTRING(OrangeLogo_DisplayName);
         // Needs new texture when we swap to ACE_bodyBagObject (new)
         hiddenSelectionsTextures[] = {QPATHTOF(apl-sa\bodybag_co.paa)};
 

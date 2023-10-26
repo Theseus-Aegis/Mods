@@ -1,7 +1,7 @@
 class CfgWeapons {
     class ACE_bodyBag;
     class GVAR(OrangeLogo): ACE_bodyBag {
-        displayName = CSTRING(Orange_DisplayName);
+        displayName = CSTRING(OrangeLogo_DisplayName);
         picture = QPATHTOF(ui\bodybag_orangelogo_ca.paa);
         //hiddenSelections[] = {"camo"};
         //hiddenSelectionsTextures[] = {QPATHTOF(data\bodybagItem_orange_co.paa)};
