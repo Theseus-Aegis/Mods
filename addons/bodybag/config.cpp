@@ -3,9 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {
-            QGVAR(Object_OrangeLogo)
-        };
+        units[] = {};
         weapons[] = {
             QGVAR(OrangeLogo)
         };
