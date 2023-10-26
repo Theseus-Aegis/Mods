@@ -8,7 +8,7 @@ class CfgPatches {
             QGVAR(OrangeLogo)
         };
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_medical"};
+        requiredAddons[] = {"tac_main", "ace_medical_treatment"};
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
