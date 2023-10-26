@@ -4,9 +4,11 @@ class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
         units[] = {};
-        weapons[] = {};
+        weapons[] = {
+            QGVAR(OrangeLogo)
+        };
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "ace_medical"};
+        requiredAddons[] = {"tac_main", "ace_medical_treatment"};
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
@@ -14,6 +16,7 @@ class CfgPatches {
     };
 };
 
+#include "ACE_Medical_Treatment_Actions.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
 #include "CfgWeapons.hpp"
