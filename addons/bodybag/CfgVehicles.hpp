@@ -1,5 +1,5 @@
 class CfgVehicles {
-    class ACE_bodyBagObject;
+    class ACE_bodyBagObject_old;
     class GVAR(Object_OrangeLogo): ACE_bodyBagObject_old {
         displayName = CSTRING(Orange_DisplayName);
         maximumLoad = 0;
