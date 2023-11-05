@@ -8,8 +8,8 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPA\Items\Medical\PainKillers_F.p3d";
         picture = QPATHTOF(ui\painkillers_inventory_ca.paa);
         displayName = CSTRING(DisplayName);
-        descriptionShort = ACECSTRING(Medical,Morphine_Desc_Short);
-        descriptionUse = ACECSTRING(Medical,Morphine_Desc_Use);
+        descriptionShort = ACECSTRING(Medical_Treatment,Morphine_Desc_Short);
+        descriptionUse = ACECSTRING(Medical_Treatment,Morphine_Desc_Use);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 1;
