@@ -1,7 +1,7 @@
 #define NO_ACTION_CLASS(NAME, PARENT, DEFAULT) \
 class NAME: PARENT { \
     show = QUOTE(call compile getText (configFile >> 'CfgActions' >> 'NAME' >> 'GVAR(setting)')); \
-    GVAR(setting) = QUOTE(profileNamespace getVariable [ARR_2('GVAR(NAME)', DEFAULT)]); \
+    GVAR(setting) = QUOTE(profileNamespace getVariable [ARR_2('GVAR(NAME)',DEFAULT)]); \
 }
 
 class CfgActions {
