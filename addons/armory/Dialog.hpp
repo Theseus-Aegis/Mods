@@ -1,10 +1,16 @@
 // Size definitions
-#define SIZEX ((safeZoneW / safeZoneH) min 1.2) // Grid width (from aspect ratio, 1.2 clamp for the largest possible size)
-#define SIZEY (SIZEX / 1.2) // Grid height (from width)
-#define W_PART(num) (num * (SIZEX / 40)) // Split grid into 40 columns
-#define H_PART(num) (num * (SIZEY / 25)) // Split grid into 25 rows
-#define X_PART(num) (W_PART(num) + (safeZoneX + (safeZoneW - SIZEX) / 2)) // Translate by columns and find left of grid
-#define Y_PART(num) (H_PART(num) + (safeZoneY + (safeZoneH - SIZEY) / 2)) // Translate by rows and find top of grid
+// Grid width (from aspect ratio, 1.2 clamp for the largest possible size)
+#define SIZEX ((safeZoneW / safeZoneH) min 1.2)
+// Grid height (from width)
+#define SIZEY (SIZEX / 1.2)
+// Split grid into 40 columns
+#define W_PART(num) (num * (SIZEX / 40))
+// Split grid into 25 rows
+#define H_PART(num) (num * (SIZEY / 25))
+// Translate by columns and find left of grid
+#define X_PART(num) (W_PART(num) + (safeZoneX + (safeZoneW - SIZEX) / 2))
+// Translate by rows and find top of grid
+#define Y_PART(num) (H_PART(num) + (safeZoneY + (safeZoneH - SIZEY) / 2))
 
 #define PIC_X X_PART(11.15)
 #define PIC_Y Y_PART(2.8)

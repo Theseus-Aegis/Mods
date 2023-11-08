@@ -4,7 +4,7 @@
         class GVAR(RatelMarker) { \
             displayName = CSTRING(DisplayName); \
             condition = QUOTE(_this call FUNC(canUseMarkerMenu)); \
-            statement = QUOTE([ARR_2({call FUNC(createMarkerMenu)}, [])] call CBA_fnc_execNextFrame); \
+            statement = QUOTE([ARR_2({call FUNC(createMarkerMenu)},[])] call CBA_fnc_execNextFrame); \
             showDisabled = 0; \
             priority = 0; \
             icon = QPATHTOF(UI\ratelMarker_ca.paa); \
