@@ -20,9 +20,11 @@ params ["_box"];
 // Handle random chance, 7%
 if (random 100 > 7) exitWith {};
 
+// Exit if ran out of lines
+if (GVAR(boxLines) isEqualTo []) exitWith {};
+
 // Prevent same sound from happening again.
 private _selection = selectRandom GVAR(boxLines);
 GVAR(boxLines) deleteAt (GVAR(boxLines) find _selection);
-publicVariable QGVAR(boxLines);
 
 [QEGVAR(mission,say3D), [_box, _selection]] call CBA_fnc_globalEvent;
