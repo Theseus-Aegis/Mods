@@ -9,6 +9,6 @@ PREP_RECOMPILE_END;
 #include "initSettings.sqf"
 
 GVAR(boxLinesMain) = ('getNumber {_x >> QGVAR(boxLine)) > 0' configClasses (configFile >> "CfgSounds")) apply {configName _x};
-GVAR(boxLines) = GVAR(boxLinesMain);
+GVAR(boxLines) = +GVAR(boxLinesMain);
 
 ADDON = true;

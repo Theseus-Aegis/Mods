@@ -22,7 +22,7 @@ if (random 100 > QGVAR(talkingBoxes)) exitWith {};
 
 // If ran out of lines, refill the array.
 if (GVAR(boxLines) isEqualTo []) then {
-    GVAR(boxLines) = GVAR(boxLinesMain);
+    GVAR(boxLines) = +GVAR(boxLinesMain);
 };
 
 // Prevent same sound from happening again.
