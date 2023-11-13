@@ -10,18 +10,20 @@
  * None
  *
  * Example:
- * [_box] call FUNC(talkingBox);
+ * [_box] call FUNC(talkingBox)
  *
  * Public: No
  */
 
 params ["_box"];
 
-// Handle random chance, 7%
-if (random 100 > 7) exitWith {};
+// Handle random chance, setting is defaulted to 7%
+if (random 100 > QGVAR(talkingBoxes)) exitWith {};
 
-// Exit if ran out of lines
-if (GVAR(boxLines) isEqualTo []) exitWith {};
+// If ran out of lines, refill the array.
+if (GVAR(boxLines) isEqualTo []) then {
+    GVAR(boxLines) = GVAR(boxLinesMain);
+};
 
 // Prevent same sound from happening again.
 private _selection = selectRandom GVAR(boxLines);
