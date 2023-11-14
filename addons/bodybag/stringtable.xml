@@ -16,5 +16,8 @@
             <German>Leichensack (Orange) Logo</German>
             <French>Sac mortuaire (Orange) logo</French>
         </Key>
+        <Key ID="STR_TAC_Bodybag_OrangeLogo_Place">
+            <English>Place Body in orange bodybag</English>
+        </Key>
     </Package>
 </Project>
