@@ -80,7 +80,7 @@ _hunters setCombatMode "RED";
 
     // Remove PFH & Remove group from array.
     if (_huntersDead) then {
-        GVAR(huntGroups) deleteAt (find _hunters);
+        GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
         _handle call CBA_fnc_removePerFrameHandler;
     };
 }, _refresh, [_hunters, _refresh, _hunted, _searchDistance]] call CBA_fnc_addPerFrameHandler;
