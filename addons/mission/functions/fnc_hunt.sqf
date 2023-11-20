@@ -27,7 +27,7 @@ params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1
 
 if (!isServer) exitWith {};
 
-if (count GVAR(huntGroups) == 6) exitWith {
+if (count GVAR(huntGroups) >= 6) exitWith {
     ERROR_MSG("The maximum amount of hunt groups has been reached (6)!");
 };
 
