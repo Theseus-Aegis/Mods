@@ -78,7 +78,7 @@ _hunters setCombatMode "RED";
     // Check for alive units
     private _huntersDead = {alive _x} count units _hunters == 0;
 
-    // Remove PFH & Remove group from array.
+    // Remove PFH and remove group from array
     if (_huntersDead) then {
         GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
         _handle call CBA_fnc_removePerFrameHandler;
