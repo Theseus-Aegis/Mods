@@ -17,8 +17,8 @@
  * None
  *
  * Examples:
- * [MyObject, "UniqueName"] call MFUNC(ping)
- * [MyObject, "UniqueName", true, 70, "ColorGrey"] call MFUNC(ping)
+ * [MyObject] call MFUNC(ping)
+ * [MyObject, true, 70, "ColorGrey"] call MFUNC(ping)
  */
 
 params ["_location", ["_isGlobal", false], ["_maxSize", 60], ["_colour", "ColorRed"]];
