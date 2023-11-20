@@ -23,7 +23,6 @@ if (isServer) then {
         [QGVAR(collectIntel_update), [_this]] call CBA_fnc_globalEvent;
     }] call CBA_fnc_addEventHandler;
 
-    // Hunt Preinit
     GVAR(huntGroups) = [];
 };
 
