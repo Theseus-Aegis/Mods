@@ -9,10 +9,9 @@
  *
  * Arguments:
  * 0: Location <OBJECT>
- * 1: Marker Name (must be unique unless tracking the same object) <STRING>
- * 2: Global <BOOL> (default: false)
- * 3: Max size of ping <NUMBER> (default: 60, max 120)
- * 4: Colour <STRING> (default: "ColorRed")
+ * 1: Global <BOOL> (default: false)
+ * 2: Max size of ping <NUMBER> (default: 60, max 120)
+ * 3: Colour <STRING> (default: "ColorRed")
  *
  * Return Value:
  * None
@@ -22,7 +21,7 @@
  * [MyObject, "UniqueName", true, 70, "ColorGrey"] call MFUNC(ping)
  */
 
-params ["_location", "_markerName", ["_isGlobal", false], ["_maxSize", 60], ["_colour", "ColorRed"]];
+params ["_location", ["_isGlobal", false], ["_maxSize", 60], ["_colour", "ColorRed"]];
 
 if (_maxSize > 120) exitWith {
     WARNING_1("Max Size (%1) cannot be greater than 120",_maxSize);
@@ -35,6 +34,8 @@ if (_location getVariable [QGVAR(pingInProgress), false]) exitWith {
 _location setVariable [QGVAR(pingInProgress), true, _isGlobal];
 
 // Markers are synced globally with every global command. Only needs it done via PFH.
+(position _location) params ["_xPos", "_yPos", "_zPos"];
+private _markerName = format ["%1_%2%3%4", QUOTE(ADDON), _xPos, _yPos, _zPos];
 private _marker = createMarkerLocal [_markerName, _location];
 _marker setMarkerShapeLocal "ELLIPSE";
 _marker setMarkerBrushLocal "Border";
