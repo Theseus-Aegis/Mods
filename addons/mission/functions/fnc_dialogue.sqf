@@ -23,7 +23,7 @@
  * None
  *
  * Example:
- * ["John James", "I hate all of you.", 0, 2] call MFUNC(dialogue)
+ * ["John James", "I hate all of you.", "#ffffff", 2] call MFUNC(dialogue)
  */
 
 params ["_speaker", "_message", ["_colour", "#ffffff"], ["_time", 1]];
