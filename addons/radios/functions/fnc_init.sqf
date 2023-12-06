@@ -35,7 +35,7 @@ private _play = [
                 {true},
                 {},
                 [_target, _x]
-            ] call ACEFUNC(interact_menu,createAction),
+            ] call ACEFUNC(interact_menu,createAction);
             _actions pushBack [_action, [], _target];
         } forEach GVAR(tracks);
         _actions

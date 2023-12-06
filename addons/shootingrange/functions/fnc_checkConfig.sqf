@@ -51,8 +51,8 @@ switch (_mode) do {
     };
     default {
         _textMode = "ERORR";
-        _textConfig = "ERROR",
-        _textDurationOrTargetAmount = "ERROR"
+        _textConfig = "ERROR";
+        _textDurationOrTargetAmount = "ERROR";
     };
 };
 
