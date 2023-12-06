@@ -22,6 +22,8 @@ if (isServer) then {
         GVAR(collectIntel_records) pushBack _this;
         [QGVAR(collectIntel_update), [_this]] call CBA_fnc_globalEvent;
     }] call CBA_fnc_addEventHandler;
+
+    GVAR(huntGroups) = [];
 };
 
 if (hasInterface) then {

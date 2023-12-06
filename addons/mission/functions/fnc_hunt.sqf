@@ -3,6 +3,7 @@
  * Author: Mike
  * Has an enemy group hunt a player group.
  * If no hunted group is given it will select nearest player group within a given distance and target those.
+ * Hunt groups are capped to a maximum of 6 for performance reasons.
  *
  * Call from Trigger with (isServer) check.
  *
@@ -25,6 +26,13 @@
 params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1000]];
 
 if (!isServer) exitWith {};
+
+if (count GVAR(huntGroups) >= 6) exitWith {
+    ERROR_MSG("The maximum amount of hunt groups has been reached (6)!");
+};
+
+// Add hunter group to array.
+GVAR(huntGroups) pushBack _hunters;
 
 // Headless Blacklist
 _hunters setVariable ["acex_headless_blacklist", true, true];
@@ -70,8 +78,9 @@ _hunters setCombatMode "RED";
     // Check for alive units
     private _huntersDead = {alive _x} count units _hunters == 0;
 
-    // Remove PFH.
+    // Remove PFH and remove group from array
     if (_huntersDead) then {
+        GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
         _handle call CBA_fnc_removePerFrameHandler;
     };
 }, _refresh, [_hunters, _refresh, _hunted, _searchDistance]] call CBA_fnc_addPerFrameHandler;

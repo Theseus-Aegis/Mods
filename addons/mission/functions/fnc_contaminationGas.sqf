@@ -9,7 +9,7 @@
  *
  * Arguments:
  * 0: Marker <STRING>
- * 1: Colour RGBA <ARRAY> (default: [1, 1, 0, 0.06])
+ * 1: Colour RGBA <ARRAY> (default: [1, 1, 0, 0.04])
  * 2: Gas cloud size <NUMBER> (default: 1)
  *
  * Return Value:
@@ -20,7 +20,7 @@
  * GVAR(gasOne) = ["MyMarker", [1, 1, 1, 0.04]] call MFUNC(contaminationGas)
  */
 
-params ["_marker", ["_colour", [1, 1, 0, 0.06]], ["_cloudSize", 1]];
+params ["_marker", ["_colour", [1, 1, 0, 0.04]], ["_cloudSize", 1]];
 
 // Marker shape should always be either "RECTANGLE" or "ELLIPSE"
 if (markerShape _marker == "") exitWith {
