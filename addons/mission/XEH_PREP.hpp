@@ -22,6 +22,7 @@ PREP(enableAI);
 PREP(forceShooting);
 PREP(groundFog);
 PREP(jam);
+PREP(lockDoors);
 PREP(markBuildings);
 PREP(mortarStrike);
 PREP(ping);
