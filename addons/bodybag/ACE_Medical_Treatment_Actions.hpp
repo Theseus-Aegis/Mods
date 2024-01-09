@@ -1,6 +1,7 @@
 class ACE_Medical_Treatment_Actions {
-    class BasicBandage;
-    class BodyBag: BasicBandage {
-        items[] += {QGVAR(OrangeLogo)};
+    class BodyBag;
+    class GVAR(BodyBag_Orange): BodyBag {
+        displayName = CSTRING(OrangeLogo_Place);
+        items[] = {QGVAR(OrangeLogo)};
     };
 };
