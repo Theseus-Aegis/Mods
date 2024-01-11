@@ -19,10 +19,12 @@
 params ["_vehicle", ["_removeAfterFiring", true]];
 
 // Only add to Cars that would have alarms, extra check for wheeled APCs that inherit from Car_F
-if (!_vehicle isKindOf "Car_F") exitWith {
-    ERROR_MSG("Vehicle is not a car.");
+if !(_vehicle isKindOf "Car_F") exitWith {
+    ERROR_MSG_1("Vehicle (%1) is not a car.",_vehicle);
 };
-if (_vehicle isKindOf "Wheeled_APC_F") exitWith {};
+if (_vehicle isKindOf "Wheeled_APC_F") exitWith {
+    ERROR_MSG_1("Vehicle (%1) is not a car.",_vehicle);
+};
 
 // Needs empty vehicle
 if (crew _vehicle isNotEqualTo []) exitWith {
