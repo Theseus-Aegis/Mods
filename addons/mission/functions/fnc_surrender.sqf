@@ -7,7 +7,7 @@
  *
  * Arguments:
  * 0: Group <GROUP>
- * 1: Chance <NUMBER> (default: 5)
+ * 1: Surrender Chance <NUMBER> (default: 5)
  * 2: Distance <NUMBER> (default: 400)
  * 3: Rally Chance <NUMBER> (default: 0)
  *
@@ -18,37 +18,37 @@
  * [My_Group, 50] call MFUNC(surrender)
  */
 
-params ["_group", ["_chance", 5], ["_distance", 400], ["_rally", 0]];
+params ["_group", ["_surrenderChance", 5], ["_minimumDistance", 400], ["_rallyChance", 0]];
 
-_group setVariable [QGVAR(surrenderParams), [_chance, _distance, _rally], true];
+_group setVariable [QGVAR(surrenderParams), [_surrenderChance, _minimumDistance, _rallyChance], true];
 
 {
     _x addEventHandler ["Suppressed", {
         params ["_unit", "", "_shooter"];
 
-        (group _unit getVariable [QGVAR(surrenderParams), 0]) params ["_chance", "_distance", "_rally"];
-        private _randomChance = round random 100;
-        private _rallyChance = round random 100;
+        (group _unit getVariable [QGVAR(surrenderParams), 0]) params ["_surrenderChance", "_minimumDistance", "_rallyChance"];
 
-        // Distance checks
-        private _distanceCheck = _unit distance2d _shooter;
+        // Distance Check, no point continuing if distance has failed.
+        private _distanceCheck = (_unit distance2d _shooter) > _minimumDistance;
+        if (!_distanceCheck) exitWith {};
 
-        if (_distanceCheck <= _distance) then {
-            // If the random number is lower than the chance of surrender it passes.
-            if (_randomChance < _chance) then {
-                ["ACE_captives_setSurrendered", [_unit, true], _unit] call CBA_fnc_targetEvent;
+        // % chance of surrendering and rallying.
+        private _willSurrender = random 100 < _surrenderChance;
+        private _willRally = random 100 < _rallyChance;
 
-                // If units are going to Rally don't remove EH.
-                if (_rallyChance >= _rally) then {
-                    _unit removeEventHandler [_thisEvent, _thisEventHandler];
-                };
+        if (_willSurrender) then {
+            ["ACE_captives_setSurrendered", [_unit, true], _unit] call CBA_fnc_targetEvent;
+            ["ocap_customEvent", ["generalEvent", format ["%1 has Surrendered!", name _unit]]] call CBA_fnc_serverEvent;
 
-                if (_rallyChance < _rally) then {
-                    [{
-                        params ["_unit"];
-                        ["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
-                    }, [_unit], (random 110) + 10] call CBA_fnc_waitAndExecute;
-                };
+            // If unit is going to rally, delay and un-surrender, else remove eventhandler.
+            if (_willRally) then {
+                [{
+                    params ["_unit"];
+                    ["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
+                    ["ocap_customEvent", ["generalEvent", format ["%1 has Rallied!", name _unit]]] call CBA_fnc_serverEvent;
+                }, [_unit], (random 110) + 10] call CBA_fnc_waitAndExecute;
+            } else {
+                _unit removeEventHandler [_thisEvent, _thisEventHandler];
             };
         };
     }];
