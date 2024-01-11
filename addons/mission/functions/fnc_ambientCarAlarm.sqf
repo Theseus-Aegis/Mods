@@ -30,7 +30,7 @@ if (crew _vehicle isNotEqualTo []) exitWith {
 };
 
 // Don't add event if JIP and it's already been removed.
-if (_vehicle getVariable [QGVAR(alarmEHRemoved), false] exitWith {};
+if (_vehicle getVariable [QGVAR(alarmEHRemoved), false]) exitWith {};
 
 _vehicle setVariable [QGVAR(removeAlarmEH), _removeAfterFiring];
 _vehicle setVariable [QGVAR(alarmEHRemoved), false];
