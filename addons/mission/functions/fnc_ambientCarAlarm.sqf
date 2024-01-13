@@ -36,12 +36,13 @@ if (_vehicle getVariable [QGVAR(alarmEHRemoved), false]) exitWith {};
 
 _vehicle setVariable [QGVAR(removeAlarmEH), _removeAfterFiring];
 _vehicle setVariable [QGVAR(alarmEHRemoved), false];
+_vehicle setVariable [QGVAR(alarmPlaying), false];
 
 _vehicle addEventHandler ["Hit", {
     params ["_vehicle"];
 
     // required for multiple EH firings or already playing.
-    if (GVAR(carAlarmPlaying)) exitWith {};
+    if (_vehicle getVariable [QGVAR(alarmPlaying), false]) exitWith {};
 
     // Remove EH on all other players when event fires
     if (_vehicle getVariable [QGVAR(alarmEHRemoved), false]) exitWith {
@@ -49,8 +50,7 @@ _vehicle addEventHandler ["Hit", {
     };
 
     // Block multiple alarm playings
-    GVAR(carAlarmPlaying) = true;
-    publicVariable QGVAR(carAlarmPlaying);
+    _vehicle setVariable [QGVAR(alarmPlaying), true, true];
 
     // Remove event, set variable globally to remove it when firing elsewhere.
     if (_vehicle getVariable [QGVAR(removeAlarmEH), false]) then {
@@ -61,9 +61,9 @@ _vehicle addEventHandler ["Hit", {
     // Play Sound
     [QGVAR(say3D), [_vehicle, "Orange_Car_Alarm"]] call CBA_fnc_globalEvent;
 
-    // Delay by 7s before sound can be played again (even on other vehicles)
+    // Delay by 7s before sound can be played again on this vehicle.
     [{
-        GVAR(carAlarmPlaying) = false;
-        publicVariable QGVAR(carAlarmPlaying);
-    }, [], 7] call CBA_fnc_waitAndExecute;
+        params ["_vehicle"];
+        _vehicle setVariable [QGVAR(alarmPlaying), false, true];
+    }, [_vehicle], 10] call CBA_fnc_waitAndExecute;
 }];
