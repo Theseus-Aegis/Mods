@@ -61,7 +61,7 @@ _vehicle addEventHandler ["Hit", {
     // Play Sound
     [QGVAR(say3D), [_vehicle, "Orange_Car_Alarm"]] call CBA_fnc_globalEvent;
 
-    // Delay by 7s before sound can be played again on this vehicle.
+    // Delay by 10s before sound can be played again on this vehicle.
     [{
         params ["_vehicle"];
         _vehicle setVariable [QGVAR(alarmPlaying), false, true];
