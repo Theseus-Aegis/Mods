@@ -7,5 +7,3 @@ addMissionEventHandler ["HandleDisconnect", {
         _openedObject setVariable [QGVAR(inUse), nil, true];
     };
 }];
-
-[QGVAR(talkingBoxEvent), FUNC(talkingBox)] call CBA_fnc_addEventHandler;
