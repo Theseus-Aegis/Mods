@@ -6,7 +6,11 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tac_main", "tac_armory"};
+        requiredAddons[] = {
+            "tac_main",
+            "tac_armory",
+            "tacr_sounds"
+        };
         skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Mike"};
