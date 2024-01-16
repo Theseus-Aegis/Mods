@@ -35,8 +35,3 @@ if (!hasInterface) exitWith {};
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
-
-// Talking Armory Boxes
-[QGVAR(Locker), "containerOpened", {
-    [QGVAR(talkingBoxEvent), [_this select 0]] call CBA_fnc_serverEvent;
-}, true, [], true] call CBA_fnc_addClassEventHandler;

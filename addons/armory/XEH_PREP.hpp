@@ -24,4 +24,3 @@ PREP(openCamera);
 PREP(processAction);
 PREP(subtractData);
 PREP(updateData);
-PREP(talkingBox);

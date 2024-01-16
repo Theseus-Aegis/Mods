@@ -18,7 +18,7 @@
 params ["_box"];
 
 // Handle random chance, setting is defaulted to 7%
-if (random 100 > QGVAR(talkingBoxes)) exitWith {};
+if (random 1 > GVAR(talkingBoxes)) exitWith {};
 
 // If ran out of lines, refill the array.
 if (GVAR(boxLines) isEqualTo []) then {
