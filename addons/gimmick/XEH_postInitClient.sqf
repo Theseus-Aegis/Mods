@@ -5,5 +5,5 @@ if (!hasInterface) exitWith {};
 
 // Talking Armory Boxes
 [QEGVAR(armory,Locker), "containerOpened", {
-    [QGVAR(talkingBoxEvent), [_this select 0]] call CBA_fnc_serverEvent;
+    [QGVAR(talkingBoxEvent), _this] call CBA_fnc_serverEvent;
 }, true, [], true] call CBA_fnc_addClassEventHandler;
