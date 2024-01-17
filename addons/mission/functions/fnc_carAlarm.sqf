@@ -13,7 +13,7 @@
  * None
  *
  * Examples:
- * [My_Car, false] call MFUNC(ambientCarAlarm);
+ * [My_Car, false] call MFUNC(carAlarm);
 */
 
 params ["_vehicle", ["_removeAfterFiring", true]];

@@ -8,8 +8,8 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
-PREP(ambientCarAlarm);
 PREP(bomber);
+PREP(carAlarm);
 PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
