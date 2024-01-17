@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Ambient car alarm playing on vehicle hit, handled locally per player.
+ * Car alarm playing on vehicle hit, handled locally per player.
  *
  * Call from initPlayerLocal.sqf
  *
