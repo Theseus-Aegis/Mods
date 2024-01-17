@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Gimmick">
+        <Key ID="STR_TAC_Gimmick_DisplayName">
+            <English>Gimmick</English>
+        </Key>
+        <Key ID="STR_TAC_Gimmick_talkingBoxes">
+            <English>Talking Boxes</English>
+        </Key>
+        <Key ID="STR_TAC_Gimmick_TalkingBoxesDesc">
+            <English>Chance for the Armory Boxes to speak.</English>
+        </Key>
+    </Package>
+</Project>
