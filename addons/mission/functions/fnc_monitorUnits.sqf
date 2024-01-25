@@ -30,6 +30,6 @@ switch (_type) do {
     case 1: {
         private _active = count (allUnits select {simulationEnabled _x}) - count playableUnits;
         private _inactive = count (allUnits select {!simulationEnabled _x});
-        format ["Active: %1|Inactive: %2|Hunt Groups: %3|Agents: %4", _active, _inactive, count GVAR(huntGroups), count agents]
+        format ["Active: %1|Inactive: %2|Hunt Groups: %3|Agents: %4", _active, _inactive, [count GVAR(huntGroups), "N/A"] select (isServer), count agents]
     };
 };
