@@ -8,6 +8,7 @@
  * Arguments
  * 0: Battery <OBJECT>
  * 1: Defusable Explosive <OBJECT>
+ * 2: Condition <CODE> (default: {true})
  *
  * Return Value:
  * None
@@ -16,7 +17,7 @@
  * [Battery, IED] call MFUNC(connectBatteryToDefusable)
  */
 
-params ["_battery", "_explosive"];
+params ["_battery", "_explosive", ["_condition", {true}]];
 
 private _action = [
     QGVAR(disconnectIEDAction),
@@ -36,7 +37,7 @@ private _action = [
             ["isNotSwimming"]
         ] call ACEFUNC(common,progressBar);
     },
-    {true},
+    {_condition},
     {},
     _explosive
 ] call ACEFUNC(interact_menu,createAction);

@@ -27,6 +27,10 @@ params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1
 
 if (!isServer) exitWith {};
 
+if (_hunters isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows group, detected unit.");
+};
+
 if (count GVAR(huntGroups) >= 6) exitWith {
     ERROR_MSG("The maximum amount of hunt groups has been reached (6)!");
 };

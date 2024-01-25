@@ -16,6 +16,10 @@
 
 params ["_groups"];
 
+if ((_groups select 0) isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows groups, detected unit.");
+};
+
 private _count = 0;
 
 {

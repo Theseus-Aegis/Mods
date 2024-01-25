@@ -28,6 +28,10 @@ if (isNull _group) exitWith {
     WARNING("Group does not exist.");
 };
 
+if (_group isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows group, detected unit.");
+};
+
 private _groupLeader = leader _group;
 private _playerList = [] call CBA_fnc_players;
 private _anyClose = _playerList select {_groupLeader distance _x < _distance};
