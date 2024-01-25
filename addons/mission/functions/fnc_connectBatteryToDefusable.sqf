@@ -37,7 +37,7 @@ private _action = [
             ["isNotSwimming"]
         ] call ACEFUNC(common,progressBar);
     },
-    {_condition},
+    _condition,
     {},
     _explosive
 ] call ACEFUNC(interact_menu,createAction);
