@@ -27,7 +27,7 @@ if (!is3DENPreview && {!isServer}) exitWith {};
 // Add vest, blacklist & set server as owner
 _unit addVest "Umi_Bomb_Vest_Camo";
 
-_unit setVariable ["acex_headless_blacklist", true];
+_unit setVariable ["acex_headless_blacklist", true, true];
 (group _unit) setGroupOwner 2;
 
 // Set unit speed & disable relevant AI

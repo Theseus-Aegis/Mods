@@ -18,6 +18,10 @@
 
 params ["_groups", "_time"];
 
+if ((_groups select 0) isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows groups, detected unit.");
+};
+
 {
     [{
         [_this, false] call FUNC(reinforcements);

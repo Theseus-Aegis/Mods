@@ -22,6 +22,10 @@
 
 params ["_group", ["_asleep", true], ["_time", 0]];
 
+if (_group isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows group, detected unit.");
+};
+
 private _units = units _group;
 
 if (_asleep) then {

@@ -24,6 +24,10 @@
 
 params ["_type", "_groups"];
 
+if ((_groups select 0) isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows groups, detected unit.");
+};
+
 private _type = toLower _type;
 
 // Debug for typos

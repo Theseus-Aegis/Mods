@@ -10,7 +10,6 @@ PREP(unconscious);
 // Extra
 PREP(bomber);
 PREP(carAlarm);
-PREP(caves);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
 PREP(countAlive);

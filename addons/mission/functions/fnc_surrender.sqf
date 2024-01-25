@@ -20,6 +20,10 @@
 
 params ["_group", ["_surrenderChance", 5], ["_minimumDistance", 400], ["_rallyChance", 0]];
 
+if (_group isEqualType "OBJECT") exitWith {
+    ERROR_MSG("Input only allows group, detected unit.");
+};
+
 _group setVariable [QGVAR(surrenderParams), [_surrenderChance, _minimumDistance, _rallyChance], true];
 
 {
