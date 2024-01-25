@@ -6,6 +6,8 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+GVAR(huntGroups) = [];
+
 if (isServer) then {
     // Collect Intel PreInit
     // Track picked up records on server
@@ -22,8 +24,6 @@ if (isServer) then {
         GVAR(collectIntel_records) pushBack _this;
         [QGVAR(collectIntel_update), [_this]] call CBA_fnc_globalEvent;
     }] call CBA_fnc_addEventHandler;
-
-    GVAR(huntGroups) = [];
 };
 
 if (hasInterface) then {

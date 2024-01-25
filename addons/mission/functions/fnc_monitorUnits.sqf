@@ -25,11 +25,12 @@ switch (_type) do {
         private _east = (east countSide allUnits) - (east countSide playableUnits);
         private _resistance = (resistance countSide allUnits) - (resistance countSide playableUnits);
         private _civilian = (civilian countside allUnits) - (civilian countSide playableUnits);
-        format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5", _west, _east, _resistance , _civilian, count playableUnits]
+        format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5|FPS: %6", _west, _east, _resistance , _civilian, count playableUnits, diag_fps]
     };
     case 1: {
         private _active = count (allUnits select {simulationEnabled _x}) - count playableUnits;
         private _inactive = count (allUnits select {!simulationEnabled _x});
-        format ["Active: %1|Inactive: %2|Hunt Groups: %3|Agents: %4|FPS: %5", _active, _inactive, count GVAR(huntGroups), count agents, diag_fps]
+        private _huntGroups = [count GVAR(huntGroups), "N/A"] select (isServer);
+        format ["Active: %1|Inactive: %2|Hunt Groups: %3|Agents: %4", _active, _inactive, _huntGroups, count agents]
     };
 };
