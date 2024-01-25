@@ -41,7 +41,7 @@ private _medicalItems = [
     "ACE_quikclot"
 ];
 
-[_object, _medicalItems, true] call ACEFUNC(arsenal,addVirtualItems);
+[_object, _medicalItems] call ACEFUNC(arsenal,addVirtualItems);
 
 private _action = [
     QGVAR(medicalArsenal),
