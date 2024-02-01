@@ -23,7 +23,7 @@ params ["_player", ["_colour", [1, 1, 1, 0.04]], ["_condition", {true}]];
 if (_player getVariable [QGVAR(groundFogLastChange), -1] < CBA_missionTime) then {
     _player setVariable [QGVAR(groundFogLastChange), CBA_missionTime + 5];
 
-    private _vehicleCheck = vehicle _player == _player;
+    private _vehicleCheck = isNull objectParent _player;
     private _obj = [_player, vehicle _player] select (_vehicleCheck);
     private _pos = position _obj;
     private _fog1 = "#particlesource" createVehicleLocal _pos;
