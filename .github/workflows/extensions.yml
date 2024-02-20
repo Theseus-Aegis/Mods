@@ -41,5 +41,5 @@ jobs:
       run: mkdir release && cp extensions/target/release/${{ matrix.from }} release/tac_apollo_client${{ matrix.to }}
     - uses: actions/upload-artifact@v4
       with:
-        name: extensions-${{ github.sha }}
+        name: extensions-${{ matrix.toolchain }}-${{ github.sha }}
         path: release
