@@ -86,7 +86,7 @@ private _triggerMarkersFiltered = _triggerMarkers apply {
     };
 };
 if (count _triggerMarkers != count _triggerMarkersFiltered) then {
-    ERROR_1("Invalid triggers in Trigger Markers! Make sure all triggers are correctly set! (%1)", _name);
+    ERROR_1("Invalid triggers in Trigger Markers! Make sure all triggers are correctly set! (%1)",_name);
 };
 _triggerMarkers = _triggerMarkersFiltered;
 
