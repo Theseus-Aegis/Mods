@@ -53,7 +53,7 @@ _marker setMarkerColorLocal _colour;
     };
 
     private _size = ((getMarkerSize _marker) select 0) + 1;
-    if (_size > 60) exitWith {
+    if (_size > _maxSize) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         deleteMarker _marker;
 
