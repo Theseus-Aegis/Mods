@@ -29,6 +29,6 @@ private _type = toUpper _type;
 
 {
     {
-        _x disableAI _type;
+        [QGVAR(disableAI), [_x, _type]] call CBA_fnc_globalEvent;
     } forEach (units _x);
 } forEach _groups;
