@@ -8,6 +8,7 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(blacklistHC);
 PREP(bomber);
 PREP(carAlarm);
 PREP(connectBatteryToDefusable);
