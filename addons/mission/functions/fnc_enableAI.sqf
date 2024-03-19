@@ -21,8 +21,6 @@
 
 params ["_groupsOrUnits", "_feature"];
 
-private _feature = toUpper _feature;
-
 {
     if (_x isEqualType objNull) then {
         _x enableAI _feature;
