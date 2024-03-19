@@ -16,7 +16,7 @@
 
 params [["_skipPilots", false]];
 
-private _players = (call CBA_fnc_players) select {!(_x getVariable ["ace_spectator_isSet", false]);
+private _players = (call CBA_fnc_players) select {!(_x getVariable ["ace_spectator_isSet", false])};
 
 if (_skipPilots) then {
     _players = _players select {isTouchingGround _x};
