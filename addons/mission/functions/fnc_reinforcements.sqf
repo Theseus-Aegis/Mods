@@ -5,58 +5,46 @@
  * Call from initServer.sqf
  *
  * Arguments:
- * 0: Group <GROUP>
- * 1: Disable <BOOL>
+ * 0: Groups <ARRAY>
+ * 1: Disable <BOOL> (default: true)
  * 2: Distance <NUMBER> (default: 0)
- * 3: Move to Nearest Player <BOOL> (default: false)
- * 4: Distance to search for player <NUMBER> (default: 1000)
  *
  * Return Value:
  * None
  *
  * Example:
- * [Test_Group_1, true] call MFUNC(reinforcements)
- * [Test_Group_1, false] call MFUNC(reinforcements)
- * [Test_Group_1, false, 50] call MFUNC(reinforcements)
- * [Test_Group_1, false, 0, true, 2000] call MFUNC(reinforcements)
+ * [[Group_1, Group_2]] call MFUNC(reinforcements)
+ * [[Group_1, Group_2], false] call MFUNC(reinforcements)
+ * [[Group_1, Group_2], false, 50] call MFUNC(reinforcements)
  */
 
-params [["_group", grpNull], "_state", ["_distance", 0], ["_moveToPlayer", false], ["_searchDistance", 1000]];
+params [["_groups", []], ["_state", true], ["_distance", 0]];
 
 if (!isServer) exitWith {};
-if (isNull _group) exitWith {
-    WARNING("Group does not exist.");
+
+// Backward compatibility
+if (_groups isEqualType grpNull) then {
+    _groups = [_groups];
 };
 
-if (_group isEqualType "OBJECT") exitWith {
-    ERROR_MSG("Input only allows group, detected unit.");
-};
+{
+    private _groupLeader = leader _x;
+    private _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
 
-private _groupLeader = leader _group;
-private _playerList = [] call CBA_fnc_players;
-private _anyClose = _playerList select {_groupLeader distance _x < _distance};
+    if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
+        {
+            _x enableSimulationGlobal !_state;
+            _x hideObjectGlobal _state;
 
-if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
-    {
-        _x enableSimulationGlobal !_state;
-        _x hideObjectGlobal _state;
-
-        private _vehicle = vehicle _x;
-        if (_vehicle != _x && {simulationEnabled _vehicle == _state}) then {
-            _vehicle enableSimulationGlobal !_state;
-            _vehicle hideObjectGlobal _state;
-        };
-    } forEach (units _group);
-
-    // Orders reinforcement group to hunt nearest player group.
-    if (_moveToPlayer) then {
-        [{
-            params ["_group", "_searchDistance"];
-            [_group, nil, nil, _searchDistance] call FUNC(hunt);
-        }, [_group, _searchDistance], (random 1) + 10] call CBA_fnc_waitAndExecute;
+            private _vehicle = vehicle _x;
+            if (_vehicle != _x && {simulationEnabled _vehicle == _state}) then {
+                _vehicle enableSimulationGlobal !_state;
+                _vehicle hideObjectGlobal _state;
+            };
+        } forEach (units _x);
+    } else {
+        private _groupName = groupID _x;
+        private _groupSide = side _x;
+        WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
     };
-} else {
-    private _groupName = groupID _group;
-    private _groupSide = side _group;
-    WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
-};
+} forEach _groups;
