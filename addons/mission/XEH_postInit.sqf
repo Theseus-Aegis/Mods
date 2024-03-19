@@ -18,6 +18,9 @@ if (isServer) then {
 // Exit if not player client
 if (!hasInterface) exitWith {};
 
+HLC_ShowBarrelActions = false; // Remove NiArms Barrel Actions
+CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels (bad performance script)
+
 // Collect Intel: Request intel collected so far
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
 
