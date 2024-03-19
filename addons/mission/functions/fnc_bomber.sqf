@@ -45,9 +45,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     _args params ["_unit", "_detonateRadius", "_activateDistance", "_screamingDistance", "_time", "_nearest", "_randomExplosive"];
 
     if (isNull _nearest) exitWith {
-        private _players = (call CBA_fnc_players) select {
-            isTouchingGround _x && {(_unit distance _x) < _activateDistance}
-        };
+        private _players = (true call FUNC(players)) select {(_unit distance _x) < _activateDistance};
 
         if (_players isNotEqualTo []) then {
             _args set [5,  selectRandom _players];
