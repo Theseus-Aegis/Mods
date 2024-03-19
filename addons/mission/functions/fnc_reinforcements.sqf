@@ -28,6 +28,10 @@ if (_groups isEqualType grpNull) then {
 };
 
 {
+    if (_x isEqualType "OBJECT") exitWith {
+        ERROR_MSG("Input only accepts Groups, detected unit");
+    };
+
     private _groupLeader = leader _x;
     private _playerList = [] call CBA_fnc_players;
     private _anyClose = _playerList select {_groupLeader distance _x < _distance};
@@ -48,4 +52,4 @@ if (_groups isEqualType grpNull) then {
         private _groupSide = side _x;
         WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
     };
-} forEach [_groups];
+} forEach _groups;
