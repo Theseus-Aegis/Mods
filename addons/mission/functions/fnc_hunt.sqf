@@ -9,7 +9,7 @@
  *
  * Arguments
  * 0: Hunter Group <GROUP>
- * 1: Waypoint Refresh <NUMBER> (Optional - Default: 5)
+ * 1: Waypoint Refresh <NUMBER> (Optional - Default: 10)
  * 2: Hunted Group <GROUP> (Optional - Default grpNull)
  * 2: Search Distance <NUMBER> (Optional - Default 1000)
  *
@@ -23,7 +23,7 @@
  * [Enemy_Group, nil, nil, 2000] call MFUNC(hunt)
  */
 
-params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1000]];
+params ["_hunters", ["_refresh", 10], ["_hunted", grpNull], ["_searchDistance", 1000]];
 
 if (!isServer) exitWith {};
 
@@ -40,9 +40,6 @@ GVAR(huntGroups) pushBack _hunters;
 
 // Headless Blacklist
 _hunters setVariable ["acex_headless_blacklist", true, true];
-
-// Switch locality back to server
-_hunters setGroupOwner 2;
 
 // Disable Fleeing
 {
@@ -77,6 +74,7 @@ _hunters setCombatMode "RED";
         // Move to estimated hunted leader position
         private _huntedPos = _huntedLeader getPos [random 100, random 360];
         _hunterUnits doMove _huntedPos;
+        _hunters setSpeedMode "FULL";
     };
 
     // Check for alive units
