@@ -30,7 +30,7 @@ _unit addVest "Umi_Bomb_Vest_Camo";
 // Should happen before any HC transfer.
 _unit setVariable ["acex_headless_blacklist", true, true];
 
-_unit setSpeaker "ACE_NoVoice";
+["ace_common_setSpeaker", [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
 
 {
     _unit disableAI _x
