@@ -27,10 +27,7 @@ if (!is3DENPreview && {!isServer}) exitWith {};
 // Add vest
 _unit addVest "Umi_Bomb_Vest_Camo";
 
-// Should happen before any HC transfer.
-_unit setVariable ["acex_headless_blacklist", true, true];
-
-["ace_common_setSpeaker", [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
+[QACEGVAR(common,setSpeaker), [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
 
 {
     _unit disableAI _x
@@ -44,7 +41,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     _args params ["_unit", "_detonateRadius", "_activateDistance", "_screamingDistance", "_time", "_nearest", "_randomExplosive"];
 
     if (isNull _nearest) exitWith {
-        private _players = (true call FUNC(players)) select {(_unit distance _x) < _activateDistance};
+        private _players = ([true] call FUNC(players)) select {(_unit distance _x) < _activateDistance};
 
         if (_players isNotEqualTo []) then {
             _args set [5,  selectRandom _players];
@@ -52,8 +49,8 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     };
 
     if (CBA_missionTime >= _time + 5) then {
-        [QGVAR(doMove), [_unit, (position _nearest)], _unit] call CBA_fnc_targetEvent;
-        _unit setSpeedMode "FULL";
+        [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 

@@ -5,7 +5,7 @@
  * If no hunted group is given it will select nearest player group within a given distance and target those.
  * Hunt groups are capped to a maximum of 6 for performance reasons.
  *
- * Call from Trigger with (isServer) check.
+ * Call on the server.
  *
  * Arguments
  * 0: Hunter Group <GROUP>
@@ -27,11 +27,6 @@ params ["_hunters", ["_refresh", 10], ["_hunted", grpNull], ["_searchDistance", 
 
 if (!isServer) exitWith {};
 
-// HC check
-if !(leader _hunters getVariable ["acex_headless_blacklist", false]) exitWith {
-    ERROR_MSG("Function requires HC blacklist to work.");
-};
-
 if (_hunters isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows group, detected unit.");
 };
@@ -43,13 +38,9 @@ if (count GVAR(huntGroups) >= 6) exitWith {
 // Add hunter group to array.
 GVAR(huntGroups) pushBack _hunters;
 
-// Disable Fleeing
-{
-    _x allowFleeing 0;
-} forEach (units _hunters);
-
-_hunters setSpeedMode "FULL";
-_hunters setCombatMode "RED";
+// Disable Fleeing & Set combat mode.
+[QGVAR(setCombatMode), [_hunters, "RED"], _hunters] call CBA_fnc_targetEvent;
+[QGVAR(allowFleeing), [_hunters, 0], _hunters] call CBA_fnc_targetEvent;
 
 // PFH for movement
 [{
@@ -59,22 +50,22 @@ _hunters setCombatMode "RED";
     // Select closest player group
     if (isNull _hunted) then {
         private _hunterLeader = leader _hunters;
-        private _players = (true call FUNC(players)) select {(_hunterLeader distance _x) < _searchDistance};
+        private _players = ([true] call FUNC(players)) select {(_hunterLeader distance _x) < _searchDistance};
 
         if (_players isNotEqualTo []) then {
             private _hunted = group (selectRandom _players);
             _args set [2, _hunted];
+            [QGVAR(setCombatMode), [_hunters, "RED"], _hunters] call CBA_fnc_targetEvent;
+            [QGVAR(allowFleeing), [_hunters, 0], _hunters] call CBA_fnc_targetEvent;
         };
     } else {
-        // Get hunted Leader
         private _huntedLeader = leader _hunted;
-        // doMove needs an array
-        private _hunterUnits = units _hunters;
+        private _hunterUnits = units _hunters; // doMove needs an array
 
         // Move to estimated hunted leader position
         private _huntedPos = _huntedLeader getPos [random 100, random 360];
-        _hunterUnits doMove _huntedPos;
-        _hunters setSpeedMode "FULL";
+        [QGVAR(doMove), [_hunterUnits, _huntedPos], _hunters] call CBA_fnc_targetEvent;
+        [QGVAR(setSpeedMode), [_hunters, "FULL"], _hunters] call CBA_fnc_targetEvent;
     };
 
     // Check for alive units

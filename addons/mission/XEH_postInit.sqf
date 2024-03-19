@@ -10,25 +10,15 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
-[QGVAR(say3D), {
-    params ["_unit", "_sound"];
-    _unit say3D _sound;
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(doMove), {
-    params ["_unit", "_position"];
-    _unit doMove _position;
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(disableAI), {
-    params ["_unit", "_feature"];
-    _unit disableAI _feature;
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(enableAI), {
-    params ["_unit", "_feature"];
-    _unit enableAI _feature;
-}] call CBA_fnc_addEventHandler;
+[QGVAR(allowFleeing), {(_this select 0) allowFleeing (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(disableAI), {(_this select 0) disableAI (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(doArtilleryFire), {(_this select 0) doArtilleryFire (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(doMove), {(_this select 0) doMove (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(enableAI), {(_this select 0) enableAI (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(setCombatMode), {(_this select 0) setCombatMode  (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(setSpeedMode), {(_this select 0) setSpeedMode (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(setVehicleAmmo), {(_this select 0) setVehicleAmmo (_this select 1)}] call CBA_fnc_addEventHandler;
 
 // Exit if not player client
 if (!hasInterface) exitWith {};

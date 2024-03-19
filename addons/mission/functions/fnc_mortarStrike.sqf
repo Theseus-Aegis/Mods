@@ -27,12 +27,6 @@ params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0]];
 
 if (!isServer) exitWith {};
 
-private _gunner = gunner _mortar;
-
-if !(_gunner getVariable ["acex_headless_blacklist", false]) exitWith {
-    ERROR_MSG("Function requires HC blacklist to work.");
-};
-
 // MK6 Mortar
 private _ammoTypes = ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"];
 private _delay = 2.5;
@@ -43,6 +37,7 @@ if (_mortar isKindOf "CUP_D30_base") then {
     _delay = 5;
 };
 
+private _gunner = gunner _mortar;
 private _ammo = _ammoTypes select _ammoType;
 private _eta = 0;
 
@@ -75,8 +70,8 @@ for "_i" from 0 to _amount - 1 do {
     _eta = floor (_mortar getArtilleryETA [_position, _ammo]);
     [{
         params ["_mortar", "_position", "_ammo", "_gunner"];
-        _gunner doArtilleryFire [_position, _ammo, 1];
-        _mortar setVehicleAmmo 1;
+        [QGVAR(doArtilleryFire), [_gunner, [_position, _ammo, 1]], _gunner] call CBA_fnc_targetEvent;
+        [QGVAR(setVehicleAmmo), [_mortar, 1], _mortar] call CBA_fnc_targetEvent;
     }, [_mortar, _position, _ammo, _gunner], _i * _delay] call CBA_fnc_waitAndExecute;
 };
 
