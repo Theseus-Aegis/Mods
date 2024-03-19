@@ -5,7 +5,7 @@
  *
  * Types are on the wiki https://community.bistudio.com/wiki/disableAI
  *
- * Call from init.sqf
+ * Call from initServer.sqf
  *
  * Arguments:
  * 0: Groups <ARRAY>
@@ -20,6 +20,8 @@
  */
 
 params ["_groups", "_type"];
+
+if (!isServer) exitWith {};
 
 if ((_groups select 0) isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows groups, detected unit.");
