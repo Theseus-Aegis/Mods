@@ -8,19 +8,18 @@
  * Call from initPlayerLocal.sqf
  *
  * Arguments:
- * 0: Markers <ARRAY>
- * 1: Damage Per Tick <NUMBER> (default: 0.15)
- * 2: Damage Tick Rate <NUMBER> (default: 10)
+ * 0: Damage Per Tick <NUMBER> (default: 0.15)
+ * 1: Damage Tick Rate <NUMBER> (default: 10)
  *
  * Return Value:
  * None
  *
  * Example:
- * [["MyMarker"]] call MFUNC(respiratorEffects)
- * [["MyMarker", "MyMarkerTwo"], 0.6, 5] call MFUNC(respiratorEffects)
+ * [] call MFUNC(respiratorEffects)
+ * [0.6, 5] call MFUNC(respiratorEffects)
  */
 
-params ["_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10]];
+params [["_damagePerTick", 0.15], ["_damageTickRate", 10]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
@@ -38,9 +37,14 @@ if (isNil QGVAR(respiratorMasks)) then {
     GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
 };
 
+// Error if no markers exist.
+if (isNil QGVAR(respiratorMarkers)) exitWith {
+    ERROR_MSG("No markers provided.");
+};
+
 [{
     params ["_args", "_handle"];
-    _args params ["_markers", "_damagePerTick", "_damageTickRate"];
+    _args params ["_damagePerTick", "_damageTickRate"];
 
     private _goggles = toLower (goggles ace_player);
 
@@ -67,7 +71,7 @@ if (isNil QGVAR(respiratorMasks)) then {
         };
 
         // Damage
-        if ((_markers findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
+        if ((GVAR(respiratorMarkers) findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
             GVAR(maskCounter) = CBA_missionTime;
 
             private _bodypart = selectRandom ["Head", "Body"];
@@ -81,4 +85,4 @@ if (isNil QGVAR(respiratorMasks)) then {
     };
 
     GVAR(oldGlasses) = _goggles;
-} , 1, [_markers, _damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
+} , 1, [_damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
