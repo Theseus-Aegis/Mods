@@ -30,7 +30,6 @@ _unit addVest "Umi_Bomb_Vest_Camo";
 // Should happen before any HC transfer.
 _unit setVariable ["acex_headless_blacklist", true, true];
 
-
 _unit setSpeaker "ACE_NoVoice";
 
 {
@@ -62,13 +61,11 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     private _unitPos = getPosATL _unit;
     private _unconscious = _unit getVariable ["ACE_isUnconscious", false];
 
-    // If unconscious remove PFH and explode randomly within 5 minutes
+    // If unconscious remove PFH and explode
     if (_unconscious) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         _unit setDamage 1;
-        [{
-            [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
-        }, [_unit, _randomExplosive, _unitPos], random 300] call CBA_fnc_waitAndExecute;
+        [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
     };
 
     // Screaming
