@@ -82,4 +82,4 @@ if (isNil QGVAR(respiratorMasks)) then {
     };
 
     GVAR(oldGlasses) = _goggles;
-} , 1, [_damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
