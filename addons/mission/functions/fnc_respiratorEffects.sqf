@@ -10,6 +10,7 @@
  * Arguments:
  * 0: Damage Per Tick <NUMBER> (default: 0.15)
  * 1: Damage Tick Rate <NUMBER> (default: 10)
+ * 2: Use Additional Effect <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -19,7 +20,7 @@
  * [0.6, 5] call MFUNC(respiratorEffects)
  */
 
-params [["_damagePerTick", 0.15], ["_damageTickRate", 10]];
+params [["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
@@ -39,7 +40,7 @@ if (isNil QGVAR(respiratorMasks)) then {
 
 [{
     params ["_args", "_handle"];
-    _args params ["_damagePerTick", "_damageTickRate"];
+    _args params ["_damagePerTick", "_damageTickRate", "_additionalEffect"];
 
     private _goggles = toLower (goggles ace_player);
 
@@ -56,13 +57,19 @@ if (isNil QGVAR(respiratorMasks)) then {
         // Add Mask
         if (GVAR(oldGlasses) != _goggles) then {
             playSound "tacr_gasmask_on";
-            "tacr_gasmask_overlay" cutRsc ["tacr_gasmask", "PLAIN", 1, false];
+            "tacr_gasmask_overlay" cutRsc ["tacr_gasmask", "PLAIN", 1, false, false]; // Main effect
+            if (_additionalEffect) then {
+                "tacr_gasmask_overlayAdditional" cutRsc ["RscCBRN_Regulator", "PLAIN", 1, false, false]; // Additional effect
+            };
         };
     } else {
         // Mask Removal
         if (GVAR(oldGlasses) in GVAR(respiratorMasks)) then {
             playSound "tacr_gasmask_off";
             "tacr_gasmask_overlay" cutFadeOut 0;
+            if (_additionalEffect) then {
+                "tacr_gasmask_overlayAdditional" cutFadeOut 0;
+            };
         };
 
         // Damage
@@ -79,7 +86,10 @@ if (isNil QGVAR(respiratorMasks)) then {
     // failsafe if player dies and mask overlay doesn't get removed.
     if (!alive ace_player) exitWith {
         "tacr_gasmask_overlay" cutFadeOut 0;
+        if (_additionalEffect) then {
+            "tacr_gasmask_overlayAdditional" cutFadeOut 0;
+        };
     };
 
     GVAR(oldGlasses) = _goggles;
-}, 1, [_damagePerTick, _damageTickRate]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_damagePerTick, _damageTickRate, _additionalEffect]] call CBA_fnc_addPerFrameHandler;
