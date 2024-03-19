@@ -12,7 +12,7 @@
  * None
  *
  * Examples:
- * [[My_Group_1, My_Unit_1]] call MFUNC(blacklistHC)
+ * [[My_Group_1, My_Unit_1]] call MFUNC(blacklistHeadless)
  */
 
 params [["_groupsOrUnits", []]];
