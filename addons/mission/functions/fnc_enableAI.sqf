@@ -1,34 +1,32 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Faster method of using enableAI command with groups.
+ * Faster method of using enableAI command.
  *
- * Types are on the wiki https://community.bistudio.com/wiki/disableAI
+ * Features are on the wiki https://community.bistudio.com/wiki/disableAI
  *
  * Call from init.sqf
  *
  * Arguments:
- * 0: Groups <ARRAY>
- * 1: Type <STRING>
+ * 0: Groups or Units <ARRAY>
+ * 1: Feature <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
  * [[My_Group_One, My_Group_Two], "PATH"] call MFUNC(enableAI)
- * [[My_Group_One, My_Group_Two], "AUTOCOMBAT"] call MFUNC(enableAI)
+ * [[My_Group_One, My_Unit_One], "AUTOCOMBAT"] call MFUNC(enableAI)
  */
 
-params ["_groups", "_type"];
-
-if ((_groups select 0) isEqualType "OBJECT") exitWith {
-    ERROR_MSG("Input only allows groups, detected unit.");
-};
-
-private _type = toUpper _type;
+params ["_groupsOrUnits", "_feature"];
 
 {
-    {
-        _x enableAI _type;
-    } forEach (units _x);
-} forEach _groups;
+    if (_x isEqualType objNull) then {
+        _x enableAI _feature;
+    } else {
+        {
+            _x enableAI _feature;
+        } forEach (units _x);
+    };
+} forEach _groupsOrUnits;
