@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: Mike, Jonpas
  * Orders mortars to fire on an area. Each round will be fired at a different point on a random marker provided.
