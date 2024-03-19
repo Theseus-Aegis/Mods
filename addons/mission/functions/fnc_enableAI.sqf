@@ -5,7 +5,7 @@
  *
  * Types are on the wiki https://community.bistudio.com/wiki/disableAI
  *
- * Call from initServer.sqf
+ * Call from init.sqf
  *
  * Arguments:
  * 0: Groups <ARRAY>
@@ -21,8 +21,6 @@
 
 params ["_groups", "_type"];
 
-if (!isServer) exitWith {};
-
 if ((_groups select 0) isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows groups, detected unit.");
 };
@@ -31,6 +29,6 @@ private _type = toUpper _type;
 
 {
     {
-        [QGVAR(enableAI), [_x, _type]] call CBA_fnc_globalEvent;
+        _x enableAI _type;
     } forEach (units _x);
 } forEach _groups;

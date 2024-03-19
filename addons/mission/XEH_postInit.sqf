@@ -17,13 +17,11 @@ if (isServer) then {
 
 [QGVAR(disableAI), {
     params ["_unit", "_feature"];
-
     _unit disableAI _feature;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(enableAI), {
     params ["_unit", "_feature"];
-
     _unit enableAI _feature;
 }] call CBA_fnc_addEventHandler;
 
