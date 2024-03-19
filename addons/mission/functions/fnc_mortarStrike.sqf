@@ -26,9 +26,11 @@ params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0]];
 
 if (!isServer) exitWith {};
 
-// HC blacklist
 private _gunner = gunner _mortar;
-_gunner setVariable ["acex_headless_blacklist", true, true];
+
+if !(_gunner getVariable ["acex_headless_blacklist", false]) exitWith {
+    ERROR_MSG("Function requires HC blacklist to work.");
+};
 
 // MK6 Mortar
 private _ammoTypes = ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"];
