@@ -26,6 +26,7 @@ PREP(lockDoors);
 PREP(markBuildings);
 PREP(mortarStrike);
 PREP(ping);
+PREP(players);
 PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
