@@ -15,6 +15,11 @@ if (isServer) then {
     _unit say3D _sound;
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(doMove), {
+    params ["_unit", "_position"];
+    _unit doMove _position;
+}] call CBA_fnc_addEventHandler;
+
 // Exit if not player client
 if (!hasInterface) exitWith {};
 

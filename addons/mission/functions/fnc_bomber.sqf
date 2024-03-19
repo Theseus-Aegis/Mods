@@ -52,7 +52,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     };
 
     if (CBA_missionTime >= _time + 5) then {
-        _unit doMove (position _nearest);
+        [QGVAR(doMove), [_unit, (position _nearest)], _unit] call CBA_fnc_targetEvent;
         _unit setSpeedMode "FULL";
         _args set [4, CBA_missionTime];
     };
