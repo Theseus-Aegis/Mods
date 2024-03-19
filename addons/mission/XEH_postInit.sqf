@@ -15,6 +15,16 @@ if (isServer) then {
     _unit say3D _sound;
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(disableAI), {
+    params ["_unit", "_feature"];
+    _unit disableAI _feature;
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(enableAI), {
+    params ["_unit", "_feature"];
+    _unit enableAI _feature;
+}] call CBA_fnc_addEventHandler;
+
 // Exit if not player client
 if (!hasInterface) exitWith {};
 
