@@ -28,10 +28,6 @@ if (_groups isEqualType grpNull) then {
 };
 
 {
-    if (_x isEqualType "OBJECT") exitWith {
-        ERROR_MSG("Input only accepts Groups, detected unit");
-    };
-
     private _groupLeader = leader _x;
     private _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
 
