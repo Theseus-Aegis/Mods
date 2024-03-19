@@ -33,8 +33,7 @@ if (_groups isEqualType grpNull) then {
     };
 
     private _groupLeader = leader _x;
-    private _playerList = [] call CBA_fnc_players;
-    private _anyClose = _playerList select {_groupLeader distance _x < _distance};
+    private _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
 
     if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
         {
