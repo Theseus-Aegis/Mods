@@ -18,8 +18,8 @@
  * [ETA, Amount] <ARRAY>
  *
  * Examples:
- * [My_Mortar, ["My_Marker", "My_Marker_1"], 5, 0] call MFUNC(mortarStrike);
- * [My_Mortar, GVAR(markerArray)] call MFUNC(mortarStrike);
+ * [My_Mortar, ["My_Marker", "My_Marker_1"], 5, 0] call MFUNC(mortarStrike)
+ * [My_Mortar, GVAR(markerArray)] call MFUNC(mortarStrike)
  */
 
 params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0]];
