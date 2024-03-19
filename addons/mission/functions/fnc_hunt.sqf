@@ -27,6 +27,11 @@ params ["_hunters", ["_refresh", 10], ["_hunted", grpNull], ["_searchDistance", 
 
 if (!isServer) exitWith {};
 
+// HC check
+if !(leader _hunters getVariable ["acex_headless_blacklist", false]) exitWith {
+    ERROR_MSG("Function requires HC blacklist to work.");
+};
+
 if (_hunters isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows group, detected unit.");
 };
@@ -37,9 +42,6 @@ if (count GVAR(huntGroups) >= 6) exitWith {
 
 // Add hunter group to array.
 GVAR(huntGroups) pushBack _hunters;
-
-// Headless Blacklist
-_hunters setVariable ["acex_headless_blacklist", true, true];
 
 // Disable Fleeing
 {
@@ -76,10 +78,10 @@ _hunters setCombatMode "RED";
     };
 
     // Check for alive units
-    private _huntersDead = {alive _x} count units _hunters == 0;
+    private _huntersDead = [[_hunters]] call FUNC(countAlive);
 
     // Remove PFH and remove group from array
-    if (_huntersDead) then {
+    if (_huntersDead == 0) then {
         GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
         _handle call CBA_fnc_removePerFrameHandler;
     };
