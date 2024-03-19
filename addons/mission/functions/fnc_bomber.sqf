@@ -24,14 +24,13 @@ params ["_unit", ["_detonateRadius", 10], ["_activateDistance", 100], ["_screami
 
 if (!is3DENPreview && {!isServer}) exitWith {};
 
-// Add vest, blacklist & set server as owner
+// Add vest
 _unit addVest "Umi_Bomb_Vest_Camo";
 
+// Should happen before any HC transfer.
 _unit setVariable ["acex_headless_blacklist", true, true];
-(group _unit) setGroupOwner 2;
 
-// Set unit speed & disable relevant AI
-_unit setSpeedMode "FULL";
+
 _unit setSpeaker "ACE_NoVoice";
 
 {
@@ -57,6 +56,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
 
     if (CBA_missionTime >= _time + 5) then {
         _unit doMove (position _nearest);
+        _unit setSpeedMode "FULL";
         _args set [4, CBA_missionTime];
     };
 
