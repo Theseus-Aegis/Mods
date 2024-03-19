@@ -37,11 +37,6 @@ if (isNil QGVAR(respiratorMasks)) then {
     GVAR(respiratorMasks) = ["g_airpurifyingrespirator_01_f", "g_airpurifyingrespirator_02_black_f", "g_airpurifyingrespirator_02_olive_f", "g_airpurifyingrespirator_02_sand_f", "g_regulatormask_f"];
 };
 
-// Error if no markers exist.
-if (isNil QGVAR(respiratorMarkers)) exitWith {
-    ERROR_MSG("No markers provided.");
-};
-
 [{
     params ["_args", "_handle"];
     _args params ["_damagePerTick", "_damageTickRate"];
@@ -71,11 +66,13 @@ if (isNil QGVAR(respiratorMarkers)) exitWith {
         };
 
         // Damage
-        if ((GVAR(respiratorMarkers) findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
-            GVAR(maskCounter) = CBA_missionTime;
+        if (!isNil QGVAR(respiratorMarkers)) then {
+            if ((GVAR(respiratorMarkers) findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
+                GVAR(maskCounter) = CBA_missionTime;
 
-            private _bodypart = selectRandom ["Head", "Body"];
-            [ace_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
+                private _bodypart = selectRandom ["Head", "Body"];
+                [ace_player, _damagePerTick, _bodyPart, "burn"] call ACEFUNC(medical,addDamageToUnit);
+            };
         };
     };
 
