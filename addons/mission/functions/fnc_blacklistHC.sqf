@@ -6,21 +6,17 @@
  * Call from initServer on mission start.
  *
  * Arguments:
- * 0: Groups <ARRAY>
+ * 0: Groups or Units <ARRAY>
  *
  * Return Value:
  * None
  *
  * Examples:
- * [[My_Group_1, My_Group_2]] call MFUNC(blacklistHC)
+ * [[My_Group_1, My_Unit_1]] call MFUNC(blacklistHC)
  */
 
-params [["_groups", []]];
+params [["_groupsOrUnits", []]];
 
-// Cover both cases.
 {
     _x setVariable ["acex_headless_blacklist", true, true];
-    {
-        _x setVariable ["acex_headless_blacklist", true, true];
-    } forEach (units _x);
-} forEach _groups;
+} forEach _groupsOrUnits;
