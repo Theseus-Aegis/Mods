@@ -17,6 +17,8 @@
 
 params [["_groupsOrUnits", []]];
 
+if (!isServer) exitWith {};
+
 {
     _x setVariable ["acex_headless_blacklist", true, true];
 } forEach _groupsOrUnits;
