@@ -15,7 +15,8 @@
  * 3: Ammo Type <NUMBER>
  *
  * Return Value:
- * [ETA, Amount] <ARRAY>
+ * 0: ETA (seconds) <NUMBER>
+ * 1: Amount <NUMBER>
  *
  * Examples:
  * [My_Mortar, ["My_Marker", "My_Marker_1"], 5, 0] call MFUNC(mortarStrike)
