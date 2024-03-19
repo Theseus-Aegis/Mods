@@ -20,8 +20,21 @@ if (isServer) then {
     _unit doMove _position;
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(disableAI), {
+    params ["_unit", "_feature"];
+    _unit disableAI _feature;
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(enableAI), {
+    params ["_unit", "_feature"];
+    _unit enableAI _feature;
+}] call CBA_fnc_addEventHandler;
+
 // Exit if not player client
 if (!hasInterface) exitWith {};
+
+HLC_ShowBarrelActions = false; // Remove NiArms Barrel Actions
+CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels (bad performance script)
 
 // Collect Intel: Request intel collected so far
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
