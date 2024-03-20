@@ -22,7 +22,7 @@
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-    private _players = [true] call MFUNC(players);
+    private _players = [true] call EFUNC(mission,players);
     if (_players isEqualTo []) exitWith {};
 
     {
