@@ -10,5 +10,5 @@
         if (_value) then {
             call FUNC(moveHeadless);
         };
-    };
+    }
 ] call CBA_fnc_addSetting;
