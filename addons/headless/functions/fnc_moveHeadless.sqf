@@ -15,7 +15,7 @@
  * Public: No
  */
 
-if (!GVAR(moveHeadless)) exitWith {
+if (!GVAR(moveHeadless) || !acex_headless_enabled) exitWith {
     GVAR(moveHeadlessThread) = false;
 };
 
@@ -57,6 +57,6 @@ private _position = [_positionX, _positionY, 0]; // always at ground level
     };
 
     _x setPosASL (AGLToASL _position);
-} forEach (entities "HeadlessClient_F");
+} forEach ACEGVAR(headless,headlessClients);
 
 [FUNC(moveHeadless), [], 60] call CBA_fnc_waitAndExecute;
