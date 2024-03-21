@@ -22,11 +22,12 @@
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-    private _players = [true] call EFUNC(mission,players);
+    private _playersAll = (call CBA_fnc_players) select {!(_x getVariable [QACEGVAR(spectator,isSet), false])};
+    private _players = _playersAll select {isTouchingGround (vehicle _x)};
 
-    // If ground players are minority (<20%), include air as well
-    if (count _players < 0.2 * count (call CBA_fnc_players)) then {
-        _players = [] call EFUNC(mission,players);
+    // If ground players are minority (<20%), include air/water as well
+    if (count _players < 0.2 * (count _playersAll)) then {
+        _players = _playersAll;
     };
 
     if (_players isEqualTo []) exitWith {};
