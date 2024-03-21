@@ -25,12 +25,15 @@
     private _players = [true] call EFUNC(mission,players);
     if (_players isEqualTo []) exitWith {};
 
+    // Pick a non-pilot to move to
+    private _position = ASLtoAGL (getPosASL (selectRandom _players));
+    _position set [2, 0];
+
     {
         if (!isObjectHidden _x) then {
             _x hideObjectGlobal true;
         };
 
-        // Pick a non-pilot to move to
-        _x setPos (getPos selectRandom _players);
+        _x setPosASL (AGLToASL _position);
     } forEach entities "HeadlessClient_F";
 }, 60] call CBA_fnc_addPerFrameHandler;
