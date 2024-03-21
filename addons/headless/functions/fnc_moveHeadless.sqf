@@ -47,8 +47,8 @@
     private _positionY = 0;
     { _positionX = _positionX + _x } forEach _positionsX;
     { _positionY = _positionY + _x } forEach _positionsY;
-    _positionsX = _positionsX / _positionsCount;
-    _positionsY = _positionsY / _positionsCount;
+    _positionX = _positionX / _positionsCount;
+    _positionY = _positionY / _positionsCount;
 
     private _position = [_positionX, _positionY, 0]; // always at ground level
 
