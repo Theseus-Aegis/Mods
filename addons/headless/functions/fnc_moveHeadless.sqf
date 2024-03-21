@@ -50,7 +50,7 @@
     _positionsX = _positionsX / _positionsCount;
     _positionsY = _positionsY / _positionsCount;
 
-    private _position = [_positionsX, _positionsY, 0]; // always at ground level
+    private _position = [_positionX, _positionY, 0]; // always at ground level
 
     // Move
     {
