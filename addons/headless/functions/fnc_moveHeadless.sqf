@@ -24,8 +24,8 @@
 
     private _players = [true] call EFUNC(mission,players);
 
-    // If ground players are minority (<10%), include air as well
-    if (count _players < 0.1 * (call CBA_fnc_players)) then {
+    // If ground players are minority (<20%), include air as well
+    if (count _players < 0.2 * (call CBA_fnc_players)) then {
         _players = [] call EFUNC(mission,players);
     };
 
@@ -39,8 +39,8 @@
     _positionsY sort true;
 
     private _positionsCount = count _positions;
-    _positionsX = _positionsX select [0.1 * _positionsCount, 0.9 * _positionsCount];
-    _positionsY = _positionsY select [0.1 * _positionsCount, 0.9 * _positionsCount];
+    _positionsX = _positionsX select [0.1 * _positionsCount, 0.8 * _positionsCount];
+    _positionsY = _positionsY select [0.1 * _positionsCount, 0.8 * _positionsCount];
     _positionsCount = count _positionsX;
 
     private _positionX = 0;
