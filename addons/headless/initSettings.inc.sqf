@@ -7,7 +7,7 @@
     {
         if (isServer) then {
             params ["_enabled"];
-            if (_enabled && {!GVAR(moveHeadlessThread)) then {
+            if (_enabled && {!GVAR(moveHeadlessThread)}) then {
                 GVAR(moveHeadlessThread) = true;
                 [FUNC(moveHeadless), [], 1] call CBA_fnc_waitAndExecute;
             };
