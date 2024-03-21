@@ -23,12 +23,13 @@
     };
 
     private _players = [true] call EFUNC(mission,players);
-    if (_players isEqualTo []) exitWith {};
 
     // If ground players are minority (<10%), include air as well
     if (count _players < 0.1 * (call CBA_fnc_players)) then {
         _players = [] call EFUNC(mission,players);
     };
+
+    if (_players isEqualTo []) exitWith {};
 
     // Find average position of all players, removing 10% bottom and 10% top outliers
     private _positions = _players apply {getPosASL _x};
