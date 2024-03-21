@@ -25,7 +25,7 @@
     private _players = [true] call EFUNC(mission,players);
 
     // If ground players are minority (<20%), include air as well
-    if (count _players < 0.2 * (call CBA_fnc_players)) then {
+    if (count _players < 0.2 * count (call CBA_fnc_players)) then {
         _players = [] call EFUNC(mission,players);
     };
 
