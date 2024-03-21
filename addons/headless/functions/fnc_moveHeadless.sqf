@@ -15,8 +15,6 @@
  * Public: No
  */
 
-params ["", "_handle"];
-
 if (!GVAR(moveHeadless)) exitWith {
     GVAR(moveHeadlessThread) = false;
 };
