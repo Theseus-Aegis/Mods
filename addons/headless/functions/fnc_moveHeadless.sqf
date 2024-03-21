@@ -25,7 +25,12 @@
     private _players = [true] call EFUNC(mission,players);
     if (_players isEqualTo []) exitWith {};
 
-    // Pick a non-pilot to move to
+    // If ground players are minority (<10%), include air as well
+    if (count _players < 0.1 * (call CBA_fnc_players)) then {
+        _players = [] call EFUNC(mission,players);
+    };
+
+    // Pick a player to move to
     private _position = ASLtoAGL (getPosASL (selectRandom _players));
     _position set [2, 0];
 
@@ -35,5 +40,5 @@
         };
 
         _x setPosASL (AGLToASL _position);
-    } forEach entities "HeadlessClient_F";
+    } forEach (entities "HeadlessClient_F");
 }, 60] call CBA_fnc_addPerFrameHandler;
