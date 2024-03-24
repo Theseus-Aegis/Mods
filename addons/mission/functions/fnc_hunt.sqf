@@ -5,11 +5,11 @@
  * If no hunted group is given it will select nearest player group within a given distance and target those.
  * Hunt groups are capped to a maximum of 6 for performance reasons.
  *
- * Call from Trigger with (isServer) check.
+ * Call on the server.
  *
  * Arguments
  * 0: Hunter Group <GROUP>
- * 1: Waypoint Refresh <NUMBER> (Optional - Default: 5)
+ * 1: Waypoint Refresh <NUMBER> (Optional - Default: 10)
  * 2: Hunted Group <GROUP> (Optional - Default grpNull)
  * 2: Search Distance <NUMBER> (Optional - Default 1000)
  *
@@ -23,7 +23,7 @@
  * [Enemy_Group, nil, nil, 2000] call MFUNC(hunt)
  */
 
-params ["_hunters", ["_refresh", 5], ["_hunted", grpNull], ["_searchDistance", 1000]];
+params ["_hunters", ["_refresh", 10], ["_hunted", grpNull], ["_searchDistance", 1000]];
 
 if (!isServer) exitWith {};
 
@@ -38,19 +38,9 @@ if (count GVAR(huntGroups) >= 6) exitWith {
 // Add hunter group to array.
 GVAR(huntGroups) pushBack _hunters;
 
-// Headless Blacklist
-_hunters setVariable ["acex_headless_blacklist", true, true];
-
-// Switch locality back to server
-_hunters setGroupOwner 2;
-
-// Disable Fleeing
-{
-    _x allowFleeing 0;
-} forEach (units _hunters);
-
-_hunters setSpeedMode "FULL";
-_hunters setCombatMode "RED";
+// Disable Fleeing & Set combat mode.
+[QGVAR(setCombatMode), [_hunters, "RED"], _hunters] call CBA_fnc_targetEvent;
+[QGVAR(allowFleeing), [_hunters, 0], _hunters] call CBA_fnc_targetEvent;
 
 // PFH for movement
 [{
@@ -60,30 +50,29 @@ _hunters setCombatMode "RED";
     // Select closest player group
     if (isNull _hunted) then {
         private _hunterLeader = leader _hunters;
-        private _players = (call CBA_fnc_players) select {
-            isTouchingGround _x && {(_hunterLeader distance _x) < _searchDistance}
-        };
+        private _players = ([true] call FUNC(players)) select {(_hunterLeader distance _x) < _searchDistance};
 
         if (_players isNotEqualTo []) then {
             private _hunted = group (selectRandom _players);
             _args set [2, _hunted];
+            [QGVAR(setCombatMode), [_hunters, "RED"], _hunters] call CBA_fnc_targetEvent;
+            [QGVAR(allowFleeing), [_hunters, 0], _hunters] call CBA_fnc_targetEvent;
         };
     } else {
-        // Get hunted Leader
         private _huntedLeader = leader _hunted;
-        // doMove needs an array
-        private _hunterUnits = units _hunters;
+        private _hunterUnits = units _hunters; // doMove needs an array
 
         // Move to estimated hunted leader position
         private _huntedPos = _huntedLeader getPos [random 100, random 360];
-        _hunterUnits doMove _huntedPos;
+        [QGVAR(doMove), [_hunterUnits, _huntedPos], _hunters] call CBA_fnc_targetEvent;
+        [QGVAR(setSpeedMode), [_hunters, "FULL"], _hunters] call CBA_fnc_targetEvent;
     };
 
     // Check for alive units
-    private _huntersDead = {alive _x} count units _hunters == 0;
+    private _huntersDead = [[_hunters]] call FUNC(countAlive);
 
     // Remove PFH and remove group from array
-    if (_huntersDead) then {
+    if (_huntersDead == 0) then {
         GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
         _handle call CBA_fnc_removePerFrameHandler;
     };

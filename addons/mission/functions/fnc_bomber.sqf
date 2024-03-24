@@ -24,15 +24,10 @@ params ["_unit", ["_detonateRadius", 10], ["_activateDistance", 100], ["_screami
 
 if (!is3DENPreview && {!isServer}) exitWith {};
 
-// Add vest, blacklist & set server as owner
+// Add vest
 _unit addVest "Umi_Bomb_Vest_Camo";
 
-_unit setVariable ["acex_headless_blacklist", true, true];
-(group _unit) setGroupOwner 2;
-
-// Set unit speed & disable relevant AI
-_unit setSpeedMode "FULL";
-_unit setSpeaker "ACE_NoVoice";
+[QACEGVAR(common,setSpeaker), [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
 
 {
     _unit disableAI _x
@@ -46,9 +41,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     _args params ["_unit", "_detonateRadius", "_activateDistance", "_screamingDistance", "_time", "_nearest", "_randomExplosive"];
 
     if (isNull _nearest) exitWith {
-        private _players = (call CBA_fnc_players) select {
-            isTouchingGround _x && {(_unit distance _x) < _activateDistance}
-        };
+        private _players = ([true] call FUNC(players)) select {(_unit distance _x) < _activateDistance};
 
         if (_players isNotEqualTo []) then {
             _args set [5,  selectRandom _players];
@@ -56,7 +49,9 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     };
 
     if (CBA_missionTime >= _time + 5) then {
-        _unit doMove (position _nearest);
+        [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 
@@ -64,13 +59,13 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     private _unitPos = getPosATL _unit;
     private _unconscious = _unit getVariable ["ACE_isUnconscious", false];
 
-    // If unconscious remove PFH and explode randomly within 5 minutes
+    // If unconscious remove PFH and explode
     if (_unconscious) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         _unit setDamage 1;
         [{
             [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
-        }, [_unit, _randomExplosive, _unitPos], random 300] call CBA_fnc_waitAndExecute;
+        }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
 
     // Screaming
