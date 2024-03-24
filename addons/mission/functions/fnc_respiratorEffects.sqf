@@ -9,7 +9,7 @@
  * Call from initPlayerLocal.sqf
  *
  * Arguments:
- * 0: Markers <ARRAY>
+ * 0: Markers <ARRAY> (default: [])
  * 1: Damage Per Tick <NUMBER> (default: 0.15)
  * 2: Damage Tick Rate <NUMBER> (default: 10)
  * 3: Use Additional Effect <BOOL> (default: false)
@@ -22,7 +22,7 @@
  * [["MyMarker"], 0.6, 5, true] call MFUNC(respiratorEffects)
  */
 
-params ["_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
+params [["_markers", []], ["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
