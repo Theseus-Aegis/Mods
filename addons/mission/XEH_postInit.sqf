@@ -18,6 +18,7 @@ if (isServer) then {
 [QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatMode), {(_this select 0) setCombatMode  (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setSpeedMode), {(_this select 0) setSpeedMode (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(setUnitPos), {(_this select 0) setUnitPos (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setVehicleAmmo), {(_this select 0) setVehicleAmmo (_this select 1)}] call CBA_fnc_addEventHandler;
 
 // Exit if not player client

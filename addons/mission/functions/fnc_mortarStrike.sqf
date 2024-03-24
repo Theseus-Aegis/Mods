@@ -67,7 +67,7 @@ if (_outOfRange != -1) exitWith {
 for "_i" from 0 to _amount - 1 do {
     private _marker = selectRandom _markersArray;
     private _position = [_marker, true] call CBA_fnc_randPosArea;
-    _eta = floor (_mortar getArtilleryETA [_position, _ammo]);
+    _eta = round (_mortar getArtilleryETA [_position, _ammo]);
     [{
         params ["_mortar", "_position", "_ammo", "_gunner"];
         [QGVAR(doArtilleryFire), [_gunner, [_position, _ammo, 1]], _gunner] call CBA_fnc_targetEvent;

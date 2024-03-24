@@ -51,6 +51,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     if (CBA_missionTime >= _time + 5) then {
         [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
         [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 
@@ -62,7 +63,9 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
     if (_unconscious) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
         _unit setDamage 1;
-        [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
+        [{
+            [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
+        }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
 
     // Screaming
