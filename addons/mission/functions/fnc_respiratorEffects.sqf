@@ -18,8 +18,8 @@
  * None
  *
  * Example:
- * [] call MFUNC(respiratorEffects)
- * [0.6, 5] call MFUNC(respiratorEffects)
+ * [["MyMarker1", "MyMarker2"]] call MFUNC(respiratorEffects)
+ * [["MyMarker"], 0.6, 5, true] call MFUNC(respiratorEffects)
  */
 
 params ["_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
