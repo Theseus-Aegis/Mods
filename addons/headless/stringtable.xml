@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Headless">
+        <Key ID="STR_TAC_Headless_moveHeadless">
+            <English>Move Headless</English>
+        </Key>
+        <Key ID="STR_TAC_Headless_moveHeadlessDesc">
+            <English>Enables automatic positioning of headless client near players.</English>
+        </Key>
+    </Package>
+</Project>
