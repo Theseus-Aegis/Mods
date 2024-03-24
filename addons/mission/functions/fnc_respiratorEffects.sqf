@@ -4,13 +4,15 @@
  * Specified masks protect from a contamination zone while providing HUD/Sound effects.
  * Requires a marker covering an area named for damage to take effect. Can be used for multiple marker zones.
  * Provides Burn damage on Head/Torso if inside a zone without a mask.
+ * Markers array provided will be converted into GVAR(respiratorMarkers) so it can be edited after mission start.
  *
  * Call from initPlayerLocal.sqf
  *
  * Arguments:
- * 0: Damage Per Tick <NUMBER> (default: 0.15)
- * 1: Damage Tick Rate <NUMBER> (default: 10)
- * 2: Use Additional Effect <BOOL> (default: false)
+ * 0: Markers <ARRAY>
+ * 1: Damage Per Tick <NUMBER> (default: 0.15)
+ * 2: Damage Tick Rate <NUMBER> (default: 10)
+ * 3: Use Additional Effect <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -20,11 +22,12 @@
  * [0.6, 5] call MFUNC(respiratorEffects)
  */
 
-params [["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
+params ["_markers", ["_damagePerTick", 0.15], ["_damageTickRate", 10], ["_additionalEffect", false]];
 
 GVAR(maskCounter) =  CBA_missionTime;
 GVAR(lastSoundRan) = CBA_missionTime;
 GVAR(oldGlasses) = "";
+GVAR(respiratorMarkers) = _markers;
 
 // Damage capped at 1, basically an instant knock out or kill.
 if (_damagePerTick > 1) then {
@@ -73,7 +76,7 @@ if (isNil QGVAR(respiratorMasks)) then {
         };
 
         // Damage
-        if (!isNil QGVAR(respiratorMarkers)) then {
+        if (GVAR(respiratorMarkers) isNotEqualTo []) then {
             if ((GVAR(respiratorMarkers) findIf {ace_player inArea _x}) >= 0 && {GVAR(maskCounter) + _damageTickRate < CBA_missionTime}) then {
                 GVAR(maskCounter) = CBA_missionTime;
 
