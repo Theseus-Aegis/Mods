@@ -1,8 +1,8 @@
 // ACE3
 ace_advanced_ballistics_enabled = true;
 
-ace_advanced_fatigue_loadFactor = 1.1; // Heavier loadouts should be more punishing than light.
-ace_advanced_fatigue_performanceFactor = 1.1; // Increased performance factor because 1 was a bit too low.
+ace_advanced_fatigue_loadFactor = 1.1; // Heavier loadouts should be more punishing than light
+ace_advanced_fatigue_performanceFactor = 1.1; // Increased performance factor because 1 was a bit too low
 
 ace_ai_assignNVG = true;
 
