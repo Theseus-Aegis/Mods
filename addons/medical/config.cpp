@@ -3,18 +3,15 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {QGVAR(painkillersItem)};
-        weapons[] = {QGVAR(painkillers)};
+        units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main", "ace_medical_engine"};
         author = ECSTRING(main,Author);
-        authors[] = {"Alganthe"};
+        authors[] = {"Jonpas"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
-#include "CfgWeapons.hpp"
-#include "ACE_Medical_Actions.hpp"
