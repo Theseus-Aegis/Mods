@@ -41,6 +41,12 @@ if (_retrieveVehicles == "ready") then {
 
     // Enable simulation on all vehicles and attempt to fix physics
     {
+        // Disable damage until some time later to avoid damage due to height drop on simulation enable
+        _x allowDamage false;
+        [{
+            _this allowDamage true;
+        }, _x, 5] call CBA_fnc_waitAndExecute;
+
         _x enableSimulationGlobal true;
 
         // Fix possible issue where physics don't activate until doing it manually (eg. shooting the object)
