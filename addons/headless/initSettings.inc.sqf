@@ -4,6 +4,7 @@
     [LSTRING(moveHeadless), LSTRING(moveHeadlessDesc)],
     format ["TAC %1", localize "str_a3_rscdisplaywelcome_expa_parc_list6_title"],
     true,
+    true,
     {
         if (isServer) then {
             params ["_enabled"];
