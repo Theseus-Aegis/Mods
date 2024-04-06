@@ -27,7 +27,7 @@ private _medicalItems = [
     "tac_bodybag_OrangeLogo",
     "ACE_epinephrine",
     "ACE_morphine",
-    "tac_medical_painkillers",
+    "ACE_painkillers",
     "ACE_plasmaIV",
     "ACE_plasmaIV_250",
     "ACE_plasmaIV_500",
