@@ -46,6 +46,10 @@ if (_amount == 0) then {
     _amount = floor (random 8 + 1);
 };
 
+// Force mortar to look in the general direction where it will fire, should eliminate the delay on not firing the first round.
+private _dir = _mortar getDir (getMarkerPos (_markersArray select 0));
+[QGVAR(setDir), [_mortar, _dir], _mortar] call CBA_fnc_targetEvent;
+
 // Disable relevant ace setting
 if (ace_mk6mortar_useAmmoHandling) exitWith {
     WARNING("ACE Ammo Handling setting is enabled.");
