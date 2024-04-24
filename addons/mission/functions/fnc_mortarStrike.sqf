@@ -27,6 +27,10 @@ params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0]];
 
 if (!isServer) exitWith {};
 
+// Force mortar to look in the general direction where it will fire, should eliminate the delay on not firing the first round.
+private _dir = _mortar getDir (getMarkerPos (_markersArray select 0));
+[QGVAR(setDir), [_mortar, _dir], _mortar] call CBA_fnc_targetEvent;
+
 // MK6 Mortar
 private _ammoTypes = ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white"];
 private _delay = 2.5;
