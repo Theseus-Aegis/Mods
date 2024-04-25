@@ -27,7 +27,6 @@ ace_interaction_disableNegativeRating = true;
 
 ace_map_defaultChannel = 1;
 
-ace_medical_AIDamageThreshold = 0.6; // (default: 1)
 ace_medical_deathChance = 0.15; // 15% (default: 100%)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
 ace_medical_painUnconsciousChance = 0.20; // 20% (default: 10%)
@@ -63,6 +62,8 @@ ace_repair_addSpareParts = false; // No (default: true - Yes)
 ace_repair_engineerSetting_fullRepair = 0; // Anyone (default: 2 - Advanced Engineer only)
 ace_repair_engineerSetting_Repair = 0; // Anyone (default: 1 - Engineer only)
 ace_repair_fullRepairLocation = 3; // Repair Facility or Vehicle (default: 2 - Repair Facility only)
+ace_repair_patchWheelMaximumRepair = 0.5; // Default 0.3, 50% instead of 70%
+ace_repair_timeCoefficientFullRepair = 0.25; // Default 1.50, ridiculous.
 
 ace_respawn_removeDeadBodiesDisconnected = false;
 
@@ -78,15 +79,15 @@ acex_volume_enabled = true; // Force client setting
 acex_volume_lowerInVehicles = true; // Force client setting
 
 // GRAD Trenches
-grad_trenches_functions_allowLongEnvelope = false;
-grad_trenches_functions_allowSmallEnvelope = false;
-grad_trenches_functions_allowVehicleEnvelope = false;
 grad_trenches_functions_allowCamouflage = false;
+grad_trenches_functions_allowGiantEnvelope = false;
+grad_trenches_functions_allowLongEnvelope = false;
+grad_trenches_functions_allowVehicleEnvelope = false;
 
 grad_trenches_functions_buildFatigueFactor = 0.2;
-grad_trenches_functions_shortEnvelopeDigTime = 60;
-grad_trenches_functions_bigEnvelopeDigTime = 180;
-grad_trenches_functions_giantEnvelopeDigTime = 300;
+grad_trenches_functions_shortEnvelopeDigTime = 240; // Medium Size
+grad_trenches_functions_smallEnvelopeDigTime = 120; // Smallest
+grad_trenches_functions_bigEnvelopeDigTime = 480; // Largest
 
 // OCAP
 ocap_settings_autoStart = false;
