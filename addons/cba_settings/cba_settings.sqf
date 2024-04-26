@@ -62,7 +62,7 @@ ace_repair_addSpareParts = false; // No (default: true - Yes)
 ace_repair_engineerSetting_fullRepair = 0; // Anyone (default: 2 - Advanced Engineer only)
 ace_repair_engineerSetting_Repair = 0; // Anyone (default: 1 - Engineer only)
 ace_repair_fullRepairLocation = 3; // Repair Facility or Vehicle (default: 2 - Repair Facility only)
-ace_repair_patchWheelMaximumRepair = 0.5; // 50% (default: 0.3 - 30%)
+ace_repair_patchWheelMaximumRepair = 0.5; // 50% (default: 0.3 - 30%), setting defines what level of damage you can repair the wheel to
 ace_repair_timeCoefficientFullRepair = 0.25; // Default: 1.50
 
 ace_respawn_removeDeadBodiesDisconnected = false;
