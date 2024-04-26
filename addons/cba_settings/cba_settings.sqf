@@ -20,7 +20,7 @@ ace_fastroping_autoAddFRIES = true;
 
 ace_finger_enabled = true;
 
-ace_hearing_autoAddEarplugsToUnits = false;
+ace_hearing_autoAddEarplugsToUnits = 0; // Disabled (default: 1 - Only units with heavy weapons)
 ace_hearing_enabledForZeusUnits = false;
 
 ace_interaction_disableNegativeRating = true;
@@ -62,8 +62,8 @@ ace_repair_addSpareParts = false; // No (default: true - Yes)
 ace_repair_engineerSetting_fullRepair = 0; // Anyone (default: 2 - Advanced Engineer only)
 ace_repair_engineerSetting_Repair = 0; // Anyone (default: 1 - Engineer only)
 ace_repair_fullRepairLocation = 3; // Repair Facility or Vehicle (default: 2 - Repair Facility only)
-ace_repair_patchWheelMaximumRepair = 0.5; // Default 0.3, 50% instead of 70%
-ace_repair_timeCoefficientFullRepair = 0.25; // Default 1.50, ridiculous.
+ace_repair_patchWheelMaximumRepair = 0.5; // 50% (default: 0.3 - 30%)
+ace_repair_timeCoefficientFullRepair = 0.25; // Default: 1.50
 
 ace_respawn_removeDeadBodiesDisconnected = false;
 
@@ -85,9 +85,9 @@ grad_trenches_functions_allowLongEnvelope = false;
 grad_trenches_functions_allowVehicleEnvelope = false;
 
 grad_trenches_functions_buildFatigueFactor = 0.2;
-grad_trenches_functions_shortEnvelopeDigTime = 240; // Medium Size
-grad_trenches_functions_smallEnvelopeDigTime = 120; // Smallest
-grad_trenches_functions_bigEnvelopeDigTime = 480; // Largest
+grad_trenches_functions_shortEnvelopeDigTime = 240; // Smallest (default: 15)
+grad_trenches_functions_smallEnvelopeDigTime = 120; // Medium (default: 30)
+grad_trenches_functions_bigEnvelopeDigTime = 480; // Largest (default: 40)
 
 // OCAP
 ocap_settings_autoStart = false;
