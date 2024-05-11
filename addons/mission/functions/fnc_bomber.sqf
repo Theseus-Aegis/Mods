@@ -52,6 +52,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
         [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
         [QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(setCombatBehaviour), [_unit, "CARELESS"], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 

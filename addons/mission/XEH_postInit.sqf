@@ -16,6 +16,7 @@ if (isServer) then {
 [QGVAR(doMove), {(_this select 0) doMove (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(enableAI), {(_this select 0) enableAI (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(setCombatBehaviour), {(_this select 0) setCombatBehaviour (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatMode), {(_this select 0) setCombatMode  (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setDir), {(_this select 0) setDir (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setSpeedMode), {(_this select 0) setSpeedMode (_this select 1)}] call CBA_fnc_addEventHandler;
