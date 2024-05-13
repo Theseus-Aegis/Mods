@@ -30,7 +30,7 @@ _unit addVest "Umi_Bomb_Vest_Camo";
 [QACEGVAR(common,setSpeaker), [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
 
 {
-    _unit disableAI _x
+    [QGVAR(disableAI), [_unit, _x]] call CBA_fnc_globalEvent;
 } forEach ["COVER", "AUTOCOMBAT", "RADIOPROTOCOL", "FSM", "SUPPRESSION"];
 
 private _time = CBA_missionTime;
