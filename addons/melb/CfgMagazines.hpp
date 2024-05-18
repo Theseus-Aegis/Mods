@@ -10,4 +10,10 @@ class CfgMagazines {
         // Fix "flipping" with AFM - disable recoil
         muzzleImpulseFactor[] = {0, 0}; // default: {0.9, 0.4}
     };
+
+    class VehicleMagazine;
+    class Hydra_Magazine_MELB: VehicleMagazine {
+        // Fix "flipping" with AFM - disable recoil, most MELB rocket pods inherit from this one
+        muzzleImpulseFactor[] = {0, 0}; // default: {5, 5}
+    };
 };
