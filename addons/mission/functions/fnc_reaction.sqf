@@ -27,8 +27,6 @@ if ((_groups select 0) isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows groups, detected unit.");
 };
 
-private _types = toLower _types;
-
 // Backward compatibility
 if (_types isEqualType "STRING") then {
     _types = [_types];
@@ -36,13 +34,17 @@ if (_types isEqualType "STRING") then {
 
 // Typo debug
 {
-    if !(_x in ["static", "patrol", "combat"]) then {
+    if !(toLower _x in ["static", "patrol", "combat"]) then {
         ERROR_MSG_1("Unknown reaction type value: %1",_x);
     };
 } forEach _types;
 
+private _static = _types findIf {_x == "static"} != -1;
+private _patrol = _types findIf {_x == "patrol"} != -1;
+private _combat = _types findIf {_x == "combat"} != -1;
+
 // Rapidly increase static units knowledge for faster returned fire
-if ("static" in _types) then {
+if (_static) then {
     {
         {
             _x addEventHandler ["Suppressed", {
@@ -58,7 +60,7 @@ if ("static" in _types) then {
 };
 
 // Have mobile units move directly toward enemy contact
-if ("patrol" in _types) then {
+if (_patrol) then {
     {
         private _leader = leader _x;
         _leader addEventHandler ["Suppressed", {
@@ -74,7 +76,7 @@ if ("patrol" in _types) then {
 };
 
 // Re-enable PATH or MOVE ai types when entering combat
-if ("combat" in _types) then {
+if (_combat) then {
     {
         _x addEventHandler ["CombatModeChanged", {
             params ["_group", "_newMode"];
