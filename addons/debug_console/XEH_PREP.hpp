@@ -1,0 +1,2 @@
+PREP(addButton);
+PREP(initDebugConsole);
