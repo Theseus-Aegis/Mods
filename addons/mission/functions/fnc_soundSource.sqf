@@ -25,7 +25,7 @@ params ["_object", ["_sound", ""], ["_deleteTime", 0]];
 if (!isServer) exitWith {};
 
 if (isNull _object) exitWith {
-    ERROR_MSG("Object (%1) does not exist",_object);
+    ERROR_MSG_1("Object (%1) does not exist",_object);
 };
 
 // Check if CfgVehicles entry exists in config or mission config.
