@@ -6,5 +6,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 GVAR(buttons) = [];
+GVAR(playerCurators) = [];
 
 ADDON = true;
