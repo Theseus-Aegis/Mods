@@ -31,7 +31,7 @@ for "_i" from 1 to (count _configFile) do {
 
 _curatorModule addCuratorAddons _allAddons;
 _curatorModule setVariable ["showNotification", false];
-_curatorModule addCuratorEditableObjects [allMissionObjects "all", true];
+_curatorModule addCuratorEditableObjects [allUnits, true]; // all Players and AI.
 
 {
     _curatorModule setCuratorCoef [_x, 0];
