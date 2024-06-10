@@ -28,6 +28,7 @@ if (!is3DENPreview && {!isServer}) exitWith {};
 _unit addVest "Umi_Bomb_Vest_Camo";
 
 [QACEGVAR(common,setSpeaker), [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
+[QGVAR(setCombatBehaviour), [_unit, "CARELESS"]] call CBA_fnc_globalEvent;
 
 {
     [QGVAR(disableAI), [_unit, _x]] call CBA_fnc_globalEvent;
@@ -52,7 +53,6 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
         [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
         [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
         [QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_targetEvent;
-        [QGVAR(setCombatBehaviour), [_unit, "CARELESS"], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 
