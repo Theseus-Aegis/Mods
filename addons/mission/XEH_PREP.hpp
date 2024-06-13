@@ -8,6 +8,7 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
 PREP(bomber);
 PREP(carAlarm);
