@@ -13,7 +13,7 @@
  * 2: Time until deletion <NUMBER> (default: 0)
  *
  * Return Value:
- * Sound Source
+ * Sound Source <OBJECT>
  *
  * Example:
  * [Loudspeaker, "Sound_Alarm", 30] call MFUNC(soundSource)
