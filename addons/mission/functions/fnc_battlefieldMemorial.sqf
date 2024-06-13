@@ -49,3 +49,7 @@ _memorial setVariable ["bin_battlefieldCross_disableAction", true, true];
 // Add Objects
 _memorial addItemCargoGlobal [_helmet, 1];
 _memorial addWeaponCargoGlobal [_weapon, 1];
+
+// Disable simulation and damage
+_memorial enableSimulationGlobal false;
+_memorial allowDamage false;
