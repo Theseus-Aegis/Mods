@@ -8,6 +8,7 @@ PREP(reinforcements);
 PREP(unconscious);
 
 // Extra
+PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
 PREP(bomber);
 PREP(carAlarm);
@@ -32,6 +33,7 @@ PREP(reaction);
 PREP(reinforcementWaves);
 PREP(respiratorEffects);
 PREP(setSleeping);
+PREP(soundSource);
 PREP(surrender);
 PREP(switchAction);
 PREP(teleport);
