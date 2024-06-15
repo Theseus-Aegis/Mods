@@ -21,6 +21,10 @@
 params [["_name", "", ["", []]], ["_code", "", [{}]]];
 _name params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
 
+if (count GVAR(buttons) == 6) exitWith {
+    ERROR("Maximum amount of buttons reached.");
+};
+
 GVAR(buttons) pushBack [_displayName, _tooltip, _code];
 
 nil

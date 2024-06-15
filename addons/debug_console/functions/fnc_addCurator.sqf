@@ -14,8 +14,14 @@
 
 params ["_player"];
 
+private _playerName = name _player;
+
 // Early exit if Module already assigned.
-if (!isNull getAssignedCuratorLogic _player) exitWith {};
+if (!isNull getAssignedCuratorLogic _player) exitWith {
+    INFO_1("Player '%1' already assigned as curator.",_playerName);
+};
+
+INFO_1("Player '%1' assigned as Curator",_playerName);
 
 private _curatorGroup = createGroup sideLogic;
 private _curatorModule = _curatorGroup createUnit ["ModuleCurator_F", _player, [], 0, "NONE"];
@@ -24,7 +30,7 @@ private _allAddons = [];
 
 GVAR(playerCurators) pushBack [_curatorModule, getPlayerUID _player];
 
-for "_i" from 1 to (count _configFile) do {
+for "_i" from 0 to (count _configFile - 1) do {
     private _cfgName = configName (_configFile select _i);
     _allAddons pushBack _cfgName;
 };
