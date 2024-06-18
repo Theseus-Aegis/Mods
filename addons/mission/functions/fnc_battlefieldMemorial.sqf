@@ -31,10 +31,10 @@ if (_position isEqualType "OBJECT") then {
 };
 
 // Error checking
-if !(_helmet isEqualType "STRING") exitWith {
+if !(_helmet isEqualType "") exitWith {
     ERROR_MSG_1("Invalid input (%1) expected classname as string.",_helmet)
 };
-if !(_weapon isEqualType "STRING") exitWith {
+if !(_weapon isEqualType "") exitWith {
     ERROR_MSG_1("Invalid input (%1) expected classname as string.",_weapon)
 };
 
