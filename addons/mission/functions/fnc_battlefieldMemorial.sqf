@@ -17,7 +17,8 @@
  * None
  *
  * Example:
- * [] call MFUNC(battlefieldMemorial)
+ * [MyObject, 340, "H_HelmetB_light", "arifle_MX_F"] call MFUNC(battlefieldMemorial)
+ * [[2020.554, 2032.323, 1.232], 20, "H_HelmetB_light", "arifle_MX_F"] call MFUNC(battlefieldMemorial)
 */
 
 params ["_position", "_direction", "_helmet", "_weapon"];
@@ -30,10 +31,10 @@ if (_position isEqualType "OBJECT") then {
 };
 
 // Error checking
-if (!_helmet isEqualType "STRING") exitWith {
+if !(_helmet isEqualType "") exitWith {
     ERROR_MSG_1("Invalid input (%1) expected classname as string.",_helmet)
 };
-if (!_weapon isEqualType "STRING") exitWith {
+if !(_weapon isEqualType "") exitWith {
     ERROR_MSG_1("Invalid input (%1) expected classname as string.",_weapon)
 };
 
