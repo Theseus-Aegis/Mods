@@ -23,21 +23,24 @@
 
 params [["_types", []], "_groups"];
 
-if ((_groups select 0) isEqualType "OBJECT") exitWith {
-    ERROR_MSG("Input only allows groups, detected unit.");
+if (is3DENPreview) then {
+    private _typeCheck = _groups findIf {_x isEqualType "OBJECT"};
+    if (_typeCheck != -1) then {
+        ERROR_MSG_1("Input only allows groups, detected unit at index (%1)",_typeCheck);
+    };
+
+    // Typo debug
+    {
+        if !(toLower _x in ["static", "patrol", "combat"]) then {
+            ERROR_MSG_1("Unknown reaction type value: %1",_x);
+        };
+    } forEach _types;
 };
 
 // Backward compatibility
 if (_types isEqualType "STRING") then {
     _types = [_types];
 };
-
-// Typo debug
-{
-    if !(toLower _x in ["static", "patrol", "combat"]) then {
-        ERROR_MSG_1("Unknown reaction type value: %1",_x);
-    };
-} forEach _types;
 
 private _static = _types findIf {_x == "static"} != -1;
 private _patrol = _types findIf {_x == "patrol"} != -1;
