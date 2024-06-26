@@ -22,6 +22,8 @@
 
 params ["_group", ["_asleep", true], ["_time", 0]];
 
+if (!is3DENPreview && {hasInterface}) exitWith {};
+
 if (_group isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows group, detected unit.");
 };
