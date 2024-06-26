@@ -12,6 +12,7 @@
  * Arguments:
  * 0: Types <ARRAY> (default: [])
  * 1: Groups <ARRAY>
+ * 2: Remove after use <BOOL> (default: true)
  *
  * Return Value:
  * None
@@ -21,7 +22,9 @@
  * [["Patrol", "Combat"], [My_Group_One]] call MFUNC(reaction)
  */
 
-params [["_types", []], "_groups"];
+params [["_types", []], "_groups", ["_removeAfterUse", true]];
+
+if (!is3DENPreview && {hasInterface}) exitWith {};
 
 if (is3DENPreview) then {
     private _typeCheck = _groups findIf {_x isEqualType "OBJECT"};
@@ -46,17 +49,23 @@ private _static = _types findIf {_x == "static"} != -1;
 private _patrol = _types findIf {_x == "patrol"} != -1;
 private _combat = _types findIf {_x == "combat"} != -1;
 
+// Allow optionally not removing the eventhandler.
+{_x setVariable [QGVAR(reactionParams), [_removeAfterUse]]} forEach _groups;
+
 // Rapidly increase static units knowledge for faster returned fire
 if (_static) then {
     {
         {
             _x addEventHandler ["Suppressed", {
                 params ["_unit", "", "_shooter"];
+                private _group = group _unit;
+                (_group getVariable [QGVAR(reactionParams), 0]) params ["_removeAfterUse"];
 
-                _unit removeEventHandler [_thisEvent, _thisEventHandler];
+                if (_removeAfterUse) then {
+                    _unit removeEventHandler [_thisEvent, _thisEventHandler];
+                };
 
-                private _unitGroup = group _unit;
-                _unitGroup reveal [_shooter, 1.5];
+                _group reveal [_shooter, 1.5];
             }];
         } forEach (units _x);
     } forEach _groups;
@@ -68,17 +77,21 @@ if (_patrol) then {
         private _leader = leader _x;
         _leader addEventHandler ["Suppressed", {
             params ["_unit", "", "_shooter"];
+            private _group = group _unit;
+            (_group getVariable [QGVAR(reactionParams), 0]) params ["_removeAfterUse"];
 
-            _unit removeEventHandler [_thisEvent, _thisEventHandler];
+            if (_removeAfterUse) then {
+                _unit removeEventHandler [_thisEvent, _thisEventHandler];
+            };
 
-            private _unitGroup = units (group _unit);
+            private _unitGroup = units _group;
             private _enemyPos = getPos _shooter;
             _unitGroup doMove _enemyPos;
         }];
     } forEach _groups;
 };
 
-// Re-enable PATH or MOVE ai types when entering combat
+// Allow movement on entering combat, EH is always removed after use.
 if (_combat) then {
     {
         _x addEventHandler ["CombatModeChanged", {
@@ -87,18 +100,15 @@ if (_combat) then {
             if (_newMode != "COMBAT") exitWith {};
 
             private _leader = leader _group;
+            private _units = units _group;
             private _pathEnabled = _leader checkAIFeature "PATH";
             private _moveEnabled = _leader checkAIFeature "MOVE";
 
             if !(_pathEnabled) then {
-                {
-                    _x enableAI "PATH";
-                } forEach (units _group);
+                {_x enableAI "PATH"} forEach _units;
             };
             if !(_moveEnabled) then {
-                {
-                    _x enableAI "MOVE";
-                } forEach (units _group);
+                {_x enableAI "MOVE"} forEach _units;
             };
 
             _group removeEventHandler [_thisEvent, _thisEventHandler];
