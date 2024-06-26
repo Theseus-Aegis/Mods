@@ -19,8 +19,6 @@
 
 params ["_marker", "_radius", "_on"];
 
-if (!is3DENPreview && {hasInterface}) exitWith {};
-
 private _targetTypes = [
     "Lamps_Base_F",
     "PowerLines_base_F",
