@@ -45,27 +45,29 @@ private _gunner = gunner _mortar;
 private _ammo = _ammoTypes select _ammoType;
 private _eta = 0;
 
-// Debug
+// Randomised amount
 if (_amount == 0) then {
     _amount = floor (random 8 + 1);
 };
 
-// Disable relevant ace setting
-if (ace_mk6mortar_useAmmoHandling) exitWith {
-    WARNING("ACE Ammo Handling setting is enabled.");
-};
+if (is3DENPreview) then {
+    // Disable relevant ace setting
+    if (ace_mk6mortar_useAmmoHandling) exitWith {
+        WARNING("ACE Ammo Handling setting is enabled.");
+    };
 
-// Error on marker being incorrect type
-private _invalidMarker = _markersArray findIf {!(markerShape _x in ["RECTANGLE", "ELLIPSE"])};
-if (_invalidMarker != -1) exitWith {
-    private _failedMarker = _markersArray select _invalidMarker;
-    ERROR_MSG_1("Marker: %1 is not an area marker (rectangle or ellipse)",_failedMarker);
-};
+    // Error on marker being incorrect type
+    private _invalidMarker = _markersArray findIf {!(markerShape _x in ["RECTANGLE", "ELLIPSE"])};
+    if (_invalidMarker != -1) exitWith {
+        private _failedMarker = _markersArray select _invalidMarker;
+        ERROR_MSG_1("Marker: %1 is not an area marker (rectangle or ellipse)",_failedMarker);
+    };
 
-// Warn on first out of range marker found
-private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
-if (_outOfRange != -1) exitWith {
-    WARNING_1("Marker Index: %1 is out of range of Artillery",_outOfRange);
+    // Warn on first out of range marker found
+    private _outOfRange = _markersArray findIf {!((getMarkerPos _x) inRangeOfArtillery [[_mortar], _ammo])};
+    if (_outOfRange != -1) exitWith {
+        WARNING_1("Marker Index: %1 is out of range of Artillery",_outOfRange);
+    };
 };
 
 for "_i" from 0 to _amount - 1 do {

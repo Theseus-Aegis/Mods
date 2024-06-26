@@ -21,6 +21,8 @@
 
 params ["_objectArray", ["_filter", true]];
 
+if (!isServer) exitWith {};
+
 if (_objectArray isEqualTo []) exitWith {
     WARNING("Object Array is empty");
 };

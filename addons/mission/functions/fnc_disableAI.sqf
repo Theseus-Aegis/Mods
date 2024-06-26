@@ -21,6 +21,8 @@
 
 params ["_groupsOrUnits", "_feature"];
 
+if (!is3DENPreview && {hasInterface}) exitWith {};
+
 {
     if (_x isEqualType objNull) then {
         _x disableAI _feature;

@@ -29,7 +29,11 @@ if (_groups isEqualType grpNull) then {
 
 {
     private _groupLeader = leader _x;
-    private _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
+    private _anyClose = [];
+
+    if (_distance > 0) then {
+        _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
+    };
 
     if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
         {
