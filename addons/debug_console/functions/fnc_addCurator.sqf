@@ -35,9 +35,12 @@ for "_i" from 0 to (count _configFile - 1) do {
     _allAddons pushBack _cfgName;
 };
 
+private _entities = entities [[], [], true, true]; // Players, AI and Vehicles.
+
 _curatorModule addCuratorAddons _allAddons;
 _curatorModule setVariable ["showNotification", false];
-_curatorModule addCuratorEditableObjects [allUnits, true]; // all Players and AI.
+_curatorModule setVariable ["BIS_fnc_initModules_activate", true, true];
+_curatorModule addCuratorEditableObjects [_entities, true];
 
 {
     _curatorModule setCuratorCoef [_x, 0];
