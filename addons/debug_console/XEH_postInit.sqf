@@ -2,6 +2,7 @@
 
 if (isServer) then {
     addMissionEventHandler ["HandleDisconnect", FUNC(handleDisconnect)];
+    addMissionEventHandler ["EntityRespawned", FUNC(handleRespawn)];
     [QGVAR(createCurator), FUNC(addCurator)] call CBA_fnc_addEventHandler;
     [QGVAR(stopRain), {
         params ["_caller"];
