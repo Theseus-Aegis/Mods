@@ -39,7 +39,7 @@ private _entities = entities [[], [], true, true]; // Players, AI and Vehicles.
 
 _curatorModule addCuratorAddons _allAddons;
 _curatorModule setVariable ["showNotification", false];
-_curatorModule setVariable ["BIS_fnc_initModules_activate", true, true];
+_curatorModule setVariable ["BIS_fnc_initModules_activate", true, true]; // Manually activate module, 1.86 didnt activate modules when created via script, unsure if still true.
 _curatorModule addCuratorEditableObjects [_entities, true];
 
 {
