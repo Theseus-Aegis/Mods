@@ -20,6 +20,8 @@
 
 params ["_group", ["_surrenderChance", 5], ["_minimumDistance", 400], ["_rallyChance", 0]];
 
+if (!is3DENPreview && {hasInterface}) exitWith {};
+
 if (_group isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows group, detected unit.");
 };

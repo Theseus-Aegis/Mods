@@ -16,8 +16,11 @@
 
 params ["_groups"];
 
-if ((_groups select 0) isEqualType "OBJECT") exitWith {
-    ERROR_MSG("Input only allows groups, detected unit.");
+if (is3DENPreview) then {
+    private _typeCheck = _groups findIf {_x isEqualType "OBJECT"};
+    if (_typeCheck != -1) exitWith {
+        ERROR_MSG_1("Input only allows groups, detected unit at index (%1)",_typeCheck);
+    };
 };
 
 private _count = 0;

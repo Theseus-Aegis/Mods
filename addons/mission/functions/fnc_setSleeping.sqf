@@ -22,6 +22,8 @@
 
 params ["_group", ["_asleep", true], ["_time", 0]];
 
+if (!is3DENPreview && {hasInterface}) exitWith {};
+
 if (_group isEqualType "OBJECT") exitWith {
     ERROR_MSG("Input only allows group, detected unit.");
 };
@@ -32,7 +34,7 @@ if (_asleep) then {
     {
         _x switchMove "Acts_LyingWounded_loop3";
         _x disableAI "ANIM";
-    } forEach (units _group);
+    } forEach _units;
 } else {
     {
         if (alive _x && {animationState _x == "acts_lyingwounded_loop3"}) then {
@@ -44,5 +46,5 @@ if (_asleep) then {
                 };
             }, _x, _forEachIndex * _time] call CBA_fnc_waitAndExecute;
         };
-    } forEach (units _group);
+    } forEach _units;
 };

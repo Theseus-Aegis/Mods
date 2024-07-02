@@ -15,6 +15,8 @@
  * [] call MFUNC(debugTriggerArea)
  */
 
+if (!isServer) exitWith {};
+
 private _allTriggers = allMissionObjects "EmptyDetector";
 
 {
