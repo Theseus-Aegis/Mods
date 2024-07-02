@@ -90,6 +90,7 @@ grad_trenches_functions_smallEnvelopeDigTime = 120; // Medium (default: 30)
 grad_trenches_functions_bigEnvelopeDigTime = 480; // Largest (default: 40)
 
 // OCAP
+ocap_enabledAdministratorUI = false;
 ocap_settings_autoStart = false;
 ocap_settings_saveOnEmpty = false;
 ocap_settings_saveMissionEnded = false;
