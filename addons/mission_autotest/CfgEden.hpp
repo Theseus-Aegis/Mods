@@ -63,7 +63,7 @@ class RscPicture;
             w = QUOTE(SIZE_M * GRID_W); \
             h = QUOTE(SIZE_M * GRID_H); \
         }; \
-    };
+    }
 
 
 class Cfg3DEN {
@@ -229,97 +229,61 @@ class Cfg3DEN {
         class GVAR(name): Title {
             attributeLoad = QUOTE(_this call FUNC(testName));
             attributeSave = "true";
-            ATTRIBUTE_CONTROLS
+            ATTRIBUTE_CONTROLS;
         };
-        class GVAR(description): Title {
+        class GVAR(description): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testDescription));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(gameType): Title {
+        class GVAR(gameType): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testGameType));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(author): Title {
+        class GVAR(author): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testAuthor));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(minPlayers): Title {
+        class GVAR(minPlayers): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testMinPlayers));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(maxPlayers): Title {
+        class GVAR(maxPlayers): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testMaxPlayers));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(hcAmount): Title {
+        class GVAR(hcAmount): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testHCAmount));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(aiAmount): Title {
+        class GVAR(aiAmount): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testAIAmount));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(apAmount): Title {
+        class GVAR(apAmount): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testAPAmount));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(apcAmount): Title {
+        class GVAR(apcAmount): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testAPCAmount));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(trackedAmount): Title {
+        class GVAR(trackedAmount): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testTrackedAmount));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(respawnMode): Title {
+        class GVAR(respawnMode): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testRespawnMode));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(respawnButton): Title {
+        class GVAR(respawnButton): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testRespawnButton));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(respawnDelay): Title {
+        class GVAR(respawnDelay): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testRespawnDelay));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(respawnDialog): Title {
+        class GVAR(respawnDialog): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testRespawnDialog));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(aiPosession): Title {
+        class GVAR(aiPosession): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testAIPosession));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(debugConsole): Title {
+        class GVAR(debugConsole): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testDebugConsole));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(targetDebug): Title {
+        class GVAR(targetDebug): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testTargetDebug));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
-        class GVAR(apollo): Title {
+        class GVAR(apollo): GVAR(name) {
             attributeLoad = QUOTE(_this call FUNC(testApollo));
-            attributeSave = "true";
-            ATTRIBUTE_CONTROLS
         };
 
         class Toolbox;
