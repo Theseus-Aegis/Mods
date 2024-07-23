@@ -15,6 +15,7 @@ PREP(carAlarm);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
 PREP(countAlive);
+PREP(degradedVehicle);
 PREP(dialogue);
 PREP(dialogueLocal);
 PREP(disableAI);
