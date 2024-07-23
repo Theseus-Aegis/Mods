@@ -42,6 +42,11 @@ class CfgMainMenuSpotlight {
     delete AoW_Showcase_AoW;
     delete AoW_Showcase_Future;
 
+    // Reaction Forces
+    delete Scenario_TrainingDay_RF;
+    delete Scenario_FireSeason_RF;
+    delete Scenario_AirControl_RF;
+
     // Western Sahara
     delete Extraction_lxWS;
     delete Showcase_Alchemist_lxWS;
