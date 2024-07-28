@@ -28,4 +28,10 @@ class CfgDifficultyPresets {
             weaponInfo = 1;
         };
     };
+    class GVAR(Theseus_SOG): GVAR(Theseus) {
+        displayName = "Theseus SOG";
+        description = "Custom SOG difficulty for Theseus gameplay.";
+        optionDescription = "Custom SOG difficulty for Theseus gameplay.";
+        levelAI = QGVAR(Theseus_SOG);
+    };
 };
