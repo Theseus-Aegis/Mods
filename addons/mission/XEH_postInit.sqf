@@ -32,4 +32,6 @@ CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels 
 // Collect Intel: Request intel collected so far
 [QGVAR(collectIntel_updateRequest), ACE_player] call CBA_fnc_serverEvent;
 
+// Dialogue & Logging
 [QGVAR(dialogue), LINKFUNC(dialogueLocal)] call CBA_fnc_addEventHandler;
+ace_player createDiarySubject ["Communications Log", "Communications Log"];
