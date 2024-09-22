@@ -35,7 +35,7 @@ _group setVariable [QGVAR(surrenderParams), [_surrenderChance, _minimumDistance,
         (group _unit getVariable [QGVAR(surrenderParams), 0]) params ["_surrenderChance", "_minimumDistance", "_rallyChance"];
 
         // Distance Check, no point continuing if distance has failed.
-        private _distanceCheck = (_unit distance2d _shooter) > _minimumDistance;
+        private _distanceCheck = (_unit distance2D _shooter) > _minimumDistance;
         if (!_distanceCheck) exitWith {};
 
         // % chance of surrendering and rallying.

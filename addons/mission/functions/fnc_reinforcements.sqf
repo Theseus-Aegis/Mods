@@ -47,7 +47,7 @@ if (_groups isEqualType grpNull) then {
             };
         } forEach (units _x);
     } else {
-        private _groupName = groupID _x;
+        private _groupName = groupId _x;
         private _groupSide = side _x;
         WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
     };
