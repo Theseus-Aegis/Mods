@@ -20,15 +20,21 @@ ace_fastroping_autoAddFRIES = true;
 
 ace_finger_enabled = true;
 
+ace_frag_reflectionsEnabled = true;
+ace_frag_spallEnabled = true;
+
 ace_hearing_autoAddEarplugsToUnits = 0; // Disabled (default: 1 - Only units with heavy weapons)
 ace_hearing_enabledForZeusUnits = false;
 
 ace_interaction_disableNegativeRating = true;
 
-ace_map_defaultChannel = 1;
+ace_map_defaultChannel = 0; // Global (default: -1)
+
+ace_map_gestures_maxRange = 14; // Default: 7
 
 ace_medical_deathChance = 0.15; // 15% (default: 100%)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
+ace_medical_gui_tourniquetWarning = false; // Force client setting
 ace_medical_painUnconsciousChance = 0.20; // 20% (default: 10%)
 ace_medical_spontaneousWakeUpChance = 0.3; // 30% (default: 5%)
 ace_medical_statemachine_fatalInjuriesPlayer = 1; // In Cardiac Arrest (default: 0 - Always) coupled with TAC Medical Fatal Injuries Cardiac Arrest Time Coefficient (default: 0.2)
@@ -66,6 +72,9 @@ ace_repair_patchWheelMaximumRepair = 0.5; // 50% (default: 0.3 - 30%), setting d
 ace_repair_timeCoefficientFullRepair = 0.25; // Default: 1.50
 
 ace_respawn_removeDeadBodiesDisconnected = false;
+
+ace_ui_commandMenu = false; // Default: true
+ace_ui_groupBar = false; // Force client setting
 
 ace_zeus_autoAddObjects = true;
 
