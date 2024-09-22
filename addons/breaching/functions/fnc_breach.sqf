@@ -55,7 +55,7 @@ if (_obstacle isKindOf "House") exitWith {
     private _position0 = (getPosASL _wire) vectorAdd [0, 0, 0];
     private _position1 = _position0 vectorAdd (vectorUp _wire);
 
-    private _intersections = [_obstacle, "GEOM"] intersect [ASLtoAGL _position0, ASLtoAGL _position1];
+    private _intersections = [_obstacle, "GEOM"] intersect [ASLToAGL _position0, ASLToAGL _position1];
     if (_intersections isEqualTo []) exitWith {};
 
     private _door = toLower ((_intersections select 0) select 0);
@@ -85,7 +85,7 @@ if (_obstacle isKindOf "House") exitWith {
     } forEach _animations;
 };
 
-private _obstaclePosWorld = ASLtoAGL getPosWorld _obstacle;
+private _obstaclePosWorld = ASLToAGL getPosWorld _obstacle;
 
 // Terrain wall (won't get destroyed, hide it instead)
 if (_obstacle in (nearestTerrainObjects [_obstaclePosWorld, ["WALL", "FENCE"], 1])) exitWith {

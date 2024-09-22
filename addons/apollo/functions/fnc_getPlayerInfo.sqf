@@ -26,7 +26,7 @@ if !(_type in ["getTrainingIdentifiers", "getAccessibleItemClasses"]) exitWith {
 
 private _playerUID = getPlayerUID _player;
 
-if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualto "_SP_AI_"}) exitWith {
+if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualTo "_SP_AI_"}) exitWith {
     ERROR("getPlayerInfo only works in (locally hosted) MP");
     []
 };

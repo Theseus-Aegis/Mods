@@ -24,7 +24,7 @@ switch (_type) do {
         private _west = (west countSide allUnits) - (west countSide playableUnits);
         private _east = (east countSide allUnits) - (east countSide playableUnits);
         private _resistance = (resistance countSide allUnits) - (resistance countSide playableUnits);
-        private _civilian = (civilian countside allUnits) - (civilian countSide playableUnits);
+        private _civilian = (civilian countSide allUnits) - (civilian countSide playableUnits);
         format ["West: %1|East: %2|Indep: %3|Civ: %4|Player: %5|FPS: %6", _west, _east, _resistance , _civilian, count playableUnits, diag_fps]
     };
     case 1: {

@@ -15,7 +15,7 @@
  * Public: No
  */
 
-if (GVAR(QuickReferenceMarkerMode) == 0) exitwith {};
+if (GVAR(QuickReferenceMarkerMode) == 0) exitWith {};
 
 private _playerVehicle = vehicle ace_player;
 

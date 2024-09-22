@@ -18,6 +18,6 @@
 params ["_markerPos"];
 
 [
-    format ["QRM [%1] (%2)", mapGridPosition _markerPos, [daytime, "HH:MM"] call BIS_fnc_timeToString],
+    format ["QRM [%1] (%2)", mapGridPosition _markerPos, [dayTime, "HH:MM"] call BIS_fnc_timeToString],
     _markerPos
 ] call ACEFUNC(microdagr,deviceAddWaypoint);
