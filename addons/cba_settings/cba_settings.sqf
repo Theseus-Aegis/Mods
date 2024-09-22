@@ -20,6 +20,9 @@ ace_fastroping_autoAddFRIES = true;
 
 ace_finger_enabled = true;
 
+ace_frag_reflectionsEnabled = true;
+ace_frag_spallEnabled = true;
+
 ace_hearing_autoAddEarplugsToUnits = 0; // Disabled (default: 1 - Only units with heavy weapons)
 ace_hearing_enabledForZeusUnits = false;
 
