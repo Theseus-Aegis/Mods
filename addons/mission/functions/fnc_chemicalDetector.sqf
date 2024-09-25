@@ -41,7 +41,7 @@ if (_enableGeigerSounds) then {
         private _inAreaCheck = _markers findIf {ace_player inArea _x};
         if (_inAreaCheck != -1) then {
             // Distance is capped to prevent divide by zero.
-            private _distance = ace_player distance2d (getMarkerPos (_markers select _inAreaCheck));
+            private _distance = ace_player distance2D (getMarkerPos (_markers select _inAreaCheck));
             _distance = _distance max 0.001;
 
             if (_enableGeigerSounds) then {
