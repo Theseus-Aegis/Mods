@@ -63,6 +63,6 @@ if (_hasNextClass || {_hasPrevClass}) then {
 };
 
 // Disposable launcher
-_itemClass = cba_disposable_LoadedLaunchers getVariable [_itemClass, _itemClass];
+_itemClass = cba_disposable_LoadedLaunchers getOrDefault [_itemClass, _itemClass];
 
 _itemClass
