@@ -6,6 +6,7 @@ PREP(godMode);
 PREP(hunt);
 PREP(reinforcements);
 PREP(unconscious);
+PREP(vehicleSpawner);
 
 // Extra
 PREP(battlefieldMemorial);
