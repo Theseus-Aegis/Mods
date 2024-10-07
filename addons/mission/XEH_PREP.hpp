@@ -39,6 +39,7 @@ PREP(surrender);
 PREP(switchAction);
 PREP(teleport);
 PREP(toggleLights);
+PREP(tripflare);
 
 // Debug
 PREP(debugTriggerArea);
