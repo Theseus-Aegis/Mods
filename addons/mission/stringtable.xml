@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Mission">
+        <Key ID="STR_TAC_Mission_Improved_Flares_Enabled_DisplayName">
+            <English>Enable Improved Trip Flares</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Improved_Flares_Enabled_Description">
+            <English>Tripflares when activated will fire a flare into the sky.</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Improved_Flares_Colour_DisplayName">
+            <English>Improved Flares Colour</English>
+        </Key>
+        <Key ID="STR_TAC_Mission_Improved_Flares_Colour_Description">
+            <English>Tripflares when activated will fire a flare into the sky.</English>
+        </Key>
+    </Package>
+</Project>
