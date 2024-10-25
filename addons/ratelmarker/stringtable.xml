@@ -3,30 +3,33 @@
     <Package name="RatelMarker">
         <Key ID="STR_TAC_RatelMarker_DisplayName">
             <English>RATEL Marker</English>
+            <French>Marqueur RATEL</French>
             <Spanish>Marcador RATEL</Spanish>
             <German>RATEL Markierer</German>
-            <French>Marqueur RATEL</French>
-        </Key>
-        <Key ID="STR_TAC_RatelMarker_Open">
-            <English>Open RATEL Marker</English>
-            <Spanish>Abril Marcador RATEL</Spanish>
-            <German>RATEL Markierer öffnen</German>
-            <French>Ouvrir marqueur RATEL</French>
         </Key>
         <Key ID="STR_TAC_RatelMarker_InvalidCoordinates">
             <English>Invalid Coordinates!</English>
+            <French>Mauvaises coordonés</French>
             <Spanish>Coordenadas Inválidas!</Spanish>
             <German>Ungültige Koordinaten!</German>
-            <French>Mauvaises coordonés</French>
         </Key>
         <Key ID="STR_TAC_RatelMarker_MarkerCreated">
             <English>RATEL Marker Created (Open Map to Focus)</English>
+            <French>Balise RATEL crée (Ouvrir la carte pour focaliser)</French>
             <Spanish>Marcador RATEL Creado (Abrir Mapa para Centrarse)</Spanish>
             <German>RATEL Markierung erstellt (Karte öffnen um zu zentrieren)</German>
-            <French>Balise RATEL crée (Ouvrir la carte pour focaliser)</French>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_Open">
+            <English>Open RATEL Marker</English>
+            <French>Ouvrir marqueur RATEL</French>
+            <Spanish>Abril Marcador RATEL</Spanish>
+            <German>RATEL Markierer öffnen</German>
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Create">
             <English>Create Quick Reference Marker</English>
+        </Key>
+        <Key ID="STR_TAC_RatelMarker_QRM_Error">
+            <English>Could not create Quick Reference Marker</English>
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Mode">
             <English>Quick Reference Marker Mode</English>
@@ -36,9 +39,6 @@
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_ViewPos">
             <English>View Position</English>
-        </Key>
-        <Key ID="STR_TAC_RatelMarker_QRM_Error">
-            <English>Could not create Quick Reference Marker</English>
         </Key>
     </Package>
 </Project>

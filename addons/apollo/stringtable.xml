@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Apollo">
-        <Key ID="STR_TAC_Apollo_EnabledDesc">
-            <English>Enables overall persistence.</English>
-            <German>Aktiviert gesamte Persistenz.</German>
-            <French>Active la persistance globale.</French>
-        </Key>
-        <Key ID="STR_TAC_Apollo_EnabledPlayers">
-            <English>Enabled Players</English>
-            <German>Aktiviert Spieler</German>
-            <French>Activer (Joueurs)</French>
-        </Key>
-        <Key ID="STR_TAC_Apollo_EnabledPlayersDesc">
-            <English>Enables persistence for players.</English>
-            <German>Aktiviert Persistenz für Spieler.</German>
-            <French>Active la persistance pour les joueurs.</French>
-        </Key>
-        <Key ID="STR_TAC_Apollo_EnabledVehicles">
-            <English>Enabled Vehicles</English>
-            <German>Aktiviert Fahrzeuge</German>
-            <French>Activer (Véhicules)</French>
-        </Key>
-        <Key ID="STR_TAC_Apollo_EnabledVehiclesDesc">
-            <English>Enables persistence for vehicles.</English>
-            <German>Aktiviert Persistenz für Fahrzeuge.</German>
-            <French>Active la persistance pour les véhicules.</French>
-        </Key>
         <Key ID="STR_TAC_Apollo_AllowServerReset">
             <English>Allow Server Reset</English>
         </Key>
         <Key ID="STR_TAC_Apollo_AllowServerResetDesc">
             <English>Allows resetting player positions and deleting saved vehicles on map or mission change since last save.</English>
         </Key>
+        <Key ID="STR_TAC_Apollo_EnabledDesc">
+            <English>Enables overall persistence.</English>
+            <French>Active la persistance globale.</French>
+            <German>Aktiviert gesamte Persistenz.</German>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledPlayers">
+            <English>Enabled Players</English>
+            <French>Activer (Joueurs)</French>
+            <German>Aktiviert Spieler</German>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledPlayersDesc">
+            <English>Enables persistence for players.</English>
+            <French>Active la persistance pour les joueurs.</French>
+            <German>Aktiviert Persistenz für Spieler.</German>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledVehicles">
+            <English>Enabled Vehicles</English>
+            <French>Activer (Véhicules)</French>
+            <German>Aktiviert Fahrzeuge</German>
+        </Key>
+        <Key ID="STR_TAC_Apollo_EnabledVehiclesDesc">
+            <English>Enables persistence for vehicles.</English>
+            <French>Active la persistance pour les véhicules.</French>
+            <German>Aktiviert Persistenz für Fahrzeuge.</German>
+        </Key>
         <Key ID="STR_TAC_Apollo_RespawnReinitialization">
             <English>You are being moved back to lobby for reinitialization.</English>
-            <German>Du wirst wegen Neuinitialisierung zurück zur Lobby verschoben.</German>
             <French>Vous êtes en train d'être bougé à l'acceuil pour une réinitialisation.</French>
+            <German>Du wirst wegen Neuinitialisierung zurück zur Lobby verschoben.</German>
         </Key>
     </Package>
 </Project>

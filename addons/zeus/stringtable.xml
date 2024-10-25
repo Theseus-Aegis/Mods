@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Zeus">
-        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos">
-            <English>Add To Chronos</English>
-            <German>Zu Chronos hinzufügen</German>
-            <French>Ajouter à Chronos</French>
-        </Key>
-        <Key ID="STR_TAC_Zeus_PlaceOnObject">
-            <English>Place on object</English>
-            <German>Auf Objekt platzieren</German>
-            <French>Placer sur objet</French>
+        <Key ID="STR_TAC_Zeus_AlreadyInChronos">
+            <English>Already in Chronos</English>
+            <French>Déjà dans Chronos</French>
+            <German>Bereits in Chronos</German>
         </Key>
         <Key ID="STR_TAC_Zeus_EnableChronos">
             <English>Enable Chronos</English>
-            <German>Chronos aktivieren</German>
             <French>Activer Chronos</French>
+            <German>Chronos aktivieren</German>
         </Key>
-        <Key ID="STR_TAC_Zeus_AlreadyInChronos">
-            <English>Already in Chronos</English>
-            <German>Bereits in Chronos</German>
-            <French>Déjà dans Chronos</French>
+        <Key ID="STR_TAC_Zeus_ModuleAddObjectToChronos">
+            <English>Add To Chronos</English>
+            <French>Ajouter à Chronos</French>
+            <German>Zu Chronos hinzufügen</German>
+        </Key>
+        <Key ID="STR_TAC_Zeus_PlaceOnObject">
+            <English>Place on object</English>
+            <French>Placer sur objet</French>
+            <German>Auf Objekt platzieren</German>
         </Key>
     </Package>
 </Project>

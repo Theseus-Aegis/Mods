@@ -4,14 +4,14 @@
         <Key ID="STR_TAC_Supplies_MedicalArsenal">
             <English>Medical Arsenal</English>
         </Key>
-        <Key ID="STR_TAC_Supplies_TraitInteraction">
-            <English>Assign %1</English>
+        <Key ID="STR_TAC_Supplies_OpenRandomBox">
+            <English>Open Randomized Box</English>
         </Key>
         <Key ID="STR_TAC_Supplies_RemoveTraits">
             <English>Unassign Trait</English>
         </Key>
-        <Key ID="STR_TAC_Supplies_OpenRandomBox">
-            <English>Open Randomized Box</English>
+        <Key ID="STR_TAC_Supplies_TraitInteraction">
+            <English>Assign %1</English>
         </Key>
     </Package>
 </Project>

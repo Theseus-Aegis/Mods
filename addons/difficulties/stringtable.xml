@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Difficulties">
-        <Key ID="STR_TAC_Difficulties_armorAccuracyFactor_DisplayName">
-            <English>Armor Accuracy Factor</English>
-        </Key>
         <Key ID="STR_TAC_Difficulties_armorAccuracyFactor_Description">
             <English>Influences the accuracy of gunners in armored vehicles such as APCs and Tanks.</English>
+        </Key>
+        <Key ID="STR_TAC_Difficulties_armorAccuracyFactor_DisplayName">
+            <English>Armor Accuracy Factor</English>
         </Key>
     </Package>
 </Project>
