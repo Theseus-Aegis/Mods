@@ -7,5 +7,23 @@
         <Key ID="STR_TAC_Medical_FatalInjuriesCardiacArrestTimeCoefficient_Description">
             <English>Coefficient for controlling the Cardiac Arrest Time on fatal injuries when 'Fatal Injuries' is NOT 'Always'.</English>
         </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFX_DisplayName">
+            <English>Unconscious Effect Sounds</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFX_Description">
+            <English>Enabled groaning sounds for unconscious players with a heart rate.</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXChance_DisplayName">
+            <English>Unconscious Effect Sound Chance</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXChance_Description">
+            <English>The chance of unconscious sounds playing each check.</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXTimer_DisplayName">
+            <English>Unconscious Effect Timer</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXTimer_Description">
+            <English>Time interval for checking if the sound effect should play</English>
+        </Key>
     </Package>
 </Project>

@@ -15,3 +15,6 @@
 #endif
 
 #include "\x\tac\addons\main\script_macros.hpp"
+
+#define KO_NOISES ["ace_fire_scream_12", "ACE_hit_Male05ENG_high_3", "ACE_hit_Male05ENG_high_4", "ACE_hit_Male05ENG_mid_4", "ACE_moan_Male06ENG_high_8"]
+#define UNCONSCIOUS_NOISES ["ace_fire_scream_8", "ACE_moan_Male07ENG_high_2", "ACE_moan_Male07ENG_high_4", "ACE_moan_Male09ENG_high_1", "ACE_moan_Male09ENG_high_2", "ACE_moan_Male09ENG_high_3", "ACE_moan_Male09ENG_high_4"]
