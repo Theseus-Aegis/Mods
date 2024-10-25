@@ -9,7 +9,9 @@ class CfgPatches {
         requiredAddons[] = {
             "tac_main",
             "tac_mission",
-            "ace_medical_engine"
+            "ace_fire",
+            "ace_medical_engine",
+            "ace_medical_feedback"
         };
         author = ECSTRING(main,Author);
         authors[] = {"Jonpas", "Mike"};
