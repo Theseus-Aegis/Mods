@@ -25,6 +25,7 @@ ace_frag_spallEnabled = true;
 
 ace_hearing_autoAddEarplugsToUnits = 0; // Disabled (default: 1 - Only units with heavy weapons)
 ace_hearing_enabledForZeusUnits = false;
+ace_hearing_explosionDeafnessCoefficient = 0.25;
 
 ace_interaction_disableNegativeRating = true;
 
