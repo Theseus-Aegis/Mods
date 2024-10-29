@@ -24,6 +24,7 @@ if (_reset) exitWith {
     if (!isNil "_originalAccuracy") then {
         _unit setVariable [QGVAR(originalAccuracy), nil, true];
         _unit setSkill ["aimingAccuracy", _originalAccuracy];
+        _unit setSkill ["aimingShake", _originalAccuracy];
     };
 };
 
@@ -31,4 +32,5 @@ if (isNil "_originalAccuracy") then {
     _originalAccuracy = _unit skill "aimingAccuracy";
     _unit setVariable [QGVAR(originalAccuracy), _originalAccuracy, true];
     _unit setSkill ["aimingAccuracy", _originalAccuracy * GVAR(armorAccuracyFactor)];
+    _unit setSkill ["aimingShake", _originalAccuracy * GVAR(armorAccuracyFactor)];
 };

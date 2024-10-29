@@ -6,6 +6,20 @@
     if (_vehicle != _unit && {gunner _vehicle == _unit || commander _vehicle == _unit}) then {
         [_unit] call FUNC(setUnitAccuracy);
     };
+
+    // RPG units, no XEH for this EH yet.
+    private _launcherWeapon = secondaryWeapon _unit;
+    if (_launcherWeapon isEqualTo "") exitWith {};
+
+    _unit addEventHandler ["WeaponChanged", {
+        params ["_unit", "_oldWeapon", "_newWeapon"];
+        if (_newWeapon isEqualTo secondaryWeapon _unit) then {
+            [_unit] call FUNC(setUnitAccuracy);
+        } else {
+            [_unit, true] call FUNC(setUnitAccuracy);
+        };
+    }];
+
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
 private _getInHandler = {
