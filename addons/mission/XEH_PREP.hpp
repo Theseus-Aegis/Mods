@@ -13,6 +13,7 @@ PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
 PREP(bomber);
 PREP(carAlarm);
+PREP(chemicalDetector);
 PREP(connectBatteryToDefusable);
 PREP(contaminationGas);
 PREP(countAlive);
