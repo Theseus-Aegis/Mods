@@ -1,85 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Mission_Autotest">
-        <Key ID="STR_TAC_Mission_Autotest_Autotest">
-            <English>Autotest</English>
-            <German>Autotest</German>
-            <French>Autotest</French>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
+            <English>AI:</English>
+            <French>IA:</French>
+            <German>KI:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_TAC_Autotest">
-            <English>TAC Autotest</English>
-            <German>TAC Autotest</German>
-            <French>TAC autotest</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_Name">
-            <English>Name:</English>
-            <German>Name:</German>
-            <French>Nom:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_NameDesc">
-            <English>Checks if the name is set.</English>
-            <German>Überprüft, ob der Name eingestellt ist.</German>
-            <French>Vérifie si le nom est défini. </French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_Description">
-            <English>Description:</English>
-            <German>Beschreibung:</German>
-            <French>Description:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
-            <English>Checks if the description is set.</English>
-            <German>Überprüft, ob die Beschreibung eingestellt ist.</German>
-            <French>Vérifie si la description est définie.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GameType">
-            <English>Game Type:</English>
-            <German>Spieltyp:</German>
-            <French>Mode de jeu:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GameTypeDesc">
-            <English>Checks if the game type is set.</English>
-            <German>Überprüft, ob der Spieltyp eingestellt ist.</German>
-            <French>Vérifie si le mode de jeu est défini.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_Author">
-            <English>Author:</English>
-            <German>Author:</German>
-            <French>Auteur:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_AuthorDesc">
-            <English>Checks if the author field is set and contains your Arma profile name.</English>
-            <German>Überprüft, ob das Autorenfeld eingestellt und dein Arma-Profilname eingetragen ist.</German>
-            <French>Vérifie si le champ auteur contient votre nom de profil Arma.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_MinPlayers">
-            <English>Min Players:</English>
-            <German>Minimale Spielerzahl:</German>
-            <French>Joueurs minimum:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_MinPlayersDesc">
-            <English>Checks if the minimum players amount is set.</English>
-            <German>Überprüft, ob die minimale Spielerzahl eingestellt ist.</German>
-            <French>Vérifie si le nombre minimum de joueurs est défini.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_MaxPlayers">
-            <English>Max Players:</English>
-            <German>Maximale Spielerzahl:</German>
-            <French>Joueurs maximum:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_MaxPlayersDesc">
-            <English>Checks if the maximum players amount is set.</English>
-            <German>Überprüft, ob die maximale Spielerzahl eingestellt ist.</German>
-            <French>Vérifie si le nombre maximal de joueurs est défini.</French>
+        <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
+            <English>Checks if recommended amount of AI are present.</English>
+            <French>Vérifie si le nombre recommandé d'IA est présent.</French>
+            <German>Überprüft, ob die empfohlene KI-Anzahl anwesend ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIPosession">
             <English>AI Posession:</English>
-            <German>KI-Inbesitznahme</German>
             <French>Possession IA:</French>
+            <German>KI-Inbesitznahme</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_AIPosessionDesc">
             <English>Checks if the playable units AI possession is disabled.</English>
-            <German>Überprüft, ob die KI-Inbesitznahme für spielbare Einheiten deaktiviert ist.</German>
             <French>Vérifie si la possession d'unités jouable par l'IA est désactivée.</French>
+            <German>Überprüft, ob die KI-Inbesitznahme für spielbare Einheiten deaktiviert ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmount">
+            <English>AP Units:</English>
+            <French>Montant du PA:</French>
+            <German>AP-Betrag:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APAmountDesc">
+            <English>Checks if recommend amount of AP units are present.</English>
+            <French>Vérifie si la quantité recommandée d'unités AP est présente.</French>
+            <German>Prüft, ob die empfohlene Anzahl von AP-Einheiten vorhanden ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APCAmount">
+            <English>Wheeled APCs:</English>
+            <French>Véhicules de transport de troupes à roues:</French>
+            <German>APC mit Rädern:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_APCAmountDesc">
+            <English>Checks if the recommended amount of Wheeled APCs are present.</English>
+            <French>Vérifie si le nombre recommandé de véhicules APC à roues est présent.</French>
+            <German>Überprüft, ob die empfohlene Anzahl an Wheeled APC Fahrzeugen vorhanden ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Apollo">
+            <English>Apollo:</English>
+            <French>Apollo:</French>
+            <German>Apollo:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_ApolloDesc">
+            <English>Checks if Apollo is enabled.</English>
+            <French>Vérifie si Apollo est activé.</French>
+            <German>Überprüft, ob Apollo aktiviert ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Author">
+            <English>Author:</English>
+            <French>Auteur:</French>
+            <German>Author:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_AuthorDesc">
+            <English>Checks if the author field is set and contains your Arma profile name.</English>
+            <French>Vérifie si le champ auteur contient votre nom de profil Arma.</French>
+            <German>Überprüft, ob das Autorenfeld eingestellt und dein Arma-Profilname eingetragen ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Autotest">
+            <English>Autotest</English>
+            <French>Autotest</French>
+            <German>Autotest</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole">
+            <English>Debug Console:</English>
+            <French>Console de debogage:</French>
+            <German>Debug-Konsole:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsoleDesc">
+            <English>Checks if debug console is enabled.</English>
+            <French>Vérifie que la console de debogage soit activée.</French>
+            <German>Überprüft, ob die Debug-Konsole aktiviert ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledAdmin">
+            <English>Enabled for admin</English>
+            <French>Activer pour les administrateurs</French>
+            <German>Aktiviert für Admin</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
+            <English>Enabled for everyone</English>
+            <French>Activer pour tout le monde</French>
+            <German>Aktiviert für alle</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledSpecific">
+            <English>Enabled for specific users and admin</English>
+            <French>Activer pour certains utilisateurs et l'administrateur</French>
+            <German>Aktiviert für bestimme Nutzer und Admin</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Description">
+            <English>Description:</English>
+            <French>Description:</French>
+            <German>Beschreibung:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_DescriptionDesc">
+            <English>Checks if the description is set.</English>
+            <French>Vérifie si la description est définie.</French>
+            <German>Überprüft, ob die Beschreibung eingestellt ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_Findings">
+            <English>Findings:</English>
+            <French>Résultats:</French>
+            <German>Ergebnisse:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameType">
+            <English>Game Type:</English>
+            <French>Mode de jeu:</French>
+            <German>Spieltyp:</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GameTypeDesc">
+            <English>Checks if the game type is set.</English>
+            <French>Vérifie si le mode de jeu est défini.</French>
+            <German>Überprüft, ob der Spieltyp eingestellt ist.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
+            <English>Side %1 has %2 groups. Note that Arma has a 288 group limit per side.</English>
+            <French>Le côté %1 à %2 groupes, notez que Arma a une limite de 288 groupes par côté.</French>
+            <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 288 pro Seite hat.</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_GroupSizeLimit">
+            <English>Group %1 on %2 has more than 10 units.</English>
+            <French>Le groupe %1 sur %2 compte plus de 10 unités.</French>
+            <German>Gruppe %1 auf %2 hat mehr als 10 Einheiten.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_HCAmount">
             <English>Headless Clients:</English>
@@ -93,115 +138,105 @@
             <English>Only playable Headless Clients can be used!</English>
             <German>Nur spielbare Headless Clients können genutzt werden!</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_AIAmount">
-            <English>AI:</English>
-            <German>KI:</German>
-            <French>IA:</French>
+        <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
+            <English>Init field checks complete, %1 issues detected.</English>
+            <French>Vérification des champs d'initialisation terminée, %1 problèmes détectés.</French>
+            <German>Init field Überprüfung beendet, %1 Probleme gefunden.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_AIAmountDesc">
-            <English>Checks if recommended amount of AI are present.</English>
-            <German>Überprüft, ob die empfohlene KI-Anzahl anwesend ist.</German>
-            <French>Vérifie si le nombre recommandé d'IA est présent.</French>
+        <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
+            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' or 'hasInterface' check!</English>
+            <French>%1 a un champs d'initialisation large (%2) mais pas de vérification `isServer` ou `local` ou `hasInterface` !</French>
+            <German>%1 hat große init field Inhalte (%2) aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung!</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_APAmount">
-            <English>AP Units:</English>
-            <German>AP-Betrag:</German>
-            <French>Montant du PA:</French>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayers">
+            <English>Max Players:</English>
+            <French>Joueurs maximum:</French>
+            <German>Maximale Spielerzahl:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_APAmountDesc">
-            <English>Checks if recommend amount of AP units are present.</English>
-            <German>Prüft, ob die empfohlene Anzahl von AP-Einheiten vorhanden ist.</German>
-            <French>Vérifie si la quantité recommandée d'unités AP est présente.</French>
+        <Key ID="STR_TAC_Mission_Autotest_MaxPlayersDesc">
+            <English>Checks if the maximum players amount is set.</English>
+            <French>Vérifie si le nombre maximal de joueurs est défini.</French>
+            <German>Überprüft, ob die maximale Spielerzahl eingestellt ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_APCAmount">
-            <English>Wheeled APCs:</English>
-            <German>APC mit Rädern:</German>
-            <French>Véhicules de transport de troupes à roues:</French>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayers">
+            <English>Min Players:</English>
+            <French>Joueurs minimum:</French>
+            <German>Minimale Spielerzahl:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_APCAmountDesc">
-            <English>Checks if the recommended amount of Wheeled APCs are present.</English>
-            <German>Überprüft, ob die empfohlene Anzahl an Wheeled APC Fahrzeugen vorhanden ist.</German>
-            <French>Vérifie si le nombre recommandé de véhicules APC à roues est présent.</French>
+        <Key ID="STR_TAC_Mission_Autotest_MinPlayersDesc">
+            <English>Checks if the minimum players amount is set.</English>
+            <French>Vérifie si le nombre minimum de joueurs est défini.</French>
+            <German>Überprüft, ob die minimale Spielerzahl eingestellt ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_TrackedAmount">
-            <English>Tracked Vehicles:</English>
-            <German>Raupenfahrzeuge:</German>
-            <French>Véhicules à chenilles</French>
+        <Key ID="STR_TAC_Mission_Autotest_Name">
+            <English>Name:</English>
+            <French>Nom:</French>
+            <German>Name:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_TrackedAmountDesc">
-            <English>Checks if the recommended amount of Tracked Vehicles are present.</English>
-            <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
-            <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
+        <Key ID="STR_TAC_Mission_Autotest_NameDesc">
+            <English>Checks if the name is set.</English>
+            <French>Vérifie si le nom est défini.</French>
+            <German>Überprüft, ob der Name eingestellt ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
-            <English>Respawn Mode:</English>
-            <German>Respawn-Modus:</German>
-            <French>Mode de réapparition:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_RespawnModeDesc">
-            <English>Checks if respawn mode is set.</English>
-            <German>Überprüft, ob der Respawn-Modus eingestellt ist.</German>
-            <French>Vérifie si le mode de réapparition est défini.</French>
+        <Key ID="STR_TAC_Mission_Autotest_NotLoaded">
+            <English>Not loaded</English>
+            <French>Non chargé</French>
+            <German>Nicht geladen</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnButton">
             <English>Respawn Button:</English>
-            <German>Respawn-Knopf:</German>
             <French>Boutton de réapparition:</French>
+            <German>Respawn-Knopf:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnButtonDesc">
             <English>Checks if respawn button is enabled.</English>
-            <German>Überprüft, ob der Respawn-Knopf aktiviert ist.</German>
             <French>Vérifie que le boutton de réapparition est activé.</French>
+            <German>Überprüft, ob der Respawn-Knopf aktiviert ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDelay">
             <English>Respawn Delay:</English>
-            <German>Respawn-Verzögerung:</German>
             <French>Délai de réapparition:</French>
+            <German>Respawn-Verzögerung:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDelayDesc">
             <English>Checks if respawn delay is set to a reasonable time.</English>
-            <German>Überprüft, ob die Respawn-Verzögerung auf einen sinnvollen Wert eingestellt ist.</German>
             <French>Vérifie que le delai de réapparition soit configuré sur un temps raisonable.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_RespawnNoDelayNote">
-            <English>Delay allows players to realize they are dead and will respawn.</English>
-            <German>Eine Verzögerung erlaubt den Spielern, ihren Tod und den bevorstehenden Respawn zu realisieren.</German>
-            <French>Un délai laisse les joueurs se rendre compte qu'ils sont morts et vont réapparaître.</French>
+            <German>Überprüft, ob die Respawn-Verzögerung auf einen sinnvollen Wert eingestellt ist.</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDialog">
             <English>Respawn Dialog:</English>
-            <German>Respawn-Dialog:</German>
             <French>Boite de dialogue de réapparition:</French>
+            <German>Respawn-Dialog:</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_RespawnDialogDesc">
             <English>Checks if respawn dialog is disabled.</English>
-            <German>Überprüft, ob der Respawn-Dialog deaktiviert ist.</German>
             <French>Vérifie que la boite de dialogue de réapparition soit activé.</French>
+            <German>Überprüft, ob der Respawn-Dialog deaktiviert ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DebugConsole">
-            <English>Debug Console:</English>
-            <German>Debug-Konsole:</German>
-            <French>Console de debogage:</French>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnMode">
+            <English>Respawn Mode:</English>
+            <French>Mode de réapparition:</French>
+            <German>Respawn-Modus:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DebugConsoleDesc">
-            <English>Checks if debug console is enabled.</English>
-            <German>Überprüft, ob die Debug-Konsole aktiviert ist.</German>
-            <French>Vérifie que la console de debogage soit activée.</French>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnModeDesc">
+            <English>Checks if respawn mode is set.</English>
+            <French>Vérifie si le mode de réapparition est défini.</French>
+            <German>Überprüft, ob der Respawn-Modus eingestellt ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledAdmin">
-            <English>Enabled for admin</English>
-            <French>Activer pour les administrateurs</French>
-            <German>Aktiviert für Admin</German>
+        <Key ID="STR_TAC_Mission_Autotest_RespawnNoDelayNote">
+            <English>Delay allows players to realize they are dead and will respawn.</English>
+            <French>Un délai laisse les joueurs se rendre compte qu'ils sont morts et vont réapparaître.</French>
+            <German>Eine Verzögerung erlaubt den Spielern, ihren Tod und den bevorstehenden Respawn zu realisieren.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledEveryone">
-            <English>Enabled for everyone</English>
-            <German>Aktiviert für alle</German>
-            <French>Activer pour tout le monde</French>
+        <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
+            <English>Should be</English>
+            <French>Devrait être</French>
+            <German>Sollte sein</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_DebugConsole_EnabledSpecific">
-            <English>Enabled for specific users and admin</English>
-            <French>Activer pour certains utilisateurs et l'administrateur</French>
-            <German>Aktiviert für bestimme Nutzer und Admin</German>
+        <Key ID="STR_TAC_Mission_Autotest_TAC_Autotest">
+            <English>TAC Autotest</English>
+            <French>TAC autotest</French>
+            <German>TAC Autotest</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_TargetDebug">
             <English>Target Debug:</English>
@@ -213,65 +248,30 @@
             <French>Vérifie si la cible de debogage est activée.</French>
             <German>Anzeigen, ob Zeil Debug aktiviert ist.</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_Apollo">
-            <English>Apollo:</English>
-            <German>Apollo:</German>
-            <French>Apollo:</French>
+        <Key ID="STR_TAC_Mission_Autotest_TrackedAmount">
+            <English>Tracked Vehicles:</English>
+            <French>Véhicules à chenilles</French>
+            <German>Raupenfahrzeuge:</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_ApolloDesc">
-            <English>Checks if Apollo is enabled.</English>
-            <German>Überprüft, ob Apollo aktiviert ist.</German>
-            <French>Vérifie si Apollo est activé.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_Findings">
-            <English>Findings:</English>
-            <German>Ergebnisse:</German>
-            <French>Résultats:</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_LargeInitField">
-            <English>%1 has large init field contents (%2) but no 'isServer' or 'local' or 'hasInterface' check!</English>
-            <German>%1 hat große init field Inhalte (%2) aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung!</German>
-            <French>%1 a un champs d'initialisation large (%2) mais pas de vérification `isServer` ou `local` ou `hasInterface` !</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
-            <English>Virtual Arsenal code detected in init field of %1!</English>
-            <German>Virtueller Arsenal Code in init field von %1 gefunden! </German>
-            <French>Code pour l'Arsenal Virtuel détecté dans le champ d'initialisation de %1 !</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
-            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' or 'hasInterface' check!</English>
-            <German>Virtueller Arsenal Code in init field von %1 gefunden, aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung! </German>
-            <French>Code pour l'Arsenal Virtuel détecté dans le champ d'initialisation de %1, mais pas de vérification `isServer` ou `local` ou `hasInterface` !</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_InitFieldCheckCompleted">
-            <English>Init field checks complete, %1 issues detected.</English>
-            <German>Init field Überprüfung beendet, %1 Probleme gefunden.</German>
-            <French>Vérification des champs d'initialisation terminée, %1 problèmes détectés.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GroupLimit">
-            <English>Side %1 has %2 groups. Note that Arma has a 288 group limit per side.</English>
-            <German>Seite %1 hat %2 Gruppen. Beachte, dass Arma ein Gruppenlimit von 288 pro Seite hat.</German>
-            <French>Le côté %1 à %2 groupes, notez que Arma a une limite de 288 groupes par côté.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_GroupSizeLimit">
-            <English>Group %1 on %2 has more than 10 units.</English>
-            <German>Gruppe %1 auf %2 hat mehr als 10 Einheiten.</German>
-            <French>Le groupe %1 sur %2 compte plus de 10 unités.</French>
-        </Key>
-        <Key ID="STR_TAC_Mission_Autotest_ShouldBe">
-            <English>Should be</English>
-            <German>Sollte sein</German>
-            <French>Devrait être</French>
+        <Key ID="STR_TAC_Mission_Autotest_TrackedAmountDesc">
+            <English>Checks if the recommended amount of Tracked Vehicles are present.</English>
+            <French>Vérifie si le nombre recommandé de véhicules suivis est présent.</French>
+            <German>Überprüft, ob die empfohlene Anzahl von verfolgten Fahrzeugen vorhanden ist</German>
         </Key>
         <Key ID="STR_TAC_Mission_Autotest_Unplayable">
             <English>Unplayable</English>
-            <German>Unspielbar</German>
             <French>Injouable</French>
+            <German>Unspielbar</German>
         </Key>
-        <Key ID="STR_TAC_Mission_Autotest_NotLoaded">
-            <English>Not loaded</English>
-            <German>Nicht geladen</German>
-            <French>Non chargé</French>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetected">
+            <English>Virtual Arsenal code detected in init field of %1!</English>
+            <French>Code pour l'Arsenal Virtuel détecté dans le champ d'initialisation de %1 !</French>
+            <German>Virtueller Arsenal Code in init field von %1 gefunden!</German>
+        </Key>
+        <Key ID="STR_TAC_Mission_Autotest_VirtualArsenalCodeDetectedAndNoChecks">
+            <English>Virtual Arsenal code detected in init field of %1, but no 'isServer' or 'local' or 'hasInterface' check!</English>
+            <French>Code pour l'Arsenal Virtuel détecté dans le champ d'initialisation de %1, mais pas de vérification `isServer` ou `local` ou `hasInterface` !</French>
+            <German>Virtueller Arsenal Code in init field von %1 gefunden, aber keine 'isServer' oder 'local' oder 'hasInterface' Überprüfung!</German>
         </Key>
     </Package>
 </Project>

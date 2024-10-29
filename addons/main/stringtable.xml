@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Main">
+        <Key ID="STR_TAC_Main_Attributes">
+            <English>TAC Attributes</English>
+            <French>Attributs TAC</French>
+            <German>TAC Attribute</German>
+        </Key>
         <Key ID="STR_TAC_Main_Author">
             <English>Theseus Incorporated</English>
-            <German>Theseus Incorporated</German>
+            <Czech>Theseus Incorporated</Czech>
+            <French>Theseus Incorporated</French>
+            <Spanish>Theseus Incorporated</Spanish>
+            <Italian>Theseus Incorporated</Italian>
             <Polish>Theseus Incorporated</Polish>
             <Portuguese>Theseus Incorporated</Portuguese>
             <Russian>Theseus Incorporated</Russian>
-            <Czech>Theseus Incorporated</Czech>
-            <Spanish>Theseus Incorporated</Spanish>
-            <Italian>Theseus Incorporated</Italian>
-            <French>Theseus Incorporated</French>
+            <German>Theseus Incorporated</German>
         </Key>
-        <Key ID="STR_TAC_Main_URL">
-            <English>https://github.com/Theseus-Aegis/Mods</English>
-            <German>https://github.com/Theseus-Aegis/Mods</German>
-            <Polish>https://github.com/Theseus-Aegis/Mods</Polish>
-            <Portuguese>https://github.com/Theseus-Aegis/Mods</Portuguese>
-            <Russian>https://github.com/Theseus-Aegis/Mods</Russian>
-            <Czech>https://github.com/Theseus-Aegis/Mods</Czech>
-            <Spanish>https://github.com/Theseus-Aegis/Mods</Spanish>
-            <Italian>https://github.com/Theseus-Aegis/Mods</Italian>
-            <French>https://github.com/Theseus-Aegis/Mods</French>
-            <Japanese>https://github.com/Theseus-Aegis/Mods</Japanese>
+        <Key ID="STR_TAC_Main_Mission_Items_Contraband_Name">
+            <English>Contraband</English>
         </Key>
-        <Key ID="STR_TAC_Main_Attributes">
-            <English>TAC Attributes</English>
-            <German>TAC Attribute</German>
-            <French>Attributs TAC</French>
+        <Key ID="STR_TAC_Main_Mission_Items_Electronics_Name">
+            <English>Electronics</English>
         </Key>
         <Key ID="STR_TAC_Main_Mission_Items_Name">
             <English>TAC - Mission Items</English>
@@ -35,11 +29,17 @@
         <Key ID="STR_TAC_Main_Mission_Items_Supplies_Name">
             <English>Supplies</English>
         </Key>
-        <Key ID="STR_TAC_Main_Mission_Items_Contraband_Name">
-            <English>Contraband</English>
-        </Key>
-        <Key ID="STR_TAC_Main_Mission_Items_Electronics_Name">
-            <English>Electronics</English>
+        <Key ID="STR_TAC_Main_URL">
+            <English>https://github.com/Theseus-Aegis/Mods</English>
+            <Czech>https://github.com/Theseus-Aegis/Mods</Czech>
+            <French>https://github.com/Theseus-Aegis/Mods</French>
+            <Spanish>https://github.com/Theseus-Aegis/Mods</Spanish>
+            <Italian>https://github.com/Theseus-Aegis/Mods</Italian>
+            <Polish>https://github.com/Theseus-Aegis/Mods</Polish>
+            <Portuguese>https://github.com/Theseus-Aegis/Mods</Portuguese>
+            <Russian>https://github.com/Theseus-Aegis/Mods</Russian>
+            <German>https://github.com/Theseus-Aegis/Mods</German>
+            <Japanese>https://github.com/Theseus-Aegis/Mods</Japanese>
         </Key>
     </Package>
 </Project>
