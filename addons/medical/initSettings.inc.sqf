@@ -10,15 +10,6 @@ private _category = format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)];
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(unconsciousFXEnabled),
-    "CHECKBOX",
-    [LSTRING(UnconsciousFX_DisplayName), LSTRING(UnconsciousFX_Description)],
-    _category,
-    true,
-    1
-] call CBA_fnc_addSetting;
-
-[
     QGVAR(unconsciousFXChance),
     "SLIDER",
     [LSTRING(UnconsciousFXChance_DisplayName), LSTRING(UnconsciousFXChance_Description)],

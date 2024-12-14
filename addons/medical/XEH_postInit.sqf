@@ -54,7 +54,7 @@ if (isServer) then {
     ["ace_unconscious", {
         params ["_unit", "_state"];
 
-        if !(GVAR(unconsciousFXEnabled)) exitWith {};
+        if (GVAR(unconsciousFXChance) == 0) exitWith {};
 
         if (isPlayer _unit && _state) then {
             // Knock out sound
