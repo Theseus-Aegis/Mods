@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles noises while unconscious
+ * Handles noises while unconscious.
  *
- * Called locally per player via target event
+ * Called locally per player via target event.
  *
  * Arguments
  * None
