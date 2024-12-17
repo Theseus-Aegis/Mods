@@ -19,11 +19,5 @@
         <Key ID="STR_TAC_Medical_UnconsciousFXTimer_DisplayName">
             <English>Unconscious Effect Timer</English>
         </Key>
-        <Key ID="STR_TAC_Medical_UnconsciousFX_Description">
-            <English>Enabled groaning sounds for unconscious players with a heart rate.</English>
-        </Key>
-        <Key ID="STR_TAC_Medical_UnconsciousFX_DisplayName">
-            <English>Unconscious Effect Sounds</English>
-        </Key>
     </Package>
 </Project>
