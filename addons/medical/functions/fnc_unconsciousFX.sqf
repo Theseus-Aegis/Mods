@@ -33,6 +33,6 @@
     private _heartRate = ace_player getVariable ["ace_medical_heartRate", 80];
     if (random 1 > GVAR(unconsciousFXChance) && _heartRate > 40) then {
         private _moan = selectRandom UNCONSCIOUS_NOISES;
-        [QEGVAR(mission,say3D), [ace_player, _moan]] call CBA_fnc_globalEvent;
+        [QGVAR(say3D), [ace_player, _moan]] call CBA_fnc_globalEvent;
     };
 }, GVAR(unconsciousFXTimer)] call CBA_fnc_addPerFrameHandler;

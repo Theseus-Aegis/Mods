@@ -59,7 +59,7 @@ if (isServer) then {
         if (isPlayer _unit && _state) then {
             // Knock out sound
             private _knockOutNoise = selectRandom KO_NOISES;
-            [QEGVAR(mission,say3D), [_unit, _knockOutNoise]] call CBA_fnc_globalEvent;
+            [QGVAR(say3D), [_unit, _knockOutNoise]] call CBA_fnc_globalEvent;
 
             // Local PFH for periodic groaning
             [QGVAR(unconsciousFX), [], _unit] call CBA_fnc_targetEvent;
@@ -67,4 +67,5 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
+[QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(unconsciousFx), LINKFUNC(unconsciousFX)] call CBA_fnc_addEventHandler;

@@ -8,7 +8,6 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "tac_main",
-            "tac_mission",
             "ace_fire",
             "ace_medical_engine",
             "ace_medical_feedback"
