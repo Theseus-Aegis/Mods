@@ -48,3 +48,24 @@
         };
     }, _unit, 1] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;
+
+// Unconscious Moaning
+if (isServer) then {
+    ["ace_unconscious", {
+        params ["_unit", "_state"];
+
+        if (GVAR(unconsciousFXChance) == 0) exitWith {};
+
+        if (isPlayer _unit && _state) then {
+            // Knock out sound
+            private _knockOutNoise = selectRandom KO_NOISES;
+            [QGVAR(say3D), [_unit, _knockOutNoise]] call CBA_fnc_globalEvent;
+
+            // Local PFH for periodic groaning
+            [QGVAR(unconsciousFX), [], _unit] call CBA_fnc_targetEvent;
+        };
+    }] call CBA_fnc_addEventHandler;
+};
+
+[QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(unconsciousFx), LINKFUNC(unconsciousFX)] call CBA_fnc_addEventHandler;

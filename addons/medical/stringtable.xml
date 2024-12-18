@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Medical">
+        <Key ID="STR_TAC_Medical_FatalInjuriesCardiacArrestTimeCoefficient_Description">
+            <English>Coefficient for controlling the Cardiac Arrest Time on fatal injuries when 'Fatal Injuries' is NOT 'Always'.</English>
+        </Key>
         <Key ID="STR_TAC_Medical_FatalInjuriesCardiacArrestTimeCoefficient_DisplayName">
             <English>Fatal Injuries Cardiac Arrest Time Coefficient</English>
         </Key>
-        <Key ID="STR_TAC_Medical_FatalInjuriesCardiacArrestTimeCoefficient_Description">
-            <English>Coefficient for controlling the Cardiac Arrest Time on fatal injuries when 'Fatal Injuries' is NOT 'Always'.</English>
+        <Key ID="STR_TAC_Medical_UnconsciousFXChance_Description">
+            <English>The chance of unconscious sounds playing each check.</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXChance_DisplayName">
+            <English>Unconscious Effect Sound Chance</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXTimer_Description">
+            <English>Time interval for checking if the sound effect should play</English>
+        </Key>
+        <Key ID="STR_TAC_Medical_UnconsciousFXTimer_DisplayName">
+            <English>Unconscious Effect Timer</English>
         </Key>
     </Package>
 </Project>
