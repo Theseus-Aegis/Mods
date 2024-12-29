@@ -27,4 +27,4 @@ private _module = (_moduleData select 0) select 0;
 unassignCurator _module;
 
 // Reassign curator back to original player
-_module assignCurator _newUnit;
+_newUnit assignCurator _module;
