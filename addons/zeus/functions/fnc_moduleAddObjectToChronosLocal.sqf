@@ -26,7 +26,7 @@ if (!(["tac_apollo"] call ACEFUNC(common,isModLoaded))) then {
     if (_mouseOverType != "OBJECT" || {_mouseOverUnit isKindOf "CAManBase"}) then {
         [LSTRING(PlaceOnObject)] call ACEFUNC(common,displayTextStructured);
     } else {
-        if !((_mouseOverUnit getVariable [QEGVAR(apollo,vehicleID), "None"]) isEqualTo "None") then {
+        if ((_mouseOverUnit getVariable [QEGVAR(apollo,vehicleID), "None"]) isNotEqualTo "None") then {
             [LSTRING(AlreadyInChronos)] call ACEFUNC(common,displayTextStructured);
         } else {
             [QGVAR(addObjectToChronos), [_mouseOverUnit, ace_player]] call CBA_fnc_serverEvent;

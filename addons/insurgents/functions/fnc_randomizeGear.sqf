@@ -20,7 +20,7 @@ params [
 private _currentLoadout = getUnitLoadout _unit;
 _currentLoadout set [7, ""]; // ignore facewear
 
-if (!local _unit || {!(EMPTY_LOADOUT isEqualTo _currentLoadout) || {is3DEN}}) exitWith {
+if (!local _unit || {(EMPTY_LOADOUT isNotEqualTo _currentLoadout) || {is3DEN}}) exitWith {
     LOG_1("Unit modified, no randomization - %1",_unit);
 };
 

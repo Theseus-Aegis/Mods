@@ -14,7 +14,7 @@ private _configFile = configFile >> QGVAR(gear);
 {
     private _rootConfig = _x;
     {
-        if (!(_rootConfig isEqualTo _configFile) || {GEAR_ENABLED(configName _x)}) then {
+        if ((_rootConfig isNotEqualTo _configFile) || {GEAR_ENABLED(configName _x)}) then {
             LOG_1("Parsing random gear - %1",_x);
             {
                 private _key = configName _x;

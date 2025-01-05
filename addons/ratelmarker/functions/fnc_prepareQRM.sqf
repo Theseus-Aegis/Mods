@@ -30,7 +30,7 @@ if (GVAR(QuickReferenceMarkerMode) == 2) then {
 
     private _markerPos = terrainIntersectAtASL [_traceBegin, _traceEnd];
 
-    if !(_markerPos isEqualTo [0, 0, 0]) then {
+    if (_markerPos isNotEqualTo [0, 0, 0]) then {
         [_markerPos] call FUNC(createQRM);
     } else {
         LLSTRING(QRM_Create) call CBA_fnc_notify;

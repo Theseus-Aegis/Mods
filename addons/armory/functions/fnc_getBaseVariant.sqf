@@ -32,7 +32,7 @@ if (_isScriptedOpticClass || {_isScriptedOpticType}) then {
     } forEach configProperties [configFile >> "CBA_CarryHandleTypes"];
 
     TRACE_2("Base classes",_itemClass,_baseClasses);
-    if !(_baseClasses isEqualTo []) exitWith {
+    if (_baseClasses isNotEqualTo []) exitWith {
         _itemClass = configName (_baseClasses select 0)
     };
     _itemClass
