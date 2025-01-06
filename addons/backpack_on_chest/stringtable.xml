@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Backpack_On_Chest">
+        <Key ID="STR_TAC_Backpack_On_Chest_Disable">
+            <English>Disable Backpack On Chest</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_Disable_Description">
+            <English>Prevent usage of Backpack on Chest features</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_DisplayName">
+            <English>Backpack on Chest</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_Lower">
+            <English>Lower chestpack</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_OnBack">
+            <English>Put backpack on back</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_OnChest">
+            <English>Put backpack on chest</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_Swap">
+            <English>Swap rucksacks</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_cutLoweringLine">
+            <English>Cut lowering line</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_forceWalk">
+            <English>Force Walking</English>
+        </Key>
+        <Key ID="STR_TAC_Backpack_On_Chest_forceWalk_Description">
+            <English>Force the unit to walk with backpack on chest</English>
+        </Key>
+    </Package>
+</Project>
