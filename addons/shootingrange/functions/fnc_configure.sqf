@@ -66,7 +66,7 @@ if (_targetsOld isEqualTo []) exitWith {
 private _allTargetsNew = _targetsNew + _targetsInvalidNew;
 private _allTargetsOld = _targetsOld + _targetsInvalidOld;
 
-if (!(_targetsNew isEqualTo []) && {count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0}) exitWith {
+if (_targetsNew isNotEqualTo [] && {count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0}) exitWith {
     ERROR_1("Unknown (invalid) target found on Shooting Range%1! Only targets defined on mission start can be configured at run-time!",_name);
     false
 };
@@ -85,7 +85,7 @@ private _allTargetsOldControllers = [];
     } forEach (_x getVariable [QGVAR(controllers), []]);
 } forEach _allTargetsOld;
 
-if (_allTargetsNewControllers isEqualTo [] || {!(_allTargetsNewControllers isEqualTo _allTargetsOldControllers)}) exitWith {
+if (_allTargetsNewControllers isEqualTo [] || {_allTargetsNewControllers isNotEqualTo _allTargetsOldControllers}) exitWith {
     ERROR_1("Controllers not matching for old and new targets on Shooting Range%1! Make sure targets from other ranges or non-defined targets are not used!",_name);
     false
 };
