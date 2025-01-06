@@ -31,7 +31,7 @@ private _backpack = firstBackpack _holder;
 
 // add variables
 {
-     _backpack setVariable [(_x select 0), (_x select 1), true];
+    _backpack setVariable [(_x select 0), (_x select 1), true];
 } forEach _chestpackVariables;
 
 // remove the backpack from the dead unit

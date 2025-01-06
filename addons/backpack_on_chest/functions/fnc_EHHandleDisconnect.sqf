@@ -23,6 +23,6 @@ if ([_unit] call FUNC(chestpack) isEqualTo "") exitWith {};
      params ["_unit"];
      private _container = _unit call FUNC(chestpackContainer);
      if (!alive _unit) then {
-          deleteVehicle _container;
+        deleteVehicle _container;
      };
 }, _unit, 1.5] call CBA_fnc_waitAndExecute;

@@ -38,7 +38,7 @@ _unit setUnitLoadout _loadout;
 // add variables
 private _backpack = backpackContainer _unit;
 {
-     _backpack setVariable [(_x select 0), (_x select 1), true];
+    _backpack setVariable [(_x select 0), (_x select 1), true];
 } forEach _chestpackVariables;
 
 [_unit] call FUNC(removeChestpack);
