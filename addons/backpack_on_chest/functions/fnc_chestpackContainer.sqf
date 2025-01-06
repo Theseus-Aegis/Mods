@@ -2,7 +2,7 @@
 /*
  * Author: DerZade, mjc4wilton
  * Returns the cargo container of a unit's chestpack. Note that this is only a prop and does not contain any items. Items which
- * were added with vanilla commands like 'addWeaponCargo' etc.  will be ignored. You have to use the provided functions instead.
+ * were added with vanilla commands like 'addWeaponCargo' etc. will be ignored. You have to use the provided functions instead.
  *
  * Arguments:
  * 0: Unit <OBJECT>

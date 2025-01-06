@@ -19,7 +19,7 @@ params ["_unit"];
 
 private _chestpack = [_unit] call FUNC(chestpack);
 if (_chestpack isEqualTo "") exitWith {objNull};
-private _chestpackLoadout =  [_unit] call FUNC(chestpackLoadout);
+private _chestpackLoadout = [_unit] call FUNC(chestpackLoadout);
 private _chestpackVariables = [_unit] call FUNC(chestpackVariables);
 
 private _holder = createVehicle ["WeaponHolderSimulated", (getPos _unit), [], 0, "CAN_COLLIDE"];

@@ -4,7 +4,7 @@
  * Finds mass of given item.
  *
  * Arguments:
- * 0: Item  <STRING>
+ * 0: Item <STRING>
  *
  * Return Value:
  * Item mass <NUMBER>
@@ -38,12 +38,12 @@ if (isClass _magazineConfigMass) exitWith {
 
 private _vehiclesConfigMass = configFile >>"CfgVehicles">> _item;
 
-if (isClass _vehiclesConfigMass) exitWith  {
+if (isClass _vehiclesConfigMass) exitWith {
      getNumber (_vehiclesConfigMass >> "Mass");
 };
 
 private _glassesConfigMass = configFile >> "CfgGlasses" >> _item;
 
-if (isClass _glassesConfigMass) exitWith  {
+if (isClass _glassesConfigMass) exitWith {
      getNumber (_glassesConfigMass >> "Mass");
 };

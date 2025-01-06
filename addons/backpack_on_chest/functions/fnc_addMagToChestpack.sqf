@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: DerZade, mjc4wilton
- * Creates new magazine and stores it in  the soldier's chestpack. Only magazines are supported.
+ * Creates new magazine and stores it in the soldier's chestpack. Only magazines are supported.
  * The purpose of this function is to ensure that magazines with a specified ammo count can be added.
  * If you want to add a/multiple full magazine(s) you may want to use 'zade_boc_addItemToChestpack' instead.
  *
