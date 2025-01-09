@@ -27,6 +27,8 @@ PREP(enableAI);
 PREP(forceShooting);
 PREP(groundFog);
 PREP(jam);
+PREP(keypadPress);
+PREP(keypadSetup);
 PREP(lockDoors);
 PREP(markBuildings);
 PREP(mortarStrike);
