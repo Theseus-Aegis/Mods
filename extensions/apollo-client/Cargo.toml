@@ -10,7 +10,7 @@ name = "apollo_client"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-arma-rs = "1.10"
+arma-rs = "1.11"
 lazy_static = "1.5"
 log = "0.4"
 reqwest = { version = "0.12", features = ["blocking"] }
