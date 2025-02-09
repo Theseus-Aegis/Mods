@@ -21,8 +21,7 @@
 
 params ["_vehicle", ["_destroyVehicle", true], ["_effectType", 0], ["_timeUntilDelete", 0], ["_attachOffset", [0, 0, 0]]];
 
-if (!isServer) exitWith {};
-if (isNull _vehicle) exitWith {};
+if (!isServer || isNull _vehicle) exitWith {};
 
 if (_destroyVehicle) then {
     _vehicle setDamage [1, false];
@@ -33,9 +32,9 @@ private _effectType = ["test_EmptyObjectForFireBig", "test_EmptyObjectForSmoke",
 private _effect = createVehicle [_effectType, getPosATL _vehicle, [], 0, "CAN_COLLIDE"];
 _effect attachTo [_vehicle, _attachOffset];
 
-if (_timeUntilDelete <= 0) exitWith {};
-
-[{
-    params ["_effect"];
-    deleteVehicle _effect;
-}, [_effect], _timeUntilDelete] call CBA_fnc_waitAndExecute;
+if (_timeUntilDelete > 0) then {
+    [{
+        params ["_effect"];
+        deleteVehicle _effect;
+    }, [_effect], _timeUntilDelete] call CBA_fnc_waitAndExecute;
+};
