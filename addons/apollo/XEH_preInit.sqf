@@ -15,4 +15,8 @@ if (isServer) then {
 
 GVAR(isDebug) = false;
 
+if (isServer) then {
+    GVAR(playerRuntimeData) = createHashMap;
+};
+
 ADDON = true;
