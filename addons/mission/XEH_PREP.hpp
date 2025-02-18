@@ -9,6 +9,7 @@ PREP(unconscious);
 PREP(vehicleSpawner);
 
 // Extra
+PREP(ambientEffects);
 PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
 PREP(bomber);
