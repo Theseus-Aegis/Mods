@@ -101,10 +101,6 @@
             <English>Go!</English>
             <German>Los!</German>
         </Key>
-        <Key ID="STR_TAC_ShootingRange_Hit">
-            <English>Hit</English>
-            <German>Treffer</German>
-        </Key>
         <Key ID="STR_TAC_ShootingRange_HitTargetLimit">
             <English>Hit (Target Limit)</English>
             <German>Treffer (Ziellimit)</German>

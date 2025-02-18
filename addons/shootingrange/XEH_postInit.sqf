@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 [QGVAR(logResult), {
-    INFO_1("%1",_this call FUNC(textsIntoLocalizedString));
+    INFO_1("%1",call FUNC(textsIntoLocalizedString));
 }] call CBA_fnc_addEventHandler;
 
 // Exit on Server and Headless Client

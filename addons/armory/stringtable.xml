@@ -90,16 +90,6 @@
             <French>Le conteneur est plein ! Faites de la place pour la récupération.</French>
             <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
         </Key>
-        <Key ID="STR_TAC_Armory_ContainsItemsContainer">
-            <English>All Uniforms/Vests/Backpacks in the box must be empty for stashing!</English>
-            <French>Tous les uniformes/vestes/sacs dans le conteneur doivent être vides pour être rangés !</French>
-            <German>Alle Uniformen/Westen/Rucksäcke müssen vor dem Wegpacken leer sein!</German>
-        </Key>
-        <Key ID="STR_TAC_Armory_ContainsItemsWeapon">
-            <English>All Weapons in the box must be without Attachments and Magazines for stashing!</English>
-            <French>Toutes les armes dans le conteneur doivent être sans accessoires et munitions pour être rangés !</French>
-            <German>Alle Waffen in der Kiste müssen ohne Magazin und Aufsätze sein, um weggepackt werden zu können!</German>
-        </Key>
         <Key ID="STR_TAC_Armory_Description">
             <English>Enable Armroy Locker on this object.</English>
             <French>Active l'armurerie sur cet objet.</French>

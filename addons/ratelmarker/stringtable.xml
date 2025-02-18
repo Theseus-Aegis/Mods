@@ -7,12 +7,6 @@
             <Spanish>Marcador RATEL</Spanish>
             <German>RATEL Markierer</German>
         </Key>
-        <Key ID="STR_TAC_RatelMarker_InvalidCoordinates">
-            <English>Invalid Coordinates!</English>
-            <French>Mauvaises coordonés</French>
-            <Spanish>Coordenadas Inválidas!</Spanish>
-            <German>Ungültige Koordinaten!</German>
-        </Key>
         <Key ID="STR_TAC_RatelMarker_MarkerCreated">
             <English>RATEL Marker Created (Open Map to Focus)</English>
             <French>Balise RATEL crée (Ouvrir la carte pour focaliser)</French>
@@ -27,9 +21,6 @@
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Create">
             <English>Create Quick Reference Marker</English>
-        </Key>
-        <Key ID="STR_TAC_RatelMarker_QRM_Error">
-            <English>Could not create Quick Reference Marker</English>
         </Key>
         <Key ID="STR_TAC_RatelMarker_QRM_Mode">
             <English>Quick Reference Marker Mode</English>
