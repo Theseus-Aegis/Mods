@@ -8,7 +8,7 @@ if (!hasInterface) exitWith {};
 [QGVAR(BreachingCharge_Place), "init", {
     // Execute in next frame for explosive to be created
     [{
-        call FUNC(setupBreach);
+        _this call FUNC(setupBreach);
     }, _this] call CBA_fnc_execNextFrame;
 }] call CBA_fnc_addClassEventHandler;
 
@@ -26,6 +26,6 @@ if (!hasInterface) exitWith {};
 [QGVAR(BreachingCharge_Place), "Deleted", {
     // Wait a frame for possible ammo to be created (arming the explosive)
     [{
-        call FUNC(handleBreachDeleted);
+        _this call FUNC(handleBreachDeleted);
     }, _this] call CBA_fnc_execNextFrame;
 }] call CBA_fnc_addClassEventHandler;

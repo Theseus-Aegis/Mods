@@ -50,7 +50,7 @@ _jammerClasses = _jammerClasses arrayIntersect _jammerClasses; // remove duplica
 // Register custom signal function
 [{
     // ACRE signal processing
-    private _coreSignal = call acre_sys_signal_fnc_getSignalCore;
+    private _coreSignal = _this call acre_sys_signal_fnc_getSignalCore;
     _coreSignal params ["_Px", "_maxSignal"];
 
     // Modify if any active jammers
