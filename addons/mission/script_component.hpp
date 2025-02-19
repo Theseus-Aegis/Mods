@@ -14,9 +14,9 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_MISSION
 #endif
 
-#include "\a3\ui_f\hpp\defineResincl.inc"
 #include "\x\tac\addons\main\script_macros.hpp"
 #include "script_macros_mission.hpp"
+#include "\a3\ui_f\hpp\defineResincl.inc"
 
 
 // Logging
