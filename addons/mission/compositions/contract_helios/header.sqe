@@ -1,0 +1,17 @@
+version=54;
+name="TAC - Helios Preset";
+author="Theseus";
+category="EdSubcat_Tools";
+requiredAddons[]=
+{
+	"A3_Supplies_F_Heli_Slingload",
+	"ace_rearm",
+	"ace_cargo",
+	"ace_refuel",
+	"ace_repair",
+	"A3_Soft_F_Gamma_Truck_01",
+	"A3_Soft_F_Exp_Truck_01",
+	"ace_realisticnames",
+	"Desert",
+	"tacs_variants_melb"
+};

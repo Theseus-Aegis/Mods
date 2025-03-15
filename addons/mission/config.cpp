@@ -13,5 +13,7 @@ class CfgPatches {
     };
 };
 
+#include "Cfg3DEN.hpp"
+#include "CfgEditorCategories.hpp"
 #include "CfgEventHandlers.hpp"
 #include "RscGUI.hpp"
