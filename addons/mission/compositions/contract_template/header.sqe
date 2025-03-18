@@ -1,0 +1,17 @@
+version=54;
+name="TAC - Contract Template";
+author="Theseus";
+category="EdSubcat_Tools";
+requiredAddons[]= {
+	"tacs_units",
+	"tac_armory",
+	"tacgt_supplies",
+	"A3_Structures_F_Civ_Camping",
+	"ace_dragging",
+	"A3_Structures_F_Mil_Helipads",
+	"A3_Props_F_Enoch_Military_Equipment",
+	"A3_Props_F_Exp_Military_Camps",
+	"A3_Modules_F_Curator_Curator",
+	"A3_Characters_F",
+	"A3_Ui_F"
+};

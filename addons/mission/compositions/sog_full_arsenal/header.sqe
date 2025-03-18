@@ -1,0 +1,8 @@
+version=54;
+name="TAC - SOG Full Arsenal";
+author="Lairdd1989";
+category="EdSubcat_Tools";
+requiredAddons[]=
+{
+	"A3_Weapons_F_Ammoboxes"
+};
