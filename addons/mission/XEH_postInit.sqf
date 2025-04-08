@@ -15,13 +15,17 @@ if (isServer) then {
 [QGVAR(doArtilleryFire), {(_this select 0) doArtilleryFire (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(doMove), {(_this select 0) doMove (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(enableAI), {(_this select 0) enableAI (_this select 1)}] call CBA_fnc_addEventHandler;
-[QGVAR(say3D), {(_this select 0) say3D (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatBehaviour), {(_this select 0) setCombatBehaviour (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatMode), {(_this select 0) setCombatMode  (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setDir), {(_this select 0) setDir (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setSpeedMode), {(_this select 0) setSpeedMode (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setUnitPos), {(_this select 0) setUnitPos (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setVehicleAmmo), {(_this select 0) setVehicleAmmo (_this select 1)}] call CBA_fnc_addEventHandler;
+
+[QGVAR(say3D), {
+    params ["_object", "_sound", ["_maxDistance", 100], ["_pitch", 1], ["_isSpeech", 1], ["_offset", 0], ["_speedOfSound", false]];
+    _object say3D [_sound, _maxDistance, _pitch, _isSpeech, _offset, _speedOfSound];
+}] call CBA_fnc_addEventHandler;
 
 // Exit if not player client
 if (!hasInterface) exitWith {};
