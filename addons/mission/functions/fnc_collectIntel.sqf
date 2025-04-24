@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
- * Author: Kresky, Jonpas
+ * Author: Emythiel, Jonpas
  * Adds the ability to "pick up" objects, and add an intel entry in the briefing tab.
  * Call from initPlayerLocal.sqf
  * Check for validity of object when using delete on collection (isNil)!
