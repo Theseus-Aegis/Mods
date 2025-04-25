@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
- * Author: Kaysi, Kresky, Jonpas, Mike
+ * Author: Kaysi, Emythiel, Jonpas, Mike
  * Adds ground fog.
  *
  * Call from initPlayerLocal.sqf.
