@@ -36,8 +36,8 @@ if (["acre_api"] call ACEFUNC(common,isModLoaded)) then {
     _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
 };
 
-// Add earplugs to uniform if has them plugged in (temporary until Variables support)
-if (_player call ACEFUNC(hearing,hasEarPlugsIn) && {((_loadout select 3) isNotEqualTo [])}) then {
+// Add earplugs to uniform if has them plugged in.
+if ((_player getVariable ["ACE_hasEarPlugsIn", false]) && {((_loadout select 3) isNotEqualTo [])}) then {
     ((_loadout select 3) select 1) pushBack ["ACE_EarPlugs", 1];
 };
 
