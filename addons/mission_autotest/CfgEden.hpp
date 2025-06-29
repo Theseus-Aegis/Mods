@@ -25,16 +25,10 @@
 // a3\3den\ui\resincl.inc
 #define CT_EDIT 2
 
-
-class ctrlDefault;
-class ctrlDefaultText;
 class ctrlStatic;
 class ctrlListNBox;
-class ctrlTree;
 class ctrlEdit;
 
-class RscButtonMenu;
-class RscText;
 class RscPicture;
 
 #define ATTRIBUTE_CONTROLS \
