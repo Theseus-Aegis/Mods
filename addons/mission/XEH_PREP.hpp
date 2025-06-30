@@ -28,6 +28,7 @@ PREP(earthquake);
 PREP(enableAI);
 PREP(forceShooting);
 PREP(groundFog);
+PREP(inArea);
 PREP(jam);
 PREP(keypadPress);
 PREP(keypadSetup);
