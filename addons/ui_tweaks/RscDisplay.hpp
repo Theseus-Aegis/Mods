@@ -3,18 +3,22 @@ class RscControlsGroup;
 class RscHTML;
 class RscText;
 
+// default is "21.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+#define MACRO_DIARY_SIZE_LARGE w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)"
+
+// default is "20.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+#define MACRO_DIARY_SIZE_SMALL w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)"
+
 class RscDisplayDiary {
     class Controls {
         class CA_ContentBackgroundd: RscText {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            // default is "21.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
         };
         class CA_DiaryGroup : RscControlsGroup {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
             class controls {
                 class CA_Diary : RscHTML {
-                    w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)";
-                    // default is "20.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_DIARY_SIZE_SMALL;
                 };
             };
         };
@@ -24,13 +28,13 @@ class RscDisplayDiary {
 class RscDisplayMainMap {
     class controls {
         class CA_ContentBackgroundd: RscText {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
         };
         class CA_DiaryGroup : RscControlsGroup {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
             class controls {
                 class CA_Diary : RscHTML {
-                    w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_DIARY_SIZE_SMALL;
                 };
             };
         };
@@ -40,13 +44,13 @@ class RscDisplayMainMap {
 class RscDisplayGetReady: RscDisplayMainMap {
     class controls {
         class CA_ContentBackgroundd : RscText {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
         };
         class CA_DiaryGroup : RscControlsGroup {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
             class controls {
                 class CA_Diary : RscHTML {
-                    w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_DIARY_SIZE_SMALL;
                 };
             };
         };
@@ -56,13 +60,13 @@ class RscDisplayGetReady: RscDisplayMainMap {
 class RscDisplayServerGetReady: RscDisplayGetReady {
     class controls {
         class CA_ContentBackgroundd : RscText {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
         };
         class CA_DiaryGroup : RscControlsGroup {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
             class controls {
                 class CA_Diary : RscHTML {
-                    w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_DIARY_SIZE_SMALL;
                 };
             };
         };
@@ -72,13 +76,13 @@ class RscDisplayServerGetReady: RscDisplayGetReady {
 class RscDisplayClientGetReady: RscDisplayGetReady {
     class controls {
         class CA_ContentBackgroundd : RscText {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
         };
         class CA_DiaryGroup : RscControlsGroup {
-            w = "43 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_DIARY_SIZE_LARGE;
             class controls {
                 class CA_Diary : RscHTML {
-                    w = "41 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_DIARY_SIZE_SMALL;
                 };
             };
         };
@@ -92,55 +96,59 @@ class RscStructuredText;
 class RscPictureKeepAspect;
 class RscPicture;
 
+// default is "37.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+#define MACRO_MISSION_LOAD_SIZE_LARGE w = "50 * (((safezoneW / safezoneH) min 1.2) / 40)"
+
+// default is "16 * (((safezoneW / safezoneH) min 1.2) / 40)";
+#define MACRO_MISSION_LOAD_SIZE_SMALL w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)"
+
 class RscDisplayLoadMission: RscStandardDisplay {
     class controls {
         class Mission: RscControlsGroupNoScrollbars {
-            w = "50 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            // default is "37.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            MACRO_MISSION_LOAD_SIZE_LARGE;
             class controls {
                 class MissionGameType: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
-                    // default of all below is "16 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionBackgroundTop: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionName: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionAuthor: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionPictureBack: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionDescription: RscStructuredText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class MissionPicture: RscPictureKeepAspect {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                     // default is "15.8 * (((safezoneW / safezoneH) min 1.2) / 40)";
                 };
                 class DLCPictureBack: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCPicture: RscPicture {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCDescription: RscStructuredText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCName: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCAuthor: RscText {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCStripe: RscPicture {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
                 class DLCIcon: RscPicture {
-                    w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
                 };
             };
         };
@@ -152,3 +160,59 @@ class RscDisplayLoading {
         };
     };
 };
+
+// Same defaults as above block.
+class RscDisplayNotFreeze: RscStandardDisplay {
+    class controls {
+        class Mission: RscControlsGroupNoScrollbars {
+            MACRO_MISSION_LOAD_SIZE_LARGE;
+
+            class controls {
+                class MissionGameType: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class MissionBackgroundTop: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class MissionName: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class MissionAuthor: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class MissionPictureBack: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class MissionPicture: RscPictureKeepAspect {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                    // default is "15.8 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                };
+                class MissionDescription: RscStructuredText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCPictureBack: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCPicture: RscPicture {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCDescription: RscStructuredText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCName: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCAuthor: RscText {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCStripe: RscPicture {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+                class DLCIcon: RscPicture {
+                    MACRO_MISSION_LOAD_SIZE_SMALL;
+                };
+            };
+        };
+    };
+};
+
