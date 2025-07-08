@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"tac_main"};
         author = ECSTRING(main,Author);
-        authors[] = {"Drofseh"};
+        authors[] = {"Drofseh, Mike"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
