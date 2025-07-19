@@ -21,9 +21,12 @@ if (!EGVAR(apollo,enabled)) exitWith {};
 
 private _trainings = ["getTrainingIdentifiers", _player] call EFUNC(apollo,getPlayerInfo);
 
+// Disabled due to new medical setup.
+/*
 if ("medic" in _trainings) then {
     _player setUnitTrait ["Medic", true];
 };
+*/
 
 if ("engineer" in _trainings) then {
     {
