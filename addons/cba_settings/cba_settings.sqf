@@ -33,6 +33,7 @@ ace_map_defaultChannel = 0; // Global (default: -1)
 
 ace_map_gestures_maxRange = 14; // Default: 7
 
+ace_medical_alternateArmorPenetration = false; // Disabled this, GT ammo does it already. (default: true)
 ace_medical_deathChance = 0.15; // 15% (default: 100%)
 ace_medical_feedback_bloodVolumeEffectType = 0; // Force client setting (default: 0 - Screen Effects)
 ace_medical_gui_tourniquetWarning = false; // Force client setting
@@ -45,6 +46,12 @@ ace_medical_treatment_allowSelfStitch = 1; // Yes (default: 0 - No)
 ace_medical_treatment_clearTraumaAfterBandage = true; // Yes (default: false - No)
 ace_medical_treatment_locationsBoostTraining = true; // Yes (default: false - No)
 ace_medical_treatment_locationSurgicalKit = 0; // Anywhere (default: 2 - Medical Facilities)
+ace_medical_treatment_medicIV = 0; // Anyone (default: 1)
+ace_medical_treatment_treatmentTimeIV = 30; // (default: 12)
+ace_medical_treatment_treatmentTimeSplint = 14; // (default: 7)
+ace_medical_treatment_treatmentTimeTrainedAutoinjector = 4; // (default: 5)
+ace_medical_treatment_treatmentTimeTrainedSplint = 6; // (default: 7)
+ace_medical_treatment_treatmentTimeTrainedTourniquet = 5; // default: 7)
 
 ace_mk6mortar_airResistanceEnabled = true;
 ace_mk6mortar_allowComputerRangefinder = false;
@@ -88,6 +95,13 @@ acex_sitting_enable = true;
 acex_volume_enabled = true; // Force client setting
 acex_volume_lowerInVehicles = true; // Force client setting
 
+// Enhanced Movement
+emr_main_enableWalkableSurface = false;
+emr_main_enableWeightCheck = true;
+emr_main_hintType = 1; // Hint (Silent) (default: 2, title effect)
+emr_main_jumpingEnabled = true;
+emr_main_maxWeightJump = 70; // (default: 100)
+
 // GRAD Trenches
 grad_trenches_functions_allowCamouflage = false;
 grad_trenches_functions_allowGiantEnvelope = false;
@@ -98,6 +112,11 @@ grad_trenches_functions_buildFatigueFactor = 0.2;
 grad_trenches_functions_shortEnvelopeDigTime = 240; // Smallest (default: 15)
 grad_trenches_functions_smallEnvelopeDigTime = 120; // Medium (default: 30)
 grad_trenches_functions_bigEnvelopeDigTime = 480; // Largest (default: 40)
+
+// IEDD Notebook
+iedd_ied_failChanceEOD = 0.07;
+iedd_ied_failExploseChance = 0.01;
+iedd_ied_defaultOpenCloseEOD = 0.02;
 
 // OCAP
 ocap_settings_autoStart = false;
