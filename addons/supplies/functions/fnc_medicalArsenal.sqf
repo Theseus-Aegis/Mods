@@ -55,7 +55,7 @@ private _action = [
     {
         params ["_target", "_player"];
 
-        _player getUnitTrait "Medic"
+        [_player] call ACEFUNC(medical_treatment,isMedic)
     }
 ] call ACEFUNC(interact_menu,createAction);
 
