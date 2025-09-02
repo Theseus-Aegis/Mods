@@ -16,7 +16,7 @@ class CfgVehicles {
                 };
 
                 class Chop_Tree {
-                    displayName = "Chop down tree";
+                    displayName = "Cut Down Tree";
                     icon = QPATHTOF(resources\tree.paa);
                     condition = QUOTE(call FUNC(canChop));
                     statement = QUOTE(call FUNC(doChop));
