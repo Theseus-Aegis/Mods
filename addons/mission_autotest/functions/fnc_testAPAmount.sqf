@@ -16,7 +16,7 @@
  */
 
 private _apAmount = count (allUnits select {
-    getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "TACU_isAP") == 1
+    getNumber (configOf _x >> "TACU_isAP") == 1
 });
 
 if (_apAmount > AP_AMOUNT_WARNING) then {
