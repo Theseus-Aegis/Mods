@@ -119,6 +119,7 @@ iedd_ied_failExploseChance = 0.01;
 iedd_ied_defaultOpenCloseEOD = 0.02;
 
 // OCAP
+ocap_enabledAdministratorUI = false;
 ocap_settings_autoStart = false;
 ocap_settings_saveOnEmpty = false;
 ocap_settings_saveMissionEnded = false;
