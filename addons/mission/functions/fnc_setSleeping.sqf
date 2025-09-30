@@ -41,7 +41,7 @@ if (_asleep) then {
             [{
                 _this enableAI "ANIM";
                 _this switchMove "AmovPpneMstpSrasWrflDnon_healed";
-                if (local _x) then {
+                if (local _this) then {
                     _this playMoveNow "AmovPpneMstpSrasWrflDnon_healed";
                 };
             }, _x, _forEachIndex * _time] call CBA_fnc_waitAndExecute;
