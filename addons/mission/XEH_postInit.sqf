@@ -22,6 +22,15 @@ if (isServer) then {
 [QGVAR(setUnitPos), {(_this select 0) setUnitPos (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setVehicleAmmo), {(_this select 0) setVehicleAmmo (_this select 1)}] call CBA_fnc_addEventHandler;
 
+// Required to be global for editor usage along with HC/Server usage.
+[QGVAR(taskPatrol), {
+    params ["_group", "_position", ["_radius", 60], ["_waypointCount", 7], ["_waypointType", "MOVE"], ["_behaviour", "UNCHANGED"], ["_combatMode", "NO CHANGE"], ["_speedMode", "UNCHANGED"], ["_formation", "NO CHANGE"], ["_codeToExecute", ""], ["_timeout", [0, 0, 0]]];
+
+    if (!is3DENPreview && {hasInterface}) exitWith {};
+
+    [_group, _position, _radius, _waypointCount, _waypointType, _behaviour, _combatMode, _speedMode, _formation, _codeToExecute, _timeOut] call CBA_fnc_taskPatrol;
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(say3D), {
     params ["_object", "_sound", ["_maxDistance", 100], ["_pitch", 1], ["_isSpeech", 1], ["_offset", 0], ["_speedOfSound", false]];
     _object say3D [_sound, _maxDistance, _pitch, _isSpeech, _offset, _speedOfSound];
