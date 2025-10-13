@@ -1,6 +1,9 @@
 #include "script_component.hpp"
 
 if (hasInterface) then {
+
+    GVAR(chopping) = false;
+
     [["TAC", "Forestry"],
         QGVAR(forestryID1),
         ["Cut Down Tree", "Destroy Nature"],

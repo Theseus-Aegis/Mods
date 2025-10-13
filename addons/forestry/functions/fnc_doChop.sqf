@@ -29,13 +29,15 @@ if (_intersectObj isEqualTo objNull && {_parentObject isEqualTo objNull}) exitWi
 };
 
 private _obj = (nearestTerrainObjects [_intersectObj, ["TREE", "SMALL TREE", "BUSH"], 0, false, true]) #0;
-playSound3D [QPATHTOF(resources\chop.ogg), objNull, false, getPosASL player, 5, 1, 75];
 
-[60,
+GVAR(chopping) = true;
+
+[30,
     _obj,
     {
         params ["_obj"];
         _obj setDamage [1, true, player];
+        GVAR(chopping) = false;
 
         [{
             params ["_object"];
@@ -43,6 +45,18 @@ playSound3D [QPATHTOF(resources\chop.ogg), objNull, false, getPosASL player, 5, 
         }, _obj, 5] call CBA_fnc_waitAndExecute;
     }, {
         [[QPATHTOF(resources\tree.paa), 2.0], ["Aborted Nature Abuse"]] call CBA_fnc_notify;
+        GVAR(chopping) = false;
     },
-    "Attacking Nature"
+    "Attacking Nature",
+    {GVAR(chopping)}
 ] call ACEFUNC(common,progressBar);
+
+[{
+    params ["_args", "_handle"];
+
+    if (!GVAR(chopping)) exitWith {
+        _handle call CBA_fnc_removePerFrameHandler;
+    };
+
+    playSound3D [QPATHTOF(resources\chop.ogg), objNull, false, getPosASL player, 5, 1, 75];
+}, 5] call CBA_fnc_addPerFrameHandler;
