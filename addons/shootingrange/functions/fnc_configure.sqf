@@ -66,7 +66,7 @@ if (_targetsOld isEqualTo []) exitWith {
 private _allTargetsNew = _targetsNew + _targetsInvalidNew;
 private _allTargetsOld = _targetsOld + _targetsInvalidOld;
 
-if (_targetsNew isNotEqualTo [] && {count (_allTargetsNew select {!(_x in _allTargetsOld)}) > 0}) exitWith {
+if (_targetsNew isNotEqualTo [] && {(_allTargetsNew select {!(_x in _allTargetsOld)}) isNotEqualTo []}) exitWith {
     ERROR_1("Unknown (invalid) target found on Shooting Range%1! Only targets defined on mission start can be configured at run-time!",_name);
     false
 };
