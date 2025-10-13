@@ -36,6 +36,8 @@ if (_enableGeigerSounds) then {
     private _ui = uiNamespace getVariable ["RscWeaponChemicalDetector", displayNull];
     private _detector = _ui displayCtrl 101;
 
+    // Only run if player is conscious
+    if (ace_player getVariable ["ACE_isUnconscious", false]) exitWith {};
     if ("ChemicalDetector_01_watch_F" in (assignedItems player)) then {
 
         private _inAreaCheck = _markers findIf {ace_player inArea _x};
