@@ -36,7 +36,7 @@ private _mainAction = [
         "",
         {
             (_this select 2) params ["_classname", "_spawnPosition"];
-            if (count (_spawnPosition nearEntities 5) == 0) then {
+            if (_spawnPosition nearEntities 5 isEqualTo []) then {
                 private _vehicle = createVehicle [_classname, _spawnPosition, [], 0, "CAN_COLLIDE"];
                 _vehicle setDir (getDir _spawnPosition);
 
@@ -83,7 +83,7 @@ private _deleteAction = [
     },
     {
         (_this select 2) params ["_spawnPosition"];
-        count (_spawnPosition nearEntities [["Car", "Tank", "TrackedAPC", "WheeledAPC"], 5]) > 0
+        _spawnPosition nearEntities [["Car","Tank","TrackedAPC","WheeledAPC"],5] isNotEqualTo []
     },
     {},
     [_spawnPosition]
