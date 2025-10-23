@@ -60,7 +60,8 @@ switch (_treatmentType) do {
         _text = format ["%1 gave you an injection.", _name];
     };
     case 11: {
-        _text = "This should not be here, or happening."};
+        _text = "This should not be here, or happening.";
+    };
 };
 
 cutText [format ["<br/><br/><br/><br/><br/><br/><t color = '#FFFFFF' size = '1.5'>%1</t>", _text], "PLAIN", 1, true, true];
