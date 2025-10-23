@@ -1,5 +1,20 @@
 #include "script_component.hpp"
 
+if (hasInterface) then {
+    ["ace_treatmentSucceded", {
+        params ["_caller", "_target", "", "_classname"];
+
+        if !(isPlayer _target) exitWith {};
+        if !(alive _target) exitWith {};
+        if !(_target getVariable ["ACE_isUnconscious", false]) exitWith {};
+
+        [QGVAR(medicalMessage), [_caller, _classname], _target] call CBA_fnc_targetEvent;
+    }] call CBA_fnc_addEventHandler;
+
+    [QGVAR(medicalMessage), LINKFUNC(medicalMessage)] call CBA_fnc_addEventHandler;
+};
+
+// 15%
 ["ace_medical_FatalInjury", {
     params ["_unit"];
 

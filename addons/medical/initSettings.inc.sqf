@@ -10,6 +10,14 @@ private _category = format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)];
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(enableMedicalMessages),
+    "CHECKBOX",
+    [LSTRING(EnableMedicalMessages_DisplayName), LSTRING(EnableMedicalMessages_Description)],
+    _category,
+    true
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(unconsciousFXChance),
     "SLIDER",
     [LSTRING(UnconsciousFXChance_DisplayName), LSTRING(UnconsciousFXChance_Description)],
