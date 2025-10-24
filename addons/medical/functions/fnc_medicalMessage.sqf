@@ -30,7 +30,8 @@ switch (_treatmentType) do {
         _text = format ["%1 is bandaging you.", _name];
     };
     case 1: {
-        _text = format ["%1 checked your pulse.", _name];
+        private _hr = round (ace_player getVariable ["ace_medical_heartRate", -1]);
+        _text = format ["%1 checked your pulse (%2).", _name, _hr];
     };
     case 2: {
         _text = format ["%1 gave you an IV.", _name];
@@ -39,7 +40,8 @@ switch (_treatmentType) do {
         _text = format ["You are being stitched by %1.", _name];
     };
     case 4: {
-        _text = format ["%1 checked your blood pressure.", _name];
+        ([ace_player] call ace_medical_status_fnc_getBloodPressure) params ["_systolic", "_diastolic"];
+        _text = format ["%1 checked your blood pressure (%2 / %3).", _name, _systolic, _diastolic];
     };
     case 5: {
         _text = format ["%1 applied a splint.", _name];
