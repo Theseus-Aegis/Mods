@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="Firesupport">
+        <Key ID="STR_TAC_Firesupport_EnabledDescription">
+            <English>Utilises the mortar fire support via thrown smoke.</English>
+        </Key>
+        <Key ID="STR_TAC_Firesupport_delayDescription">
+            <English>How long fire support is blocked after a barrage in seconds. (Min 0, Max 30 minutes)</English>
+        </Key>
+        <Key ID="STR_TAC_Firesupport_delayDisplay">
+            <English>Delay between fire support</English>
+        </Key>
+    </Package>
+</Project>
