@@ -9,6 +9,11 @@ PREP(timeUntilStart);
 PREP(unconscious);
 PREP(vehicleSpawner);
 
+// Replayable Functions
+PREP(replayablePatrol);
+PREP(replayableStatic);
+PREP(replayableVehicles);
+
 // Extra
 PREP(ambientEffects);
 PREP(battlefieldMemorial);
