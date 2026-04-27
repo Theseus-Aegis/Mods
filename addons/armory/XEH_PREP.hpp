@@ -1,6 +1,8 @@
 PREP(addItems);
 PREP(canAddArmory);
+PREP(canClearArmoryBox);
 PREP(canOpenArmory);
+PREP(clearArmoryBox);
 PREP(closeArmory);
 PREP(closeCamera);
 PREP(dialogControl_amountSelection);

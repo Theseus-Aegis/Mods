@@ -38,6 +38,11 @@ class CfgVehicles {
                     condition = QUOTE(_target call FUNC(canOpenArmory));
                     statement = QUOTE(_this call FUNC(openArmory));
                 };
+                class GVAR(Clear) {
+                    displayName = CSTRING(Clear);
+                    condition = QUOTE(_target call FUNC(canClearArmoryBox));
+                    statement = QUOTE(_this call FUNC(clearArmoryBox));
+                };
             };
         };
     };
