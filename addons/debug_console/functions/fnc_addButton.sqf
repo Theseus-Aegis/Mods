@@ -18,7 +18,7 @@
  * Public: Yes
 */
 
-params [["_name", "", ["", []]], ["_code", "", [{}]]];
+params [["_name", "", ["", []]], ["_code", {}, [{}]]];
 _name params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
 
 if (count GVAR(buttons) == 6) exitWith {
