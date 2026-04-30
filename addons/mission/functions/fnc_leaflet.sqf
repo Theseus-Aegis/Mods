@@ -5,8 +5,8 @@
  * Call from initPlayerLocal.sqf 
  *
  * Arguments:
- * 0: Position <POSITION>
- * 1: STRING <CLASSNAME>
+ * 0: Position <ARRAY>
+ * 1: Classname <STRING>
  * 2: Direction <NUMBER> (default: 0)
  * 
  * Example:
