@@ -85,11 +85,6 @@
             <French>Le serveur Athena est indisponible !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
             <German>Athena Server ist offline!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
         </Key>
-        <Key ID="STR_TAC_Armory_Clear">
-            <English>Empty cargo (ask first!)</English>
-            <French>Cargaison vide (demandez d'abord!)</French>
-            <German>Leertransport (bitte im Voraus anfragen!)</German>
-        </Key>
         <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
             <French>Le conteneur est plein ! Faites de la place pour la récupération.</French>
