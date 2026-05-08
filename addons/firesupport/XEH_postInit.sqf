@@ -10,7 +10,7 @@ if (hasInterface) then {
 
         if !(_ammo in tac_scripts_ammoTypes) exitWith {};
 
-        // Delayed for accurate smoke position.
+        // Delayed for accurate projectile position.
         [{
             params ["_projectile", "_unit"];
             private _position = position _projectile;
