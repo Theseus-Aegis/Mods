@@ -18,19 +18,19 @@
 params ["_object"];
 
 if (itemCargo _object isNotEqualTo []) exitWith {
-    true
+    false
 };
 
 if (weaponCargo _object isNotEqualTo []) exitWith {
-    true
+    false
 };
 
 if (magazineCargo _object isNotEqualTo []) exitWith {
-    true
+    false
 };
 
 if (backpackCargo _object isNotEqualTo []) exitWith {
-    true
+    false
 };
 
-false
+true

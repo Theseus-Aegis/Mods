@@ -35,3 +35,9 @@ if (!hasInterface) exitWith {};
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
+
+[QGVAR(Locker), "ContainerOpened", {
+    params ["_container", "_unit"];
+
+    [QGVAR(checkContainer), _container] call CBA_fnc_serverEvent;
+}] call CBA_fnc_addClassEventHandler;
