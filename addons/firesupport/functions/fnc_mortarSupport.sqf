@@ -1,11 +1,11 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Mortar support, called via Orange smoke (GL or hand thrown), on a 10-15 minute cooldown after firing.
+ * Mortar support, called via pre-set ammo types, on a custom cooldown after firing.
  * Call on the server
  *
  * Arguments:
- * 0: Position of thrown smoke <ARRAY>
+ * 0: Position of fired projectile <ARRAY>
  * 1: Unit <OBJECT>
  *
  * Return Value:
@@ -17,12 +17,15 @@
 
 params ["_position", "_unit"];
 
+// Alter position height to always be 0.
+_position set [2, 0];
+
 if (tac_scripts_mortarList isEqualTo []) then {
     ["tac_mission_dialogue", ["Knight", "No Mortar crews assigned", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 };
 
 if (GVAR(mortarsBusy)) exitWith {
-    ["tac_mission_dialogue", ["Knight", "Mortar crews are keeping a low profile, give it some time.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Knight", "Mortar crews are rearming, give it some time.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 };
 
 // Sort by distance, Don't overwrite or it'll error on next run.
@@ -32,10 +35,10 @@ _mortarList sort true;
 private _inRange = _mortarList findIf {_position inRangeOfArtillery [[_x select 1], "8Rnd_82mm_Mo_shells"]};
 
 if (_inRange == -1) exitWith {
-    ["tac_mission_dialogue", ["Knight", "No mortars in range of smoke.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Knight", "No mortars in range of area.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 };
 
-// Only allow one fire mission every 10-15 minutes.
+// Only allow one fire mission until delay has passed.
 GVAR(mortarsBusy) = true;
 publicVariable QGVAR(mortarsBusy);
 
@@ -45,13 +48,13 @@ private _markerName = format ["Mortar_Target_%1", _position];
 private _marker = createMarkerLocal [_markerName, _position];
 _marker setMarkerShapeLocal "ELLIPSE";
 _marker setMarkerPosLocal _position;
-_marker setMarkerSizeLocal [35, 35];
+_marker setMarkerSizeLocal tac_scripts_areaSize;
 
 [{
     params ["_mortarInRange", "_marker", "_inRange", "_unit"];
 
     // Fire Mortars
-    private _mortarFired = ([_mortarInRange, [_marker], 0, 0] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
+    private _mortarFired = ([_mortarInRange, [_marker], tac_scripts_roundCount, 0] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
 
     private _teamName = format ["%1", _mortarInRange getVariable ["tac_scripts_mortarName", "Templar"]];
     private _etaText = format ["Fire for effect, %1 rounds incoming, ETA %2 seconds to target.", _rounds, _eta];
