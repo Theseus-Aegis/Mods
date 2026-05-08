@@ -37,6 +37,7 @@ PREP(inArea);
 PREP(jam);
 PREP(keypadPress);
 PREP(keypadSetup);
+PREP(leaflet);
 PREP(lockDoors);
 PREP(markBuildings);
 PREP(mortarStrike);
