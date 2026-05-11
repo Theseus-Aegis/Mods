@@ -20,5 +20,5 @@ if (hasInterface) then {
 };
 
 if (isServer) then {
-    [QGVAR(mortarSupport), {_this call FUNC(mortarSupport)}] call CBA_fnc_addEventHandler;
+    [QGVAR(mortarSupport), FUNC(mortarSupport)] call CBA_fnc_addEventHandler;
 };
