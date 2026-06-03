@@ -59,7 +59,7 @@ _vehicle addEventHandler ["Hit", {
     };
 
     // Play Sound
-    [_vehicle, "Orange_Car_Alarm"] call CBA_fnc_globalSay3D;
+    [_vehicle, "Orange_Car_Alarm", 100] call CBA_fnc_globalSay3D;
 
     // Delay by 10s before sound can be played again on this vehicle.
     [{
