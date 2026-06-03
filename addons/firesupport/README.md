@@ -11,39 +11,31 @@ force tac_firesupport_enabled = true;
 force tac_firesupport_delay = 30;
 ```
 
-Mortars must be defined via mission template like so (`initServer.sqf`):
+All variables should be added to `init.sqf`
 
-`GVAR(mortarList) = [Mortar_1, Mortar_2, Mortar_3];`    
-Or    
-`tac_scripts_mortarList = [Mortar_1, Mortar_2, Mortar_3];`
+Mortars must be defined via mission template like so:
+
+`tac_firesupport_mortarList = [Mortar_1, Mortar_2, Mortar_3];`    
 
 ## Optional:
-Ammo types that activate fire support can be defined in the mission template by using the ammo classname (`initPlayerLocal.sqf`):
+Ammo types that activate fire support can be defined in the mission template by using the ammo classname:
 
 
-`GVAR(ammoTypes) = ["SmokeShellOrange", "G_40mm_SmokeOrange"];`    
-Or    
-`tac_scripts_ammoTypes = ["SmokeShellOrange", "G_40mm_SmokeOrange"];`
+`tac_firesupport_ammoTypes = ["SmokeShellOrange", "G_40mm_SmokeOrange"];`    
 
 
-Mortars can be named via mission template (`initServer.sqf`):
+Mortars can be named via mission template:
 
-`Mortar_1 setVariable [QGVAR(mortarName), "Templar - 1"];`    
-Or    
-`Mortar_1 setVariable ["tac_scripts_mortarName", "Templar - 1"];`
+`Mortar_1 setVariable ["tac_firesupport_mortarName", "Templar - 1"];`    
 
 
-Area of effect can also be defined via (`initServer.sqf`):
+Area of effect can also be defined via:
 
-`GVAR(areaSize) = [35, 35];`    
-Or    
-`tac_scripts_areaSize = [50, 50];`
+`tac_firesupport_areaSize = [35, 35];`    
 
 
-Amount of rounds fired can be defined via (`initServer.sqf`):    
-`GVAR(roundCount) = 5;`    
-Or    
-`tac_scripts_roundCount = 5;`
+Amount of rounds fired can be defined via:    
+`tac_firesupport_roundCount = 5;`    
 
 ## Defaults:
 - Area Size is defaulted to `[35, 35]`

@@ -20,7 +20,7 @@ params ["_position", "_unit"];
 // Alter position height to always be 0.
 _position set [2, 0];
 
-if (tac_scripts_mortarList isEqualTo []) then {
+if (GVAR(mortarList) isEqualTo []) then {
     ["tac_mission_dialogue", ["Knight", "No Mortar crews assigned", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 };
 
@@ -29,7 +29,7 @@ if (GVAR(mortarsBusy)) exitWith {
 };
 
 // Sort by distance, Don't overwrite or it'll error on next run.
-private _mortarList = tac_scripts_mortarList apply {[_x distance2D _position, _x]};
+private _mortarList = GVAR(mortarList) apply {[_x distance2D _position, _x]};
 _mortarList sort true;
 
 private _inRange = _mortarList findIf {_position inRangeOfArtillery [[_x select 1], "8Rnd_82mm_Mo_shells"]};
@@ -48,15 +48,15 @@ private _markerName = format ["Mortar_Target_%1", _position];
 private _marker = createMarkerLocal [_markerName, _position];
 _marker setMarkerShapeLocal "ELLIPSE";
 _marker setMarkerPosLocal _position;
-_marker setMarkerSizeLocal tac_scripts_areaSize;
+_marker setMarkerSizeLocal GVAR(areaSize);
 
 [{
     params ["_mortarInRange", "_marker", "_inRange", "_unit"];
 
     // Fire Mortars
-    private _mortarFired = ([_mortarInRange, [_marker], tac_scripts_roundCount, 0] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
+    private _mortarFired = ([_mortarInRange, [_marker], GVAR(roundCount), 0] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
 
-    private _teamName = format ["%1", _mortarInRange getVariable ["tac_scripts_mortarName", "Templar"]];
+    private _teamName = format ["%1", _mortarInRange getVariable [QGVAR(mortarName), "Templar"]];
     private _etaText = format ["Fire for effect, %1 rounds incoming, ETA %2 seconds to target.", _rounds, _eta];
     ["tac_mission_dialogue", [_teamName, _etaText, "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 

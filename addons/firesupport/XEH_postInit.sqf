@@ -2,13 +2,11 @@
 
 if !(GVAR(enabled)) exitWith {};
 
-GVAR(mortarsBusy) = false;
-
 if (hasInterface) then {
     ["ace_firedPlayer", {
         params ["_unit", "", "", "", "_ammo", "", "_projectile"];
 
-        if !(_ammo in tac_scripts_ammoTypes) exitWith {};
+        if !(_ammo in GVAR(ammoTypes)) exitWith {};
 
         // Delayed for accurate projectile position.
         [{
