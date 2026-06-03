@@ -39,5 +39,8 @@ if (!hasInterface) exitWith {};
 [QGVAR(Locker), "ContainerOpened", {
     params ["_container", "_unit"];
 
-    [QGVAR(checkContainer), _container] call CBA_fnc_serverEvent;
+    // Only run if the setting is enabled.
+    if (GVAR(lockerClear)) then {
+        [QGVAR(checkContainer), _container] call CBA_fnc_serverEvent;
+    };
 }] call CBA_fnc_addClassEventHandler;
