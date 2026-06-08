@@ -71,7 +71,7 @@ private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "Sat
 
     // Screaming
     if (_distance <= _screamingDistance && {alive _unit}) then {
-        [QGVAR(say3D), [_unit, "tacr_kamikaze"]] call CBA_fnc_globalEvent;
+        [_unit, "tacr_kamikaze", 100] call CBA_fnc_globalSay3D;
     };
 
     // Reached target or dead, either way go boom.

@@ -29,4 +29,4 @@ if (GVAR(boxLines) isEqualTo []) then {
 private _selection = selectRandom GVAR(boxLines);
 GVAR(boxLines) deleteAt (GVAR(boxLines) find _selection);
 
-[QEGVAR(mission,say3D), [_box, _selection]] call CBA_fnc_globalEvent;
+[_box, _selection] call CBA_fnc_globalSay3D;

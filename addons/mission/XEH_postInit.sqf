@@ -31,11 +31,6 @@ if (isServer) then {
     [_group, _position, _radius, _waypointCount, _waypointType, _behaviour, _combatMode, _speedMode, _formation, _codeToExecute, _timeOut] call CBA_fnc_taskPatrol;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(say3D), {
-    params ["_object", "_sound", ["_maxDistance", 100], ["_pitch", 1], ["_isSpeech", 1], ["_offset", 0], ["_speedOfSound", false]];
-    _object say3D [_sound, _maxDistance, _pitch, _isSpeech, _offset, _speedOfSound];
-}] call CBA_fnc_addEventHandler;
-
 // Exit if not player client
 if (!hasInterface) exitWith {};
 
