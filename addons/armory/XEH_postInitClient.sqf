@@ -35,3 +35,12 @@ if (!hasInterface) exitWith {};
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
+
+[QGVAR(Locker), "ContainerOpened", {
+    params ["_container", "_unit"];
+
+    // Only run if the setting is enabled.
+    if (GVAR(lockerClear)) then {
+        [QGVAR(checkContainer), _container] call CBA_fnc_serverEvent;
+    };
+}] call CBA_fnc_addClassEventHandler;

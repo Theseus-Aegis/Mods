@@ -7,3 +7,12 @@ addMissionEventHandler ["HandleDisconnect", {
         _openedObject setVariable [QGVAR(inUse), nil, true];
     };
 }];
+
+// Automatically clear cargo of a box that's empty serverside.
+[QGVAR(checkContainer), {
+    params ["_container"];
+
+    if (_container call FUNC(canClearArmoryBox)) then {
+        _container call FUNC(clearArmoryBox);
+    };
+}] call CBA_fnc_addEventHandler;

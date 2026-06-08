@@ -138,5 +138,11 @@
             <French>Aucun (vanilla)</French>
             <German>Keine (Vanilla)</German>
         </Key>
+        <Key ID="STR_TAC_Armory_LockerClear">
+            <English>Enable Automatic Locker Clearing</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_LockerClearDesc">
+            <English>If enabled lockers will be automatically cleared by the server to prevent ghost items appearing</English>
+        </Key>
     </Package>
 </Project>
