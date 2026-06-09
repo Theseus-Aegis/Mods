@@ -35,7 +35,13 @@ if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
         params ["_player", "_name", "_type"];
-        [_player, getPlayerUID _player, _name, _type] call FUNC(playerSingletonSave);
+        private _uid = getPlayerUID _player;
+
+        if (_type == "validate") then {
+            [_player, _uid, _name] call FUNC(playerSingletonLoad);
+        };
+
+        [_player, _uid, _name, _type] call FUNC(playerSingletonSave);
     }] call CBA_fnc_addEventHandler;
 
     // Player died
@@ -46,7 +52,7 @@ if (GVAR(enabledPlayers)) then {
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 
-    // Corpse removal (prevent item multiplication when leaving nicely)
+    // Corpse removal (prevent item multiplication when leaving nicely) and additional runtime data handler
     addMissionEventHandler ["HandleDisconnect", FUNC(handleDisconnect)];
 
     // Start client initialization
