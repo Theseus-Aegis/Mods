@@ -96,18 +96,3 @@ addMissionEventHandler ["MPEnded", {
         call FUNC(stopAAR);
     };
 }];
-
-// Hide Admin Diary controls - we use chat command for more control over recording metadata
-addMissionEventHandler ["OnUserAdminStateChanged", {
-    params ["_networkId", "_loggedIn", "_votedIn"];
-
-    if (_loggedIn && !_votedIn) then {
-        private _unit = (getUserInfo _networkId) select 10;
-        [{
-            if (_this getVariable ["ocap_hasAdminControls", false]) then {
-                [QGVAR(aar_hideAdmin), [], _this] call CBA_fnc_targetEvent;
-                _this setVariable ["ocap_hasAdminControls", false];
-            };
-        }, _unit] call CBA_fnc_execNextFrame; // give OCAP time to set hasAdminControls variable
-    };
-}];
