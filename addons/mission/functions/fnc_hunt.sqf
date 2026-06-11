@@ -32,6 +32,8 @@ if (is3DENPreview) then {
     };
 };
 
+GVAR(huntGroups) pushBackUnique _hunters;
+
 // Disable Fleeing, set combat mode and speed mode.
 [QGVAR(allowFleeing), [_hunters, 0], _hunters] call CBA_fnc_targetEvent;
 [QGVAR(setCombatMode), [_hunters, "YELLOW"], _hunters] call CBA_fnc_targetEvent;

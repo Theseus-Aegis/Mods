@@ -22,7 +22,9 @@ if (!alive _target || _target getVariable [QACEGVAR(spectator,isSet), false]) ex
 };
 
 // Exit if hunters are dead.
-if ([[_hunters]] call FUNC(countAlive) == 0) exitWith {};
+if ([[_hunters]] call FUNC(countAlive) == 0) exitWith {
+    GVAR(huntGroups) deleteAt (GVAR(huntGroups) find _hunters);
+};
 
 private _huntUnits = units _hunters;
 private _targetPosition = getPosATL _target;
