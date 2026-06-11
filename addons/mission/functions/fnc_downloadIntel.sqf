@@ -33,7 +33,10 @@ if (hasInterface) then {
         QGVAR(downloadIntel),
         "Download Intel",
         "a3\ui_f\data\igui\rsctitles\rscegprogress\downloadicon_ca.paa",
-        {_target setVariable [QGVAR(downloadIntel_active), true, true]},
+        {
+            _target setVariable [QGVAR(downloadIntel_active), true, true];
+            [QGVAR(downloadIntel_Started), [_target, _player]] call CBA_fnc_serverEvent;
+        },
         {!(_target getVariable [QGVAR(downloadIntel_active), false])}
     ] call ACEFUNC(interact_menu,createAction);
 
@@ -157,9 +160,12 @@ if (isServer) then {
         _object setObjectTextureGlobal [_textureSource, _texture];
         _object setVariable [QGVAR(downloadIntel_stage), _stage + 1];
 
+        [QGVAR(downloadIntel_stageIncrease), [_object, _stage]] call CBA_fnc_serverEvent;
+
         // Finish
         if (_stage >= 10) exitWith {
             _handle call CBA_fnc_removePerFrameHandler;
+            [QGVAR(downloadIntel_completed), [_object]] call CBA_fnc_serverEvent;
             ["ocap_customEvent", ["generalEvent", "Intel was downloaded!"]] call CBA_fnc_serverEvent;
 
             private _terminalFinal = [
