@@ -15,6 +15,10 @@
  * [] call MFUNC(timeUntilStart)
  */
 
+if (is3DENPreview) exitWith {
+    0
+};
+
 systemTimeUTC params ["", "", "", "_hour", "_minute"];
 private _startTime = 14; // 1400z always
 
