@@ -43,6 +43,7 @@ private _markerName = format ["Bomber_Marker_%1", _markerPos];
 private _marker = createMarkerLocal [_markerName, _markerPos];
 _marker setMarkerShapeLocal "ELLIPSE";
 _marker setMarkerSizeLocal [_activateDistance, _activateDistance];
+_marker setMarkerAlphaLocal 0;
 
 private _time = CBA_missionTime;
 
