@@ -53,7 +53,7 @@ private _time = CBA_missionTime;
 
     // Find a target, not necessarily nearest, if bomber has been killed before activation it'll eventually make it down to detonate.
     if (isNull _target && alive _unit) exitWith {
-        private _players = [true] call MFUNC(players);
+        private _players = [true] call FUNC(players);
         private _inAreaCheck = _players findIf {_x inArea _markerName};
 
         if (_inAreaCheck != -1) then {
