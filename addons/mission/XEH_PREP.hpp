@@ -19,7 +19,7 @@ PREP(ambientEffects);
 PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
 PREP(bomber);
-PREP(bomberDetonateCondition);
+PREP(bomberCanDetonate);
 PREP(carAlarm);
 PREP(chemicalDetector);
 PREP(connectBatteryToDefusable);

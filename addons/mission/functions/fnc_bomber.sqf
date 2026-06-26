@@ -71,7 +71,7 @@ private _time = CBA_missionTime;
         [_unit, "tacr_kamikaze", 100] call CBA_fnc_globalSay3D;
     };
 
-    private _detonateCondition = [_unit, _distanceToTarget, _detonateRadius] call FUNC(bomberDetonateCondition);
+    private _detonateCondition = [_unit, _distanceToTarget, _detonateRadius] call FUNC(bomberCanDetonate);
     if (_detonateCondition) then {
         deleteMarkerLocal _markerName;
         _handle call CBA_fnc_removePerFrameHandler;

@@ -14,7 +14,7 @@
  * None
  *
  * Example:
- * [bomber] call MFUNC(bomberDetonateCondition)
+ * [bomber] call MFUNC(bomberCanDetonate)
  */
 
 params ["_unit", "_distanceToTarget", "_detonateRadius"];
