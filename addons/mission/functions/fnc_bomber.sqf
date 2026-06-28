@@ -20,67 +20,66 @@
  * [bomber, 15, 50, 50] call MFUNC(bomber)
  */
 
-params ["_unit", ["_detonateRadius", 10], ["_activateDistance", 100], ["_screamingDistance", 100], ["_nearest", objNull]];
+params ["_unit", ["_detonateRadius", 10], ["_activateDistance", 100], ["_screamingDistance", 100]];
 
 if (!is3DENPreview && {!isServer}) exitWith {};
 
 // Add vest
 _unit addVest "Umi_Bomb_Vest_Camo";
 
+// Disable voice & combat reactions
 [QACEGVAR(common,setSpeaker), [_unit, "ACE_NoVoice"]] call CBA_fnc_globalEvent;
 [QGVAR(setCombatBehaviour), [_unit, "CARELESS"]] call CBA_fnc_globalEvent;
+[QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_globalEvent;
+[QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_globalEvent;
 
 {
     [QGVAR(disableAI), [_unit, _x]] call CBA_fnc_globalEvent;
 } forEach ["COVER", "AUTOCOMBAT", "RADIOPROTOCOL", "FSM", "SUPPRESSION"];
 
+// Use marker for inArea checks
+private _markerPos = position _unit;
+private _markerName = format ["Bomber_Marker_%1", _markerPos];
+private _marker = createMarkerLocal [_markerName, _markerPos];
+_marker setMarkerShapeLocal "ELLIPSE";
+_marker setMarkerSizeLocal [_activateDistance, _activateDistance];
+_marker setMarkerAlphaLocal 0;
+
 private _time = CBA_missionTime;
-private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "SatchelCharge_Remote_Ammo_Scripted"];
 
 [{
     params ["_args", "_handle"];
-    _args params ["_unit", "_detonateRadius", "_activateDistance", "_screamingDistance", "_time", "_nearest", "_randomExplosive"];
+    _args params ["_unit", "_detonateRadius", "_activateDistance", "_screamingDistance", "_time", "_markerName", ["_target", objNull]];
 
-    if (isNull _nearest) exitWith {
-        private _players = ([true] call FUNC(players)) select {(_unit distance _x) < _activateDistance};
+    // Find a target, not necessarily nearest, if bomber has been killed before activation it'll eventually make it down to detonate.
+    if (isNull _target && alive _unit) exitWith {
+        private _players = [true] call FUNC(players);
+        private _inAreaCheck = _players findIf {_x inArea _markerName};
 
-        if (_players isNotEqualTo []) then {
-            _args set [5,  selectRandom _players];
+        if (_inAreaCheck != -1) then {
+            _args set [6, (_players select _inAreaCheck)];
         };
     };
 
-    if (CBA_missionTime >= _time + 5) then {
-        [QGVAR(doMove), [_unit, position _nearest], _unit] call CBA_fnc_targetEvent;
-        [QGVAR(setSpeedMode), [_unit, "FULL"], _unit] call CBA_fnc_targetEvent;
-        [QGVAR(setUnitPos), [_unit, "UP"], _unit] call CBA_fnc_targetEvent;
+    if (CBA_missionTime >= _time + 3) then {
+        [QGVAR(doMove), [_unit, position _target], _unit] call CBA_fnc_targetEvent;
         _args set [4, CBA_missionTime];
     };
 
-    private _distance = _unit distance _nearest;
-    private _unitPos = getPosATL _unit;
-    private _unconscious = _unit getVariable ["ACE_isUnconscious", false];
-
-    // If unconscious remove PFH and explode
-    if (_unconscious) exitWith {
-        [_handle] call CBA_fnc_removePerFrameHandler;
-        _unit setDamage 1;
-        [{
-            [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
-        }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
-    };
-
-    // Screaming
-    if (_distance <= _screamingDistance && {alive _unit}) then {
+    private _distanceToTarget = _unit distance _target;
+    if (_distanceToTarget <= _screamingDistance) then {
         [_unit, "tacr_kamikaze", 100] call CBA_fnc_globalSay3D;
     };
 
-    // Reached target or dead, either way go boom.
-    if (_distance <= _detonateRadius || !alive _unit) then {
-        doStop _unit;
-        [_handle] call CBA_fnc_removePerFrameHandler;
-
+    private _detonateCondition = [_unit, _distanceToTarget, _detonateRadius] call FUNC(bomberCanDetonate);
+    if (_detonateCondition) then {
+        deleteMarkerLocal _markerName;
+        _handle call CBA_fnc_removePerFrameHandler;
+        private _unitPos = getPosATL _unit;
+        private _randomExplosive = selectRandom ["DemoCharge_Remote_Ammo_Scripted", "SatchelCharge_Remote_Ammo_Scripted"];
         [{
             [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
         }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
-}, 1, [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _nearest, _randomExplosive]] call CBA_fnc_addPerFrameHandler;
+
+}, (2 + random 1), [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _markerName]] call CBA_fnc_addPerFrameHandler;
