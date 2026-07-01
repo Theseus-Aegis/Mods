@@ -14,6 +14,7 @@ PREP(replayableStatic);
 PREP(replayableVehicles);
 
 // Extra
+PREP(allUnitsInArea);
 PREP(ambientEffects);
 PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
