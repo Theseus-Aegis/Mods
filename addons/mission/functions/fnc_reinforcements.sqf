@@ -7,7 +7,7 @@
  * Arguments:
  * 0: Groups <ARRAY>
  * 1: Disable <BOOL> (default: true)
- * 2: Distance <NUMBER> (default: 0)
+ * 2: Distance <DEPRECATED>
  *
  * Return Value:
  * None
@@ -15,7 +15,6 @@
  * Example:
  * [[Group_1, Group_2]] call MFUNC(reinforcements)
  * [[Group_1, Group_2], false] call MFUNC(reinforcements)
- * [[Group_1, Group_2], false, 50] call MFUNC(reinforcements)
  */
 
 params [["_groups", []], ["_state", true], ["_distance", 0]];
@@ -28,27 +27,14 @@ if (_groups isEqualType grpNull) then {
 };
 
 {
-    private _groupLeader = leader _x;
-    private _anyClose = [];
+    {
+        _x enableSimulationGlobal !_state;
+        _x hideObjectGlobal _state;
 
-    if (_distance > 0) then {
-        _anyClose = (true call FUNC(players)) select {_groupLeader distance _x < _distance};
-    };
-
-    if (_anyClose isEqualTo [] || CBA_MissionTime == 0) then {
-        {
-            _x enableSimulationGlobal !_state;
-            _x hideObjectGlobal _state;
-
-            private _vehicle = vehicle _x;
-            if (_vehicle != _x && {simulationEnabled _vehicle == _state}) then {
-                _vehicle enableSimulationGlobal !_state;
-                _vehicle hideObjectGlobal _state;
-            };
-        } forEach (units _x);
-    } else {
-        private _groupName = groupId _x;
-        private _groupSide = side _x;
-        WARNING_2("Too close to group: %1, on: %2",_groupName,_groupSide);
-    };
+        private _vehicle = vehicle _x;
+        if (_vehicle != _x && {simulationEnabled _vehicle == _state}) then {
+            _vehicle enableSimulationGlobal !_state;
+            _vehicle hideObjectGlobal _state;
+        };
+    } forEach (units _x);
 } forEach _groups;
