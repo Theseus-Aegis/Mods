@@ -21,6 +21,11 @@ params [["_groups", []], ["_state", true], ["_distance", 0]];
 
 if (!isServer) exitWith {};
 
+// Handle trying to cause lagspikes.
+if (count _groups > 2) exitWith {
+    [_groups, 1.5] call FUNC(reinforcementWaves);
+};
+
 // Backward compatibility
 if (_groups isEqualType grpNull) then {
     _groups = [_groups];
