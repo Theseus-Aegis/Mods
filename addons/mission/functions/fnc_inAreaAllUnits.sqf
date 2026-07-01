@@ -16,9 +16,9 @@
  * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(inAreaAllUnits)
  */
 
-params ["_unitArray", "_marker"];
+params ["_units", "_marker"];
 
-private _unitsInArea = _unitArray findIf {!(_x inArea _marker)};
+_units findIf {!(_x inArea _marker)} == -1
 
 if (_unitsInArea == -1) exitWith {
     true
