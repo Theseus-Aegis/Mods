@@ -18,4 +18,4 @@
 
 params ["_units", "_marker"];
 
-_unitArray findIf {_x inArea _marker} != -1
+_units findIf {_x inArea _marker} != -1
