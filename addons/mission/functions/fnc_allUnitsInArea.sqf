@@ -13,15 +13,9 @@
  * BOOL
  *
  * Example:
- * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(inAreaAllUnits)
+ * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(allUnitsInArea)
  */
 
 params ["_units", "_marker"];
 
 _units findIf {!(_x inArea _marker)} == -1
-
-if (_unitsInArea == -1) exitWith {
-    true
-};
-
-false
