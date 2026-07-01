@@ -6,7 +6,7 @@
  * Can be called anywhere.
  *
  * Arguments
- * 0: Unit Array <ARRAY>
+ * 0: Units <ARRAY>
  * 1: Marker <MARKER>
  *
  * Return Value:
@@ -16,12 +16,6 @@
  * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(inArea)
  */
 
-params ["_unitArray", "_marker"];
+params ["_units", "_marker"];
 
-private _unitsInArea = _unitArray findIf {_x inArea _marker};
-
-if (_unitsInArea > -1) exitWith {
-    true
-};
-
-false
+_unitArray findIf {_x inArea _marker} != -1
