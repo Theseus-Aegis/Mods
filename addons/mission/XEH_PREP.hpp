@@ -43,6 +43,7 @@ PREP(leaflet);
 PREP(lockDoors);
 PREP(markBuildings);
 PREP(mortarStrike);
+PREP(paradrop);
 PREP(ping);
 PREP(players);
 PREP(reaction);
