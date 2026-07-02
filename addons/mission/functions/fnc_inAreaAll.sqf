@@ -13,7 +13,7 @@
  * BOOL
  *
  * Example:
- * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(allUnitsInArea)
+ * [[myGuy, myOtherGuy], "MyMarker"] call MFUNC(inAreaAll)
  */
 
 params ["_units", "_marker"];

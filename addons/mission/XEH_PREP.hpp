@@ -14,7 +14,6 @@ PREP(replayableStatic);
 PREP(replayableVehicles);
 
 // Extra
-PREP(allUnitsInArea);
 PREP(ambientEffects);
 PREP(battlefieldMemorial);
 PREP(blacklistHeadless);
@@ -37,6 +36,7 @@ PREP(groundFog);
 PREP(hunt);
 PREP(huntMove);
 PREP(inArea);
+PREP(inAreaAll);
 PREP(jam);
 PREP(keypadPress);
 PREP(keypadSetup);
