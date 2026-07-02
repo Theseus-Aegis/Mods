@@ -7,7 +7,6 @@
  * Arguments:
  * 0: Groups <ARRAY>
  * 1: Disable <BOOL> (default: true)
- * 2: Distance <DEPRECATED>
  *
  * Return Value:
  * None
