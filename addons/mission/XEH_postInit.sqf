@@ -34,6 +34,9 @@ if (isServer) then {
 // Exit if not player client
 if (!hasInterface) exitWith {};
 
+// Performance boost, cleans up groups when all units are dead.
+{_x deleteGroupWhenEmpty true} forEach allGroups;
+
 HLC_ShowBarrelActions = false; // Remove NiArms Barrel Actions
 CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels (bad performance script)
 
