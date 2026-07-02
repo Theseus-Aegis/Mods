@@ -3,7 +3,7 @@ class Cfg3DEN {
         class AttributeCategories {
             class PREFIX {
                 displayName = CSTRING(Attributes);
-                collaped = 1;
+                collapsed = 1;
                 class Attributes {};
             };
         };
