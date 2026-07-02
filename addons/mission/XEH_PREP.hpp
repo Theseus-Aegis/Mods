@@ -36,6 +36,7 @@ PREP(groundFog);
 PREP(hunt);
 PREP(huntMove);
 PREP(inArea);
+PREP(inAreaAll);
 PREP(jam);
 PREP(keypadPress);
 PREP(keypadSetup);
