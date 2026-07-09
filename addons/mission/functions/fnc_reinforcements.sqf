@@ -16,7 +16,7 @@
  * [[Group_1, Group_2], false] call MFUNC(reinforcements)
  */
 
-params [["_groups", []], ["_state", true], ["_distance", 0]];
+params [["_groups", []], ["_state", true]];
 
 if (!isServer) exitWith {};
 
