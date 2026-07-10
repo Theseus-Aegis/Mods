@@ -24,16 +24,18 @@ params ["_object", ["_sound", ""], ["_deleteTime", 0]];
 
 if (!isServer) exitWith {};
 
-if (isNull _object) exitWith {
-    ERROR_MSG_1("Object (%1) does not exist",_object);
-};
-
 // Check if CfgVehicles entry exists in config or mission config.
-private _cfgFile = isClass (configFile >> "CfgVehicles" >> _sound);
-private _missionCfgFile = isClass (missionConfigFile >> "CfgVehicles" >> _sound);
+if (is3DENPreview) then {
+    if (isNull _object) exitWith {
+        ERROR_MSG_1("Object (%1) does not exist",_object);
+    };
 
-if (!_cfgFile && !_missionCfgFile) then {
-    ERROR_MSG_1("Sound (%1) does not exist.",_sound);
+    private _cfgFile = isClass (configFile >> "CfgVehicles" >> _sound);
+    private _missionCfgFile = isClass (missionConfigFile >> "CfgVehicles" >> _sound);
+
+    if (!_cfgFile && !_missionCfgFile) exitWith {
+        ERROR_MSG_1("Sound (%1) does not exist.",_sound);
+    };
 };
 
 private _position = getPosATL _object; // Height matters in some cases.
