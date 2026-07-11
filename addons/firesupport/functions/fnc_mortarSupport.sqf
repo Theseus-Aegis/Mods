@@ -54,7 +54,7 @@ _marker setMarkerSizeLocal GVAR(areaSize);
     params ["_mortarInRange", "_marker", "_inRange", "_unit"];
 
     // Fire Mortars
-    private _mortarFired = ([_mortarInRange, [_marker], GVAR(roundCount), 0] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
+    private _mortarFired = ([_mortarInRange, [_marker], GVAR(roundCount), 0, GVAR(perimeterImpact)] call tac_mission_fnc_mortarStrike) params ["_eta", "_rounds"];
 
     private _teamName = format ["%1", _mortarInRange getVariable [QGVAR(mortarName), "Templar"]];
     private _etaText = format ["Fire for effect, %1 rounds incoming, ETA %2 seconds to target.", _rounds, _eta];

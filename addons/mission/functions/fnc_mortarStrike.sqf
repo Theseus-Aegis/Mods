@@ -4,6 +4,7 @@
  * Orders mortars to fire on an area. Each round will be fired at a different point on a random marker provided.
  * If amount is 0 then it will choose randomly between 1-8.
  * Ammo types are: HE (0), Smoke (1), Illumination (2)
+ * Only impact perimeter will force rounds to land on the outside of the total area fired on.
  * This function also covers the CUP D30 Artillery.
  *
  * Call on the server.
@@ -13,6 +14,7 @@
  * 1: Marker Array <ARRAY>
  * 2: Rounds to fire <NUMBER>
  * 3: Ammo Type <NUMBER>
+ * 4: Only impact perimeter <BOOL>
  *
  * Return Value:
  * 0: ETA (seconds) <NUMBER>
@@ -23,7 +25,7 @@
  * [My_Mortar, GVAR(markerArray)] call MFUNC(mortarStrike)
  */
 
-params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0]];
+params ["_mortar", "_markersArray", ["_amount", 0], ["_ammoType", 0], ["_onlyImpactPerimeter", true]];
 
 if (!isServer) exitWith {};
 
@@ -72,7 +74,7 @@ if (is3DENPreview) then {
 
 for "_i" from 0 to _amount - 1 do {
     private _marker = selectRandom _markersArray;
-    private _position = [_marker, true] call CBA_fnc_randPosArea;
+    private _position = [_marker, _onlyImpactPerimeter] call CBA_fnc_randPosArea;
     _eta = round (_mortar getArtilleryETA [_position, _ammo]);
     [{
         params ["_mortar", "_position", "_ammo", "_gunner"];
