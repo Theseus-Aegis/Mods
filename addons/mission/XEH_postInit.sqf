@@ -46,3 +46,12 @@ CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels 
 // Dialogue & Logging
 [QGVAR(dialogue), LINKFUNC(dialogueLocal)] call CBA_fnc_addEventHandler;
 ace_player createDiarySubject ["Communications Log", "Communications Log"];
+
+// For fading environment sounds
+ace_player createDiarySubject ["Volume Control", "Volume Control"];
+ace_player createDiaryRecord ["Volume Control", ["Environment Sound Control",
+"<execute expression = '1 fadeEnvironment 1'>Set Environment Volume To 100%</execute><br/>
+<execute expression = '1 fadeEnvironment 0.75'>Set Environment Volume To 75%</execute><br/>
+<execute expression = '1 fadeEnvironment 0.5'>Set Environment Volume To 50%</execute><br/>
+<execute expression = '1 fadeEnvironment 0.25'>Set Environment Volume To 25%</execute>"]
+];
