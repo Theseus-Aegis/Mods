@@ -21,6 +21,14 @@ if (isServer) then {
     [ace_player] call ACEFUNC(medical_treatment,fullHealLocal);
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(fixHearing), {
+    params ["_caller"];
+    if (isServer) exitWith {
+        INFO_1("Hearing Fix was executed by '%1'",_caller);
+    };
+    ace_hearing_deafnessDV = 0;
+}] call CBA_fnc_addEventHandler;
+
 // Limited to 6 buttons.
 [["Curator", "Assigns as Curator"], {
     [QGVAR(createCurator), ace_player] call CBA_fnc_serverEvent;
@@ -30,4 +38,7 @@ if (isServer) then {
 }] call FUNC(addButton);
 [["Stop Rain", "Stops Rain"], {
     [QGVAR(stopRain), ace_player] call CBA_fnc_serverEvent;
+}] call FUNC(addButton);
+[["Fix Hearing", "Fixes Hearing"], {
+    [QGVAR(fixHearing), ace_player] call CBA_fnc_globalEvent;
 }] call FUNC(addButton);
