@@ -48,10 +48,12 @@ CUP_stopLampCheck = true; // Disable CUP street lights based on lighting levels 
 ace_player createDiarySubject ["Communications Log", "Communications Log"];
 
 // For fading environment sounds
-ace_player createDiarySubject ["Volume Control", "Volume Control"];
-ace_player createDiaryRecord ["Volume Control", ["Environment Sound Control",
-"<execute expression = '1 fadeEnvironment 1'>Set Environment Volume To 100%</execute><br/>
-<execute expression = '1 fadeEnvironment 0.75'>Set Environment Volume To 75%</execute><br/>
-<execute expression = '1 fadeEnvironment 0.5'>Set Environment Volume To 50%</execute><br/>
-<execute expression = '1 fadeEnvironment 0.25'>Set Environment Volume To 25%</execute>"]
-];
+ace_player createDiarySubject ["Volume Control", "Volume Control"]; 
+ace_player createDiaryRecord ["Volume Control", ["Environment Sound Control", 
+"<execute expression = '0.2 fadeEnvironment 1'>Set Environment Volume To 100%</execute><br/> 
+<execute expression = '0.2 fadeEnvironment 0.75'>Set Environment Volume To 75%</execute><br/> 
+<execute expression = '0.2 fadeEnvironment 0.5'>Set Environment Volume To 50%</execute><br/> 
+<execute expression = '0.2 fadeEnvironment 0.25'>Set Environment Volume To 25%</execute><br/>
+<execute expression = 'format [""Environment Volume: %1%%"", environmentVolume * 100] call CBA_fnc_notify'>Check Environment Volume</execute>"]
+]; 
+
