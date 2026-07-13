@@ -81,5 +81,4 @@ private _time = CBA_missionTime;
             [QGVAR(detonation), _this] call CBA_fnc_serverEvent;
         }, [_unit, _randomExplosive, _unitPos], 1] call CBA_fnc_waitAndExecute;
     };
-
-}, (2 + random 1), [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _markerName]] call CBA_fnc_addPerFrameHandler;
+}, (1 + random 1), [_unit, _detonateRadius, _activateDistance, _screamingDistance, _time, _markerName]] call CBA_fnc_addPerFrameHandler;
