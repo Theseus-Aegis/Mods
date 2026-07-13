@@ -17,3 +17,12 @@ private _category = format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)];
     [0, 1800, 30],
     true
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(perimeterImpact),
+    "CHECKBOX",
+    [LSTRING(perimeterDisplay), LSTRING(perimeterDescription)],
+    _category,
+    false,
+    true
+] call CBA_fnc_addSetting;

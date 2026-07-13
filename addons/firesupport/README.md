@@ -9,6 +9,7 @@ Firesupport must be enabled via CBA settings, as is the delay and ensure that AC
 force ace_mk6mortar_useAmmoHandling = false;
 force tac_firesupport_enabled = true;
 force tac_firesupport_delay = 30;
+force tac_firesupport_perimeterImpact = false;
 ```
 
 All variables should be added to `init.sqf`

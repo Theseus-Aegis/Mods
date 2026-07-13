@@ -10,5 +10,11 @@
         <Key ID="STR_TAC_Firesupport_delayDisplay">
             <English>Delay between fire support</English>
         </Key>
+        <Key ID="STR_TAC_Firesupport_perimeterDisplay">
+            <English>Rounds impact on perimeter</English>
+        </Key>
+        <Key ID="STR_TAC_Firesupport_perimeterDescription">
+            <English>Should rounds only land on the perimeter of the area marked for mortar strikes</English>
+        </Key>
     </Package>
 </Project>
