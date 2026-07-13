@@ -21,7 +21,7 @@ params [["_groups", []], ["_state", true]];
 if (!isServer) exitWith {};
 
 // Handle trying to cause lagspikes.
-if (count _groups > 2) exitWith {
+if (!_state && count _groups > 2) exitWith {
     [_groups, 1.5] call FUNC(reinforcementWaves);
 };
 
