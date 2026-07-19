@@ -30,12 +30,14 @@ if (_position isEqualType "OBJECT") then {
     _position = getPosATL _position;
 };
 
-// Error checking
-if !(_helmet isEqualType "") exitWith {
-    ERROR_MSG_1("Invalid input (%1) expected classname as string.",_helmet)
-};
-if !(_weapon isEqualType "") exitWith {
-    ERROR_MSG_1("Invalid input (%1) expected classname as string.",_weapon)
+// Error checking - Only in Editor
+if (is3DENPreview) then {
+    if !(_helmet isEqualType "") exitWith {
+        ERROR_MSG_1("Invalid input (%1) expected classname as string.",_helmet)
+    };
+    if !(_weapon isEqualType "") exitWith {
+        ERROR_MSG_1("Invalid input (%1) expected classname as string.",_weapon)
+    };
 };
 
 private _memorial = createVehicle ["Land_BattlefieldCross_01_NATO_F", _position, [], 0, "CAN_COLLIDE"];

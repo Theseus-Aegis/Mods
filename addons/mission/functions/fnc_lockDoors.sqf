@@ -23,14 +23,16 @@ params ["_building", ["_doorIndex", []], ["_lockState", 1], ["_isGlobal", true]]
 // If running globally, exit if not the server.
 if (_isGlobal && !isServer) exitWith {};
 
-// Exit if door index array is empty
-if (_doorIndex isEqualTo []) exitWith {
-    ERROR_MSG("Door Index is empty.");
-};
+if (is3DENPreview) then {
+    // Exit if door index array is empty
+    if (_doorIndex isEqualTo []) exitWith {
+        ERROR_MSG("Door Index is empty.");
+    };
 
-// Check lockstate value is correct.
-if !(_lockState in [0, 1]) exitWith {
-    ERROR_MSG_1("Lock State is invalid (%1), expected 0 or 1.",_lockState);
+    // Check lockstate value is correct.
+    if !(_lockState in [0, 1]) exitWith {
+        ERROR_MSG_1("Lock State is invalid (%1), expected 0 or 1.",_lockState);
+    };
 };
 
 {
