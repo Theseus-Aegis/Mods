@@ -2,6 +2,7 @@
 /*
  * Author: Mike
  * Gets all players and excludes spectators & headless clients, optionally skipping any units not touching the ground (eg. in the air/water).
+ * Mimics CBA_fnc_players using allPlayers instead of allUnits + allDeadMen and filtering for isPlayer
  *
  * Arguments:
  * 0: Skip units not touching the ground <BOOL>
