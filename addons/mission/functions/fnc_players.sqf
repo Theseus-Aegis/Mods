@@ -16,7 +16,7 @@
 
 params [["_skipNotGround", false]];
 
-private _players = allPlayers - entities "HeadlessClient_F" select {!(_x getVariable [QACEGVAR(spectator,isSet), false])};
+private _players = (allPlayers - entities "HeadlessClient_F") select {!(_x getVariable [QACEGVAR(spectator,isSet), false])};
 
 if (_skipNotGround) then {
     _players = _players select {isTouchingGround (vehicle _x)}; // Check vehicle, not the unit
