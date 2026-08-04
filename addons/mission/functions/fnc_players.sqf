@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Wrapper of CBA_fnc_players, removing players in spectator
- * and optionally any units not touching the ground (eg. in the air/water).
+ * Gets all players and excludes spectators & headless clients, optionally skipping any units not touching the ground (eg. in the air/water).
+ * Mimics CBA_fnc_players using allPlayers instead of allUnits + allDeadMen and filtering for isPlayer
  *
  * Arguments:
  * 0: Skip units not touching the ground <BOOL>
@@ -17,7 +17,7 @@
 
 params [["_skipNotGround", false]];
 
-private _players = (call CBA_fnc_players) select {!(_x getVariable [QACEGVAR(spectator,isSet), false])};
+private _players = (allPlayers - entities "HeadlessClient_F") select {!(_x getVariable [QACEGVAR(spectator,isSet), false])};
 
 if (_skipNotGround) then {
     _players = _players select {isTouchingGround (vehicle _x)}; // Check vehicle, not the unit
