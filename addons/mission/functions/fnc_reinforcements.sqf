@@ -20,14 +20,21 @@ params [["_groups", []], ["_state", true]];
 
 if (!isServer) exitWith {};
 
-// Handle trying to cause lagspikes.
-if (!_state && count _groups > 2) exitWith {
-    [_groups, 1.5] call FUNC(reinforcementWaves);
-};
-
 // Backward compatibility
 if (_groups isEqualType grpNull) then {
     _groups = [_groups];
+};
+
+if (is3DENPreview) then {
+    private _typeCheck = _groups findIf {_x isEqualType "OBJECT"};
+    if (_typeCheck != -1) exitWith {
+        ERROR_MSG_1("Input only allows groups, detected unit at index (%1)",_typeCheck);
+    };
+};
+
+// Handle trying to cause lagspikes.
+if (!_state && count _groups > 2) exitWith {
+    [_groups, 1.5] call FUNC(reinforcementWaves);
 };
 
 {
