@@ -20,7 +20,7 @@ params [["_groups", []], ["_state", true]];
 
 if (!isServer) exitWith {};
 
-// Backward compatibility
+// Backward compatibility / Forces reinforcementWaves to utilise an array instead of group.
 if (_groups isEqualType grpNull) then {
     _groups = [_groups];
 };
