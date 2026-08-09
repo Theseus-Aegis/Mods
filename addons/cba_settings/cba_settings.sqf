@@ -95,6 +95,9 @@ acex_sitting_enable = true;
 acex_volume_enabled = true; // Force client setting
 acex_volume_lowerInVehicles = true; // Force client setting
 
+// Backpack on Chest
+bocr_main_disabled = true;
+
 // Enhanced Movement
 emr_main_enableWalkableSurface = false;
 emr_main_enableWeightCheck = true;
