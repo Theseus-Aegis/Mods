@@ -18,14 +18,6 @@ include = [
 [version]
 git_hash = 0
 
-# Unused in HEMTT v1.11 or higher, kept for backwards compatibility
-[asc]
-enabled = true
-exclude = [
-    "/initsettings.inc.sqf",
-    "/initkeybinds.inc.sqf",
-]
-
 [hemtt.config]
 preset = "Hemtt"
 

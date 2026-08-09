@@ -67,6 +67,7 @@ ArmaScriptCompiler.exe
 *.pbo
 texHeaders.bin
 *.biprivatekey
+*.hemttprivatekey
 keys/*
 
 # Extensions
