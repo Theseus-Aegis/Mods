@@ -41,7 +41,6 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 - Open terminal (Linux) or command line (Windows)
 - Run `$ hemtt build` to create a development build _(Windows users can double-click `build.bat`)_
 - Run `$ hemtt release` to create a release build
-  - _Only Windows release builds are currently supported due to binarization!_
   - **Add extension builds from [CI](https://github.com/Theseus-Aegis/Mods/actions/workflows/extensions.yml)!**
 - Run `$ hemtt dev` to create a development build with file patching
   - `mklink /J <Arma 3>\x\tac <Mods>/.hemttout/dev` _(`/D` instead of `/J` for network paths)_
