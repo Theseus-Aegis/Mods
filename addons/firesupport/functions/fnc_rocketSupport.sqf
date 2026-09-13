@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles Artillery calls and firing
+ * Handles Rocket calls and firing
  * Call on the server
  *
  * Arguments:
