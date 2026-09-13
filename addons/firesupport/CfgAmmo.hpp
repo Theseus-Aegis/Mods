@@ -25,7 +25,7 @@ class CfgAmmo {
     };
 
     class GVAR(artilleryAmmoHEGL): GVAR(mortarAmmoHEGL) {};
-    class GVAR(artilleryAmmoSmokeGL): GVAR(mortarAmmoSmokeGL {};
+    class GVAR(artilleryAmmoSmokeGL): GVAR(mortarAmmoSmokeGL) {};
 
     class GVAR(rocketAmmoHEGL): GVAR(mortarAmmoHEGL) {};
 };
