@@ -25,7 +25,7 @@ if (GVAR(mortarList) isEqualTo []) exitWith {
 };
 
 if (GVAR(mortarsBusy)) exitWith {
-    ["tac_mission_dialogue", ["Knight", "Mortar crews are rearming, give it some time.",  "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Knight", "Mortar crews are rearming, give it some time.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
 };
 
 // Sort by distance, Don't overwrite or it'll error on next run.
