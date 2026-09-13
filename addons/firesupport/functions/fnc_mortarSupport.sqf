@@ -66,7 +66,7 @@ if (_roundsToFire == 0) then {
 
 // Due to Arma limitations with smoke, 4 should be the maximum fired for mortars.
 if (_supportType == 1) then {
-    _roundsToFire = _roundsToFire max 3;
+    _roundsToFire = _roundsToFire max 4;
 };
 
 [_mortarInRange, _marker, _roundsToFire, _ammoToFire, 2.5] call FUNC(doArtilleryFire) params ["_eta"];
