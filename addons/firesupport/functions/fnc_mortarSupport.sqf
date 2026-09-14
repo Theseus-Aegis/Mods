@@ -21,11 +21,13 @@ params ["_supportType", "_position", "_unit"];
 private _ammoToFire = GVAR(mortarAmmoTypes) select _supportType;
 
 if (GVAR(mortarList) isEqualTo []) exitWith {
-    ["tac_mission_dialogue", ["Knight", "No Mortar Crews Assigned", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Hailstorm", "There's no Mortar crews assigned", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_playSoundUI", [QGVAR(noMortars)], _unit] call CBA_fnc_targetEvent;
 };
 
 if (GVAR(mortarsBusy)) exitWith {
-    ["tac_mission_dialogue", ["Knight", "Mortar crews are rearming, give it some time.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Hailstorm", "Mortar crews are rearming, give it some time.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_playSoundUI", [QGVAR(rearmingMortar)], _unit] call CBA_fnc_targetEvent;
 };
 
 // Sort by distance, Don't overwrite or it'll error on next run.
@@ -34,7 +36,8 @@ _mortarList sort true;
 
 private _inRange = _mortarList findIf {_position inRangeOfArtillery [[_x select 1], _ammoToFire]};
 if (_inRange == -1) exitWith {
-    ["tac_mission_dialogue", ["Knight", "No mortars in range of area.", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Hailstorm", "That area is out of range", "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_playSoundUI", [QGVAR(outOfRangeMortar)], _unit] call CBA_fnc_targetEvent;
 };
 
 // Only allow one fire mission until delay has passed.
@@ -42,10 +45,12 @@ GVAR(mortarsBusy) = true;
 publicVariable QGVAR(mortarsBusy);
 
 [{
+    params ["_unit"];
     GVAR(mortarsBusy) = false;
     publicVariable QGVAR(mortarsBusy);
-    ["Knight", "Mortar support is available."] call tac_mission_fnc_dialogue;
-}, [], GVAR(mortarDelay)] call CBA_fnc_waitAndExecute;
+    ["Hailstorm", "Mortar support is available."] call tac_mission_fnc_dialogue;
+    ["tac_mission_playSoundUI", [QGVAR(availableMortar)], _unit] call CBA_fnc_targetEvent;
+}, [_unit], GVAR(mortarDelay)] call CBA_fnc_waitAndExecute;
 
 private _mortarInRange = (_mortarList select _inRange) select 1;
 
@@ -66,17 +71,17 @@ if (_roundsToFire == 0) then {
 
 // Due to Arma limitations with smoke, 4 should be the maximum fired for mortars.
 if (_supportType == 1) then {
-    _roundsToFire = _roundsToFire max 4;
+    _roundsToFire = _roundsToFire min 4;
 };
 
 [_mortarInRange, _marker, _roundsToFire, _ammoToFire, 2.5] call FUNC(doArtilleryFire) params ["_eta"];
 
 [{
     params ["_mortarInRange", "_roundsToFire", "_eta", "_unit", "_marker"];
-    private _teamName = format ["%1", _mortarInRange getVariable [QGVAR(mortarName), "Templar"]];
     private _etaText = format ["Fire for effect, %1 rounds incoming, ETA %2 seconds to target", _roundsToFire, _eta];
 
-    ["tac_mission_dialogue", [_teamName, _etaText, "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_dialogue", ["Hailstorm", _etaText, "#ffffff", 2], _unit] call CBA_fnc_targetEvent;
+    ["tac_mission_playSoundUI", [QGVAR(incomingMortar)], _unit] call CBA_fnc_targetEvent;
 
     deleteMarker _marker
 }, [_mortarInRange, _roundsToFire, _eta, _unit, _marker], 4] call CBA_fnc_waitAndExecute;

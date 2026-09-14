@@ -43,15 +43,8 @@ tac_firesupport_rocketList = [R1];
 ```
 
 ## Optional:
-Supports can be named via mission template:
 
-```sqf
-Mortar_1 setVariable ["tac_firesupport_mortarName", "Templar - 1"];
-Artillery_1 setVariable ["tac_firesupport_artilleryName", "Hospitaller - 1"];
-Rocket_1 setVariable ["tac_firesupport_rocketName", "Holy Grail - 1"];
-```
-
-Area of effect can also be defined via:
+Area of effect can be defined via:
 
 ```sqf
 tac_firesupport_mortarAreaSize = [35, 35];
