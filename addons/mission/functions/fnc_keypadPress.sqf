@@ -43,6 +43,8 @@ if (_keypadInput isEqualTo "Enter") exitWith {
         if (_failedAttempts >= _maxFailedAttempts) exitWith {
             [QGVAR(keypadFailure), [_keypad, ace_player, _failedAttempts]] call CBA_fnc_globalEvent;
             _keypad setVariable [QGVAR(keypadBlocked), true, true];
+            _keypad setObjectTextureGlobal [0, QPATHTOF(data\keypad_locked_ca.paa)];
+            [_keypad, "FD_CP_Not_Clear_F", 10] call CBA_fnc_globalSay3D;
             ctrlSetText [1000, "Keypad Locked"];
             [{
                 closeDialog 2;
@@ -54,6 +56,8 @@ if (_keypadInput isEqualTo "Enter") exitWith {
     ctrlSetText [1000, "Accepted!"];
     [QGVAR(keypadSuccess), [_keypad, ace_player]] call CBA_fnc_globalEvent;
     _keypad setVariable [QGVAR(keypadFinished), true, true];
+    _keypad setObjectTextureGlobal [0, QPATHTOF(data\keypad_accepted_ca.paa)];
+    [_keypad, "FD_CP_Clear_F", 10] call CBA_fnc_globalSay3D;
 
     [{
         closeDialog 2;
