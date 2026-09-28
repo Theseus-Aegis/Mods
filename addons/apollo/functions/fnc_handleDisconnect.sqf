@@ -2,6 +2,7 @@
 /*
  * Author: Jonpas
  * Handles save and corpse removal on disconnect.
+ * Runs only on server.
  *
  * Arguments:
  * 0: Unit <OBJECT>
