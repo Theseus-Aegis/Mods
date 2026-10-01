@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles mortar calls and firing
- * Call on the server
+ * Sets up targeting zone and calls in Mortars.
+ * Call on the server.
  *
  * Arguments:
  * 0: Support Type <NUMBER>

@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles Artillery calls and firing
- * Call on the server
+ * Sets up targeting zone and calls in Cannon Artillery (155mm Shells).
+ * Call on the server.
  *
  * Arguments:
  * 0: Support Type <NUMBER>

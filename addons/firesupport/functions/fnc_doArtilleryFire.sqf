@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles firing of any support
- * Called via server event
+ * Fires any selected support on designated position and returns ETA.
+ * Called via server event.
  *
  * Arguments:
  * 0: Support Vehicle <OBJECT>

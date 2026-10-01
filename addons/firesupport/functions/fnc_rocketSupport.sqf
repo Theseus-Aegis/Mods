@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Handles Rocket calls and firing
- * Call on the server
+ * Sets up targeting zone and calls in Rocket Artillery (230mm Rockets).
+ * Call on the server.
  *
  * Arguments:
  * 0: Position of fired projectile <ARRAY>

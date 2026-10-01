@@ -4,6 +4,14 @@ Adds mortar support on thrown / GL launched markers.
 
 ## Classnames:
 
+**Hand Thrown:**
+```sqf
+tac_Firesupport_artilleryHESignal
+tac_Firesupport_artillerySmokeSignal
+tac_Firesupport_mortarHESignal
+tac_Firesupport_mortarSmokeSignal
+```
+
 **Grenade Launched:**
 ```sqf
 tac_firesupport_artilleryHESignalGL

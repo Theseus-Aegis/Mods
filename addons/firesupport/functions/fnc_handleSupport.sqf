@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Initial handling of support
- * Called via server event
+ * Handles fire support calls by ammo type and calls the correct supporting fire, will also differentiate HE/Smoke.
+ * Called via server event.
  *
  * Arguments:
  * 0: Position of fired projectile <ARRAY>
