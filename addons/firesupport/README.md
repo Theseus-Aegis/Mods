@@ -3,21 +3,14 @@
 Adds mortar support on thrown / GL launched markers.
 
 ## Classnames:
+
 **Grenade Launched:**
 ```sqf
-tac_Firesupport_artilleryHESignalGL
-tac_Firesupport_artillerySmokeSignalGL
-tac_Firesupport_mortarHESignalGL
-tac_Firesupport_mortarSmokeSignalGL
-tac_Firesupport_rocketHESignalGL
-```
-
-**Hand Thrown:**
-```sqf
-tac_Firesupport_artilleryHESignal
-tac_Firesupport_artillerySmokeSignal
-tac_Firesupport_mortarHESignal
-tac_Firesupport_mortarSmokeSignal
+tac_firesupport_artilleryHESignalGL
+tac_firesupport_artillerySmokeSignalGL
+tac_firesupport_mortarHESignalGL
+tac_firesupport_mortarSmokeSignalGL
+tac_firesupport_rocketHESignalGL
 ```
 
 ## Required:
@@ -60,6 +53,7 @@ tac_firesupport_rocketRoundCount = 4;
 ```
 
 ## Notes:
+
 - Fire support is limited to:
  - Mortars (of any kind)
  - Sholef (B_MBT_01_arty_F) and any inheriting ones. (From NATO faction)
