@@ -9,10 +9,16 @@ class CfgPatches {
         requiredAddons[] = {"tac_main", "tac_mission"};
         skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
-        authors[] = {"Mike"};
+        authors[] = {"Mike", "Zach"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
 #include "CfgEventHandlers.hpp"
+
+#include "CfgAmmo.hpp"
+#include "CfgMagazines.hpp"
+#include "CfgMagazineWells.hpp"
+#include "CfgSounds.hpp"
+#include "CfgWeapons.hpp"
