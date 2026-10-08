@@ -10,9 +10,27 @@ private _category = format ["TAC %1", QUOTE(COMPONENT_BEAUTIFIED)];
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(delay),
+    QGVAR(mortarDelay),
     "TIME",
-    [LSTRING(delayDisplay), LSTRING(delayDescription)],
+    [LSTRING(mortarDelayDisplay), LSTRING(delayDescription)],
+    _category,
+    [0, 1800, 30],
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(artilleryDelay),
+    "TIME",
+    [LSTRING(artilleryDelayDisplay), LSTRING(delayDescription)],
+    _category,
+    [0, 1800, 30],
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(rocketDelay),
+    "TIME",
+    [LSTRING(rocketDelayDisplay), LSTRING(delayDescription)],
     _category,
     [0, 1800, 30],
     true

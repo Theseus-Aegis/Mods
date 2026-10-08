@@ -4,17 +4,23 @@
         <Key ID="STR_TAC_Firesupport_EnabledDescription">
             <English>Utilises the mortar fire support via thrown smoke.</English>
         </Key>
+        <Key ID="STR_TAC_Firesupport_artilleryDelayDisplay">
+            <English>Delay between artillery fire support missions</English>
+        </Key>
         <Key ID="STR_TAC_Firesupport_delayDescription">
             <English>How long fire support is blocked after a barrage in seconds. (Min 0, Max 30 minutes)</English>
         </Key>
-        <Key ID="STR_TAC_Firesupport_delayDisplay">
-            <English>Delay between fire support</English>
+        <Key ID="STR_TAC_Firesupport_mortarDelayDisplay">
+            <English>Delay between mortar fire support missions</English>
+        </Key>
+        <Key ID="STR_TAC_Firesupport_perimeterDescription">
+            <English>Should rounds only land on the perimeter of the area marked for mortar strikes</English>
         </Key>
         <Key ID="STR_TAC_Firesupport_perimeterDisplay">
             <English>Rounds impact on perimeter</English>
         </Key>
-        <Key ID="STR_TAC_Firesupport_perimeterDescription">
-            <English>Should rounds only land on the perimeter of the area marked for mortar strikes</English>
+        <Key ID="STR_TAC_Firesupport_rocketDelayDisplay">
+            <English>Delay between rocket fire support missions</English>
         </Key>
     </Package>
 </Project>
