@@ -19,15 +19,18 @@ jobs:
         include:
           - toolchain: stable-x86_64-unknown-linux-gnu
             os: ubuntu-latest
-            from: libapollo_client.so
+            prefix: lib
+            ext: .so
             to: _x64.so
           - toolchain: stable-x86_64-pc-windows-msvc
             os: windows-latest
-            from: apollo_client.dll
+            prefix: ""
+            ext: .dll
             to: _x64.dll
           - toolchain: stable-i686-pc-windows-msvc
             os: windows-latest
-            from: apollo_client.dll
+            prefix: ""
+            ext: .dll
             to: .dll
     runs-on: ${{ matrix.os }}
     steps:
@@ -35,10 +38,17 @@ jobs:
       uses: actions/checkout@v4
     - name: Install Rust Toolchain
       run: rustup toolchain install ${{ matrix.toolchain }}
+    - name: Test
+      run: cd extensions && cargo +${{ matrix.toolchain }} test
     - name: Build
       run: cd extensions && cargo +${{ matrix.toolchain }} build --release
     - name: Move
-      run: mkdir release && cp extensions/target/release/${{ matrix.from }} release/tac_apollo_client${{ matrix.to }}
+      shell: bash
+      run: |
+        mkdir release
+        for name in apollo_client apollo_server; do
+          cp extensions/target/release/${{ matrix.prefix }}${name}${{ matrix.ext }} release/tac_${name}${{ matrix.to }}
+        done
     - uses: actions/upload-artifact@v4
       with:
         name: extensions-${{ matrix.toolchain }}-${{ github.sha }}

@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "apollo-client",
+    "apollo-server",
 ]
 resolver = "2"
 

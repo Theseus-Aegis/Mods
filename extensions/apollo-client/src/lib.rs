@@ -6,7 +6,7 @@ use reqwest::blocking::Client;
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
-const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/apollo";
+const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/game/v1/client"; // Minotaur's game API
 const LOG_PATH: &str = "./logs/tac_apollo.log";
 const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-04-18
 
@@ -88,20 +88,22 @@ pub fn init_debug() {
     ).unwrap();
 }
 
+/// The player's locker (all, or one category), as [class, sub-category, description, quantity] entries.
 pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
-    request(url!("armory", category, player_id, debug))
+    request(format!("{}?debug={debug}", url!(player_id, "locker", category)))
 }
 
+/// [direction, position, loadout, selected weapon] as last saved.
 pub fn load_player(player_id: String, debug: bool) -> String {
-    request(url!("loadInfantry", player_id, debug))
+    request(format!("{}?debug={debug}", url!(player_id, "loadout")))
 }
 
 pub fn get_accessible_item_classes(player_id: String) -> String {
-    request(url!("getAccessibleItemClasses", player_id))
+    request(url!(player_id, "items"))
 }
 
 pub fn get_training_identifiers(player_id: String) -> String {
-    request(url!("getTrainingIdentifiers", player_id))
+    request(url!(player_id, "trainings"))
 }
 
 pub fn get() -> String {

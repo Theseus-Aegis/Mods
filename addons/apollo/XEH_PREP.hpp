@@ -1,10 +1,10 @@
 PREP(callExt);
+PREP(callServer);
 PREP(endMissionError);
 PREP(getPlayerInfo);
 PREP(handleDisconnect);
 PREP(handleKilled);
 PREP(handleRespawn);
-PREP(invokeJavaMethod);
 PREP(lockerAction);
 PREP(playerLoadClient);
 PREP(playerSaveClient);

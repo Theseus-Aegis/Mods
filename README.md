@@ -49,7 +49,15 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 ### Extensions
 
 **Requirements:**
-- Rust (>= 1.59)
+- Rust (>= 1.70)
 
 Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
+- Run `$ cargo test` in `extensions` directory
+
+- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's game API (`https://api.theseus-aegis.com/game/v1/client`).
+- `tac_apollo_server`: loaded by game servers (replaces `jni` and `Apollo.jar`), saves and loads players, vehicles and lockers through Minotaur's game API.
+  - Put `tac_apollo_server_x64.so` (or `.dll`) next to the server executable and remove `jni_x64.so`, `Apollo/` and `apollo.properties`.
+  - Settings: `APOLLO_SERVER_URL` (default `http://minotaur:8000/game/v1/server`) and `APOLLO_SERVER_TOKEN`, or `apollo-server.cfg` next to the server executable with `url = ...` and `token = ...` lines. The token comes from Minotaur's admin (Game persistence › Game servers); a test server is set up there as debug.
+  - Log: `logs/tac_apollo_server.log`.
+  - End-to-end test against a running Minotaur: see `extensions/apollo-server/tests/minotaur.rs`.
