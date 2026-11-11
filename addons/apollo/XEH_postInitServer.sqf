@@ -10,7 +10,7 @@ if (_serverVersion != REQUIRED_APOLLOSERVER_VERSION) exitWith {
 };
 
 // Set server type (debug or live) globally
-private _serverType = ["getServerType"] call FUNC(callServer);
+private _serverType = ["getServerType"] call FUNC(callServerExt);
 if (_serverType == "error") exitWith {
     ERROR_1("Failed to initialize - Invalid server type (%1)!",_serverType);
 };
@@ -20,7 +20,7 @@ publicVariable QGVAR(isDebug);
 // Reset server if map/mission changed from last saved
 private _resetError = false;
 if (GVAR(allowServerReset)) then {
-    private _reset = ["resetServer", GVAR(enabledPlayers), GVAR(enabledVehicles), serverName, worldName, missionName] call FUNC(callServer);
+    private _reset = ["resetServer", GVAR(enabledPlayers), GVAR(enabledVehicles), serverName, worldName, missionName] call FUNC(callServerExt);
     if (_reset == "error") exitWith {_resetError = true; };
     if (_reset == "none") exitWith { INFO_3("Server reset not performed (server: %1, map: %2, mission: %3)",serverName,worldName,missionName); };
     INFO_3("Server reset successfully (server: %1, map: %2, mission: %3)",serverName,worldName,missionName);
@@ -42,7 +42,7 @@ if (GVAR(enabledPlayers)) then {
     [QGVAR(playerDied), {
         params ["_player", "_killerUID"];
         TRACE_1("Player Died",_this);
-        private _registeredDeath = ["playerDied", getPlayerUID _player, _killerUID] call FUNC(callServer);
+        private _registeredDeath = ["playerDied", getPlayerUID _player, _killerUID] call FUNC(callServerExt);
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 

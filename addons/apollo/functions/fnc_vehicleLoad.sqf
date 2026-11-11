@@ -15,14 +15,14 @@
  * Public: No
  */
 
-private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(callServer);
+private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(callServerExt);
 
 if (_retrieveVehicles == "ready") then {
     private _vehList = [];
     private _updateInfo = true;
 
     while {_updateInfo} do {
-        private _serverReply = ["getVehicleList"] call FUNC(callServer);
+        private _serverReply = ["getVehicleList"] call FUNC(callServerExt);
 
         // All vehicle IDs retrieved
         if (_serverReply == "done") then {

@@ -1,5 +1,5 @@
 PREP(callExt);
-PREP(callServer);
+PREP(callServerExt);
 PREP(endMissionError);
 PREP(getPlayerInfo);
 PREP(handleDisconnect);

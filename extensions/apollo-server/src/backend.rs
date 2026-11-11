@@ -1,4 +1,4 @@
-//! Talking to Minotaur's game API (`/game/v1/server/...`).
+//! Talking to Minotaur's Apollo API (`/apollo/v1/server/...`).
 
 use std::fs;
 use std::time::Duration;
@@ -6,7 +6,7 @@ use std::time::Duration;
 use reqwest::blocking::Client;
 use serde_json::Value;
 
-pub const DEFAULT_URL: &str = "http://minotaur:8000/game/v1/server";
+pub const DEFAULT_URL: &str = "http://minotaur:8000/apollo/v1/server";
 pub const CONFIG_FILE: &str = "apollo-server.cfg";
 const TIMEOUT: Duration = Duration::from_secs(10);
 
@@ -99,9 +99,9 @@ mod tests {
 
     #[test]
     fn config_file_and_environment() {
-        let file = "# Apollo server\nurl = http://localhost:8001/game/v1/server/\ntoken = \"abc\" # secret\n";
+        let file = "# Apollo server\nurl = http://localhost:8001/apollo/v1/server/\ntoken = \"abc\" # secret\n";
         let config = Config::from_sources(file, None, None);
-        assert_eq!(config.url, "http://localhost:8001/game/v1/server");
+        assert_eq!(config.url, "http://localhost:8001/apollo/v1/server");
         assert_eq!(config.token, "abc");
         let config = Config::from_sources(file, None, Some("xyz".into()));
         assert_eq!(config.token, "xyz");

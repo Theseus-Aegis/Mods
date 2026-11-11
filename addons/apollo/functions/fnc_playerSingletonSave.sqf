@@ -47,13 +47,13 @@ private _selectedWeapon = currentWeapon _player;
 // Variables TODO
 private _playerVariables = [];
 
-private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(callServer);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(callServerExt);
 
 TRACE_2("Singleton Save",_type,_serverReply);
 
 if (_type == "validate" && {_serverReply == "success"}) exitWith {
     // No simulation toggling due to possible lag breaking correct position and direction setting
-    ["infantryLoaded", _uid] call FUNC(callServer);
+    ["infantryLoaded", _uid] call FUNC(callServerExt);
     INFO_4("Player '%1' (%2) validated successfully (Position: %3 - Loadout: %4)",_name,_uid,_playerPos,_loadout);
 };
 

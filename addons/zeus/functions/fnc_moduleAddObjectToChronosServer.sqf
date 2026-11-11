@@ -23,7 +23,7 @@ if (!EGVAR(apollo,vehiclesLoaded)) exitWith {
 };
 
 // Get suitable Chronos ID
-private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,callServer);
+private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,callServerExt);
 
 // Make persistent
 _object setVariable [QEGVAR(apollo,vehicleID), _chronosUniqueID, true];

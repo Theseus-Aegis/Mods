@@ -6,7 +6,7 @@ use reqwest::blocking::Client;
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
-const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/game/v1/client"; // Minotaur's game API
+const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/apollo/v1/client"; // Minotaur's Apollo API
 const LOG_PATH: &str = "./logs/tac_apollo.log";
 const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-04-18
 

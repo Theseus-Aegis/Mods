@@ -1,6 +1,6 @@
 //! Against a running Minotaur (not run by default):
 //!
-//!     APOLLO_SERVER_URL=http://localhost:8000/game/v1/server APOLLO_SERVER_TOKEN=... \
+//!     APOLLO_SERVER_URL=http://localhost:8000/apollo/v1/server APOLLO_SERVER_TOKEN=... \
 //!     APOLLO_TEST_PLAYER=<a member's Steam ID> APOLLO_TEST_ITEM=<an item class with slot "item"> \
 //!     cargo test -p apollo-server-rs --test minotaur -- --ignored
 //!

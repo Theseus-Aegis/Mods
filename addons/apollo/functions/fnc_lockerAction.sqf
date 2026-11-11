@@ -26,7 +26,7 @@ params ["_player", "_type", "_container", "_itemClass", "_itemClassBox", "_quant
 
 private _playerID = getPlayerUID _player;
 
-private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines] call FUNC(callServer);
+private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines] call FUNC(callServerExt);
 
 if (_serverReply == "ready") then {
     // Load packages for execution of commands
@@ -34,7 +34,7 @@ if (_serverReply == "ready") then {
     private _updateInfo = true;
 
     while {_updateInfo} do {
-        private _serverReply = ["retrieveLockerQueue", _playerID] call FUNC(callServer);
+        private _serverReply = ["retrieveLockerQueue", _playerID] call FUNC(callServerExt);
 
         if (_serverReply == "done") then {
             {

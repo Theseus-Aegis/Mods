@@ -12,7 +12,7 @@
  * Extension Return Value <STRING>
  *
  * Example:
- * ["storeInfantry", "save", "76561198000000000", "Name", [1, 2, 3], 90, [], "", []] call tac_apollo_fnc_callServer
+ * ["storeInfantry", "save", "76561198000000000", "Name", [1, 2, 3], 90, [], "", []] call tac_apollo_fnc_callServerExt
  *
  * Public: No
  */

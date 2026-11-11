@@ -1,10 +1,10 @@
 //! Apollo Server: the game server's side of Chronos persistence (players, vehicles, lockers),
-//! talking to Minotaur's game API. Replaces the `jni` extension and `Apollo.jar`; the commands
+//! talking to Minotaur's Apollo API. Replaces the `jni` extension and `Apollo.jar`; the commands
 //! keep Apollo's names and replies, so the SQF side calls them the same way.
 //!
 //! Settings: `APOLLO_SERVER_URL` and `APOLLO_SERVER_TOKEN`, or `apollo-server.cfg` next to the
 //! server executable (`url = ...`, `token = ...`). The token comes from Minotaur's admin
-//! (Game persistence > Game servers).
+//! (Chronos · Apollo > Game servers).
 
 use std::fs::{create_dir_all, File};
 use std::path::Path;
@@ -27,7 +27,7 @@ static HANDLER: OnceLock<Handler<Http>> = OnceLock::new();
 fn handler() -> &'static Handler<Http> {
     HANDLER.get_or_init(|| {
         let config = Config::load();
-        info!("Minotaur game API at {}{}", config.url, if config.token.is_empty() { " (no token set!)" } else { "" });
+        info!("Minotaur Apollo API at {}{}", config.url, if config.token.is_empty() { " (no token set!)" } else { "" });
         Handler::new(Http::new(config))
     })
 }
