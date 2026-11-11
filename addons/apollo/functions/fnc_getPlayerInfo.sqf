@@ -31,7 +31,7 @@ if (_playerUID isEqualTo "_SP_PLAYER_" || {_playerUID isEqualTo "_SP_AI_"}) exit
     []
 };
 
-private _result = [_type, [_playerUID]] call FUNC(callExt);
+private _result = [_type, [_playerUID, GVAR(isDebug)]] call FUNC(callExt);
 
 if (!isNil "_result") then {
     _result

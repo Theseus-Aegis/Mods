@@ -14,7 +14,7 @@
  * Extension Result <STRING>
  *
  * Example:
- * ["getAccessibleItemClasses", [<player UID>]] call tac_apollo_fnc_callExt
+ * ["getAccessibleItemClasses", [<player UID>, <debug>]] call tac_apollo_fnc_callExt
  *
  * Public: No
  */

@@ -6,7 +6,9 @@ use reqwest::blocking::Client;
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
-const REST_ENDPOINT: &str = "https://api.theseus-aegis.com/apollo/v1/client"; // Minotaur's Apollo API
+// Minotaur's Apollo API: the live website, or the development one for test (debug) servers.
+const LIVE_ENDPOINT: &str = "https://www.theseus-aegis.com/apollo/v1/client";
+const DEV_ENDPOINT: &str = "https://srv.theseus-aegis.com/minotaur/apollo/v1/client";
 const LOG_PATH: &str = "./logs/tac_apollo.log";
 const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-04-18
 
@@ -17,9 +19,13 @@ lazy_static::lazy_static! {
     static ref CLIENT: Client = Client::new();
 }
 
+fn endpoint(debug: bool) -> &'static str {
+    if debug { DEV_ENDPOINT } else { LIVE_ENDPOINT }
+}
+
 macro_rules! url {
-    ($($args:expr),*) => {{
-        let mut requrl: String = String::from(REST_ENDPOINT);
+    ($debug:expr, $($args:expr),*) => {{
+        let mut requrl: String = String::from(endpoint($debug));
         $(
             requrl = format!("{}/{}", requrl, $args);
         )*
@@ -90,20 +96,21 @@ pub fn init_debug() {
 
 /// The player's locker (all, or one category), as [class, sub-category, description, quantity] entries.
 pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
-    request(format!("{}?debug={debug}", url!(player_id, "locker", category)))
+    request(format!("{}?debug={debug}", url!(debug, player_id, "locker", category)))
 }
 
 /// [direction, position, loadout, selected weapon] as last saved.
 pub fn load_player(player_id: String, debug: bool) -> String {
-    request(format!("{}?debug={debug}", url!(player_id, "loadout")))
+    request(format!("{}?debug={debug}", url!(debug, player_id, "loadout")))
 }
 
-pub fn get_accessible_item_classes(player_id: String) -> String {
-    request(url!(player_id, "items"))
+/// `debug`: ask the development website (test servers).
+pub fn get_accessible_item_classes(player_id: String, debug: bool) -> String {
+    request(url!(debug, player_id, "items"))
 }
 
-pub fn get_training_identifiers(player_id: String) -> String {
-    request(url!(player_id, "trainings"))
+pub fn get_training_identifiers(player_id: String, debug: bool) -> String {
+    request(url!(debug, player_id, "trainings"))
 }
 
 pub fn get() -> String {

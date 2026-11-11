@@ -2,9 +2,10 @@
 //! talking to Minotaur's Apollo API. Replaces the `jni` extension and `Apollo.jar`; the commands
 //! keep Apollo's names and replies, so the SQF side calls them the same way.
 //!
-//! Settings: `APOLLO_SERVER_URL` and `APOLLO_SERVER_TOKEN`, or `apollo-server.cfg` next to the
-//! server executable (`url = ...`, `token = ...`). The token comes from Minotaur's admin
-//! (Chronos · Apollo > Game servers).
+//! Settings: `APOLLO_SERVER_TOKEN` and `APOLLO_SERVER_DEBUG` (test servers use the development
+//! website), optionally `APOLLO_SERVER_URL`, or the same in `apollo-server.cfg` next to the
+//! server executable (`token = ...`, `debug = true`, `url = ...`); see backend::Config. The
+//! token comes from that website's admin (Chronos · Apollo > Game servers).
 
 use std::fs::{create_dir_all, File};
 use std::path::Path;

@@ -55,9 +55,9 @@ Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
 - Run `$ cargo test` in `extensions` directory
 
-- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's Apollo API (`https://api.theseus-aegis.com/apollo/v1/client`).
+- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's Apollo API: the live website's (`https://www.theseus-aegis.com/apollo/v1/client`), or on test (debug) servers the development website's (`https://srv.theseus-aegis.com/minotaur/apollo/v1/client`).
 - `tac_apollo_server`: loaded by game servers (replaces `jni` and `Apollo.jar`), saves and loads players, vehicles and lockers through Minotaur's Apollo API.
   - Put `tac_apollo_server_x64.so` (or `.dll`) next to the server executable and remove `jni_x64.so`, `Apollo/` and `apollo.properties`.
-  - Settings: `APOLLO_SERVER_URL` (default `http://minotaur:8000/apollo/v1/server`) and `APOLLO_SERVER_TOKEN`, or `apollo-server.cfg` next to the server executable with `url = ...` and `token = ...` lines. The token comes from Minotaur's admin (Chronos · Apollo › Game servers); a test server is set up there as debug.
+  - Settings: `APOLLO_SERVER_TOKEN` and `APOLLO_SERVER_DEBUG`, or `apollo-server.cfg` next to the server executable with `token = ...` and `debug = true` lines. A live server uses the live website (`https://www.theseus-aegis.com/apollo/v1/server`); a test server (`debug = true`) the development one (`https://srv.theseus-aegis.com/minotaur/apollo/v1/server`). `APOLLO_SERVER_URL` / `url = ...` overrides the address (e.g. `http://minotaur:8000/apollo/v1/server` on the same Docker network). The token comes from that website's admin (Chronos · Apollo › Game servers), where a test server is set up as debug.
   - Log: `logs/tac_apollo_server.log`.
   - End-to-end test against a running Minotaur: see `extensions/apollo-server/tests/minotaur.rs`.
