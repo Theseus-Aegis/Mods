@@ -36,6 +36,17 @@ if (!hasInterface) exitWith {};
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
 
+// Kit taken (or refused): refresh the kits, as the locker has changed
+[QEGVAR(apollo,lockerKitTaken), {
+    params ["_player", "_success"];
+    if (!_success) then {
+        [LSTRING(KitTakeFailed), 2.5] call ACEFUNC(common,displayTextStructured);
+    };
+    if (!isNull (_player getVariable [QGVAR(object), objNull]) && {GVAR(selectedCategory) == "kits"}) then {
+        [lbCurSel DROPDOWN] call FUNC(dialogControl_kits);
+    };
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(Locker), "ContainerOpened", {
     params ["_container", "_unit"];
 

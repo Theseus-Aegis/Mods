@@ -50,6 +50,7 @@ pub fn init() -> Extension {
         .command("infantryLoaded", infantry_loaded)
         .command("playerDied", player_died)
         .command("lockerAction", locker_action)
+        .command("lockerTakeKit", locker_take_kit)
         .command("retrieveLockerQueue", retrieve_locker_queue)
         .command("generateUniqueID", generate_unique_id)
         .command("retrieveAllVehicles", retrieve_all_vehicles)
@@ -92,6 +93,10 @@ fn locker_action(
     action: String, id: String, item: String, box_class: String, quantity: String, keep_magazines: String,
 ) -> String {
     handler().locker_action(action, id, item, box_class, quantity, keep_magazines)
+}
+
+fn locker_take_kit(kit: String, id: String) -> String {
+    handler().locker_take_kit(kit, id)
 }
 
 fn retrieve_locker_queue(id: String) -> String {

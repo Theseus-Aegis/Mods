@@ -170,7 +170,17 @@ impl<B: Backend> Handler<B> {
     ) -> String {
         let body = json!({"action": action, "item": item, "box": box_class, "quantity": quantity,
                           "keep_magazines": keep_magazines});
-        let statements = match self.backend.post(&format!("/locker/{id}"), &body) {
+        self.queue_locker(&format!("/locker/{id}"), &body, id, &format!("lockerAction {action} {item}"))
+    }
+
+    /// Take a kit (prepared on the website) from the member's locker into the box: of each of
+    /// its items what the locker has. "ready": fetch the statements with retrieve_locker_queue.
+    pub fn locker_take_kit(&self, kit: String, id: String) -> String {
+        self.queue_locker(&format!("/kits/{id}"), &json!({"kit": kit}), id, &format!("lockerTakeKit {kit}"))
+    }
+
+    fn queue_locker(&self, path: &str, body: &Value, id: String, what: &str) -> String {
+        let statements = match self.backend.post(path, body) {
             Ok(text) => serde_json::from_str::<Vec<String>>(&text).map_err(|e| e.to_string()),
             Err(e) => Err(e),
         };
@@ -181,7 +191,7 @@ impl<B: Backend> Handler<B> {
                 "ready".into()
             }
             Err(e) => {
-                info!("lockerAction {action} {item} for {id} refused: {e}");
+                info!("{what} for {id} refused: {e}");
                 ERROR.into()
             }
         }
@@ -368,6 +378,21 @@ mod tests {
         assert_eq!(h.retrieve_locker_queue(s("765")), "error");
         let (h, _) = handler(Fake::default().reply("/locker/765", Err("409: error")));
         assert_eq!(h.locker_action(s("put"), s("765"), s("x"), s("x"), s("1"), s("false")), "error");
+    }
+
+    #[test]
+    fn kit_queue() {
+        let (h, fake) = handler(Fake::default().reply("/kits/765", Ok(r#"["a;", "b;"]"#)));
+        assert_eq!(h.locker_take_kit(s("12"), s("765")), "ready");
+        assert_eq!(fake.calls.lock().unwrap()[0].1["kit"], "12");
+        assert_eq!(h.retrieve_locker_queue(s("765")), "a;");
+        assert_eq!(h.retrieve_locker_queue(s("765")), "b;");
+        assert_eq!(h.retrieve_locker_queue(s("765")), "done");
+        let (h, _) = handler(Fake::default().reply("/kits/765", Ok("[]")));
+        assert_eq!(h.locker_take_kit(s("12"), s("765")), "ready"); // nothing in the locker: just done
+        assert_eq!(h.retrieve_locker_queue(s("765")), "done");
+        let (h, _) = handler(Fake::default().reply("/kits/765", Err("409: error")));
+        assert_eq!(h.locker_take_kit(s("12"), s("765")), "error");
     }
 
     #[test]

@@ -54,5 +54,6 @@ if (GVAR(enabledPlayers)) then {
 };
 
 [QGVAR(lockerAction), FUNC(lockerAction)] call CBA_fnc_addEventHandler;
+[QGVAR(lockerTakeKit), FUNC(lockerTakeKit)] call CBA_fnc_addEventHandler;
 
 INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug));

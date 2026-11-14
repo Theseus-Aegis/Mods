@@ -78,6 +78,7 @@ pub fn init() -> Extension {
         .command("loadPlayer", load_player)
         .command("getAccessibleItemClasses", get_accessible_item_classes)
         .command("getTrainingIdentifiers", get_training_identifiers)
+        .command("loadKits", load_kits)
         .command("get", get)
         .command("version", version)
         .finish()
@@ -97,6 +98,11 @@ pub fn init_debug() {
 /// The player's locker (all, or one category), as [class, sub-category, description, quantity] entries.
 pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
     request(format!("{}?debug={debug}", url!(debug, player_id, "locker", category)))
+}
+
+/// The player's kits (prepared on the website): [[id, name, ready, [[class, quantity, in locker], ...]], ...].
+pub fn load_kits(player_id: String, debug: bool) -> String {
+    request(format!("{}?debug={debug}", url!(debug, player_id, "kits")))
 }
 
 /// [direction, position, loadout, selected weapon] as last saved.

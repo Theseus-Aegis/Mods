@@ -6,6 +6,7 @@ PREP(handleDisconnect);
 PREP(handleKilled);
 PREP(handleRespawn);
 PREP(lockerAction);
+PREP(lockerTakeKit);
 PREP(playerLoadClient);
 PREP(playerSaveClient);
 PREP(playerSingletonSave);
