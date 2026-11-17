@@ -30,7 +30,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
     - name: Install Rust Toolchain
       run: rustup toolchain install ${{ matrix.toolchain }}
     - name: Test
@@ -44,7 +44,7 @@ jobs:
         for name in apollo_client apollo_server; do
           cp extensions/target/release/${{ matrix.prefix }}${name}${{ matrix.ext }} release/tac_${name}${{ matrix.to }}
         done
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: extensions-${{ matrix.toolchain }}-${{ github.sha }}
         path: release
