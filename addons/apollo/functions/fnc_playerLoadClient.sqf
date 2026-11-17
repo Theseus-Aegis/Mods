@@ -48,6 +48,12 @@ if (!isNil "_result") then {
         _extended set [QACEGVAR(gunbag,gunbagWeapon), _gunbagWeapon];
     };
     [_player, [_loadout, _extended]] call CBA_fnc_setLoadout;
+    if (_gunbagWeapon isNotEqualTo []) then {
+        // ACE's hook doesn't add the weapon's weight, which taking it out subtracts (as ACE does when stowing)
+        _gunbagWeapon params ["_gunbagClass", "_gunbagItems", "_gunbagMagazines"];
+        private _mass = [_gunbagClass, _gunbagItems, _gunbagMagazines apply {_x select 0}] call ACEFUNC(gunbag,calculateMass);
+        [_player, backpackContainer _player, _mass] call ACEFUNC(movement,addLoadToUnitContainer);
+    };
     _player setDamage 0;
     [_player, _variables] call FUNC(setVariables);
 

@@ -36,7 +36,11 @@ private _zeroing = [];
         private _optic = (_unit weaponAccessories _x) param [2, ""];
         private _adjustment = _adjustments param [_forEachIndex, []];
         if !(_adjustment isEqualType [] && {count _adjustment == 3}) then { _adjustment = []; };
-        _zeroing pushBack [_x, _optic, _adjustment, _unit currentZeroing [_x, _x]];
+        // [distance, step]; step -1 is a laser rangefinder's distance, which isn't kept
+        (_unit currentZeroing [_x, _x]) params ["_distance", "_step"];
+        if (_step >= 0) then {
+            _zeroing pushBack [_x, _optic, _adjustment, _distance];
+        };
     };
 } forEach _weapons;
 
@@ -61,7 +65,7 @@ if (_safed isEqualType createHashMap) then {
 };
 
 [
-    ["insignia", _unit call BIS_fnc_getUnitInsignia],
+    ["insignia", [_unit] call BIS_fnc_getUnitInsignia],
     ["earplugs", _extended getOrDefault ["ace_earplugs", _unit getVariable ["ACE_hasEarPlugsIn", false]]],
     ["gunbag_weapon", _extended getOrDefault [QACEGVAR(gunbag,gunbagWeapon), []]],
     ["zeroing", _zeroing],

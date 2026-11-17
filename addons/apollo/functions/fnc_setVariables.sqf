@@ -26,6 +26,8 @@ private _values = createHashMapFromArray (_variables select {_x isEqualType [] &
 
 private _insignia = _values getOrDefault ["insignia", ""];
 if (_insignia isEqualType "" && {_insignia != ""} && {isClass (configFile >> "CfgUnitInsignia" >> _insignia)}) then {
+    // The function skips a class it thinks is already on, but a new loadout's uniform has none (as ACE Arsenal does)
+    _unit setVariable ["BIS_fnc_setUnitInsignia_class", nil];
     [_unit, _insignia] call BIS_fnc_setUnitInsignia;
 };
 
@@ -45,11 +47,11 @@ if (_insignia isEqualType "" && {_insignia != ""} && {isClass (configFile >> "Cf
             _unit setVariable [QACEGVAR(scopes,adjustment), _adjustments, true];
         };
 
-        // The weapon's zeroing steps are numbered: find the one at that distance
+        // The weapon's zeroing steps are numbered: find the one at that distance (false: no such step)
         private _found = false;
         for "_step" from 0 to 40 do {
-            _unit setWeaponZeroing [_weapon, _weapon, _step];
-            if ((_unit currentZeroing [_weapon, _weapon]) == _distance) exitWith { _found = true; };
+            if !(_unit setWeaponZeroing [_weapon, _weapon, _step]) exitWith {};
+            if (((_unit currentZeroing [_weapon, _weapon]) select 0) == _distance) exitWith { _found = true; };
         };
         if (!_found) then {
             _unit setWeaponZeroing [_weapon, _weapon, 0];
