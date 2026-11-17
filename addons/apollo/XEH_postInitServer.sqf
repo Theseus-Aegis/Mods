@@ -40,9 +40,9 @@ if (GVAR(enabledPlayers)) then {
 
     // Player died
     [QGVAR(playerDied), {
-        params ["_player", "_killerUID"];
+        params ["_player", "_killerUID", ["_deathKey", ""], ["_deathLoadout", []]];
         TRACE_1("Player Died",_this);
-        private _registeredDeath = ["playerDied", getPlayerUID _player, _killerUID] call FUNC(callServerExt);
+        private _registeredDeath = ["playerDied", getPlayerUID _player, _killerUID, _deathKey, _deathLoadout] call FUNC(callServerExt);
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 
@@ -55,5 +55,6 @@ if (GVAR(enabledPlayers)) then {
 
 [QGVAR(lockerAction), FUNC(lockerAction)] call CBA_fnc_addEventHandler;
 [QGVAR(lockerTakeKit), FUNC(lockerTakeKit)] call CBA_fnc_addEventHandler;
+[QGVAR(bodybagReturn), FUNC(bodybagReturn)] call CBA_fnc_addEventHandler;
 
 INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug));

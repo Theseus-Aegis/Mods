@@ -63,7 +63,7 @@ fn round_trip() {
     let first = h.get_vehicle(id.clone());
     assert!(first.starts_with(&format!("{id} = createVehicle [\"B_MRAP_01_F\"")), "{first}");
 
-    assert_eq!(h.player_died(player.clone(), s("")), "done");
+    assert_eq!(h.player_died(player.clone(), s(""), s(""), s("")), "done");
     // The player API now answers basic gear (checked through the same API with the server token).
     assert!(check.get("").is_ok());
 }

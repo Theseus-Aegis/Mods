@@ -16,7 +16,7 @@
 
 #include "\x\tac\addons\main\script_macros.hpp"
 
-#define REQUIRED_APOLLOSERVER_VERSION "1.1.0"
+#define REQUIRED_APOLLOSERVER_VERSION "1.2.0"
 #define REQUIRED_APOLLOCLIENT_VERSION "1.2.0"
 #define EXT_VALID_ERROR_CODES [0, 301]
 

@@ -51,6 +51,7 @@ pub fn init() -> Extension {
         .command("playerDied", player_died)
         .command("lockerAction", locker_action)
         .command("lockerTakeKit", locker_take_kit)
+        .command("bodybagReturn", bodybag_return)
         .command("retrieveLockerQueue", retrieve_locker_queue)
         .command("generateUniqueID", generate_unique_id)
         .command("retrieveAllVehicles", retrieve_all_vehicles)
@@ -85,8 +86,12 @@ fn infantry_loaded(id: String) -> String {
     handler().infantry_loaded(id)
 }
 
-fn player_died(id: String, killed_by: String) -> String {
-    handler().player_died(id, killed_by)
+fn player_died(id: String, killed_by: String, death_key: String, loadout: String) -> String {
+    handler().player_died(id, killed_by, death_key, loadout)
+}
+
+fn bodybag_return(id: String, death_key: String, returner: String, contents: String) -> String {
+    handler().bodybag_return(id, death_key, returner, contents)
 }
 
 fn locker_action(

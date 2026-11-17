@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Puts killed unit's inventory into the body bag.
+ * Puts killed unit's inventory into the body bag. Copies the owner and the death's key onto the bag and
+ * records (on the server) what went in, for "Return to owner".
  *
  * Arguments:
  * 0: Killed Unit <OBJECT>
@@ -70,6 +71,23 @@ if (_backpack != "" && {random 100 > GVAR(destroyChance)}) then {
         _backpackNonPreset = _backpack;
     };
     _bodybag addBackpackCargoGlobal [_backpackNonPreset, 1];
+};
+
+// For "Return to owner": whose bag it is, and what went in (what's stuffed in later isn't returned)
+private _ownerUID = _unit getVariable [QGVAR(ownerUID), ""];
+if (_ownerUID != "") then {
+    private _record = createHashMap;
+    {
+        _x params ["_classes", "_amounts"];
+        {
+            private _class = toLowerANSI _x;
+            _record set [_class, (_record getOrDefault [_class, 0]) + (_amounts select _forEachIndex)];
+        } forEach _classes;
+    } forEach [getItemCargo _bodybag, getWeaponCargo _bodybag, getMagazineCargo _bodybag, getBackpackCargo _bodybag];
+    _bodybag setVariable [QGVAR(contents), _record]; // server only
+    _bodybag setVariable [QGVAR(ownerUID), _ownerUID, true];
+    _bodybag setVariable [QGVAR(ownerName), _unit getVariable [QGVAR(ownerName), ""], true];
+    _bodybag setVariable [QGVAR(deathKey), _unit getVariable ["tac_apollo_deathKey", ""], true];
 };
 
 // Remove possible left-over ground weapon holder

@@ -1,6 +1,8 @@
+PREP(bodybagReturn);
 PREP(callExt);
 PREP(callServerExt);
 PREP(endMissionError);
+PREP(getLoadout);
 PREP(getPlayerInfo);
 PREP(handleDisconnect);
 PREP(handleKilled);

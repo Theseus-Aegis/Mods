@@ -154,10 +154,12 @@ impl<B: Backend> Handler<B> {
         DONE.into()
     }
 
-    /// Log the death and clear the player's state; saving waits for the next load.
-    pub fn player_died(&self, id: String, killed_by: String) -> String {
+    /// Log the death and clear the player's state; saving waits for the next load. The death's
+    /// key (also its bodybag's ID) and the loadout at the moment of death are logged with it.
+    pub fn player_died(&self, id: String, killed_by: String, death_key: String, loadout: String) -> String {
         self.state().can_save.insert(id.clone(), CanSave::default());
-        if let Err(e) = self.backend.post(&format!("/players/{id}/died"), &json!({"killed_by": killed_by})) {
+        let body = json!({"killed_by": killed_by, "death_key": death_key, "loadout": loadout});
+        if let Err(e) = self.backend.post(&format!("/players/{id}/died"), &body) {
             error!("playerDied {id}: {e}");
         }
         DONE.into() // as Apollo: the game respawns the player either way
@@ -177,6 +179,20 @@ impl<B: Backend> Handler<B> {
     /// its items what the locker has. "ready": fetch the statements with retrieve_locker_queue.
     pub fn locker_take_kit(&self, kit: String, id: String) -> String {
         self.queue_locker(&format!("/kits/{id}"), &json!({"kit": kit}), id, &format!("lockerTakeKit {kit}"))
+    }
+
+    /// A bodybag sent from base ("Return to owner"): its contents (`[["class", n], …]`) wait on
+    /// the website for the owner. The reply is the website's Arma array (`["ok", owner, n, lost]`,
+    /// `["already", owner]`, `["gone", owner]`, `["error", why]`), or "error".
+    pub fn bodybag_return(&self, id: String, death_key: String, returner: String, contents: String) -> String {
+        let body = json!({"death_key": death_key, "returner": returner, "contents": contents});
+        match self.backend.post(&format!("/bodybags/{id}"), &body) {
+            Ok(reply) => reply,
+            Err(e) => {
+                error!("bodybagReturn {id} {death_key}: {e}");
+                ERROR.into()
+            }
+        }
     }
 
     fn queue_locker(&self, path: &str, body: &Value, id: String, what: &str) -> String {
@@ -365,7 +381,7 @@ mod tests {
         let calls = wait_for_calls(&fake, 1);
         assert_eq!(calls[0].0, "POST /players/765");
         assert_eq!(calls[0].1["position"], "[1,2,3]");
-        assert_eq!(h.player_died(s("765"), s("")), "done");
+        assert_eq!(h.player_died(s("765"), s(""), s(""), s("")), "done");
         assert_eq!(save(&h), "rejected"); // dead: waits for the next load
     }
 
@@ -378,6 +394,19 @@ mod tests {
         assert_eq!(h.retrieve_locker_queue(s("765")), "error");
         let (h, _) = handler(Fake::default().reply("/locker/765", Err("409: error")));
         assert_eq!(h.locker_action(s("put"), s("765"), s("x"), s("x"), s("1"), s("false")), "error");
+    }
+
+    #[test]
+    fn died_and_bodybag() {
+        let (h, fake) = handler(Fake::default().reply("/players/765/died", Ok("done"))
+            .reply("/bodybags/765", Ok(r#"["ok","Jon",2,[]]"#)));
+        assert_eq!(h.player_died(s("765"), s("AI/Self"), s("765-20261114"), s("[[],[]]")), "done");
+        assert_eq!(fake.calls.lock().unwrap()[0].1["death_key"], "765-20261114");
+        assert_eq!(fake.calls.lock().unwrap()[0].1["loadout"], "[[],[]]");
+        assert_eq!(h.bodybag_return(s("765"), s("765-20261114"), s("766"), s(r#"[["x",2]]"#)), r#"["ok","Jon",2,[]]"#);
+        assert_eq!(fake.calls.lock().unwrap()[1].1["returner"], "766");
+        let (h, _) = handler(Fake::default().reply("/bodybags/765", Err("400: error")));
+        assert_eq!(h.bodybag_return(s("765"), s("k"), s("766"), s("[")), "error");
     }
 
     #[test]

@@ -34,3 +34,9 @@ private _armoryAction = [
 [_object, 0, ["ACE_MainActions"], _armoryAction] call ACEFUNC(interact_menu,addActionToObject);
 
 _object setVariable [QGVAR(enabled), true];
+
+// Known as an Armory (bodybags within reach of one can be returned to their owner: tac_bodybag_fnc_isAtBase)
+if (isNil QGVAR(objects)) then {
+    GVAR(objects) = [];
+};
+GVAR(objects) pushBackUnique _object;

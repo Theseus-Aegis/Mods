@@ -2,6 +2,7 @@
 /*
  * Author: Jonpas
  * Saves dropped weapons to a variable on the unit. Workaround for restoring dropped weapons which get deleted with deleteVehicle.
+ * Also remembers a player's UID and name on the body, for the bodybag's "Return to owner".
  *
  * Arguments:
  * 0: Killed Unit <OBJECT>
@@ -38,3 +39,9 @@ _unit setVariable [QGVAR(droppedWeapons), _droppedWeapons, true];
 _unit setVariable [QGVAR(droppedItems), _droppedItems, true];
 
 TRACE_2("Dropped Weapons",_droppedWeapons,_droppedItems);
+
+// The owner, for "Return to owner" (the UID isn't valid on the body after respawn)
+if (isPlayer _unit && {local _unit}) then {
+    _unit setVariable [QGVAR(ownerUID), getPlayerUID _unit, true];
+    _unit setVariable [QGVAR(ownerName), name _unit, true];
+};
