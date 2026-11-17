@@ -34,8 +34,8 @@ private _loadout = [_player] call FUNC(getLoadout);
 // Other
 private _selectedWeapon = currentWeapon _player;
 
-// Variables TODO
-private _playerVariables = [];
+// Variables kept across missions, as the player's machine last sent them ([] if never: the website keeps its own)
+private _playerVariables = (_player getVariable [QGVAR(clientState), []]) param [0, []];
 
 private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(callServerExt);
 

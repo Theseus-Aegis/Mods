@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Handles save and corpse removal on disconnect.
+ * Handles save and corpse removal on disconnect; keeps the state a reconnect gets back (mission only).
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -28,5 +28,6 @@ if (isNull _unit || {_lastSavedTime == -1}) exitWith {
 };
 
 [_unit, _uid, _name, "save"] call FUNC(playerSingletonSave);
+[_unit, _uid] call FUNC(runtimeSave);
 
 deleteVehicle _unit;

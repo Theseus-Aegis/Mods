@@ -68,6 +68,7 @@ private _vehicleBackPacks = [];
 private _vehicleBackpackItems = [];
 private _vehicleBackpackMagazines = [];
 private _vehicleBackpackWeapons = [];
+private _aceCargo = [];
 
 
 if (_vehicleAlive) then {
@@ -83,8 +84,19 @@ if (_vehicleAlive) then {
         _vehicleBackpackMagazines append (getMagazineCargo _container);
         _vehicleBackpackWeapons append (weaponsItems _container);
     } forEach (everyContainer _vehicleObject);
+
+    // ACE cargo: a class name as is, a loaded object (a crate, a quad) with its damage and inventory
+    {
+        if (_x isEqualType "") then {
+            _aceCargo pushBack _x;
+        } else {
+            if (!isNull _x) then {
+                _aceCargo pushBack [typeOf _x, damage _x, [getItemCargo _x, getMagazineCargo _x, getWeaponCargo _x, getBackpackCargo _x]];
+            };
+        };
+    } forEach (_vehicleObject getVariable [QACEGVAR(cargo,loaded), []]);
 };
 
 private _vehicleNamePretty = getText (configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
 
-["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization] call FUNC(callServerExt);
+["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization, _aceCargo] call FUNC(callServerExt);

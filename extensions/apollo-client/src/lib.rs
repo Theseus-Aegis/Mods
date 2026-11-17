@@ -109,7 +109,7 @@ pub fn load_kits(player_id: String, debug: bool) -> String {
     request(format!("{}?debug={debug}", url!(debug, player_id, "kits")))
 }
 
-/// [direction, position, loadout, selected weapon] as last saved.
+/// [direction, position, loadout, selected weapon, variables] as last saved (passed through as is).
 pub fn load_player(player_id: String, debug: bool) -> String {
     request(format!("{}?debug={debug}", url!(debug, player_id, "loadout")))
 }

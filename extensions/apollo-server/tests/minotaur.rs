@@ -49,7 +49,7 @@ fn round_trip() {
     h.store_vehicle(
         id.clone(), v("[100,200,5]"), v("90"), v("B_MRAP_01_F"), v("Car"), v("true"), v("0.1"),
         v(r#"[["HitEngine",0]]"#), v("1"), v("[]"), v(r#"[["SmokeShell"],[2]]"#), v(r#"["FirstAidKit"]"#), v("[]"),
-        v("[]"), v("[]"), v("[]"), v("[]"), v("[]"), v(""), v("Hunter"), v("0"), v(""),
+        v("[]"), v("[]"), v("[]"), v("[]"), v("[]"), v(""), v("Hunter"), v("0"), v(""), v(r#"["ACE_Wheel"]"#),
     );
     sleep(Duration::from_millis(500));
     assert_eq!(h.retrieve_all_vehicles(), "ready");
@@ -63,7 +63,8 @@ fn round_trip() {
     let first = h.get_vehicle(id.clone());
     assert!(first.starts_with(&format!("{id} = createVehicle [\"B_MRAP_01_F\"")), "{first}");
 
-    assert_eq!(h.player_died(player.clone(), s(""), s("")), "done");
+    assert!(h.get_vehicle(id.clone()) != "error");
+    assert_eq!(h.player_died(player.clone(), s(""), s(""), s(r#"[["earplugs",true]]"#)), "done");
     // The player API now answers basic gear (checked through the same API with the server token).
     assert!(check.get("").is_ok());
 }

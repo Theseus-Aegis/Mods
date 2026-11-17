@@ -29,7 +29,7 @@ if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 private _result = ["loadPlayer", [getPlayerUID _player, GVAR(isDebug)]] call FUNC(callExt);
 
 if (!isNil "_result") then {
-    _result params [["_dir", -1], ["_posASL", []], ["_loadout", []], ["_selectedWeapon", ""]];
+    _result params [["_dir", -1], ["_posASL", []], ["_loadout", []], ["_selectedWeapon", ""], ["_variables", []]];
 
     if (_dir != -1) then {
         _player setDir _dir;
@@ -37,8 +37,19 @@ if (!isNil "_result") then {
     if (_posASL isNotEqualTo [] && {count _posASL == 3}) then {
         _player setPosASL _posASL;
     };
-    _player setUnitLoadout _loadout;
+    // Earplugs and the gunbag's weapon go back through ACE's extended loadout hooks
+    private _values = createHashMapFromArray (_variables select {_x isEqualType [] && {count _x == 2}});
+    private _extended = createHashMap;
+    if (_values getOrDefault ["earplugs", false]) then {
+        _extended set ["ace_earplugs", true];
+    };
+    private _gunbagWeapon = _values getOrDefault ["gunbag_weapon", []];
+    if (_gunbagWeapon isNotEqualTo []) then {
+        _extended set [QACEGVAR(gunbag,gunbagWeapon), _gunbagWeapon];
+    };
+    [_player, [_loadout, _extended]] call CBA_fnc_setLoadout;
     _player setDamage 0;
+    [_player, _variables] call FUNC(setVariables);
 
     if (_selectedWeapon != "") then {
         _player selectWeapon _selectedWeapon;
@@ -57,7 +68,7 @@ if (!isNil "_result") then {
     // Delay to allow Arma server to get the new loadout before attempting to validate
     // Validation does nothing at this moment as it was never properly implemented in the backend
     [{
-        [QGVAR(savePlayer), [_this, profileName, "validate"]] call CBA_fnc_serverEvent;
+        [QGVAR(savePlayer), [_this, profileName, "validate", [_this] call FUNC(getVariables), [] call FUNC(getRadios)]] call CBA_fnc_serverEvent;
     }, _player, 1] call CBA_fnc_waitAndExecute;
 
     // Has to be executed where unit is local

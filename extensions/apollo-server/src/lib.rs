@@ -86,8 +86,8 @@ fn infantry_loaded(id: String) -> String {
     handler().infantry_loaded(id)
 }
 
-fn player_died(id: String, death_key: String, loadout: String) -> String {
-    handler().player_died(id, death_key, loadout)
+fn player_died(id: String, death_key: String, loadout: String, variables: String) -> String {
+    handler().player_died(id, death_key, loadout, variables)
 }
 
 fn bodybag_return(id: String, death_key: String, contents: String) -> String {
@@ -133,12 +133,12 @@ fn store_vehicle(
     id: String, position: String, direction: String, vehicle_type: String, vehicle_class: String, alive: String,
     damage: String, hitpoints: String, fuel: String, ammo: String, magazines: String, item_cargo: String,
     weapon_cargo: String, crew: String, backpacks: String, backpack_items: String, backpack_magazines: String,
-    backpack_weapons: String, driver: String, name: String, locked: String, customization: String,
+    backpack_weapons: String, driver: String, name: String, locked: String, customization: String, ace_cargo: String,
 ) -> String {
     handler().store_vehicle(
         id, position, direction, vehicle_type, vehicle_class, alive, damage, hitpoints, fuel, ammo, magazines,
         item_cargo, weapon_cargo, crew, backpacks, backpack_items, backpack_magazines, backpack_weapons, driver,
-        name, locked, customization,
+        name, locked, customization, ace_cargo,
     )
 }
 

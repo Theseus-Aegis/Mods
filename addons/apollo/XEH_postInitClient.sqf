@@ -20,6 +20,9 @@ if (!hasInterface) exitWith {};
         ["Your connection has been terminated - Unknown error with Chronos!"] call FUNC(endMissionError);
     }] call CBA_fnc_addEventHandler;
 
+    // Back as before a disconnect (mission only, FUNC(runtimeSave))
+    [QGVAR(runtimeApply), FUNC(runtimeApply)] call CBA_fnc_addEventHandler;
+
     // Load player after Respawn EH
     [QGVAR(reinitializePlayer), {
         params ["_player", "_registeredDeath"];

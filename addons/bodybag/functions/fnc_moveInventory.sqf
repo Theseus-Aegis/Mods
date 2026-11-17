@@ -43,6 +43,17 @@ _items append (_unit getVariable [QGVAR(droppedItems), []]);
 _items append (assignedItems _unit);
 //_weapons pushBack (binocular _unit); // dropped into inventory on death
 _items pushBack (_unit call CBA_fnc_binocularMagazine);
+// Kept out of the inventory by ACE: earplugs in the ears, and the gunbag's weapon (the gunbag goes in empty)
+if (_unit getVariable ["ACE_hasEarPlugsIn", false]) then {
+    _items pushBack "ACE_EarPlugs";
+};
+private _gunbagWeapon = (backpackContainer _unit) getVariable ["ace_gunbag_gunbagWeapon", []];
+if (_gunbagWeapon isNotEqualTo []) then {
+    _gunbagWeapon params [["_weapon", ""], ["_attachments", []], ["_magazines", []]];
+    _weapons pushBack _weapon;
+    _items append _attachments;
+    _items append (_magazines apply {_x param [0, ""]});
+};
 
 // Clear empty names and destroy items with a random chance
 _items = _items select {_x != "" && {random 100 > GVAR(destroyChance)} };

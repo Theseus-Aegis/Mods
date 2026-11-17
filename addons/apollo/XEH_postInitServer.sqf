@@ -34,15 +34,32 @@ if (GVAR(enabledVehicles)) then {
 if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
-        params ["_player", "_name", "_type"];
-        [_player, getPlayerUID _player, _name, _type] call FUNC(playerSingletonSave);
+        params ["_player", "_name", "_type", ["_variables", nil], ["_radios", nil]];
+        private _uid = getPlayerUID _player;
+        // What only the player's machine knows, for this and the disconnect save
+        if (!isNil "_variables") then {
+            _player setVariable [QGVAR(clientState), [_variables, _radios]];
+        };
+        [_player, _uid, _name, _type] call FUNC(playerSingletonSave);
+
+        // Reconnected: back as they were when they left (mission only)
+        if (_type == "validate") then {
+            private _runtime = GVAR(playerRuntimeData) deleteAt _uid;
+            if (isNil "_runtime") exitWith {};
+            _runtime params ["_group", "_team", "_vehicle", "_seat", "_medical", "_runtimeRadios"];
+            if (!isNull _group && {side _group == side group _player}) then {
+                [_player] join _group;
+            };
+            [QGVAR(runtimeApply), [_player, _team, _vehicle, _seat, _medical, _runtimeRadios], _player] call CBA_fnc_targetEvent;
+        };
     }] call CBA_fnc_addEventHandler;
 
     // Player died
     [QGVAR(playerDied), {
-        params ["_player", ["_deathKey", ""], ["_deathLoadout", []]];
+        params ["_player", ["_deathKey", ""], ["_deathLoadout", []], ["_deathVariables", []]];
         TRACE_1("Player Died",_this);
-        private _registeredDeath = ["playerDied", getPlayerUID _player, _deathKey, _deathLoadout] call FUNC(callServerExt);
+        GVAR(playerRuntimeData) deleteAt (getPlayerUID _player); // a respawn starts fresh
+        private _registeredDeath = ["playerDied", getPlayerUID _player, _deathKey, _deathLoadout, _deathVariables] call FUNC(callServerExt);
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 

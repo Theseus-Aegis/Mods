@@ -155,10 +155,11 @@ impl<B: Backend> Handler<B> {
     }
 
     /// Log the death and clear the player's state; saving waits for the next load. The death's
-    /// key (also its bodybag's ID) and the loadout at the moment of death are logged with it.
-    pub fn player_died(&self, id: String, death_key: String, loadout: String) -> String {
+    /// key (also its bodybag's ID), the loadout and the variables at the moment of death are
+    /// logged with it.
+    pub fn player_died(&self, id: String, death_key: String, loadout: String, variables: String) -> String {
         self.state().can_save.insert(id.clone(), CanSave::default());
-        let body = json!({"death_key": death_key, "loadout": loadout});
+        let body = json!({"death_key": death_key, "loadout": loadout, "variables": variables});
         if let Err(e) = self.backend.post(&format!("/players/{id}/died"), &body) {
             error!("playerDied {id}: {e}");
         }
@@ -278,7 +279,7 @@ impl<B: Backend> Handler<B> {
         alive: String, damage: String, hitpoints: String, fuel: String, ammo: String, magazines: String,
         item_cargo: String, weapon_cargo: String, crew: String, backpacks: String, backpack_items: String,
         backpack_magazines: String, backpack_weapons: String, driver: String, name: String, locked: String,
-        customization: String,
+        customization: String, ace_cargo: String,
     ) -> String {
         let body = json!({
             "position": position, "direction": direction, "vehicle_type": vehicle_type,
@@ -286,7 +287,7 @@ impl<B: Backend> Handler<B> {
             "ammo": ammo, "magazines": magazines, "item_cargo": item_cargo, "weapon_cargo": weapon_cargo,
             "crew": crew, "backpacks": backpacks, "backpack_items": backpack_items,
             "backpack_magazines": backpack_magazines, "backpack_weapons": backpack_weapons, "driver": driver,
-            "name": name, "locked": locked, "customization": customization,
+            "name": name, "locked": locked, "customization": customization, "ace_cargo": ace_cargo,
         });
         self.save_later(format!("/vehicles/{id}"), body);
         "Store vehicle called".into()
@@ -381,7 +382,7 @@ mod tests {
         let calls = wait_for_calls(&fake, 1);
         assert_eq!(calls[0].0, "POST /players/765");
         assert_eq!(calls[0].1["position"], "[1,2,3]");
-        assert_eq!(h.player_died(s("765"), s(""), s("")), "done");
+        assert_eq!(h.player_died(s("765"), s(""), s(""), s("")), "done");
         assert_eq!(save(&h), "rejected"); // dead: waits for the next load
     }
 
@@ -400,9 +401,10 @@ mod tests {
     fn died_and_bodybag() {
         let (h, fake) = handler(Fake::default().reply("/players/765/died", Ok("done"))
             .reply("/bodybags/765", Ok(r#"["ok","Jon",2,[]]"#)));
-        assert_eq!(h.player_died(s("765"), s("765-20261114"), s("[[],[]]")), "done");
+        assert_eq!(h.player_died(s("765"), s("765-20261114"), s("[[],[]]"), s(r#"[["earplugs",true]]"#)), "done");
         assert_eq!(fake.calls.lock().unwrap()[0].1["death_key"], "765-20261114");
         assert_eq!(fake.calls.lock().unwrap()[0].1["loadout"], "[[],[]]");
+        assert_eq!(fake.calls.lock().unwrap()[0].1["variables"], r#"[["earplugs",true]]"#);
         assert_eq!(h.bodybag_return(s("765"), s("765-20261114"), s(r#"[["x",2]]"#)), r#"["ok","Jon",2,[]]"#);
         assert_eq!(fake.calls.lock().unwrap()[1].1["contents"], r#"[["x",2]]"#);
         let (h, _) = handler(Fake::default().reply("/bodybags/765", Err("400: error")));
@@ -448,13 +450,14 @@ mod tests {
         let reply = h.store_vehicle(
             a("TACa"), a("[1,2,3]"), a("90"), a("B_MRAP_01_F"), a("Car"), a("true"), a("0"), a("[]"), a("1"),
             a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a(""), a("Hunter"),
-            a("0"), a(""),
+            a("0"), a(""), a(r#"["ACE_Wheel"]"#),
         );
         assert_eq!(reply, "Store vehicle called");
         let calls = wait_for_calls(&fake, 1);
         assert_eq!(calls[0].0, "POST /vehicles/TACa");
         assert_eq!(calls[0].1["name"], "Hunter");
-        assert_eq!(calls[0].1.as_object().unwrap().len(), 21);
+        assert_eq!(calls[0].1.as_object().unwrap().len(), 22);
+        assert_eq!(calls[0].1["ace_cargo"], r#"["ACE_Wheel"]"#);
     }
 
     #[test]
