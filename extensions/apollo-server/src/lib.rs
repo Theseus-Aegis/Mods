@@ -86,12 +86,12 @@ fn infantry_loaded(id: String) -> String {
     handler().infantry_loaded(id)
 }
 
-fn player_died(id: String, killed_by: String, death_key: String, loadout: String) -> String {
-    handler().player_died(id, killed_by, death_key, loadout)
+fn player_died(id: String, death_key: String, loadout: String) -> String {
+    handler().player_died(id, death_key, loadout)
 }
 
-fn bodybag_return(id: String, death_key: String, returner: String, contents: String) -> String {
-    handler().bodybag_return(id, death_key, returner, contents)
+fn bodybag_return(id: String, death_key: String, contents: String) -> String {
+    handler().bodybag_return(id, death_key, contents)
 }
 
 fn locker_action(

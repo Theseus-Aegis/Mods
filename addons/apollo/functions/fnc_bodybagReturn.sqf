@@ -55,7 +55,7 @@ private _contents = [];
     };
 } forEach _counts;
 
-private _reply = ["bodybagReturn", _ownerUID, _deathKey, getPlayerUID _returner, _contents] call FUNC(callServerExt);
+private _reply = ["bodybagReturn", _ownerUID, _deathKey, _contents] call FUNC(callServerExt);
 private _parsed = parseSimpleArray ([_reply, "[]"] select (_reply == "error"));
 _parsed params [["_result", "error"], ["_name", _ownerName], ["_returnable", 0], ["_lost", []]];
 TRACE_2("Bodybag Return",_ownerUID,_reply);

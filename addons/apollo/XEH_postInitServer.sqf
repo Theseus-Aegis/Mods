@@ -40,9 +40,9 @@ if (GVAR(enabledPlayers)) then {
 
     // Player died
     [QGVAR(playerDied), {
-        params ["_player", "_killerUID", ["_deathKey", ""], ["_deathLoadout", []]];
+        params ["_player", ["_deathKey", ""], ["_deathLoadout", []]];
         TRACE_1("Player Died",_this);
-        private _registeredDeath = ["playerDied", getPlayerUID _player, _killerUID, _deathKey, _deathLoadout] call FUNC(callServerExt);
+        private _registeredDeath = ["playerDied", getPlayerUID _player, _deathKey, _deathLoadout] call FUNC(callServerExt);
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 

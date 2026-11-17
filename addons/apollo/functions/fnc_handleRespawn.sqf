@@ -19,8 +19,7 @@
 params ["_player", "_corpse"];
 TRACE_1("Handle Respawn",_this);
 
-private _killerUID = _corpse getVariable [QGVAR(killerUID), ""];
 private _deathKey = _corpse getVariable [QGVAR(deathKey), ""];
 private _deathLoadout = _corpse getVariable [QGVAR(deathLoadout), []];
 
-[QGVAR(playerDied), [_player, _killerUID, _deathKey, _deathLoadout]] call CBA_fnc_serverEvent;
+[QGVAR(playerDied), [_player, _deathKey, _deathLoadout]] call CBA_fnc_serverEvent;
