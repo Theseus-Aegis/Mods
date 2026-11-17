@@ -49,7 +49,8 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 ### Extensions
 
 **Requirements:**
-- Rust (>= 1.70)
+- Rust (>= 1.88, edition 2024)
+- 64-bit only (`_x64`): Arma 3 no longer runs 32-bit, so there are no x86 builds
 
 Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory

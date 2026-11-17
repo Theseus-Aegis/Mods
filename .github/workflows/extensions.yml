@@ -27,11 +27,6 @@ jobs:
             prefix: ""
             ext: .dll
             to: _x64.dll
-          - toolchain: stable-i686-pc-windows-msvc
-            os: windows-latest
-            prefix: ""
-            ext: .dll
-            to: .dll
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout the source code

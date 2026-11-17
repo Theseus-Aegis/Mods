@@ -1,5 +1,6 @@
 use std::fs::{File, create_dir_all};
 use std::path::Path;
+use std::sync::{LazyLock, Mutex};
 
 use arma_rs::{arma, Extension};
 use reqwest::blocking::Client;
@@ -12,11 +13,17 @@ const DEV_ENDPOINT: &str = "https://srv.theseus-aegis.com/minotaur/apollo/v1/cli
 const LOG_PATH: &str = "./logs/tac_apollo.log";
 const EXT_RET_BYTES: usize = (20480 - 8) / 8; // Size used by Arma 3 as of 2022-04-18
 
-static mut QUEUE: String = String::new();
-static mut QUEUE_JUST_EMPTIED: bool = false;
+/// A response too long for one return, handed out in parts by `get`.
+struct Queue {
+    text: String,
+    just_emptied: bool,
+}
 
-lazy_static::lazy_static! {
-    static ref CLIENT: Client = Client::new();
+static QUEUE: Mutex<Queue> = Mutex::new(Queue { text: String::new(), just_emptied: false });
+static CLIENT: LazyLock<Client> = LazyLock::new(Client::new);
+
+fn queue() -> std::sync::MutexGuard<'static, Queue> {
+    QUEUE.lock().unwrap_or_else(|e| e.into_inner())
 }
 
 fn endpoint(debug: bool) -> &'static str {
@@ -47,10 +54,7 @@ fn request(api: String) -> String {
                 info!("Direct response");
                 response
             } else {
-                unsafe {
-                    QUEUE.clear();
-                    QUEUE = response;
-                }
+                queue().text = response;
                 info!("Queued response (max {} bytes at once)", EXT_RET_BYTES);
                 String::from("queued")
             }
@@ -120,27 +124,27 @@ pub fn get_training_identifiers(player_id: String, debug: bool) -> String {
 }
 
 pub fn get() -> String {
-    unsafe {
-        if QUEUE.is_empty() {
-            if QUEUE_JUST_EMPTIED {
-                QUEUE_JUST_EMPTIED = false;
-                info!("Get: done");
-                String::from("done")
-            } else {
-                info!("Get: error");
-                String::from("error")
-            }
+    let mut queue = queue();
+    if queue.text.is_empty() {
+        if queue.just_emptied {
+            queue.just_emptied = false;
+            info!("Get: done");
+            String::from("done")
         } else {
-            let mut split = QUEUE.split_off(std::cmp::min(EXT_RET_BYTES, QUEUE.len()));
-            std::mem::swap(&mut QUEUE, &mut split);
-
-            if QUEUE.is_empty() {
-                QUEUE_JUST_EMPTIED = true;
-            }
-
-            info!("Get: {} bytes", split.len());
-            split
+            info!("Get: error");
+            String::from("error")
         }
+    } else {
+        let at = std::cmp::min(EXT_RET_BYTES, queue.text.len());
+        let rest = queue.text.split_off(at);
+        let part = std::mem::replace(&mut queue.text, rest);
+
+        if queue.text.is_empty() {
+            queue.just_emptied = true;
+        }
+
+        info!("Get: {} bytes", part.len());
+        part
     }
 }
 

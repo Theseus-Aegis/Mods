@@ -3,7 +3,7 @@ members = [
     "apollo-client",
     "apollo-server",
 ]
-resolver = "2"
+resolver = "3"
 
 [profile.release]
 opt-level = "z"
