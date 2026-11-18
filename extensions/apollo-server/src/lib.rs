@@ -2,10 +2,10 @@
 //! talking to Minotaur's Apollo API. Replaces the `jni` extension and `Apollo.jar`; the commands
 //! keep Apollo's names and replies, so the SQF side calls them the same way.
 //!
-//! Settings: `APOLLO_SERVER_TOKEN` and `APOLLO_SERVER_DEBUG` (test servers use the development
-//! website), optionally `APOLLO_SERVER_URL`, or the same in `apollo-server.cfg` next to the
-//! server executable (`token = ...`, `debug = true`, `url = ...`); see backend::Config. The
-//! token comes from that website's admin (Chronos · Apollo > Game servers).
+//! Settings, from the environment (the server runs in Docker): `APOLLO_SERVER_TOKEN` (from the
+//! website's admin, Chronos · Apollo › Game servers), `APOLLO_SERVER_DEBUG=true` on test servers
+//! (the development website), and `APOLLO_URL` / `APOLLO_DEBUG_URL` only if the live /
+//! development website isn't the usual one; see backend::Config.
 
 use std::fs::{create_dir_all, File};
 use std::path::Path;
@@ -36,10 +36,10 @@ fn handler() -> &'static Handler<Http> {
 #[arma]
 pub fn init() -> Extension {
     let log_path = Path::new(LOG_PATH);
-    if create_dir_all(log_path.parent().unwrap()).is_ok() {
-        if let Ok(file) = File::create(log_path) {
-            let _ = WriteLogger::init(LevelFilter::Info, LogConfig::default(), file);
-        }
+    if create_dir_all(log_path.parent().unwrap()).is_ok()
+        && let Ok(file) = File::create(log_path)
+    {
+        let _ = WriteLogger::init(LevelFilter::Info, LogConfig::default(), file);
     }
     Extension::build()
         .version(env!("CARGO_PKG_VERSION").to_string())

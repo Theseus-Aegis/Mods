@@ -1,15 +1,16 @@
 //! Talking to Minotaur's Apollo API (`/apollo/v1/server/...`).
 
-use std::fs;
 use std::time::Duration;
 
 use reqwest::blocking::Client;
 use serde_json::Value;
 
-/// Minotaur's Apollo API: the live website, or the development one for test servers (`debug`).
-pub const LIVE_URL: &str = "https://www.theseus-aegis.com/apollo/v1/server";
-pub const DEV_URL: &str = "https://srv.theseus-aegis.com/minotaur/apollo/v1/server";
-pub const CONFIG_FILE: &str = "apollo-server.cfg";
+/// The websites (overridden by `APOLLO_URL` and `APOLLO_DEBUG_URL`): the live one, and the
+/// development one for test servers (`APOLLO_SERVER_DEBUG`). The same variables as apollo-client.
+pub const LIVE_WEBSITE: &str = "https://www.theseus-aegis.com";
+pub const DEV_WEBSITE: &str = "https://srv.theseus-aegis.com/minotaur";
+/// Minotaur's Apollo API for game servers, on that website.
+pub const API_PATH: &str = "/apollo/v1/server";
 const TIMEOUT: Duration = Duration::from_secs(10);
 
 /// Where requests go. The real one is HTTP; tests use a fake.
@@ -26,41 +27,33 @@ pub struct Config {
 }
 
 impl Config {
-    /// From `APOLLO_SERVER_URL` / `APOLLO_SERVER_TOKEN` / `APOLLO_SERVER_DEBUG`, else
-    /// `apollo-server.cfg` next to the server (lines `url = ...`, `token = ...`, `debug = true`;
-    /// `#` starts a comment). Without a URL, `debug` picks the development website, else the
-    /// live one. The token comes from that website's admin.
+    /// From the environment (the server runs in Docker):
+    /// - `APOLLO_SERVER_TOKEN`: from the website's admin (Chronos · Apollo › Game servers);
+    /// - `APOLLO_SERVER_DEBUG` (`1`, `true` or `yes`): a test server, using the development website;
+    /// - `APOLLO_URL` / `APOLLO_DEBUG_URL`: the live / development website, if not the usual ones
+    ///   (e.g. `http://minotaur:8000` on the same Docker network).
     pub fn load() -> Self {
-        let file = fs::read_to_string(CONFIG_FILE).unwrap_or_default();
-        let env = |key| std::env::var(key).ok();
-        Self::from_sources(&file, env("APOLLO_SERVER_URL"), env("APOLLO_SERVER_TOKEN"), env("APOLLO_SERVER_DEBUG"))
+        Self::from_env(|key| std::env::var(key).ok())
     }
 
-    pub fn from_sources(
-        file: &str, env_url: Option<String>, env_token: Option<String>, env_debug: Option<String>,
-    ) -> Self {
-        let mut url = None;
-        let mut token = None;
-        let mut debug = None;
-        for line in file.lines() {
-            let line = line.split('#').next().unwrap_or("").trim();
-            if let Some((key, value)) = line.split_once('=') {
-                let value = value.trim().trim_matches('"').to_string();
-                match key.trim() {
-                    "url" => url = Some(value),
-                    "token" => token = Some(value),
-                    "debug" => debug = Some(value),
-                    _ => {}
-                }
-            }
-        }
-        let debug = env_debug.or(debug).is_some_and(|v| matches!(v.to_lowercase().as_str(), "1" | "true" | "yes"));
-        let default = if debug { DEV_URL } else { LIVE_URL };
+    pub fn from_env(var: impl Fn(&str) -> Option<String>) -> Self {
+        let debug = var("APOLLO_SERVER_DEBUG").is_some_and(|v| is_true(&v));
         Self {
-            url: env_url.or(url).unwrap_or_else(|| default.to_string()).trim_end_matches('/').to_string(),
-            token: env_token.or(token).unwrap_or_default(),
+            url: format!("{}{API_PATH}", website(&var, debug)),
+            token: var("APOLLO_SERVER_TOKEN").unwrap_or_default().trim().to_string(),
         }
     }
+}
+
+fn is_true(value: &str) -> bool {
+    matches!(value.trim().to_lowercase().as_str(), "1" | "true" | "yes")
+}
+
+/// The live or (`debug`) development website, without a trailing slash.
+fn website(var: &impl Fn(&str) -> Option<String>, debug: bool) -> String {
+    let (key, default) = if debug { ("APOLLO_DEBUG_URL", DEV_WEBSITE) } else { ("APOLLO_URL", LIVE_WEBSITE) };
+    var(key).map(|v| v.trim().to_string()).filter(|v| !v.is_empty()).unwrap_or_else(|| default.to_string())
+        .trim_end_matches('/').to_string()
 }
 
 pub struct Http {
@@ -108,18 +101,33 @@ impl Backend for Http {
 mod tests {
     use super::*;
 
+    fn config(vars: &[(&str, &str)]) -> Config {
+        let vars: Vec<(String, String)> = vars.iter().map(|(k, v)| (k.to_string(), v.to_string())).collect();
+        Config::from_env(|key| vars.iter().find(|(k, _)| k == key).map(|(_, v)| v.clone()))
+    }
+
     #[test]
-    fn config_file_and_environment() {
-        let file = "# Apollo server\nurl = http://localhost:8001/apollo/v1/server/\ntoken = \"abc\" # secret\n";
-        let config = Config::from_sources(file, None, None, None);
-        assert_eq!(config.url, "http://localhost:8001/apollo/v1/server");
-        assert_eq!(config.token, "abc");
-        let config = Config::from_sources(file, None, Some("xyz".into()), None);
-        assert_eq!(config.token, "xyz");
-        assert_eq!(Config::from_sources("", None, None, None).url, LIVE_URL);
-        assert_eq!(Config::from_sources("debug = true\n", None, None, None).url, DEV_URL);
-        assert_eq!(Config::from_sources("debug = true\n", None, None, Some("0".into())).url, LIVE_URL);
-        assert_eq!(Config::from_sources("debug = true\n", Some("http://minotaur:8000/apollo/v1/server".into()), None, None).url,
-                   "http://minotaur:8000/apollo/v1/server");
+    fn live_by_default() {
+        let c = config(&[("APOLLO_SERVER_TOKEN", " abc\n")]);
+        assert_eq!(c.url, "https://www.theseus-aegis.com/apollo/v1/server");
+        assert_eq!(c.token, "abc");
+        assert_eq!(config(&[]).token, "");
+    }
+
+    #[test]
+    fn debug_picks_the_development_website() {
+        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "true")]).url, "https://srv.theseus-aegis.com/minotaur/apollo/v1/server");
+        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "1")]).url, format!("{DEV_WEBSITE}{API_PATH}"));
+        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "0")]).url, format!("{LIVE_WEBSITE}{API_PATH}"));
+        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "")]).url, format!("{LIVE_WEBSITE}{API_PATH}"));
+    }
+
+    #[test]
+    fn websites_overridden() {
+        let vars = [("APOLLO_URL", "https://example.com/"), ("APOLLO_DEBUG_URL", "http://minotaur:8000")];
+        assert_eq!(config(&vars).url, "https://example.com/apollo/v1/server");
+        let debug = [vars[0], vars[1], ("APOLLO_SERVER_DEBUG", "yes")];
+        assert_eq!(config(&debug).url, "http://minotaur:8000/apollo/v1/server");
+        assert_eq!(config(&[("APOLLO_URL", " ")]).url, format!("{LIVE_WEBSITE}{API_PATH}")); // empty: the usual one
     }
 }
