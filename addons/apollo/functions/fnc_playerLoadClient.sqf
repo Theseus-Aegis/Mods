@@ -74,7 +74,7 @@ if (!isNil "_result") then {
     // Delay to allow Arma server to get the new loadout before attempting to validate
     // Validation does nothing at this moment as it was never properly implemented in the backend
     [{
-        [QGVAR(savePlayer), [_this, profileName, "validate", [_this] call FUNC(getVariables), [] call FUNC(getRadios)]] call CBA_fnc_serverEvent;
+        [QGVAR(savePlayer), [_this, profileName, "validate", [_this] call FUNC(getVariables), [] call FUNC(getRadios), [_this] call FUNC(getScopeDials)]] call CBA_fnc_serverEvent;
     }, _player, 1] call CBA_fnc_waitAndExecute;
 
     // Has to be executed where unit is local

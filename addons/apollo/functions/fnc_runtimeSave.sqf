@@ -2,7 +2,8 @@
 /*
  * Author: Jonpas
  * Keeps a disconnecting player's state for the rest of the mission (server memory only), so a reconnect puts them
- * back as they were: group, team, vehicle and seat, ACE medical state and radio settings (FUNC(runtimeApply)).
+ * back as they were: group, team, vehicle and seat, ACE medical state, radio settings and ACE scope dials
+ * (FUNC(runtimeApply)).
  * Cleared at death, so a respawn starts fresh. Rewritten from the apollo-back-to-vehicle branch.
  *
  * Arguments:
@@ -39,7 +40,7 @@ if (["ace_medical"] call ACEFUNC(common,isModLoaded)) then {
     _medical = [_unit] call ACEFUNC(medical,serializeState);
 };
 
-private _radios = (_unit getVariable [QGVAR(clientState), []]) param [1, []];
+(_unit getVariable [QGVAR(clientState), []]) params ["", ["_radios", []], ["_dials", []]];
 
-GVAR(playerRuntimeData) set [_uid, [group _unit, assignedTeam _unit, _vehicle, _seat, _medical, _radios]];
+GVAR(playerRuntimeData) set [_uid, [group _unit, assignedTeam _unit, _vehicle, _seat, _medical, _radios, _dials]];
 TRACE_2("Runtime Save",_uid,GVAR(playerRuntimeData) get _uid);

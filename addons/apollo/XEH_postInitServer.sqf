@@ -34,11 +34,11 @@ if (GVAR(enabledVehicles)) then {
 if (GVAR(enabledPlayers)) then {
     // Save player
     [QGVAR(savePlayer), {
-        params ["_player", "_name", "_type", ["_variables", nil], ["_radios", nil]];
+        params ["_player", "_name", "_type", ["_variables", nil], ["_radios", nil], ["_dials", []]];
         private _uid = getPlayerUID _player;
         // What only the player's machine knows, for this and the disconnect save
         if (!isNil "_variables") then {
-            _player setVariable [QGVAR(clientState), [_variables, _radios]];
+            _player setVariable [QGVAR(clientState), [_variables, _radios, _dials]];
         };
         [_player, _uid, _name, _type] call FUNC(playerSingletonSave);
 
@@ -46,11 +46,11 @@ if (GVAR(enabledPlayers)) then {
         if (_type == "validate") then {
             private _runtime = GVAR(playerRuntimeData) deleteAt _uid;
             if (isNil "_runtime") exitWith {};
-            _runtime params ["_group", "_team", "_vehicle", "_seat", "_medical", "_runtimeRadios"];
+            _runtime params ["_group", "_team", "_vehicle", "_seat", "_medical", "_runtimeRadios", ["_runtimeDials", []]];
             if (!isNull _group && {side _group == side group _player}) then {
                 [_player] join _group;
             };
-            [QGVAR(runtimeApply), [_player, _team, _vehicle, _seat, _medical, _runtimeRadios], _player] call CBA_fnc_targetEvent;
+            [QGVAR(runtimeApply), [_player, _team, _vehicle, _seat, _medical, _runtimeRadios, _runtimeDials], _player] call CBA_fnc_targetEvent;
         };
     }] call CBA_fnc_addEventHandler;
 

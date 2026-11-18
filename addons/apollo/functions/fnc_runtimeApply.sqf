@@ -2,7 +2,8 @@
 /*
  * Author: Jonpas
  * Puts a reconnecting player back as they were (see FUNC(runtimeSave)): into their vehicle (the same seat, else any
- * free one, else they stay where they loaded, by the vehicle), their team, ACE medical state and radio settings.
+ * free one, else they stay where they loaded, by the vehicle), their team, ACE medical state, radio settings and ACE
+ * scope dials.
  * Run where the player is local, after their load.
  *
  * Arguments:
@@ -12,17 +13,18 @@
  * 3: Seat ([] none, ["driver"], ["turret", path], ["cargo", index]) <ARRAY>
  * 4: ACE medical state (serializeState) <STRING>
  * 5: Radio settings (FUNC(getRadios)) <ARRAY>
+ * 6: ACE scope dials (FUNC(getScopeDials)) <ARRAY> (default: [])
  *
  * Return Value:
  * None
  *
  * Example:
- * [player, "MAIN", vehicle, ["cargo", 2], "", []] call tac_apollo_fnc_runtimeApply
+ * [player, "MAIN", vehicle, ["cargo", 2], "", [], []] call tac_apollo_fnc_runtimeApply
  *
  * Public: No
  */
 
-params ["_player", "_team", "_vehicle", "_seat", "_medical", "_radios"];
+params ["_player", "_team", "_vehicle", "_seat", "_medical", "_radios", ["_dials", []]];
 TRACE_1("Runtime Apply",_this);
 
 if (alive _vehicle && {isNull objectParent _player}) then {
@@ -50,3 +52,17 @@ if (_medical != "" && {["ace_medical"] call ACEFUNC(common,isModLoaded)}) then {
 };
 
 [_radios] call FUNC(setRadios);
+
+// Scope dials on the same weapon and optic, in the same zeroing mode, once ACE has reset them for the load
+[{
+    params ["_player", "_dials"];
+    if (!alive _player) exitWith {};
+    private _simplified = missionNamespace getVariable [QACEGVAR(scopes,simplifiedZeroing), false];
+    private _weapons = [primaryWeapon _player, secondaryWeapon _player, handgunWeapon _player];
+    {
+        _x params ["_index", "_weapon", "_optic", "_elevation", "_windage", "_wasSimplified"];
+        if ((_weapons param [_index, ""]) == _weapon && {((_player weaponAccessories _weapon) param [2, ""]) == _optic} && {_wasSimplified isEqualTo _simplified}) then {
+            [_player, _index, _elevation, _windage] call FUNC(setScopeAdjustment);
+        };
+    } forEach _dials;
+}, [_player, _dials], 2] call CBA_fnc_waitAndExecute;

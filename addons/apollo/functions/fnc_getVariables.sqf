@@ -6,7 +6,8 @@
  * - insignia: the insignia class ("" none)
  * - earplugs: in the ears (ACE Hearing)
  * - gunbag_weapon: the weapon in an ACE gunbag ([weapon, [attachments], [[magazine, rounds], ...]] or [])
- * - zeroing: per equipped weapon [weapon, optic, ACE scopes adjustment ([] if none), zeroing distance]
+ * - zeroing: per equipped weapon [weapon, optic, [[muzzle, muzzle name, distance, step], ...], ACE scopes zero reference]
+ *   (each muzzle's zeroing; the ACE dials, elevation and windage, are kept for the mission only: FUNC(getScopeDials))
  * - safety: [[weapon, muzzle], ...] on safe (ACE safe mode)
  *
  * Arguments:
@@ -33,13 +34,24 @@ private _adjustments = _unit getVariable [QACEGVAR(scopes,adjustment), []];
 private _zeroing = [];
 {
     if (_x != "") then {
-        private _optic = (_unit weaponAccessories _x) param [2, ""];
-        private _adjustment = _adjustments param [_forEachIndex, []];
-        if !(_adjustment isEqualType [] && {count _adjustment == 3}) then { _adjustment = []; };
-        // [distance, step]; step -1 is a laser rangefinder's distance, which isn't kept
-        (_unit currentZeroing [_x, _x]) params ["_distance", "_step"];
-        if (_step >= 0) then {
-            _zeroing pushBack [_x, _optic, _adjustment, _distance];
+        private _weapon = _x;
+        private _optic = (_unit weaponAccessories _weapon) param [2, ""];
+        private _zero = (_adjustments param [_forEachIndex, []]) param [2, 0];
+        if !(_zero isEqualType 0) then { _zero = 0; };
+
+        // Every muzzle (the main one is the weapon's own class); a muzzle's name for the website ("" for the main one)
+        private _muzzles = [];
+        {
+            // [distance, step]; step -1 is a laser rangefinder's distance, which isn't kept
+            (_unit currentZeroing [_weapon, _x]) params [["_distance", 0], ["_step", -1]];
+            if (_step >= 0 && {_distance > 0}) then {
+                private _name = ["", getText (configFile >> "CfgWeapons" >> _weapon >> _x >> "displayName")] select (_x != _weapon);
+                _muzzles pushBack [_x, _name, _distance, _step];
+            };
+        } forEach (_weapon call ACEFUNC(common,getWeaponMuzzles));
+
+        if (_muzzles isNotEqualTo [] || {_zero != 0}) then {
+            _zeroing pushBack [_weapon, _optic, _muzzles, _zero];
         };
     };
 } forEach _weapons;
