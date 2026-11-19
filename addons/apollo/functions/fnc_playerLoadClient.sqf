@@ -26,7 +26,7 @@ TRACE_1("Loading Client",_player);
 // Don't load when UID is "_SP_PLAYER_" (singleplayer/editor)
 if (getPlayerUID _player == "_SP_PLAYER_") exitWith {false};
 
-private _result = ["loadPlayer", [getPlayerUID _player, GVAR(isDebug)]] call FUNC(callExt);
+private _result = ["loadPlayer", [getPlayerUID _player, GVAR(isDebug), GVAR(liveApi)]] call FUNC(callExt);
 
 if (!isNil "_result") then {
     _result params [["_dir", -1], ["_posASL", []], ["_loadout", []], ["_selectedWeapon", ""], ["_variables", []]];

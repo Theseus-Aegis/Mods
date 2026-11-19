@@ -5,8 +5,9 @@ use std::time::Duration;
 use reqwest::blocking::Client;
 use serde_json::Value;
 
-/// The websites (overridden by `APOLLO_URL` and `APOLLO_DEBUG_URL`): the live one, and the
-/// development one for test servers (`APOLLO_SERVER_DEBUG`). The same variables as apollo-client.
+/// The websites (overridden by `APOLLO_LIVE_URL` and `APOLLO_DEV_URL`): the live one, only for the
+/// live server (`APOLLO_SERVER_LIVE`), and the development one for every other server, a local one
+/// included. The same variables as apollo-client.
 pub const LIVE_WEBSITE: &str = "https://www.theseus-aegis.com";
 pub const DEV_WEBSITE: &str = "https://srv.theseus-aegis.com/minotaur";
 /// Minotaur's Apollo API for game servers, on that website.
@@ -22,6 +23,8 @@ pub trait Backend: Send + Sync + 'static {
 }
 
 pub struct Config {
+    /// Uses the live website (told to players' apollo-client by `getApi`).
+    pub live: bool,
     pub url: String,
     pub token: String,
 }
@@ -29,17 +32,19 @@ pub struct Config {
 impl Config {
     /// From the environment (the server runs in Docker):
     /// - `APOLLO_SERVER_TOKEN`: from the website's admin (Chronos · Apollo › Game servers);
-    /// - `APOLLO_SERVER_DEBUG` (`1`, `true` or `yes`): a test server, using the development website;
-    /// - `APOLLO_URL` / `APOLLO_DEBUG_URL`: the live / development website, if not the usual ones
-    ///   (e.g. `http://minotaur:8000` on the same Docker network).
+    /// - `APOLLO_SERVER_LIVE` (`1`, `true` or `yes`): the live server, using the live website;
+    ///   without it, the development website;
+    /// - `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`: the live / development website, if not the usual
+    ///   ones (e.g. `http://minotaur:8000` on the same Docker network).
     pub fn load() -> Self {
         Self::from_env(|key| std::env::var(key).ok())
     }
 
     pub fn from_env(var: impl Fn(&str) -> Option<String>) -> Self {
-        let debug = var("APOLLO_SERVER_DEBUG").is_some_and(|v| is_true(&v));
+        let live = var("APOLLO_SERVER_LIVE").is_some_and(|v| is_true(&v));
         Self {
-            url: format!("{}{API_PATH}", website(&var, debug)),
+            live,
+            url: format!("{}{API_PATH}", website(&var, live)),
             token: var("APOLLO_SERVER_TOKEN").unwrap_or_default().trim().to_string(),
         }
     }
@@ -49,9 +54,9 @@ fn is_true(value: &str) -> bool {
     matches!(value.trim().to_lowercase().as_str(), "1" | "true" | "yes")
 }
 
-/// The live or (`debug`) development website, without a trailing slash.
-fn website(var: &impl Fn(&str) -> Option<String>, debug: bool) -> String {
-    let (key, default) = if debug { ("APOLLO_DEBUG_URL", DEV_WEBSITE) } else { ("APOLLO_URL", LIVE_WEBSITE) };
+/// The live (`live`) or development website, without a trailing slash.
+fn website(var: &impl Fn(&str) -> Option<String>, live: bool) -> String {
+    let (key, default) = if live { ("APOLLO_LIVE_URL", LIVE_WEBSITE) } else { ("APOLLO_DEV_URL", DEV_WEBSITE) };
     var(key).map(|v| v.trim().to_string()).filter(|v| !v.is_empty()).unwrap_or_else(|| default.to_string())
         .trim_end_matches('/').to_string()
 }
@@ -107,27 +112,30 @@ mod tests {
     }
 
     #[test]
-    fn live_by_default() {
+    fn development_by_default() {
         let c = config(&[("APOLLO_SERVER_TOKEN", " abc\n")]);
-        assert_eq!(c.url, "https://www.theseus-aegis.com/apollo/v1/server");
+        assert_eq!(c.url, "https://srv.theseus-aegis.com/minotaur/apollo/v1/server");
+        assert!(!c.live);
         assert_eq!(c.token, "abc");
         assert_eq!(config(&[]).token, "");
     }
 
     #[test]
-    fn debug_picks_the_development_website() {
-        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "true")]).url, "https://srv.theseus-aegis.com/minotaur/apollo/v1/server");
-        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "1")]).url, format!("{DEV_WEBSITE}{API_PATH}"));
-        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "0")]).url, format!("{LIVE_WEBSITE}{API_PATH}"));
-        assert_eq!(config(&[("APOLLO_SERVER_DEBUG", "")]).url, format!("{LIVE_WEBSITE}{API_PATH}"));
+    fn live_picks_the_live_website() {
+        let c = config(&[("APOLLO_SERVER_LIVE", "true")]);
+        assert_eq!(c.url, "https://www.theseus-aegis.com/apollo/v1/server");
+        assert!(c.live);
+        assert_eq!(config(&[("APOLLO_SERVER_LIVE", "1")]).url, format!("{LIVE_WEBSITE}{API_PATH}"));
+        assert_eq!(config(&[("APOLLO_SERVER_LIVE", "0")]).url, format!("{DEV_WEBSITE}{API_PATH}"));
+        assert_eq!(config(&[("APOLLO_SERVER_LIVE", "")]).url, format!("{DEV_WEBSITE}{API_PATH}"));
     }
 
     #[test]
     fn websites_overridden() {
-        let vars = [("APOLLO_URL", "https://example.com/"), ("APOLLO_DEBUG_URL", "http://minotaur:8000")];
-        assert_eq!(config(&vars).url, "https://example.com/apollo/v1/server");
-        let debug = [vars[0], vars[1], ("APOLLO_SERVER_DEBUG", "yes")];
-        assert_eq!(config(&debug).url, "http://minotaur:8000/apollo/v1/server");
-        assert_eq!(config(&[("APOLLO_URL", " ")]).url, format!("{LIVE_WEBSITE}{API_PATH}")); // empty: the usual one
+        let vars = [("APOLLO_LIVE_URL", "https://example.com/"), ("APOLLO_DEV_URL", "http://minotaur:8000")];
+        assert_eq!(config(&vars).url, "http://minotaur:8000/apollo/v1/server");
+        let live = [vars[0], vars[1], ("APOLLO_SERVER_LIVE", "yes")];
+        assert_eq!(config(&live).url, "https://example.com/apollo/v1/server");
+        assert_eq!(config(&[("APOLLO_DEV_URL", " ")]).url, format!("{DEV_WEBSITE}{API_PATH}")); // empty: the usual one
     }
 }

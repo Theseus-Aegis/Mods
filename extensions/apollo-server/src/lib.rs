@@ -3,9 +3,9 @@
 //! keep Apollo's names and replies, so the SQF side calls them the same way.
 //!
 //! Settings, from the environment (the server runs in Docker): `APOLLO_SERVER_TOKEN` (from the
-//! website's admin, Chronos · Apollo › Game servers), `APOLLO_SERVER_DEBUG=true` on test servers
-//! (the development website), and `APOLLO_URL` / `APOLLO_DEBUG_URL` only if the live /
-//! development website isn't the usual one; see backend::Config.
+//! website's admin, Chronos · Apollo › Game servers), `APOLLO_SERVER_LIVE=true` on the live server
+//! (every other server uses the development website), and `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`
+//! only if the live / development website isn't the usual one; see backend::Config.
 
 use std::fs::{create_dir_all, File};
 use std::path::Path;
@@ -24,11 +24,13 @@ use handler::Handler;
 const LOG_PATH: &str = "./logs/tac_apollo_server.log";
 
 static HANDLER: OnceLock<Handler<Http>> = OnceLock::new();
+static LIVE: OnceLock<bool> = OnceLock::new();
 
 fn handler() -> &'static Handler<Http> {
     HANDLER.get_or_init(|| {
         let config = Config::load();
         info!("Minotaur Apollo API at {}{}", config.url, if config.token.is_empty() { " (no token set!)" } else { "" });
+        let _ = LIVE.set(config.live);
         Handler::new(Http::new(config))
     })
 }
@@ -44,6 +46,7 @@ pub fn init() -> Extension {
     Extension::build()
         .version(env!("CARGO_PKG_VERSION").to_string())
         .command("version", version)
+        .command("getApi", get_api)
         .command("getServerType", get_server_type)
         .command("resetServer", reset_server)
         .command("storeInfantry", store_infantry)
@@ -64,6 +67,12 @@ pub fn init() -> Extension {
 
 pub fn version() -> &'static str {
     env!("CARGO_PKG_VERSION")
+}
+
+/// "live" or "dev": the website this server uses, which players' apollo-client then uses too.
+fn get_api() -> &'static str {
+    handler();
+    if LIVE.get().copied().unwrap_or(false) { "live" } else { "dev" }
 }
 
 fn get_server_type() -> String {
@@ -151,6 +160,8 @@ mod tests {
         let extension = init().testing();
         let (version, _) = extension.call("version", None);
         assert_eq!(version, env!("CARGO_PKG_VERSION"));
+        let (api, _) = extension.call("getApi", None);
+        assert_eq!(api, if std::env::var("APOLLO_SERVER_LIVE").is_ok_and(|v| v == "true") { "live" } else { "dev" });
         let (id, code) = extension.call("generateUniqueID", None);
         assert_eq!((id.len(), code), (13, 0));
         // Unknown player: no request is made, so this works without Minotaur.

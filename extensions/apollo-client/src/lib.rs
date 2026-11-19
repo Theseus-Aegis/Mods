@@ -7,9 +7,10 @@ use reqwest::blocking::Client;
 use log::{LevelFilter, info};
 use simplelog::{CombinedLogger, TermLogger, WriteLogger, Config, TerminalMode, ColorChoice};
 
-/// The websites (overridden by `APOLLO_URL` and `APOLLO_DEBUG_URL`, the same variables as
-/// apollo-server): the live one, and the development one for test (debug) servers. Players don't
-/// set these, so the usual websites are built in.
+/// The websites (overridden by `APOLLO_LIVE_URL` and `APOLLO_DEV_URL`, the same variables as
+/// apollo-server): the live one, used only when the server uses it (`live`), and the development
+/// one for every other server and for testing without a server. Players don't set these, so the
+/// usual websites are built in.
 pub const LIVE_WEBSITE: &str = "https://www.theseus-aegis.com";
 pub const DEV_WEBSITE: &str = "https://srv.theseus-aegis.com/minotaur";
 /// Minotaur's Apollo API for players, on that website.
@@ -25,27 +26,27 @@ struct Queue {
 
 static QUEUE: Mutex<Queue> = Mutex::new(Queue { text: String::new(), just_emptied: false });
 static CLIENT: LazyLock<Client> = LazyLock::new(Client::new);
-static LIVE_ENDPOINT: LazyLock<String> = LazyLock::new(|| endpoint_from(|key| std::env::var(key).ok(), false));
-static DEV_ENDPOINT: LazyLock<String> = LazyLock::new(|| endpoint_from(|key| std::env::var(key).ok(), true));
+static LIVE_ENDPOINT: LazyLock<String> = LazyLock::new(|| endpoint_from(|key| std::env::var(key).ok(), true));
+static DEV_ENDPOINT: LazyLock<String> = LazyLock::new(|| endpoint_from(|key| std::env::var(key).ok(), false));
 
 fn queue() -> std::sync::MutexGuard<'static, Queue> {
     QUEUE.lock().unwrap_or_else(|e| e.into_inner())
 }
 
-fn endpoint(debug: bool) -> &'static str {
-    if debug { &DEV_ENDPOINT } else { &LIVE_ENDPOINT }
+fn endpoint(live: bool) -> &'static str {
+    if live { &LIVE_ENDPOINT } else { &DEV_ENDPOINT }
 }
 
-/// The live or (`debug`) development website's player API, without a trailing slash.
-fn endpoint_from(var: impl Fn(&str) -> Option<String>, debug: bool) -> String {
-    let (key, default) = if debug { ("APOLLO_DEBUG_URL", DEV_WEBSITE) } else { ("APOLLO_URL", LIVE_WEBSITE) };
+/// The live (`live`) or development website's player API, without a trailing slash.
+fn endpoint_from(var: impl Fn(&str) -> Option<String>, live: bool) -> String {
+    let (key, default) = if live { ("APOLLO_LIVE_URL", LIVE_WEBSITE) } else { ("APOLLO_DEV_URL", DEV_WEBSITE) };
     let website = var(key).map(|v| v.trim().to_string()).filter(|v| !v.is_empty()).unwrap_or_else(|| default.to_string());
     format!("{}{API_PATH}", website.trim_end_matches('/'))
 }
 
 macro_rules! url {
-    ($debug:expr, $($args:expr),*) => {{
-        let mut requrl: String = String::from(endpoint($debug));
+    ($live:expr, $($args:expr),*) => {{
+        let mut requrl: String = String::from(endpoint($live));
         $(
             requrl = format!("{}/{}", requrl, $args);
         )*
@@ -114,28 +115,30 @@ fn init_logging(level: LevelFilter) {
     let _ = CombinedLogger::init(loggers);
 }
 
+// Each takes `debug` (a test server's lockers and saves, as the server is set up on the website)
+// and `live` (the server uses the live website; otherwise the development one).
+
 /// The player's locker (all, or one category), as [class, sub-category, description, quantity] entries.
-pub fn load_armory(category: String, player_id: String, debug: bool) -> String {
-    request(format!("{}?debug={debug}", url!(debug, player_id, "locker", category)))
+pub fn load_armory(category: String, player_id: String, debug: bool, live: bool) -> String {
+    request(format!("{}?debug={debug}", url!(live, player_id, "locker", category)))
 }
 
 /// The player's kits (prepared on the website): [[id, name, ready, [[class, quantity, in locker], ...]], ...].
-pub fn load_kits(player_id: String, debug: bool) -> String {
-    request(format!("{}?debug={debug}", url!(debug, player_id, "kits")))
+pub fn load_kits(player_id: String, debug: bool, live: bool) -> String {
+    request(format!("{}?debug={debug}", url!(live, player_id, "kits")))
 }
 
 /// [direction, position, loadout, selected weapon, variables] as last saved (passed through as is).
-pub fn load_player(player_id: String, debug: bool) -> String {
-    request(format!("{}?debug={debug}", url!(debug, player_id, "loadout")))
+pub fn load_player(player_id: String, debug: bool, live: bool) -> String {
+    request(format!("{}?debug={debug}", url!(live, player_id, "loadout")))
 }
 
-/// `debug`: ask the development website (test servers).
-pub fn get_accessible_item_classes(player_id: String, debug: bool) -> String {
-    request(url!(debug, player_id, "items"))
+pub fn get_accessible_item_classes(player_id: String, _debug: bool, live: bool) -> String {
+    request(url!(live, player_id, "items"))
 }
 
-pub fn get_training_identifiers(player_id: String, debug: bool) -> String {
-    request(url!(debug, player_id, "trainings"))
+pub fn get_training_identifiers(player_id: String, _debug: bool, live: bool) -> String {
+    request(url!(live, player_id, "trainings"))
 }
 
 pub fn get() -> String {
@@ -181,8 +184,8 @@ mod tests {
         TURN.lock().unwrap_or_else(|e| e.into_inner())
     }
 
-    fn endpoint_with(vars: &[(&str, &str)], debug: bool) -> String {
-        endpoint_from(|key| vars.iter().find(|(k, _)| *k == key).map(|(_, v)| v.to_string()), debug)
+    fn endpoint_with(vars: &[(&str, &str)], live: bool) -> String {
+        endpoint_from(|key| vars.iter().find(|(k, _)| *k == key).map(|(_, v)| v.to_string()), live)
     }
 
     /// A one-request web server answering `body`; returns its address and what was requested.
@@ -203,23 +206,23 @@ mod tests {
 
     #[test]
     fn usual_websites_by_default() {
-        assert_eq!(endpoint_with(&[], false), "https://www.theseus-aegis.com/apollo/v1/client");
-        assert_eq!(endpoint_with(&[], true), "https://srv.theseus-aegis.com/minotaur/apollo/v1/client");
-        assert_eq!(endpoint_with(&[("APOLLO_URL", "  ")], false), format!("{LIVE_WEBSITE}{API_PATH}"));
+        assert_eq!(endpoint_with(&[], true), "https://www.theseus-aegis.com/apollo/v1/client");
+        assert_eq!(endpoint_with(&[], false), "https://srv.theseus-aegis.com/minotaur/apollo/v1/client");
+        assert_eq!(endpoint_with(&[("APOLLO_LIVE_URL", "  ")], true), format!("{LIVE_WEBSITE}{API_PATH}"));
     }
 
     #[test]
     fn websites_overridden() {
-        let vars = [("APOLLO_URL", "https://example.com/"), ("APOLLO_DEBUG_URL", "http://localhost:8001")];
-        assert_eq!(endpoint_with(&vars, false), "https://example.com/apollo/v1/client");
-        assert_eq!(endpoint_with(&vars, true), "http://localhost:8001/apollo/v1/client");
-        assert_eq!(endpoint_with(&vars[1..], false), format!("{LIVE_WEBSITE}{API_PATH}")); // only debug's set
+        let vars = [("APOLLO_LIVE_URL", "https://example.com/"), ("APOLLO_DEV_URL", "http://localhost:8001")];
+        assert_eq!(endpoint_with(&vars, true), "https://example.com/apollo/v1/client");
+        assert_eq!(endpoint_with(&vars, false), "http://localhost:8001/apollo/v1/client");
+        assert_eq!(endpoint_with(&vars[1..], true), format!("{LIVE_WEBSITE}{API_PATH}")); // only dev's set
     }
 
     #[test]
     fn urls() {
-        assert_eq!(url!(false, "765", "locker", "rifle"), format!("{}/765/locker/rifle", endpoint(false)));
-        assert_eq!(url!(true, "765", "kits"), format!("{}/765/kits", endpoint(true)));
+        assert_eq!(url!(true, "765", "locker", "rifle"), format!("{}/765/locker/rifle", endpoint(true)));
+        assert_eq!(url!(false, "765", "kits"), format!("{}/765/kits", endpoint(false)));
     }
 
     #[test]

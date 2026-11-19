@@ -9,6 +9,10 @@ if (_serverVersion != REQUIRED_APOLLOSERVER_VERSION) exitWith {
     ERROR_2("Failed to initialize - Wrong Apollo Server extension version (active: %1 - required: %2)!",_serverVersion,REQUIRED_APOLLOSERVER_VERSION);
 };
 
+// Website the server uses (live or development), players use the same
+GVAR(liveApi) = ("tac_apollo_server" callExtension ["getApi", []]) select 0 == "live";
+publicVariable QGVAR(liveApi);
+
 // Set server type (debug or live) globally
 private _serverType = ["getServerType"] call FUNC(callServerExt);
 if (_serverType == "error") exitWith {
@@ -74,4 +78,4 @@ if (GVAR(enabledPlayers)) then {
 [QGVAR(lockerTakeKit), FUNC(lockerTakeKit)] call CBA_fnc_addEventHandler;
 [QGVAR(bodybagReturn), FUNC(bodybagReturn)] call CBA_fnc_addEventHandler;
 
-INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug));
+INFO_4("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3 - Live API: %4)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug),GVAR(liveApi));

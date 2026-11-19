@@ -56,13 +56,14 @@ Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
 - Run `$ cargo test` in `extensions` directory
 
-- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's Apollo API (`/apollo/v1/client`): the live website's, or on test (debug) servers the development website's.
+Both live in the mod folder (`tac_apollo_*_x64.dll` / `.so`); only servers load `tac_apollo_server`. They use the development website unless the server is the live one, as does testing without a server.
+
+- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's Apollo API (`/apollo/v1/client`) on the website the server uses.
   - Log: `logs/tac_apollo_client.log`.
-- `tac_apollo_server`: loaded by game servers (replaces `jni` and `Apollo.jar`), saves and loads players, vehicles and lockers through Minotaur's Apollo API (`/apollo/v1/server`).
-  - Put `tac_apollo_server_x64.so` (or `.dll`) next to the server executable and remove `jni_x64.so`, `Apollo/` and `apollo.properties`.
+- `tac_apollo_server`: loaded by game servers, saves and loads players, vehicles and lockers through Minotaur's Apollo API (`/apollo/v1/server`).
   - Log: `logs/tac_apollo_server.log`.
   - End-to-end test against a running Minotaur: see `extensions/apollo-server/tests/minotaur.rs`.
 - Settings, as environment variables (game servers run in Docker):
   - `APOLLO_SERVER_TOKEN` (required on servers): from that website's admin (Chronos · Apollo › Game servers), where a test server is set up as debug.
-  - `APOLLO_SERVER_DEBUG=true` on test servers: they use the development website.
-  - `APOLLO_URL` / `APOLLO_DEBUG_URL`, only if the live / development website isn't the usual one (`https://www.theseus-aegis.com` / `https://srv.theseus-aegis.com/minotaur`), e.g. `APOLLO_DEBUG_URL=http://minotaur:8000` on the same Docker network. Both extensions read them; players don't need to set anything.
+  - `APOLLO_SERVER_LIVE=true` on the live server only: it and its players use the live website.
+  - `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`, only if the live / development website isn't the usual one (`https://www.theseus-aegis.com` / `https://srv.theseus-aegis.com/minotaur`), e.g. `APOLLO_DEV_URL=http://localhost:8000` for a local Minotaur. Both extensions read them; players don't need to set anything.

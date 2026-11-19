@@ -30,7 +30,7 @@ if (GVAR(system) == 1) then {
     if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
         ERROR_MSG("Apollo is not loaded! Chronos data cannot be retrieved.");
     };
-    private _result = ["loadKits", [getPlayerUID player, EGVAR(apollo,isDebug)]] call EFUNC(apollo,callExt);
+    private _result = ["loadKits", [getPlayerUID player, EGVAR(apollo,isDebug), EGVAR(apollo,liveApi)]] call EFUNC(apollo,callExt);
     if (isNil "_result") exitWith {
         ERROR("Kits failed to load!");
         [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);

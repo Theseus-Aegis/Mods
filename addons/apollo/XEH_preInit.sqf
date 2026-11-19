@@ -15,5 +15,6 @@ if (isServer) then {
 };
 
 GVAR(isDebug) = false;
+GVAR(liveApi) = false; // the live website only when the server uses it, otherwise the development one
 
 ADDON = true;
