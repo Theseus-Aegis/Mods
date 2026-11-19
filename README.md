@@ -49,7 +49,21 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 ### Extensions
 
 **Requirements:**
-- Rust (>= 1.59)
+- Rust (>= 1.88, edition 2024)
+- 64-bit only (`_x64`): Arma 3 no longer runs 32-bit, so there are no x86 builds
 
 Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
+- Run `$ cargo test` in `extensions` directory
+
+Both live in the mod folder (`tac_apollo_*_x64.dll` / `.so`); only servers load `tac_apollo_server`. They use the development website unless the server is the live one, as does testing without a server.
+
+- `tac_apollo_client`: loaded by players' games, reads players' loadouts, lockers, items and trainings from Minotaur's Apollo API (`/apollo/v1/client`) on the website the server uses.
+  - Log: `logs/tac_apollo_client.log`.
+- `tac_apollo_server`: loaded by game servers, saves and loads players, vehicles and lockers through Minotaur's Apollo API (`/apollo/v1/server`).
+  - Log: `logs/tac_apollo_server.log`.
+  - End-to-end test against a running Minotaur: see `extensions/apollo-server/tests/minotaur.rs`.
+- Settings, as environment variables (game servers run in Docker):
+  - `APOLLO_SERVER_TOKEN` (required on servers): from that website's admin (Chronos · Apollo › Game servers).
+  - `APOLLO_SERVER_LIVE=true` on the live server only: it and its players use the live website.
+  - `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`, only if the live / development website isn't the usual one (`https://www.theseus-aegis.com` / `https://srv.theseus-aegis.com/minotaur`), e.g. `APOLLO_DEV_URL=http://localhost:8000` for a local Minotaur. Both extensions read them; players don't need to set anything.

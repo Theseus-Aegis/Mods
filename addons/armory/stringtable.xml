@@ -47,6 +47,9 @@
             <French>Accéder aux objets</French>
             <German>Auf Gegenstände zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnKitsTooltip">
+            <English>Kits (prepared on the website)</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnLaunchersTooltip">
             <English>Access Launchers</English>
             <French>Accéder aux lanceurs</French>
@@ -80,6 +83,9 @@
             <French>Prendre l'objet sélectionné</French>
             <German>Ausgewählten Gegenstand nehmen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnTakeKitTooltip">
+            <English>Take kit (everything your locker has of it)</English>
+        </Key>
         <Key ID="STR_TAC_Armory_ChronosError">
             <English>Athena server is down!&lt;br/&gt;(Contact server administrator)</English>
             <French>Le serveur Athena est indisponible !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
@@ -103,10 +109,34 @@
         <Key ID="STR_TAC_Armory_ExportComplete">
             <English>Loadout exported to clipboard!</English>
         </Key>
+        <Key ID="STR_TAC_Armory_KitMissing">
+            <English>%1 missing</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_KitReady">
+            <English>Ready</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_KitTakeFailed">
+            <English>Kit could not be taken!</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_KitTaking">
+            <English>Taking kit %1</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_KitTakingMissing">
+            <English>Taking kit %1&lt;br/&gt;Not in your locker: %2</English>
+        </Key>
         <Key ID="STR_TAC_Armory_Locker">
             <English>[TAC] Armory Locker</English>
             <French>[TAC] Casier d'armurerie</French>
             <German>[TAC] Waffenkammer-Spind</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_LockerClear">
+            <English>Enable Automatic Locker Clearing</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_LockerClearDesc">
+            <English>If enabled lockers will be automatically cleared by the server to prevent ghost items appearing</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_NoKits">
+            <English>No kits: prepare them on the website (Logistics, Kits)</English>
         </Key>
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>
@@ -137,12 +167,6 @@
             <English>None (Vanilla)</English>
             <French>Aucun (vanilla)</French>
             <German>Keine (Vanilla)</German>
-        </Key>
-        <Key ID="STR_TAC_Armory_LockerClear">
-            <English>Enable Automatic Locker Clearing</English>
-        </Key>
-        <Key ID="STR_TAC_Armory_LockerClearDesc">
-            <English>If enabled lockers will be automatically cleared by the server to prevent ghost items appearing</English>
         </Key>
     </Package>
 </Project>

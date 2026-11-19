@@ -21,7 +21,7 @@ private _responsePacket = [];
 private _updateInfo = true;
 
 while {_updateInfo} do {
-    private _serverReply = ["getVehicle", _vehicleID] call FUNC(invokeJavaMethod);
+    private _serverReply = ["getVehicle", _vehicleID] call FUNC(callServerExt);
 
     if (_serverReply == "done") then {
         {

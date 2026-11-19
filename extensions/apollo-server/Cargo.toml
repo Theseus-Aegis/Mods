@@ -1,0 +1,17 @@
+[package]
+name = "apollo-server-rs"
+version = "1.0.0"
+authors = ["Theseus Incorporated <info@theseus-aegis.com>"]
+edition = "2024"
+rust-version = "1.88"
+
+[lib]
+name = "apollo_server"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+arma-rs = "1.13"
+log = "0.4.34"
+reqwest = { version = "0.13", default-features = false, features = ["blocking", "json", "rustls"] }
+serde_json = "1.0.151"
+simplelog = "0.12"

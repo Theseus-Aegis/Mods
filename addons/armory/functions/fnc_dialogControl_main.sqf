@@ -29,7 +29,7 @@ params ["_show"];
     MAINPIC6, MAINBTN6,
     MAINPIC7, MAINBTN7,
     MAINPIC8, MAINBTN8,
-    //MAINPIC9, MAINBTN9,
+    MAINPIC9, MAINBTN9,
     MAINPIC10, MAINBTN10,
     //MAINPIC11, MAINBTN11,
     MAINPIC12, MAINBTN12,
@@ -73,9 +73,16 @@ ctrlSetText [MAINPIC8, QPATHTOF(UI\btnCategory_wearable.paa)];
 buttonSetAction [MAINBTN8, QUOTE(['wearable'] call FUNC(dialogControl))];
 CTRL(MAINBTN8) ctrlSetTooltip localize LSTRING(BtnApparelTooltip);
 
-/*ctrlSetText [MAINPIC9, QPATHTOF(UI\btnCategory_.paa)];
-buttonSetAction [MAINBTN9, QUOTE([''] call FUNC(dialogControl))];
-CTRL(MAINBTN9) ctrlSetTooltip "Access ";*/
+// Kits (prepared on the website, Chronos only)
+if (GVAR(system) == 1) then {
+    ctrlSetText [MAINPIC9, "\a3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa"]; // TODO: own button picture
+    buttonSetAction [MAINBTN9, QUOTE(['kits'] call FUNC(dialogControl))];
+    CTRL(MAINBTN9) ctrlSetTooltip localize LSTRING(BtnKitsTooltip);
+} else {
+    {
+        ctrlShow [_x, false];
+    } forEach [MAINPIC9, MAINBTN9];
+};
 
 ctrlSetText [MAINPIC10, QPATHTOF(UI\btnCategory_insignia.paa)];
 buttonSetAction [MAINBTN10, QUOTE(['insignia'] call FUNC(dialogControl))];

@@ -15,6 +15,18 @@
  * Public: No
  */
 
+// Kits: Take kit, when the locker has anything of it
+if (GVAR(selectedCategory) == "kits") exitWith {
+    private _items = (GVAR(kits) param [lbCurSel DROPDOWN, []]) param [3, []];
+    private _takeable = _items findIf {(_x select 2) > 0} != -1;
+    ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnTake.paa)];
+    buttonSetAction [TAKESTASHBTN, QUOTE(call FUNC(takeKit))];
+    CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnTakeKitTooltip);
+    {
+        ctrlShow [_x, _takeable];
+    } forEach [TAKESTASHPIC, TAKESTASHBTN];
+};
+
 // Hide take/stash if quantity of dropdown amount selection is not set
 if (lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] == "") exitWith {
     {

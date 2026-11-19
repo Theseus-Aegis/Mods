@@ -7,6 +7,21 @@
         <Key ID="STR_TAC_Apollo_AllowServerResetDesc">
             <English>Allows resetting player positions and deleting saved vehicles on map or mission change since last save.</English>
         </Key>
+        <Key ID="STR_TAC_Apollo_BodybagAlready">
+            <English>This bodybag was sent to %1 already.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagFailed">
+            <English>The bodybag couldn't be sent, try again.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagGone">
+            <English>%1 is no longer with Theseus: the bodybag was destroyed.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagRespawn">
+            <English>The owner hasn't respawned yet, try again.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagSent">
+            <English>Bodybag sent to %1: %2 items to claim on the website (Logistics, Inventory). Not returnable (destroyed): %3</English>
+        </Key>
         <Key ID="STR_TAC_Apollo_EnabledDesc">
             <English>Enables overall persistence.</English>
             <French>Active la persistance globale.</French>

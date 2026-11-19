@@ -15,6 +15,8 @@
  * Public: No
  */
 
+if (GVAR(selectedCategory) == "kits") exitWith {}; // a kit is taken whole
+
 private _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
 _quantity = parseNumber _quantity;
 TRACE_1("Amount of selected item",_quantity);

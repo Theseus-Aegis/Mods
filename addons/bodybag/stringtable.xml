@@ -19,5 +19,17 @@
         <Key ID="STR_TAC_Bodybag_OrangeLogo_Place">
             <English>Place Body in orange bodybag</English>
         </Key>
+        <Key ID="STR_TAC_Bodybag_ReturnDistance">
+            <English>Return Distance</English>
+        </Key>
+        <Key ID="STR_TAC_Bodybag_ReturnDistanceDesc">
+            <English>How close to a Locker a bodybag must be to be returned to its owner (meters).</English>
+        </Key>
+        <Key ID="STR_TAC_Bodybag_ReturnToOwner">
+            <English>Return to owner</English>
+        </Key>
+        <Key ID="STR_TAC_Bodybag_ReturnToOwnerName">
+            <English>Return to owner (%1)</English>
+        </Key>
     </Package>
 </Project>

@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Puts killed unit's inventory into the body bag.
+ * Puts killed unit's inventory into the body bag. Copies the owner and the death's key onto the bag and
+ * records (on the server) what went in, for "Return to owner".
  *
  * Arguments:
  * 0: Killed Unit <OBJECT>
@@ -42,6 +43,17 @@ _items append (_unit getVariable [QGVAR(droppedItems), []]);
 _items append (assignedItems _unit);
 //_weapons pushBack (binocular _unit); // dropped into inventory on death
 _items pushBack (_unit call CBA_fnc_binocularMagazine);
+// Kept out of the inventory by ACE: earplugs in the ears, and the gunbag's weapon (the gunbag goes in empty)
+if (_unit getVariable ["ACE_hasEarPlugsIn", false]) then {
+    _items pushBack "ACE_EarPlugs";
+};
+private _gunbagWeapon = (backpackContainer _unit) getVariable ["ace_gunbag_gunbagWeapon", []];
+if (_gunbagWeapon isNotEqualTo []) then {
+    _gunbagWeapon params [["_weapon", ""], ["_attachments", []], ["_magazines", []]];
+    _weapons pushBack _weapon;
+    _items append _attachments;
+    _items append (_magazines apply {_x param [0, ""]});
+};
 
 // Clear empty names and destroy items with a random chance
 _items = _items select {_x != "" && {random 100 > GVAR(destroyChance)} };
@@ -70,6 +82,23 @@ if (_backpack != "" && {random 100 > GVAR(destroyChance)}) then {
         _backpackNonPreset = _backpack;
     };
     _bodybag addBackpackCargoGlobal [_backpackNonPreset, 1];
+};
+
+// For "Return to owner": whose bag it is, and what went in (what's stuffed in later isn't returned)
+private _ownerUID = _unit getVariable [QGVAR(ownerUID), ""];
+if (_ownerUID != "") then {
+    private _record = createHashMap;
+    {
+        _x params ["_classes", "_amounts"];
+        {
+            private _class = toLowerANSI _x;
+            _record set [_class, (_record getOrDefault [_class, 0]) + (_amounts select _forEachIndex)];
+        } forEach _classes;
+    } forEach [getItemCargo _bodybag, getWeaponCargo _bodybag, getMagazineCargo _bodybag, getBackpackCargo _bodybag];
+    _bodybag setVariable [QGVAR(contents), _record]; // server only
+    _bodybag setVariable [QGVAR(ownerUID), _ownerUID, true];
+    _bodybag setVariable [QGVAR(ownerName), _unit getVariable [QGVAR(ownerName), ""], true];
+    _bodybag setVariable [QGVAR(deathKey), _unit getVariable ["tac_apollo_deathKey", ""], true];
 };
 
 // Remove possible left-over ground weapon holder
