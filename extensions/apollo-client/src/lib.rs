@@ -115,29 +115,28 @@ fn init_logging(level: LevelFilter) {
     let _ = CombinedLogger::init(loggers);
 }
 
-// Each takes `debug` (a test server's lockers and saves, as the server is set up on the website)
-// and `live` (the server uses the live website; otherwise the development one).
+// Each takes `live`: the server uses the live website (otherwise the development one).
 
 /// The player's locker (all, or one category), as [class, sub-category, description, quantity] entries.
-pub fn load_armory(category: String, player_id: String, debug: bool, live: bool) -> String {
-    request(format!("{}?debug={debug}", url!(live, player_id, "locker", category)))
+pub fn load_armory(category: String, player_id: String, live: bool) -> String {
+    request(url!(live, player_id, "locker", category))
 }
 
 /// The player's kits (prepared on the website): [[id, name, ready, [[class, quantity, in locker], ...]], ...].
-pub fn load_kits(player_id: String, debug: bool, live: bool) -> String {
-    request(format!("{}?debug={debug}", url!(live, player_id, "kits")))
+pub fn load_kits(player_id: String, live: bool) -> String {
+    request(url!(live, player_id, "kits"))
 }
 
 /// [direction, position, loadout, selected weapon, variables] as last saved (passed through as is).
-pub fn load_player(player_id: String, debug: bool, live: bool) -> String {
-    request(format!("{}?debug={debug}", url!(live, player_id, "loadout")))
+pub fn load_player(player_id: String, live: bool) -> String {
+    request(url!(live, player_id, "loadout"))
 }
 
-pub fn get_accessible_item_classes(player_id: String, _debug: bool, live: bool) -> String {
+pub fn get_accessible_item_classes(player_id: String, live: bool) -> String {
     request(url!(live, player_id, "items"))
 }
 
-pub fn get_training_identifiers(player_id: String, _debug: bool, live: bool) -> String {
+pub fn get_training_identifiers(player_id: String, live: bool) -> String {
     request(url!(live, player_id, "trainings"))
 }
 
@@ -229,9 +228,9 @@ mod tests {
     fn short_response_directly() {
         let _turn = turn();
         let (address, server) = serve("[[\"arifle_MX_F\",\"Rifle\",\"MX\",2]]");
-        assert_eq!(request(format!("{address}/apollo/v1/client/765/locker/rifle?debug=false")),
+        assert_eq!(request(format!("{address}/apollo/v1/client/765/locker/rifle")),
                    "[[\"arifle_MX_F\",\"Rifle\",\"MX\",2]]");
-        assert_eq!(server.join().unwrap(), "GET /apollo/v1/client/765/locker/rifle?debug=false HTTP/1.1");
+        assert_eq!(server.join().unwrap(), "GET /apollo/v1/client/765/locker/rifle HTTP/1.1");
         assert_eq!(get(), "error"); // nothing queued
     }
 

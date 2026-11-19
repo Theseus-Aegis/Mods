@@ -1,6 +1,5 @@
 //! Apollo Server: the game server's side of Chronos persistence (players, vehicles, lockers),
-//! talking to Minotaur's Apollo API. Replaces the `jni` extension and `Apollo.jar`; the commands
-//! keep Apollo's names and replies, so the SQF side calls them the same way.
+//! talking to Minotaur's Apollo API. The commands keep Apollo's names and replies.
 //!
 //! Settings, from the environment (the server runs in Docker): `APOLLO_SERVER_TOKEN` (from the
 //! website's admin, Chronos · Apollo › Game servers), `APOLLO_SERVER_LIVE=true` on the live server
@@ -47,7 +46,6 @@ pub fn init() -> Extension {
         .version(env!("CARGO_PKG_VERSION").to_string())
         .command("version", version)
         .command("getApi", get_api)
-        .command("getServerType", get_server_type)
         .command("resetServer", reset_server)
         .command("storeInfantry", store_infantry)
         .command("infantryLoaded", infantry_loaded)
@@ -73,10 +71,6 @@ pub fn version() -> &'static str {
 fn get_api() -> &'static str {
     handler();
     if LIVE.get().copied().unwrap_or(false) { "live" } else { "dev" }
-}
-
-fn get_server_type() -> String {
-    handler().get_server_type()
 }
 
 fn reset_server(players: String, vehicles: String, server: String, map: String, mission: String) -> String {

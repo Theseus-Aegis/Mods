@@ -64,6 +64,6 @@ Both live in the mod folder (`tac_apollo_*_x64.dll` / `.so`); only servers load 
   - Log: `logs/tac_apollo_server.log`.
   - End-to-end test against a running Minotaur: see `extensions/apollo-server/tests/minotaur.rs`.
 - Settings, as environment variables (game servers run in Docker):
-  - `APOLLO_SERVER_TOKEN` (required on servers): from that website's admin (Chronos · Apollo › Game servers), where a test server is set up as debug.
+  - `APOLLO_SERVER_TOKEN` (required on servers): from that website's admin (Chronos · Apollo › Game servers).
   - `APOLLO_SERVER_LIVE=true` on the live server only: it and its players use the live website.
   - `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`, only if the live / development website isn't the usual one (`https://www.theseus-aegis.com` / `https://srv.theseus-aegis.com/minotaur`), e.g. `APOLLO_DEV_URL=http://localhost:8000` for a local Minotaur. Both extensions read them; players don't need to set anything.

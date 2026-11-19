@@ -1,5 +1,4 @@
-//! Apollo's game-server commands, answering as Apollo (`Apollo.jar`) did, with Minotaur as
-//! the backend instead of the `apollo` MySQL database.
+//! Apollo's game-server commands, answering as Apollo did, with Minotaur as the backend.
 //!
 //! What only matters while the game server runs stays here, as it did in Apollo's memory:
 //! whether a player may be saved yet, and the queues of SQF statements the game fetches one
@@ -36,7 +35,6 @@ struct CanSave {
 
 #[derive(Default)]
 struct State {
-    server_type: Option<String>,
     can_save: HashMap<String, CanSave>,
     locker_queues: HashMap<String, VecDeque<String>>,
     vehicle_ids: VecDeque<String>,
@@ -81,23 +79,6 @@ impl<B: Backend> Handler<B> {
     fn save_later(&self, path: String, body: Value) {
         if self.saves.lock().unwrap_or_else(|e| e.into_inner()).send(Job { path, body }).is_err() {
             error!("Save queue stopped; not saved");
-        }
-    }
-
-    /// "live" or "debug", as the server is set up in Minotaur.
-    pub fn get_server_type(&self) -> String {
-        if let Some(t) = self.state().server_type.clone() {
-            return t;
-        }
-        match self.backend.get("") {
-            Ok(t) => {
-                self.state().server_type = Some(t.clone());
-                t
-            }
-            Err(e) => {
-                error!("getServerType: {e}");
-                ERROR.into()
-            }
         }
     }
 
@@ -354,16 +335,6 @@ mod tests {
 
     fn s(v: &str) -> String {
         v.to_string()
-    }
-
-    #[test]
-    fn server_type_is_asked_once() {
-        let (h, fake) = handler(Fake::default().reply("", Ok("debug")));
-        assert_eq!(h.get_server_type(), "debug");
-        assert_eq!(h.get_server_type(), "debug");
-        assert_eq!(fake.calls.lock().unwrap().len(), 1);
-        let (h, _) = handler(Fake::default().reply("", Err("401")));
-        assert_eq!(h.get_server_type(), "error");
     }
 
     #[test]

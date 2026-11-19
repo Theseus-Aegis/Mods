@@ -4,7 +4,7 @@
 //!     APOLLO_TEST_PLAYER=<a member's Steam ID> APOLLO_TEST_ITEM=<an item class with slot "item"> \
 //!     cargo test -p apollo-server-rs --test minotaur -- --ignored
 //!
-//! Use a test server set up as debug in Minotaur: it changes that player's debug state and locker.
+//! Use the development website (or a local one): it changes that player's saved state and locker.
 
 use std::thread::sleep;
 use std::time::Duration;
@@ -26,7 +26,6 @@ fn round_trip() {
     let h = Handler::new(Http::new(config));
     let s = |v: &str| v.to_string();
 
-    assert_eq!(h.get_server_type(), "debug", "use a debug game server for this test");
     let mission = generate_unique_id();
     assert_eq!(h.reset_server(s("true"), s("true"), s("Test"), s("Altis"), mission.clone()), "done");
     assert_eq!(h.reset_server(s("true"), s("true"), s("Test"), s("Altis"), mission), "none");

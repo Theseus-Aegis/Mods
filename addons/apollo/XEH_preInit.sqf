@@ -14,7 +14,6 @@ if (isServer) then {
     GVAR(playerRuntimeData) = createHashMap; // UID -> state kept for the mission (FUNC(runtimeSave))
 };
 
-GVAR(isDebug) = false;
 GVAR(liveApi) = false; // the live website only when the server uses it, otherwise the development one
 
 ADDON = true;

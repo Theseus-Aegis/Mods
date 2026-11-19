@@ -13,14 +13,6 @@ if (_serverVersion != REQUIRED_APOLLOSERVER_VERSION) exitWith {
 GVAR(liveApi) = ("tac_apollo_server" callExtension ["getApi", []]) select 0 == "live";
 publicVariable QGVAR(liveApi);
 
-// Set server type (debug or live) globally
-private _serverType = ["getServerType"] call FUNC(callServerExt);
-if (_serverType == "error") exitWith {
-    ERROR_1("Failed to initialize - Invalid server type (%1)!",_serverType);
-};
-GVAR(isDebug) = [false, true] select (_serverType isEqualTo "debug");
-publicVariable QGVAR(isDebug);
-
 // Reset server if map/mission changed from last saved
 private _resetError = false;
 if (GVAR(allowServerReset)) then {
@@ -78,4 +70,4 @@ if (GVAR(enabledPlayers)) then {
 [QGVAR(lockerTakeKit), FUNC(lockerTakeKit)] call CBA_fnc_addEventHandler;
 [QGVAR(bodybagReturn), FUNC(bodybagReturn)] call CBA_fnc_addEventHandler;
 
-INFO_4("Server loaded successfully (Players: %1 - Vehicles: %2 - Debug: %3 - Live API: %4)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(isDebug),GVAR(liveApi));
+INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Live API: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(liveApi));
