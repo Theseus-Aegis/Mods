@@ -64,6 +64,6 @@ fn round_trip() {
 
     assert!(h.get_vehicle(id.clone()) != "error");
     assert_eq!(h.player_died(player.clone(), s(""), s(""), s(r#"[["earplugs",true]]"#)), "done");
-    // The player API now answers basic gear (checked through the same API with the server token).
-    assert!(check.get("").is_ok());
+    // The token is still accepted, and the saved vehicle is listed.
+    assert!(check.get("/vehicles").unwrap().contains(&id));
 }
