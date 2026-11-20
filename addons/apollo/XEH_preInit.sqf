@@ -10,7 +10,7 @@ PREP_RECOMPILE_END;
 
 if (isServer) then {
     GVAR(vehiclesLoaded) = false;
-    GVAR(vehiclesList) = [];
+    GVAR(vehicles) = createHashMap; // vehicle ID -> object, the persistent ones (FUNC(registerVehicle))
     GVAR(playerRuntimeData) = createHashMap; // UID -> state kept for the mission (FUNC(runtimeSave))
 };
 

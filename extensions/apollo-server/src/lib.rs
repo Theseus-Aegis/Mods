@@ -60,6 +60,7 @@ pub fn init() -> Extension {
         .command("isVehiclesAllLoaded", is_vehicles_all_loaded)
         .command("getVehicle", get_vehicle)
         .command("storeVehicle", store_vehicle)
+        .command("removeVehicle", remove_vehicle)
         .finish()
 }
 
@@ -132,18 +133,12 @@ fn get_vehicle(id: String) -> String {
     handler().get_vehicle(id)
 }
 
-#[allow(clippy::too_many_arguments)]
-fn store_vehicle(
-    id: String, position: String, direction: String, vehicle_type: String, vehicle_class: String, alive: String,
-    damage: String, hitpoints: String, fuel: String, ammo: String, magazines: String, item_cargo: String,
-    weapon_cargo: String, crew: String, backpacks: String, backpack_items: String, backpack_magazines: String,
-    backpack_weapons: String, driver: String, name: String, locked: String, customization: String, ace_cargo: String,
-) -> String {
-    handler().store_vehicle(
-        id, position, direction, vehicle_type, vehicle_class, alive, damage, hitpoints, fuel, ammo, magazines,
-        item_cargo, weapon_cargo, crew, backpacks, backpack_items, backpack_magazines, backpack_weapons, driver,
-        name, locked, customization, ace_cargo,
-    )
+fn store_vehicle(id: String, data: String) -> String {
+    handler().store_vehicle(id, data)
+}
+
+fn remove_vehicle(id: String) -> String {
+    handler().remove_vehicle(id)
 }
 
 #[cfg(test)]

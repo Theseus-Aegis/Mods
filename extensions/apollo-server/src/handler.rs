@@ -256,25 +256,18 @@ impl<B: Backend> Handler<B> {
         loaded.to_string()
     }
 
-    /// Save a vehicle in the background (the arguments of fnc_vehicleSingletonSave).
-    #[allow(clippy::too_many_arguments)]
-    pub fn store_vehicle(
-        &self, id: String, position: String, direction: String, vehicle_type: String, vehicle_class: String,
-        alive: String, damage: String, hitpoints: String, fuel: String, ammo: String, magazines: String,
-        item_cargo: String, weapon_cargo: String, crew: String, backpacks: String, backpack_items: String,
-        backpack_magazines: String, backpack_weapons: String, driver: String, name: String, locked: String,
-        customization: String, ace_cargo: String,
-    ) -> String {
-        let body = json!({
-            "position": position, "direction": direction, "vehicle_type": vehicle_type,
-            "vehicle_class": vehicle_class, "alive": alive, "damage": damage, "hitpoints": hitpoints, "fuel": fuel,
-            "ammo": ammo, "magazines": magazines, "item_cargo": item_cargo, "weapon_cargo": weapon_cargo,
-            "crew": crew, "backpacks": backpacks, "backpack_items": backpack_items,
-            "backpack_magazines": backpack_magazines, "backpack_weapons": backpack_weapons, "driver": driver,
-            "name": name, "locked": locked, "customization": customization, "ace_cargo": ace_cargo,
-        });
-        self.save_later(format!("/vehicles/{id}"), body);
+    /// Save a vehicle in the background: `data` is fnc_vehicleSingletonSave's `[key, value]` pairs
+    /// as text, passed on as they are (Minotaur reads them), so new keys need no new extension.
+    pub fn store_vehicle(&self, id: String, data: String) -> String {
+        self.save_later(format!("/vehicles/{id}"), json!({"data": data}));
         "Store vehicle called".into()
+    }
+
+    /// Remove a vehicle that no longer exists (deleted, a static weapon packed up), in the same
+    /// background queue as the saves, so it comes after any save still waiting.
+    pub fn remove_vehicle(&self, id: String) -> String {
+        self.save_later(format!("/vehicles/{id}/remove"), json!({}));
+        "Remove vehicle called".into()
     }
 }
 
@@ -419,20 +412,15 @@ mod tests {
     }
 
     #[test]
-    fn vehicle_save_is_sent_in_the_background() {
+    fn vehicle_save_and_removal_are_sent_in_the_background_in_order() {
         let (h, fake) = handler(Fake::default());
-        let a = |v: &str| v.to_string();
-        let reply = h.store_vehicle(
-            a("TACa"), a("[1,2,3]"), a("90"), a("B_MRAP_01_F"), a("Car"), a("true"), a("0"), a("[]"), a("1"),
-            a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a("[]"), a(""), a("Hunter"),
-            a("0"), a(""), a(r#"["ACE_Wheel"]"#),
-        );
-        assert_eq!(reply, "Store vehicle called");
-        let calls = wait_for_calls(&fake, 1);
+        let data = r#"[["type","B_MRAP_01_F"],["ace_cargo",["ACE_Wheel"]]]"#;
+        assert_eq!(h.store_vehicle(s("TACa"), s(data)), "Store vehicle called");
+        assert_eq!(h.remove_vehicle(s("TACa")), "Remove vehicle called");
+        let calls = wait_for_calls(&fake, 2);
         assert_eq!(calls[0].0, "POST /vehicles/TACa");
-        assert_eq!(calls[0].1["name"], "Hunter");
-        assert_eq!(calls[0].1.as_object().unwrap().len(), 22);
-        assert_eq!(calls[0].1["ace_cargo"], r#"["ACE_Wheel"]"#);
+        assert_eq!(calls[0].1, json!({"data": data}));
+        assert_eq!(calls[1], ("POST /vehicles/TACa/remove".into(), json!({})));
     }
 
     #[test]
