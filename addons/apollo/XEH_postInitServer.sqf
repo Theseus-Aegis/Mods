@@ -25,6 +25,14 @@ if (_resetError) exitWith { ERROR_3("Server failed to reset after map change! (s
 
 if (GVAR(enabledVehicles)) then {
     call FUNC(vehicleLoad);
+
+    // Static weapons players deploy are persistent until packed up (FUNC(vehicleSaveServer) removes them)
+    [QGVAR(staticWeaponDeployed), {
+        params ["_weapon"];
+        if (!GVAR(vehiclesLoaded) || {isNull _weapon} || {(_weapon getVariable [QGVAR(vehicleID), ""]) != ""}) exitWith {};
+        [_weapon] call FUNC(registerVehicle);
+        [_weapon] call FUNC(vehicleSingletonSave);
+    }] call CBA_fnc_addEventHandler;
 };
 
 if (GVAR(enabledPlayers)) then {

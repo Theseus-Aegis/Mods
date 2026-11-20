@@ -43,13 +43,18 @@ fn round_trip() {
     assert!(h.retrieve_locker_queue(player.clone()).contains("addItemCargoGlobal"));
     assert_eq!(h.locker_action(s("remove"), player.clone(), item, s(""), s("1"), s("false")), "error"); // empty now
 
+    // What fnc_vehicleSingletonSave sends: [key, value] pairs.
     let id = generate_unique_id();
-    let v = |x: &str| x.to_string();
-    h.store_vehicle(
-        id.clone(), v("[100,200,5]"), v("90"), v("B_MRAP_01_F"), v("Car"), v("true"), v("0.1"),
-        v(r#"[["HitEngine",0]]"#), v("1"), v("[]"), v(r#"[["SmokeShell"],[2]]"#), v(r#"["FirstAidKit"]"#), v("[]"),
-        v("[]"), v("[]"), v("[]"), v("[]"), v("[]"), v(""), v("Hunter"), v("0"), v(""), v(r#"["ACE_Wheel"]"#),
+    let removed = generate_unique_id();
+    let data = concat!(
+        r#"[["position",[100,200,5]],["direction",90],["vector",[[0,1,0],[0,0,1]]],["type","B_MRAP_01_F"],"#,
+        r#"["class","Car"],["name","Hunter"],["alive",true],["damage",0.1],["hitpoints",[["HitEngine",0]]],"#,
+        r#"["fuel",1],["locked",0],["customization",""],"#,
+        r#"["cargo",[["FirstAidKit"],[["SmokeShell",1]],[],[]]],["ace_cargo",["ACE_Wheel"]]]"#,
     );
+    h.store_vehicle(id.clone(), s(data));
+    h.store_vehicle(removed.clone(), s(data));
+    h.remove_vehicle(removed.clone());
     sleep(Duration::from_millis(500));
     assert_eq!(h.retrieve_all_vehicles(), "ready");
     let mut ids = vec![];
@@ -59,11 +64,12 @@ fn round_trip() {
         ids.push(next);
     }
     assert!(ids.contains(&id));
+    assert!(!ids.contains(&removed));
     let first = h.get_vehicle(id.clone());
     assert!(first.starts_with(&format!("{id} = createVehicle [\"B_MRAP_01_F\"")), "{first}");
 
     assert!(h.get_vehicle(id.clone()) != "error");
     assert_eq!(h.player_died(player.clone(), s(""), s(""), s(r#"[["earplugs",true]]"#)), "done");
-    // The token is still accepted, and the saved vehicle is listed.
-    assert!(check.get("/vehicles").unwrap().contains(&id));
+    // The token is still accepted, and the removed vehicle stays gone.
+    assert!(!check.get("/vehicles").unwrap().contains(&removed));
 }
