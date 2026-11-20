@@ -18,7 +18,8 @@
 private _findings = [];
 {
     private _side = _x;
-    private _groupCount = {(side _x) isEqualTo _side} count allGroups;
+    // Groups, not units: countSide only counts units (HEMTT L-S50 suggests it anyway)
+    private _groupCount = count (allGroups select {side _x isEqualTo _side});
 
     if (_groupCount > GROUP_SIZE_WARNING) then {
         _findings pushBack [WARNING_CODE, format [localize LSTRING(GroupLimit), _side, _groupCount]];
