@@ -88,6 +88,7 @@ pub fn init() -> Extension {
     init_logging(LevelFilter::Info);
 
     Extension::build()
+        .version(env!("CARGO_PKG_VERSION").to_string())
         .command("loadArmory", load_armory)
         .command("loadPlayer", load_player)
         .command("getAccessibleItemClasses", get_accessible_item_classes)

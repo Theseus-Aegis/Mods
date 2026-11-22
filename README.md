@@ -51,6 +51,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows._
 **Requirements:**
 - Rust (>= 1.88, edition 2024)
 - 64-bit only (`_x64`): Arma 3 no longer runs 32-bit, so there are no x86 builds
+- Linux: OpenSSL development files (`libssl-dev`, `pkg-config`) to build; OpenSSL 3 (`libssl3`) where the `.so` is loaded. Windows uses its own TLS (schannel)
 
 Extensions builds must be invoked manually or via CI:
 - Run `$ cargo build [--release]` in `extensions` directory
