@@ -23,7 +23,7 @@ params ["_show"];
 } forEach [
     MAINPIC1, MAINBTN1,
     MAINPIC2, MAINBTN2,
-    MAINPIC3, MAINBTN3,
+    //MAINPIC3, MAINBTN3,
     MAINPIC4, MAINBTN4,
     MAINPIC5, MAINBTN5,
     MAINPIC6, MAINBTN6,
@@ -49,13 +49,9 @@ ctrlSetText [MAINPIC2, QPATHTOF(UI\btnCategory_pistol.paa)];
 buttonSetAction [MAINBTN2, QUOTE(['pistol'] call FUNC(dialogControl))];
 CTRL(MAINBTN2) ctrlSetTooltip localize LSTRING(BtnPistolsTooltip);
 
-ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
+/*ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
 buttonSetAction [MAINBTN3, QUOTE(['launcher'] call FUNC(dialogControl))];
-CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);
-// Hidden while no launchers are sold (remove this to show them again)
-{
-    ctrlShow [_x, false];
-} forEach [MAINPIC3, MAINBTN3];
+CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);*/
 
 ctrlSetText [MAINPIC4, QPATHTOF(UI\btnCategory_ammo.paa)];
 buttonSetAction [MAINBTN4, QUOTE(['ammo'] call FUNC(dialogControl))];
@@ -77,16 +73,9 @@ ctrlSetText [MAINPIC8, QPATHTOF(UI\btnCategory_wearable.paa)];
 buttonSetAction [MAINBTN8, QUOTE(['wearable'] call FUNC(dialogControl))];
 CTRL(MAINBTN8) ctrlSetTooltip localize LSTRING(BtnApparelTooltip);
 
-// Kits (prepared on the website, Chronos only)
-if (GVAR(system) == 1) then {
-    ctrlSetText [MAINPIC9, "\a3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa"]; // TODO: own button picture
-    buttonSetAction [MAINBTN9, QUOTE(['kits'] call FUNC(dialogControl))];
-    CTRL(MAINBTN9) ctrlSetTooltip localize LSTRING(BtnKitsTooltip);
-} else {
-    {
-        ctrlShow [_x, false];
-    } forEach [MAINPIC9, MAINBTN9];
-};
+ctrlSetText [MAINPIC9, "\a3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa"]; // TODO: own button picture
+buttonSetAction [MAINBTN9, QUOTE(['kits'] call FUNC(dialogControl))];
+CTRL(MAINBTN9) ctrlSetTooltip localize LSTRING(BtnKitsTooltip);
 
 ctrlSetText [MAINPIC10, QPATHTOF(UI\btnCategory_insignia.paa)];
 buttonSetAction [MAINBTN10, QUOTE(['insignia'] call FUNC(dialogControl))];
