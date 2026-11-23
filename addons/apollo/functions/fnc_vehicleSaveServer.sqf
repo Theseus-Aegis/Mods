@@ -15,8 +15,8 @@
  * Public: No
  */
 
-// Vehicles that are gone (deleted, a static weapon packed up, a wreck cleaned up) are removed from
-// Chronos here rather than as they go: nothing is removed when the mission ends, as this stops then
+// Vehicles that are gone are removed from Chronos as they're deleted (FUNC(registerVehicle)); any
+// that went without it are removed here
 private _removed = [];
 {
     if (isNull _y) then {

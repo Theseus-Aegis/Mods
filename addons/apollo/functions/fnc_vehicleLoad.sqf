@@ -27,18 +27,15 @@ if (_retrieveVehicles == "ready") then {
         // All vehicle IDs retrieved
         if (_serverReply == "done") then {
             _updateInfo = false;
-            {
-                [_x] call FUNC(vehicleSingletonLoad);
-            } forEach _vehList;
         } else {
             _vehList pushBack _serverReply;
         };
     };
 
-    // Make the vehicles that exist persistent (ACE cargo objects register themselves while loading)
+    // Make them and make them persistent (ACE cargo objects register themselves while loading)
     private _vehicles = [];
     {
-        private _vehicle = missionNamespace getVariable [_x, objNull];
+        private _vehicle = [_x] call FUNC(vehicleSingletonLoad);
         if (!isNull _vehicle) then {
             [_vehicle, _x] call FUNC(registerVehicle);
             _vehicles pushBack _vehicle;

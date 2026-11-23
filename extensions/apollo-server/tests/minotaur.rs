@@ -36,11 +36,10 @@ fn round_trip() {
     sleep(Duration::from_millis(500)); // sent in the background
 
     assert_eq!(h.locker_action(s("put"), player.clone(), item.clone(), item.clone(), s("2"), s("false"), s("")), "ready");
-    let statement = h.retrieve_locker_queue(player.clone());
-    assert!(statement.contains("CBA_fnc_removeItemCargo"), "{statement}");
-    assert_eq!(h.retrieve_locker_queue(player.clone()), "done");
+    assert_eq!(h.retrieve_locker_queue(player.clone()), "done"); // the game removes what it stashed
     assert_eq!(h.locker_action(s("remove"), player.clone(), item.clone(), s(""), s("2"), s("false"), s("")), "ready");
-    assert!(h.retrieve_locker_queue(player.clone()).contains("addItemCargoGlobal"));
+    let entry = h.retrieve_locker_queue(player.clone()); // data: [class, count, rounds]
+    assert_eq!(entry.to_lowercase(), format!("[\"{}\",2,-1]", item.to_lowercase()), "{entry}");
     assert_eq!(h.locker_action(s("remove"), player.clone(), item, s(""), s("1"), s("false"), s("")), "error"); // empty now
 
     // What fnc_vehicleSingletonSave sends: [key, value] pairs.
@@ -49,7 +48,7 @@ fn round_trip() {
     let data = concat!(
         r#"[["position",[100,200,5]],["direction",90],["vector",[[0,1,0],[0,0,1]]],["type","B_MRAP_01_F"],"#,
         r#"["class","Car"],["name","Hunter"],["alive",true],["damage",0.1],["hitpoints",[["HitEngine",0]]],"#,
-        r#"["fuel",1],["locked",0],["customization",""],"#,
+        r#"["fuel",1],["locked",0],["customization",[["Black",1],[]]],"#,
         r#"["cargo",[["FirstAidKit"],[["SmokeShell",1]],[],[]]],["ace_cargo",["ACE_Wheel"]]]"#,
     );
     h.store_vehicle(id.clone(), s(data));
@@ -65,10 +64,10 @@ fn round_trip() {
     }
     assert!(ids.contains(&id));
     assert!(!ids.contains(&removed));
-    let first = h.get_vehicle(id.clone());
-    assert!(first.starts_with(&format!("{id} = createVehicle [\"B_MRAP_01_F\"")), "{first}");
-
-    assert!(h.get_vehicle(id.clone()) != "error");
+    let first = h.get_vehicle(id.clone()); // data, in pieces the game joins
+    assert!(first.starts_with(r#"[["type","B_MRAP_01_F"],"#), "{first}");
+    assert!(first.contains(r#"["customization",[["Black",1],[]]]"#), "{first}");
+    assert_eq!(h.get_vehicle(id.clone()), "done");
     assert_eq!(h.player_died(player.clone(), s(""), s(""), s(r#"[["earplugs",true]]"#)), "done");
     // The token is still accepted, and the removed vehicle stays gone.
     assert!(!check.get("/vehicles").unwrap().contains(&removed));

@@ -6,7 +6,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Container <OBJECT> (used by Apollo backend for item addition - DO NOT REMOVE)
+ * 1: Container <OBJECT>
  * 2: Kit ID <STRING>
  *
  * Return Value:
@@ -18,34 +18,19 @@
  * Public: No
  */
 
-// IGNORE_PRIVATE_WARNING(_container) - DO NOT REMOVE - Used by Apollo backend for item addition
 params ["_player", "_container", "_kitID"];
 
 private _playerID = getPlayerUID _player;
 
-private _serverReply = ["lockerTakeKit", _kitID, _playerID] call FUNC(callServerExt);
-
 private _success = false;
-if (_serverReply == "ready") then {
-    private _responsePacket = [];
-    private _updateInfo = true;
-
-    while {_updateInfo} do {
-        private _serverReply = ["retrieveLockerQueue", _playerID] call FUNC(callServerExt);
-
-        if (_serverReply == "done") then {
-            {
-                call _x;
-            } forEach _responsePacket;
-            _success = true;
-            _updateInfo = false;
-        } else {
-            if (_serverReply == "error") then {
-                _updateInfo = false;
-            } else {
-                _responsePacket pushBack (compile _serverReply);
-            };
-        };
+if ((["lockerTakeKit", _kitID, _playerID] call FUNC(callServerExt)) == "ready") then {
+    private _entries = [_playerID] call FUNC(lockerQueue);
+    if (!isNil "_entries") then {
+        {
+            _x params ["_class", "_number", "_rounds"];
+            [_container, _class, _number, true, _rounds] call FUNC(boxCargo);
+        } forEach _entries;
+        _success = true;
     };
 };
 

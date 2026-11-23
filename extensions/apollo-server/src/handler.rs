@@ -1,7 +1,7 @@
 //! Apollo's game-server commands, answering as Apollo did, with Minotaur as the backend.
 //!
 //! What only matters while the game server runs stays here, as it did in Apollo's memory:
-//! whether a player may be saved yet, and the queues of SQF statements the game fetches one
+//! whether a player may be saved yet, and the queues of website replies (data, read with parseSimpleArray) the game fetches one
 //! by one (locker actions, vehicles to recreate). Saves are sent in the background, in order,
 //! so the game doesn't wait for them.
 
@@ -147,7 +147,7 @@ impl<B: Backend> Handler<B> {
         DONE.into() // as Apollo: the game respawns the player either way
     }
 
-    /// Put an item into the member's locker or take one out. "ready": fetch the statements
+    /// Put an item into the member's locker or take one out. "ready": fetch the reply
     /// with retrieve_locker_queue; "error": refused. `partial`: putting magazines in, the rounds
     /// of the partly used ones among them (`[12,3]`), the rest full.
     #[allow(clippy::too_many_arguments)]
@@ -161,7 +161,7 @@ impl<B: Backend> Handler<B> {
     }
 
     /// Take a kit (prepared on the website) from the member's locker into the box: of each of
-    /// its items what the locker has. "ready": fetch the statements with retrieve_locker_queue.
+    /// its items what the locker has. "ready": fetch the reply with retrieve_locker_queue.
     pub fn locker_take_kit(&self, kit: String, id: String) -> String {
         self.queue_locker(&format!("/kits/{id}"), &json!({"kit": kit}), id, &format!("lockerTakeKit {kit}"))
     }
@@ -181,14 +181,14 @@ impl<B: Backend> Handler<B> {
     }
 
     fn queue_locker(&self, path: &str, body: &Value, id: String, what: &str) -> String {
-        let statements = match self.backend.post(path, body) {
+        let replies = match self.backend.post(path, body) {
             Ok(text) => serde_json::from_str::<Vec<String>>(&text).map_err(|e| e.to_string()),
             Err(e) => Err(e),
         };
-        match statements {
-            Ok(mut statements) => {
-                statements.push(DONE.into());
-                self.state().locker_queues.insert(id, statements.into());
+        match replies {
+            Ok(mut replies) => {
+                replies.push(DONE.into());
+                self.state().locker_queues.insert(id, replies.into());
                 "ready".into()
             }
             Err(e) => {
@@ -202,18 +202,18 @@ impl<B: Backend> Handler<B> {
         let mut state = self.state();
         let next = state.locker_queues.get_mut(&id).and_then(VecDeque::pop_front);
         match next {
-            Some(statement) => {
-                if statement == DONE {
+            Some(reply) => {
+                if reply == DONE {
                     state.locker_queues.remove(&id);
                 }
-                statement
+                reply
             }
             None => ERROR.into(),
         }
     }
 
     /// Fetch every saved vehicle; then get_vehicle_list gives their IDs and get_vehicle
-    /// each one's statements, both ending with "done".
+    /// each one's data in pieces (the game joins them), both ending with "done".
     pub fn retrieve_all_vehicles(&self) -> String {
         let vehicles = self.backend.get("/vehicles").and_then(|text| {
             serde_json::from_str::<Map<String, Value>>(&text).map_err(|e| e.to_string())
@@ -228,8 +228,8 @@ impl<B: Backend> Handler<B> {
         let mut state = self.state();
         state.vehicle_ids.clear();
         state.vehicles.clear();
-        for (id, statements) in vehicles {
-            let mut queue: VecDeque<String> = statements
+        for (id, pieces) in vehicles {
+            let mut queue: VecDeque<String> = pieces
                 .as_array()
                 .map(|a| a.iter().filter_map(|s| s.as_str().map(String::from)).collect())
                 .unwrap_or_default();

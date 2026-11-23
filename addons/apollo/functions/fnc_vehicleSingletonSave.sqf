@@ -57,7 +57,7 @@ private _data = [
     ["hitpoints", _hitpoints],
     ["fuel", fuel _vehicle],
     ["locked", locked _vehicle],
-    ["customization", [_vehicle, ""] call BIS_fnc_exportVehicle]
+    ["customization", [_vehicle] call BIS_fnc_getVehicleCustomization] // [textures, animations]
 ];
 
 if (_alive) then {

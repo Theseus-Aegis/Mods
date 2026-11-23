@@ -2,8 +2,9 @@
 /*
  * Author: Jonpas
  * Tests saving and loading a vehicle: saves it, deletes it, loads it back from Chronos and compares
- * what it has (cargo with containers and rounds, turret magazines, pylons, damage, fuel, trench
- * progress, ACE cargo). The vehicle is replaced by the loaded one. Results in the server's RPT and
+ * what it has (cargo with containers and rounds, turret magazines, pylons, damage and hit points,
+ * fuel, lock, a static object's height and tilt, ACE fuel and ammo, trench progress, customization,
+ * ACE cargo), with the same functions as the real save and load. The vehicle is replaced by the loaded one. Results in the server's RPT and
  * in everyone's chat. For test servers (the development website), server only.
  *
  * Arguments:
@@ -41,11 +42,19 @@ if (!isServer || {isNull _vehicle} || {!GVAR(vehiclesLoaded)}) exitWith {
     private _snapshot = {
         params ["_object"];
         ([_object] call FUNC(getCargo)) params ["_items", "_magazines", "_weapons", "_containers"];
+        // Static objects (as the save classes them) are placed exactly: their height and tilt too
+        private _static = ({_object isKindOf _x} count ["Car", "Plane", "Helicopter", "Tank", "Ship", "ThingX"]) == 0 ||
+            {!isNil {_object getVariable QACEGVAR(trenches,progress)}};
         [
             typeOf _object,
             (getPosATL _object select [0, 2]) apply {round _x},
             round (damage _object * 100),
             round (fuel _object * 100),
+            ((getAllHitPointsDamage _object) param [2, []]) apply {round (_x * 100)},
+            locked _object,
+            [[], [round ((getPosATL _object select 2) * 100), (vectorUp _object) apply {round (_x * 100)}]] select _static,
+            round ([_object] call ACEFUNC(refuel,getFuel)),
+            round ([_object] call ACEFUNC(rearm,getSupplyCount)),
             [_items] call _sorted,
             [_magazines] call _sorted,
             [_weapons] call _sorted,
@@ -53,10 +62,11 @@ if (!isServer || {isNull _vehicle} || {!GVAR(vehiclesLoaded)}) exitWith {
             [(magazinesAllTurrets _object) apply {_x select [0, 3]}] call _sorted,
             [(getAllPylonsInfo _object) apply {[_x select 0, _x select 3, _x select 4]}] call _sorted,
             _object getVariable [QACEGVAR(trenches,progress), -1],
+            [_object] call BIS_fnc_getVehicleCustomization,
             [(_object getVariable [QACEGVAR(cargo,loaded), []]) apply {if (_x isEqualType objNull) then {typeOf _x} else {_x}}] call _sorted
         ]
     };
-    private _names = ["type", "position", "damage", "fuel", "items", "magazines", "weapons", "containers", "turrets", "pylons", "trench", "ACE cargo"];
+    private _names = ["type", "position", "damage", "fuel", "hit points", "locked", "height and tilt", "ACE fuel", "ACE ammo", "items", "magazines", "weapons", "containers", "turrets", "pylons", "trench", "customization", "ACE cargo"];
 
     private _before = [_vehicle] call _snapshot;
     [format ["%1 (%2) saving, deleting and loading", _vehicleID, typeOf _vehicle]] call _report;
@@ -64,9 +74,12 @@ if (!isServer || {isNull _vehicle} || {!GVAR(vehiclesLoaded)}) exitWith {
     [_vehicle] call FUNC(vehicleSingletonSave);
     sleep 3; // sent in the background
 
-    GVAR(vehicles) deleteAt _vehicleID; // not removed from Chronos while it's away
+    GVAR(vehicles) deleteAt _vehicleID; // so deleting it doesn't remove it from Chronos
     {
-        if (_x isEqualType objNull) then {deleteVehicle _x};
+        if (_x isEqualType objNull) then {
+            GVAR(vehicles) deleteAt (_x getVariable [QGVAR(vehicleID), ""]); // a persistent one loaded: the same
+            deleteVehicle _x;
+        };
     } forEach (_vehicle getVariable [QACEGVAR(cargo,loaded), []]);
     deleteVehicle _vehicle;
     sleep 1;
@@ -74,9 +87,7 @@ if (!isServer || {isNull _vehicle} || {!GVAR(vehiclesLoaded)}) exitWith {
     if ((["retrieveAllVehicles"] call FUNC(callServerExt)) != "ready") exitWith {
         ["failed: vehicles not retrieved from Chronos"] call _report;
     };
-    [_vehicleID] call FUNC(vehicleSingletonLoad);
-
-    private _loaded = missionNamespace getVariable [_vehicleID, objNull];
+    private _loaded = [_vehicleID] call FUNC(vehicleSingletonLoad);
     if (isNull _loaded) exitWith {
         [format ["failed: %1 not loaded", _vehicleID]] call _report;
     };
