@@ -52,6 +52,10 @@ CTRL(MAINBTN2) ctrlSetTooltip localize LSTRING(BtnPistolsTooltip);
 ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
 buttonSetAction [MAINBTN3, QUOTE(['launcher'] call FUNC(dialogControl))];
 CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);
+// Hidden while no launchers are sold (remove this to show them again)
+{
+    ctrlShow [_x, false];
+} forEach [MAINPIC3, MAINBTN3];
 
 ctrlSetText [MAINPIC4, QPATHTOF(UI\btnCategory_ammo.paa)];
 buttonSetAction [MAINBTN4, QUOTE(['ammo'] call FUNC(dialogControl))];

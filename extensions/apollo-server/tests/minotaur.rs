@@ -35,13 +35,13 @@ fn round_trip() {
     assert_eq!(h.store_infantry(s("save"), player.clone(), s("Test"), s("[1,2,3]"), s("45"), s(loadout), s(""), s("[]")), "completed");
     sleep(Duration::from_millis(500)); // sent in the background
 
-    assert_eq!(h.locker_action(s("put"), player.clone(), item.clone(), item.clone(), s("2"), s("false")), "ready");
+    assert_eq!(h.locker_action(s("put"), player.clone(), item.clone(), item.clone(), s("2"), s("false"), s("")), "ready");
     let statement = h.retrieve_locker_queue(player.clone());
     assert!(statement.contains("CBA_fnc_removeItemCargo"), "{statement}");
     assert_eq!(h.retrieve_locker_queue(player.clone()), "done");
-    assert_eq!(h.locker_action(s("remove"), player.clone(), item.clone(), s(""), s("2"), s("false")), "ready");
+    assert_eq!(h.locker_action(s("remove"), player.clone(), item.clone(), s(""), s("2"), s("false"), s("")), "ready");
     assert!(h.retrieve_locker_queue(player.clone()).contains("addItemCargoGlobal"));
-    assert_eq!(h.locker_action(s("remove"), player.clone(), item, s(""), s("1"), s("false")), "error"); // empty now
+    assert_eq!(h.locker_action(s("remove"), player.clone(), item, s(""), s("1"), s("false"), s("")), "error"); // empty now
 
     let id = generate_unique_id();
     let v = |x: &str| x.to_string();

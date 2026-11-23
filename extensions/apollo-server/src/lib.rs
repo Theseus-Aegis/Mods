@@ -99,8 +99,9 @@ fn bodybag_return(id: String, death_key: String, contents: String) -> String {
 
 fn locker_action(
     action: String, id: String, item: String, box_class: String, quantity: String, keep_magazines: String,
+    partial: String,
 ) -> String {
-    handler().locker_action(action, id, item, box_class, quantity, keep_magazines)
+    handler().locker_action(action, id, item, box_class, quantity, keep_magazines, partial)
 }
 
 fn locker_take_kit(kit: String, id: String) -> String {

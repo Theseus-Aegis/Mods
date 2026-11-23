@@ -148,12 +148,15 @@ impl<B: Backend> Handler<B> {
     }
 
     /// Put an item into the member's locker or take one out. "ready": fetch the statements
-    /// with retrieve_locker_queue; "error": refused.
+    /// with retrieve_locker_queue; "error": refused. `partial`: putting magazines in, the rounds
+    /// of the partly used ones among them (`[12,3]`), the rest full.
+    #[allow(clippy::too_many_arguments)]
     pub fn locker_action(
         &self, action: String, id: String, item: String, box_class: String, quantity: String, keep_magazines: String,
+        partial: String,
     ) -> String {
         let body = json!({"action": action, "item": item, "box": box_class, "quantity": quantity,
-                          "keep_magazines": keep_magazines});
+                          "keep_magazines": keep_magazines, "partial": partial});
         self.queue_locker(&format!("/locker/{id}"), &body, id, &format!("lockerAction {action} {item}"))
     }
 
@@ -359,13 +362,14 @@ mod tests {
 
     #[test]
     fn locker_queue() {
-        let (h, _) = handler(Fake::default().reply("/locker/765", Ok(r#"["_container addItemCargoGlobal  [\"x\",1];"]"#)));
-        assert_eq!(h.locker_action(s("remove"), s("765"), s("x"), s(""), s("1"), s("false")), "ready");
+        let (h, fake) = handler(Fake::default().reply("/locker/765", Ok(r#"["_container addItemCargoGlobal  [\"x\",1];"]"#)));
+        assert_eq!(h.locker_action(s("remove"), s("765"), s("x"), s(""), s("1"), s("false"), s("[12,3]")), "ready");
+        assert_eq!(fake.calls.lock().unwrap()[0].1["partial"], "[12,3]");
         assert_eq!(h.retrieve_locker_queue(s("765")), "_container addItemCargoGlobal  [\"x\",1];");
         assert_eq!(h.retrieve_locker_queue(s("765")), "done");
         assert_eq!(h.retrieve_locker_queue(s("765")), "error");
         let (h, _) = handler(Fake::default().reply("/locker/765", Err("409: error")));
-        assert_eq!(h.locker_action(s("put"), s("765"), s("x"), s("x"), s("1"), s("false")), "error");
+        assert_eq!(h.locker_action(s("put"), s("765"), s("x"), s("x"), s("1"), s("false"), s("[12]")), "error");
     }
 
     #[test]

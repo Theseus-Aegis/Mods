@@ -26,7 +26,17 @@ params ["_player", "_type", "_container", "_itemClass", "_itemClassBox", "_quant
 
 private _playerID = getPlayerUID _player;
 
-private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines] call FUNC(callServerExt);
+// Stashing magazines: the fullest go first; the website keeps the rounds of the partly used ones
+// among them and removes exactly those from the box ("" for anything else)
+private _partial = "";
+if (_type == "put" && {isClass (configFile >> "CfgMagazines" >> _itemClassBox)}) then {
+    private _full = getNumber (configFile >> "CfgMagazines" >> _itemClassBox >> "count");
+    private _rounds = (magazinesAmmoCargo _container select {_x select 0 == _itemClassBox}) apply {_x select 1};
+    _rounds sort false;
+    _partial = (_rounds select [0, parseNumber _quantity]) select {_x < _full};
+};
+
+private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines, _partial] call FUNC(callServerExt);
 
 if (_serverReply == "ready") then {
     // Load packages for execution of commands
