@@ -44,6 +44,11 @@ private _vehicleClass = switch (true) do {
     default {"Unknown"};
 };
 
+// Settings: objects (not vehicles, trenches) and static weapons can be left out
+private _trenchProgress = _vehicle getVariable QACEGVAR(trenches,progress);
+if (!GVAR(vehiclesObjects) && {_vehicleClass == "Unknown" || {!isNil "_trenchProgress"}}) exitWith {};
+if (!GVAR(vehiclesStaticWeapons) && {_vehicle isKindOf "StaticWeapon"}) exitWith {};
+
 // [key, value] pairs, read by Minotaur (apollo/vehicles.py)
 private _data = [
     ["position", getPosATL _vehicle],
@@ -74,21 +79,30 @@ if (_alive) then {
         };
     } forEach (_vehicle getVariable [QACEGVAR(cargo,loaded), []]);
 
-    _data append [
-        ["cargo", [_vehicle] call FUNC(getCargo)],
-        ["ace_cargo", _aceCargo],
-        ["turrets", magazinesAllTurrets _vehicle],
-        ["pylons", getAllPylonsInfo _vehicle]
-    ];
+    _data pushBack ["cargo", [_vehicle] call FUNC(getCargo)];
+    if (GVAR(vehiclesACECargo)) then {
+        _data pushBack ["ace_cargo", _aceCargo];
+    };
+    if (GVAR(vehiclesTurrets)) then {
+        _data pushBack ["turrets", magazinesAllTurrets _vehicle];
+    };
+    if (GVAR(vehiclesPylons)) then {
+        _data pushBack ["pylons", getAllPylonsInfo _vehicle];
+    };
 
     // ACE fuel truck (finite fuel)
-    if (!isNil QACEFUNC(refuel,getCapacity) && {([_vehicle] call ACEFUNC(refuel,getCapacity)) > 0}) then {
+    if (GVAR(vehiclesACESupply) && {!isNil QACEFUNC(refuel,getCapacity)} && {([_vehicle] call ACEFUNC(refuel,getCapacity)) > 0}) then {
         _data pushBack ["ace_fuel", [_vehicle] call ACEFUNC(refuel,getFuel)];
     };
 
-    // ACE ammo truck (limited supply only)
+    // ACE ammo truck: limited supply (a count) or magazine-specific supply (what's stored in it);
+    // unlimited needs nothing
+    private _rearmSupply = missionNamespace getVariable [QACEGVAR(rearm,supply), 0];
+    if (GVAR(vehiclesACESupply) && {_rearmSupply == 2} && {!isNil {_vehicle getVariable QACEGVAR(rearm,magazineSupply)}}) then {
+        _data pushBack ["ace_ammo_magazines", _vehicle getVariable QACEGVAR(rearm,magazineSupply)];
+    };
     if (
-        !isNil QACEFUNC(rearm,getSupplyCount) && {(missionNamespace getVariable [QACEGVAR(rearm,supply), 0]) == 1} &&
+        GVAR(vehiclesACESupply) && {!isNil QACEFUNC(rearm,getSupplyCount)} && {_rearmSupply == 1} &&
         {!isNil {_vehicle getVariable QACEGVAR(rearm,currentSupply)} || {getNumber (_config >> QACEGVAR(rearm,defaultSupply)) > 0} || {getNumber (_config >> "transportAmmo") > 0}}
     ) then {
         _data pushBack ["ace_ammo", [_vehicle] call ACEFUNC(rearm,getSupplyCount)];
@@ -96,7 +110,6 @@ if (_alive) then {
 };
 
 // Trench dig progress (ACE, grad_trenches)
-private _trenchProgress = _vehicle getVariable QACEGVAR(trenches,progress);
 if (!isNil "_trenchProgress") then {
     _data pushBack ["trench", _trenchProgress];
 };

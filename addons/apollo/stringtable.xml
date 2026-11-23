@@ -52,5 +52,44 @@
             <French>Vous êtes en train d'être bougé à l'acceuil pour une réinitialisation.</French>
             <German>Du wirst wegen Neuinitialisierung zurück zur Lobby verschoben.</German>
         </Key>
+        <Key ID="STR_TAC_Apollo_Vehicles">
+            <English>Vehicles</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACECargo">
+            <English>ACE Cargo</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACECargoDesc">
+            <English>Keeps what is loaded in vehicles' ACE cargo (objects with their inventory, and persistent vehicles loaded into others).</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACESupply">
+            <English>ACE Fuel and Ammo Supply</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACESupplyDesc">
+            <English>Keeps what ACE fuel and ammo trucks have left (finite fuel; limited or magazine-specific ammo supply).</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesObjects">
+            <English>Objects</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesObjectsDesc">
+            <English>Keeps objects that aren't vehicles (trenches, sandbags, other objects added to Chronos), and a trench's dig progress.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesPylons">
+            <English>Pylons</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesPylonsDesc">
+            <English>Keeps aircraft pylon loadouts and their ammo.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesStaticWeapons">
+            <English>Static Weapons</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesStaticWeaponsDesc">
+            <English>Makes a static weapon persistent when a player deploys one, and keeps the saved ones.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesTurrets">
+            <English>Turret Ammo</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesTurretsDesc">
+            <English>Keeps the magazines and ammo left in vehicles' turrets. Off: vehicles come back with what they're made with.</English>
+        </Key>
     </Package>
 </Project>

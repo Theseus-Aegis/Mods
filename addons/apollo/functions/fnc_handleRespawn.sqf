@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Handles respawn event (mark in backend for fresh inventory).
+ * Handles respawn event: the server reloads the player (basic gear, the death was registered when
+ * they were killed; if it wasn't, the server registers it now from the corpse).
  *
  * Arguments:
  * 0: Player <OBJECT>
@@ -19,8 +20,4 @@
 params ["_player", "_corpse"];
 TRACE_1("Handle Respawn",_this);
 
-private _deathKey = _corpse getVariable [QGVAR(deathKey), ""];
-private _deathLoadout = _corpse getVariable [QGVAR(deathLoadout), []];
-private _deathVariables = _corpse getVariable [QGVAR(deathVariables), []];
-
-[QGVAR(playerDied), [_player, _deathKey, _deathLoadout, _deathVariables]] call CBA_fnc_serverEvent;
+[QGVAR(playerRespawned), [_player, _corpse]] call CBA_fnc_serverEvent;

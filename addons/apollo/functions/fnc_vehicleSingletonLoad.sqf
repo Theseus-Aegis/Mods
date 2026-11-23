@@ -36,14 +36,32 @@ if (_data isEqualTo []) exitWith {
 };
 private _values = createHashMapFromArray _data;
 
+// Settings: what's turned off is left as the vehicle is made; objects and static weapons not made
+{
+    _x params ["_enabled", "_keys"];
+    if (!_enabled) then {
+        {_values deleteAt _x} forEach _keys;
+    };
+} forEach [
+    [GVAR(vehiclesTurrets), ["turrets"]],
+    [GVAR(vehiclesPylons), ["pylons"]],
+    [GVAR(vehiclesACECargo), ["ace_cargo"]],
+    [GVAR(vehiclesACESupply), ["ace_fuel", "ace_ammo", "ace_ammo_magazines"]]
+];
+
 private _type = _values getOrDefault ["type", ""];
 private _position = _values getOrDefault ["position", []];
 private _vehicle = missionNamespace getVariable [_vehicleID, objNull]; // only one the mission placed (Apollo)
 private _csw = false;
 
+// Static objects (sandbags, trenches) are placed exactly as saved, the others lifted a little
+private _static = (_values getOrDefault ["class", "Unknown"]) == "Unknown" || {"trench" in _values};
+if ((!GVAR(vehiclesObjects) && {_static}) || {!GVAR(vehiclesStaticWeapons) && {_type isKindOf "StaticWeapon"}}) exitWith {
+    INFO_2("Vehicle %1 (%2) not loaded: turned off in the settings",_vehicleID,_type);
+    objNull
+};
+
 if (_type != "" && {count _position == 3}) then {
-    // Static objects (sandbags, trenches) are placed exactly as saved, the others lifted a little
-    private _static = (_values getOrDefault ["class", "Unknown"]) == "Unknown" || {"trench" in _values};
     _position params ["_posX", "_posY", "_posZ"];
     if (!_static) then {
         _posZ = _posZ + SPAWN_LIFT;
@@ -134,8 +152,13 @@ if (_type != "" && {count _position == 3}) then {
         if ("ace_fuel" in _values && {!isNil QACEFUNC(refuel,setFuel)}) then {
             [_vehicle, _values get "ace_fuel"] call ACEFUNC(refuel,setFuel);
         };
-        if ("ace_ammo" in _values && {!isNil QACEFUNC(rearm,setSupplyCount)}) then {
+        // ACE ammo supply as saved, if the setting still matches (limited, or magazine-specific)
+        private _rearmSupply = missionNamespace getVariable [QACEGVAR(rearm,supply), 0];
+        if ("ace_ammo" in _values && {_rearmSupply == 1}) then {
             [_vehicle, _values get "ace_ammo"] call ACEFUNC(rearm,setSupplyCount);
+        };
+        if ("ace_ammo_magazines" in _values && {_rearmSupply == 2}) then {
+            _vehicle setVariable [QACEGVAR(rearm,magazineSupply), _values get "ace_ammo_magazines", true];
         };
     };
 };

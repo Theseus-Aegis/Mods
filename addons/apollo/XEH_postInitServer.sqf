@@ -29,7 +29,7 @@ if (GVAR(enabledVehicles)) then {
     // Static weapons players deploy are persistent until packed up (FUNC(vehicleSaveServer) removes them)
     [QGVAR(staticWeaponDeployed), {
         params ["_weapon"];
-        if (!GVAR(vehiclesLoaded) || {isNull _weapon} || {(_weapon getVariable [QGVAR(vehicleID), ""]) != ""}) exitWith {};
+        if (!GVAR(vehiclesStaticWeapons) || {!GVAR(vehiclesLoaded)} || {isNull _weapon} || {(_weapon getVariable [QGVAR(vehicleID), ""]) != ""}) exitWith {};
         [_weapon] call FUNC(registerVehicle);
         [_weapon] call FUNC(vehicleSingletonSave);
     }] call CBA_fnc_addEventHandler;
@@ -58,12 +58,24 @@ if (GVAR(enabledPlayers)) then {
         };
     }] call CBA_fnc_addEventHandler;
 
-    // Player died
+    // Player killed: the death registered at once (FUNC(handleKilled)), the reply kept for the respawn
     [QGVAR(playerDied), {
-        params ["_player", ["_deathKey", ""], ["_deathLoadout", []], ["_deathVariables", []]];
+        params ["_player", "_uid", ["_deathKey", ""], ["_deathLoadout", []], ["_deathVariables", []]];
         TRACE_1("Player Died",_this);
-        GVAR(playerRuntimeData) deleteAt (getPlayerUID _player); // a respawn starts fresh
-        private _registeredDeath = ["playerDied", getPlayerUID _player, _deathKey, _deathLoadout, _deathVariables] call FUNC(callServerExt);
+        GVAR(playerRuntimeData) deleteAt _uid; // a respawn starts fresh
+        GVAR(deathsRegistered) set [_uid, ["playerDied", _uid, _deathKey, _deathLoadout, _deathVariables] call FUNC(callServerExt)];
+    }] call CBA_fnc_addEventHandler;
+
+    // Player respawned: reloaded (basic gear); a death the killed event didn't register is registered now
+    [QGVAR(playerRespawned), {
+        params ["_player", "_corpse"];
+        TRACE_1("Player Respawned",_this);
+        private _uid = getPlayerUID _player;
+        private _registeredDeath = GVAR(deathsRegistered) deleteAt _uid;
+        if (isNil "_registeredDeath") then {
+            GVAR(playerRuntimeData) deleteAt _uid;
+            _registeredDeath = ["playerDied", _uid, _corpse getVariable [QGVAR(deathKey), ""], _corpse getVariable [QGVAR(deathLoadout), []], _corpse getVariable [QGVAR(deathVariables), []]] call FUNC(callServerExt);
+        };
         [QGVAR(reinitializePlayer), [_player, _registeredDeath], _player] call CBA_fnc_targetEvent;
     }] call CBA_fnc_addEventHandler;
 

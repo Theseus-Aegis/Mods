@@ -12,6 +12,7 @@ if (isServer) then {
     GVAR(vehiclesLoaded) = false;
     GVAR(vehicles) = createHashMap; // vehicle ID -> object, the persistent ones (FUNC(registerVehicle))
     GVAR(playerRuntimeData) = createHashMap; // UID -> state kept for the mission (FUNC(runtimeSave))
+    GVAR(deathsRegistered) = createHashMap; // UID -> playerDied's reply, from the death until the respawn
 };
 
 GVAR(liveApi) = false; // the live website only when the server uses it, otherwise the development one
