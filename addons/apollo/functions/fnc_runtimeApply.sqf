@@ -8,7 +8,7 @@
  *
  * Arguments:
  * 0: Player <OBJECT>
- * 1: Team <STRING>
+ * 1: Team (colour, in the group they're in now) <STRING>
  * 2: Vehicle <OBJECT>
  * 3: Seat ([] none, ["driver"], ["turret", path], ["cargo", index]) <ARRAY>
  * 4: ACE medical state (serializeState) <STRING>

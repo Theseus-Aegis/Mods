@@ -65,10 +65,7 @@ if (GVAR(enabledPlayers)) then {
         if (_type == "validate") then {
             private _runtime = GVAR(playerRuntimeData) deleteAt _uid;
             if (isNil "_runtime") exitWith {};
-            _runtime params ["_group", "_team", "_vehicle", "_seat", "_medical", "_runtimeRadios", ["_runtimeDials", []]];
-            if (!isNull _group && {side _group == side group _player}) then {
-                [_player] join _group;
-            };
+            _runtime params ["_team", "_vehicle", "_seat", "_medical", "_runtimeRadios", ["_runtimeDials", []]];
             [QGVAR(runtimeApply), [_player, _team, _vehicle, _seat, _medical, _runtimeRadios, _runtimeDials], _player] call CBA_fnc_targetEvent;
         };
     }] call CBA_fnc_addEventHandler;

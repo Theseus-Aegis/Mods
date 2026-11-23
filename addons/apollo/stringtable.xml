@@ -5,7 +5,7 @@
             <English>Allow Server Reset</English>
         </Key>
         <Key ID="STR_TAC_Apollo_AllowServerResetDesc">
-            <English>Allows resetting player positions and deleting saved vehicles on map or mission change since last save.</English>
+            <English>Lets Chronos reset player positions and clear saved vehicles at the mission start (by default on a map change; each server's rule and staff's choice in Logistics › Manage). Off: nothing is reset or remembered for this mission.</English>
         </Key>
         <Key ID="STR_TAC_Apollo_BodybagAlready">
             <English>This bodybag was sent to %1 already.</English>
@@ -17,7 +17,7 @@
             <English>%1 is no longer with Theseus: the bodybag was destroyed.</English>
         </Key>
         <Key ID="STR_TAC_Apollo_BodybagRespawn">
-            <English>The owner hasn't respawned yet, try again.</English>
+            <English>The owner's death isn't in Chronos yet (it's added when they respawn), try again later.</English>
         </Key>
         <Key ID="STR_TAC_Apollo_BodybagSent">
             <English>Bodybag sent to %1: %2 items to claim on the website (Logistics, Inventory). Not returnable (destroyed): %3</English>
