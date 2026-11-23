@@ -10,7 +10,7 @@ Adds Apollo in-game persistence system (part of Chronos).
 - **Removal:** a persistent vehicle whose object is gone (deleted, packed up, a wreck cleaned up) is removed from Chronos at the next save round (`removeVehicle`). A vehicle loaded as ACE cargo is saved inside its carrier only.
 - **Round-trip test** (test servers only): from the debug console, `[cursorObject] remoteExec ["tac_apollo_fnc_testVehicleRoundTrip", 2]` saves the vehicle, deletes it, loads it back and reports the differences (RPT and chat).
 
-The mod, apollo-server and Minotaur must be updated together: the save format and `removeVehicle` are new. What to check before release is in Minotaur's `docs/apollo-rework-plan.md` ("Before merging"), the in-game checks in its `docs/game-tests.md` (section 6).
+The mod, apollo-server and Minotaur must be updated together: the save format and `removeVehicle` are new. What to check before release is in Minotaur's `docs/apollo-rework-plan.md` ("Before merging"), the in-game checks in its `docs/game-tests.md` (section 7).
 
 ### Authors
 
