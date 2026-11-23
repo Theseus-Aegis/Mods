@@ -49,9 +49,9 @@ ctrlSetText [MAINPIC2, QPATHTOF(UI\btnCategory_pistol.paa)];
 buttonSetAction [MAINBTN2, QUOTE(['pistol'] call FUNC(dialogControl))];
 CTRL(MAINBTN2) ctrlSetTooltip localize LSTRING(BtnPistolsTooltip);
 
-/*ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
+ctrlSetText [MAINPIC3, QPATHTOF(UI\btnCategory_launcher.paa)];
 buttonSetAction [MAINBTN3, QUOTE(['launcher'] call FUNC(dialogControl))];
-CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);*/
+CTRL(MAINBTN3) ctrlSetTooltip localize LSTRING(BtnLaunchersTooltip);
 
 ctrlSetText [MAINPIC4, QPATHTOF(UI\btnCategory_ammo.paa)];
 buttonSetAction [MAINBTN4, QUOTE(['ammo'] call FUNC(dialogControl))];
