@@ -89,7 +89,8 @@ if (_alive) then {
         _data pushBack ["turrets", magazinesAllTurrets _vehicle];
     };
     if (GVAR(vehiclesPylons)) then {
-        _data pushBack ["pylons", getAllPylonsInfo _vehicle];
+        // Without the pylon objects (written as "NOID x.p3d" or <NULL-object>, not data)
+        _data pushBack ["pylons", (getAllPylonsInfo _vehicle) apply {_x select [0, 5]}];
     };
 
     // ACE fuel truck (finite fuel)
