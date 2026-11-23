@@ -15,6 +15,7 @@ if (isServer) then {
 [QGVAR(doArtilleryFire), {(_this select 0) doArtilleryFire (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(doMove), {(_this select 0) doMove (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(enableAI), {(_this select 0) enableAI (_this select 1)}] call CBA_fnc_addEventHandler;
+[QGVAR(playSoundUI), {playSoundUI _this}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatBehaviour), {(_this select 0) setCombatBehaviour (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setCombatMode), {(_this select 0) setCombatMode  (_this select 1)}] call CBA_fnc_addEventHandler;
 [QGVAR(setDir), {(_this select 0) setDir (_this select 1)}] call CBA_fnc_addEventHandler;

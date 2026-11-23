@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Mike
- * Prepares an object for keypad GUI
+ * Prepares an object for keypad GUI (Imagery supports any of the "Tablet" objects)
  *
  * Call from init.sqf
  *
@@ -26,6 +26,7 @@ if (isServer) then {
     _object setVariable [QGVAR(Keypad_maxCharacters), _maxCharacters, true];
     _object setVariable [QGVAR(Keypad_requiredCode), _requiredCode, true];
     _object setVariable [QGVAR(Keypad_Text), "", true];
+    _object setObjectTextureGlobal [0, QPATHTOF(data\keypad_default_ca.paa)];
 };
 
 if (!hasInterface) exitWith {};
