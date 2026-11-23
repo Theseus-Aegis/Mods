@@ -26,13 +26,28 @@ if (_resetError) exitWith { ERROR_3("Server failed to reset after map change! (s
 if (GVAR(enabledVehicles)) then {
     call FUNC(vehicleLoad);
 
-    // Static weapons players deploy are persistent until packed up (FUNC(vehicleSaveServer) removes them)
+    // What players place is persistent, each with its setting (FUNC(registerPlaced)); removed from
+    // Chronos when it's deleted (packed up, dug out)
     [QGVAR(staticWeaponDeployed), {
         params ["_weapon"];
-        if (!GVAR(vehiclesStaticWeapons) || {!GVAR(vehiclesLoaded)} || {isNull _weapon} || {(_weapon getVariable [QGVAR(vehicleID), ""]) != ""}) exitWith {};
-        [_weapon] call FUNC(registerVehicle);
-        [_weapon] call FUNC(vehicleSingletonSave);
+        [_weapon, GVAR(vehiclesStaticWeapons)] call FUNC(registerPlaced);
     }] call CBA_fnc_addEventHandler;
+    ["ace_trenches_placed", {
+        params ["", "_trench"];
+        [_trench, GVAR(vehiclesObjects)] call FUNC(registerPlaced);
+    }] call CBA_fnc_addEventHandler;
+    ["acex_fortify_objectPlaced", {
+        params ["", "", "_object"];
+        [_object, GVAR(vehiclesObjects)] call FUNC(registerPlaced);
+    }] call CBA_fnc_addEventHandler;
+    // No event for these: their objects as they're made from now on (placement previews are local, or
+    // another class); a CSW tripod goes with static weapons
+    {
+        [_x, "init", {
+            params ["_object"];
+            [_object, [GVAR(vehiclesObjects), GVAR(vehiclesStaticWeapons)] select (_object isKindOf "ace_csw_baseTripod")] call FUNC(registerPlaced);
+        }, true, ["ACE_SandbagObject_NoGeo"]] call CBA_fnc_addClassEventHandler;
+    } forEach ["ACE_SandbagObject", "ACE_TripodObject", "ace_csw_baseTripod"];
 };
 
 if (GVAR(enabledPlayers)) then {
@@ -88,6 +103,7 @@ if (GVAR(enabledPlayers)) then {
 
 [QGVAR(lockerAction), FUNC(lockerAction)] call CBA_fnc_addEventHandler;
 [QGVAR(lockerTakeKit), FUNC(lockerTakeKit)] call CBA_fnc_addEventHandler;
+[QGVAR(lockerStashAll), FUNC(lockerStashAll)] call CBA_fnc_addEventHandler;
 [QGVAR(bodybagReturn), FUNC(bodybagReturn)] call CBA_fnc_addEventHandler;
 
 INFO_3("Server loaded successfully (Players: %1 - Vehicles: %2 - Live API: %3)",GVAR(enabledPlayers),GVAR(enabledVehicles),GVAR(liveApi));

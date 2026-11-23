@@ -18,6 +18,11 @@
 params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 
+// Stash All, in the Stash screen with Chronos
+{
+    ctrlShow [_x, _selectedCategory == "stash" && {GVAR(system) == 1}];
+} forEach [STASHALLPIC, STASHALLBTN];
+
 // Show Dropdown, Amount and List
 ctrlSetText [AMOUNT, QPATHTOF(UI\textAmount.paa)];
 {

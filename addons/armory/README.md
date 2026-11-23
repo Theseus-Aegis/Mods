@@ -2,6 +2,8 @@
 
 Adds Armory with Chronos support.
 
+With Chronos (TAC Apollo), items are taken from and stashed into the player's locker, kits (prepared on the website) are taken in one go, and **Stash All** puts everything in the box into the locker (see the `apollo` addon's README).
+
 ### Authors
 
 - [Jonpas](https://github.com/jonpas)

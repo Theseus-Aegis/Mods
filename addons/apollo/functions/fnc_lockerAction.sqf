@@ -12,9 +12,10 @@
  * 4: Box Item Class Name <STRING> (an ACRE radio with its ID)
  * 5: Quantity <STRING>
  * 6: Keep Magazines <BOOL>
+ * 7: Notify the Armory when stashed <BOOL> (default: true; Stash All notifies once)
  *
  * Return Value:
- * None
+ * Done <BOOL> (false: refused or failed)
  *
  * Example:
  * [player, "remove", box, "class", "class", "5", false] call tac_apollo_fnc_lockerAction
@@ -22,7 +23,7 @@
  * Public: No
  */
 
-params ["_player", "_type", "_container", "_itemClass", "_itemClassBox", "_quantity", "_keepMagazines"];
+params ["_player", "_type", "_container", "_itemClass", "_itemClassBox", "_quantity", "_keepMagazines", ["_notify", true]];
 
 private _playerID = getPlayerUID _player;
 private _count = parseNumber _quantity;
@@ -39,10 +40,10 @@ if (_type == "put" && {_isMagazine}) then {
 };
 
 private _serverReply = ["lockerAction", _type, _playerID, _itemClass, _itemClassBox, _quantity, _keepMagazines, _partial] call FUNC(callServerExt);
-if (_serverReply != "ready") exitWith {};
+if (_serverReply != "ready") exitWith {false};
 
 private _entries = [_playerID] call FUNC(lockerQueue);
-if (isNil "_entries") exitWith {};
+if (isNil "_entries") exitWith {false};
 
 if (_type == "put") then {
     // Remove what was stashed: of magazines the full ones, then each partly used one by its rounds
@@ -56,10 +57,14 @@ if (_type == "put") then {
     };
 
     // Notify Armory about finalization to force refresh box contents when stashing
-    [QGVAR(lockerActionDone), [_player], _player] call CBA_fnc_targetEvent;
+    if (_notify) then {
+        [QGVAR(lockerActionDone), [_player], _player] call CBA_fnc_targetEvent;
+    };
 } else {
     {
         _x params ["_class", "_number", "_rounds"];
         [_container, _class, _number, true, _rounds] call FUNC(boxCargo);
     } forEach _entries;
 };
+
+true

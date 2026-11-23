@@ -44,10 +44,12 @@ private _vehicleClass = switch (true) do {
     default {"Unknown"};
 };
 
-// Settings: objects (not vehicles, trenches) and static weapons can be left out
+// Settings: static weapons (with ACE CSW tripods) and objects that aren't vehicles (trenches,
+// sandbags, fortifications, crates) can be left out
 private _trenchProgress = _vehicle getVariable QACEGVAR(trenches,progress);
-if (!GVAR(vehiclesObjects) && {_vehicleClass == "Unknown" || {!isNil "_trenchProgress"}}) exitWith {};
-if (!GVAR(vehiclesStaticWeapons) && {_vehicle isKindOf "StaticWeapon"}) exitWith {};
+private _staticWeapon = _vehicle isKindOf "StaticWeapon" || {_vehicle isKindOf "ace_csw_baseTripod"};
+if (!GVAR(vehiclesStaticWeapons) && {_staticWeapon}) exitWith {};
+if (!GVAR(vehiclesObjects) && {!_staticWeapon} && {!(_vehicle isKindOf "AllVehicles")}) exitWith {};
 
 // [key, value] pairs, read by Minotaur (apollo/vehicles.py)
 private _data = [

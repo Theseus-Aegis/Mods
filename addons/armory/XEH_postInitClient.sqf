@@ -32,8 +32,25 @@ if (!hasInterface) exitWith {};
             TRACE_1("Finish subtract on full refresh",_subtractOnFullRefresh);
 
             [_boxContents] call FUNC(updateData);
+            {
+                ctrlShow [_x, GVAR(system) == 1];
+            } forEach [STASHALLPIC, STASHALLBTN];
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
+}] call CBA_fnc_addEventHandler;
+
+// Stash All done: what the locker didn't take is still in the box
+[QEGVAR(apollo,lockerStashAllDone), {
+    params ["_player", "_left"];
+    if (_left isEqualTo []) exitWith {
+        [LSTRING(StashedAll), 2.5] call ACEFUNC(common,displayTextStructured);
+    };
+    private _names = _left apply {
+        private _displayName = getText ((_x call CBA_fnc_getItemConfig) >> "displayName");
+        if (_displayName == "") then { _displayName = getText ((_x call CBA_fnc_getObjectConfig) >> "displayName"); };
+        [_displayName, _x] select (_displayName == "")
+    };
+    [format [localize LSTRING(StashedAllLeft), _names joinString ", "], 4] call ACEFUNC(common,displayTextStructured);
 }] call CBA_fnc_addEventHandler;
 
 // Kit taken (or refused): refresh the kits, as the locker has changed

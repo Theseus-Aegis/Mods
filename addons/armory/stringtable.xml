@@ -68,6 +68,9 @@
             <French>Accéder aux fusils</French>
             <German>Auf Gewehre zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnStashAllTooltip">
+            <English>Stash everything in the container</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnStashItemTooltip">
             <English>Stash selected item</English>
             <French>Ranger les objets sélectionnés</French>
@@ -147,6 +150,15 @@
             <English>Show only items compatible with equipped weapons.</English>
             <French>Montrer seulement les objets compatibles avec les armes équipées.</French>
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind.</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_StashedAll">
+            <English>Everything stashed</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_StashedAllLeft">
+            <English>Stashed&lt;br/&gt;Not taken by your locker: %1</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_StashingAll">
+            <English>Stashing everything...</English>
         </Key>
         <Key ID="STR_TAC_Armory_System">
             <English>System</English>

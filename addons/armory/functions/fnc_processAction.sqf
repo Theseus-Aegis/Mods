@@ -49,15 +49,10 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 // `_selectedItem` is virtual item in Armory database
 private _selectedItemBox = _selectedItem;
 private _keepMagazines = true;
-if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
-    _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
-
-    // Clear disposable launcher magazine (passed to CBA_fnc_removeWeaponCargo)
-    private _isDisposableBox = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItemBox);
-    private _isDisposable = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItem);
-    if (_isDisposableBox || {_isDisposable}) then {
-        _keepMagazines = false;
-    };
+if (_type == "stash") then {
+    ([_selectedItemBox] call FUNC(getStashVariant)) params ["_item", "_keep"];
+    _selectedItem = _item;
+    _keepMagazines = _keep;
 };
 TRACE_3("Switch",_selectedItem,_selectedItemBox,_keepMagazines);
 

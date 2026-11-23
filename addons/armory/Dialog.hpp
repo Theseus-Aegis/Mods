@@ -257,6 +257,21 @@ class GVAR(Display) {
             y = QUOTE(BTN_Y + OFFSET_Y_RE);
         };
 
+        // Stash All
+        class StashAll_Pic_C2_RE: GVAR(RscPicture) {
+            idc = STASHALLPIC;
+            x = QUOTE(PIC_X_C2);
+            y = QUOTE(PIC_Y + OFFSET_Y_RE);
+            text = QPATHTOF(UI\btnStash.paa);
+        };
+        class StashAll_Btn_C2_RE: GVAR(RscButton) {
+            idc = STASHALLBTN;
+            onMouseButtonClick = QUOTE(call FUNC(stashAll));
+            x = QUOTE(BTN_X_C2);
+            y = QUOTE(BTN_Y + OFFSET_Y_RE);
+            tooltip = CSTRING(BtnStashAllTooltip);
+        };
+
         // MAIN MENU ONLY
         /* Column 1 */
         // Row 1

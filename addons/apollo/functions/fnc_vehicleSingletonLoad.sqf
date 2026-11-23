@@ -56,7 +56,8 @@ private _csw = false;
 
 // Static objects (sandbags, trenches) are placed exactly as saved, the others lifted a little
 private _static = (_values getOrDefault ["class", "Unknown"]) == "Unknown" || {"trench" in _values};
-if ((!GVAR(vehiclesObjects) && {_static}) || {!GVAR(vehiclesStaticWeapons) && {_type isKindOf "StaticWeapon"}}) exitWith {
+private _staticWeapon = _type isKindOf "StaticWeapon" || {_type isKindOf "ace_csw_baseTripod"};
+if ((!GVAR(vehiclesStaticWeapons) && {_staticWeapon}) || {!GVAR(vehiclesObjects) && {!_staticWeapon} && {!(_type isKindOf "AllVehicles")}}) exitWith {
     INFO_2("Vehicle %1 (%2) not loaded: turned off in the settings",_vehicleID,_type);
     objNull
 };

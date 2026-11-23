@@ -78,6 +78,10 @@
 #define EXPORTPIC 3330014
 #define EXPORTBTN 3330015
 
+// Stash All (Chronos, Stash screen)
+#define STASHALLPIC 3330016
+#define STASHALLBTN 3330017
+
 // Camera
 #define CAMERAAREA 3330090
 #define CAMERAHINT 3330091

@@ -71,7 +71,7 @@
             <English>Objects</English>
         </Key>
         <Key ID="STR_TAC_Apollo_VehiclesObjectsDesc">
-            <English>Keeps objects that aren't vehicles (trenches, sandbags, other objects added to Chronos), and a trench's dig progress.</English>
+            <English>Makes objects players place persistent (trenches, sandbags, fortifications, tripods) and keeps the saved objects that aren't vehicles (those, crates, other objects added to Chronos), with a trench's dig progress.</English>
         </Key>
         <Key ID="STR_TAC_Apollo_VehiclesPylons">
             <English>Pylons</English>
@@ -83,7 +83,7 @@
             <English>Static Weapons</English>
         </Key>
         <Key ID="STR_TAC_Apollo_VehiclesStaticWeaponsDesc">
-            <English>Makes a static weapon persistent when a player deploys one, and keeps the saved ones.</English>
+            <English>Makes static weapons and ACE CSW tripods persistent when a player deploys one, and keeps the saved ones.</English>
         </Key>
         <Key ID="STR_TAC_Apollo_VehiclesTurrets">
             <English>Turret Ammo</English>
