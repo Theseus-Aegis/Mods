@@ -38,9 +38,15 @@
 #define TEXT_FONT "LCD14"
 #define TEXT_COLOR {0, 0, 0, 0.9}
 #define TEXT_COLOR_DISABLED {0, 0, 0, 0.4}
-#define BTN_TEXT_SIZE H_PART(1)
+#define BTN_TEXT_SIZE H_PART(1.2)
 #define TITLE_TEXT_SIZE H_PART(1.2)
 #define LABEL_TEXT_SIZE H_PART(0.9)
+
+// A frame drawn by the game where btnFrame.paa draws its lines: at pixels 2 and 162 of 256 across, 2 and 61 of 64 down
+#define FRAME_X(x) (x + PIC_W * 2 / 256)
+#define FRAME_Y(y) (y + PIC_H * 2 / 64)
+#define FRAME_W (PIC_W * 160 / 256)
+#define FRAME_H (PIC_H * 59 / 64)
 
 // Offsets
 #define OFFSET_Y_R2 0.11
@@ -82,7 +88,7 @@ class GVAR(RscPicture) {
 class GVAR(RscText) {
     idc = -1;
     type = CT_STATIC;
-    style = QUOTE(ST_LEFT + ST_VCENTER);
+    style = ST_LEFT;
     text = "";
     colorText[] = TEXT_COLOR;
     colorBackground[] = {0, 0, 0, 0};
@@ -92,7 +98,7 @@ class GVAR(RscText) {
 };
 
 // A button's frame drawn by the game instead of btnFrame.paa (on trial: only the Rifles button uses it): a 1 px
-// rectangle in colorText, as wide as the button (the picture's frame only covers the button's part of it too)
+// rectangle in colorText, placed with FRAME_X/FRAME_Y where the picture's lines are
 class GVAR(RscFrame) {
     idc = -1;
     type = CT_STATIC;
@@ -103,8 +109,8 @@ class GVAR(RscFrame) {
     font = TEXT_FONT;
     sizeEx = QUOTE(H_PART(0.5));
     shadow = 0;
-    w = QUOTE(BTN_W);
-    h = QUOTE(BTN_H);
+    w = QUOTE(FRAME_W);
+    h = QUOTE(FRAME_H);
 };
 
 // Over its picture (GVAR(RscPicture): a frame, UI\btnFrame.paa, or an icon): the label as text, or none
@@ -323,8 +329,8 @@ class GVAR(Display) {
         // Row 1
         class Main_Pic_C1_R1: GVAR(RscFrame) { // on trial: the game's frame instead of btnFrame.paa
             idc = MAINPIC1;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y);
+            x = QUOTE(FRAME_X(PIC_X_C1));
+            y = QUOTE(FRAME_Y(PIC_Y));
         };
         class Main_Btn_C1_R1: GVAR(RscButton) {
             idc = MAINBTN1;

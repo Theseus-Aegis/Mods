@@ -144,9 +144,9 @@
             <English>Take kit (everything your locker has of it)</English>
         </Key>
         <Key ID="STR_TAC_Armory_ChronosError">
-            <English>Athena server is down!&lt;br/&gt;(Contact server administrator)</English>
-            <French>Le serveur Athena est indisponible !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
-            <German>Athena Server ist offline!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
+            <English>Chronos is unreachable!&lt;br/&gt;(Contact server administrator)</English>
+            <French>Chronos est injoignable !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
+            <German>Chronos ist nicht erreichbar!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
         </Key>
         <Key ID="STR_TAC_Armory_ContainerFull">
             <English>Container is full! Make space for retrieval.</English>
