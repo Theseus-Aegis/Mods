@@ -122,6 +122,14 @@ if (GVAR(system) == 1) then {
     TRACE_7("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox,_keepMagazines);
     [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedItemBox, _selectedAmount, _keepMagazines]] call CBA_fnc_serverEvent;
 
+    // Kits: subtract from the kit's item in the locker, as below
+    if (GVAR(selectedCategory) == "kits") exitWith {
+        private _row = lnbCurSelRow NLIST;
+        private _item = ((GVAR(kits) select lbCurSel DROPDOWN) select 3) select _row;
+        _item set [2, ((_item select 2) - parseNumber _selectedAmount) max 0];
+        [_row] call FUNC(dialogControl_kitItems);
+    };
+
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
     private _newArmoryData = [GVAR(armoryData), _selectedItemBox, _selectedAmount] call FUNC(subtractData);
     [_newArmoryData] call FUNC(updateData);

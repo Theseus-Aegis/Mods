@@ -16,7 +16,7 @@
  */
 
 if (GVAR(selectedCategory) == "kits") exitWith {
-    call FUNC(dialogControl_kitItems);
+    [] call FUNC(dialogControl_kitItems);
 };
 
 [GVAR(armoryData)] call FUNC(dialogControl_populateList);

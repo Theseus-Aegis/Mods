@@ -20,6 +20,7 @@ GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 call FUNC(hideMessage);
 
 // Stash All, in the Stash screen with Chronos
+[STASHALLBTN, LLSTRING(BtnStashAll), QUOTE(call FUNC(stashAll)), LLSTRING(BtnStashAllTooltip)] call FUNC(setButton);
 {
     ctrlShow [_x, _selectedCategory == "stash" && {GVAR(system) == 1}];
 } forEach [STASHALLFRAME, STASHALLBTN];

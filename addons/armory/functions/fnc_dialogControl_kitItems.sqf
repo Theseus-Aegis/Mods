@@ -1,10 +1,11 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Lists the selected kit's items: name and "in locker / in kit" (short ones in red).
+ * Lists the selected kit's items: name and "in locker / in kit" (short ones in red). One can be taken on its own
+ * (TAKE, FUNC(dialogControl_takestash)).
  *
  * Arguments:
- * None
+ * 0: Row to select <NUMBER> (default: -1, none)
  *
  * Return Value:
  * None
@@ -14,6 +15,8 @@
  *
  * Public: No
  */
+
+params [["_select", -1]];
 
 lnbClear NLIST;
 private _kit = GVAR(kits) param [lbCurSel DROPDOWN, []];
@@ -42,10 +45,15 @@ _kit params [["_kitID", -1], "", "", ["_items", []]];
     private _row = lnbAddRow [NLIST, ["", _displayName, format ["%1/%2", _inLocker min _quantity, _quantity]]];
     lbSetTooltip [NLIST, _row * 3, _tooltip];
     lnbSetData [NLIST, [_row, 1], _className];
+    lnbSetData [NLIST, [_row, 2], str _inLocker]; // how many can be taken (FUNC(dialogControl_amountSelection))
     lnbSetPicture [NLIST, [_row, 0], _picture];
     if (_inLocker < _quantity) then {
         lnbSetColor [NLIST, [_row, 2], [1, 0.35, 0.35, 1]];
     };
 } forEach _items;
 
+if (_select >= 0 && {_select < count _items}) then {
+    lnbSetCurSelRow [NLIST, _select]; // fires onLBSelChanged (the amount, TAKE)
+};
+call FUNC(dialogControl_amountSelection);
 call FUNC(dialogControl_takestash);

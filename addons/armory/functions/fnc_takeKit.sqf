@@ -41,7 +41,7 @@ TRACE_3("Take kit",_kitID,_name,_missing);
 
 {
     ctrlShow [_x, false];
-} forEach [TAKESTASHFRAME, TAKESTASHBTN]; // until the kits are refreshed (lockerKitTaken)
+} forEach [STASHALLFRAME, STASHALLBTN, TAKESTASHFRAME, TAKESTASHBTN]; // until the kits are refreshed (lockerKitTaken)
 
 if (_missing isNotEqualTo []) then {
     [LLSTRING(MsgKitIncomplete), [format [LLSTRING(MsgKitIncompleteText), _name]] + _missing, true, "kits"] call FUNC(showMessage);

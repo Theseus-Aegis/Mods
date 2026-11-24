@@ -15,13 +15,20 @@
  * Public: No
  */
 
-// Kits: Take kit, when the locker has anything of it
+// Kits: Take kit (where Stash All is), when the locker has anything of it, and Take the selected item, when the
+// locker has it
 if (GVAR(selectedCategory) == "kits") exitWith {
     private _items = (GVAR(kits) param [lbCurSel DROPDOWN, []]) param [3, []];
     private _takeable = _items findIf {(_x select 2) > 0} != -1;
-    [TAKESTASHBTN, LLSTRING(BtnTakeKit), QUOTE(call FUNC(takeKit)), LLSTRING(BtnTakeKitTooltip)] call FUNC(setButton);
+    [STASHALLBTN, LLSTRING(BtnTakeKit), QUOTE(call FUNC(takeKit)), LLSTRING(BtnTakeKitTooltip)] call FUNC(setButton);
     {
         ctrlShow [_x, _takeable];
+    } forEach [STASHALLFRAME, STASHALLBTN];
+
+    private _itemTakeable = lnbCurSelRow NLIST >= 0 && {lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] != ""};
+    [TAKESTASHBTN, LLSTRING(BtnTakeItem), QUOTE(['take'] call FUNC(processAction)), LLSTRING(BtnTakeItemTooltip)] call FUNC(setButton);
+    {
+        ctrlShow [_x, _itemTakeable];
     } forEach [TAKESTASHFRAME, TAKESTASHBTN];
 };
 

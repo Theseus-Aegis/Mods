@@ -15,10 +15,7 @@
  * Public: No
  */
 
-if (GVAR(selectedCategory) == "kits") exitWith {}; // a kit is taken whole
-
-private _quantity = CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2];
-_quantity = parseNumber _quantity;
+private _quantity = parseNumber (CTRL(NLIST) lnbData [lnbCurSelRow NLIST, 2]);
 TRACE_1("Amount of selected item",_quantity);
 
 lbClear DROPDOWNAMOUNT;
@@ -32,8 +29,7 @@ for "_x" from 1 to _quantity do {
 if (GVAR(selectedCategory) == "stash") then {
     lbSetCurSel [DROPDOWNAMOUNT, _quantity - 1];
 } else {
-
     lbSetCurSel [DROPDOWNAMOUNT, 0];
 };
 
-ctrlShow [DROPDOWNAMOUNT, true];
+ctrlShow [DROPDOWNAMOUNT, _quantity > 0];

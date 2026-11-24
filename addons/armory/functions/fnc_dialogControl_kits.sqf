@@ -24,7 +24,7 @@ call FUNC(hideMessage);
 } forEach [DROPDOWN, NLIST];
 {
     ctrlShow [_x, false];
-} forEach [AMOUNT, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN];
+} forEach [AMOUNT, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN, STASHALLFRAME, STASHALLBTN];
 
 GVAR(kits) = [];
 if (GVAR(system) == 1) then {

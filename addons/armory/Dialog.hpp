@@ -363,7 +363,7 @@ class GVAR(Display) {
             y = QUOTE(BTN_Y_RE);
         };
 
-        // Stash All
+        // Stash All (Stash), TAKE an item (Kits): set by FUNC(dialogControl_list) and FUNC(dialogControl_takestash)
         class StashAll_Frame_C1_RE2: GVAR(RscFrame) {
             idc = STASHALLFRAME;
             x = QUOTE(BTN_X_C1);
@@ -371,11 +371,8 @@ class GVAR(Display) {
         };
         class StashAll_Btn_C1_RE2: GVAR(RscButton) {
             idc = STASHALLBTN;
-            onMouseButtonClick = QUOTE(call FUNC(stashAll));
-            text = CSTRING(BtnStashAll);
             x = QUOTE(BTN_X_C1);
             y = QUOTE(BTN_Y_RE2);
-            tooltip = CSTRING(BtnStashAllTooltip);
         };
 
         // MAIN MENU ONLY
