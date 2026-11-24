@@ -17,6 +17,7 @@
 
 params [["_select", 0]];
 GVAR(selectedCategory) = "kits";
+call FUNC(hideMessage);
 
 {
     ctrlShow [_x, true];
@@ -33,13 +34,24 @@ if (GVAR(system) == 1) then {
     private _result = ["loadKits", [getPlayerUID player, EGVAR(apollo,liveApi)]] call EFUNC(apollo,callExt);
     if (isNil "_result") exitWith {
         ERROR("Kits failed to load!");
-        [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
+        GVAR(kits) = nil;
     };
     TRACE_1("Kits",_result);
     GVAR(kits) = _result;
 };
 
 lbClear DROPDOWN;
+lnbClear NLIST;
+if (isNil QGVAR(kits)) exitWith {
+    GVAR(kits) = [];
+    ctrlShow [DROPDOWN, false];
+    [LLSTRING(MsgOffline), [LLSTRING(MsgOfflineText), LLSTRING(MsgOfflineHelp), LLSTRING(MsgContactStaff)]] call FUNC(showMessage);
+};
+if (GVAR(kits) isEqualTo []) exitWith {
+    ctrlShow [DROPDOWN, false];
+    [LLSTRING(MsgNoKits), [LLSTRING(MsgNoKitsText), LLSTRING(MsgNoKitsWhere)]] call FUNC(showMessage);
+};
+
 {
     _x params ["", "_name", "_ready", "_items"];
     private _missing = 0;
@@ -51,10 +63,6 @@ lbClear DROPDOWN;
     lbAdd [DROPDOWN, format ["%1 (%2)", _name, _status]];
     lbSetTooltip [DROPDOWN, _forEachIndex, _name];
 } forEach GVAR(kits);
-
-if (GVAR(kits) isEqualTo []) then {
-    lbAdd [DROPDOWN, LLSTRING(NoKits)];
-};
 
 lbSetCurSel [DROPDOWN, (_select min (count GVAR(kits) - 1)) max 0]; // will not fire onLBSelChanged
 call FUNC(dialogControl_kitItems);

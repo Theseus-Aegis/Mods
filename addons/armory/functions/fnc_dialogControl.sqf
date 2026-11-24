@@ -33,6 +33,9 @@ if (_requestedMenu == "main") exitWith {
         EXPORTPIC, EXPORTBTN
     ];
 
+    GVAR(selectedCategory) = "main"; // no list: nothing refreshes it (XEH_postInitClient), messages go to hints
+    GVAR(messageDismissable) = false;
+
     // Set Title
     ctrlSetText [TITLE, LLSTRING(TitleMain)];
 

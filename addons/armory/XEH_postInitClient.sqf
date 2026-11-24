@@ -50,17 +50,18 @@ if (!hasInterface) exitWith {};
         if (_displayName == "") then { _displayName = getText ((_x call CBA_fnc_getObjectConfig) >> "displayName"); };
         [_displayName, _x] select (_displayName == "")
     };
-    [format [localize LSTRING(StashedAllLeft), _names joinString ", "], 4] call ACEFUNC(common,displayTextStructured);
+    [LLSTRING(MsgNotStashed), [LLSTRING(MsgNotStashedText)] + _names + [LLSTRING(MsgNotStashedLeft)], true, "stash"] call FUNC(showMessage);
 }] call CBA_fnc_addEventHandler;
 
 // Kit taken (or refused): refresh the kits, as the locker has changed
 [QEGVAR(apollo,lockerKitTaken), {
     params ["_player", "_success"];
-    if (!_success) then {
-        [LSTRING(KitTakeFailed), 2.5] call ACEFUNC(common,displayTextStructured);
-    };
-    if (!isNull (_player getVariable [QGVAR(object), objNull]) && {GVAR(selectedCategory) == "kits"}) then {
+    // Not over a message waiting for OK (which refreshes them)
+    if (!isNull (_player getVariable [QGVAR(object), objNull]) && {GVAR(selectedCategory) == "kits"} && {GVAR(messageDismissable) isNotEqualTo true}) then {
         [lbCurSel DROPDOWN] call FUNC(dialogControl_kits);
+    };
+    if (!_success) then {
+        [LLSTRING(MsgKitFailed), [LLSTRING(MsgKitFailedText), LLSTRING(MsgTryAgain)], true, "kits"] call FUNC(showMessage);
     };
 }] call CBA_fnc_addEventHandler;
 

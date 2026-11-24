@@ -21,7 +21,7 @@
             <German>Auf Bekleidung zugreifen</German>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAttachments">
-            <English>ATTACHM.</English>
+            <English>ATTACHMENTS</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnAttachmentsTooltip">
             <English>Access Attachments</English>
@@ -88,6 +88,9 @@
             <French>Accéder aux lanceurs</French>
             <German>Auf Werfer zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnOk">
+            <English>OK</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnOpenCameraTooltip">
             <English>Open Camera</English>
         </Key>
@@ -143,16 +146,6 @@
         <Key ID="STR_TAC_Armory_BtnTakeKitTooltip">
             <English>Take kit (everything your locker has of it)</English>
         </Key>
-        <Key ID="STR_TAC_Armory_ChronosError">
-            <English>Chronos is unreachable!&lt;br/&gt;(Contact server administrator)</English>
-            <French>Chronos est injoignable !&lt;br/&gt;(Contactez l'administrateur du serveur)</French>
-            <German>Chronos ist nicht erreichbar!&lt;br/&gt;(Kontaktiere den Server Administrator)</German>
-        </Key>
-        <Key ID="STR_TAC_Armory_ContainerFull">
-            <English>Container is full! Make space for retrieval.</English>
-            <French>Le conteneur est plein ! Faites de la place pour la récupération.</French>
-            <German>Der Container ist voll! Schaffe Platz zum herausholen.</German>
-        </Key>
         <Key ID="STR_TAC_Armory_Description">
             <English>Enable Armroy Locker on this object.</English>
             <French>Active l'armurerie sur cet objet.</French>
@@ -172,14 +165,8 @@
         <Key ID="STR_TAC_Armory_KitReady">
             <English>Ready</English>
         </Key>
-        <Key ID="STR_TAC_Armory_KitTakeFailed">
-            <English>Kit could not be taken!</English>
-        </Key>
         <Key ID="STR_TAC_Armory_KitTaking">
             <English>Taking kit %1</English>
-        </Key>
-        <Key ID="STR_TAC_Armory_KitTakingMissing">
-            <English>Taking kit %1&lt;br/&gt;Not in your locker: %2</English>
         </Key>
         <Key ID="STR_TAC_Armory_Locker">
             <English>[TAC] Armory Locker</English>
@@ -192,8 +179,80 @@
         <Key ID="STR_TAC_Armory_LockerClearDesc">
             <English>If enabled lockers will be automatically cleared by the server to prevent ghost items appearing</English>
         </Key>
-        <Key ID="STR_TAC_Armory_NoKits">
-            <English>No kits: prepare them on the website (Logistics, Kits)</English>
+        <Key ID="STR_TAC_Armory_MsgBoxEmpty">
+            <English>BOX EMPTY</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgBoxEmptyText">
+            <English>PUT ITEMS IN THE BOX TO STASH THEM</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgBoxFull">
+            <English>BOX FULL</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgBoxFullText">
+            <English>MAKE SPACE IN THE BOX TO TAKE MORE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgContactStaff">
+            <English>OR CONTACT STAFF</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgKitFailed">
+            <English>KIT NOT TAKEN</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgKitFailedText">
+            <English>YOUR LOCKER COULD NOT HAND IT OVER</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgKitIncomplete">
+            <English>KIT INCOMPLETE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgKitIncompleteText">
+            <English>TAKING %1 WITHOUT:</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgMore">
+            <English>AND %1 MORE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNoKits">
+            <English>NO KITS</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNoKitsText">
+            <English>PREPARE KITS ON THE WEBSITE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNoKitsWhere">
+            <English>(LOGISTICS, KITS)</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNotStashed">
+            <English>NOT ALL STASHED</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNotStashedLeft">
+            <English>THEY ARE STILL IN THE BOX</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNotStashedText">
+            <English>YOUR LOCKER DID NOT TAKE:</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNothing">
+            <English>NOTHING HERE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNothingArmory">
+            <English>THIS ARMORY HAS NONE OF THESE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNothingKind">
+            <English>NONE OF THIS KIND</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNothingKindHelp">
+            <English>PICK ANOTHER KIND ABOVE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgNothingLocker">
+            <English>YOUR LOCKER HAS NONE OF THESE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgOffline">
+            <English>NO CONNECTION</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgOfflineHelp">
+            <English>TRY AGAIN LATER</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgOfflineText">
+            <English>CHRONOS IS UNREACHABLE</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgTryAgain">
+            <English>TRY AGAIN</English>
         </Key>
         <Key ID="STR_TAC_Armory_Open">
             <English>Open Armory Locker</English>
@@ -207,9 +266,6 @@
         </Key>
         <Key ID="STR_TAC_Armory_StashedAll">
             <English>Everything stashed</English>
-        </Key>
-        <Key ID="STR_TAC_Armory_StashedAllLeft">
-            <English>Stashed&lt;br/&gt;Not taken by your locker: %1</English>
         </Key>
         <Key ID="STR_TAC_Armory_StashingAll">
             <English>Stashing everything...</English>

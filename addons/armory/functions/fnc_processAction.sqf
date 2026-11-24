@@ -41,7 +41,7 @@ if (isNull _object) exitWith {
 
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
-    [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
+    [LLSTRING(MsgBoxFull), [LLSTRING(MsgBoxFullText)], true] call FUNC(showMessage);
 };
 
 // Switch scripted optics and accessories (CBA) to base variants

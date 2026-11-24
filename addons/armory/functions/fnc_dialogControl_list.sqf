@@ -17,6 +17,7 @@
 
 params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
+call FUNC(hideMessage);
 
 // Stash All, in the Stash screen with Chronos
 {
@@ -41,6 +42,10 @@ if (_selectedCategory == "stash") then {
         _armoryData = [_selectedCategory] call FUNC(getDataChronos);
         if (_armoryData isEqualTo false) exitWith {
             _exit = true;
+            lbClear DROPDOWN;
+            lnbClear NLIST;
+            ctrlShow [DROPDOWN, false];
+            [LLSTRING(MsgOffline), [LLSTRING(MsgOfflineText), LLSTRING(MsgOfflineHelp), LLSTRING(MsgContactStaff)]] call FUNC(showMessage);
         };
     };
 };

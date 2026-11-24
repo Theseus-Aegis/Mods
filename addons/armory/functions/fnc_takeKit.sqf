@@ -46,5 +46,5 @@ TRACE_3("Take kit",_kitID,_name,_missing);
 if (_missing isEqualTo []) then {
     [format [LLSTRING(KitTaking), _name], 2.5] call ACEFUNC(common,displayTextStructured);
 } else {
-    [format [LLSTRING(KitTakingMissing), _name, _missing joinString ", "], 4] call ACEFUNC(common,displayTextStructured);
+    [LLSTRING(MsgKitIncomplete), [format [LLSTRING(MsgKitIncompleteText), _name]] + _missing, true, "kits"] call FUNC(showMessage);
 };

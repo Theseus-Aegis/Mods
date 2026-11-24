@@ -30,6 +30,5 @@ if (!isNil "_result") then {
     _result
 } else {
     ERROR("Armory data failed to load!");
-    [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
-    false
+    false // shown on the pad (FUNC(dialogControl_list))
 };

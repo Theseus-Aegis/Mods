@@ -23,6 +23,8 @@ _object setVariable [QGVAR(inUse), true, true];
 // Set variable for later reference
 ACE_player setVariable [QGVAR(object), _object, true];
 
+GVAR(messageDismissable) = false;
+
 // Create display and load main menu
 createDialog QGVAR(Display);
 ["main"] call FUNC(dialogControl);

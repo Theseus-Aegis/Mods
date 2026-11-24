@@ -78,3 +78,23 @@ _armoryData sort true; // Errors when used in combination with forEach
 
 // Make global for sub-category selection (Dialog.hpp)
 GVAR(armoryData) = _armoryData;
+
+// Nothing to list: said on the pad, unless a message waits for OK
+if (GVAR(messageDismissable) isEqualTo true) exitWith {};
+if (_rowNum > 0) exitWith {
+    call FUNC(hideMessage);
+    {
+        ctrlShow [_x, true];
+    } forEach [DROPDOWN, NLIST, AMOUNT];
+};
+
+if (GVAR(selectedCategory) == "stash") exitWith {
+    ctrlShow [DROPDOWN, false];
+    [LLSTRING(MsgBoxEmpty), [LLSTRING(MsgBoxEmptyText)]] call FUNC(showMessage);
+};
+if (_armoryData findIf {(_x select 3) > 0} == -1) exitWith {
+    ctrlShow [DROPDOWN, false];
+    [LLSTRING(MsgNothing), [[LLSTRING(MsgNothingArmory), LLSTRING(MsgNothingLocker)] select (GVAR(system) == 1)]] call FUNC(showMessage);
+};
+// Only the selected kind is empty (Compatible): another can be picked
+[LLSTRING(MsgNothing), [LLSTRING(MsgNothingKind), LLSTRING(MsgNothingKindHelp)]] call FUNC(showMessage);
