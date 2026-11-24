@@ -3,7 +3,7 @@
  * Author: Jonpas
  * Stashes everything in the box into the locker (Chronos): one server event, the server stashes
  * each item as a single stash does (EFUNC(apollo,lockerStashAll)). The list refreshes when it's
- * done (lockerActionDone), with a hint of what the locker didn't take (lockerStashAllDone).
+ * done (lockerActionDone), with a message on the pad of what the locker didn't take (lockerStashAllDone).
  *
  * Arguments:
  * None
