@@ -17,7 +17,7 @@
  * None
  *
  * Example:
- * [unit, 3, "76561198000000000", "Jon"] call tac_airsafety_fnc_handleDisconnect
+ * [unit, 3, "76561198000000000", "Jon"] call tac_failsafe_fnc_handleDisconnect
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * Can resume <BOOL>
  *
  * Example:
- * call tac_airsafety_fnc_canResume
+ * call tac_failsafe_fnc_canResume
  *
  * Public: No
  */

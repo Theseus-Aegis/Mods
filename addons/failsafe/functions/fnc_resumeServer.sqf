@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [vehicle player, player] call tac_airsafety_fnc_resumeServer
+ * [vehicle player, player] call tac_failsafe_fnc_resumeServer
  *
  * Public: No
  */

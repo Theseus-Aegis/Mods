@@ -1,6 +1,6 @@
 # About
 
-Keeps an aircraft from crashing when the player flying it loses the connection (#395). Works in every mission, with or without Chronos.
+What a vehicle does on its own when the player flying or driving it loses the connection (#395): an aircraft is frozen in the air, a ground vehicle or boat stopped. Works in every mission, with or without Chronos.
 
 ## Aircraft
 
@@ -13,7 +13,7 @@ Keeps an aircraft from crashing when the player flying it loses the connection (
 
 When a driver leaves a vehicle moving faster than 5 km/h, it's stopped a second later, once it's local to someone else. Otherwise it rolls on with nobody steering, into whatever is ahead, with its passengers inside.
 
-## Settings (TAC Air Safety)
+## Settings (TAC Failsafe)
 
 - Freeze Aircraft on Disconnect (on)
 - Minimum Height (5 m)

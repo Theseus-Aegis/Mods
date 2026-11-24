@@ -11,7 +11,7 @@
  * Co-pilot <BOOL>
  *
  * Example:
- * [vehicle player, player] call tac_airsafety_fnc_isCopilot
+ * [vehicle player, player] call tac_failsafe_fnc_isCopilot
  *
  * Public: No
  */

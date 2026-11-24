@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call tac_airsafety_fnc_takePilotSeat
+ * call tac_failsafe_fnc_takePilotSeat
  *
  * Public: No
  */

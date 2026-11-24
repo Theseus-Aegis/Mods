@@ -10,7 +10,7 @@
  * Can take the seat <BOOL>
  *
  * Example:
- * call tac_airsafety_fnc_canTakePilotSeat
+ * call tac_failsafe_fnc_canTakePilotSeat
  *
  * Public: No
  */

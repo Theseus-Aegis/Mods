@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call tac_airsafety_fnc_resume
+ * call tac_failsafe_fnc_resume
  *
  * Public: No
  */

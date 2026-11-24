@@ -14,7 +14,7 @@
  * None
  *
  * Example:
- * [player, "76561198000000000"] call tac_airsafety_fnc_handleReconnect
+ * [player, "76561198000000000"] call tac_failsafe_fnc_handleReconnect
  *
  * Public: No
  */
