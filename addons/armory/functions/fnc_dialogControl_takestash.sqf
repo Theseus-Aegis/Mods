@@ -19,9 +19,7 @@
 if (GVAR(selectedCategory) == "kits") exitWith {
     private _items = (GVAR(kits) param [lbCurSel DROPDOWN, []]) param [3, []];
     private _takeable = _items findIf {(_x select 2) > 0} != -1;
-    ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnTake.paa)];
-    buttonSetAction [TAKESTASHBTN, QUOTE(call FUNC(takeKit))];
-    CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnTakeKitTooltip);
+    [TAKESTASHPIC, TAKESTASHBTN, LSTRING(BtnTakeKit), QUOTE(call FUNC(takeKit)), LSTRING(BtnTakeKitTooltip)] call FUNC(setButton);
     {
         ctrlShow [_x, _takeable];
     } forEach [TAKESTASHPIC, TAKESTASHBTN];
@@ -36,14 +34,10 @@ if (lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] == "") exitWith {
 
 if (GVAR(selectedCategory) == "stash") then {
     // Stash
-    ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnStash.paa)];
-    buttonSetAction [TAKESTASHBTN, QUOTE(['stash'] call FUNC(processAction))];
-    CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnStashItemTooltip);
+    [TAKESTASHPIC, TAKESTASHBTN, LSTRING(BtnStashItem), QUOTE(['stash'] call FUNC(processAction)), LSTRING(BtnStashItemTooltip)] call FUNC(setButton);
 } else {
     // Take
-    ctrlSetText [TAKESTASHPIC, QPATHTOF(UI\btnTake.paa)];
-    buttonSetAction [TAKESTASHBTN, QUOTE(['take'] call FUNC(processAction))];
-    CTRL(TAKESTASHBTN) ctrlSetTooltip localize LSTRING(BtnTakeItemTooltip);
+    [TAKESTASHPIC, TAKESTASHBTN, LSTRING(BtnTakeItem), QUOTE(['take'] call FUNC(processAction)), LSTRING(BtnTakeItemTooltip)] call FUNC(setButton);
 };
 
 {

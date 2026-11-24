@@ -34,7 +34,7 @@ if (_requestedMenu == "main") exitWith {
     ];
 
     // Set Title
-    ctrlSetText [TITLE, format[QPATHTOF(UI\title_%1.paa), _requestedMenu]];
+    ctrlSetText [TITLE, localize LSTRING(TitleMain)];
 
     // Show Main
     [true] call FUNC(dialogControl_main);
@@ -49,13 +49,13 @@ if (_requestedMenu == "main") exitWith {
 
 // Kits (prepared on the website)
 if (_requestedMenu == "kits") exitWith {
-    ctrlSetText [TITLE, QPATHTOF(UI\title_Main.paa)]; // TODO: own title picture
+    ctrlSetText [TITLE, localize LSTRING(TitleKits)];
     [] call FUNC(dialogControl_kits);
     ["back"] call FUNC(dialogControl_back);
 };
 
 // Set Title
-ctrlSetText [TITLE, format [QPATHTOF(UI\titleCategory_%1.paa), _requestedMenu]];
+ctrlSetText [TITLE, localize format [LSTRING(Title_%1), _requestedMenu]];
 
 // Show List
 [_requestedMenu] call FUNC(dialogControl_list);

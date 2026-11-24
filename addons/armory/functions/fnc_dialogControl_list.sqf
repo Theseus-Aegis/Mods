@@ -24,7 +24,6 @@ GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
 } forEach [STASHALLPIC, STASHALLBTN];
 
 // Show Dropdown, Amount and List
-ctrlSetText [AMOUNT, QPATHTOF(UI\textAmount.paa)];
 {
     ctrlShow [_x, true];
 } forEach [DROPDOWN, AMOUNT, NLIST];

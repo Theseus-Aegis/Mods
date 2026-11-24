@@ -30,6 +30,17 @@
 // Col 3
 #define PIC_X_C3 PIC_X + 0.36
 #define BTN_X_C3 PIC_X_C3
+// Bottom row's middle (Stash All): between Back and Take/Stash, which are 0.36 apart
+#define PIC_X_C2_RE PIC_X + 0.18
+#define BTN_X_C2_RE PIC_X_C2_RE
+
+// Text: Arma's 14-segment LCD font, black on the pad's screen, no shadow
+#define TEXT_FONT "LCD14"
+#define TEXT_COLOR {0, 0, 0, 0.9}
+#define TEXT_COLOR_DISABLED {0, 0, 0, 0.4}
+#define BTN_TEXT_SIZE H_PART(1)
+#define TITLE_TEXT_SIZE H_PART(1.2)
+#define LABEL_TEXT_SIZE H_PART(0.9)
 
 // Offsets
 #define OFFSET_Y_R2 0.11
@@ -49,6 +60,7 @@
 #define ST_MULTI 16
 #define ST_PICTURE 48
 #define ST_LEFT 0x00
+#define ST_VCENTER 0x0C
 #define LB_TEXTURES 0x10
 
 class ctrlStatic;
@@ -66,13 +78,27 @@ class GVAR(RscPicture) {
     h = QUOTE(PIC_H);
 };
 
+// Text on the pad's screen (titles, labels)
+class GVAR(RscText) {
+    idc = -1;
+    type = CT_STATIC;
+    style = QUOTE(ST_LEFT + ST_VCENTER);
+    text = "";
+    colorText[] = TEXT_COLOR;
+    colorBackground[] = {0, 0, 0, 0};
+    font = TEXT_FONT;
+    sizeEx = QUOTE(LABEL_TEXT_SIZE);
+    shadow = 0;
+};
+
+// Over its picture (GVAR(RscPicture): a frame, UI\btnFrame.paa, or an icon): the label as text, or none
 class GVAR(RscButton) {
     idc = -1;
     type = CT_BUTTON;
-    style = ST_PICTURE;
-    colorText[] = {1, 1, 1, 0};
-    colorFocused[] = {1, 1, 1, 0};
-    colorDisabled[] = {1, 1, 1, 0};
+    style = QUOTE(ST_LEFT + ST_VCENTER);
+    colorText[] = TEXT_COLOR;
+    colorFocused[] = TEXT_COLOR;
+    colorDisabled[] = TEXT_COLOR_DISABLED;
     colorBackground[] = {1, 1, 1, 0};
     colorBackgroundDisabled[] = {0, 0, 0, 0};
     colorBackgroundActive[] = {0, 0, 0, 0.25};
@@ -87,8 +113,9 @@ class GVAR(RscButton) {
     offsetY = 0;
     offsetPressedX = 0;
     offsetPressedY = 0;
-    font = "RobotoCondensed";
-    sizeEx = 0.02;
+    font = TEXT_FONT;
+    sizeEx = QUOTE(BTN_TEXT_SIZE);
+    shadow = 0;
     text = "";
     w = QUOTE(BTN_W);
     h = QUOTE(BTN_H);
@@ -186,12 +213,13 @@ class GVAR(Display) {
     };
     class controls {
         // Title
-        class Title: GVAR(RscPicture) {
+        class Title: GVAR(RscText) {
             idc = TITLE;
-            x = QUOTE(X_PART(11.4));
+            sizeEx = QUOTE(TITLE_TEXT_SIZE);
+            x = QUOTE(X_PART(11.15));
             y = QUOTE(Y_PART(0.4));
-            w = QUOTE(W_PART(16));
-            h = QUOTE(H_PART(1.1));
+            w = QUOTE(W_PART(17));
+            h = QUOTE(H_PART(1.3));
         };
 
         // Dropdown Menu
@@ -205,8 +233,9 @@ class GVAR(Display) {
         };
 
         // Amount
-        class Amount: GVAR(RscPicture) {
+        class Amount: GVAR(RscText) {
             idc = AMOUNT;
+            text = CSTRING(Amount);
             x = QUOTE(X_PART(25));
             y = QUOTE(Y_PART(3.9));
             w = QUOTE(W_PART(4));
@@ -260,14 +289,15 @@ class GVAR(Display) {
         // Stash All
         class StashAll_Pic_C2_RE: GVAR(RscPicture) {
             idc = STASHALLPIC;
-            x = QUOTE(PIC_X_C2);
+            x = QUOTE(PIC_X_C2_RE);
             y = QUOTE(PIC_Y + OFFSET_Y_RE);
-            text = QPATHTOF(UI\btnStash.paa);
+            text = BUTTON_FRAME;
         };
         class StashAll_Btn_C2_RE: GVAR(RscButton) {
             idc = STASHALLBTN;
             onMouseButtonClick = QUOTE(call FUNC(stashAll));
-            x = QUOTE(BTN_X_C2);
+            text = CSTRING(BtnStashAll);
+            x = QUOTE(BTN_X_C2_RE);
             y = QUOTE(BTN_Y + OFFSET_Y_RE);
             tooltip = CSTRING(BtnStashAllTooltip);
         };

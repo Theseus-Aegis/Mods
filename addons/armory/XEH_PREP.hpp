@@ -28,6 +28,7 @@ PREP(onKeyDown);
 PREP(openArmory);
 PREP(openCamera);
 PREP(processAction);
+PREP(setButton);
 PREP(stashAll);
 PREP(subtractData);
 PREP(takeKit);

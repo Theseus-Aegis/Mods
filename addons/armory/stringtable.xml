@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="TAC">
     <Package name="Armory">
+        <Key ID="STR_TAC_Armory_Amount">
+            <English>AMOUNT</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnAmmo">
+            <English>AMMO</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnAmmoTooltip">
             <English>Access Ammo</English>
             <French>Accéder aux munitions</French>
             <German>Auf Munition zugreifen</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnApparel">
+            <English>WEARABLES</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnApparelTooltip">
             <English>Access Apparel</English>
             <French>Accéder aux vêtements</French>
             <German>Auf Bekleidung zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnAttachments">
+            <English>ATTACHM.</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnAttachmentsTooltip">
             <English>Access Attachments</English>
             <French>Accéder aux accessoires</French>
             <German>Auf Waffenaufsätze zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnBack">
+            <English>BACK</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnBackTooltip">
             <English>Back to Main Menu</English>
             <French>Retour au menu principal</French>
             <German>Zurück zum Hauptmenü</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnBackpacks">
+            <English>BACKPACKS</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnBackpacksTooltip">
             <English>Access Backpacks</English>
@@ -29,6 +47,9 @@
         <Key ID="STR_TAC_Armory_BtnCloseCameraTooltip">
             <English>Close Camera</English>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnExit">
+            <English>EXIT</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnExitTooltip">
             <English>Exit Armory</English>
             <French>Quitter l'armurerie</French>
@@ -37,18 +58,30 @@
         <Key ID="STR_TAC_Armory_BtnExportTooltip">
             <English>Export loadout to clipboard</English>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnInsignias">
+            <English>INSIGNIAS</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnInsigniasTooltip">
             <English>Access Insignias</English>
             <French>Accéder aux insignes</French>
             <German>Auf Abzeichen zugreifen</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnItems">
+            <English>ITEMS</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnItemsTooltip">
             <English>Access Items</English>
             <French>Accéder aux objets</French>
             <German>Auf Gegenstände zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnKits">
+            <English>KITS</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnKitsTooltip">
             <English>Kits (prepared on the website)</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnLaunchers">
+            <English>LAUNCHERS</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnLaunchersTooltip">
             <English>Access Launchers</English>
@@ -58,18 +91,33 @@
         <Key ID="STR_TAC_Armory_BtnOpenCameraTooltip">
             <English>Open Camera</English>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnPistols">
+            <English>PISTOLS</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnPistolsTooltip">
             <English>Access Pistols</English>
             <French>Accéder aux pistolets</French>
             <German>Auf Pistolen zugreifen</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnRifles">
+            <English>RIFLES</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnRiflesTooltip">
             <English>Access Rifles</English>
             <French>Accéder aux fusils</French>
             <German>Auf Gewehre zugreifen</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnStash">
+            <English>STASH</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnStashAll">
+            <English>STASH ALL</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnStashAllTooltip">
             <English>Stash everything in the container</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnStashItem">
+            <English>STASH</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnStashItemTooltip">
             <English>Stash selected item</English>
@@ -81,10 +129,16 @@
             <French>Ranger le contenu du conteneur</French>
             <German>Containerinhalt wegpacken</German>
         </Key>
+        <Key ID="STR_TAC_Armory_BtnTakeItem">
+            <English>TAKE</English>
+        </Key>
         <Key ID="STR_TAC_Armory_BtnTakeItemTooltip">
             <English>Take selected item</English>
             <French>Prendre l'objet sélectionné</French>
             <German>Ausgewählten Gegenstand nehmen</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_BtnTakeKit">
+            <English>TAKE KIT</English>
         </Key>
         <Key ID="STR_TAC_Armory_BtnTakeKitTooltip">
             <English>Take kit (everything your locker has of it)</English>
@@ -179,6 +233,42 @@
             <English>None (Vanilla)</English>
             <French>Aucun (vanilla)</French>
             <German>Keine (Vanilla)</German>
+        </Key>
+        <Key ID="STR_TAC_Armory_TitleKits">
+            <English>KITS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_TitleMain">
+            <English>MAIN MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_ammo">
+            <English>AMMO MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_attachment">
+            <English>ATTACHMENTS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_backpack">
+            <English>BACKPACKS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_insignia">
+            <English>INSIGNIAS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_item">
+            <English>ITEMS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_launcher">
+            <English>LAUNCHERS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_pistol">
+            <English>PISTOLS MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_rifle">
+            <English>RIFLES MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_stash">
+            <English>STASH MENU</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_Title_wearable">
+            <English>WEARABLES MENU</English>
         </Key>
     </Package>
 </Project>

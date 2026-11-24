@@ -90,6 +90,8 @@
 
 // MACROS
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)
+// Every text button's picture: its frame (the label is the button's text, FUNC(setButton))
+#define BUTTON_FRAME QPATHTOF(UI\btnFrame.paa)
 
 
 // CONSTANTS
