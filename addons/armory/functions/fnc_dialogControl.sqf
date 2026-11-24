@@ -33,7 +33,7 @@ if (_requestedMenu == "main") exitWith {
         EXPORTPIC, EXPORTBTN
     ];
 
-    GVAR(selectedCategory) = "main"; // no list: nothing refreshes it (XEH_postInitClient), messages go to hints
+    GVAR(selectedCategory) = "main"; // no list: nothing refreshes it (XEH_postInitClient); only Export shows a message here, other messages go to hints
     GVAR(messageDismissable) = false;
 
     // Set Title

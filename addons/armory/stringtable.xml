@@ -156,17 +156,11 @@
             <French>Armurerie</French>
             <German>Waffenkammer</German>
         </Key>
-        <Key ID="STR_TAC_Armory_ExportComplete">
-            <English>Loadout exported to clipboard!</English>
-        </Key>
         <Key ID="STR_TAC_Armory_KitMissing">
             <English>%1 missing</English>
         </Key>
         <Key ID="STR_TAC_Armory_KitReady">
             <English>Ready</English>
-        </Key>
-        <Key ID="STR_TAC_Armory_KitTaking">
-            <English>Taking kit %1</English>
         </Key>
         <Key ID="STR_TAC_Armory_Locker">
             <English>[TAC] Armory Locker</English>
@@ -193,6 +187,12 @@
         </Key>
         <Key ID="STR_TAC_Armory_MsgContactStaff">
             <English>OR CONTACT STAFF</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgExported">
+            <English>LOADOUT EXPORTED</English>
+        </Key>
+        <Key ID="STR_TAC_Armory_MsgExportedText">
+            <English>COPIED TO THE CLIPBOARD</English>
         </Key>
         <Key ID="STR_TAC_Armory_MsgKitFailed">
             <English>KIT NOT TAKEN</English>
@@ -263,12 +263,6 @@
             <English>Show only items compatible with equipped weapons.</English>
             <French>Montrer seulement les objets compatibles avec les armes équipées.</French>
             <German>Zeige nur Gegenstände, die mit ausgerüsteten Waffen kompatibel sind.</German>
-        </Key>
-        <Key ID="STR_TAC_Armory_StashedAll">
-            <English>Everything stashed</English>
-        </Key>
-        <Key ID="STR_TAC_Armory_StashingAll">
-            <English>Stashing everything...</English>
         </Key>
         <Key ID="STR_TAC_Armory_System">
             <English>System</English>

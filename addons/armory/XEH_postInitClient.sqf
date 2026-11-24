@@ -42,9 +42,7 @@ if (!hasInterface) exitWith {};
 // Stash All done: what the locker didn't take is still in the box
 [QEGVAR(apollo,lockerStashAllDone), {
     params ["_player", "_left"];
-    if (_left isEqualTo []) exitWith {
-        [LSTRING(StashedAll), 2.5] call ACEFUNC(common,displayTextStructured);
-    };
+    if (_left isEqualTo []) exitWith {}; // the list shows it
     private _names = _left apply {
         private _displayName = getText ((_x call CBA_fnc_getItemConfig) >> "displayName");
         if (_displayName == "") then { _displayName = getText ((_x call CBA_fnc_getObjectConfig) >> "displayName"); };
