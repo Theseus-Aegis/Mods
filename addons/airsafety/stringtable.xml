@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="TAC">
+    <Package name="AirSafety">
+        <Key ID="STR_TAC_AirSafety_Enabled">
+            <English>Freeze Aircraft on Disconnect</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_EnabledDesc">
+            <English>Freezes an aircraft in the air when the player flying it loses the connection, so it doesn't crash with its crew. The pilot (back in the seat on reconnect), the co-pilot or whoever takes the pilot's seat resumes the flight with self-interaction.</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_Frozen">
+            <English>%1 lost the connection: the aircraft is frozen. The pilot or co-pilot resumes the flight with self-interaction.</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_GroundVehicles">
+            <English>Stop Ground Vehicles on Disconnect</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_GroundVehiclesDesc">
+            <English>Stops a moving ground vehicle or boat when its driver loses the connection, so it doesn't roll on uncontrolled with its passengers.</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_MinHeight">
+            <English>Minimum Height</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_MinHeightDesc">
+            <English>An aircraft lower than this (m above the ground or sea) when its pilot leaves isn't frozen: it's landed or landing.</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_Resume">
+            <English>Resume Flight</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_Resuming">
+            <English>Resuming flight...</English>
+        </Key>
+        <Key ID="STR_TAC_AirSafety_TakePilotSeat">
+            <English>Take Pilot's Seat</English>
+        </Key>
+    </Package>
+</Project>
