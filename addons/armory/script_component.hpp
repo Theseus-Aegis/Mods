@@ -92,6 +92,8 @@
 #define CTRL(var) ((findDisplay DISPLAYID) displayCtrl var)
 // Every text button's picture: its frame (the label is the button's text, FUNC(setButton))
 #define BUTTON_FRAME QPATHTOF(UI\btnFrame.paa)
+// A frame control's style (GVAR(RscFrame), Dialog.hpp): drawn by the game, takes no picture
+#define ST_FRAME 64
 
 
 // CONSTANTS

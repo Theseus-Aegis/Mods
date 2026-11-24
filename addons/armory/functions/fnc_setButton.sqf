@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Jonpas
- * Sets up a text button: its frame (the picture under it), its label (in the pad's LCD font, see Dialog.hpp),
+ * Sets up a text button: its frame (the picture under it, unless the game draws it), its label (in the pad's LCD font, see Dialog.hpp),
  * what it does and its tooltip.
  *
  * Arguments:
@@ -22,7 +22,10 @@
 
 params ["_picture", "_button", "_label", "_action", "_tooltip"];
 
-ctrlSetText [_picture, BUTTON_FRAME];
+// A frame drawn by the game (GVAR(RscFrame)) takes no picture: its text would be a caption in its border
+if (ctrlStyle CTRL(_picture) != ST_FRAME) then {
+    ctrlSetText [_picture, BUTTON_FRAME];
+};
 ctrlSetText [_button, localize _label];
 buttonSetAction [_button, _action];
 CTRL(_button) ctrlSetTooltip localize _tooltip;

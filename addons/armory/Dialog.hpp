@@ -91,6 +91,22 @@ class GVAR(RscText) {
     shadow = 0;
 };
 
+// A button's frame drawn by the game instead of btnFrame.paa (on trial: only the Rifles button uses it): a 1 px
+// rectangle in colorText, as wide as the button (the picture's frame only covers the button's part of it too)
+class GVAR(RscFrame) {
+    idc = -1;
+    type = CT_STATIC;
+    style = ST_FRAME;
+    text = "";
+    colorText[] = {0, 0, 0, 0.76};
+    colorBackground[] = {0, 0, 0, 0};
+    font = TEXT_FONT;
+    sizeEx = QUOTE(H_PART(0.5));
+    shadow = 0;
+    w = QUOTE(BTN_W);
+    h = QUOTE(BTN_H);
+};
+
 // Over its picture (GVAR(RscPicture): a frame, UI\btnFrame.paa, or an icon): the label as text, or none
 class GVAR(RscButton) {
     idc = -1;
@@ -305,7 +321,7 @@ class GVAR(Display) {
         // MAIN MENU ONLY
         /* Column 1 */
         // Row 1
-        class Main_Pic_C1_R1: GVAR(RscPicture) {
+        class Main_Pic_C1_R1: GVAR(RscFrame) { // on trial: the game's frame instead of btnFrame.paa
             idc = MAINPIC1;
             x = QUOTE(PIC_X_C1);
             y = QUOTE(PIC_Y);
