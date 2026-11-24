@@ -23,6 +23,11 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     false
 };
 
+// Single player (the editor) has no Steam ID, so an empty locker
+if (getPlayerUID player == "_SP_PLAYER_") exitWith {
+    []
+};
+
 private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,liveApi)]] call EFUNC(apollo,callExt);
 
 if (!isNil "_result") then {
