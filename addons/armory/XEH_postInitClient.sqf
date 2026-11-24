@@ -34,7 +34,7 @@ if (!hasInterface) exitWith {};
             [_boxContents] call FUNC(updateData);
             {
                 ctrlShow [_x, GVAR(system) == 1];
-            } forEach [STASHALLPIC, STASHALLBTN];
+            } forEach [STASHALLFRAME, STASHALLBTN];
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;

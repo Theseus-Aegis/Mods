@@ -41,7 +41,7 @@ TRACE_3("Take kit",_kitID,_name,_missing);
 
 {
     ctrlShow [_x, false];
-} forEach [TAKESTASHPIC, TAKESTASHBTN]; // until the kits are refreshed (lockerKitTaken)
+} forEach [TAKESTASHFRAME, TAKESTASHBTN]; // until the kits are refreshed (lockerKitTaken)
 
 if (_missing isEqualTo []) then {
     [format [LLSTRING(KitTaking), _name], 2.5] call ACEFUNC(common,displayTextStructured);

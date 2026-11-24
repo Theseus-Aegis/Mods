@@ -25,7 +25,7 @@ for "_x" from STARTPROJECTID to ENDPROJECTID do {
 // Show camera controls
 {
     ctrlShow [_x, true];
-} forEach [CAMERAAREA, CAMERAHINT, CAMERAEXIT];
+} forEach [CAMERAAREA, CAMERAFRAME, CAMERAHINT, CAMERAEXIT];
 
 // Prepare
 ACEGVAR(arsenal,center) = ACE_player;

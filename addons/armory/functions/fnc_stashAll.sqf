@@ -28,6 +28,6 @@ ACE_player setVariable [QGVAR(lastStashTime), CBA_missionTime];
 
 {
     ctrlShow [_x, false];
-} forEach [TAKESTASHPIC, TAKESTASHBTN, STASHALLPIC, STASHALLBTN]; // until the list is refreshed
+} forEach [TAKESTASHFRAME, TAKESTASHBTN, STASHALLFRAME, STASHALLBTN]; // until the list is refreshed
 
 [LSTRING(StashingAll), 2.5] call ACEFUNC(common,displayTextStructured);

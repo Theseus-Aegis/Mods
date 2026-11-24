@@ -19,27 +19,27 @@
 if (GVAR(selectedCategory) == "kits") exitWith {
     private _items = (GVAR(kits) param [lbCurSel DROPDOWN, []]) param [3, []];
     private _takeable = _items findIf {(_x select 2) > 0} != -1;
-    [TAKESTASHPIC, TAKESTASHBTN, LLSTRING(BtnTakeKit), QUOTE(call FUNC(takeKit)), LLSTRING(BtnTakeKitTooltip)] call FUNC(setButton);
+    [TAKESTASHBTN, LLSTRING(BtnTakeKit), QUOTE(call FUNC(takeKit)), LLSTRING(BtnTakeKitTooltip)] call FUNC(setButton);
     {
         ctrlShow [_x, _takeable];
-    } forEach [TAKESTASHPIC, TAKESTASHBTN];
+    } forEach [TAKESTASHFRAME, TAKESTASHBTN];
 };
 
 // Hide take/stash if quantity of dropdown amount selection is not set
 if (lbText [DROPDOWNAMOUNT, lbCurSel CTRL(DROPDOWNAMOUNT)] == "") exitWith {
     {
         ctrlShow [_x, false];
-    } forEach [TAKESTASHPIC, TAKESTASHBTN];
+    } forEach [TAKESTASHFRAME, TAKESTASHBTN];
 };
 
 if (GVAR(selectedCategory) == "stash") then {
     // Stash
-    [TAKESTASHPIC, TAKESTASHBTN, LLSTRING(BtnStashItem), QUOTE(['stash'] call FUNC(processAction)), LLSTRING(BtnStashItemTooltip)] call FUNC(setButton);
+    [TAKESTASHBTN, LLSTRING(BtnStashItem), QUOTE(['stash'] call FUNC(processAction)), LLSTRING(BtnStashItemTooltip)] call FUNC(setButton);
 } else {
     // Take
-    [TAKESTASHPIC, TAKESTASHBTN, LLSTRING(BtnTakeItem), QUOTE(['take'] call FUNC(processAction)), LLSTRING(BtnTakeItemTooltip)] call FUNC(setButton);
+    [TAKESTASHBTN, LLSTRING(BtnTakeItem), QUOTE(['take'] call FUNC(processAction)), LLSTRING(BtnTakeItemTooltip)] call FUNC(setButton);
 };
 
 {
     ctrlShow [_x, true];
-} forEach [TAKESTASHPIC, TAKESTASHBTN];
+} forEach [TAKESTASHFRAME, TAKESTASHBTN];

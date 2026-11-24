@@ -23,7 +23,7 @@ GVAR(selectedCategory) = "kits";
 } forEach [DROPDOWN, NLIST];
 {
     ctrlShow [_x, false];
-} forEach [AMOUNT, DROPDOWNAMOUNT, TAKESTASHPIC, TAKESTASHBTN];
+} forEach [AMOUNT, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN];
 
 GVAR(kits) = [];
 if (GVAR(system) == 1) then {

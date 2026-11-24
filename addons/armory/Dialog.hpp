@@ -12,27 +12,22 @@
 // Translate by rows and find top of grid
 #define Y_PART(num) (H_PART(num) + (safeZoneY + (safeZoneH - SIZEY) / 2))
 
-#define PIC_X X_PART(11.15)
-#define PIC_Y Y_PART(2.8)
-#define PIC_W W_PART(8.5)
-#define PIC_H H_PART(2.2)
-#define BTN_Y PIC_Y
-#define BTN_W PIC_W * 0.64
-#define BTN_W_WIDE BTN_W * 1.5
-#define BTN_H PIC_H
+// A button's cell (the size of the pictures buttons used to be, 256x64): its frame and the button take the left part
+#define CELL_W W_PART(8.5)
+#define CELL_H H_PART(2.2)
+#define BTN_X X_PART(11.15)
+#define BTN_Y Y_PART(2.8)
+#define BTN_W CELL_W * 0.64
+#define BTN_H CELL_H
 
 // Col 1
-#define PIC_X_C1 PIC_X
-#define BTN_X_C1 PIC_X_C1
+#define BTN_X_C1 BTN_X
 // Col 2
-#define PIC_X_C2 PIC_X + 0.24
-#define BTN_X_C2 PIC_X_C2
+#define BTN_X_C2 BTN_X + 0.24
 // Col 3
-#define PIC_X_C3 PIC_X + 0.36
-#define BTN_X_C3 PIC_X_C3
+#define BTN_X_C3 BTN_X + 0.36
 // Bottom row's middle (Stash All): between Back and Take/Stash, which are 0.36 apart
-#define PIC_X_C2_RE PIC_X + 0.18
-#define BTN_X_C2_RE PIC_X_C2_RE
+#define BTN_X_C2_RE BTN_X + 0.18
 
 // Text: Arma's 14-segment LCD font, black on the pad's screen, no shadow
 #define TEXT_FONT "LCD14"
@@ -42,11 +37,14 @@
 #define TITLE_TEXT_SIZE H_PART(1.2)
 #define LABEL_TEXT_SIZE H_PART(0.9)
 
-// A frame drawn by the game where btnFrame.paa draws its lines: at pixels 2 and 162 of 256 across, 2 and 61 of 64 down
-#define FRAME_X(x) (x + PIC_W * 2 / 256)
-#define FRAME_Y(y) (y + PIC_H * 2 / 64)
-#define FRAME_W (PIC_W * 160 / 256)
-#define FRAME_H (PIC_H * 59 / 64)
+// A button's frame, drawn by the game where the old pictures had it: pixels 2 to 162 of the cell's 256 across, 2 to 61 of 64 down
+#define FRAME_X(x) (x + CELL_W * 2 / 256)
+#define FRAME_Y(y) (y + CELL_H * 2 / 64)
+#define FRAME_W (CELL_W * 160 / 256)
+#define FRAME_H (CELL_H * 59 / 64)
+// The camera icon (64x64) in a button's cell: pixels 51 to 115 across, the full height
+#define ICON_X(x) (x + CELL_W * 51 / 256)
+#define ICON_W (CELL_W * 64 / 256)
 
 // Offsets
 #define OFFSET_Y_R2 0.11
@@ -80,8 +78,6 @@ class GVAR(RscPicture) {
     colorBackground[] = {1, 1, 1, 0};
     font = "RobotoCondensed";
     sizeEx = 0.02;
-    w = QUOTE(PIC_W);
-    h = QUOTE(PIC_H);
 };
 
 // Text on the pad's screen (titles, labels)
@@ -97,8 +93,7 @@ class GVAR(RscText) {
     shadow = 0;
 };
 
-// A button's frame drawn by the game instead of btnFrame.paa (on trial: only the Rifles button uses it): a 1 px
-// rectangle in colorText, placed with FRAME_X/FRAME_Y where the picture's lines are
+// A button's frame: a 1 px rectangle in colorText, placed with FRAME_X/FRAME_Y
 class GVAR(RscFrame) {
     idc = -1;
     type = CT_STATIC;
@@ -113,7 +108,7 @@ class GVAR(RscFrame) {
     h = QUOTE(FRAME_H);
 };
 
-// Over its picture (GVAR(RscPicture): a frame, UI\btnFrame.paa, or an icon): the label as text, or none
+// Over its frame (GVAR(RscFrame)) or icon (GVAR(RscPicture)): the label as text, or none
 class GVAR(RscButton) {
     idc = -1;
     type = CT_BUTTON;
@@ -285,10 +280,10 @@ class GVAR(Display) {
         };
 
         // Exit-Back
-        class Main_Pic_C1_RE: GVAR(RscPicture) {
-            idc = BACKPIC;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_RE);
+        class Main_Frame_C1_RE: GVAR(RscFrame) {
+            idc = BACKFRAME;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_RE));
         };
         class Main_Btn_C1_RE: GVAR(RscButton) {
             idc = BACKBTN;
@@ -297,10 +292,19 @@ class GVAR(Display) {
         };
 
         // Take-Stash
-        class TakeStash_Pic_C1_R1: GVAR(RscPicture) {
-            idc = TAKESTASHPIC;
-            x = QUOTE(PIC_X_C3);
-            y = QUOTE(PIC_Y + OFFSET_Y_RE);
+        class TakeStash_Frame_C1_R1: GVAR(RscFrame) {
+            idc = TAKESTASHFRAME;
+            x = QUOTE(FRAME_X(BTN_X_C3));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_RE));
+        };
+        // Camera (main menu, under the Take/Stash button)
+        class Camera_Pic: GVAR(RscPicture) {
+            idc = CAMERAPIC;
+            x = QUOTE(ICON_X(BTN_X_C3));
+            y = QUOTE(BTN_Y + OFFSET_Y_RE);
+            w = QUOTE(ICON_W);
+            h = QUOTE(CELL_H);
+            text = QPATHTOF(UI\iconCamera.paa);
         };
         class TakeStash_Btn_C1_R1: GVAR(RscButton) {
             idc = TAKESTASHBTN;
@@ -309,11 +313,10 @@ class GVAR(Display) {
         };
 
         // Stash All
-        class StashAll_Pic_C2_RE: GVAR(RscPicture) {
-            idc = STASHALLPIC;
-            x = QUOTE(PIC_X_C2_RE);
-            y = QUOTE(PIC_Y + OFFSET_Y_RE);
-            text = BUTTON_FRAME;
+        class StashAll_Frame_C2_RE: GVAR(RscFrame) {
+            idc = STASHALLFRAME;
+            x = QUOTE(FRAME_X(BTN_X_C2_RE));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_RE));
         };
         class StashAll_Btn_C2_RE: GVAR(RscButton) {
             idc = STASHALLBTN;
@@ -327,10 +330,10 @@ class GVAR(Display) {
         // MAIN MENU ONLY
         /* Column 1 */
         // Row 1
-        class Main_Pic_C1_R1: GVAR(RscFrame) { // on trial: the game's frame instead of btnFrame.paa
-            idc = MAINPIC1;
-            x = QUOTE(FRAME_X(PIC_X_C1));
-            y = QUOTE(FRAME_Y(PIC_Y));
+        class Main_Frame_C1_R1: GVAR(RscFrame) {
+            idc = MAINFRAME1;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y));
         };
         class Main_Btn_C1_R1: GVAR(RscButton) {
             idc = MAINBTN1;
@@ -339,10 +342,10 @@ class GVAR(Display) {
         };
 
         // Row 2
-        class Main_Pic_C1_R2: GVAR(RscPicture) {
-            idc = MAINPIC2;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_R2);
+        class Main_Frame_C1_R2: GVAR(RscFrame) {
+            idc = MAINFRAME2;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R2));
         };
         class Main_Btn_C1_R2: GVAR(RscButton) {
             idc = MAINBTN2;
@@ -351,10 +354,10 @@ class GVAR(Display) {
         };
 
         // Row 3
-        class Main_Pic_C1_R3: GVAR(RscPicture) {
-            idc = MAINPIC3;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_R3);
+        class Main_Frame_C1_R3: GVAR(RscFrame) {
+            idc = MAINFRAME3;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R3));
         };
         class Main_Btn_C1_R3: GVAR(RscButton) {
             idc = MAINBTN3;
@@ -363,10 +366,10 @@ class GVAR(Display) {
         };
 
         // Row 4
-        class Main_Pic_C1_R4: GVAR(RscPicture) {
-            idc = MAINPIC4;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_R4);
+        class Main_Frame_C1_R4: GVAR(RscFrame) {
+            idc = MAINFRAME4;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R4));
         };
         class Main_Btn_C1_R4: GVAR(RscButton) {
             idc = MAINBTN4;
@@ -375,10 +378,10 @@ class GVAR(Display) {
         };
 
         // Row 5
-        class Main_Pic_C1_R5: GVAR(RscPicture) {
-            idc = MAINPIC5;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_R5);
+        class Main_Frame_C1_R5: GVAR(RscFrame) {
+            idc = MAINFRAME5;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R5));
         };
         class Main_Btn_C1_R5: GVAR(RscButton) {
             idc = MAINBTN5;
@@ -387,10 +390,10 @@ class GVAR(Display) {
         };
 
         // Row 6
-        class Main_Pic_C1_R6: GVAR(RscPicture) {
-            idc = MAINPIC6;
-            x = QUOTE(PIC_X_C1);
-            y = QUOTE(PIC_Y + OFFSET_Y_R6);
+        class Main_Frame_C1_R6: GVAR(RscFrame) {
+            idc = MAINFRAME6;
+            x = QUOTE(FRAME_X(BTN_X_C1));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R6));
         };
         class Main_Btn_C1_R6: GVAR(RscButton) {
             idc = MAINBTN6;
@@ -400,10 +403,10 @@ class GVAR(Display) {
 
         /* Column 2 */
         // Row 1
-        class Main_Pic_C2_R1: GVAR(RscPicture) {
-            idc = MAINPIC7;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y);
+        class Main_Frame_C2_R1: GVAR(RscFrame) {
+            idc = MAINFRAME7;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y));
         };
         class Main_Btn_C2_R1: GVAR(RscButton) {
             idc = MAINBTN7;
@@ -412,10 +415,10 @@ class GVAR(Display) {
         };
 
         // Row 2
-        class Main_Pic_C2_R2: GVAR(RscPicture) {
-            idc = MAINPIC8;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y + OFFSET_Y_R2);
+        class Main_Frame_C2_R2: GVAR(RscFrame) {
+            idc = MAINFRAME8;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R2));
         };
         class Main_Btn_C2_R2: GVAR(RscButton) {
             idc = MAINBTN8;
@@ -424,10 +427,10 @@ class GVAR(Display) {
         };
 
         // Row 3
-        class Main_Pic_C2_R3: GVAR(RscPicture) {
-            idc = MAINPIC9;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y + OFFSET_Y_R3);
+        class Main_Frame_C2_R3: GVAR(RscFrame) {
+            idc = MAINFRAME9;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R3));
         };
         class Main_Btn_C2_R3: GVAR(RscButton) {
             idc = MAINBTN9;
@@ -436,10 +439,10 @@ class GVAR(Display) {
         };
 
         // Row 4
-        class Main_Pic_C2_R4: GVAR(RscPicture) {
-            idc = MAINPIC10;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y + OFFSET_Y_R4);
+        class Main_Frame_C2_R4: GVAR(RscFrame) {
+            idc = MAINFRAME10;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R4));
         };
         class Main_Btn_C2_R4: GVAR(RscButton) {
             idc = MAINBTN10;
@@ -448,10 +451,10 @@ class GVAR(Display) {
         };
 
         // Row 5
-        class Main_Pic_C2_R5: GVAR(RscPicture) {
-            idc = MAINPIC11;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y + OFFSET_Y_R5);
+        class Main_Frame_C2_R5: GVAR(RscFrame) {
+            idc = MAINFRAME11;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R5));
         };
         class Main_Btn_C2_R5: GVAR(RscButton) {
             idc = MAINBTN11;
@@ -460,10 +463,10 @@ class GVAR(Display) {
         };
 
         // Row 6
-        class Main_Pic_C2_R6: GVAR(RscPicture) {
-            idc = MAINPIC12;
-            x = QUOTE(PIC_X_C2);
-            y = QUOTE(PIC_Y + OFFSET_Y_R6);
+        class Main_Frame_C2_R6: GVAR(RscFrame) {
+            idc = MAINFRAME12;
+            x = QUOTE(FRAME_X(BTN_X_C2));
+            y = QUOTE(FRAME_Y(BTN_Y + OFFSET_Y_R6));
         };
         class Main_Btn_C2_R6: GVAR(RscButton) {
             idc = MAINBTN12;
@@ -478,7 +481,7 @@ class GVAR(Display) {
             y = QUOTE(Y_PART(3));
             w = QUOTE(W_PART(2));
             h = QUOTE(H_PART(2));
-            text = QPATHTOF(UI\btnExport.paa);
+            text = QPATHTOF(UI\iconExport.paa);
         };
         class Export_Btn: GVAR(RscButton) {
             idc = EXPORTBTN;
@@ -491,11 +494,18 @@ class GVAR(Display) {
         };
 
         // CAMERA
+        class CameraFrame: GVAR(RscFrame) {
+            idc = CAMERAFRAME;
+            x = QUOTE(FRAME_X(safeZoneX));
+            y = QUOTE(FRAME_Y(safeZoneY));
+        };
         class CameraHint: GVAR(RscPicture) {
             idc = CAMERAHINT;
-            x = QUOTE(safeZoneX);
+            x = QUOTE(ICON_X(safeZoneX));
             y = QUOTE(safeZoneY);
-            text = QPATHTOF(UI\btnCamera.paa);
+            w = QUOTE(ICON_W);
+            h = QUOTE(CELL_H);
+            text = QPATHTOF(UI\iconCamera.paa);
         };
         class CameraExit: GVAR(RscButton) {
             idc = CAMERAEXIT;
