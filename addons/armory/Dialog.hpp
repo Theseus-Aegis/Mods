@@ -113,7 +113,10 @@ class GVAR(RscButton) {
     type = CT_BUTTON;
     style = QUOTE(ST_LEFT + ST_VCENTER);
     colorText[] = TEXT_COLOR;
-    colorFocused[] = TEXT_COLOR;
+    // The focused button's background blinks between these two: none, as focus moves to Export when
+    // the clicked button is hidden (which blinked over its icon)
+    colorFocused[] = {0, 0, 0, 0};
+    colorBackground2[] = {0, 0, 0, 0};
     colorDisabled[] = TEXT_COLOR_DISABLED;
     colorBackground[] = {1, 1, 1, 0};
     colorBackgroundDisabled[] = {0, 0, 0, 0};
