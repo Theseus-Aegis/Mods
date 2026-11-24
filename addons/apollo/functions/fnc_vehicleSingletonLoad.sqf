@@ -86,9 +86,19 @@ if (_type != "" && {count _position == 3}) then {
     if ("direction" in _values) then {
         _vehicle setDir (_values get "direction");
     };
-    _vehicle setPosATL [_posX, _posY, _posZ];
-    if (_static && {"vector" in _values}) then {
-        _vehicle setVectorDirAndUp (_values get "vector");
+    if ("trench" in _values && {isClass (configOf _vehicle >> "AnimationSources" >> "rise")}) then {
+        // A grad_trenches trench as it places one: tilted first, then at ground level (its dig
+        // progress is the model's "rise" animation; ACE's own trenches show it by their height).
+        // Tilted after placing, one on a slope would end up buried.
+        if ("vector" in _values) then {
+            _vehicle setVectorDirAndUp (_values get "vector");
+        };
+        _vehicle setPosATL [_posX, _posY, 0];
+    } else {
+        _vehicle setPosATL [_posX, _posY, _posZ];
+        if (_static && {"vector" in _values}) then {
+            _vehicle setVectorDirAndUp (_values get "vector");
+        };
     };
 
     _vehicle setVehicleVarName _vehicleID;
