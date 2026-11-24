@@ -20,7 +20,7 @@ params ["_armoryData", "_compatible"];
 
 private _subCategories = [ ["All", ""] ];
 if (_compatible) then {
-    _subCategories pushBack ["Compatible", localize LSTRING(ShowOnlyCompatible)];
+    _subCategories pushBack ["Compatible", LLSTRING(ShowOnlyCompatible)];
 };
 
 private _dataSubCategories = [];

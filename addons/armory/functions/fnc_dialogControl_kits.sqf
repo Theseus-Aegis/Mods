@@ -47,13 +47,13 @@ lbClear DROPDOWN;
         _x params ["", "_quantity", "_inLocker"];
         _missing = _missing + ((_quantity - _inLocker) max 0);
     } forEach _items;
-    private _status = [format [localize LSTRING(KitMissing), _missing], localize LSTRING(KitReady)] select _ready;
+    private _status = [format [LLSTRING(KitMissing), _missing], LLSTRING(KitReady)] select _ready;
     lbAdd [DROPDOWN, format ["%1 (%2)", _name, _status]];
     lbSetTooltip [DROPDOWN, _forEachIndex, _name];
 } forEach GVAR(kits);
 
 if (GVAR(kits) isEqualTo []) then {
-    lbAdd [DROPDOWN, localize LSTRING(NoKits)];
+    lbAdd [DROPDOWN, LLSTRING(NoKits)];
 };
 
 lbSetCurSel [DROPDOWN, (_select min (count GVAR(kits) - 1)) max 0]; // will not fire onLBSelChanged

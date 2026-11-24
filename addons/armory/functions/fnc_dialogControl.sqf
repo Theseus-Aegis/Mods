@@ -34,7 +34,7 @@ if (_requestedMenu == "main") exitWith {
     ];
 
     // Set Title
-    ctrlSetText [TITLE, localize LSTRING(TitleMain)];
+    ctrlSetText [TITLE, LLSTRING(TitleMain)];
 
     // Show Main
     [true] call FUNC(dialogControl_main);
@@ -49,13 +49,25 @@ if (_requestedMenu == "main") exitWith {
 
 // Kits (prepared on the website)
 if (_requestedMenu == "kits") exitWith {
-    ctrlSetText [TITLE, localize LSTRING(TitleKits)];
+    ctrlSetText [TITLE, LLSTRING(TitleKits)];
     [] call FUNC(dialogControl_kits);
     ["back"] call FUNC(dialogControl_back);
 };
 
 // Set Title
-ctrlSetText [TITLE, localize format [LSTRING(Title_%1), _requestedMenu]];
+private _titles = createHashMapFromArray [
+    ["rifle", LLSTRING(Title_rifle)],
+    ["pistol", LLSTRING(Title_pistol)],
+    ["launcher", LLSTRING(Title_launcher)],
+    ["ammo", LLSTRING(Title_ammo)],
+    ["item", LLSTRING(Title_item)],
+    ["attachment", LLSTRING(Title_attachment)],
+    ["backpack", LLSTRING(Title_backpack)],
+    ["wearable", LLSTRING(Title_wearable)],
+    ["insignia", LLSTRING(Title_insignia)],
+    ["stash", LLSTRING(Title_stash)]
+];
+ctrlSetText [TITLE, _titles getOrDefault [_requestedMenu, ""]];
 
 // Show List
 [_requestedMenu] call FUNC(dialogControl_list);

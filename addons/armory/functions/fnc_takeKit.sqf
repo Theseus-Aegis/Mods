@@ -44,7 +44,7 @@ TRACE_3("Take kit",_kitID,_name,_missing);
 } forEach [TAKESTASHPIC, TAKESTASHBTN]; // until the kits are refreshed (lockerKitTaken)
 
 if (_missing isEqualTo []) then {
-    [format [localize LSTRING(KitTaking), _name], 2.5] call ACEFUNC(common,displayTextStructured);
+    [format [LLSTRING(KitTaking), _name], 2.5] call ACEFUNC(common,displayTextStructured);
 } else {
-    [format [localize LSTRING(KitTakingMissing), _name, _missing joinString ", "], 4] call ACEFUNC(common,displayTextStructured);
+    [format [LLSTRING(KitTakingMissing), _name, _missing joinString ", "], 4] call ACEFUNC(common,displayTextStructured);
 };
