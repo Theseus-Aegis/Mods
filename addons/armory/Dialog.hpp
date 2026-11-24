@@ -53,6 +53,11 @@
 // Messages: about 29 characters a line (their titles 1.33 times bigger, FUNC(showMessage))
 #define MSG_TEXT_SIZE H_PART(1.2)
 
+// Amount: above Take/Stash, right-aligned with it
+#define AMOUNT_X GRID_X(11)
+#define AMOUNT_Y GRID_Y(30)
+#define AMOUNT_W GRID_W(3)
+
 // Type definitions
 #define CT_STATIC 0
 #define CT_BUTTON 1
@@ -187,6 +192,27 @@ class GVAR(RscCombo) {
     };
 };
 
+// The amount dropdown in the pad's style (framed by an RscFrame behind it), its list in the screen's colour
+class GVAR(RscComboAmount): GVAR(RscCombo) {
+    style = ST_LEFT;
+    font = TEXT_FONT;
+    sizeEx = QUOTE(BTN_TEXT_SIZE);
+    colorText[] = TEXT_COLOR;
+    colorDisabled[] = TEXT_COLOR_DISABLED;
+    colorBackground[] = {0.41, 0.43, 0.18, 1};
+    colorSelect[] = TEXT_COLOR;
+    colorSelectBackground[] = {0, 0, 0, 0.25};
+    arrowEmpty = QPATHTOF(UI\iconArrow.paa);
+    arrowFull = QPATHTOF(UI\iconArrow.paa);
+    class ComboScrollBar {
+        color[] = {0, 0, 0, 0.6};
+        arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+        arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+        border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+        thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+    };
+};
+
 class GVAR(RscListNBox) {
     idc = -1;
     type = CT_LISTNBOX;
@@ -291,13 +317,19 @@ class GVAR(Display) {
         };
 
         // Dropdown Amount Selection
-        class DropdownAmount: GVAR(RscCombo) {
+        class DropdownAmount_Frame: GVAR(RscFrame) {
+            idc = AMOUNTFRAME;
+            x = QUOTE(AMOUNT_X);
+            y = QUOTE(AMOUNT_Y);
+            w = QUOTE(AMOUNT_W);
+        };
+        class DropdownAmount: GVAR(RscComboAmount) { // a pixel inside the frame, which its background would cover
             idc = DROPDOWNAMOUNT;
             onLBSelChanged = QUOTE(call FUNC(dialogControl_takestash));
-            x = QUOTE(X_PART(24.6));
-            y = QUOTE(Y_PART(20.2));
-            w = QUOTE(W_PART(3.9));
-            h = QUOTE(H_PART(1.3));
+            x = QUOTE(AMOUNT_X + pixelW);
+            y = QUOTE(AMOUNT_Y + pixelH);
+            w = QUOTE(AMOUNT_W - 2 * pixelW);
+            h = QUOTE(BTN_H - 2 * pixelH);
         };
 
         // Message (over the list, FUNC(showMessage))

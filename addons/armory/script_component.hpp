@@ -36,6 +36,7 @@
 #define AMOUNT 3330003
 #define NLIST 3330004
 #define DROPDOWNAMOUNT 3330005
+#define AMOUNTFRAME 3330020
 #define BACKGROUND 3330009
 
 // Message (over the list)

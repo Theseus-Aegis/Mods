@@ -32,4 +32,6 @@ if (GVAR(selectedCategory) == "stash") then {
     lbSetCurSel [DROPDOWNAMOUNT, 0];
 };
 
-ctrlShow [DROPDOWNAMOUNT, _quantity > 0];
+{
+    ctrlShow [_x, _quantity > 0];
+} forEach [AMOUNTFRAME, DROPDOWNAMOUNT];

@@ -24,13 +24,14 @@ call FUNC(hideMessage);
 } forEach [DROPDOWN, NLIST];
 {
     ctrlShow [_x, false];
-} forEach [AMOUNT, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN, STASHALLFRAME, STASHALLBTN];
+} forEach [AMOUNT, AMOUNTFRAME, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN, STASHALLFRAME, STASHALLBTN];
 
 GVAR(kits) = [];
 if (GVAR(system) == 1) then {
     if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
         ERROR_MSG("Apollo is not loaded! Chronos data cannot be retrieved.");
     };
+    if (getPlayerUID player == "_SP_PLAYER_") exitWith {}; // single player (the editor) has no Steam ID, so no kits
     private _result = ["loadKits", [getPlayerUID player, EGVAR(apollo,liveApi)]] call EFUNC(apollo,callExt);
     if (isNil "_result") exitWith {
         ERROR("Kits failed to load!");

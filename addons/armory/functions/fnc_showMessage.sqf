@@ -41,7 +41,7 @@ if (_lines isNotEqualTo []) then {
 
 {
     ctrlShow [_x, false];
-} forEach [NLIST, AMOUNT, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN];
+} forEach [NLIST, AMOUNT, AMOUNTFRAME, DROPDOWNAMOUNT, TAKESTASHFRAME, TAKESTASHBTN];
 {
     ctrlShow [_x, true];
 } forEach [MESSAGEFRAME, MESSAGETEXT];
