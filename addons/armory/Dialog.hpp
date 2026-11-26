@@ -43,8 +43,9 @@
 #define MSG_OK_Y GRID_Y(25)
 #define MSG_OK_W GRID_W(3)
 
-// Text: Arma's 14-segment LCD font, black on the pad's screen, no shadow
-#define TEXT_FONT "LCD14"
+// Text: Arma's Purista Bold, black on the pad's screen, no shadow
+#define TEXT_FONT "PuristaBold"
+#define TEXT_FONT_SMALL "RobotoCondensed"
 #define TEXT_COLOR {0, 0, 0, 0.9}
 #define TEXT_COLOR_DISABLED {0, 0, 0, 0.4}
 #define BTN_TEXT_SIZE H_PART(1.4)
@@ -80,7 +81,7 @@ class GVAR(RscPicture) {
     text = "";
     colorText[] = {1, 1, 1, 1};
     colorBackground[] = {1, 1, 1, 0};
-    font = "RobotoCondensed";
+    font = TEXT_FONT_SMALL;
     sizeEx = 0.02;
 };
 
@@ -168,7 +169,7 @@ class GVAR(RscCombo) {
     idc = -1;
     type = CT_COMBO;
     style = QUOTE(ST_LEFT + LB_TEXTURES);
-    font = "RobotoCondensed";
+    font = TEXT_FONT_SMALL;
     sizeEx = 0.04;
     shadow = 0;
     colorText[] = {0, 0, 0, 1};
@@ -217,7 +218,7 @@ class GVAR(RscListNBox) {
     idc = -1;
     type = CT_LISTNBOX;
     style = ST_MULTI;
-    font = "RobotoCondensed";
+    font = TEXT_FONT_SMALL;
     sizeEx = 0.04;
     colorText[] = {0, 0, 0, 1};
     colorDisabled[] = {0, 0, 0, 0.25};
