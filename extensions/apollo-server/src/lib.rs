@@ -1,0 +1,164 @@
+//! Apollo Server: the game server's side of Chronos persistence (players, vehicles, lockers),
+//! talking to Minotaur's Apollo API. The commands keep Apollo's names and replies.
+//!
+//! Settings, from the environment (the server runs in Docker): `APOLLO_SERVER_TOKEN` (from the
+//! website's admin, Chronos · Apollo › Game servers), `APOLLO_SERVER_LIVE=true` on the live server
+//! (every other server uses the development website), and `APOLLO_LIVE_URL` / `APOLLO_DEV_URL`
+//! only if the live / development website isn't the usual one; see backend::Config.
+
+use std::fs::{create_dir_all, File};
+use std::path::Path;
+use std::sync::OnceLock;
+
+use arma_rs::{arma, Extension};
+use log::{info, LevelFilter};
+use simplelog::{Config as LogConfig, WriteLogger};
+
+pub mod backend;
+pub mod handler;
+
+use backend::{Config, Http};
+use handler::Handler;
+
+const LOG_PATH: &str = "./logs/tac_apollo_server.log";
+
+static HANDLER: OnceLock<Handler<Http>> = OnceLock::new();
+static LIVE: OnceLock<bool> = OnceLock::new();
+
+fn handler() -> &'static Handler<Http> {
+    HANDLER.get_or_init(|| {
+        let config = Config::load();
+        info!("Minotaur Apollo API at {}{}", config.url, if config.token.is_empty() { " (no token set!)" } else { "" });
+        let _ = LIVE.set(config.live);
+        Handler::new(Http::new(config))
+    })
+}
+
+#[arma]
+pub fn init() -> Extension {
+    let log_path = Path::new(LOG_PATH);
+    if create_dir_all(log_path.parent().unwrap()).is_ok()
+        && let Ok(file) = File::create(log_path)
+    {
+        let _ = WriteLogger::init(LevelFilter::Info, LogConfig::default(), file);
+    }
+    Extension::build()
+        .version(env!("CARGO_PKG_VERSION").to_string())
+        .command("version", version)
+        .command("getApi", get_api)
+        .command("resetServer", reset_server)
+        .command("storeInfantry", store_infantry)
+        .command("infantryLoaded", infantry_loaded)
+        .command("playerDied", player_died)
+        .command("lockerAction", locker_action)
+        .command("lockerTakeKit", locker_take_kit)
+        .command("bodybagReturn", bodybag_return)
+        .command("retrieveLockerQueue", retrieve_locker_queue)
+        .command("generateUniqueID", generate_unique_id)
+        .command("retrieveAllVehicles", retrieve_all_vehicles)
+        .command("getVehicleList", get_vehicle_list)
+        .command("isVehiclesAllLoaded", is_vehicles_all_loaded)
+        .command("getVehicle", get_vehicle)
+        .command("storeVehicle", store_vehicle)
+        .command("removeVehicle", remove_vehicle)
+        .finish()
+}
+
+pub fn version() -> &'static str {
+    env!("CARGO_PKG_VERSION")
+}
+
+/// "live" or "dev": the website this server uses, which players' apollo-client then uses too.
+fn get_api() -> &'static str {
+    handler();
+    if LIVE.get().copied().unwrap_or(false) { "live" } else { "dev" }
+}
+
+fn reset_server(players: String, vehicles: String, server: String, map: String, mission: String) -> String {
+    handler().reset_server(players, vehicles, server, map, mission)
+}
+
+#[allow(clippy::too_many_arguments)]
+fn store_infantry(
+    kind: String, id: String, name: String, position: String, direction: String, loadout: String, weapon: String,
+    variables: String,
+) -> String {
+    handler().store_infantry(kind, id, name, position, direction, loadout, weapon, variables)
+}
+
+fn infantry_loaded(id: String) -> String {
+    handler().infantry_loaded(id)
+}
+
+fn player_died(id: String, death_key: String, loadout: String, variables: String) -> String {
+    handler().player_died(id, death_key, loadout, variables)
+}
+
+fn bodybag_return(id: String, death_key: String, contents: String) -> String {
+    handler().bodybag_return(id, death_key, contents)
+}
+
+fn locker_action(
+    action: String, id: String, item: String, box_class: String, quantity: String, keep_magazines: String,
+    partial: String,
+) -> String {
+    handler().locker_action(action, id, item, box_class, quantity, keep_magazines, partial)
+}
+
+fn locker_take_kit(kit: String, id: String) -> String {
+    handler().locker_take_kit(kit, id)
+}
+
+fn retrieve_locker_queue(id: String) -> String {
+    handler().retrieve_locker_queue(id)
+}
+
+fn generate_unique_id() -> String {
+    handler::generate_unique_id()
+}
+
+fn retrieve_all_vehicles() -> String {
+    handler().retrieve_all_vehicles()
+}
+
+fn get_vehicle_list() -> String {
+    handler().get_vehicle_list()
+}
+
+fn is_vehicles_all_loaded() -> String {
+    handler().is_vehicles_all_loaded()
+}
+
+fn get_vehicle(id: String) -> String {
+    handler().get_vehicle(id)
+}
+
+fn store_vehicle(id: String, data: String) -> String {
+    handler().store_vehicle(id, data)
+}
+
+fn remove_vehicle(id: String) -> String {
+    handler().remove_vehicle(id)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn commands_take_arma_arguments() {
+        let extension = init().testing();
+        let (version, _) = extension.call("version", None);
+        assert_eq!(version, env!("CARGO_PKG_VERSION"));
+        let (api, _) = extension.call("getApi", None);
+        assert_eq!(api, if std::env::var("APOLLO_SERVER_LIVE").is_ok_and(|v| v == "true") { "live" } else { "dev" });
+        let (id, code) = extension.call("generateUniqueID", None);
+        assert_eq!((id.len(), code), (13, 0));
+        // Unknown player: no request is made, so this works without Minotaur.
+        let args = ["\"save\"", "\"765\"", "\"Jon\"", "\"[1,2,3]\"", "\"90\"", "\"[]\"", "\"\"", "\"[]\""];
+        let (reply, code) = extension.call("storeInfantry", Some(args.iter().map(|a| a.to_string()).collect()));
+        assert_eq!((reply.as_str(), code), ("terminated", 0));
+        let (reply, _) = extension.call("retrieveLockerQueue", Some(vec!["\"765\"".into()]));
+        assert_eq!(reply, "error");
+    }
+}

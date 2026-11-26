@@ -3,6 +3,21 @@
 // Exit on Headless
 if (!hasInterface) exitWith {};
 
+// Static weapons the player deploys (ACE CSW or vanilla assembly) are made persistent by the server,
+// a second later so it has the new object
+if (GVAR(enabled)) then {
+    ["ace_csw_deployWeaponSucceeded", {
+        params ["_weapon"];
+        [{[QGVAR(staticWeaponDeployed), _this] call CBA_fnc_serverEvent}, [_weapon], 1] call CBA_fnc_waitAndExecute;
+    }] call CBA_fnc_addEventHandler;
+
+    ["CAManBase", "WeaponAssembled", {
+        params ["_unit", "_weapon"];
+        if (!local _unit || {!(_weapon isKindOf "StaticWeapon")}) exitWith {};
+        [{[QGVAR(staticWeaponDeployed), _this] call CBA_fnc_serverEvent}, [_weapon], 1] call CBA_fnc_waitAndExecute;
+    }] call CBA_fnc_addClassEventHandler;
+};
+
 [QGVAR(initialized), {
     // Check ApolloClient presenece and version
     private _apolloClientReturn = "tac_apollo_client" callExtension ["version", []]; // ["1.0.0", 0, 0]
@@ -19,6 +34,9 @@ if (!hasInterface) exitWith {};
         ERROR("Connection terminated - Unknown error with Chronos!");
         ["Your connection has been terminated - Unknown error with Chronos!"] call FUNC(endMissionError);
     }] call CBA_fnc_addEventHandler;
+
+    // Back as before a disconnect (mission only, FUNC(runtimeSave))
+    [QGVAR(runtimeApply), FUNC(runtimeApply)] call CBA_fnc_addEventHandler;
 
     // Load player after Respawn EH
     [QGVAR(reinitializePlayer), {

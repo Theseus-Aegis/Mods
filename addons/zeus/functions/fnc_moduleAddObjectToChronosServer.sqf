@@ -22,11 +22,7 @@ if (!EGVAR(apollo,vehiclesLoaded)) exitWith {
     [QGVAR(addObjectToChronosFailed), [], _player] call CBA_fnc_targetEvent;
 };
 
-// Get suitable Chronos ID
-private _chronosUniqueID = ["generateUniqueID"] call EFUNC(apollo,invokeJavaMethod);
-
-// Make persistent
-_object setVariable [QEGVAR(apollo,vehicleID), _chronosUniqueID, true];
-EGVAR(apollo,vehiclesList) pushBack _object;
+// Make persistent (a new Chronos ID)
+private _chronosUniqueID = [_object] call EFUNC(apollo,registerVehicle);
 
 TRACE_2("Object added to Chronos",_object,_chronosUniqueID);

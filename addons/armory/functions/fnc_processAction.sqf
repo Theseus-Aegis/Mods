@@ -41,7 +41,7 @@ if (isNull _object) exitWith {
 
 // Prevent taking if container is full
 if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
-    [LSTRING(ContainerFull), 2] call ACEFUNC(common,displayTextStructured);
+    [LLSTRING(MsgBoxFull), [LLSTRING(MsgBoxFullText)], true] call FUNC(showMessage);
 };
 
 // Switch scripted optics and accessories (CBA) to base variants
@@ -49,15 +49,10 @@ if (_type == "take" && {!(_object canAdd _selectedItem)}) exitWith {
 // `_selectedItem` is virtual item in Armory database
 private _selectedItemBox = _selectedItem;
 private _keepMagazines = true;
-if (_type == "stash" && {getNumber (configFile >> "CfgWeapons" >> _selectedItem >> "scope") != 2}) then {
-    _selectedItem = [_selectedItem] call FUNC(getBaseVariant);
-
-    // Clear disposable launcher magazine (passed to CBA_fnc_removeWeaponCargo)
-    private _isDisposableBox = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItemBox);
-    private _isDisposable = isArray (configFile >> "CBA_DisposableLaunchers" >> _selectedItem);
-    if (_isDisposableBox || {_isDisposable}) then {
-        _keepMagazines = false;
-    };
+if (_type == "stash") then {
+    ([_selectedItemBox] call FUNC(getStashVariant)) params ["_item", "_keep"];
+    _selectedItem = _item;
+    _keepMagazines = _keep;
 };
 TRACE_3("Switch",_selectedItem,_selectedItemBox,_keepMagazines);
 
@@ -126,6 +121,14 @@ if (GVAR(system) == 0) then {
 if (GVAR(system) == 1) then {
     TRACE_7("Locker action",player,_typeChronos,_object,_selectedAmount,_selectedItem,_selectedItemBox,_keepMagazines);
     [QEGVAR(apollo,lockerAction), [player, _typeChronos, _object, _selectedItem, _selectedItemBox, _selectedAmount, _keepMagazines]] call CBA_fnc_serverEvent;
+
+    // Kits: subtract from the kit's item in the locker, as below
+    if (GVAR(selectedCategory) == "kits") exitWith {
+        private _row = lnbCurSelRow NLIST;
+        private _item = ((GVAR(kits) select lbCurSel DROPDOWN) select 3) select _row;
+        _item set [2, ((_item select 2) - parseNumber _selectedAmount) max 0];
+        [_row] call FUNC(dialogControl_kitItems);
+    };
 
     // Update list (subtract only, due to usage of CBA functions a callback event is used for full refresh when done)
     private _newArmoryData = [GVAR(armoryData), _selectedItemBox, _selectedAmount] call FUNC(subtractData);

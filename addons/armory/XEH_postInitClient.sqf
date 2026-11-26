@@ -32,8 +32,35 @@ if (!hasInterface) exitWith {};
             TRACE_1("Finish subtract on full refresh",_subtractOnFullRefresh);
 
             [_boxContents] call FUNC(updateData);
+            {
+                ctrlShow [_x, GVAR(system) == 1];
+            } forEach [STASHALLFRAME, STASHALLBTN];
         };
     }, _player, 1] call CBA_fnc_waitUntilAndExecute;
+}] call CBA_fnc_addEventHandler;
+
+// Stash All done: what the locker didn't take is still in the box
+[QEGVAR(apollo,lockerStashAllDone), {
+    params ["_player", "_left"];
+    if (_left isEqualTo []) exitWith {}; // the list shows it
+    private _names = _left apply {
+        private _displayName = getText ((_x call CBA_fnc_getItemConfig) >> "displayName");
+        if (_displayName == "") then { _displayName = getText ((_x call CBA_fnc_getObjectConfig) >> "displayName"); };
+        [_displayName, _x] select (_displayName == "")
+    };
+    [LLSTRING(MsgNotStashed), [LLSTRING(MsgNotStashedText)] + _names + [LLSTRING(MsgNotStashedLeft)], true, "stash"] call FUNC(showMessage);
+}] call CBA_fnc_addEventHandler;
+
+// Kit taken (or refused): refresh the kits, as the locker has changed
+[QEGVAR(apollo,lockerKitTaken), {
+    params ["_player", "_success"];
+    // Not over a message waiting for OK (which refreshes them)
+    if (!isNull (_player getVariable [QGVAR(object), objNull]) && {GVAR(selectedCategory) == "kits"} && {GVAR(messageDismissable) isNotEqualTo true}) then {
+        [lbCurSel DROPDOWN] call FUNC(dialogControl_kits);
+    };
+    if (!_success) then {
+        [LLSTRING(MsgKitFailed), [LLSTRING(MsgKitFailedText), LLSTRING(MsgTryAgain)], true, "kits"] call FUNC(showMessage);
+    };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(Locker), "ContainerOpened", {

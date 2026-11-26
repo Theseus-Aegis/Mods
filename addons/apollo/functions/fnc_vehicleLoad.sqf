@@ -15,29 +15,32 @@
  * Public: No
  */
 
-private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(invokeJavaMethod);
+private _retrieveVehicles = ["retrieveAllVehicles"] call FUNC(callServerExt);
 
 if (_retrieveVehicles == "ready") then {
     private _vehList = [];
     private _updateInfo = true;
 
     while {_updateInfo} do {
-        private _serverReply = ["getVehicleList"] call FUNC(invokeJavaMethod);
+        private _serverReply = ["getVehicleList"] call FUNC(callServerExt);
 
         // All vehicle IDs retrieved
         if (_serverReply == "done") then {
             _updateInfo = false;
-            {
-                [_x] call FUNC(vehicleSingletonLoad);
-            } forEach _vehList;
         } else {
             _vehList pushBack _serverReply;
         };
     };
 
-    // Make sure all vehicles exist, save them into a global variable for API
-    _vehList = (_vehList apply {missionNamespace getVariable [_x, objNull]}) select {!isNull _x};
-    GVAR(vehiclesList) = +_vehList; // Don't use global variable directly in case of new vehicles during this time
+    // Make them and make them persistent (ACE cargo objects register themselves while loading)
+    private _vehicles = [];
+    {
+        private _vehicle = [_x] call FUNC(vehicleSingletonLoad);
+        if (!isNull _vehicle) then {
+            [_vehicle, _x] call FUNC(registerVehicle);
+            _vehicles pushBack _vehicle;
+        };
+    } forEach _vehList;
 
     // Enable simulation on all vehicles and attempt to fix physics
     {
@@ -58,13 +61,13 @@ if (_retrieveVehicles == "ready") then {
         {
             _vehicle setHitPointDamage [_x, _hitPointsDamage select _forEachIndex, false];
         } forEach _hitPoints;
-    } forEach _vehList;
+    } forEach _vehicles;
 
     // Set vehicles loaded flag
     GVAR(vehiclesLoaded) = true;
 
-    INFO_1("%1 vehicles loaded.",count _vehList);
-    TRACE_1("Vehicles loaded",_vehList);
+    INFO_1("%1 vehicles loaded.",count _vehicles);
+    TRACE_1("Vehicles loaded",_vehicles);
 
     // Start saving vehicles
     [FUNC(vehicleSaveServer), [], 60] call CBA_fnc_waitAndExecute;

@@ -15,76 +15,106 @@
  * Public: No
  */
 
-params ["_vehicleObject"];
+params ["_vehicle"];
 
-private _vehicleID = _vehicleObject getVariable QGVAR(vehicleID);
-private _vehicleType = typeOf _vehicleObject;
+private _vehicleID = _vehicle getVariable [QGVAR(vehicleID), ""];
+if (isNull _vehicle || {_vehicleID == ""}) exitWith {};
+
+private _config = configOf _vehicle;
+private _alive = alive _vehicle;
 
 private _hitpoints = [];
-private _configHitpoints = configFile >> "CfgVehicles" >> _vehicleType >> "HitPoints";
-
+private _configHitpoints = _config >> "HitPoints";
 for "_i" from 0 to (count _configHitpoints - 1) do {
-    private _hitpointEntry = configName (_configHitpoints select _i);
-    private _hitpointHealth = _vehicleObject getHitPointDamage _hitpointEntry;
-    _hitpoints pushBack [_hitpointEntry, _hitpointHealth];
+    private _hitpoint = configName (_configHitpoints select _i);
+    private _damage = _vehicle getHitPointDamage _hitpoint;
+    if (!isNil "_damage") then {
+        _hitpoints pushBack [_hitpoint, _damage];
+    };
 };
 
-private _vehiclePos = getPosATL _vehicleObject;
-private _vehicleDir = getDir _vehicleObject;
-private _vehicleAlive = alive _vehicleObject;
-private _vehicleDamage = damage _vehicleObject;
-
-
-private _driver = "";
-private _vehicleCrew = [];
-if (_vehicleObject isKindOf "AllVehicles") then {
-    _driver = name (driver _vehicleObject);
-    {
-        _vehicleCrew pushBack [getPlayerUID _x, name _x];
-    } forEach (crew _vehicleObject);
-};
-
-// Unknown class does not get height added on spawn, all other defined classes do
+// Unknown class (static objects) is placed exactly as saved, all other classes get height added on spawn
 private _vehicleClass = switch (true) do {
-    case (_vehicleObject isKindOf "Car"): {"Car"};
-    case (_vehicleObject isKindOf "Plane"): {"Plane"};
-    case (_vehicleObject isKindOf "Helicopter"): {"Helicopter"};
-    case (_vehicleObject isKindOf "Tank"): {"Tank"};
-    case (_vehicleObject isKindOf "Ship"): {"Ship"};
-    case (_vehicleObject isKindOf "ThingX"): {"ObjectPhysX"};
+    case (_vehicle isKindOf "Car"): {"Car"};
+    case (_vehicle isKindOf "Plane"): {"Plane"};
+    case (_vehicle isKindOf "Helicopter"): {"Helicopter"};
+    case (_vehicle isKindOf "Tank"): {"Tank"};
+    case (_vehicle isKindOf "Ship"): {"Ship"};
+    case (_vehicle isKindOf "ThingX"): {"ObjectPhysX"};
     default {"Unknown"};
 };
 
-private _vehicleFuel = fuel _vehicleObject;
-private _vehicleLock = locked _vehicleObject;
-private _vehicleCustomization = [_vehicleObject, ""] call BIS_fnc_exportVehicle;
+// Settings: static weapons (with ACE CSW tripods) and objects that aren't vehicles (trenches,
+// sandbags, fortifications, crates) can be left out
+private _trenchProgress = _vehicle getVariable QACEGVAR(trenches,progress);
+private _staticWeapon = _vehicle isKindOf "StaticWeapon" || {_vehicle isKindOf "ace_csw_baseTripod"};
+if (!GVAR(vehiclesStaticWeapons) && {_staticWeapon}) exitWith {};
+if (!GVAR(vehiclesObjects) && {!_staticWeapon} && {!(_vehicle isKindOf "AllVehicles")}) exitWith {};
 
-private _vehicleAmmo = [];
-private _vehicleMagazineCargo = [];
-private _vehicleItemCargo = [];
-private _vehicleWeapons = [];
-private _vehicleBackPacks = [];
+// [key, value] pairs, read by Minotaur (apollo/vehicles.py)
+private _data = [
+    ["position", getPosATL _vehicle],
+    ["direction", getDir _vehicle],
+    ["vector", [vectorDir _vehicle, vectorUp _vehicle]],
+    ["type", typeOf _vehicle],
+    ["class", _vehicleClass],
+    ["name", getText (_config >> "displayName")],
+    ["alive", _alive],
+    ["damage", damage _vehicle],
+    ["hitpoints", _hitpoints],
+    ["fuel", fuel _vehicle],
+    ["locked", locked _vehicle],
+    ["customization", [_vehicle] call BIS_fnc_getVehicleCustomization] // [textures, animations]
+];
 
-private _vehicleBackpackItems = [];
-private _vehicleBackpackMagazines = [];
-private _vehicleBackpackWeapons = [];
-
-
-if (_vehicleAlive) then {
-    _vehicleAmmo = magazinesAmmo _vehicleObject;
-    _vehicleMagazineCargo =  getMagazineCargo _vehicleObject;
-    _vehicleItemCargo =  itemCargo _vehicleObject;
-    _vehicleWeapons = weaponsItemsCargo _vehicleObject;
-    _vehicleBackPacks = getBackpackCargo _vehicleObject;
-
+if (_alive) then {
+    // ACE cargo: a class name as is, a loaded object (a crate, a quad) with its damage, inventory and
+    // persistent vehicle ID (saved with this vehicle while it's loaded)
+    private _aceCargo = [];
     {
-        _x params ["", "_container"];
-        _vehicleBackpackItems append (itemCargo _container);
-        _vehicleBackpackMagazines append (getMagazineCargo _container);
-        _vehicleBackpackWeapons append (weaponsItems _container);
-    } forEach (everyContainer _vehicleObject);
+        if (_x isEqualType "") then {
+            _aceCargo pushBack _x;
+        } else {
+            if (!isNull _x) then {
+                _aceCargo pushBack [typeOf _x, damage _x, [_x] call FUNC(getCargo), _x getVariable [QGVAR(vehicleID), ""]];
+            };
+        };
+    } forEach (_vehicle getVariable [QACEGVAR(cargo,loaded), []]);
+
+    _data pushBack ["cargo", [_vehicle] call FUNC(getCargo)];
+    if (GVAR(vehiclesACECargo)) then {
+        _data pushBack ["ace_cargo", _aceCargo];
+    };
+    if (GVAR(vehiclesTurrets)) then {
+        _data pushBack ["turrets", magazinesAllTurrets _vehicle];
+    };
+    if (GVAR(vehiclesPylons)) then {
+        // Without the pylon objects (written as "NOID x.p3d" or <NULL-object>, not data)
+        _data pushBack ["pylons", (getAllPylonsInfo _vehicle) apply {_x select [0, 5]}];
+    };
+
+    // ACE fuel truck (finite fuel)
+    if (GVAR(vehiclesACESupply) && {!isNil QACEFUNC(refuel,getCapacity)} && {([_vehicle] call ACEFUNC(refuel,getCapacity)) > 0}) then {
+        _data pushBack ["ace_fuel", [_vehicle] call ACEFUNC(refuel,getFuel)];
+    };
+
+    // ACE ammo truck: limited supply (a count) or magazine-specific supply (what's stored in it);
+    // unlimited needs nothing
+    private _rearmSupply = missionNamespace getVariable [QACEGVAR(rearm,supply), 0];
+    if (GVAR(vehiclesACESupply) && {_rearmSupply == 2} && {!isNil {_vehicle getVariable QACEGVAR(rearm,magazineSupply)}}) then {
+        _data pushBack ["ace_ammo_magazines", _vehicle getVariable QACEGVAR(rearm,magazineSupply)];
+    };
+    if (
+        GVAR(vehiclesACESupply) && {!isNil QACEFUNC(rearm,getSupplyCount)} && {_rearmSupply == 1} &&
+        {!isNil {_vehicle getVariable QACEGVAR(rearm,currentSupply)} || {getNumber (_config >> QACEGVAR(rearm,defaultSupply)) > 0} || {getNumber (_config >> "transportAmmo") > 0}}
+    ) then {
+        _data pushBack ["ace_ammo", [_vehicle] call ACEFUNC(rearm,getSupplyCount)];
+    };
 };
 
-private _vehicleNamePretty = getText (configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
+// Trench dig progress (ACE, grad_trenches)
+if (!isNil "_trenchProgress") then {
+    _data pushBack ["trench", _trenchProgress];
+};
 
-["storeVehicle", _vehicleID, _vehiclePos, _vehicleDir, _vehicleType, _vehicleClass, _vehicleAlive, _vehicleDamage, _hitpoints, _vehicleFuel, _vehicleAmmo, _vehicleMagazineCargo, _vehicleItemCargo, _vehicleWeapons, _vehicleCrew, _vehicleBackPacks, _vehicleBackpackItems, _vehicleBackpackMagazines, _vehicleBackpackWeapons, _driver, _vehicleNamePretty, _vehicleLock, _vehicleCustomization] call FUNC(invokeJavaMethod);
+["storeVehicle", _vehicleID, _data] call FUNC(callServerExt);

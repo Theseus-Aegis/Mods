@@ -10,9 +10,11 @@ PREP_RECOMPILE_END;
 
 if (isServer) then {
     GVAR(vehiclesLoaded) = false;
-    GVAR(vehiclesList) = [];
+    GVAR(vehicles) = createHashMap; // vehicle ID -> object, the persistent ones (FUNC(registerVehicle))
+    GVAR(playerRuntimeData) = createHashMap; // UID -> state kept for the mission (FUNC(runtimeSave))
+    GVAR(deathsRegistered) = createHashMap; // UID -> playerDied's reply, from the death until the respawn
 };
 
-GVAR(isDebug) = false;
+GVAR(liveApi) = false; // the live website only when the server uses it, otherwise the development one
 
 ADDON = true;

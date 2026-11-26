@@ -17,9 +17,15 @@
 
 params ["_selectedCategory"];
 GVAR(selectedCategory) = _selectedCategory; // For FUNC(dialogControl_takestash)
+call FUNC(hideMessage);
+
+// Stash All, in the Stash screen with Chronos
+[STASHALLBTN, LLSTRING(BtnStashAll), QUOTE(call FUNC(stashAll)), LLSTRING(BtnStashAllTooltip)] call FUNC(setButton);
+{
+    ctrlShow [_x, _selectedCategory == "stash" && {GVAR(system) == 1}];
+} forEach [STASHALLFRAME, STASHALLBTN];
 
 // Show Dropdown, Amount and List
-ctrlSetText [AMOUNT, QPATHTOF(UI\textAmount.paa)];
 {
     ctrlShow [_x, true];
 } forEach [DROPDOWN, AMOUNT, NLIST];
@@ -37,6 +43,10 @@ if (_selectedCategory == "stash") then {
         _armoryData = [_selectedCategory] call FUNC(getDataChronos);
         if (_armoryData isEqualTo false) exitWith {
             _exit = true;
+            lbClear DROPDOWN;
+            lnbClear NLIST;
+            ctrlShow [DROPDOWN, false];
+            [LLSTRING(MsgOffline), [LLSTRING(MsgOfflineText), LLSTRING(MsgOfflineHelp), LLSTRING(MsgContactStaff)]] call FUNC(showMessage);
         };
     };
 };

@@ -29,31 +29,21 @@ private _playerPos = getPosASL _player;
 private _playerDir = getDir _player;
 
 // Loadout
-private _loadout = getUnitLoadout _player;
-
-// Filter ACRE2
-if (["acre_api"] call ACEFUNC(common,isModLoaded)) then {
-    _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
-};
-
-// Add earplugs to uniform if has them plugged in.
-if ((_player getVariable ["ACE_hasEarPlugsIn", false]) && {((_loadout select 3) isNotEqualTo [])}) then {
-    ((_loadout select 3) select 1) pushBack ["ACE_EarPlugs", 1];
-};
+private _loadout = [_player] call FUNC(getLoadout);
 
 // Other
 private _selectedWeapon = currentWeapon _player;
 
-// Variables TODO
-private _playerVariables = [];
+// Variables kept across missions, as the player's machine last sent them ([] if never: the website keeps its own)
+private _playerVariables = (_player getVariable [QGVAR(clientState), []]) param [0, []];
 
-private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(invokeJavaMethod);
+private _serverReply = ["storeInfantry", _type, _uid, _name, _playerPos, _playerDir, _loadout, _selectedWeapon, _playerVariables] call FUNC(callServerExt);
 
 TRACE_2("Singleton Save",_type,_serverReply);
 
 if (_type == "validate" && {_serverReply == "success"}) exitWith {
     // No simulation toggling due to possible lag breaking correct position and direction setting
-    ["infantryLoaded", _uid] call FUNC(invokeJavaMethod);
+    ["infantryLoaded", _uid] call FUNC(callServerExt);
     INFO_4("Player '%1' (%2) validated successfully (Position: %3 - Loadout: %4)",_name,_uid,_playerPos,_loadout);
 };
 

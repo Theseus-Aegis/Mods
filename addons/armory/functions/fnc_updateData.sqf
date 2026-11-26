@@ -19,6 +19,9 @@ params ["_newArmoryData"];
 
 TRACE_1("Armory data update",_newArmoryData);
 
+// A message waits for OK, which loads the screen again (FUNC(dismissMessage))
+if (GVAR(messageDismissable) isEqualTo true) exitWith {};
+
 [_newArmoryData] call FUNC(dialogControl_populateList);
 call FUNC(dialogControl_amountSelection);
 call FUNC(dialogControl_takestash);

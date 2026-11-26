@@ -24,3 +24,4 @@ ACE_player setVariable [QGVAR(object), nil, true];
 // Clean up variables
 GVAR(selectedCategory) = nil;
 GVAR(armoryData) = nil;
+GVAR(messageDismissable) = nil;

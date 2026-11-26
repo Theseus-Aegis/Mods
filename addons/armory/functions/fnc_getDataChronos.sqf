@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: DaC, Jonpas
- * Gets data from Apollo Client / Athena (Chronos).
+ * Gets data from Apollo Client (Chronos).
  *
  * Arguments:
  * 0: Category <STRING>
@@ -23,13 +23,17 @@ if !(["tac_apollo"] call ACEFUNC(common,isModLoaded)) exitWith {
     false
 };
 
-private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,isDebug)]] call EFUNC(apollo,callExt);
+// Single player (the editor) has no Steam ID, so an empty locker
+if (getPlayerUID player == "_SP_PLAYER_") exitWith {
+    []
+};
+
+private _result = ["loadArmory", [_selectedCategory, getPlayerUID player, EGVAR(apollo,liveApi)]] call EFUNC(apollo,callExt);
 
 if (!isNil "_result") then {
-    TRACE_2("Athena Armory Data",_selectedCategory,_result);
+    TRACE_2("Chronos Armory Data",_selectedCategory,_result);
     _result
 } else {
     ERROR("Armory data failed to load!");
-    [LSTRING(ChronosError), 2.5] call ACEFUNC(common,displayTextStructured);
-    false
+    false // shown on the pad (FUNC(dialogControl_list))
 };

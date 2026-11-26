@@ -5,7 +5,22 @@
             <English>Allow Server Reset</English>
         </Key>
         <Key ID="STR_TAC_Apollo_AllowServerResetDesc">
-            <English>Allows resetting player positions and deleting saved vehicles on map or mission change since last save.</English>
+            <English>Lets Chronos reset player positions and clear saved vehicles at the mission start (by default on a map change; each server's rule and staff's choice in Logistics › Manage). Off: nothing is reset or remembered for this mission.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagAlready">
+            <English>This bodybag was sent to %1 already.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagFailed">
+            <English>The bodybag couldn't be sent, try again.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagGone">
+            <English>%1 is no longer with Theseus: the bodybag was destroyed.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagRespawn">
+            <English>The owner's death isn't in Chronos yet (it's added when they respawn), try again later.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_BodybagSent">
+            <English>Bodybag sent to %1: %2 items to claim on the website (Logistics, Inventory). Not returnable (destroyed): %3</English>
         </Key>
         <Key ID="STR_TAC_Apollo_EnabledDesc">
             <English>Enables overall persistence.</English>
@@ -36,6 +51,45 @@
             <English>You are being moved back to lobby for reinitialization.</English>
             <French>Vous êtes en train d'être bougé à l'acceuil pour une réinitialisation.</French>
             <German>Du wirst wegen Neuinitialisierung zurück zur Lobby verschoben.</German>
+        </Key>
+        <Key ID="STR_TAC_Apollo_Vehicles">
+            <English>Vehicles</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACECargo">
+            <English>ACE Cargo</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACECargoDesc">
+            <English>Keeps what is loaded in vehicles' ACE cargo (objects with their inventory, and persistent vehicles loaded into others).</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACESupply">
+            <English>ACE Fuel and Ammo Supply</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesACESupplyDesc">
+            <English>Keeps what ACE fuel and ammo trucks have left (finite fuel; limited or magazine-specific ammo supply).</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesObjects">
+            <English>Objects</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesObjectsDesc">
+            <English>Makes objects players place persistent (trenches, sandbags, fortifications, tripods) and keeps the saved objects that aren't vehicles (those, crates, other objects added to Chronos), with a trench's dig progress.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesPylons">
+            <English>Pylons</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesPylonsDesc">
+            <English>Keeps aircraft pylon loadouts and their ammo.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesStaticWeapons">
+            <English>Static Weapons</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesStaticWeaponsDesc">
+            <English>Makes static weapons and ACE CSW tripods persistent when a player deploys one, and keeps the saved ones.</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesTurrets">
+            <English>Turret Ammo</English>
+        </Key>
+        <Key ID="STR_TAC_Apollo_VehiclesTurretsDesc">
+            <English>Keeps the magazines and ammo left in vehicles' turrets. Off: vehicles come back with what they're made with.</English>
         </Key>
     </Package>
 </Project>

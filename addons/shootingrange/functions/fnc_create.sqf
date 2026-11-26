@@ -113,21 +113,10 @@ if (_countdownTimes isEqualTo []) then {
     _countdownTimes = COUNTDOWNTIMES_DEFAULT;
 };
 
-if !(_defaultDuration in _durations) then {
-    _durations pushBack _defaultDuration;
-};
-
-if !(_defaultTargetAmount in _targetAmounts) then {
-    _targetAmounts pushBack _defaultTargetAmount;
-};
-
-if !(_defaultPauseDuration in _pauseDurations) then {
-    _pauseDurations pushBack _defaultPauseDuration;
-};
-
-if !(_defaultCountdownTime in _countdownTimes) then {
-    _countdownTimes pushBack _defaultCountdownTime;
-};
+_durations pushBackUnique _defaultDuration;
+_targetAmounts pushBackUnique _defaultTargetAmount;
+_pauseDurations pushBackUnique _defaultPauseDuration;
+_countdownTimes pushBackUnique _defaultCountdownTime;
 
 _durations sort true;
 _targetAmounts sort true;

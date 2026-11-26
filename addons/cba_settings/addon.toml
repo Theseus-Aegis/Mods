@@ -1,0 +1,3 @@
+# CBA loads the static userconfig from \cba_settings_userconfig\cba_settings.sqf, so this addon
+# keeps CBA's prefix instead of x\tac\addons\cba_settings.
+ignore_pboprefix = true
